@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact en offerte | VLWarmte</title>
+    <meta
+      name="description"
+      content="Vraag informatie of een offerte aan bij VLWarmte. Geef eenvoudig je projectgegevens door voor gericht advies."
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header-inner">
+        <a class="brand" href="index.html"><img class="brand-logo" src="assets/img/logo-v3.svg" alt="VLWarmte" /></a>
+        <nav class="site-nav" data-nav>
+          <a href="index.html">Home</a>
+          <a href="diensten.html">Diensten</a>
+          <a href="systemen-producten.html">Systemen</a>
+          <a href="werkwijze.html">Werkwijze</a>
+          <a href="over-ons.html">Over ons</a>
+          <a href="projecten.html">Projecten</a>
+          <a class="is-current" href="contact.html">Contact</a>
+          <a class="drawer-cta" href="contact.html">Informatie / Offerte aanvragen</a>
+        </nav>
+        <div class="header-actions">
+          <a class="btn btn-primary" href="contact.html">Informatie / Offerte aanvragen</a>
+          <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open navigatie">Menu</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <h1>Informatie of offerte aanvragen</h1>
+          <p class="lead">
+            Kies wat je nodig hebt. We reageren doorgaans binnen 1 werkdag.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container">
+          <div class="mode-switch" aria-label="Type aanvraag">
+            <button type="button" class="is-active" data-lead-mode="info">Ik wil eerst informatie</button>
+            <button type="button" data-lead-mode="offerte">Ik wil een offerte</button>
+          </div>
+
+          <form id="lead-form" style="margin-top: 1rem" novalidate>
+            <div class="form-grid">
+              <div>
+                <label for="name">Naam *</label>
+                <input id="name" name="name" required />
+              </div>
+              <div>
+                <label for="phone">Telefoon *</label>
+                <input id="phone" name="phone" required />
+              </div>
+              <div>
+                <label for="email">E-mail *</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div>
+                <label for="region">Plaats / regio</label>
+                <input id="region" name="region" />
+              </div>
+
+              <div data-only="offerte" class="hidden">
+                <label for="m2">Oppervlakte (m2) *</label>
+                <input id="m2" name="m2" />
+              </div>
+              <div data-only="offerte" class="hidden">
+                <label for="ondergrond">Type ondergrond *</label>
+                <select id="ondergrond" name="ondergrond">
+                  <option value="">Maak een keuze</option>
+                  <option>Beton</option>
+                  <option>Hout</option>
+                  <option>Onbekend / nog te bepalen</option>
+                </select>
+              </div>
+              <div data-only="offerte" class="hidden">
+                <label for="projecttype">Projecttype *</label>
+                <select id="projecttype" name="projecttype">
+                  <option value="">Maak een keuze</option>
+                  <option>Nieuwbouw</option>
+                  <option>Renovatie</option>
+                </select>
+              </div>
+              <div data-only="offerte" class="hidden">
+                <label for="planning">Gewenste planning</label>
+                <input id="planning" name="planning" />
+              </div>
+
+              <div class="field-full">
+                <label for="message">Opmerkingen</label>
+                <textarea id="message" name="message" placeholder="Vertel kort iets over je project"></textarea>
+              </div>
+            </div>
+
+            <p class="small">
+              Liever bellen? Laat je nummer achter, dan nemen we contact op.
+            </p>
+            <button class="btn btn-primary" type="submit">Versturen</button>
+            <div id="lead-status" class="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer-grid">
+        <section><h3>VLWarmte</h3><p class="small">Vragen? We denken graag mee.</p></section>
+        <section><h3>Direct</h3><ul class="small"><li><a href="tel:+31600000000">+31 6 00 00 00 00</a></li><li><a href="mailto:info@vlwarmte.nl">info@vlwarmte.nl</a></li></ul></section>
+        <section><h3>Links</h3><ul class="small"><li><a href="disclaimer.html">Disclaimer</a></li><li><a href="privacy.html">Privacy</a></li></ul></section>
+      </div>
+      <div class="container small">© <span id="year"></span> VLWarmte</div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

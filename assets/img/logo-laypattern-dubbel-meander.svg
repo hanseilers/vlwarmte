@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 132" role="img" aria-label="VLWarmte dubbel meander legpatroon logo">
+  <defs>
+    <linearGradient id="pipeWarm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f06a3d" />
+      <stop offset="100%" stop-color="#bc3f1f" />
+    </linearGradient>
+    <linearGradient id="pipeReturn" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8b08e" />
+      <stop offset="100%" stop-color="#f06a3d" />
+    </linearGradient>
+    <filter id="shadowDouble" x="-10%" y="-20%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.22" />
+    </filter>
+  </defs>
+
+  <g filter="url(#shadowDouble)">
+    <g transform="translate(18 18)">
+      <rect x="0" y="0" width="205" height="96" rx="18" fill="#101a2a" stroke="#2d3a4c" stroke-width="2" />
+      <path d="M24 22 H177 M177 22 V42 M177 42 H24 M24 42 V62 M24 62 H177 M177 62 V82 M177 82 H24"
+        fill="none" stroke="url(#pipeWarm)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M24 32 H166 M166 32 V52 M166 52 H35 M35 52 V72 M35 72 H166"
+        fill="none" stroke="url(#pipeReturn)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.82" />
+      <path d="M24 22 H177 M177 22 V42 M177 42 H24 M24 42 V62 M24 62 H177 M177 62 V82 M177 82 H24"
+        fill="none" stroke="#f6f8fc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.58" />
+      <path d="M20 16 H185 M20 48 H185 M20 80 H185 M44 12 V86 M84 12 V86 M124 12 V86 M164 12 V86"
+        stroke="#ffffff" stroke-width="1" opacity="0.065" />
+    </g>
+
+    <text x="260" y="74" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="58" font-weight="850" letter-spacing="-1.4">
+      <tspan fill="#f06a3d">VL</tspan>
+      <tspan dx="8" fill="#f6f8fc">Warmte</tspan>
+    </text>
+    <text x="263" y="101" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="650" letter-spacing="1.8" fill="#9aabbe">
+      COMPLETE VLOEROPLOSSINGEN
+    </text>
+  </g>
+</svg>

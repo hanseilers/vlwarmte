@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logo varianten | VLWarmte</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <style>
+      .logo-preview-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .logo-preview {
+        background: linear-gradient(160deg, #0d1624 0%, #101b2d 100%);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius);
+        padding: 1.25rem;
+        box-shadow: var(--shadow);
+      }
+
+      .logo-preview img {
+        width: 100%;
+        height: 110px;
+        object-fit: contain;
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 900px) {
+        .logo-preview-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <h1>Logo varianten - legpatroon</h1>
+          <p class="lead">
+            Nieuwe SVG-richtingen vanaf nul: gebaseerd op een vloerverwarming legpatroon,
+            met dezelfde CTA-oranje kleur als de rest van de website.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container logo-preview-grid">
+          <article class="logo-preview">
+            <img src="assets/img/logo-laypattern-slakkenhuis.svg" alt="Logo slakkenhuis patroon" />
+            <h2>Slakkenhuis / counterflow</h2>
+            <p>Gebaseerd op het meest gelijkmatige legpatroon: heen en retour lopen naast elkaar in een rechthoekige spiraal.</p>
+          </article>
+          <article class="logo-preview">
+            <img src="assets/img/logo-laypattern-meander.svg" alt="Logo meander patroon" />
+            <h2>Meander / serpentine</h2>
+            <p>Gebaseerd op parallelle banen met ronde bochten. Compacter en duidelijker dan de paperclip-variant.</p>
+          </article>
+          <article class="logo-preview">
+            <img src="assets/img/logo-laypattern-dubbel-meander.svg" alt="Logo dubbel meander patroon" />
+            <h2>Dubbele meander</h2>
+            <p>Gebaseerd op afwisselende aanvoer/retourbanen. Technischer, maar heel herkenbaar als vloerverwarming.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

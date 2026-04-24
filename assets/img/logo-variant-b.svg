@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 116" role="img" aria-label="VLWarmte logo variant B">
+  <defs>
+    <linearGradient id="ctaB" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0552f" />
+      <stop offset="100%" stop-color="#bc3f1f" />
+    </linearGradient>
+    <filter id="shadowB" x="-10%" y="-20%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#000000" flood-opacity="0.24" />
+    </filter>
+  </defs>
+
+  <g filter="url(#shadowB)">
+    <g transform="translate(14 10)">
+      <path d="M8 70 C52 68 92 66 142 62" stroke="#121a27" stroke-width="7" stroke-linecap="round" fill="none" />
+      <path d="M16 60 L42 36 L60 36 L35 60 Z" fill="#111827" />
+      <path d="M38 60 L64 36 L82 36 L58 60 Z" fill="#202b3b" />
+      <path d="M60 60 L86 36 L104 36 L80 60 Z" fill="#2a3546" />
+
+      <path d="M48 35 C65 18 90 15 136 15 C149 15 156 21 156 30 C156 39 148 45 136 45 L94 45"
+        stroke="url(#ctaB)" stroke-width="12" stroke-linecap="round" fill="none" />
+      <path d="M37 53 C61 30 94 27 164 27 C181 27 190 36 190 47 C190 59 180 66 164 66 L110 66"
+        stroke="url(#ctaB)" stroke-width="15" stroke-linecap="round" fill="none" />
+      <path d="M42 52 C64 33 95 31 164 31 C176 31 183 37 183 45 C183 53 176 59 164 59 L113 59"
+        stroke="#f6f8fc" stroke-width="3.6" stroke-linecap="round" fill="none" opacity="0.92" />
+
+      <path d="M82 10 C80 4 85 0 91 -4 C89 3 94 8 92 15 C90 20 87 24 82 27 C84 21 85 16 82 10 Z" fill="url(#ctaB)" />
+      <path d="M103 8 C101 1 107 -3 113 -6 C111 2 117 8 115 16 C113 22 109 26 103 29 C106 21 107 15 103 8 Z" fill="url(#ctaB)" />
+      <path d="M206 16 L210 27 L222 31 L210 35 L206 47 L202 35 L190 31 L202 27 Z" fill="#e0552f" />
+    </g>
+
+    <text x="252" y="76" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="56" font-weight="850" letter-spacing="-1.5">
+      <tspan fill="#e0552f">VL</tspan>
+      <tspan dx="8" fill="#f6f8fc">Warmte</tspan>
+    </text>
+  </g>
+</svg>

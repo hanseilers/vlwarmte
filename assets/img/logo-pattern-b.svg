@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 122" role="img" aria-label="VLWarmte logo pattern B">
+  <defs>
+    <linearGradient id="pipeB" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f06a3d" />
+      <stop offset="100%" stop-color="#bc3f1f" />
+    </linearGradient>
+    <filter id="shadowB" x="-10%" y="-20%" width="120%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.2" />
+    </filter>
+  </defs>
+
+  <g filter="url(#shadowB)">
+    <g transform="translate(22 18)">
+      <path d="M12 80 H126 C144 80 154 70 154 56 C154 42 144 32 126 32 H38 C26 32 18 40 18 50 C18 60 26 68 38 68 H108 C117 68 123 62 123 55 C123 48 117 44 108 44 H58"
+        fill="none" stroke="url(#pipeB)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M12 80 H126 C144 80 154 70 154 56 C154 42 144 32 126 32 H38 C26 32 18 40 18 50 C18 60 26 68 38 68 H108 C117 68 123 62 123 55 C123 48 117 44 108 44 H58"
+        fill="none" stroke="#f6f8fc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.86" />
+      <circle cx="12" cy="80" r="6" fill="#f06a3d" />
+      <circle cx="58" cy="44" r="6" fill="#bc3f1f" />
+    </g>
+
+    <text x="218" y="74" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="58" font-weight="850" letter-spacing="-1.4">
+      <tspan fill="#f06a3d">VL</tspan>
+      <tspan dx="8" fill="#f6f8fc">Warmte</tspan>
+    </text>
+  </g>
+</svg>
