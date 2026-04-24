@@ -10,21 +10,18 @@
   </defs>
 
   <g filter="url(#shadowSlug)">
-    <g transform="translate(18 18)">
-      <rect x="0" y="0" width="178" height="96" rx="18" fill="#101a2a" stroke="#2d3a4c" stroke-width="2" />
-      <path d="M20 24 H158 V76 H20 V24 H38 V60 H140 V40 H56 V48 H122"
-        fill="none" stroke="url(#pipeSlug)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
-      <path d="M20 24 H158 V76 H20 V24 H38 V60 H140 V40 H56 V48 H122"
-        fill="none" stroke="#f6f8fc" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" opacity="0.72" />
-      <path d="M18 16 H160 M18 48 H160 M18 80 H160 M34 10 V86 M70 10 V86 M106 10 V86 M142 10 V86"
-        stroke="#ffffff" stroke-width="1" opacity="0.07" />
+    <g transform="translate(16 14)">
+      <path d="M16 22 H204 V92 H16 V22 H42 V72 H178 V42 H68 V55 H150"
+        fill="none" stroke="url(#pipeSlug)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M16 22 H204 V92 H16 V22 H42 V72 H178 V42 H68 V55 H150"
+        fill="none" stroke="#f6f8fc" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.74" />
     </g>
 
-    <text x="232" y="74" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="58" font-weight="850" letter-spacing="-1.4">
+    <text x="258" y="74" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="58" font-weight="850" letter-spacing="-1.4">
       <tspan fill="#f06a3d">VL</tspan>
       <tspan dx="8" fill="#f6f8fc">Warmte</tspan>
     </text>
-    <text x="235" y="101" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="650" letter-spacing="1.8" fill="#9aabbe">
+    <text x="261" y="101" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="15" font-weight="650" letter-spacing="1.8" fill="#9aabbe">
       SLIM GELEGD. GELIJKMATIG WARM.
     </text>
   </g>
