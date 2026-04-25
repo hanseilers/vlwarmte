@@ -7,4 +7,6 @@
 ## Learned Workspace Facts
 - Workspace at `/Users/hanseilers/vlwarmte` is used for the VLWarmte website redesign workstream.
 - Design specs and implementation plans are maintained under `docs/superpowers/`.
-- Current redesign direction favors a more modern/tighter look, potentially darker styling, stronger imagery, and reuse/adaptation of the existing logo.
+- Current VLWarmte redesign direction favors a modern/tighter, potentially darker look with stronger imagery.
+- VLWarmte's preferred logo direction is an SVG "Slakkenhuis Flow" underfloor-heating laying pattern using the site's CTA accent color, without a surrounding border.
+- Mobile responsiveness is a priority for the VLWarmte site, especially keeping the header and navigation compact and visible on small screens.

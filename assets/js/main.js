@@ -46,7 +46,7 @@ function initMobileNav() {
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 1360) closeNav();
+    if (window.innerWidth > 1080) closeNav();
   });
 }
 
