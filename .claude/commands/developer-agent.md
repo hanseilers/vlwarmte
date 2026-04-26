@@ -28,7 +28,7 @@ Voor elke goedgekeurde taak:
 ### Content update
 1. Lees de huidige pagina zorgvuldig
 2. Pas de specifieke sectie aan zoals beschreven in de sprint
-3. Behoud de bestaande stijl en toon (professioneel, vakkundig, Noord-Nederland)
+3. Behoud de bestaande stijl en toon: professioneel, vakkundig, lokaal verankerd. Doelgroep = bovenmodaal inkomen, koopwoningbezitters binnen 50 km van Zuid-Laren. Schrijf voor mensen die kwaliteit waarderen boven laagste prijs. Gebruik concrete plaatsnamen: Groningen, Assen, Emmen, Hoogeveen, Meppel, Roden, Leek, Veendam, Zuidlaren e.o.
 4. Voeg nooit lorem ipsum toe — schrijf echte inhoud
 
 ### SEO verbetering
