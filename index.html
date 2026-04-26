@@ -18,8 +18,12 @@
     />
     <meta property="og:url" content="https://www.vlwarmte.nl/" />
     <meta property="og:site_name" content="VLWarmte" />
-    <meta property="og:image" content="https://www.vlwarmte.nl/assets/img/logo-laypattern-slakkenhuis.svg" />
+    <meta property="og:image" content="https://www.vlwarmte.nl/assets/img/og-default.png" />
+    <meta property="og:image:width" content="1376" />
+    <meta property="og:image:height" content="768" />
+    <meta property="og:image:type" content="image/png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://www.vlwarmte.nl/assets/img/og-default.png" />
     <meta name="twitter:title" content="VLWarmte | Vloerverwarming van ondervloer tot oplevering" />
     <meta
       name="twitter:description"
@@ -35,10 +39,23 @@
             "@id": "https://www.vlwarmte.nl/#localbusiness",
             "name": "VLWarmte",
             "url": "https://www.vlwarmte.nl/",
-            "image": "https://www.vlwarmte.nl/assets/img/logo-laypattern-slakkenhuis.svg",
+            "image": [
+              "https://www.vlwarmte.nl/assets/img/og-default.png",
+              "https://www.vlwarmte.nl/assets/img/logo-laypattern-slakkenhuis.svg"
+            ],
             "email": "info@vlwarmte.nl",
+            "telephone": "+31618817459",
             "priceRange": "$$",
-            "areaServed": ["Groningen", "Friesland", "Drenthe"]
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Verlengde Stationsweg 58",
+              "postalCode": "9471 PM",
+              "addressLocality": "Zuidlaren",
+              "addressRegion": "Drenthe",
+              "addressCountry": "NL"
+            },
+            "areaServed": ["Groningen", "Friesland", "Drenthe"],
+            "identifier": { "@type": "PropertyValue", "name": "KVK", "value": "01174546" }
           },
           {
             "@type": "WebSite",
@@ -231,6 +248,22 @@
         <section>
           <h3>VLWarmte</h3>
           <p class="small">Specialist in vloerverwarming van ondervloer tot oplevering.</p>
+          <address class="small footer-address">
+            Verlengde Stationsweg 58<br />
+            9471 PM Zuidlaren
+          </address>
+          <p class="small footer-contact">
+            <a href="tel:+31618817459">06 188 17 459</a><br />
+            <a href="mailto:info@vlwarmte.nl">info@vlwarmte.nl</a>
+          </p>
+          <p class="small">
+            <a
+              href="https://www.kvk.nl/bestellen/#/01174546000002428172?origin=search"
+              rel="noopener noreferrer"
+              target="_blank"
+              >KVK 01174546</a
+            >
+          </p>
         </section>
         <section>
           <h3>Regio</h3>

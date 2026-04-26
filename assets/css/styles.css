@@ -39,16 +39,30 @@ a {
   margin: 0 auto;
 }
 
+/* Blur lives on ::before so backdrop-filter does not create a fixed-position
+   containing block for the mobile drawer nav (would clip it to header height). */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(9, 15, 24, 0.86);
+  background: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(9, 15, 24, 0.86);
+  -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
+  pointer-events: none;
 }
 
 .site-header-inner {
+  position: relative;
+  z-index: 1;
   min-height: 74px;
   display: flex;
   align-items: center;
@@ -366,6 +380,17 @@ h2 {
   font-size: 1rem;
 }
 
+.site-footer .footer-address {
+  font-style: normal;
+  margin: 0.5rem 0 0.35rem;
+  line-height: 1.5;
+}
+
+.site-footer .footer-contact {
+  margin: 0.35rem 0 0;
+  line-height: 1.55;
+}
+
 .site-footer ul {
   margin: 0;
   padding: 0;
@@ -542,6 +567,11 @@ textarea {
     inset: 64px 0 0 0;
     background: rgba(1, 6, 16, 0.54);
     z-index: 35;
+  }
+
+  /* Inner wraps logo + drawer; must stack above ::after (35) or the dimmer covers the menu. */
+  .site-header.is-open .site-header-inner {
+    z-index: 50;
   }
 
   .site-header.is-open .site-nav {
