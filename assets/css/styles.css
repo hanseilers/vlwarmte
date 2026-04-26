@@ -10,55 +10,53 @@
   --white: #f6f8fc;
   --radius: 16px;
   --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  /* Duur: langzaam, subtiel “warmte”-gloeien (niet pijnlijk op het oog) */
-  --glow-warm-duration: 18s;
+  /* Langzaam genoeg om rustig te blijven, kort genoeg om binnen ~15–20s een duidelijke “adem” te zien */
+  --glow-warm-duration: 12s;
   --glow-warm-ease: ease-in-out;
 }
 
-/* Subtiel pulseren van oranje + blauw in gradientvlakken (vloerwarmte-sfeer) */
+/* Zichtbaar maar noch steeds “warm / gloeiend”, geen knipper-effect */
 @keyframes vLWarmthGlow {
   0%,
   100% {
-    opacity: 0.7;
+    opacity: 0.5;
     transform: scale(1) translate(0, 0);
+    filter: brightness(0.95) saturate(0.95);
   }
-  33% {
-    opacity: 0.92;
-    transform: scale(1.02) translate(-0.3%, 0.4%);
-  }
-  66% {
-    opacity: 0.78;
-    transform: scale(1.01) translate(0.2%, -0.2%);
+  50% {
+    opacity: 1;
+    transform: scale(1.04) translate(-0.4%, 0.35%);
+    filter: brightness(1.12) saturate(1.1);
   }
 }
 
 @keyframes vLWarmthGlowOffset {
   0%,
   100% {
-    opacity: 0.5;
+    opacity: 0.35;
   }
   50% {
-    opacity: 0.88;
+    opacity: 0.92;
   }
 }
 
 @keyframes vLWarmthMuted {
   0%,
   100% {
-    opacity: 0.65;
+    opacity: 0.42;
   }
   50% {
-    opacity: 0.9;
+    opacity: 0.98;
   }
 }
 
 @keyframes vLWarmthSheet {
   0%,
   100% {
-    opacity: 0.85;
+    opacity: 0.7;
   }
   50% {
-    opacity: 0.98;
+    opacity: 1;
   }
 }
 
@@ -247,11 +245,11 @@ a {
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(circle at 90% 20%, rgba(224, 85, 47, 0.26), transparent 38%),
-    radial-gradient(circle at 12% 82%, rgba(95, 163, 224, 0.2), transparent 35%);
+    radial-gradient(circle at 90% 18%, rgba(224, 85, 47, 0.38), transparent 42%),
+    radial-gradient(circle at 12% 80%, rgba(95, 163, 224, 0.3), transparent 40%);
   pointer-events: none;
   animation: vLWarmthGlow var(--glow-warm-duration) var(--glow-warm-ease) infinite alternate;
-  will-change: opacity, transform;
+  will-change: opacity, transform, filter;
 }
 
 .hero::after {
@@ -261,7 +259,7 @@ a {
   z-index: 0;
   width: 420px;
   height: 420px;
-  background: radial-gradient(circle, rgba(95, 163, 224, 0.22), transparent 70%);
+  background: radial-gradient(circle, rgba(95, 163, 224, 0.32), transparent 72%);
   pointer-events: none;
   animation: vLWarmthGlowOffset calc(var(--glow-warm-duration) * 0.9) var(--glow-warm-ease) infinite
     alternate;
@@ -339,9 +337,10 @@ h2 {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(180deg, rgba(224, 85, 47, 0.1) 0%, rgba(95, 163, 224, 0.1) 100%);
+  background: linear-gradient(180deg, rgba(224, 85, 47, 0.14) 0%, rgba(95, 163, 224, 0.14) 100%);
   pointer-events: none;
-  animation: vLWarmthMuted 22s var(--glow-warm-ease) infinite alternate;
+  animation: vLWarmthMuted calc(var(--glow-warm-duration) * 1.1) var(--glow-warm-ease) infinite
+    alternate;
   will-change: opacity;
 }
 
@@ -364,10 +363,11 @@ h2 {
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(circle at 78% 26%, rgba(224, 85, 47, 0.24), transparent 40%),
-    radial-gradient(circle at 20% 82%, rgba(95, 163, 224, 0.2), transparent 42%);
+    radial-gradient(circle at 78% 26%, rgba(224, 85, 47, 0.32), transparent 42%),
+    radial-gradient(circle at 20% 82%, rgba(95, 163, 224, 0.26), transparent 44%);
   pointer-events: none;
-  animation: vLWarmthSheet 24s var(--glow-warm-ease) infinite alternate;
+  animation: vLWarmthSheet calc(var(--glow-warm-duration) * 1.2) var(--glow-warm-ease) infinite
+    alternate;
   will-change: opacity;
 }
 
