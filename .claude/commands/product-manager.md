@@ -152,7 +152,31 @@ Wacht tot deployment bevestigd is.
 
 ---
 
-## Stap 8: Sluit de cyclus af
+## Stap 8: Schrijf release notes
+
+Schrijf naar `docs/website-manager/release-notes.md` — voeg bovenaan toe (nieuwste eerst):
+
+```markdown
+## Release — week van [datum]
+**Deployment:** [datum + tijd]
+**Versie:** [haal op via `git log --oneline -1`]
+
+### Wat is er veranderd
+[Opsomming van geïmplementeerde wijzigingen in begrijpelijke taal — geen technisch jargon]
+
+### Waarom
+[Korte onderbouwing per wijziging: welke data of inzicht lag hieraan ten grondslag]
+
+### Verwacht effect
+[Wat hopen we te meten in GA4 bij de volgende sprint?]
+
+### Social media deze week
+[Korte samenvatting van de weekplanning uit weekly_calendar.md]
+
+---
+```
+
+## Stap 9: Sluit de cyclus af
 
 Controleer of de deployment geslaagd is via:
 ```bash
