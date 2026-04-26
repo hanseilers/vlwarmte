@@ -32,7 +32,64 @@ Gebruik WebSearch om te onderzoeken welke zoekwoorden relevant zijn. Zoek naar:
 4. **Seizoenspatronen**:
    - Wanneer zoeken mensen naar vloerverwarming? (bouwseizoen, winter?)
 
-## Stap 2: Content gap analyse
+## Stap 2: Prijscalculator onderzoek
+
+Onderzoek of het bouwen van een interactieve prijscalculator (wizard) een goed idee is voor vlwarmte.nl. Dit is een tool waar bezoekers hun gegevens invoeren en een vrijblijvende prijsindicatie ontvangen.
+
+Gebruik WebSearch om het volgende te onderzoeken:
+
+**Conversie impact**
+- Hoeveel verhogen prijscalculators de leadconversie in de bouw/installatiebranche?
+- Zijn er studies of cases van vergelijkbare bedrijven (installateurs, aannemers) die een calculator hebben ingezet?
+- Wat is de gemiddelde toename in contactaanvragen bij bedrijven met een prijsindicator?
+
+**Concurrentie benchmark**
+- Hebben concurrenten in vloerverwarming of vergelijkbare installatiebedrijven al een prijscalculator?
+- Hoe zijn die opgebouwd? Welke vragen stellen ze? (m², type vloer, nieuwbouw/renovatie, provincie)
+- Wat werkt goed, wat werkt niet?
+
+**Technische haalbaarheid**
+- Wat zijn de benodigde inputvariabelen voor een vloerverwarming prijsindicatie?
+  - Oppervlakte in m²
+  - Nieuwbouw of renovatie
+  - Type vloer (beton, hout, tegels)
+  - Aantal groepen / zones
+  - Regio (transportkosten)
+  - Aansluitend op bestaande installatie of volledig nieuw
+- Welke outputwaarden zijn realistisch als indicatie zonder te veel te committen?
+- Hoe communiceer je de vrijblijvendheid en marges goed?
+
+**Juridisch / commercieel**
+- Hoe vermijd je dat een prijsindicatie als bindend wordt gezien?
+- Hoe gebruik je de calculator als leadgeneratie-tool (e-mailadres vragen voor de indicatie)?
+
+Schrijf je bevindingen als een apart kopje in het research rapport:
+
+```markdown
+## Prijscalculator — haalbaarheidsonderzoek
+
+### Conclusie
+[Aanbeveling: wel/niet bouwen, en waarom]
+
+### Onderbouwing
+[Gevonden data, cases, concurrentieanalyse]
+
+### Voorgestelde opbouw wizard
+[Stap-voor-stap flow: welke vragen in welke volgorde]
+
+### Leadgeneratie koppeling
+[Hoe de calculator leads oplevert: formulier, e-mail, etc.]
+
+### Risico's en aandachtspunten
+[Wat moet goed geregeld zijn voordat dit live gaat]
+
+### Aanbeveling aan Product Manager
+- Prioriteit: Hoog/Midden/Laag
+- Geschatte ontwikkeltijd: [x uur/dagen]
+- Verwacht effect op leads: [indicatie]
+```
+
+## Stap 3: Content gap analyse
 
 Vergelijk gevonden zoekwoorden met de huidige pagina's:
 - Lees `index.html`, `diensten.html`, `werkwijze.html`
