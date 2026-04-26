@@ -1,4 +1,6 @@
 ## Learned User Preferences
+
+- Before recommending a local dev URL, validate it: `curl` the URL from the same machine, expect `200`, `text/html`, body starting with `<!doctype` (or project `<title>`), and **not** a “Directory listing” page; if the port is already taken by another process, use another port and document it. A directory listing almost always means the server was started from the wrong working directory or the wrong process owns the port.
 - Prefer clarifying questions one at a time and include how many questions remain.
 - Prefer multiple-choice clarifying questions when possible.
 - Require explicit permission before creating new `.md` files.
@@ -7,6 +9,7 @@
 - For the contact/offerte form, prefer a vertical field pattern (label, optional hint, then input). Avoid side-by-side label+input rows that use large spaces or spacers to align inputs, which hurt scanability and label–field association.
 
 ## Learned Workspace Facts
+
 - Workspace at `/Users/hanseilers/vlwarmte` is used for the VLWarmte website redesign workstream.
 - Design specs and implementation plans are maintained under `docs/superpowers/`.
 - Current VLWarmte redesign direction favors a modern/tighter, potentially darker look with stronger imagery.
