@@ -110,7 +110,7 @@ function initLeadForm() {
 
 function validateLeadForm(form, mode) {
   const requiredFields = ["name", "phone", "email"];
-  if (mode === "offerte") requiredFields.push("m2", "ondergrond", "projecttype");
+  if (mode === "offerte") requiredFields.push("m2", "vloerdiepte", "ondergrond", "projecttype");
 
   for (const fieldName of requiredFields) {
     const input = form.elements[fieldName];

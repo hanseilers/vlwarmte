@@ -16,8 +16,9 @@ contains() {
 contains contact.html 'data-lead-mode="info"'
 contains contact.html 'data-lead-mode="offerte"'
 contains contact.html 'name="m2"'
+contains contact.html 'name="vloerdiepte"'
 contains contact.html 'data-only="offerte"'
 contains assets/js/main.js "function validateLeadForm"
-contains assets/js/main.js "requiredFields.push(\"m2\""
+contains assets/js/main.js "requiredFields.push(\"m2\", \"vloerdiepte\", \"ondergrond\", \"projecttype\")"
 
 echo "form-behavior.sh: PASS"
