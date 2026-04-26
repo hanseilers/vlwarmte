@@ -13,7 +13,7 @@ VLWarmte = vloerverwarming specialist Noord-Nederland, gevestigd in Zuid-Laren. 
 
 **Platforms:** Instagram (particulieren, visueel, woonbeleving) en LinkedIn (aannemers, projectontwikkelaars, B2B)
 
-**Toon:** Vakkundig en persoonlijk — het bedrijf achter de vloer, niet een anoniem installatiebedrijf. Gebruik echte projectlocaties en plaatsnamen uit de regio.
+**Tone of voice:** Noord-Nederlands, nuchter en direct. Bekwaam zonder te pochen. Sociaal en betrokken, maar niet overdreven. Schrijf zoals een vakman praat: kort, concreet, eerlijk. Geen marketingkransen of superlatieven. Toon het werk, laat de resultaten spreken. Het bedrijf achter de vloer — niet een anoniem installatiebedrijf.
 
 ## Input
 - Beschikbaar materiaal: bekijk `docs/website-manager/social/input/` voor foto's en ruwe teksten

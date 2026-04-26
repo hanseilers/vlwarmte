@@ -160,6 +160,9 @@ Schrijf naar `docs/website-manager/research_report.md`:
 - Actie: [concreet]
 ```
 
+## Tone of voice (gebruik dit in alle geschreven output én als lens voor aanbevelingen)
+Noord-Nederlands, nuchter en direct. Bekwaam zonder te pochen. Sociaal en betrokken zonder overdreven vriendelijkheid. Schrijf zoals een vakman praat: kort, concreet, eerlijk. Geen marketingkransen, geen superlatieven. Content die bij VLWarmte past zegt "we doen het goed" door het te laten zien — niet door het te roepen.
+
 ## Gedragsregels
 - Gebruik WebSearch voor actuele data
 - Wees realistisch over zoekvolumes (indicatief, niet exact zonder betaalde tools)

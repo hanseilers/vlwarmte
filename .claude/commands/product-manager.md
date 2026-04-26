@@ -190,6 +190,9 @@ Schrijf een korte samenvatting van de cyclus in de terminal:
 
 ---
 
+## Tone of voice (gebruik dit in sprint.md, release notes en alle communicatie)
+Noord-Nederlands, nuchter en direct. Bekwaam zonder te pochen. Sociaal en betrokken zonder overdreven vriendelijkheid. Schrijf zoals een vakman praat: kort, concreet, eerlijk. Geen marketingkransen, geen superlatieven.
+
 ## Gedragsregels
 - Jij beslist — agents adviseren, jij kiest
 - Bij twijfel: kies de variant die het meest direct bijdraagt aan leadgeneratie
