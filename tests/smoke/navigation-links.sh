@@ -20,6 +20,9 @@ for page in "${pages[@]}"; do
   test -f "$page"
 done
 
+test -f robots.txt
+test -f sitemap.xml
+
 contains() {
   local file="$1"
   local needle="$2"
@@ -37,5 +40,8 @@ contains projecten.html "<h1"
 contains contact.html "<h1"
 contains index.html "href=\"privacy.html\""
 contains index.html "href=\"disclaimer.html\""
+contains index.html "rel=\"canonical\""
+contains index.html "application/ld+json"
+contains sitemap.xml "https://www.vlwarmte.nl/"
 
 echo "navigation-links.sh: PASS"
