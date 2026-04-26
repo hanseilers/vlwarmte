@@ -15,10 +15,14 @@ contains() {
 
 contains contact.html 'data-lead-mode="info"'
 contains contact.html 'data-lead-mode="offerte"'
+contains contact.html 'data-lead-mode="bel"'
 contains contact.html 'name="m2"'
 contains contact.html 'name="vloerdiepte"'
+contains contact.html 'name="terugbel_moment"'
 contains contact.html 'data-only="offerte"'
+contains contact.html 'data-only="bel"'
 contains assets/js/main.js "function validateLeadForm"
 contains assets/js/main.js "requiredFields.push(\"m2\", \"vloerdiepte\", \"ondergrond\", \"projecttype\")"
+contains assets/js/main.js "terugbel_moment"
 
 echo "form-behavior.sh: PASS"

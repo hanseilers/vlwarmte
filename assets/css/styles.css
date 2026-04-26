@@ -618,6 +618,8 @@ h2 {
 
 .mode-switch {
   display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
   padding: 0.2rem;
@@ -628,11 +630,13 @@ h2 {
 .mode-switch button {
   border: 0;
   border-radius: 999px;
-  padding: 0.5rem 0.9rem;
+  padding: 0.5rem 0.75rem;
   background: transparent;
   cursor: pointer;
   font-weight: 600;
+  font-size: 0.88rem;
   color: var(--muted);
+  white-space: nowrap;
 }
 
 .mode-switch button.is-active {

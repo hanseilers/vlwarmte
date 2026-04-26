@@ -69,15 +69,31 @@ function initLeadForm() {
   const modeButtons = document.querySelectorAll("[data-lead-mode]");
   const status = document.querySelector("#lead-status");
 
+  const soortField = form.querySelector("#soort_aanvraag");
+
+  function setSoortAanvraag() {
+    if (!soortField) return;
+    if (mode === "info") soortField.value = "Informatie";
+    else if (mode === "offerte") soortField.value = "Offerte";
+    else if (mode === "bel") soortField.value = "Terugbelverzoek";
+  }
+
   function applyMode(nextMode) {
     mode = nextMode;
     modeButtons.forEach((button) => {
       button.classList.toggle("is-active", button.dataset.leadMode === mode);
     });
+    setSoortAanvraag();
 
-    const offerteFields = form.querySelectorAll("[data-only='offerte']");
-    offerteFields.forEach((fieldWrap) => {
+    form.querySelectorAll("[data-only='offerte']").forEach((fieldWrap) => {
       const hidden = mode !== "offerte";
+      fieldWrap.classList.toggle("hidden", hidden);
+      const input = fieldWrap.querySelector("input, select, textarea");
+      if (input) input.required = !hidden;
+    });
+
+    form.querySelectorAll("[data-only='bel']").forEach((fieldWrap) => {
+      const hidden = mode !== "bel";
       fieldWrap.classList.toggle("hidden", hidden);
       const input = fieldWrap.querySelector("input, select, textarea");
       if (input) input.required = !hidden;
@@ -110,6 +126,7 @@ function initLeadForm() {
 function validateLeadForm(form, mode) {
   const requiredFields = ["name", "phone", "email"];
   if (mode === "offerte") requiredFields.push("m2", "vloerdiepte", "ondergrond", "projecttype");
+  if (mode === "bel") requiredFields.push("terugbel_moment");
 
   for (const fieldName of requiredFields) {
     const input = form.elements[fieldName];

@@ -58,9 +58,9 @@
     <main>
       <section class="page-hero">
         <div class="container">
-          <h1>Informatie of offerte aanvragen</h1>
+          <h1>Informatie, offerte of terugbelverzoek</h1>
           <p class="lead">
-            Kies wat je nodig hebt. We reageren doorgaans binnen 1 werkdag.
+            Kies wat je nodig hebt. We reageren doorgaans binnen 1 werkdag — bij een terugbelverzoek op het door jou gekozen moment.
           </p>
         </div>
       </section>
@@ -95,9 +95,11 @@
           <div class="mode-switch" aria-label="Type aanvraag">
             <button type="button" class="is-active" data-lead-mode="info">Ik wil eerst informatie</button>
             <button type="button" data-lead-mode="offerte">Ik wil een offerte</button>
+            <button type="button" data-lead-mode="bel">Bel mij</button>
           </div>
 
           <form id="lead-form" action="https://formspree.io/f/29885138860528105515" method="POST" style="margin-top: 1rem" novalidate>
+            <input type="hidden" name="soort_aanvraag" id="soort_aanvraag" value="Informatie" />
             <div class="form-grid">
               <div>
                 <label for="name">Naam *</label>
@@ -148,6 +150,17 @@
               <div data-only="offerte" class="hidden">
                 <label for="planning">Gewenste planning</label>
                 <input id="planning" name="planning" />
+              </div>
+
+              <div data-only="bel" class="hidden field-full">
+                <label for="terugbel_moment">Wanneer mogen we bellen? *</label>
+                <select id="terugbel_moment" name="terugbel_moment">
+                  <option value="">Kies een moment</option>
+                  <option>Vanavond tot 21:00 uur</option>
+                  <option>Morgenochtend</option>
+                  <option>Morgenmiddag</option>
+                  <option>Anders — licht toe bij opmerkingen</option>
+                </select>
               </div>
 
               <div class="field-full">
