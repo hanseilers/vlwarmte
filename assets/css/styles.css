@@ -10,6 +10,56 @@
   --white: #f6f8fc;
   --radius: 16px;
   --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  /* Duur: langzaam, subtiel “warmte”-gloeien (niet pijnlijk op het oog) */
+  --glow-warm-duration: 18s;
+  --glow-warm-ease: ease-in-out;
+}
+
+/* Subtiel pulseren van oranje + blauw in gradientvlakken (vloerwarmte-sfeer) */
+@keyframes vLWarmthGlow {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1) translate(0, 0);
+  }
+  33% {
+    opacity: 0.92;
+    transform: scale(1.02) translate(-0.3%, 0.4%);
+  }
+  66% {
+    opacity: 0.78;
+    transform: scale(1.01) translate(0.2%, -0.2%);
+  }
+}
+
+@keyframes vLWarmthGlowOffset {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.88;
+  }
+}
+
+@keyframes vLWarmthMuted {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes vLWarmthSheet {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.98;
+  }
 }
 
 * {
@@ -183,22 +233,45 @@ a {
 
 .hero {
   position: relative;
+  z-index: 0;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 90% 20%, rgba(224, 85, 47, 0.22), transparent 35%),
-    radial-gradient(circle at 12% 82%, rgba(95, 163, 224, 0.16), transparent 32%),
-    linear-gradient(180deg, #0f1724 0%, #101a2a 100%);
+  background: linear-gradient(180deg, #0f1724 0%, #101a2a 100%);
   padding: 5rem 0 3.4rem;
+  isolation: isolate;
+}
+
+/* Gekleurde gloed: blauw + oranje, langzaam ademend */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 90% 20%, rgba(224, 85, 47, 0.26), transparent 38%),
+    radial-gradient(circle at 12% 82%, rgba(95, 163, 224, 0.2), transparent 35%);
+  pointer-events: none;
+  animation: vLWarmthGlow var(--glow-warm-duration) var(--glow-warm-ease) infinite alternate;
+  will-change: opacity, transform;
 }
 
 .hero::after {
   content: "";
   position: absolute;
   inset: auto -120px -180px auto;
+  z-index: 0;
   width: 420px;
   height: 420px;
-  background: radial-gradient(circle, rgba(95, 163, 224, 0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(95, 163, 224, 0.22), transparent 70%);
   pointer-events: none;
+  animation: vLWarmthGlowOffset calc(var(--glow-warm-duration) * 0.9) var(--glow-warm-ease) infinite
+    alternate;
+  animation-delay: -3s;
+  will-change: opacity;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-grid {
@@ -253,9 +326,28 @@ h2 {
 }
 
 .section-muted {
-  background:
-    linear-gradient(180deg, rgba(224, 85, 47, 0.07) 0%, rgba(95, 163, 224, 0.08) 100%),
-    var(--surface);
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--surface);
+  isolation: isolate;
+}
+
+/* Zelfde oranje–blauw sfeer, zeer zacht; base blijft --surface */
+.section-muted::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, rgba(224, 85, 47, 0.1) 0%, rgba(95, 163, 224, 0.1) 100%);
+  pointer-events: none;
+  animation: vLWarmthMuted 22s var(--glow-warm-ease) infinite alternate;
+  will-change: opacity;
+}
+
+.section-muted > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section-home-services {
@@ -270,10 +362,13 @@ h2 {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 0;
   background:
-    radial-gradient(circle at 78% 26%, rgba(224, 85, 47, 0.22), transparent 38%),
-    radial-gradient(circle at 20% 82%, rgba(95, 163, 224, 0.18), transparent 40%);
+    radial-gradient(circle at 78% 26%, rgba(224, 85, 47, 0.24), transparent 40%),
+    radial-gradient(circle at 20% 82%, rgba(95, 163, 224, 0.2), transparent 42%);
   pointer-events: none;
+  animation: vLWarmthSheet 24s var(--glow-warm-ease) infinite alternate;
+  will-change: opacity;
 }
 
 .section-home-services .container {
@@ -338,6 +433,10 @@ h2 {
 }
 
 .cta-band {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  isolation: isolate;
   background: linear-gradient(140deg, #111827 0%, #1b3450 100%);
   color: var(--white);
   border-radius: var(--radius);
@@ -349,8 +448,47 @@ h2 {
   box-shadow: 0 18px 34px rgba(17, 24, 39, 0.2);
 }
 
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse 90% 80% at 80% 50%, rgba(224, 85, 47, 0.12), transparent 55%),
+    radial-gradient(ellipse 70% 60% at 10% 80%, rgba(95, 163, 224, 0.1), transparent 50%);
+  pointer-events: none;
+  animation: vLWarmthMuted 19s var(--glow-warm-ease) infinite alternate;
+  animation-delay: -2s;
+  will-change: opacity;
+}
+
+.cta-band > * {
+  position: relative;
+  z-index: 1;
+}
+
 .page-hero {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
   padding: 3.4rem 0 1.4rem;
+  isolation: isolate;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(125deg, rgba(224, 85, 47, 0.06) 0%, rgba(95, 163, 224, 0.08) 50%, rgba(15, 23, 36, 0) 100%);
+  pointer-events: none;
+  animation: vLWarmthMuted 20s var(--glow-warm-ease) infinite alternate;
+  animation-delay: -5s;
+  will-change: opacity;
+}
+
+.page-hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 .two-col {
@@ -364,9 +502,31 @@ h2 {
 }
 
 .site-footer {
+  position: relative;
+  z-index: 0;
   margin-top: 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   background: linear-gradient(180deg, #0d1624 0%, #0a1320 100%);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse 120% 80% at 50% 100%, rgba(224, 85, 47, 0.06), transparent 55%),
+    radial-gradient(ellipse 100% 60% at 0% 0%, rgba(95, 163, 224, 0.05), transparent 45%);
+  pointer-events: none;
+  animation: vLWarmthMuted 26s var(--glow-warm-ease) infinite alternate;
+  will-change: opacity;
+}
+
+.site-footer .container,
+.site-footer > * {
+  position: relative;
+  z-index: 1;
 }
 
 .site-footer-grid {
@@ -654,4 +814,32 @@ textarea {
     font-size: 1.25rem;
   }
 
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .hero::after,
+  .section-muted::before,
+  .section-home-services::before,
+  .page-hero::before,
+  .cta-band::before,
+  .site-footer::before {
+    animation: none !important;
+  }
+
+  .hero::before {
+    opacity: 0.88;
+  }
+
+  .hero::after {
+    opacity: 0.62;
+  }
+
+  .section-muted::before,
+  .section-home-services::before,
+  .page-hero::before,
+  .cta-band::before,
+  .site-footer::before {
+    opacity: 0.82;
+  }
 }

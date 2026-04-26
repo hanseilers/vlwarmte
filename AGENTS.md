@@ -7,6 +7,7 @@
 - Dislikes using worktrees in general; only use them when they clearly help and can be justified briefly.
 - For VLWarmte warranty copy, describe pipe (buis) warranty as a straight “10 jaar garantie”; avoid “fabrieksgarantie” and avoid hedging with supplier/type conditions unless the user explicitly asks for that nuance.
 - For the contact/offerte form, prefer a vertical field pattern (label, optional hint, then input). Avoid side-by-side label+input rows that use large spaces or spacers to align inputs, which hurt scanability and label–field association.
+- For FAQ or accordion blocks, do not set the question title smaller or visually weaker than the answer body; the title should be at least as prominent for clear hierarchy.
 
 ## Learned Workspace Facts
 
@@ -16,3 +17,5 @@
 - VLWarmte's preferred logo direction is an SVG "Slakkenhuis Flow" underfloor-heating laying pattern using the site's CTA accent color, without a surrounding border.
 - Mobile responsiveness is a priority for the VLWarmte site, especially keeping the header and navigation compact and visible on small screens.
 - The offerte form collects crawl-space depth in mm in field `vloerdiepte`, with user-facing copy centered on “Diepte kruipruimte” and a short hint tying the measure to build-up and chape/beton planning (not a generic “floor thickness only” label).
+- VLWarmte mobile header: do not put `backdrop-filter` on the same element that contains a `position: fixed` nav drawer; Chromium can treat it as a containing block and clip the drawer—apply frosted blur on a `::before` (e.g. with `pointer-events: none`) instead.
+- VLWarmte mobile menu open state: a full-bleed `::after` dimmer on the header must sit *below* the inner wrapper and drawer in the stacking order (e.g. raise `.site-header-inner`’s `z-index` when open); otherwise the dimmer paints over the menu links.

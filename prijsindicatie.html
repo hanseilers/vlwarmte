@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prijsindicatie vloerverwarming | VLWarmte</title>
+    <meta
+      name="description"
+      content="Bereken in 4 stappen een vrijblijvende prijsindicatie voor vloerverwarming. Direct resultaat, geen verplichtingen."
+    />
+    <link rel="canonical" href="https://www.vlwarmte.nl/prijsindicatie.html" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Prijsindicatie vloerverwarming | VLWarmte" />
+    <meta property="og:description" content="Bereken in 4 stappen een vrijblijvende prijsindicatie voor vloerverwarming. Direct resultaat, geen verplichtingen." />
+    <meta property="og:url" content="https://www.vlwarmte.nl/prijsindicatie.html" />
+    <meta property="og:site_name" content="VLWarmte" />
+    <meta property="og:image" content="https://www.vlwarmte.nl/assets/img/og-default.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0BB9M7HYSF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-0BB9M7HYSF");
+    </script>
+    <style>
+      .wizard { max-width: 680px; margin: 0 auto; }
+
+      .wizard-progress { display: flex; gap: .5rem; margin-bottom: 2.5rem; }
+      .wizard-progress-step {
+        flex: 1; height: 4px; border-radius: 2px;
+        background: var(--line); transition: background .3s;
+      }
+      .wizard-progress-step.done   { background: var(--brand); }
+      .wizard-progress-step.active { background: var(--brand); opacity: .5; }
+
+      .wizard-step { display: none; }
+      .wizard-step.is-active { display: block; }
+      .wizard-step h2 { font-size: 1.4rem; margin: 0 0 .4rem; }
+      .wizard-step .step-sub { color: var(--muted); margin: 0 0 1.8rem; font-size: .95rem; }
+
+      .option-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem; margin-bottom: 2rem;
+      }
+      .option-card {
+        cursor: pointer; border: 2px solid var(--line);
+        border-radius: var(--radius); padding: 1.2rem 1rem;
+        text-align: center; transition: border-color .2s, background .2s;
+        background: transparent; color: var(--ink);
+        font-size: 1rem; font-family: inherit;
+      }
+      .option-card:hover { border-color: var(--brand); }
+      .option-card.is-selected { border-color: var(--brand); background: rgba(224,85,47,.12); }
+      .option-card .option-icon  { font-size: 2rem; display: block; margin-bottom: .5rem; line-height: 1; }
+      .option-card .option-label { font-weight: 600; display: block; margin-bottom: .2rem; }
+      .option-card .option-hint  { font-size: .8rem; color: var(--muted); display: block; }
+
+      .slider-wrap { margin-bottom: 2rem; }
+      .slider-display { font-size: 3rem; font-weight: 700; color: var(--brand); margin-bottom: .5rem; line-height: 1; }
+      .slider-display span { font-size: 1.2rem; color: var(--muted); font-weight: 400; }
+      input[type="range"] {
+        -webkit-appearance: none; width: 100%; height: 6px;
+        border-radius: 3px; background: var(--line); outline: none; margin: .8rem 0;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; width: 22px; height: 22px;
+        border-radius: 50%; background: var(--brand); cursor: pointer;
+        border: 3px solid var(--surface); box-shadow: 0 0 0 2px var(--brand);
+      }
+      .slider-limits { display: flex; justify-content: space-between; font-size: .8rem; color: var(--muted); }
+
+      .wizard-nav { display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem; }
+      .btn-back {
+        background: transparent; border: 1px solid var(--line); color: var(--muted);
+        padding: .7rem 1.4rem; border-radius: 8px; font-size: .95rem;
+        cursor: pointer; font-family: inherit; transition: border-color .2s;
+      }
+      .btn-back:hover { border-color: var(--muted); }
+
+      /* Result */
+      .result-block { display: none; margin-top: 3rem; }
+      .result-block.is-visible { display: block; }
+
+      .price-card {
+        background: linear-gradient(135deg, rgba(224,85,47,.15) 0%, rgba(15,76,129,.1) 100%);
+        border: 1px solid rgba(224,85,47,.3); border-radius: var(--radius);
+        padding: 2.5rem 2rem; text-align: center; margin-bottom: 2.5rem;
+      }
+      .price-label {
+        font-size: .9rem; color: var(--muted); text-transform: uppercase;
+        letter-spacing: .08em; margin-bottom: .8rem;
+      }
+      .price-range { font-size: clamp(2rem, 6vw, 3.4rem); font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: .6rem; }
+      .price-range strong { color: var(--brand); }
+      .price-meta { color: var(--muted); font-size: .88rem; margin-bottom: 1.5rem; }
+      .price-breakdown { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 1.4rem; }
+      .price-tag { background: rgba(255,255,255,.06); border: 1px solid var(--line); border-radius: 6px; padding: .3rem .75rem; font-size: .82rem; color: var(--muted); }
+      .price-disclaimer { font-size: .8rem; color: var(--muted); margin-top: 1.2rem; line-height: 1.5; }
+
+      .lead-after { background: rgba(255,255,255,.03); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; }
+      .lead-after h3 { margin: 0 0 .4rem; font-size: 1.2rem; }
+      .lead-after .lead-sub { color: var(--muted); font-size: .9rem; margin: 0 0 1.5rem; }
+
+      .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+      @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+      .form-row label { display: block; font-size: .85rem; color: var(--muted); margin-bottom: .35rem; }
+      .form-row input {
+        width: 100%; background: rgba(255,255,255,.05); border: 1px solid var(--line);
+        border-radius: 8px; color: var(--ink); padding: .65rem .9rem;
+        font-size: .95rem; font-family: inherit; outline: none; transition: border-color .2s;
+      }
+      .form-row input:focus { border-color: var(--brand); }
+      .lead-privacy { font-size: .78rem; color: var(--muted); margin: .8rem 0 1.2rem; }
+
+      .status-msg { margin-top: 1rem; padding: .8rem 1rem; border-radius: 8px; font-size: .9rem; }
+      .status-msg.ok  { background: rgba(0,200,100,.12); border: 1px solid rgba(0,200,100,.25); color: #6ee7b7; }
+      .status-msg.err { background: rgba(224,85,47,.12); border: 1px solid rgba(224,85,47,.3);  color: #fca5a5; }
+
+      .recalc-link {
+        display: inline-flex; align-items: center; gap: .4rem;
+        font-size: .85rem; color: var(--muted); cursor: pointer;
+        background: none; border: none; font-family: inherit; padding: 0;
+        margin-bottom: 2rem; text-decoration: underline; text-underline-offset: 3px;
+      }
+      .recalc-link:hover { color: var(--ink); }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header-inner">
+        <a class="brand" href="index.html"><img class="brand-logo" src="assets/img/logo-laypattern-slakkenhuis.svg" alt="VLWarmte" /></a>
+        <nav class="site-nav" data-nav>
+          <a href="index.html">Home</a>
+          <a href="diensten.html">Diensten</a>
+          <a href="systemen-producten.html">Systemen</a>
+          <a href="werkwijze.html">Werkwijze</a>
+          <a href="over-ons.html">Over ons</a>
+          <a href="projecten.html">Projecten</a>
+          <a href="contact.html">Contact</a>
+          <a class="drawer-cta" href="contact.html">Informatie / Offerte aanvragen</a>
+        </nav>
+        <div class="header-actions">
+          <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open navigatie"><span aria-hidden="true">☰</span></button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <h1>Prijsindicatie vloerverwarming</h1>
+          <p class="lead">Vier vragen. Direct een eerlijke indicatie. Geen verplichtingen.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="wizard" id="wizard">
+            <div class="wizard-progress" aria-hidden="true">
+              <div class="wizard-progress-step active" data-step="0"></div>
+              <div class="wizard-progress-step" data-step="1"></div>
+              <div class="wizard-progress-step" data-step="2"></div>
+              <div class="wizard-progress-step" data-step="3"></div>
+            </div>
+
+            <!-- Stap 1: Oppervlakte -->
+            <div class="wizard-step is-active" id="step-0">
+              <h2>Hoeveel vierkante meter?</h2>
+              <p class="step-sub">Schat het totale vloeroppervlak dat verwarmd moet worden.</p>
+              <div class="slider-wrap">
+                <div class="slider-display"><span id="m2-val">80</span> <span>m²</span></div>
+                <input type="range" id="m2-slider" min="20" max="500" value="80" step="5" aria-label="Oppervlakte in m²" />
+                <div class="slider-limits"><span>20 m²</span><span>500 m²</span></div>
+              </div>
+              <div class="wizard-nav">
+                <button class="btn btn-primary" onclick="nextStep()">Volgende →</button>
+              </div>
+            </div>
+
+            <!-- Stap 2: Projecttype -->
+            <div class="wizard-step" id="step-1">
+              <h2>Nieuwbouw of renovatie?</h2>
+              <p class="step-sub">Dit bepaalt welk systeem het meest geschikt is.</p>
+              <div class="option-grid">
+                <button class="option-card" data-field="projecttype" data-value="nieuwbouw" onclick="selectOption(this)">
+                  <span class="option-icon">🏗️</span>
+                  <span class="option-label">Nieuwbouw</span>
+                  <span class="option-hint">Vloer wordt nog aangelegd</span>
+                </button>
+                <button class="option-card" data-field="projecttype" data-value="renovatie" onclick="selectOption(this)">
+                  <span class="option-icon">🔨</span>
+                  <span class="option-label">Renovatie</span>
+                  <span class="option-hint">Bestaande woning verbouwen</span>
+                </button>
+              </div>
+              <div class="wizard-nav">
+                <button class="btn-back" onclick="prevStep()">← Terug</button>
+                <button class="btn btn-primary" id="next-1" onclick="nextStep()" disabled>Volgende →</button>
+              </div>
+            </div>
+
+            <!-- Stap 3: Ondergrond -->
+            <div class="wizard-step" id="step-2">
+              <h2>Wat is de huidige ondergrond?</h2>
+              <p class="step-sub">De constructie van de vloer bepaalt de aanpak en de systeemkeuze.</p>
+              <div class="option-grid">
+                <button class="option-card" data-field="ondergrond" data-value="beton" onclick="selectOption(this)">
+                  <span class="option-icon">🧱</span>
+                  <span class="option-label">Beton / steenachtig</span>
+                  <span class="option-hint">Betonvloer of begane grond</span>
+                </button>
+                <button class="option-card" data-field="ondergrond" data-value="hout" onclick="selectOption(this)">
+                  <span class="option-icon">🪵</span>
+                  <span class="option-label">Hout / balken</span>
+                  <span class="option-hint">Houten vloer of verdieping</span>
+                </button>
+                <button class="option-card" data-field="ondergrond" data-value="onbekend" onclick="selectOption(this)">
+                  <span class="option-icon">❓</span>
+                  <span class="option-label">Weet ik niet</span>
+                  <span class="option-hint">We helpen je uitzoeken</span>
+                </button>
+              </div>
+              <div class="wizard-nav">
+                <button class="btn-back" onclick="prevStep()">← Terug</button>
+                <button class="btn btn-primary" id="next-2" onclick="nextStep()" disabled>Volgende →</button>
+              </div>
+            </div>
+
+            <!-- Stap 4: Zones -->
+            <div class="wizard-step" id="step-3">
+              <h2>Hoeveel verwarmingszones?</h2>
+              <p class="step-sub">Elke zone heeft een eigen thermostaat. Denk aan: woonkamer, slaapkamers, badkamer.</p>
+              <div class="option-grid">
+                <button class="option-card" data-field="zones" data-value="1" onclick="selectOption(this)">
+                  <span class="option-icon">1️⃣</span>
+                  <span class="option-label">1 zone</span>
+                  <span class="option-hint">Één ruimte of kleine woning</span>
+                </button>
+                <button class="option-card" data-field="zones" data-value="2" onclick="selectOption(this)">
+                  <span class="option-icon">2️⃣</span>
+                  <span class="option-label">2 zones</span>
+                  <span class="option-hint">Beneden / boven</span>
+                </button>
+                <button class="option-card" data-field="zones" data-value="3" onclick="selectOption(this)">
+                  <span class="option-icon">3️⃣</span>
+                  <span class="option-label">3 zones</span>
+                </button>
+                <button class="option-card" data-field="zones" data-value="4" onclick="selectOption(this)">
+                  <span class="option-icon">4️⃣</span>
+                  <span class="option-label">4 of meer</span>
+                </button>
+              </div>
+              <div class="wizard-nav">
+                <button class="btn-back" onclick="prevStep()">← Terug</button>
+                <button class="btn btn-primary" id="next-3" onclick="calculate()" disabled>Bereken indicatie →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resultaat -->
+          <div class="result-block wizard" id="result">
+            <button class="recalc-link" onclick="resetWizard()">← Opnieuw berekenen</button>
+
+            <div class="price-card">
+              <p class="price-label">Vrijblijvende prijsindicatie</p>
+              <div class="price-range" id="price-output"></div>
+              <p class="price-meta">Indicatie incl. materiaal en arbeid, excl. btw</p>
+              <div class="price-breakdown" id="price-breakdown"></div>
+              <p class="price-disclaimer">
+                Dit is een indicatie op basis van gemiddelde projectkosten in Noord-Nederland.<br>
+                De werkelijke prijs hangt af van de specifieke situatie ter plaatse.
+              </p>
+            </div>
+
+            <div class="lead-after">
+              <h3>Wil je een offerte op maat?</h3>
+              <p class="lead-sub">Laat je gegevens achter, dan nemen we contact op. Gratis, vrijblijvend en zonder gedoe.</p>
+
+              <form id="calc-form" action="https://formspree.io/f/29885138860528105515" method="POST" novalidate>
+                <input type="hidden" name="oppervlakte_m2"  id="f-m2" />
+                <input type="hidden" name="projecttype"     id="f-type" />
+                <input type="hidden" name="ondergrond"      id="f-ondergrond" />
+                <input type="hidden" name="zones"           id="f-zones" />
+                <input type="hidden" name="prijsindicatie"  id="f-prijs" />
+                <input type="hidden" name="_subject"        value="Offerte aanvraag via prijscalculator" />
+
+                <div class="form-row">
+                  <div>
+                    <label for="c-name">Naam *</label>
+                    <input id="c-name" name="name" required placeholder="Jan de Vries" />
+                  </div>
+                  <div>
+                    <label for="c-phone">Telefoon *</label>
+                    <input id="c-phone" name="phone" required placeholder="06 – – – –" />
+                  </div>
+                  <div>
+                    <label for="c-email">E-mail</label>
+                    <input id="c-email" name="email" type="email" placeholder="jan@voorbeeld.nl" />
+                  </div>
+                  <div>
+                    <label for="c-place">Woonplaats</label>
+                    <input id="c-place" name="woonplaats" placeholder="bijv. Groningen" />
+                  </div>
+                </div>
+
+                <p class="lead-privacy">Je gegevens worden alleen gebruikt voor contact over jouw project. Geen spam.</p>
+                <button class="btn btn-primary" type="submit">Offerte aanvragen</button>
+                <div id="calc-status" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer-grid">
+        <section>
+          <h3>VLWarmte</h3>
+          <p class="small">Vragen? We denken graag mee.</p>
+          <address class="small footer-address">Verlengde Stationsweg 58<br />9471 PM Zuidlaren</address>
+          <p class="small footer-contact">
+            <a href="tel:+31618817459">06 188 17 459</a><br />
+            <a href="mailto:info@vlwarmte.nl">info@vlwarmte.nl</a>
+          </p>
+        </section>
+        <section>
+          <h3>Diensten</h3>
+          <nav class="small footer-nav">
+            <a href="diensten.html">Alle diensten</a>
+            <a href="systemen-producten.html">Systemen</a>
+            <a href="werkwijze.html">Werkwijze</a>
+            <a href="prijsindicatie.html">Prijsindicatie</a>
+          </nav>
+        </section>
+        <section>
+          <h3>Bedrijf</h3>
+          <nav class="small footer-nav">
+            <a href="over-ons.html">Over ons</a>
+            <a href="projecten.html">Projecten</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </section>
+        <section>
+          <h3>Juridisch</h3>
+          <nav class="small footer-nav">
+            <a href="privacy.html">Privacybeleid</a>
+            <a href="disclaimer.html">Disclaimer</a>
+          </nav>
+        </section>
+      </div>
+      <div class="container site-footer-bottom">
+        <p class="small">&copy; <span id="yr"></span> VLWarmte &mdash; Zuidlaren</p>
+      </div>
+    </footer>
+
+    <script>
+      const PRIJZEN = {
+        m2: {
+          nieuwbouw_beton:    { laag: 45, hoog: 55 },
+          nieuwbouw_hout:     { laag: 56, hoog: 68 },
+          nieuwbouw_onbekend: { laag: 48, hoog: 62 },
+          renovatie_beton:    { laag: 68, hoog: 82 },
+          renovatie_hout:     { laag: 80, hoog: 96 },
+          renovatie_onbekend: { laag: 70, hoog: 88 },
+        },
+        extra_zone: 175,
+        minimum: 2500,
+      };
+
+      const state = { step: 0, m2: 80, projecttype: null, ondergrond: null, zones: null };
+
+      const slider   = document.getElementById('m2-slider');
+      const m2Display = document.getElementById('m2-val');
+      slider.addEventListener('input', () => { state.m2 = +slider.value; m2Display.textContent = state.m2; });
+
+      function selectOption(card) {
+        const field = card.dataset.field;
+        state[field] = card.dataset.value;
+        document.querySelectorAll('[data-field="' + field + '"]').forEach(c => c.classList.remove('is-selected'));
+        card.classList.add('is-selected');
+        const btn = document.getElementById('next-' + state.step);
+        if (btn) btn.disabled = false;
+      }
+
+      function showStep(n) {
+        document.querySelectorAll('.wizard-step').forEach((s, i) => s.classList.toggle('is-active', i === n));
+        document.querySelectorAll('.wizard-progress-step').forEach((p, i) => {
+          p.classList.remove('active', 'done');
+          if (i < n)  p.classList.add('done');
+          if (i === n) p.classList.add('active');
+        });
+        state.step = n;
+      }
+
+      function nextStep() { showStep(state.step + 1); }
+      function prevStep() { showStep(state.step - 1); }
+
+      function fmt(n) { return '€ ' + Math.round(n).toLocaleString('nl-NL'); }
+
+      function calculate() {
+        const key    = state.projecttype + '_' + state.ondergrond;
+        const tarief = PRIJZEN.m2[key] || PRIJZEN.m2[state.projecttype + '_onbekend'];
+        const zones  = parseInt(state.zones) || 1;
+        const extra  = Math.max(0, zones - 1) * PRIJZEN.extra_zone;
+
+        let laag = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.laag + extra) / 250) * 250;
+        let hoog = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.hoog + extra) / 250) * 250;
+
+        document.getElementById('wizard').style.display = 'none';
+        document.getElementById('result').classList.add('is-visible');
+
+        // Price output — build with DOM, no innerHTML
+        const priceEl = document.getElementById('price-output');
+        priceEl.textContent = '';
+        const lo = document.createElement('strong'); lo.textContent = fmt(laag);
+        const sep = document.createTextNode(' – ');
+        const hi = document.createElement('strong'); hi.textContent = fmt(hoog);
+        priceEl.append(lo, sep, hi);
+
+        // Breakdown tags — build with DOM
+        const bd = document.getElementById('price-breakdown');
+        bd.textContent = '';
+        const labels = [
+          state.m2 + ' m²',
+          state.projecttype === 'nieuwbouw' ? 'Nieuwbouw' : 'Renovatie',
+          state.ondergrond === 'beton' ? 'Betonvloer' : state.ondergrond === 'hout' ? 'Houten vloer' : 'Ondergrond nader te bepalen',
+          zones + ' zone' + (zones > 1 ? 's' : ''),
+        ];
+        labels.forEach(txt => {
+          const tag = document.createElement('span');
+          tag.className = 'price-tag';
+          tag.textContent = txt;
+          bd.appendChild(tag);
+        });
+
+        // Hidden form fields
+        document.getElementById('f-m2').value        = state.m2;
+        document.getElementById('f-type').value      = state.projecttype;
+        document.getElementById('f-ondergrond').value = state.ondergrond;
+        document.getElementById('f-zones').value     = state.zones;
+        document.getElementById('f-prijs').value     = fmt(laag) + ' – ' + fmt(hoog);
+
+        gtag('event', 'calculator_result', { projecttype: state.projecttype, m2: state.m2, zones });
+      }
+
+      function resetWizard() {
+        state.projecttype = null; state.ondergrond = null; state.zones = null;
+        state.m2 = 80; slider.value = 80; m2Display.textContent = 80;
+        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('is-selected'));
+        ['next-1','next-2','next-3'].forEach(id => { const b = document.getElementById(id); if (b) b.disabled = true; });
+        document.getElementById('result').classList.remove('is-visible');
+        document.getElementById('wizard').style.display = '';
+        document.getElementById('calc-status').textContent = '';
+        showStep(0);
+      }
+
+      document.getElementById('calc-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn    = this.querySelector('button[type="submit"]');
+        const status = document.getElementById('calc-status');
+        btn.disabled = true;
+        btn.textContent = 'Versturen…';
+        status.textContent = '';
+        status.className = '';
+        try {
+          const res = await fetch(this.action, { method: 'POST', body: new FormData(this), headers: { Accept: 'application/json' } });
+          if (res.ok) {
+            const msg = document.createElement('div');
+            msg.className = 'status-msg ok';
+            msg.textContent = 'Bedankt! We nemen zo snel mogelijk contact op.';
+            status.appendChild(msg);
+            this.reset();
+            gtag('event', 'lead_form_submit', { event_category: 'prijsindicatie' });
+          } else { throw new Error(); }
+        } catch {
+          const msg = document.createElement('div');
+          msg.className = 'status-msg err';
+          const txt = document.createTextNode('Er ging iets mis. Bel ons op ');
+          const link = document.createElement('a');
+          link.href = 'tel:+31618817459';
+          link.textContent = '06 188 17 459';
+          msg.append(txt, link);
+          status.appendChild(msg);
+          btn.disabled = false;
+          btn.textContent = 'Offerte aanvragen';
+        }
+      });
+
+      document.getElementById('yr').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
