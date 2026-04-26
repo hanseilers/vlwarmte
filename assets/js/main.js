@@ -89,20 +89,19 @@ function initLeadForm() {
   });
 
   form.addEventListener("submit", (event) => {
-    event.preventDefault();
     const result = validateLeadForm(form, mode);
     if (!status) return;
 
     if (!result.ok) {
+      event.preventDefault();
       status.className = "status error";
       status.textContent = result.message;
       return;
     }
 
     status.className = "status success";
-    status.textContent = "Bedankt! We nemen binnen 1 werkdag contact met je op.";
-    form.reset();
-    applyMode("info");
+    status.textContent = "Bedankt! We nemen binnen 1 werkdag contact met je op. Je wordt doorgestuurd...";
+    // Let the form submit to Formspree
   });
 
   applyMode("info");

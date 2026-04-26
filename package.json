@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@formspree/cli": "^0.9.6"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "projectId": "YOUR_FORMSPREE_FORM_ID",
+  "deployKey": "FROM_FORMSPREE_CLI_DO_NOT_COMMIT"
+}
