@@ -117,6 +117,11 @@ function initLeadForm() {
 
     status.className = "status success";
     status.textContent = "Bedankt! We nemen binnen 1 werkdag contact met je op. Je wordt doorgestuurd...";
+    // GA4: contact_submit event met soort_aanvraag (informatie/offerte/terugbelverzoek)
+    if (typeof gtag === "function") {
+      const soort = mode === "info" ? "informatie" : mode === "offerte" ? "offerte" : "terugbelverzoek";
+      gtag("event", "contact_submit", { soort_aanvraag: soort });
+    }
     // Let the form submit to Formspree
   });
 
