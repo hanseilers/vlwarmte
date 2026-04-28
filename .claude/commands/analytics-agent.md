@@ -37,6 +37,7 @@ Analyseer:
 
 - Welke pagina's zijn instappunt voor bezoekers?
 - Hoge bounce op landingspagina = mismatch tussen verwachting en inhoud
+- `contact.html` kan campagne-URL’s met `?modus=` / `?tab=` en `#aanvraag` hebben — bij interpretatie van page path + query kan het helpen onderscheid te maken tussen informatie-, offerte- en bel-intentie (zie `AGENTS.md`, contact deep links)
 
 **Geografie**
 

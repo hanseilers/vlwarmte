@@ -87,6 +87,12 @@ a {
   margin: 0 auto;
 }
 
+/* Deep links: sticky header offset for scroll-into-view */
+#aanvraag,
+#lead-form {
+  scroll-margin-top: 5.5rem;
+}
+
 /* Blur lives on ::before so backdrop-filter does not create a fixed-position
    containing block for the mobile drawer nav (would clip it to header height). */
 .site-header {

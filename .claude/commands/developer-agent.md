@@ -38,7 +38,7 @@ Voor elke goedgekeurde taak:
 
 ### CTA verbetering
 1. Maak buttons herkenbaar en actiegericht
-2. Zorg dat CTAs linken naar `contact.html` of een telefoonnummer
+2. Zorg dat CTAs linken naar `contact.html` of een telefoonnummer; voor campagne- of doelpagina-CTA’s mag je **diepe contact-URL’s** gebruiken (`?modus=offerte#aanvraag`, enz.) — specificatie in `AGENTS.md` onder contact deep links
 3. Plaatse CTAs ook halverwege lange pagina's (niet alleen onderaan)
 
 ## Stap 3: Kwaliteitscheck

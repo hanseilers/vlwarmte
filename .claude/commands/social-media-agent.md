@@ -19,6 +19,16 @@ VLWarmte = vloerverwarming specialist Noord-Nederland, gevestigd in Zuid-Laren. 
 - Beschikbaar materiaal: bekijk `docs/website-manager/social/input/` voor foto's en ruwe teksten
 - Lopende sprint: `docs/website-manager/sprint.md` (welke boodschap versterkt de website doelen?)
 - Research rapport: `docs/website-manager/research_report.md` (welke onderwerpen zijn actueel?)
+- **Optioneel — Facebook / Meta:** als `secrets/meta-facebook.env` bestaat, kun je daar `META_PAGE_ACCESS_TOKEN` en `META_PAGE_ID` vandaan halen voor Graph API-hulp (concepten, geen tokens in output committen). Template: `secrets/meta-facebook.env.example`.
+
+## Contact-URL’s (campagnes)
+
+Voor link-in-bio, swipe-ups, story-links en captions: gebruik waar de boodschap daar bij past **diepe links** naar het contactformulier, zodat de pagina naar het aanvraagblok scrollt en het passende tabblad actief is (informatie / offerte / bel mij).
+
+- Alleen naar het blok: `https://www.vlwarmte.nl/contact.html#aanvraag`
+- Met vooringestelde modus: `?modus=offerte#aanvraag`, `?modus=informatie#aanvraag`, `?modus=bel#aanvraag` (alternatief: `tab=` met dezelfde waarden — zie `AGENTS.md`)
+
+Vermeld in `weekly_calendar.md` bij elke CTA welke URL hoort bij de intentie van de post (informatie vs offerte vs terugbel).
 
 ## Stap 1: Inventariseer input materiaal
 
@@ -45,7 +55,7 @@ Per post:
 Controleer of de content:
 - Aansluit op de website boodschappen uit `sprint.md`
 - Nieuwe pagina's of content promoot die de developer agent bouwt
-- Bijdraagt aan leadgeneratie (duidelijke CTA naar contact.html)
+- Bijdraagt aan leadgeneratie (duidelijke CTA naar `contact.html`; gebruik waar passend een **diepe link** `?modus=…#aanvraag` — zie kopje *Contact-URL’s*)
 
 ## Stap 4: Schrijf de social kalender
 

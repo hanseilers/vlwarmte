@@ -1,101 +1,112 @@
 # VLWarmte Website Voorstellen
 
 > Gegenereerd op: 28 april 2026  
-> Gebaseerd op GA4 data van: **niet beschikbaar** — `ga4_report.json` is leeg; live fetch deze run niet gelukt (Python-deps / credentials-pad).  
-> Volgende analyse aanbevolen: **na succesvolle `ga4_fetch.py` + minimaal 7 dagen data na live-gang sprint 27 april** (richting 12–19 mei 2026)
+> Gebaseerd op GA4: `docs/website-manager/ga4_report.json` (fetch 2026-04-28, periode laatste 30 dagen)  
+> Volgende analyse aanbevolen: **2–4 weken** na GSC-indexering en eventuele stijging organische sessies
 
 ---
 
 ## Samenvatting
 
-De site heeft net een sterke technische en lokale SEO-sprint gehad (events, Search Console-tagplek, twee stedelijke pagina’s, nav opgeschoond). Zonder verse GA4-cijfers zijn voorstellen nu **inhoudelijk en marketing-gedreven**, afgestemd op `docs/website-manager/research_report.md` en de open punten uit de huidige `sprint.md`. De grootste hefboom voor de komende periode is een **volwaardige FAQ** plus **interne verwijzingen naar de prijsindicatie-wizard** — dat versterkt organische dekking én het meetbare conversiepad zodra de data binnenkomt.
+In de laatste 30 dagen is het verkeer **klein maar meetbaar** (~13 sessies in de meest recente week in de export). Bezoekers komen **vooral direct** binnen; **organisch** verschijnt nog niet in de kanaal-top — dat past bij een net uitgerolde site en nog open Search Console-koppeling. De homepage (`/` en `/index.html` samen) domineert; **prijsindicatie** en **diensten** halen al meerdere sessies met redelijke tijd op de pagina. Focus: **dubbele homepage oplossen**, **FAQ + interne links** voor SEO, **conversies en GSC** afronden, daarna opnieuw meten.
 
-### Kerncijfers (afgelopen 30 dagen)
+### Kerncijfers (afgelopen 30 dagen — paginaniveau)
 
-- Sessies: _onbekend (geen data in JSON)_
-- Actieve gebruikers: _onbekend_
-- Beste pagina: _n.v.t._
-- Zwakste pagina: _n.v.t._
-- Hoofdkanaal: _n.v.t._
+- **Homepage gecombineerd:** `/` 10 sessies + `/index.html` 4 sessies (zelfde content — rapportage dubbel)
+- **Sterk relatief engagement:** `/prijsindicatie.html` — 2 sessies, gem. ~65 s
+- **Landings-bounce op `/`:** ~67% (9 landingsessies in export)
+- **Hoofdkanaal:** Direct (12 sessies); Unassigned 1
+- **Zwakste signalen (kleine n):** `/systemen-producten.html` en `/over-ons.html` met zeer korte sessieduur bij 1 sessie — pas opnieuw beoordelen bij meer volume
 
 ---
 
 ## Voorstellen
 
-### 1. FAQ-pagina met schema en interne links
+### 1. Canonieke homepage: `/` versus `/index.html`
+
+- **Prioriteit:** Hoog
+- **Type:** Technisch / SEO
+- **Onderbouwing:** GA4 toont 10 vs 4 sessies op twee URL’s voor dezelfde pagina — verdeelt autoriteit en vertroebelt rapportage.
+- **Actie:** Eén strategie: server-side redirect `index.html` → `/`, of uitsluitend `/` intern linken + canonical op één variant (developer + hosting).
+- **Verwacht effect:** Schonere metrics en betere SEO-consolidatie.
+
+### 2. FAQ-pagina + FAQ-schema
 
 - **Prioriteit:** Hoog
 - **Type:** Nieuwe pagina / SEO
-- **Onderbouwing:** `research_report.md` — grootste content gap; geen GA4 nodig om prioriteit te verdedigen.
-- **Actie:** `faq.html` met 12–15 vragen (long-tail uit research), `FAQPage`-schema, links vanaf `index.html`, `vloerverwarming-groningen.html`, `vloerverwarming-assen.html`.
-- **Verwacht effect:** meer organische instap op vraagtermen; rich snippet-kans.
+- **Onderbouwing:** Geen organic in kanaalrapport; research (`research_report.md`) wijst FAQ aan als grootste long-tail-hefboom.
+- **Actie:** `faq.html` met 12–15 vragen, structured data, link vanaf homepage en beide stadspagina’s.
+- **Verwacht effect:** Eerste organische instappen op vraagtermen.
 
-### 2. Wizard-CTA’s op diensten, werkwijze en systemen
+### 3. Interne links naar prijsindicatie-wizard
 
 - **Prioriteit:** Hoog
 - **Type:** CTA / conversie
-- **Onderbouwing:** Sprint-context `[WACHT]` — uitrol interne links; straks zichtbaar in events `wizard_*`.
-- **Actie:** Korte blokken met link naar `prijsindicatie.html` op logische plekken per pagina.
-- **Verwacht effect:** hoger aandeel bezoekers in de wizard-funnel.
+- **Onderbouwing:** Direct-verkeer heeft geen “tweede kans” via Google; interne routing naar wizard verhoogt kans op `wizard_start`. Prijsindicatie heeft al betrokkenheid bij kleine n.
+- **Actie:** Contextuele blokken op `diensten.html`, `werkwijze.html`, `systemen-producten.html`.
+- **Verwacht effect:** Meer wizard-funnel in GA4-events.
 
-### 3. Schuimbeton — eigen H2 met anker
+### 4. Google Search Console + conversiemarkering
+
+- **Prioriteit:** Hoog
+- **Type:** Technisch / meetbaarheid
+- **Onderbouwing:** `conversions` in export = 0; sprint had events + verificatie-placeholder.
+- **Actie:** Token plaatsen, sitemap indienen, `wizard_*` en `contact_submit` als conversies in GA4.
+- **Verwacht effect:** SEO-inzicht + conversiedashboard.
+
+### 5. Homepage: bounce en scroll verbeteren
+
+- **Prioriteit:** Midden
+- **Type:** Content / CTA
+- **Onderbouwing:** Landings-bounce op `/` ~67%; weinig scrollers op homepage in 90d-export.
+- **Actie:** Duidelijker primair pad (offerte/wizard); FAQ-snippet uitbreiden met link naar volledige FAQ.
+- **Verwacht effect:** Lagere bounce, meer diepte.
+
+### 6. Stadspagina’s zichtbaar maken
+
+- **Prioriteit:** Midden
+- **Type:** SEO / distributie
+- **Onderbouwing:** Nieuwe URL’s zitten nog niet in top-pagina’s (laag volume).
+- **Actie:** Social + footer (al deels) + interne contextlinks vanaf diensten/blog-toekomst.
+- **Verwacht effect:** Sessies op Groningen/Assen-pagina’s in volgende pulls.
+
+### 7. Schuimbeton-anker (H2 + `#schuimbeton`)
 
 - **Prioriteit:** Midden
 - **Type:** Content update / SEO
-- **Onderbouwing:** Marketing — laag volume maar zwakke concurrentie; kleine aanpassing.
-- **Actie:** H2 `#schuimbeton` + korte uitleg op bestaande pagina (diensten of systemen, consistent met site).
-- **Verwacht effect:** betere landingsdiepte voor schuimbeton-zoektermen.
+- **Onderbouwing:** Marketing research — lage effort, long-tail “schuimbeton”.
+- **Actie:** H2 met anker op bestaande pagina.
+- **Verwacht effect:** Betere anchor-landingservaring.
 
-### 4. Homepage FAQ-snippet uitbreiden
-
-- **Prioriteit:** Midden
-- **Type:** Content update / SEO
-- **Onderbouwing:** Marketing aanbeveling 6; ondersteunt voorstel 1.
-- **Actie:** 5–6 items + link naar volledige FAQ.
-- **Verwacht effect:** meer doorklik naar FAQ en contact/wizard.
-
-### 5. Geplande data-review (geen implementatie)
-
-- **Prioriteit:** Midden
-- **Type:** Technisch / proces
-- **Onderbouwing:** Meetdoel sprint (25 mei); events staan volgens sprint klaar.
-- **Actie:** Op eigen machine `ga4_fetch.py` draaien; in GA4 conversies markeren; notitie in volgende sprint.
-- **Verwacht effect:** onderbouwde optimalisaties i.p.v. giswerk.
-
-### 6. Wizard-resultaat: mini-proof wanneer materiaal er is
+### 8. Geo / segmentatie in GA4
 
 - **Prioriteit:** Laag
-- **Type:** Content / CTA
-- **Onderbouwing:** Marketing sectie 5 + sprint `[WACHT]` — afhankelijk van case van Hans.
-- **Actie:** Eén regel referentie in resultaatkaart zodra project/foto akkoord.
-- **Verwacht effect:** lichte trustwinst op het moment van beslissen.
+- **Type:** Analytics config
+- **Onderbouwing:** 5 van 13 sessies uit VS-regio’s in export — bij kleine n verstoort dat lokaal beeld.
+- **Actie:** Alleen NL segment of ongewenste regio filteren voor rapportage.
+- **Verwacht effect:** Schonere beslissingen voor Noord-Nederland.
 
-### 7. Google Bedrijfsprofiel + reviews (off-site)
+### 9. Projectenpagina vullen zodra materiaal er is
 
-- **Prioriteit:** Laag (impact op termijn hoog)
-- **Type:** Marketing (off-site)
-- **Onderbouwing:** Research concurrentie/trust; geen sitewijziging vereist.
-- **Actie:** Profiel compleet; na oplevering review vragen; later embed.
-- **Verwacht effect:** betere click-through en geloofwaardigheid in de regio.
+- **Prioriteit:** Laag (tot materiaal)
+- **Type:** Content
+- **Onderbouwing:** `projecten.html` 1 sessie, korte tijd; pagina is bewust uit nav gehaald maar blijft relevant voor vertrouwen.
+- **Actie:** Cases met foto + plaatsnaam (Hans).
+- **Verwacht effect:** Hogere trust en langere sessies.
 
 ---
 
 ## Data snapshot
 
-| Pagina      | Sessies | BounceRate |
-| ----------- | ------- | ---------- |
-| _Geen data_ | —       | —          |
+| Pagina                 | Sessies | Bounce (landing /)  |
+| ---------------------- | ------- | ------------------- |
+| `/`                    | 10      | ca. 67% als landing |
+| `/index.html`          | 4       | —                   |
+| `/prijsindicatie.html` | 2       | —                   |
+| `/diensten.html`       | 2       | —                   |
 
 ---
 
-## Aanbeveling voor Product Manager (concept-sprint 2)
+## Campagne-notitie (social + site)
 
-Samenvattend voor `sprint.md` (max. 5 taken — PM vult definitief in):
-
-1. **FAQ-pagina** — `[GOEDGEKEURD]`-kandidaat (SEO + long-tail).
-2. **Interne wizard-links** op diensten/werkwijze/systemen — `[GOEDGEKEURD]` (CTA/conversie).
-3. **Schuimbeton H2 + anker** — `[GOEDGEKEURD]` of `[WACHT]` als tijd krap is.
-4. **Homepage FAQ-uitbreiding** — `[GOEDGEKEURD]` of samenvoegen met taak 1 als één “FAQ-programma”.
-5. **Mobiele doorloop-test** (Hans) — blijft proces; desnoods `[WACHT]` tot bewijs binnen is.
-
-_Zie ook:_ `docs/website-manager/analytics_report.md` voor dezelfde lijn en databeperking.
+Koppel social posts expliciet aan **prijsindicatie**, **vloerverwarming-groningen**, **vloerverwarming-assen** en **werkwijze** — past bij sprintdoel en helpt direct-verkeer om te zetten naar diepte en leads.

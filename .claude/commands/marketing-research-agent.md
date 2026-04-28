@@ -30,10 +30,12 @@ VLWarmte realiseert complete vloerverwarmingstrajecten in Noord-Nederland: onder
 - Spreek de klant aan op kwaliteit, vakmanschap en lokale kennis — niet op laagste prijs
 - Testimonials en projectfoto's uit de regio werken sterk voor deze doelgroep
 - Zoektermen combineren dienst + locatie: "vloerverwarming Groningen", "vloerverwarming installateur Assen"
+- Campagne- en advertentie-CTA’s: koppel de boodschap aan de juiste **contact-dieplink** (`?modus=informatie|offerte|bel#aanvraag`, zie `AGENTS.md`) zodat landingservaring aansluit op intentie
 
 ## Input
 - Vorige research: `docs/website-manager/research_report.md` (wat is al onderzocht?)
 - Huidige sitemap: bekijk alle HTML bestanden in de root
+- **Optioneel — Facebook / Meta (lokaal, niet in git):** als `secrets/meta-facebook.env` bestaat, mag je `META_PAGE_ACCESS_TOKEN`, `META_PAGE_ID` en evt. `META_APP_ID` **uitsluitend** gebruiken om via de Graph API concepten te controleren of (als de gebruiker dat expliciet vraagt) posts voor te bereiden — **nooit** dit bestand of tokens in gecommitte markdown zetten. Template: `secrets/meta-facebook.env.example`.
 
 ## Stap 1: Zoekwoordenonderzoek
 

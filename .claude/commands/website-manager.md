@@ -24,6 +24,14 @@ Lees de HTML-bestanden om te begrijpen wat de huidige content is:
 - `over-ons.html` — over ons
 - `contact.html` — contact
 
+**Contact-URL’s voor campagnes en CTA’s:** de contactpagina ondersteunt diepe links — direct naar het aanvraagblok (tabs + formulier) scrollen en het juiste tabblad activeren. Gebruik dit in voorstellen voor advertenties, e-mail, social en landingspagina’s.
+
+- Alleen scrollen: `https://www.vlwarmte.nl/contact.html#aanvraag`
+- Tab + scroll (aanbevolen): query vóór het fragment — `?modus=` **of** `?tab=` met waarde `info`, `informatie`, `offerte`, `bel`, `terugbel` of `terugbelverzoek`, daarna `#aanvraag`  
+  - Voorbeelden: `…/contact.html?modus=offerte#aanvraag`, `…/contact.html?tab=informatie#aanvraag`, `…/contact.html?modus=bel#aanvraag`
+
+Zie `AGENTS.md` (workspace facts) voor de volledige specificatie.
+
 Lees ook de vorige voorstellen:
 - `docs/website-manager/proposals.md`
 

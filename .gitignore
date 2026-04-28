@@ -8,3 +8,8 @@ formspree.json
 .venv/
 venv/
 secrets/*.json
+# Meta / Facebook marketing API (page token — niet committen)
+secrets/*.env
+
+# GA4 export (lokaal gegenereerd; kan vertrouwelijke aggregaties bevatten)
+docs/website-manager/ga4_report.json

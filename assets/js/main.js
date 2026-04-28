@@ -61,6 +61,43 @@ function initFaq() {
   });
 }
 
+function normalizeLeadModeQueryValue(raw) {
+  if (raw == null) return null;
+  const v = String(raw).trim().toLowerCase();
+  if (!v) return null;
+  if (v === "info" || v === "informatie") return "info";
+  if (v === "offerte") return "offerte";
+  if (v === "bel" || v === "terugbel" || v === "terugbelverzoek") return "bel";
+  return null;
+}
+
+function readLeadModeFromUrl() {
+  try {
+    const params = new URL(window.location.href).searchParams;
+    return (
+      normalizeLeadModeQueryValue(params.get("modus")) ||
+      normalizeLeadModeQueryValue(params.get("tab"))
+    );
+  } catch {
+    return null;
+  }
+}
+
+function leadFormDeepLinkNeedsJsScroll() {
+  if (readLeadModeFromUrl()) return true;
+  const h = window.location.hash.replace(/^#/, "").toLowerCase();
+  return h === "lead-form";
+}
+
+function scrollLeadFormAnchorIntoView() {
+  const el = document.getElementById("aanvraag");
+  if (!el) return;
+  const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  requestAnimationFrame(() => {
+    el.scrollIntoView({ block: "start", behavior: reduced ? "auto" : "smooth" });
+  });
+}
+
 function initLeadForm() {
   const form = document.querySelector("#lead-form");
   if (!form) return;
@@ -125,7 +162,9 @@ function initLeadForm() {
     // Let the form submit to Formspree
   });
 
-  applyMode("info");
+  const fromUrl = readLeadModeFromUrl();
+  applyMode(fromUrl || "info");
+  if (leadFormDeepLinkNeedsJsScroll()) scrollLeadFormAnchorIntoView();
 }
 
 function validateLeadForm(form, mode) {
