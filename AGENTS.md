@@ -8,6 +8,7 @@
 - For VLWarmte warranty copy, describe pipe (buis) warranty as a straight “10 jaar garantie”; avoid “fabrieksgarantie” and avoid hedging with supplier/type conditions unless the user explicitly asks for that nuance.
 - For the contact/offerte form, prefer a vertical field pattern (label, optional hint, then input). Avoid side-by-side label+input rows that use large spaces or spacers to align inputs, which hurt scanability and label–field association.
 - For FAQ or accordion blocks, do not set the question title smaller or visually weaker than the answer body; the title should be at least as prominent for clear hierarchy.
+- Do not commit Formspree deploy keys or a tracked `formspree.json` that contains secrets; keep those files gitignored and ship only a safe `.example` template in the repo.
 
 ## Learned Workspace Facts
 
@@ -16,6 +17,8 @@
 - Current VLWarmte redesign direction favors a modern/tighter, potentially darker look with stronger imagery.
 - VLWarmte's preferred logo direction is an SVG "Slakkenhuis Flow" underfloor-heating laying pattern using the site's CTA accent color, without a surrounding border.
 - Mobile responsiveness is a priority for the VLWarmte site, especially keeping the header and navigation compact and visible on small screens.
-- The offerte form collects crawl-space depth in mm in field `vloerdiepte`, with user-facing copy centered on “Diepte kruipruimte” and a short hint tying the measure to build-up and chape/beton planning (not a generic “floor thickness only” label).
+- Contact lead form has three modes (informatie, offerte, bel mij); offerte mode collects crawl-space depth in mm in field `vloerdiepte`, with user-facing copy centered on “Diepte kruipruimte” and a short hint tying the measure to build-up and chape/beton planning (not a generic “floor thickness only” label); “Bel mij” requires `terugbel_moment` (preset callback slots) and submits hidden `soort_aanvraag` (`Informatie` | `Offerte` | `Terugbelverzoek`) for Formspree.
 - VLWarmte mobile header: do not put `backdrop-filter` on the same element that contains a `position: fixed` nav drawer; Chromium can treat it as a containing block and clip the drawer—apply frosted blur on a `::before` (e.g. with `pointer-events: none`) instead.
 - VLWarmte mobile menu open state: a full-bleed `::after` dimmer on the header must sit *below* the inner wrapper and drawer in the stacking order (e.g. raise `.site-header-inner`’s `z-index` when open); otherwise the dimmer paints over the menu links.
+- Local GA4 fetch (`scripts/ga4_fetch.py`): use a project venv with `google-analytics-data` (PEP 668 blocks installing into system Python); put the service-account JSON on a path Terminal can read (e.g. gitignored `secrets/` under the repo or `GA4_CREDENTIALS_PATH` / `GOOGLE_APPLICATION_CREDENTIALS`)—avoid relying on iCloud Drive `Mobile Documents` key paths, which often fail with macOS permission errors.
+- Slash-command playbooks for agents live under `.claude/commands/` (e.g. developer, website-manager, analytics, marketing-research, social-media, product-manager); treat them as workflows to follow when invoked by name in Cursor.

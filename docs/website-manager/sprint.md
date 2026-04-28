@@ -112,7 +112,24 @@ Plaats een TODO-comment ernaast: `<!-- TODO Hans: vervang door echte token uit S
 **Sitemap:** `projecten.html` regel weg, beide nieuwe URL's met `lastmod=2026-04-27` en `priority=0.8` toegevoegd.
 **Footer Regio-blok:** op alle 10 pagina's uitgebreid met linkjeslijst naar beide locatiepagina's. Op `prijsindicatie.html` is een nieuwe Regio-sectie tussen Bedrijf en Juridisch ingevoegd (had nog geen Regio-blok).
 
+**Deployment:**
+- Commit: `9e275a4` — "Sprint 27 april: GA4 events, Search Console-tag, twee locatiepagina's, projecten uit nav"
+- GitHub Actions run: [`24982250357`](https://github.com/hanseilers/vlwarmte/actions/runs/24982250357) (pages build and deployment)
+- Status: **completed / success** (gestart 27-04 09:31, klaar 09:32, duur 58s)
+- Head SHA: `9e275a42b8140f2e12d169db2938f578e6539981`
+
+**Live verificatie (27-04 09:33):**
+- `https://www.vlwarmte.nl/` → HTTP 200, GA4-tag `G-0BB9M7HYSF` aanwezig
+- `https://www.vlwarmte.nl/vloerverwarming-groningen.html` → HTTP 200, verificatie-tag aanwezig
+- `https://www.vlwarmte.nl/vloerverwarming-assen.html` → HTTP 200
+
 **Open punten voor Hans:**
-1. Echte token uit Search Console plaatsen (12x zoeken-en-vervangen op `REPLACE_WITH_TOKEN`).
-2. Handmatige test: doorloop wizard en contactformulier, controleer in GA4 DebugView dat alle events binnenkomen.
-3. Sitemap.xml indienen in Search Console na verificatie.
+1. Echte token uit Search Console plaatsen (12× zoeken-en-vervangen op `REPLACE_WITH_TOKEN` in alle HTML-pagina's).
+2. Handmatige test: doorloop wizard en contactformulier in alle drie modi, controleer in GA4 DebugView dat alle events binnen 30s binnenkomen.
+3. Sitemap.xml indienen in Search Console na verificatie (URL: `https://www.vlwarmte.nl/sitemap.xml`).
+4. Markeer `wizard_lead_submit` en `contact_submit` als conversies in GA4 Beheer → Events.
+
+**Aandachtspunten voor volgende sprint:**
+- De twee nieuwe stadspagina's hebben nog geen lokaal referentieproject (foto + plaatsnaam) — zodra Hans materiaal aanlevert, vullen we dat aan.
+- Mobiele check op wizard en contactformulier nog niet uitgevoerd (vraagt echt apparaat).
+- Footer is op `prijsindicatie.html` qua structuur licht afwijkend (Regio-blok was er niet, nu wel toegevoegd) — in een toekomstige refactor kan de footer als één gedeelde include-component worden uitgewerkt.

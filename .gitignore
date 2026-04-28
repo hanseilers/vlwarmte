@@ -3,3 +3,8 @@
 worktrees/
 node_modules/
 formspree.json
+
+# Python / GA4 fetch
+.venv/
+venv/
+secrets/*.json
