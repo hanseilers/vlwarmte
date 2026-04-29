@@ -17,14 +17,11 @@
     <meta property="og:image" content="https://www.vlwarmte.nl/assets/img/og-default.png" />
     <meta name="twitter:card" content="summary" />
     <link rel="stylesheet" href="assets/css/styles.css" />
-      <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0BB9M7HYSF"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag("js", new Date());
-      gtag("config", "G-0BB9M7HYSF");
-    </script>
+    <link rel="icon" href="favicon.ico" sizes="32x32" type="image/x-icon" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+    <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
+    <script defer src="assets/js/ga-deferred.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -54,6 +51,7 @@
       </section>
       <section class="section section-muted">
         <div class="container card">
+          <h2 class="section-title">Algemeen</h2>
           <p>
             Aan de inhoud van deze website kunnen geen rechten worden ontleend. Gebruik van de
             informatie is op eigen risico. VLWarmte is niet aansprakelijk voor directe of indirecte
@@ -68,7 +66,7 @@
     <footer class="site-footer">
       <div class="container site-footer-grid">
         <section>
-          <h3>VLWarmte</h3>
+          <h2 class="footer-block-title">VLWarmte</h2>
           <p class="small">Noord-Nederland</p>
           <address class="small footer-address">
             Verlengde Stationsweg 58<br />
@@ -88,7 +86,7 @@
           </p>
         </section>
         <section>
-          <h3>Regio</h3>
+          <h2 class="footer-block-title">Regio</h2>
           <ul class="small">
             <li>Groningen</li>
             <li>Friesland</li>
@@ -100,7 +98,7 @@
           </ul>
         </section>
         <section>
-          <h3>Links</h3>
+          <h2 class="footer-block-title">Links</h2>
           <ul class="small">
             <li><a href="privacy.html">Privacy</a></li>
             <li><a href="contact.html">Contact</a></li>

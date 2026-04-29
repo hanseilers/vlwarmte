@@ -71,7 +71,8 @@ body {
 }
 
 body {
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Arial,
+    sans-serif;
   color: var(--ink);
   background: linear-gradient(180deg, #0b121c 0%, #0f1724 100%);
   line-height: 1.6;
@@ -358,9 +359,22 @@ h2 {
 .section-home-services {
   position: relative;
   overflow: hidden;
+  /* PNG fallback; WebP when supported (smaller transfer for Lighthouse “modern formats”) */
   background:
     linear-gradient(140deg, rgba(7, 12, 20, 0.86) 0%, rgba(9, 16, 27, 0.78) 50%, rgba(8, 15, 25, 0.88) 100%),
     url("../img/hero-heating-room.png") center/cover no-repeat;
+}
+
+@supports (background: image-set(url("a") 1x)) {
+  .section-home-services {
+    background:
+      linear-gradient(140deg, rgba(7, 12, 20, 0.86) 0%, rgba(9, 16, 27, 0.78) 50%, rgba(8, 15, 25, 0.88) 100%),
+      image-set(
+          url("../img/hero-heating-room.webp") type("image/webp"),
+          url("../img/hero-heating-room.png") type("image/png")
+        )
+        center/cover no-repeat;
+  }
 }
 
 .section-home-services::before {
@@ -410,6 +424,11 @@ h2 {
 
 .card h3 {
   font-size: 1.08rem;
+}
+
+.card h2.section-title {
+  font-size: 1.08rem;
+  margin: 0 0 0.75rem;
 }
 
 .steps {
@@ -542,6 +561,7 @@ h2 {
   padding: 2rem 0;
 }
 
+.site-footer h2.footer-block-title,
 .site-footer h3 {
   font-size: 1rem;
 }

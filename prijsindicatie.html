@@ -20,14 +20,12 @@
     <meta property="og:image" content="https://www.vlwarmte.nl/assets/img/og-default.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0BB9M7HYSF"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag("js", new Date());
-      gtag("config", "G-0BB9M7HYSF");
-    </script>
+    <link rel="icon" href="favicon.ico" sizes="32x32" type="image/x-icon" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+    <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
+    <script defer src="assets/js/ga-deferred.js"></script>
+
     <style>
       .wizard { max-width: 680px; margin: 0 auto; }
 
@@ -387,6 +385,12 @@
 
       const state = { step: 0, m2: 80, projecttype: null, ondergrond: null, zones: null };
 
+      function vlGtag() {
+        if (typeof gtag === "function") {
+          return gtag.apply(null, arguments);
+        }
+      }
+
       const slider   = document.getElementById('m2-slider');
       const m2Display = document.getElementById('m2-val');
       slider.addEventListener('input', () => { state.m2 = +slider.value; m2Display.textContent = state.m2; });
@@ -402,7 +406,7 @@
         // GA4: registreer eerste interactie als wizard_start (eerste keuze in stap 1 is projecttype)
         if (!wizardStarted && state.step === 1) {
           wizardStarted = true;
-          gtag('event', 'wizard_start', { stap: 'projecttype' });
+          vlGtag('event', 'wizard_start', { stap: 'projecttype' });
         }
       }
 
@@ -415,8 +419,8 @@
         });
         state.step = n;
         // GA4: meet voortgang per stap
-        if (n === 2) gtag('event', 'wizard_step_2', { stap: 'ondergrond' });
-        if (n === 3) gtag('event', 'wizard_step_3', { stap: 'zones' });
+        if (n === 2) vlGtag('event', 'wizard_step_2', { stap: 'ondergrond' });
+        if (n === 3) vlGtag('event', 'wizard_step_3', { stap: 'zones' });
       }
 
       function nextStep() { showStep(state.step + 1); }
@@ -468,8 +472,8 @@
         document.getElementById('f-prijs').value     = fmt(laag) + ' – ' + fmt(hoog);
 
         // GA4: bereken-knop ingedrukt
-        gtag('event', 'wizard_calculate', { projecttype: state.projecttype, m2: state.m2, zones });
-        gtag('event', 'calculator_result', { projecttype: state.projecttype, m2: state.m2, zones });
+        vlGtag('event', 'wizard_calculate', { projecttype: state.projecttype, m2: state.m2, zones });
+        vlGtag('event', 'calculator_result', { projecttype: state.projecttype, m2: state.m2, zones });
       }
 
       function resetWizard() {
@@ -500,8 +504,8 @@
             status.appendChild(msg);
             this.reset();
             // GA4: lead-formulier verzonden vanuit prijscalculator
-            gtag('event', 'wizard_lead_submit', { projecttype: state.projecttype, m2: state.m2, zones: state.zones });
-            gtag('event', 'lead_form_submit', { event_category: 'prijsindicatie' });
+            vlGtag('event', 'wizard_lead_submit', { projecttype: state.projecttype, m2: state.m2, zones: state.zones });
+            vlGtag('event', 'lead_form_submit', { event_category: 'prijsindicatie' });
           } else { throw new Error(); }
         } catch {
           const msg = document.createElement('div');

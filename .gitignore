@@ -13,3 +13,7 @@ secrets/*.env
 
 # GA4 export (lokaal gegenereerd; kan vertrouwelijke aggregaties bevatten)
 docs/website-manager/ga4_report.json
+
+# Lighthouse batch output (lokaal / productie JSON)
+reports/lighthouse/
+reports/lighthouse-production/
