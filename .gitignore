@@ -17,3 +17,4 @@ docs/website-manager/ga4_report.json
 # Lighthouse batch output (lokaal / productie JSON)
 reports/lighthouse/
 reports/lighthouse-production/
+reports/lighthouse-production-after/
