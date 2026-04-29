@@ -18,3 +18,4 @@ docs/website-manager/ga4_report.json
 reports/lighthouse/
 reports/lighthouse-production/
 reports/lighthouse-production-after/
+reports/lighthouse-production-verify/
