@@ -19,3 +19,4 @@ reports/lighthouse/
 reports/lighthouse-production/
 reports/lighthouse-production-after/
 reports/lighthouse-production-verify/
+reports/lighthouse-index-lcp/
