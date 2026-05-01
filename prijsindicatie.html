@@ -228,7 +228,6 @@
               </div>
               <div class="wizard-nav">
                 <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-                <button type="button" class="btn btn-primary" id="next-vl-grond" onclick="advanceFromVlGrond()" disabled>Volgende →</button>
               </div>
             </div>
 
@@ -265,7 +264,6 @@
               </div>
               <div class="wizard-nav">
                 <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-                <button type="button" class="btn btn-primary" id="next-projecttype" onclick="wizardForward()" disabled>Volgende →</button>
               </div>
             </div>
 
@@ -295,7 +293,6 @@
               </div>
               <div class="wizard-nav">
                 <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-                <button type="button" class="btn btn-primary" id="next-zones" onclick="calculate()" disabled>Bereken indicatie →</button>
               </div>
             </div>
 
@@ -362,7 +359,6 @@
               </div>
               <div class="wizard-nav">
                 <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-                <button type="button" class="btn btn-primary" id="next-schuim-kruip" onclick="finishSchuim()" disabled>Toon indicatie →</button>
               </div>
             </div>
           </div>
@@ -570,12 +566,8 @@
 
       let wizardStarted = false;
 
-      const nextBtnByStep = {
-        'step-vl-grond': 'next-vl-grond',
-        'step-projecttype': 'next-projecttype',
-        'step-zones': 'next-zones',
-        'step-schuim-kruip': 'next-schuim-kruip',
-      };
+      /** Keuze-stappen hebben geen aparte Volgende-knop; selectOption stuurt direct door. */
+      const nextBtnByStep = {};
 
       function currentStepId() {
         return state.steps[state.idx];
@@ -599,15 +591,6 @@
           const b = document.getElementById(nid);
           if (b) b.disabled = true;
         });
-        const sid = currentStepId();
-        const nid = nextBtnByStep[sid];
-        if (!nid) return;
-        const btn = document.getElementById(nid);
-        if (!btn) return;
-        if (sid === 'step-vl-grond' && state.vlOndergrond) btn.disabled = false;
-        if (sid === 'step-projecttype' && state.projecttype) btn.disabled = false;
-        if (sid === 'step-zones' && state.zones) btn.disabled = false;
-        if (sid === 'step-schuim-kruip' && state.kruipOndergrond) btn.disabled = false;
       }
 
       function clearSelectionsExceptProduct() {
@@ -639,7 +622,13 @@
         }
         if (field === 'product') {
           advanceFromProduct();
+          return;
         }
+        const sid = currentStepId();
+        if (field === 'vlOndergrond' && sid === 'step-vl-grond') advanceFromVlGrond();
+        else if (field === 'projecttype' && sid === 'step-projecttype') wizardForward();
+        else if (field === 'zones' && sid === 'step-zones') calculate();
+        else if (field === 'kruipOndergrond' && sid === 'step-schuim-kruip') finishSchuim();
       }
 
       function advanceFromProduct() {
