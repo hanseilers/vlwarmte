@@ -255,34 +255,36 @@ a {
   isolation: isolate;
 }
 
-/* Gekleurde gloed: blauw + oranje, langzaam ademend */
+/* Gekleurde gloed: zelfde lagen als styles.css hero (above-the-fold statisch momentopname) */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(circle at 90% 18%, rgba(224, 85, 47, 0.38), transparent 42%),
-    radial-gradient(circle at 12% 80%, rgba(95, 163, 224, 0.3), transparent 40%);
+    radial-gradient(circle at 12% 82%, rgba(95, 163, 224, 0.26), transparent 46%),
+    radial-gradient(circle at 72% 26%, rgba(224, 85, 47, 0.44), transparent 52%),
+    radial-gradient(ellipse 110% 95% at 48% 46%, rgba(224, 85, 47, 0.26), transparent 58%),
+    radial-gradient(ellipse 140% 120% at 50% 48%, rgba(188, 63, 31, 0.12), transparent 72%);
   pointer-events: none;
   animation: none;
-  opacity: 0.88;
+  opacity: 0.9;
   transform: scale(1.02) translate(-0.2%, 0.15%);
-  filter: brightness(1.05) saturate(1.02);
+  filter: brightness(1.05) saturate(1.06);
   will-change: auto;
 }
 
 .hero::after {
   content: "";
   position: absolute;
-  inset: auto -120px -180px auto;
+  inset: auto -100px -160px auto;
   z-index: 0;
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, rgba(95, 163, 224, 0.32), transparent 72%);
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(95, 163, 224, 0.22), transparent 74%);
   pointer-events: none;
   animation: none;
-  opacity: 0.68;
+  opacity: 0.66;
   will-change: auto;
 }
 
