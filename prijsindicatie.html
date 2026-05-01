@@ -182,6 +182,9 @@
         <div class="container">
           <h1>Prijsindicatie vloerverwarming</h1>
           <p class="lead">Eerst kies je wat je wilt laten prijzen — daarna stellen we de passende vragen. Geen verplichtingen.</p>
+          <p class="small page-hero-note">
+            <strong>VLWarmte</strong> is onze bedrijfsnaam. Met <strong>alleen vloerverwarming</strong> bedoelen we het traject <em>zonder</em> schuimbeton (dus alleen het vloerverwarmingssysteem) — niet “alleen dit bedrijf”.
+          </p>
         </div>
       </section>
 
@@ -210,7 +213,7 @@
               </div>
             </div>
 
-            <!-- Alleen VL: ondergrond vloer (hout → contact, beton → door) -->
+            <!-- Traject alleen vloerverwarming: ondergrond vloer (hout → contact, beton → door) -->
             <div class="wizard-step" id="step-vl-grond">
               <h2>Wat is de huidige ondergrond van de vloer?</h2>
               <p class="step-sub">Vloerverwarming op hout vraagt maatwerk: daar maken we geen vaste rekensom voor in dit stappenplan.</p>
@@ -231,7 +234,7 @@
               </div>
             </div>
 
-            <!-- VL + beton: m² -->
+            <!-- Alleen vloerverwarming + beton: m² -->
             <div class="wizard-step" id="step-m2">
               <h2>Hoeveel vierkante meter vloerverwarming?</h2>
               <p class="step-sub">Schat het totale vloeroppervlak dat verwarmd moet worden.</p>
@@ -246,7 +249,7 @@
               </div>
             </div>
 
-            <!-- VL + beton: nieuwbouw / renovatie -->
+            <!-- Alleen vloerverwarming + beton: nieuwbouw / renovatie -->
             <div class="wizard-step" id="step-projecttype">
               <h2>Nieuwbouw of renovatie?</h2>
               <p class="step-sub">Dit bepaalt welk systeem het meest geschikt is.</p>
@@ -267,7 +270,7 @@
               </div>
             </div>
 
-            <!-- VL + beton: zones -->
+            <!-- Alleen vloerverwarming + beton: zones -->
             <div class="wizard-step" id="step-zones">
               <h2>Hoeveel verwarmingszones?</h2>
               <p class="step-sub">Elke zone heeft een eigen thermostaat. Denk aan: woonkamer, slaapkamers, badkamer.</p>
@@ -739,7 +742,8 @@
         document.getElementById('f-vloerdiepte').value = '';
         document.getElementById('f-schuim-m2').value = '';
         document.getElementById('f-kruip-ondergrond').value = '';
-        document.getElementById('f-uitgangspunten').value = 'Traject: alleen VL, houten ondergrond — contact i.p.v. rekensom.';
+        document.getElementById('f-uitgangspunten').value =
+          'Traject: alleen vloerverwarming, houten ondergrond — contact i.p.v. rekensom.';
         vlGtag('event', 'wizard_vl_hout_contact', {});
       }
 
@@ -866,7 +870,9 @@
             SCHUIM_REKEN.schuimThermMaxMm +
             ' mm neemt de extra isolatie sterk af; meer vullen is meestal geen slimme euro per cm.',
           zandUitleg,
-          'Vloerverwarming: onderdeel voor het verwarmde oppervlak (' + state.schuimM2 + ' m²) zodra de opbouw geschikt is — zonder zones-detail zoals bij “alleen VL”.',
+            'Vloerverwarming: onderdeel voor het verwarmde oppervlak (' +
+              state.schuimM2 +
+              ' m²) zodra de opbouw geschikt is — zonder zones-detail zoals bij het traject “alleen vloerverwarming”.',
           bodemExtra,
         ];
         items.forEach(text => {
@@ -889,7 +895,8 @@
         resetContactResultLayout();
         showResultShell();
 
-        document.getElementById('result-price-title').textContent = 'Vrijblijvende prijsindicatie (schuimbeton + VL)';
+        document.getElementById('result-price-title').textContent =
+          'Vrijblijvende prijsindicatie (schuimbeton + vloerverwarming)';
         document.getElementById('price-meta-line').textContent =
           'Indicatie incl. schuimbeton, eventuele zandophoging, vloerverwarming en arbeid — excl. btw';
         setPriceDisclaimerSchuim();
@@ -906,7 +913,7 @@
         const bd = document.getElementById('price-breakdown');
         bd.replaceChildren();
         const tagParts = [
-          'VL + schuimbeton',
+          'Vloerverwarming + schuimbeton',
           state.diepteMm + ' mm kruip',
           state.schuimM2 + ' m²',
           kruipLabel(state.kruipOndergrond),
@@ -935,7 +942,7 @@
         document.getElementById('f-zones').value = '';
         document.getElementById('f-prijs').value = fmt(b.laag) + ' – ' + fmt(b.hoog);
         document.getElementById('f-uitgangspunten').value = [
-          'Traject: VL + schuimbeton (indicatie)',
+          'Traject: vloerverwarming + schuimbeton (indicatie)',
           'Kruip ' + state.diepteMm + ' mm; woning ' + state.schuimM2 + ' m²',
           'Ruimte na gereserveerde vrije hoogte: ' + b.ruimteMm + ' mm; schuim ' + b.schuimMm + ' mm; zand ' + b.zandMm + ' mm',
           'Volumes: schuim ' + b.volSchuimM3.toFixed(2) + ' m³, zand ' + b.volZandM3.toFixed(2) + ' m³',
@@ -1094,7 +1101,13 @@
 
         const bd = document.getElementById('price-breakdown');
         bd.replaceChildren();
-        ['Alleen VL, beton', state.m2 + ' m²', state.projecttype === 'nieuwbouw' ? 'Nieuwbouw' : 'Renovatie', 'Betonvloer', zones + ' zone' + (zones > 1 ? 's' : '')].forEach(txt => {
+        [
+          'Alleen vloerverwarming, beton',
+          state.m2 + ' m²',
+          state.projecttype === 'nieuwbouw' ? 'Nieuwbouw' : 'Renovatie',
+          'Betonvloer',
+          zones + ' zone' + (zones > 1 ? 's' : ''),
+        ].forEach(txt => {
           const tag = document.createElement('span');
           tag.className = 'price-tag';
           tag.textContent = txt;
