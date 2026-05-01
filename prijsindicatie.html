@@ -102,6 +102,24 @@
       .price-tag { background: rgba(255,255,255,.06); border: 1px solid var(--line); border-radius: 6px; padding: .3rem .75rem; font-size: .82rem; color: var(--muted); }
       .price-disclaimer { font-size: .8rem; color: var(--muted); margin-top: 1.2rem; line-height: 1.5; }
 
+      .price-assumptions {
+        margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.08);
+        text-align: left; max-width: 34rem; margin-left: auto; margin-right: auto;
+      }
+      .price-assumptions-intro {
+        font-size: .88rem; color: var(--ink); margin: 0 0 .85rem; line-height: 1.45;
+      }
+      .price-assumptions-intro .assumption-count { font-weight: 600; color: var(--brand); }
+      .price-assumptions-list {
+        margin: 0; padding-left: 1.15rem; font-size: .82rem; color: var(--muted); line-height: 1.55;
+      }
+      .price-assumptions-list li { margin-bottom: .55rem; }
+      .price-assumptions-list li:last-child { margin-bottom: 0; }
+      .price-assumption-sub { display: block; margin-top: .35rem; font-size: .92em; opacity: .95; }
+      .price-assumptions-foot {
+        font-size: .78rem; color: var(--muted); margin: .9rem 0 0; line-height: 1.45; font-style: italic;
+      }
+
       .lead-after { background: rgba(255,255,255,.03); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; }
       .lead-after h3 { margin: 0 0 .4rem; font-size: 1.2rem; }
       .lead-after .lead-sub { color: var(--muted); font-size: .9rem; margin: 0 0 1.5rem; }
@@ -270,9 +288,10 @@
               <div class="price-range" id="price-output"></div>
               <p class="price-meta">Indicatie incl. materiaal en arbeid, excl. btw</p>
               <div class="price-breakdown" id="price-breakdown"></div>
+              <section class="price-assumptions" id="price-assumptions" aria-label="Uitgangspunten bij deze indicatie" hidden></section>
               <p class="price-disclaimer">
                 Dit is een indicatie op basis van gemiddelde projectkosten in Noord-Nederland.<br>
-                De werkelijke prijs hangt af van de specifieke situatie ter plaatse.
+                De werkelijke prijs hangt af van de specifieke situatie ter plaatse — twijfel je ergens over, bel gerust even.
               </p>
             </div>
 
@@ -286,6 +305,7 @@
                 <input type="hidden" name="ondergrond"      id="f-ondergrond" />
                 <input type="hidden" name="zones"           id="f-zones" />
                 <input type="hidden" name="prijsindicatie"  id="f-prijs" />
+                <input type="hidden" name="uitgangspunten"  id="f-uitgangspunten" />
                 <input type="hidden" name="_subject"        value="Offerte aanvraag via prijscalculator" />
 
                 <div class="form-row">
@@ -428,6 +448,121 @@
 
       function fmt(n) { return '€ ' + Math.round(n).toLocaleString('nl-NL'); }
 
+      /** Gangbare m buis per m² vloer (tussenafstand ~15–20 cm); afgerond per 10 m voor leesbaarheid. */
+      function estimatePipeRangeM(m2) {
+        const low = Math.max(20, Math.round((m2 * 5) / 10) * 10);
+        const high = Math.max(low + 10, Math.round((m2 * 6.5) / 10) * 10);
+        return [low, high];
+      }
+
+      function zonesDisplay(stateZones) {
+        const z = parseInt(stateZones, 10) || 1;
+        if (stateZones === '4') return { n: z, phrase: 'minimaal 4 zones', groupsLabel: 'minimaal 4' };
+        return { n: z, phrase: z + (z === 1 ? ' zone' : ' zones'), groupsLabel: String(z) };
+      }
+
+      function elStrong(text) {
+        const s = document.createElement('strong');
+        s.textContent = text;
+        return s;
+      }
+
+      function renderPriceAssumptions() {
+        const zonesMeta = zonesDisplay(state.zones);
+        const zonesN = zonesMeta.n;
+        const [pipeLo, pipeHi] = estimatePipeRangeM(state.m2);
+        const midPipe = (pipeLo + pipeHi) / 2;
+        const mPipePerZone = midPipe / zonesN;
+        const longLoopHint = mPipePerZone > 100;
+
+        const typeLabel = state.projecttype === 'nieuwbouw' ? 'Nieuwbouw' : 'Renovatie';
+        const ogLabel =
+          state.ondergrond === 'beton'
+            ? 'beton- of steenachtige vloer'
+            : state.ondergrond === 'hout'
+              ? 'houten vloer / houten onderconstructie'
+              : 'ondergrond nog nader te bepalen';
+
+        const wrap = document.getElementById('price-assumptions');
+        wrap.replaceChildren();
+        wrap.hidden = false;
+
+        const intro = document.createElement('p');
+        intro.className = 'price-assumptions-intro';
+        const countSpan = document.createElement('span');
+        countSpan.className = 'assumption-count';
+        countSpan.textContent = 'zes';
+        intro.append(
+          document.createTextNode('Deze bandbreedte sluit aan op '),
+          countSpan,
+          document.createTextNode(' korte uitgangspunten — ruwe schattingen die bij veel vergelijkbare woningen kloppen. Ze geven houvast; details finetunen we tijdens de opname.')
+        );
+        wrap.appendChild(intro);
+
+        const ul = document.createElement('ul');
+        ul.className = 'price-assumptions-list';
+
+        const li1 = document.createElement('li');
+        li1.append(document.createTextNode('Oppervlakte: '), elStrong(state.m2 + ' m²'), document.createTextNode(' verwarmd vloeroppervlak als basis voor materiaal en montagetijd.'));
+        ul.appendChild(li1);
+
+        const li2 = document.createElement('li');
+        li2.append(elStrong(typeLabel + ', ' + ogLabel), document.createTextNode(' — zoals je hierboven koos.'));
+        ul.appendChild(li2);
+
+        const li3 = document.createElement('li');
+        li3.append(
+          document.createTextNode('Indicatieve hoeveelheid vloerbuis: ongeveer '),
+          elStrong(pipeLo + '–' + pipeHi + ' m'),
+          document.createTextNode(' totaal (gangbare tussenafstanden; exacte kringlengtes verschillen per plattegrond).')
+        );
+        ul.appendChild(li3);
+
+        const li4 = document.createElement('li');
+        li4.append(
+          document.createTextNode('Aan de verdeler: doorgaans '),
+          elStrong(zonesMeta.groupsLabel + ' regelgroep' + (zonesN > 1 ? 'en' : '')),
+          document.createTextNode(', passend bij ' + zonesMeta.phrase + '.')
+        );
+        if (longLoopHint) {
+          const sub = document.createElement('span');
+          sub.className = 'price-assumption-sub';
+          sub.textContent =
+            'Bij een groot oppervlak met weinig zones kan het soms handiger zijn om extra kringen te splitsen — dat bekijken we rustig op locatie.';
+          li4.appendChild(sub);
+        }
+        ul.appendChild(li4);
+
+        const li5 = document.createElement('li');
+        li5.appendChild(
+          document.createTextNode(
+            'Ligging van de verdeler en het leidingwerk naar de zones verschilt per woning. In het merendeel van de projecten past dit gewoon binnen deze bandbreidte.'
+          )
+        );
+        ul.appendChild(li5);
+
+        const li6 = document.createElement('li');
+        li6.appendChild(
+          document.createTextNode(
+            'Komt er ongebruikelijk zwaar doorwerk bij (lang traject of heel dik beton), dan zetten we dat vooraf en helder in de offerte — geen verrassing achteraf. Twijfel je? Bel gerust even: dan denken we meteen met je mee.'
+          )
+        );
+        ul.appendChild(li6);
+
+        wrap.appendChild(ul);
+
+        const foot = document.createElement('p');
+        foot.className = 'price-assumptions-foot';
+        foot.textContent = 'Dit blijft een online indicatie — geen offerte. Voor een prijs op maat volstaat vaak al een kort gesprek.';
+        wrap.appendChild(foot);
+
+        const lines = [
+          'Uitgangspunten (6):',
+          state.m2 + ' m²; ' + typeLabel + '; ' + ogLabel + '; buis ca. ' + pipeLo + '-' + pipeHi + ' m; ' + zonesMeta.groupsLabel + ' groep(en); ' + zonesMeta.phrase,
+        ];
+        document.getElementById('f-uitgangspunten').value = lines.join('\n');
+      }
+
       function calculate() {
         const key    = state.projecttype + '_' + state.ondergrond;
         const tarief = PRIJZEN.m2[key] || PRIJZEN.m2[state.projecttype + '_onbekend'];
@@ -464,6 +599,8 @@
           bd.appendChild(tag);
         });
 
+        renderPriceAssumptions();
+
         // Hidden form fields
         document.getElementById('f-m2').value        = state.m2;
         document.getElementById('f-type').value      = state.projecttype;
@@ -484,6 +621,11 @@
         document.getElementById('result').classList.remove('is-visible');
         document.getElementById('wizard').style.display = '';
         document.getElementById('calc-status').textContent = '';
+        const ass = document.getElementById('price-assumptions');
+        ass.replaceChildren();
+        ass.hidden = true;
+        const fu = document.getElementById('f-uitgangspunten');
+        if (fu) fu.value = '';
         showStep(0);
       }
 
