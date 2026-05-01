@@ -19,8 +19,7 @@ VLWarmte = vloerverwarming specialist Noord-Nederland, gevestigd in Zuid-Laren. 
 - Beschikbaar materiaal: bekijk `docs/website-manager/social/input/` voor foto's en ruwe teksten
 - Lopende sprint: `docs/website-manager/sprint.md` (welke boodschap versterkt de website doelen?)
 - Research rapport: `docs/website-manager/research_report.md` (welke onderwerpen zijn actueel?)
-- **Optioneel — Facebook / Meta:** als `secrets/meta-facebook.env` bestaat, kun je daar `META_GRAPH_ACCESS_TOKEN` en `META_PAGE_ID` vandaan halen voor Graph API-hulp (concepten, geen tokens in output committen). Template: `secrets/meta-facebook.env.example`.
-- **Meta Graph API — skill:** voor technische Graph API-kanten (publiceren, foutafhandeling, versioning) **lees en volg** `.cursor/skills/meta-graph-api/SKILL.md` (`meta-graph-api`).
+- **Optioneel — Facebook / Meta:** als `secrets/meta-facebook.env` bestaat, kun je daar `META_PAGE_ACCESS_TOKEN` en `META_PAGE_ID` vandaan halen voor Graph API-hulp (concepten, geen tokens in output committen). Template: `secrets/meta-facebook.env.example`.
 
 ## Contact-URL’s (campagnes)
 

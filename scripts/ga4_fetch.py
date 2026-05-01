@@ -11,7 +11,6 @@ Credentials (eerste match wint):
 
 Python: gebruik een venv in de repo (PEP 668 blokkeert pip op systeem-Python):
   python3 -m venv .venv && source .venv/bin/activate && pip install google-analytics-data
-  Voor property-inrichting (key events / custom dimensions): pip install google-analytics-admin && python3 scripts/ga4_admin_setup.py
 """
 
 import json

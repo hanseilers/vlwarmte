@@ -35,8 +35,7 @@ VLWarmte realiseert complete vloerverwarmingstrajecten in Noord-Nederland: onder
 ## Input
 - Vorige research: `docs/website-manager/research_report.md` (wat is al onderzocht?)
 - Huidige sitemap: bekijk alle HTML bestanden in de root
-- **Optioneel — Facebook / Meta (lokaal, niet in git):** als `secrets/meta-facebook.env` bestaat, mag je `META_GRAPH_ACCESS_TOKEN`, `META_PAGE_ID` en evt. `META_APP_ID` **uitsluitend** gebruiken om via de Graph API concepten te controleren of (als de gebruiker dat expliciet vraagt) posts voor te bereiden — **nooit** dit bestand of tokens in gecommitte markdown zetten. Template: `secrets/meta-facebook.env.example`.
-- **Meta Graph API — skill:** bij het schrijven, reviewen of debuggen van Facebook/Meta Graph API-code (tokens, versies, `/feed`, foutcodes, rate limits) **lees en volg** het project-skillbestand `.cursor/skills/meta-graph-api/SKILL.md` (naam: `meta-graph-api`). Cursor kan die skill ook automatisch koppelen op basis van de skill-`description`; expliciet vermelden helpt.
+- **Optioneel — Facebook / Meta (lokaal, niet in git):** als `secrets/meta-facebook.env` bestaat, mag je `META_PAGE_ACCESS_TOKEN`, `META_PAGE_ID` en evt. `META_APP_ID` **uitsluitend** gebruiken om via de Graph API concepten te controleren of (als de gebruiker dat expliciet vraagt) posts voor te bereiden — **nooit** dit bestand of tokens in gecommitte markdown zetten. Template: `secrets/meta-facebook.env.example`.
 
 ## Stap 1: Zoekwoordenonderzoek
 

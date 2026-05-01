@@ -15,8 +15,6 @@ Je roept andere agents aan via de Agent tool, leest hun rapporten, neemt besliss
 6. Archiveer sprint  → docs/website-manager/archive/
 ```
 
-**Meta / Facebook Graph API:** taken of subagents die Meta-integratie raken moeten het project-skillbestand **`.cursor/skills/meta-graph-api/SKILL.md`** (`meta-graph-api`) **lezen en volgen** — staat ook expliciet in `marketing-research-agent.md` en `social-media-agent.md`.
-
 ---
 
 ## Stap 1: Archiveer vorige sprint
