@@ -308,8 +308,8 @@
               <p class="step-sub">Meet de vrije hoogte onder de bodem (in millimeters). Twijfel je? Schat zo goed mogelijk — we controleren het bij de opname.</p>
               <div class="slider-wrap">
                 <div class="slider-display"><span id="diepte-val">500</span> <span>mm</span></div>
-                <input type="range" id="diepte-slider" min="250" max="1200" value="500" step="10" aria-label="Diepte kruipruimte in mm" />
-                <div class="slider-limits"><span>250 mm</span><span>1200 mm</span></div>
+                <input type="range" id="diepte-slider" min="250" max="2000" value="500" step="10" aria-label="Diepte kruipruimte in mm" />
+                <div class="slider-limits"><span>250 mm</span><span>2000 mm</span></div>
               </div>
               <div class="wizard-nav">
                 <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
@@ -365,7 +365,7 @@
               </div>
               <div class="wizard-nav">
                 <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-                <button type="button" class="btn btn-primary" id="next-schuim-kruip" onclick="finishSchuim()" disabled>Volgende →</button>
+                <button type="button" class="btn btn-primary" id="next-schuim-kruip" onclick="finishSchuim()" disabled>Toon indicatie →</button>
               </div>
             </div>
           </div>
@@ -509,6 +509,21 @@
         },
         extra_zone: 175,
         minimum: 2500,
+      };
+
+      /**
+       * Schuimbeton-indicatie: ruwe bandbreedte. Meer dan ~thermMax mm schuimbeton stopt we in de rekensom
+       * (dalende isolatie-opbrengst); de rest wordt als zandophoging geprijsd (materiaal + grove plaatsing/pomp).
+       * Cijfers zijn bewust breed — offerte op maat na opname.
+       */
+      const SCHUIM_REKEN = {
+        minVrijOnderVloerMm: 400,
+        schuimThermMaxMm: 400,
+        zandEurM3: { laag: 60, hoog: 150 },
+        schuimEurM3: { laag: 175, hoog: 360 },
+        vlEurM2: { laag: 36, hoog: 62 },
+        ondergrondKruipMult: { zand: 1, klei: 1.1, 'deels-beton': 1.05, beton: 1.03, onbekend: 1.07 },
+        minimum: 3500,
       };
 
       const STEPS_VL = ['step-product', 'step-vl-grond', 'step-m2', 'step-projecttype', 'step-zones'];
@@ -752,28 +767,178 @@
         return m[key] || key;
       }
 
+      /** Berekent schuim-/zanddiktes en €-bandbreedte (excl. btw). */
+      function computeSchuimBreakdown() {
+        const R = SCHUIM_REKEN;
+        const D = state.diepteMm;
+        const m2 = state.schuimM2;
+        let ruimteMm = D - R.minVrijOnderVloerMm;
+        if (ruimteMm < 0) ruimteMm = 0;
+        const schuimMm = Math.min(R.schuimThermMaxMm, ruimteMm);
+        const zandMm = Math.max(0, ruimteMm - schuimMm);
+        const volSchuimM3 = (m2 * schuimMm) / 1000;
+        const volZandM3 = (m2 * zandMm) / 1000;
+        const mult = R.ondergrondKruipMult[state.kruipOndergrond] || 1.07;
+        let laag =
+          volSchuimM3 * R.schuimEurM3.laag +
+          volZandM3 * R.zandEurM3.laag +
+          m2 * R.vlEurM2.laag;
+        let hoog =
+          volSchuimM3 * R.schuimEurM3.hoog +
+          volZandM3 * R.zandEurM3.hoog +
+          m2 * R.vlEurM2.hoog;
+        laag *= mult;
+        hoog *= mult;
+        laag = Math.round(Math.max(R.minimum, laag) / 250) * 250;
+        hoog = Math.round(Math.max(R.minimum, hoog) / 250) * 250;
+        if (hoog < laag) {
+          const t = laag;
+          laag = hoog;
+          hoog = t;
+        }
+        return { ruimteMm, schuimMm, zandMm, volSchuimM3, volZandM3, laag, hoog, mult };
+      }
+
+      function setPriceDisclaimerSchuim() {
+        const d = document.getElementById('price-disclaimer');
+        d.replaceChildren();
+        d.appendChild(
+          document.createTextNode(
+            'Ruwe bandbreedte: schuimbeton tot maximaal ca. ' +
+              SCHUIM_REKEN.schuimThermMaxMm +
+              ' mm in deze berekening (meer levert snel weinig extra isolatie); dieper opvullen rekenen we als zandophoging (pomp-/aanvoercondities verschillen).'
+          )
+        );
+        d.appendChild(document.createElement('br'));
+        d.appendChild(
+          document.createTextNode(
+            'Geen offerte — bij grote diepte of bijzondere bodem altijd even afstemmen; bel gerust als je twijfelt.'
+          )
+        );
+      }
+
+      function renderSchuimAssumptions(b) {
+        const wrap = document.getElementById('price-assumptions');
+        wrap.replaceChildren();
+        wrap.hidden = false;
+        const intro = document.createElement('p');
+        intro.className = 'price-assumptions-intro';
+        const n = document.createElement('span');
+        n.className = 'assumption-count';
+        n.textContent = 'vijf';
+        intro.append(
+          document.createTextNode('Deze schatting sluit aan op '),
+          n,
+          document.createTextNode(
+            ' korte uitgangspunten — vooral om diepe kruipruimtes eerlijk te vergelijken met een “standaard” situatie.'
+          )
+        );
+        wrap.appendChild(intro);
+        const ul = document.createElement('ul');
+        ul.className = 'price-assumptions-list';
+        let zandUitleg;
+        if (b.ruimteMm <= 0) {
+          zandUitleg =
+            'Weinig opvulruimte in dit model (kruip lijkt krap t.o.v. gereserveerde vrije hoogte). De bandbreedte is dan vooral het vloerverwarmings-onderdeel — bel even voor maatwerk als je tóch wilt opvullen.';
+        } else if (b.zandMm > 0) {
+          zandUitleg =
+            'Zandophoging: ca. ' +
+            b.zandMm +
+            ' mm (≈ ' +
+            b.volZandM3.toFixed(1) +
+            ' m³ over ' +
+            state.schuimM2 +
+            ' m²) om eerst op te hogen; pompafstand, aanvoer en bodem bepalen de echte prijs sterk mee.';
+        } else {
+          zandUitleg =
+            'Geen zandophoging in deze schatting: na gereserveerde vrije hoogte blijft er ' +
+            b.ruimteMm +
+            ' mm over — dat past binnen de “nuttige” schuimlaag (max. ' +
+            SCHUIM_REKEN.schuimThermMaxMm +
+            ' mm), zonder eerst zand te hoeven prijzen.';
+        }
+        const bodemExtra =
+          b.mult > 1.005
+            ? 'Ondergrond kruip: ' +
+              kruipLabel(state.kruipOndergrond) +
+              ' — in deze schatting ca. ' +
+              Math.round((b.mult - 1) * 100) +
+              '% correctie voor extra risico of werk.'
+            : 'Ondergrond kruip: ' +
+              kruipLabel(state.kruipOndergrond) +
+              ' — zonder extra bodemcorrectie bovenop de basisbandbreedte.';
+        const items = [
+          'Kruipruimte: ' +
+            state.diepteMm +
+            ' mm vrij gemeten; we houden in de rekensom rekening met ongeveer ' +
+            SCHUIM_REKEN.minVrijOnderVloerMm +
+            ' mm ruimte onder de vloer na het werk (toegang, leidingen).',
+          'Schuimbeton: maximaal ' +
+            b.schuimMm +
+            ' mm in deze berekening — boven ~' +
+            SCHUIM_REKEN.schuimThermMaxMm +
+            ' mm neemt de extra isolatie sterk af; meer vullen is meestal geen slimme euro per cm.',
+          zandUitleg,
+          'Vloerverwarming: onderdeel voor het verwarmde oppervlak (' + state.schuimM2 + ' m²) zodra de opbouw geschikt is — zonder zones-detail zoals bij “alleen VL”.',
+          bodemExtra,
+        ];
+        items.forEach(text => {
+          const li = document.createElement('li');
+          li.textContent = text;
+          ul.appendChild(li);
+        });
+        wrap.appendChild(ul);
+        const foot = document.createElement('p');
+        foot.className = 'price-assumptions-foot';
+        foot.textContent =
+          'Zand- en schuimbetonmarkten verschillen per week en regio; gebruik dit als gesprekspunt, niet als plafond of vloer.';
+        wrap.appendChild(foot);
+      }
+
       function finishSchuim() {
         if (!state.kruipOndergrond) return;
-        state.resultMode = 'schuim';
+        const b = computeSchuimBreakdown();
+        state.resultMode = 'schuim_indicatie';
+        resetContactResultLayout();
         showResultShell();
-        document.getElementById('result-priced-wrap').classList.add('is-hidden');
-        document.getElementById('result-alt-wrap').hidden = false;
-        document.getElementById('result-alt-title').textContent = 'Bedankt — we maken een voorstel op maat';
-        const body = document.getElementById('result-alt-body');
-        body.textContent =
-          'Voor vloerverwarming met schuimbeton hangt de prijs sterk samen met kruipruimte, woningoppervlak en wat er onder de kruipruimte zit. ' +
-          'We rekenen daarom geen vaste bandbreedte uit in dit stappenplan. Je antwoorden nemen we mee; je hoort snel van ons met een concreet voorstel.';
-        const tags = document.getElementById('result-alt-tags');
-        tags.replaceChildren();
-        [state.diepteMm + ' mm kruipruimte', state.schuimM2 + ' m² woning', kruipLabel(state.kruipOndergrond)].forEach(txt => {
+
+        document.getElementById('result-price-title').textContent = 'Vrijblijvende prijsindicatie (schuimbeton + VL)';
+        document.getElementById('price-meta-line').textContent =
+          'Indicatie incl. schuimbeton, eventuele zandophoging, vloerverwarming en arbeid — excl. btw';
+        setPriceDisclaimerSchuim();
+
+        const priceEl = document.getElementById('price-output');
+        priceEl.textContent = '';
+        const lo = document.createElement('strong');
+        lo.textContent = fmt(b.laag);
+        const sep = document.createTextNode(' – ');
+        const hi = document.createElement('strong');
+        hi.textContent = fmt(b.hoog);
+        priceEl.append(lo, sep, hi);
+
+        const bd = document.getElementById('price-breakdown');
+        bd.replaceChildren();
+        const tagParts = [
+          'VL + schuimbeton',
+          state.diepteMm + ' mm kruip',
+          state.schuimM2 + ' m²',
+          kruipLabel(state.kruipOndergrond),
+          'Schuim tot ' + b.schuimMm + ' mm',
+        ];
+        if (b.zandMm > 0) tagParts.push('Zand ca. ' + b.zandMm + ' mm');
+        tagParts.forEach(txt => {
           const tag = document.createElement('span');
           tag.className = 'price-tag';
           tag.textContent = txt;
-          tags.appendChild(tag);
+          bd.appendChild(tag);
         });
-        setLeadCopy('Gegevens achterlaten', 'Dan kunnen we je voorstel goed voorbereiden — vrijblijvend.');
+
+        renderSchuimAssumptions(b);
+
+        setLeadCopy('Offerte op maat?', 'Laat je gegevens achter — dan checken we pompafstand, bodem en detailplan. Gratis en vrijblijvend.');
+
         document.getElementById('f-product').value = 'Vloerverwarming met schuimbeton';
-        document.getElementById('f-traject').value = 'schuim_contact';
+        document.getElementById('f-traject').value = 'schuim_indicatie';
         document.getElementById('f-vloerdiepte').value = String(state.diepteMm);
         document.getElementById('f-schuim-m2').value = String(state.schuimM2);
         document.getElementById('f-kruip-ondergrond').value = kruipLabel(state.kruipOndergrond);
@@ -781,14 +946,23 @@
         document.getElementById('f-type').value = '';
         document.getElementById('f-ondergrond').value = '';
         document.getElementById('f-zones').value = '';
-        document.getElementById('f-prijs').value = 'Geen online bandbreedte — schuimbeton op maat';
+        document.getElementById('f-prijs').value = fmt(b.laag) + ' – ' + fmt(b.hoog);
         document.getElementById('f-uitgangspunten').value = [
-          'Traject: VL + schuimbeton',
-          'Kruip ' + state.diepteMm + ' mm',
-          'Woning ' + state.schuimM2 + ' m²',
+          'Traject: VL + schuimbeton (indicatie)',
+          'Kruip ' + state.diepteMm + ' mm; woning ' + state.schuimM2 + ' m²',
+          'Ruimte na gereserveerde vrije hoogte: ' + b.ruimteMm + ' mm; schuim ' + b.schuimMm + ' mm; zand ' + b.zandMm + ' mm',
+          'Volumes: schuim ' + b.volSchuimM3.toFixed(2) + ' m³, zand ' + b.volZandM3.toFixed(2) + ' m³',
           'Ondergrond kruip: ' + kruipLabel(state.kruipOndergrond),
         ].join('\n');
-        vlGtag('event', 'wizard_schuim_contact', { diepte_mm: state.diepteMm, m2: state.schuimM2, kruip: state.kruipOndergrond });
+
+        vlGtag('event', 'wizard_schuim_indicatie', {
+          diepte_mm: state.diepteMm,
+          m2: state.schuimM2,
+          kruip: state.kruipOndergrond,
+          zand_mm: b.zandMm,
+          schuim_mm: b.schuimMm,
+        });
+        vlGtag('event', 'calculator_result', { traject: 'schuim', m2: state.schuimM2, diepte_mm: state.diepteMm });
       }
 
       function fmt(n) { return '€ ' + Math.round(n).toLocaleString('nl-NL'); }
