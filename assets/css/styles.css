@@ -144,11 +144,29 @@ a {
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.brand-wordmark {
-  display: inline-flex;
-  align-items: center;
+/* Woordmerkkleuren expliciet t.o.v. globale `a { color: inherit }` (voorkomt alles-wit FOUC). */
+.site-header .brand .brand-vl {
+  color: var(--brand);
+}
+
+.site-header .brand .brand-warmte {
+  color: var(--white);
+}
+
+.brand-text-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   flex-shrink: 1;
   min-width: 0;
+  gap: 0.12rem;
+}
+
+.brand-wordmark-row {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
   white-space: nowrap;
   font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
   font-weight: 800;
@@ -158,12 +176,24 @@ a {
 }
 
 .brand-vl {
-  color: var(--brand);
+  margin-right: 0.22em;
 }
 
-.brand-warmte {
-  margin-left: 0.06em;
-  color: var(--white);
+.brand-tagline {
+  display: none;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(154, 171, 190, 0.92);
+  line-height: 1.25;
+  max-width: 20rem;
+}
+
+@media (min-width: 1081px) {
+  .brand-tagline {
+    display: block;
+  }
 }
 
 .brand:hover .brand-mark {
@@ -648,6 +678,12 @@ h2 {
   line-height: 1.35;
 }
 
+@media (min-width: 1081px) {
+  .site-footer .footer-tagline {
+    display: none;
+  }
+}
+
 .site-footer .footer-nav {
   display: flex;
   flex-direction: column;
@@ -826,7 +862,7 @@ textarea {
     height: 44px;
   }
 
-  .brand-wordmark {
+  .brand-wordmark-row {
     font-size: clamp(1.22rem, 0.4rem + 2.4vw, 1.85rem);
   }
 
@@ -907,7 +943,7 @@ textarea {
     height: 40px;
   }
 
-  .brand-wordmark {
+  .brand-wordmark-row {
     font-size: clamp(1.12rem, 0.35rem + 3.2vw, 1.62rem);
   }
 
