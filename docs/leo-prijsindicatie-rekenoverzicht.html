@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prijsindicatie-calculator — rekenoverzicht | VLWarmte</title>
+    <style>
+      :root {
+        --ink: #0d1624;
+        --muted: #4a5a6e;
+        --line: #c8d0dc;
+        --brand: #e0552f;
+        --brand-soft: #fff3ef;
+        --surface: #f6f8fc;
+        --white: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        font-size: 10.5pt;
+        line-height: 1.45;
+        color: var(--ink);
+        background: var(--surface);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .sheet {
+        max-width: 210mm;
+        margin: 0 auto;
+        padding: 14mm 16mm 18mm;
+        background: var(--white);
+        min-height: 297mm;
+      }
+
+      @page {
+        size: A4;
+        margin: 14mm 16mm 16mm;
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+        .sheet {
+          max-width: none;
+          margin: 0;
+          padding: 0;
+          min-height: auto;
+        }
+        .no-print {
+          display: none !important;
+        }
+      }
+
+      .doc-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+        font-size: 9pt;
+        color: var(--muted);
+      }
+
+      .brand-mark {
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        font-size: 11pt;
+      }
+
+      .cover-line {
+        height: 4px;
+        width: 72px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, #bc3f1f, var(--brand));
+        margin: 0.5rem 0 1rem;
+      }
+
+      h1 {
+        margin: 0 0 0.35rem;
+        font-size: 20pt;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+
+      .subtitle {
+        margin: 0 0 1.25rem;
+        font-size: 11pt;
+        color: var(--muted);
+        max-width: 42rem;
+      }
+
+      h2 {
+        margin: 1.35rem 0 0.5rem;
+        font-size: 12pt;
+        font-weight: 700;
+        color: var(--ink);
+        border-bottom: 2px solid var(--brand);
+        padding-bottom: 0.2rem;
+      }
+
+      h3 {
+        margin: 1rem 0 0.35rem;
+        font-size: 10.5pt;
+        font-weight: 700;
+      }
+
+      p {
+        margin: 0 0 0.65rem;
+      }
+
+      ul {
+        margin: 0.35rem 0 0.65rem;
+        padding-left: 1.15rem;
+      }
+
+      li {
+        margin-bottom: 0.25rem;
+      }
+
+      .callout {
+        margin: 0.85rem 0;
+        padding: 0.75rem 0.9rem;
+        border-radius: 8px;
+        border-left: 4px solid var(--brand);
+        background: var(--brand-soft);
+        font-size: 10pt;
+      }
+
+      .formula {
+        font-family: ui-monospace, "Cascadia Code", monospace;
+        font-size: 9.5pt;
+        background: #eef2f8;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        padding: 0.65rem 0.75rem;
+        margin: 0.5rem 0 0.75rem;
+        white-space: pre-wrap;
+        line-height: 1.4;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0.5rem 0 0.85rem;
+        font-size: 9.8pt;
+      }
+
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 0.45rem 0.55rem;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #e8eef7;
+        font-weight: 700;
+      }
+
+      tr:nth-child(even) td {
+        background: #fafbfe;
+      }
+
+      .num {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .foot {
+        margin-top: 1.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--line);
+        font-size: 8.5pt;
+        color: var(--muted);
+      }
+
+      .no-print {
+        margin-bottom: 1rem;
+        padding: 0.65rem 0.85rem;
+        background: #e8f4ff;
+        border: 1px solid #9ec5e8;
+        border-radius: 8px;
+        font-size: 9.5pt;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sheet">
+      <div class="no-print">
+        <strong>PDF maken:</strong> Bestand openen in Chrome → Ctrl/Cmd+P → “Opslaan als PDF”. Dit document is ook vooraf geoptimaliseerd voor A4-print.
+      </div>
+
+      <div class="doc-meta">
+        <div>
+          <div class="brand-mark">VLWarmte</div>
+          <div>Intern document — rekenlogica prijsindicatie</div>
+        </div>
+        <div style="text-align: right">
+          Voor: Leo (opdrachtgever)<br />
+          Datum: <span id="doc-date"></span>
+        </div>
+      </div>
+
+      <div class="cover-line" aria-hidden="true"></div>
+      <h1>Prijsindicatie-calculator — rekenoverzicht</h1>
+      <p class="subtitle">
+        Samenvatting van de berekeningen zoals geïmplementeerd op vlwarmte.nl (pagina prijsindicatie). Bedoeld als transparant uitgangspunt bij vergelijking en gesprek — geen offerte.
+      </p>
+
+      <div class="callout">
+        <strong>Belangrijk:</strong> Alle bedragen zijn <strong>ruwe bandbreedtes</strong> (laag–hoog), <strong>inclusief materiaal en arbeid, exclusief btw</strong>, gebaseerd op
+        <strong>gemiddelde projectkosten in Noord-Nederland</strong>. De werkelijke prijs hangt af van de situatie ter plaatse en volgt uit opname en offerte.
+      </div>
+
+      <h2>1. Algemene afronding</h2>
+      <p>
+        Na het optellen van de onderdelen wordt eerst het <strong>minimum</strong> voor dat traject toegepast, daarna wordt afgerond op het dichtstbijzijnde veelvoud van
+        <strong>€&nbsp;250</strong>.
+      </p>
+
+      <h2>2. Traject — Alleen vloerverwarming (betonvloer)</h2>
+      <p>
+        Van toepassing wanneer de gebruiker “alleen vloerverwarming” kiest en de ondergrond <strong>beton</strong> is. (Bij een <strong>houten</strong> ondergrond wordt géén automatische prijs
+        getoond; het traject leidt naar contact omdat het maatwerk betreft.)
+      </p>
+      <div class="formula">laag = afronden_250( max(2500, m² × tarief_laag + extra_zones) )
+hoog = afronden_250( max(2500, m² × tarief_hoog + extra_zones) )</div>
+      <p><strong>Extra zones:</strong> voor elke zone boven de eerste wordt <strong>€&nbsp;175</strong> opgeteld (zone&nbsp;1 = €&nbsp;0, zone&nbsp;2 = €&nbsp;175, zone&nbsp;3 = €&nbsp;350; keuze “4+” = derde extra = €&nbsp;525).</p>
+      <p><strong>Minimum totaal voor dit traject:</strong> €&nbsp;2.500.</p>
+
+      <h3>Tarieven per m² (bandbreedte)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Situatie</th>
+            <th class="num">Laag (€/m²)</th>
+            <th class="num">Hoog (€/m²)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nieuwbouw, betonvloer</td>
+            <td class="num">45</td>
+            <td class="num">55</td>
+          </tr>
+          <tr>
+            <td>Nieuwbouw, ondergrond onbekend</td>
+            <td class="num">48</td>
+            <td class="num">62</td>
+          </tr>
+          <tr>
+            <td>Renovatie, betonvloer</td>
+            <td class="num">68</td>
+            <td class="num">82</td>
+          </tr>
+          <tr>
+            <td>Renovatie, ondergrond onbekend</td>
+            <td class="num">70</td>
+            <td class="num">88</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>3. Traject — Vloerverwarming + schuimbeton</h2>
+      <p>
+        Model voor kruipruimte-opbouw: schuimbeton heeft in de berekening een <strong>plafond van 400&nbsp;mm</strong> (thermische opbrengst neemt daarboven sterk af). Dieper vullen wordt in de som
+        geprijsd als <strong>zandophoging</strong> (andere €/m³). Er wordt <strong>400&nbsp;mm</strong> gereserveerd als vrije ruimte onder de vloer na het werk.
+      </p>
+
+      <h3>Stappen in de rekensom</h3>
+      <ol style="margin: 0.35rem 0 0.65rem; padding-left: 1.2rem">
+        <li><strong>Ruimte voor opvulling (mm):</strong> max(0, kruipdiepte_mm − 400).</li>
+        <li><strong>Schuim (mm):</strong> min(400, ruimte).</li>
+        <li><strong>Zand (mm):</strong> max(0, ruimte − schuim).</li>
+        <li><strong>Volume schuim (m³):</strong> m² × schuim_mm / 1000.</li>
+        <li><strong>Volume zand (m³):</strong> m² × zand_mm / 1000.</li>
+        <li>
+          <strong>Basisprijs (vóór bodemfactor):</strong><br />
+          laag = m³_schuim × 175 + m³_zand × 60 + m² × 36<br />
+          hoog = m³_schuim × 360 + m³_zand × 150 + m² × 62
+        </li>
+        <li>Vermenigvuldigen met <strong>ondergrondfactor</strong> (zie tabel hieronder).</li>
+        <li>Toepassen <strong>minimum €&nbsp;3.500</strong>, daarna afronden op <strong>€&nbsp;250</strong>.</li>
+      </ol>
+
+      <h3>Ondergrond kruipruimte — correctiefactor</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Keuze in wizard</th>
+            <th class="num">Factor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Zand / funderingsgrind</td>
+            <td class="num">1,00</td>
+          </tr>
+          <tr>
+            <td>Deels beton</td>
+            <td class="num">1,05</td>
+          </tr>
+          <tr>
+            <td>Overwegend beton</td>
+            <td class="num">1,03</td>
+          </tr>
+          <tr>
+            <td>Klei / vochtige bodem</td>
+            <td class="num">1,10</td>
+          </tr>
+          <tr>
+            <td>Onbekend</td>
+            <td class="num">1,07</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4. Alleen ter verduidelijking (geen € in hoofdformule)</h2>
+      <p>
+        Bij “alleen VL” toont de wizard een <strong>indicatieve buislengte</strong> (orde-grootte) voor de tekstuele uitgangspunten: grofweg <strong>5–6,5&nbsp;m buis per m²</strong> vloeroppervlak, afgerond per
+        10&nbsp;m. Dit ondersteunt verwachting rond materiaal; het is <strong>geen</strong> aparte prijsregel in de calculator.
+      </p>
+
+      <h2>5. Samenvatting voor stakeholders</h2>
+      <ul>
+        <li>Twee gescheiden modellen: <strong>VL op beton (m² + zones + minimum)</strong> versus <strong>VL + schuim (volumes + m²-onderdeel + bodemfactor + minimum)</strong>.</li>
+        <li><strong>Houten ondergrond (alleen VL):</strong> geen automatische prijs — contactadvies.</li>
+        <li>Alle uitkomsten blijven <strong>indicatief</strong>; definitieve prijs na <strong>opname en offerte</strong>.</li>
+      </ul>
+
+      <div class="foot">
+        VLWarmte · Verlengde Stationsweg 58, 9471 PM Zuidlaren · www.vlwarmte.nl<br />
+        Bron: technische implementatie prijsindicatie-wizard (website). Document gegenereerd als bijlage bij levering transparantie rekenlogica.
+      </div>
+    </div>
+    <script>
+      document.getElementById("doc-date").textContent = new Intl.DateTimeFormat("nl-NL", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }).format(new Date());
+    </script>
+  </body>
+</html>
