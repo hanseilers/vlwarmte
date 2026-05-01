@@ -180,7 +180,7 @@ Schrijf naar `docs/website-manager/release-notes.md` — voeg bovenaan toe (nieu
 
 Controleer of de deployment geslaagd is via:
 ```bash
-curl -s http://vlwarmte.nl | grep -o "G-[A-Z0-9]*"
+curl -s https://www.vlwarmte.nl/ | grep -o "G-[A-Z0-9]*"
 ```
 
 Schrijf een korte samenvatting van de cyclus in de terminal:

@@ -147,6 +147,29 @@ a {
   margin-right: 0.22em;
 }
 
+/* Inline woordmerk (oranje VL + Warmte), zelfde opbouw als logo */
+.wordmark {
+  display: inline;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.wordmark .brand-vl {
+  color: var(--brand);
+}
+
+.wordmark .brand-warmte {
+  color: inherit;
+  font-weight: inherit;
+}
+
+/* Oranje “vl” in het domein; “Warmte” en .nl als gewone linktekst (geen woordmerk-margin) */
+.email-domain-vl {
+  color: var(--brand);
+  font-weight: 700;
+}
+
 .brand-tagline {
   display: none;
   font-size: 0.6875rem;
@@ -557,12 +580,6 @@ h2 {
 .page-hero > * {
   position: relative;
   z-index: 1;
-}
-
-.page-hero .page-hero-note {
-  margin-top: 0.65rem;
-  max-width: 42rem;
-  line-height: 1.5;
 }
 
 .two-col {

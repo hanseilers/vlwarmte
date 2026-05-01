@@ -75,6 +75,23 @@
         font-size: 11pt;
       }
 
+      .wordmark {
+        display: inline;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        white-space: nowrap;
+      }
+
+      .wordmark .brand-vl {
+        color: var(--brand);
+        margin-right: 0.22em;
+      }
+
+      .wordmark .brand-warmte {
+        color: var(--ink);
+        font-weight: 800;
+      }
+
       .cover-line {
         height: 4px;
         width: 72px;
@@ -202,7 +219,7 @@
 
       <div class="doc-meta">
         <div>
-          <div class="brand-mark">VLWarmte</div>
+          <div class="brand-mark"><span class="wordmark"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span></div>
           <div>Intern document — rekenlogica prijsindicatie</div>
         </div>
         <div style="text-align: right">
@@ -221,9 +238,9 @@
         <strong>Belangrijk:</strong> Alle bedragen zijn <strong>ruwe bandbreedtes</strong> (laag–hoog), <strong>inclusief materiaal en arbeid, exclusief btw</strong>, gebaseerd op
         <strong>gemiddelde projectkosten in Noord-Nederland</strong>. De werkelijke prijs hangt af van de situatie ter plaatse en volgt uit opname en offerte.
         <br /><br />
-        <strong>Terminologie:</strong> <strong>VLWarmte</strong> is uitsluitend de <strong>bedrijfsnaam</strong>. In de wizard heet het traject zonder schuimbeton
-        <strong>“alleen vloerverwarming”</strong>: dat betekent <strong>alleen het vloerverwarmingssysteem</strong> (geen schuimbetonpakket) — niet “alleen dit bedrijf”. In dit document
-        gebruiken we die woorden voluit en geen afkorting “VL”, om verwarring met de merknaam te voorkomen.
+        <strong>Terminologie:</strong> <strong><span class="wordmark"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span></strong> is uitsluitend de <strong>bedrijfsnaam</strong>. In de wizard heet het traject zonder schuimbeton
+        <strong>“alleen vloerverwarming”</strong>: dat betekent <strong>alleen het vloerverwarmingssysteem</strong> (geen schuimbetonpakket) — niet “alleen dit bedrijf”. Voor trajectnamen in
+        deze uitleg gebruiken we volledige woorden; de bedrijfsnaam volgt dezelfde visuele stijl als op vlwarmte.nl.
       </div>
 
       <h2>1. Algemene afronding</h2>
@@ -346,7 +363,7 @@ hoog = afronden_250( max(2500, m² × tarief_hoog + extra_zones) )</div>
       </ul>
 
       <div class="foot">
-        VLWarmte · Verlengde Stationsweg 58, 9471 PM Zuidlaren · www.vlwarmte.nl<br />
+        <span class="wordmark"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span> · Verlengde Stationsweg 58, 9471 PM Zuidlaren · www.vlwarmte.nl<br />
         Bron: technische implementatie prijsindicatie-wizard (website). Document gegenereerd als bijlage bij levering transparantie rekenlogica.
       </div>
     </div>

@@ -132,6 +132,22 @@ a {
   margin-right: 0.22em;
 }
 
+.wordmark {
+  display: inline;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.wordmark .brand-vl {
+  color: var(--brand);
+}
+
+.wordmark .brand-warmte {
+  color: inherit;
+  font-weight: inherit;
+}
+
 .brand-tagline {
   display: none;
   font-size: 0.6875rem;
