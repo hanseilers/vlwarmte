@@ -128,18 +128,45 @@ a {
 .brand {
   display: inline-flex;
   align-items: center;
+  gap: 0.55rem;
   flex-shrink: 0;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
 }
 
-.brand-logo {
+.brand-mark {
   display: block;
   width: auto;
   height: 52px;
+  flex-shrink: 0;
   filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.24));
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-.brand:hover .brand-logo {
+.brand-wordmark {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 1;
+  min-width: 0;
+  white-space: nowrap;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.38rem, 0.55rem + 1.85vw, 2.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.brand-vl {
+  color: var(--brand);
+}
+
+.brand-warmte {
+  margin-left: 0.06em;
+  color: var(--white);
+}
+
+.brand:hover .brand-mark {
   transform: translateY(-1px);
   filter: drop-shadow(0 6px 14px rgba(224, 85, 47, 0.28));
 }
@@ -611,6 +638,16 @@ h2 {
   margin-bottom: 0.4rem;
 }
 
+.site-footer .footer-tagline {
+  margin: 0.1rem 0 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  color: rgba(200, 212, 228, 0.88);
+  max-width: 20rem;
+  line-height: 1.35;
+}
+
 .site-footer .footer-nav {
   display: flex;
   flex-direction: column;
@@ -785,8 +822,12 @@ textarea {
     min-height: 64px;
   }
 
-  .brand-logo {
+  .brand-mark {
     height: 44px;
+  }
+
+  .brand-wordmark {
+    font-size: clamp(1.22rem, 0.4rem + 2.4vw, 1.85rem);
   }
 
   .site-header.is-open::after {
@@ -862,8 +903,12 @@ textarea {
     min-height: 60px;
   }
 
-  .brand-logo {
+  .brand-mark {
     height: 40px;
+  }
+
+  .brand-wordmark {
+    font-size: clamp(1.12rem, 0.35rem + 3.2vw, 1.62rem);
   }
 
   .site-header.is-open::after {

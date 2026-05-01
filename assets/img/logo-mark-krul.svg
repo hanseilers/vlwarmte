@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="22 26 198 86" role="img" aria-label="VLWarmte slakkenhuis legpatroon">
+  <defs>
+    <linearGradient id="pipeKrul" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f06a3d" />
+      <stop offset="100%" stop-color="#bc3f1f" />
+    </linearGradient>
+    <filter id="shadowKrul" x="-12%" y="-25%" width="130%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#000000" flood-opacity="0.22" />
+    </filter>
+  </defs>
+  <g filter="url(#shadowKrul)">
+    <g transform="translate(16 14)">
+      <path
+        d="M16 22 H204 V92 H16 V22 H42 V72 H178 V42 H68 V55 H150"
+        fill="none"
+        stroke="url(#pipeKrul)"
+        stroke-width="14"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M16 22 H204 V92 H16 V22 H42 V72 H178 V42 H68 V55 H150"
+        fill="none"
+        stroke="#f6f8fc"
+        stroke-width="3"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        opacity="0.74"
+      />
+    </g>
+  </g>
+</svg>
