@@ -208,9 +208,6 @@
                   <span class="option-hint">Kruipruimte isoleren en vloer opbouwen</span>
                 </button>
               </div>
-              <div class="wizard-nav">
-                <button type="button" class="btn btn-primary" id="next-product" onclick="advanceFromProduct()" disabled>Volgende →</button>
-              </div>
             </div>
 
             <!-- Alleen VL: ondergrond vloer (hout → contact, beton → door) -->
@@ -574,7 +571,6 @@
       let wizardStarted = false;
 
       const nextBtnByStep = {
-        'step-product': 'next-product',
         'step-vl-grond': 'next-vl-grond',
         'step-projecttype': 'next-projecttype',
         'step-zones': 'next-zones',
@@ -608,7 +604,6 @@
         if (!nid) return;
         const btn = document.getElementById(nid);
         if (!btn) return;
-        if (sid === 'step-product' && state.product) btn.disabled = false;
         if (sid === 'step-vl-grond' && state.vlOndergrond) btn.disabled = false;
         if (sid === 'step-projecttype' && state.projecttype) btn.disabled = false;
         if (sid === 'step-zones' && state.zones) btn.disabled = false;
@@ -641,6 +636,9 @@
         if (!wizardStarted && field === 'product') {
           wizardStarted = true;
           vlGtag('event', 'wizard_start', { stap: 'productkeuze', product: val });
+        }
+        if (field === 'product') {
+          advanceFromProduct();
         }
       }
 
