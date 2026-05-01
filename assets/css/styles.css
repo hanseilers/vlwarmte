@@ -326,6 +326,14 @@ h2 {
   padding-left: 1.1rem;
 }
 
+.hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: center;
+  margin: 0.35rem 0 0;
+}
+
 .section {
   padding: 4rem 0;
 }
@@ -489,6 +497,16 @@ h2 {
 .cta-band > * {
   position: relative;
   z-index: 1;
+}
+
+.cta-band a:not(.btn) {
+  color: rgba(255, 255, 255, 0.94);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.cta-band a:not(.btn):hover {
+  color: #fff;
 }
 
 .page-hero {
