@@ -269,9 +269,8 @@ a {
     radial-gradient(ellipse 140% 120% at 50% 48%, rgba(188, 63, 31, 0.12), transparent 72%);
   pointer-events: none;
   animation: none;
-  opacity: 0.9;
-  transform: scale(1.02) translate(-0.2%, 0.15%);
-  filter: brightness(1.05) saturate(1.06);
+  opacity: 0.92;
+  filter: brightness(1.08) saturate(1.08);
   will-change: auto;
 }
 
@@ -282,10 +281,11 @@ a {
   z-index: 0;
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, rgba(95, 163, 224, 0.22), transparent 74%);
+  background: radial-gradient(circle, rgba(95, 163, 224, 0.3), transparent 72%);
   pointer-events: none;
   animation: none;
-  opacity: 0.66;
+  opacity: 0.76;
+  filter: brightness(1.04) saturate(1.04);
   will-change: auto;
 }
 
