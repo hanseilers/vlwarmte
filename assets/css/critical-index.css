@@ -262,8 +262,9 @@ a {
   inset: 0;
   z-index: 0;
   background:
+    radial-gradient(circle at 96% 2%, rgba(224, 85, 47, 0.55), rgba(224, 85, 47, 0.18) 28%, transparent 44%),
     radial-gradient(circle at 12% 82%, rgba(95, 163, 224, 0.26), transparent 46%),
-    radial-gradient(circle at 72% 26%, rgba(224, 85, 47, 0.44), transparent 52%),
+    radial-gradient(circle at 72% 24%, rgba(224, 85, 47, 0.5), transparent 54%),
     radial-gradient(ellipse 110% 95% at 48% 46%, rgba(224, 85, 47, 0.26), transparent 58%),
     radial-gradient(ellipse 140% 120% at 50% 48%, rgba(188, 63, 31, 0.12), transparent 72%);
   pointer-events: none;
