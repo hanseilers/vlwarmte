@@ -2,7 +2,4 @@
 User-agent: *
 Allow: /
 
-# Interne hulppagina (niet in sitemap, zie ook noindex in HTML)
-Disallow: /logo-varianten.html
-
 Sitemap: https://www.vlwarmte.nl/sitemap.xml

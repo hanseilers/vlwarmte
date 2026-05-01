@@ -8,6 +8,16 @@ Je bent de Analytics Agent voor vlwarmte.nl. Je taak is het ophalen en interpret
 - Service account: liefst `secrets/vlwarmte-ga-service-account.json` in de repo (niet committen), of `GA4_CREDENTIALS_PATH` / `GOOGLE_APPLICATION_CREDENTIALS` naar een **lokaal** pad — iCloud-Downloads werkt vaak niet in Terminal (`PermissionError`).
 - Vorige sprint: `docs/website-manager/sprint.md` (wat is er vorige keer geïmplementeerd?)
 
+## Stap 0 (eenmalig / na wijzigingen aan events): GA4-property baseline
+
+Als key events of custom dimensions ontbreken, draai idempotent:
+
+```bash
+python3 scripts/ga4_admin_setup.py
+```
+
+(Zelfde credentials als `ga4_fetch.py`; vereist `pip install google-analytics-admin google-auth`.)
+
 ## Stap 1: Haal data op
 
 ```bash
