@@ -27,7 +27,10 @@
       name="twitter:description"
       content="Vloerverwarming in Assen door VLWarmte — complete trajecten van ondervloer tot oplevering. 20 minuten reistijd vanaf Zuidlaren. Vraag een prijsindicatie aan."
     />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/critical-index.css" />
+    <link rel="preload" href="assets/css/styles.css" as="style" />
+    <link rel="stylesheet" href="assets/css/styles.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="assets/css/styles.css" /></noscript>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -56,9 +59,9 @@
   <body>
     <header class="site-header">
       <div class="container site-header-inner">
-        <a class="brand" href="index.html" aria-label="VLWarmte — home"><img class="brand-mark" src="assets/img/logo-mark-krul.svg" alt="" decoding="async" /><span class="brand-text-stack"><span class="brand-wordmark-row"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span><span class="brand-tagline" aria-hidden="true">Slim gelegd. Gelijkmatig warm.</span></span></a>
+        <a class="brand" href="/" aria-label="VLWarmte — home"><img class="brand-mark" src="assets/img/logo-mark-krul.svg" alt="" decoding="async" /><span class="brand-text-stack"><span class="brand-wordmark-row"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span><span class="brand-tagline" aria-hidden="true">Slim gelegd. Gelijkmatig warm.</span></span></a>
         <nav class="site-nav" data-nav>
-          <a href="index.html">Home</a>
+          <a href="/">Home</a>
           <a href="diensten.html">Diensten</a>
           <a href="systemen-producten.html">Systemen</a>
           <a href="werkwijze.html">Werkwijze</a>
@@ -80,9 +83,10 @@
           <p class="lead">
             Specialist uit Zuidlaren, twintig minuten rijden van Assen. Complete trajecten van ondervloer tot oplevering — voor woningen in Marsdijk, Assen-Oost, Loon, Anreep en de dorpen tot Beilen en Rolde.
           </p>
-          <p>
-            <a class="btn btn-primary" href="prijsindicatie.html">Vraag een prijsindicatie aan</a>
+          <p class="hero-cta-row">
+            <a class="btn btn-primary" href="prijsindicatie.html">Prijsindicatie</a>
             <a class="btn btn-secondary" href="tel:+31618817459">Bel 06 188 17 459</a>
+            <a class="btn btn-secondary" href="contact.html?modus=offerte#aanvraag">Offerte aanvragen</a>
           </p>
         </div>
       </section>
@@ -179,6 +183,7 @@
           <ul class="small">
             <li><a href="vloerverwarming-groningen.html">Vloerverwarming Groningen</a></li>
             <li><a href="vloerverwarming-assen.html">Vloerverwarming Assen</a></li>
+            <li><a href="vloerverwarming-zuidlaren.html">Vloerverwarming Zuidlaren</a></li>
           </ul>
         </section>
         <section>

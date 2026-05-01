@@ -14,6 +14,9 @@ pages=(
   "contact.html"
   "disclaimer.html"
   "privacy.html"
+  "vloerverwarming-groningen.html"
+  "vloerverwarming-assen.html"
+  "vloerverwarming-zuidlaren.html"
 )
 
 for page in "${pages[@]}"; do
@@ -43,5 +46,6 @@ contains index.html "href=\"disclaimer.html\""
 contains index.html "rel=\"canonical\""
 contains index.html "application/ld+json"
 contains sitemap.xml "https://www.vlwarmte.nl/"
+contains sitemap.xml "vloerverwarming-zuidlaren.html"
 
 echo "navigation-links.sh: PASS"

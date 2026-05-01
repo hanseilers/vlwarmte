@@ -4,6 +4,28 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 5 mei 2026
+**Deployment:** (na push / GitHub Pages — lokaal gevalideerd 01-05-2026)  
+**Versie:** (volgt na commit — werkdirectory sprint Zuidlaren + canonical + CTA’s)
+
+### Wat is er veranderd
+- **Nieuwe landingspagina** `vloerverwarming-zuidlaren.html` voor hyperlokale zoekintentie (Zuidlaren + installateur + vloerverwarming), met infrezen-sectie en schema `areaServed` Zuidlaren. In sitemap en footer Regio op alle pagina’s.
+- **Sterkere hero-CTA** op de stadspagina’s Groningen en Assen: prijsindicatie, bellen en offerte-dieplink in één regel boven de vouw (`hero-cta-row`).
+- **Canonieke home-URL:** logo en menu “Home” linken naar `/` in plaats van `index.html`; README vermeldt het verschil met `file://` lokaal openen.
+- **Interne links** vanaf home, over-ons en diensten naar de Zuidlaren-pagina.
+- **Prijsindicatie-CTA** op `werkwijze.html` en `systemen-producten.html` via bestaand `cta-band`-patroon.
+
+### Waarom
+Analytics en marketing research wezen op Drenthe-volume en het trefwoordcluster rond Zuidlaren; zonder eigen URL bleef dat verkeer op Groningen/Assen-titels landen. Dubbele `/` vs `index.html`-meting en lage engagement op stadspagina’s vroegen om technische en CTA-verbeteringen.
+
+### Verwacht effect
+Meetbaar in GA4: sessies op `/vloerverwarming-zuidlaren.html`; in Search Console (na token): queries met “zuidlaren”. Schonere home-rapportage door minder `index.html`-splitsing.
+
+### Social media deze week
+Zie `social/weekly_calendar.md`. Suggestie: één post met link naar de nieuwe Zuidlaren-URL na live-gang.
+
+---
+
 ## Release — week van 27 april 2026
 **Deployment:** 27-04-2026, 09:31 (commit `9e275a4`, GitHub Pages run `24982250357`)
 **Versie:** `9e275a4` — "Sprint 27 april: GA4 events, Search Console-tag, twee locatiepagina's, projecten uit nav"

@@ -165,6 +165,27 @@ Schrijf naar `docs/website-manager/research_report.md`:
 ## Tone of voice (gebruik dit in alle geschreven output én als lens voor aanbevelingen)
 Noord-Nederlands, nuchter en direct. Bekwaam zonder te pochen. Sociaal en betrokken zonder overdreven vriendelijkheid. Schrijf zoals een vakman praat: kort, concreet, eerlijk. Geen marketingkransen, geen superlatieven. Content die bij VLWarmte past zegt "we doen het goed" door het te laten zien — niet door het te roepen.
 
+## Hashtags voor social posts (verplicht lezen voor campagnes en social-voorstellen)
+
+**Is het verstandig om hashtags te gebruiken?** Ja, maar **per platform** en **spaarzaam**. Hashtags zijn geen vervanging van een duidelijke zin en CTA; ze helpen vooral **ontdekking** (met name Instagram) en **thema-classificatie** (LinkedIn). Voor VLWarmte: liever **weinig, relevante** tags dan een lange lijst — past bij de nuchtere toon en vermijdt “spammy” feeds.
+
+| Platform | Aanbevolen gebruik | Richtlijn |
+|----------|-------------------|-----------|
+| **Facebook** | Optioneel, **0–3** | Ontdekking via hashtags is beperkt; focus op **caption + foto + link**. Alleen tags toevoegen als ze echt het onderwerp of de regio raken. Vaak: **geen** hashtags ook prima. |
+| **Instagram** | **Wel**, **5–10** | Mix uit **dienst**, **intentie** (renovatie/nieuwbouw) en **1–2 lokale** tags. Geen tientallen generieke tags. |
+| **LinkedIn** | **Wel**, **3–5** | Vak- en bouwgericht, onderaan de post; eventueel 1 regionale tag als die past bij de case. |
+
+**Standaardset (kies per post wat past; niet alles tegelijk)**
+
+- **Dienst / vak:** `#vloerverwarming` — optioneel aangevuld met `#schuimbeton`, `#ondervloer`, `#dekvloer` (alleen als de post daar echt over gaat).
+- **Intentie / context:** `#renovatie`, `#nieuwbouw`, `#verbouwing` (max. één of twee die bij de foto/caption passen).
+- **Regio (sparsam — 1 à 2 per post):** `#ZuidLaren`, `#Groningen`, `#Assen`, `#Drenthe`, `#NoordNederland` — afstemmen op **werkgebied** en het concrete project of de boodschap (zie *Doelgroep → Geografie*).
+- **Vakmanschap (alleen als het klopt bij de inhoud):** `#vakmanschap`, `#installatie`
+
+**Vermijden:** irrelevante trending tags, tientallen plaatsnamen in één post, pure promotie-tags (`#sale`, `#deal`), cryptische merkloze afkortingen, en **meer hashtags dan zinvolle woorden** in de caption.
+
+**Afstemming:** De *Social Media Agent* (`social-media-agent.md`) volgt deze richtlijn bij `weekly_calendar.md` en concrete postvoorstellen. Bij twijfel: minder hashtags, sterkere eerste zin en CTA.
+
 ## Gedragsregels
 - Gebruik WebSearch voor actuele data
 - Wees realistisch over zoekvolumes (indicatief, niet exact zonder betaalde tools)

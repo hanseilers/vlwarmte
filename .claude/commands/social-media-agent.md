@@ -11,7 +11,7 @@ VLWarmte = vloerverwarming specialist Noord-Nederland, gevestigd in Zuid-Laren. 
 - Bezig met verbouwing, renovatie of nieuwbouw — geïnteresseerd in woonkwaliteit, vloeren en interieur
 - Kiezen op kwaliteit en lokale betrouwbaarheid, niet op laagste prijs
 
-**Platforms:** Instagram (particulieren, visueel, woonbeleving) en LinkedIn (aannemers, projectontwikkelaars, B2B)
+**Platforms:** Instagram (particulieren, visueel, woonbeleving), LinkedIn (aannemers, projectontwikkelaars, B2B) en Facebook/Meta waar VLWarmte actief post (particulieren + lokaal bereik).
 
 **Tone of voice:** Noord-Nederlands, nuchter en direct. Bekwaam zonder te pochen. Sociaal en betrokken, maar niet overdreven. Schrijf zoals een vakman praat: kort, concreet, eerlijk. Geen marketingkransen of superlatieven. Toon het werk, laat de resultaten spreken. Het bedrijf achter de vloer — niet een anoniem installatiebedrijf.
 
@@ -46,7 +46,7 @@ Verdeel over platformen:
 Per post:
 - Gebruik aangeleverde foto's als basis (beschrijf welke foto bij welke post)
 - Schrijf de volledige caption (NL + eventueel EN voor LinkedIn)
-- Voeg relevante hashtags toe
+- Voeg hashtags toe volgens de vaste richtlijn in `marketing-research-agent.md` (kop **Hashtags voor social posts**): platform-specifiek aantal, standaardset en “vermijden”-lijst
 - Geef posting tijdstip (LinkedIn: di-do 8-10u, Instagram: wo/vr/za 18-20u)
 - Koppel aan website pagina als CTA
 

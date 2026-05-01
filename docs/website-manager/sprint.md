@@ -1,135 +1,139 @@
-# Sprint — week van 27 april 2026
+# Sprint — week van 5 mei 2026
 
-**PM beslissing genomen op:** 27-04-2026 06:30
-**Doel deze sprint:** Meetbaarheid op orde krijgen en de eerste twee organische instappen voor lokale zoekopdrachten bouwen — zodat over 4 weken zichtbaar is wat werkt.
-**Meetdoel:** Per 25 mei 2026 in GA4: minimaal 1 bevestigde wizard-conversie geregistreerd als event, en in Search Console minstens 1 stedelijke landingspagina die vertoningen krijgt op "vloerverwarming Groningen" of "vloerverwarming Assen".
+**PM beslissing genomen op:** 01-05-2026 (Product Manager Agent — synthese `analytics_report.md` 1 mei, `research_report.md` Zuidlaren-sectie 1 mei, vorige sprint-status)  
+**Doel deze sprint:** Hyperlokale vindbaarheid voor Zuidlaren-installateur-intentie vangen **en** de bestaande stadspagina’s bruikbaarder maken voor conversie — zonder de site te overspoelen met nieuwe URL’s.  
+**Meetdoel:** Per **29 mei 2026** in GA4: zichtbare sessies op `/vloerverwarming-zuidlaren.html` (ook al klein); in Search Console (zodra token live): query’s met `zuidlaren` of `installateur` die de nieuwe URL raken. Geen harde drempel op conversies — volume blijft beperkt — wel bewijs dat de URL indexeert en landt.
 
 ---
 
 ## Goedgekeurde taken voor Developer Agent
 
-### Taak 1: GA4 conversie-events op wizard en contact `[GOEDGEKEURD]`
-**Bron:** Analytics Agent (voorstel 1) + Marketing Research (sectie 5)
-**Prioriteit:** Hoog
+### Taak 1: Locatiepagina `vloerverwarming-zuidlaren.html` `[GOEDGEKEURD]`
+
+**Bron:** Analytics Agent (voorstel 1 mei) + Marketing Research (Zuidlaren-verdieping 1 mei)  
+**Prioriteit:** Hoog  
+**Type:** SEO (nieuwe pagina — **enige** nieuwe pagina deze sprint)
+
+**Actie:** Nieuwe pagina, zelfde technische kapstok als `vloerverwarming-groningen.html` / `vloerverwarming-assen.html`:
+
+- `<title>`: primair **Zuidlaren + vloerverwarming**; secundair installateur (bijv. "Vloerverwarming Zuidlaren — installateur VLWarmte | VLWarmte" — exacte bewoording in lijn met bestaande titels, geen schreeuwerige superlatieven).
+- `<meta name="description">`: vloerverwarming, complete trajecten (ondervloer tot oplevering), schuimbeton waar passend, werkgebied Tynaarlo/Paterswolde/Bunne kort noemen, CTA prijsindicatie.
+- `<link rel="canonical" href="https://www.vlwarmte.nl/vloerverwarming-zuidlaren.html">`
+- H1: **Vloerverwarming Zuidlaren** (plaats centraal — dit was de gap t.o.v. Groningen/Assen-pagina’s).
+- H2: **Installateur in Zuidlaren** (1 korte sectie: vestigingsadres, één aanspreekpunt, reistijd naar Groningen/Assen in één zin — sluit aan op query "installateur Zuidlaren").
+- H2: **Vloerverwarming infrezen en renovatie** (2–3 alinea’s; long-tail t.o.v. concurrent Lemmers — nuchtere vaktaal).
+- 300–500 woorden totaal, lokale plaatsnamen (Tynaarlo, Paterswolde, Bunne, Zuidwolde, evt. Gieten) waar natuurlijk.
+- Schema.org `Service` met `areaServed` = **Zuidlaren** (City) en `provider` naar bestaande `LocalBusiness` op `index.html`.
+- **CTA (conversie):** direct onder de hero/lead-regel een compact blok: telefoon + link `prijsindicatie.html` + link `contact.html?modus=offerte#aanvraag` (zelfde patroon als andere stadspagina’s maar **boven de vouw** zichtbaar zonder te scrollen op gangbare viewport).
+- Google Search Console-placeholder in `<head>` (zelfde `REPLACE_WITH_TOKEN` + TODO als andere pagina’s).
+- GA4-snippet mee.
+- **Niet** in hoofdnav. **Wel:** footer Regio-blok op **alle** HTML-pagina’s in de repo-root uitbreiden met linktekst "Vloerverwarming Zuidlaren" (alfabetisch of logisch gegroepeerd naast Groningen/Assen).
+- `sitemap.xml`: url-entry met actuele `lastmod`, `priority` 0,8.
+
+**Succescriterium:** Pagina lokaal en live bereikbaar na deploy; Rich Results / schema zonder fouten; footer-link overal consistent; geen dubbele `index.html`/`/` issue op deze pagina.
+
+---
+
+### Taak 2: Sterker CTA-blok op bestaande stadspagina’s Groningen en Assen `[GOEDGEKEURD]`
+
+**Bron:** Analytics Agent (bounce/sessieduur stadspagina’s 1 mei)  
+**Prioriteit:** Hoog  
+**Type:** conversie (geen nieuwe URL)
+
+**Actie:** Op `vloerverwarming-groningen.html` en `vloerverwarming-assen.html` hetzelfde **compacte CTA-blok** als bij taak 1 onder de intro plaatsen (telefoon + prijsindicatie + offerte-contactdieplink), zodat een bezoeker zonder scroll een duidelijke volgende stap ziet. Geen herschrijven van de hele pagina — alleen structuur/duplicatie van CTA bovenin.
+
+**Succescriterium:** Visueel op desktop en mobiel (browser devtools viewport) eerste CTA zichtbaar zonder scroll; geen broken links.
+
+---
+
+### Taak 3: Canonieke homepage en dubbele URL’s `[GOEDGEKEURD]`
+
+**Bron:** Analytics Agent (`/` vs `/index.html`, 66 vs 12 sessies)
+
 **Actie:**
-- In `prijsindicatie.html`: voeg `gtag('event', ...)` calls toe op `wizard_start` (bij eerste keuze in stap 1), `wizard_step_2`, `wizard_step_3`, `wizard_calculate` (bij druk op bereken-knop) en `wizard_lead_submit` (bij verzending lead-formulier).
-- In `contact.html`: voeg `gtag('event', 'contact_submit', { soort_aanvraag: '...' })` toe in de submit-handler, met `soort_aanvraag` ingesteld op `informatie` / `offerte` / `terugbelverzoek` afhankelijk van de gekozen modus.
-- Eén regel comment per event-locatie, niet meer.
-**Succescriterium:** Doorloop wizard en contactformulier handmatig; in de GA4 DebugView verschijnen alle events binnen 30 seconden.
 
-### Taak 2: Google Search Console verificatie-tag plaatsen `[GOEDGEKEURD]`
-**Bron:** Analytics Agent (voorstel 2)
-**Prioriteit:** Hoog
-**Actie:** Voeg in de `<head>` van alle 10 HTML-pagina's (`index.html`, `diensten.html`, `werkwijze.html`, `over-ons.html`, `projecten.html`, `contact.html`, `systemen-producten.html`, `prijsindicatie.html`, `disclaimer.html`, `privacy.html`) de meta-tag toe:
-`<meta name="google-site-verification" content="REPLACE_WITH_TOKEN" />`
-Plaats een TODO-comment ernaast: `<!-- TODO Hans: vervang door echte token uit Search Console -->`. De daadwerkelijke koppeling en sitemap-indiening doet Hans handmatig in Search Console — de developer levert de tag-plek.
-**Succescriterium:** Tag staat op alle 10 pagina's, op identieke plek in `<head>`, exact dezelfde placeholder. Hans hoeft alleen de token te vervangen en te pushen.
+- Zet op `index.html` een `<link rel="canonical" href="https://www.vlwarmte.nl/">` (root-URL, **niet** `/index.html`).
+- Loop alle root-HTML door: waar de home-link nu naar `index.html` wijst, wijzig naar **`/`** (of naar `https://www.vlwarmte.nl/` alleen als dat al zo elders gebruikt wordt — kies **één** consistente relatieve stijl: bij voorkeur `/` voor home). Footer en header brand-link meenemen.
+- Controleer dat lokale `file://` openen nog acceptabel is voor Hans; als `/` lokaal breekt, documenteer in één regel comment in `README` of in sprint-context hieronder — voorkeur blijft online gedrag.
 
-### Taak 3: Locatiepagina `vloerverwarming-groningen.html` `[GOEDGEKEURD]`
-**Bron:** Analytics Agent (voorstel 3) + Marketing Research (sectie 1, prio 1)
-**Prioriteit:** Hoog
-**Actie:** Nieuwe pagina, gebaseerd op structuur van `diensten.html`. Vereist:
-- `<title>`: "Vloerverwarming Groningen — installateur uit Zuidlaren | VLWarmte"
-- `<meta name="description">`: "Vloerverwarming in Groningen door VLWarmte — complete trajecten van ondervloer tot oplevering. 15 minuten reistijd vanaf Zuidlaren. Vraag een prijsindicatie aan."
-- `<link rel="canonical" href="https://www.vlwarmte.nl/vloerverwarming-groningen.html">`
-- H1: "Vloerverwarming Groningen"
-- 300–500 woorden lokale inhoud: 15 min reistijd vanaf Zuidlaren, plaatsen die we bedienen (Helpman, Haren, Paterswolde, Hoogkerk, Beijum, omliggende dorpen), nieuwbouw vs renovatie kort, koppeling naar wizard.
-- Eén H2-blok "Vloerverwarming infrezen in Groningen" (3 alinea's) — vangt long-tail af.
-- Schema.org `Service` met `areaServed` = "Groningen" en `provider` referentie naar bestaande `LocalBusiness` (zelfde patroon als index.html).
-- CTA-blok bovenaan en onderaan met telefoon + link naar `prijsindicatie.html`.
-- **Niet** toevoegen aan hoofdnavigatie (wordt te lang). **Wel** toevoegen aan footer onder "Regio" als linkje "Vloerverwarming Groningen".
-- Toevoegen aan `sitemap.xml` met `lastmod` van vandaag en `priority` 0.8.
-- GA4 tracking-snippet meekopiëren.
-**Succescriterium:** Pagina valideert HTML, opent zonder JS-fouten, schema.org-snippet in Rich Results Test correct, footer-link werkt op alle pagina's.
+**Succescriterium:** Geen gemixte home-href’s meer; canonical op `index.html` wijst naar root; na deploy geven `curl -I` op `/` en `/index.html` geen tegenstrijdige SEO-signalen die de developer kan verklaren (indien hosting beide 200 blijft geven: canonical is leidend).
 
-### Taak 4: Locatiepagina `vloerverwarming-assen.html` `[GOEDGEKEURD]`
-**Bron:** Analytics Agent (voorstel 3) + Marketing Research (sectie 1, prio 2)
-**Prioriteit:** Hoog
-**Actie:** Identiek format als taak 3, met inhoudelijke aanpassingen voor Assen:
-- `<title>`: "Vloerverwarming Assen — installateur uit Zuidlaren | VLWarmte"
-- `<meta name="description">`: "Vloerverwarming in Assen door VLWarmte — complete trajecten van ondervloer tot oplevering. 20 minuten reistijd vanaf Zuidlaren. Vraag een prijsindicatie aan."
-- `<link rel="canonical" href="https://www.vlwarmte.nl/vloerverwarming-assen.html">`
-- H1: "Vloerverwarming Assen"
-- Lokale inhoud: 20 min reistijd, plaatsen (Marsdijk, Assen-Oost, Loon, Anreep, omliggende dorpen tot Beilen/Rolde), nadruk op renovatie en infrezen (groot deel woningvoorraad).
-- Eén H2 "Vloerverwarming infrezen in Assen en omgeving".
-- Schema.org `Service` met `areaServed` = "Assen".
-- Footer-link, sitemap-entry, GA4-snippet idem.
-**Succescriterium:** Zelfde als taak 3.
+---
 
-### Taak 5: Projectenpagina tijdelijk uit hoofdnavigatie halen `[GOEDGEKEURD]`
-**Bron:** Analytics Agent (voorstel 4)
-**Prioriteit:** Hoog
+### Taak 4: Interne links naar Zuidlaren-pagina `[GOEDGEKEURD]`
+
+**Bron:** Marketing Research (aanbeveling 4 mei-sectie)
+
 **Actie:**
-- Verwijder de `<a href="projecten.html">Projecten</a>` link uit de `<nav class="site-nav">` in alle pagina's waar hij staat (index, diensten, systemen-producten, werkwijze, over-ons, projecten zelf, contact, prijsindicatie, disclaimer, privacy).
-- Laat `projecten.html` zelf staan (directe links blijven werken), verwijder de `projecten.html`-regel uit `sitemap.xml`.
-- Voeg bovenaan `projecten.html` één korte alinea toe: "Deze projectenpagina vullen we in de komende weken aan met opgeleverde cases. Tot die tijd zijn we beter te beoordelen op onze [werkwijze](werkwijze.html) en [systemen](systemen-producten.html)."
-**Succescriterium:** Geen "Projecten"-knop meer in de nav op alle pagina's, geen 404 op de URL, sitemap.xml mist de regel.
+
+- `index.html`: één natuurlijke zin in bestaande regio- of USP-blok met link naar `vloerverwarming-zuidlaren.html` (ankertekst bijv. "vloerverwarming in Zuidlaren" — niet keyword-stuffing).
+- `over-ons.html`: waar het adres Zuidlaren genoemd wordt, een link naar de nieuwe pagina toevoegen.
+- Optioneel, als het past zonder rommel: één link vanaf `diensten.html` waar regio/werkgebied aan bod komt.
+
+**Succescriterium:** Minimaal twee inkomende interne links vanaf gezagdragende pagina’s; geen orphan URL.
+
+---
+
+### Taak 5: Wizard/prijs-CTA op `werkwijze.html` en `systemen-producten.html` `[GOEDGEKEURD]`
+
+**Bron:** Marketing Research (uitgesteld "interne wizard-links", april-sprint) + PM (conversie-eis)
+
+**Actie:** Op beide pagina’s één kort blok of zin **met knop/link** naar `prijsindicatie.html` (liefst met herkenbare tekst: "Prijsindicatie" / "indicatie aanvragen"), logisch geplaatst na het stuk waar de lezer over traject of systemen nadenkt. Geen volledige herstructuur van de pagina.
+
+**Succescriterium:** Beide pagina’s hebben een werkende link naar de wizard; geen visuele breuk met bestaande typografie (hergebruik bestaande button/ link-classes).
 
 ---
 
 ## Uitgestelde voorstellen `[WACHT]`
 
-- **Dienstpagina `vloerverwarming-infrezen.html` (Analytics voorstel 5)** — Marketing research adviseert juist géén losse pagina maar een H2-sectie binnen de stedelijke landingspagina's. We volgen marketing: infrezen krijgt deze sprint twee H2-secties (in taak 3 en 4) en geen eigen pagina. Heroverwegen na 4 weken op basis van Search Console-data.
-- **FAQ-pagina `faq.html` (Analytics voorstel 10, Marketing aanbeveling 3)** — Hoge waarde maar valt buiten de 5 taken deze sprint. Eerste kandidaat voor sprint 2 (week van 4 mei).
-- **Reviews / sociaal bewijs op homepage (Analytics voorstel 6, Marketing aanbeveling 8)** — Vraagt eerst dat Hans Google Bedrijfsprofiel activeert en review-verzoeken stuurt; pas daarna ontwerpwerk. Wacht op input uit `social/input/` of bevestiging dat profiel actief is.
-- **Mobiele check wizard + contact (Analytics voorstel 7)** — Niet door Developer Agent in te schatten zonder echt apparaat. Vraag aan Hans: doe een handmatige test op iPhone en gemiddelde Android. Bij issues: nieuwe sprint-taak.
-- **Kostengids-pagina (Analytics voorstel 8)** — Marketing research adviseert dit binnen `prijsindicatie.html` op te vangen, niet als losse pagina. Heroverwegen na 4 weken.
-- **Interne wizard-links systematisch (Analytics voorstel 9)** — Gedeeltelijk in taak 3 en 4 meegenomen via CTA-blok. Volledig uitrollen op `diensten.html`/`werkwijze.html`/`systemen-producten.html` in sprint 2.
-- **Wizard tracking-event + referentie in resultaatkaart (Marketing aanbeveling 4)** — Tracking-event zit in taak 1. De referentie ("Vergelijkbaar met Haren, voorjaar 2025") wacht op concreet referentiemateriaal van Hans.
-- **Projectenpagina vullen (Marketing aanbeveling 5)** — Wacht op klantmateriaal. Tot dan: verbergen (taak 5).
-- **Schuimbeton ankersectie (Marketing aanbeveling 7)** — Klein klusje voor sprint 2 of 3.
+- **`faq.html`** — Blijft eerste kandidaat **volgende** sprint. Nu niet: regel *max. 1 nieuwe pagina* is al benut door Zuidlaren.
+- **Google Bedrijfsprofiel + reviews op homepage** — Handwerk door Hans; blokkeert geen dev-taken. Zodra profiel live is: nieuwe sprint-taak voor embed/sectie.
+- **GA4 "lege" landingspagina (`landingPagePlusQueryString` leeg)** — Analyse in GA4-exploratie; geen code-change tot oorzaak bekend. Hans/PM: segment checken.
+- **`logo-varianten.html` restverkeer** — Als URL niet meer bestaat: geen dev-prioriteit. Eventueel later 301 via hosting indien mogelijk.
+- **Volledige interne link-uitrol wizard** op alle overige pagina’s — Deels opgelost met taak 5; `diensten.html` verder uitdiepen volgende sprint.
+- **Projectfoto’s op stadspagina’s** — Wacht op materiaal van Hans (zie vorig sprint-rapport).
 
 ---
 
 ## Afgewezen voorstellen `[AFGEWEZEN]`
 
-- Geen — alle voorstellen zijn óf goedgekeurd, óf gemotiveerd uitgesteld.
+- **Tweede nieuwe pagina naast Zuidlaren in dezelfde sprint** (bijv. FAQ + Zuidlaren tegelijk) — breekt de PM-regel kwaliteit/volume; FAQ schuift door.
 
 ---
 
 ## Social Media
-**Status:** Weekplanning staat in `docs/website-manager/social/weekly_calendar.md`
-**Actie vereist:** Handmatige publicatie door VLWarmte team. Foto's nog aanleveren voor 7 posts (zie `[FOTO NODIG: ...]` placeholders in de kalender).
+
+**Status:** Weekplanning staat in `docs/website-manager/social/weekly_calendar.md`  
+**Actie vereist:** Handmatige publicatie door VLWarmte team. **Suggestie deze week:** één post of story met link naar `vloerverwarming-zuidlaren.html` zodra live — ondersteunt indexering en lokale signalen.
 
 ---
 
 ## Context voor volgende sprint
-- Verwacht eerste organische vertoningen op stedelijke termen vanaf week 3 na live-gang (rond 18 mei).
-- GA4-data wordt op 24 mei opnieuw opgehaald — dat is het beslismoment voor het al dan niet doorzetten van wizard-conversie-experimenten en de eerste richtige A/B keuze.
-- Belangrijkste open afhankelijkheid van Hans: (1) Google Search Console-token, (2) Google Bedrijfsprofiel review-actie, (3) materiaal voor projecten-cases en social posts.
-- Sprint 2 kandidaten (in volgorde): FAQ-pagina, interne wizard-links volledig uitrollen, schuimbeton ankersectie, mobiele test follow-up.
+
+- Eerste check GSC-query’s op "zuidlaren" **2–4 weken** na live + token.
+- GA4-fetch eind mei blijft het moment voor funnel-beslissingen (zie eerder sprint-akkoord rond 24–29 mei).
+- **Volgende dev-prioriteit na deze sprint:** `faq.html`, daarna schuimbeton-anker en resterende interne wizard-links.
 
 ---
 
-## Developer Rapport — 27 april 2026
+## Referentie vorige sprint (27 april 2026)
 
-**Taak 1 — GA4 conversie-events op wizard en contact:** klaar (al uit vorige run; events `wizard_start`, `wizard_step_2`, `wizard_step_3`, `wizard_calculate`, `wizard_lead_submit` zitten in `prijsindicatie.html`; `contact_submit` met `soort_aanvraag` zit in `assets/js/main.js` submit-handler).
-**Taak 2 — Search Console verificatie-tag:** klaar (placeholder `<meta name="google-site-verification" content="REPLACE_WITH_TOKEN" />` met TODO-comment toegevoegd aan alle 10 sprint-pagina's én aan beide nieuwe locatiepagina's).
-**Taak 3 — `vloerverwarming-groningen.html`:** klaar (300+ woorden lokale inhoud, H2-blok over infrezen, schema.org Service met `areaServed` Groningen + provider-referentie naar LocalBusiness, dubbele CTA, GA4-snippet, footer-link op alle pagina's).
-**Taak 4 — `vloerverwarming-assen.html`:** klaar (zelfde format, lokale plaatsen Marsdijk/Assen-Oost/Loon/Anreep/Rolde/Beilen, infrezen-H2, schema.org Service met `areaServed` Assen).
-**Taak 5 — Projecten uit hoofdnav:** klaar (link weg uit nav op alle 9 pagina's waar hij stond + uit projecten.html zelf; intro-alinea met links naar werkwijze en systemen toegevoegd; sitemap-regel verwijderd).
+Volledige goedgekeurde taken en developer rapport staan gearchiveerd onder `docs/website-manager/archive/sprint-2026-04-27.md` en in git history.
 
-**Sitemap:** `projecten.html` regel weg, beide nieuwe URL's met `lastmod=2026-04-27` en `priority=0.8` toegevoegd.
-**Footer Regio-blok:** op alle 10 pagina's uitgebreid met linkjeslijst naar beide locatiepagina's. Op `prijsindicatie.html` is een nieuwe Regio-sectie tussen Bedrijf en Juridisch ingevoegd (had nog geen Regio-blok).
+**Open punten Hans (blijven gelden):** Search Console-token vervangen, sitemap indienen, conversies markeren in GA4, mobiele handtest wizard/contact, GBP activeren.
 
-**Deployment:**
-- Commit: `9e275a4` — "Sprint 27 april: GA4 events, Search Console-tag, twee locatiepagina's, projecten uit nav"
-- GitHub Actions run: [`24982250357`](https://github.com/hanseilers/vlwarmte/actions/runs/24982250357) (pages build and deployment)
-- Status: **completed / success** (gestart 27-04 09:31, klaar 09:32, duur 58s)
-- Head SHA: `9e275a42b8140f2e12d169db2938f578e6539981`
+---
 
-**Live verificatie (27-04 09:33):**
-- `https://www.vlwarmte.nl/` → HTTP 200, GA4-tag `G-0BB9M7HYSF` aanwezig
-- `https://www.vlwarmte.nl/vloerverwarming-groningen.html` → HTTP 200, verificatie-tag aanwezig
-- `https://www.vlwarmte.nl/vloerverwarming-assen.html` → HTTP 200
+## Developer Rapport — 1 mei 2026
 
-**Open punten voor Hans:**
-1. Echte token uit Search Console plaatsen (12× zoeken-en-vervangen op `REPLACE_WITH_TOKEN` in alle HTML-pagina's).
-2. Handmatige test: doorloop wizard en contactformulier in alle drie modi, controleer in GA4 DebugView dat alle events binnen 30s binnenkomen.
-3. Sitemap.xml indienen in Search Console na verificatie (URL: `https://www.vlwarmte.nl/sitemap.xml`).
-4. Markeer `wizard_lead_submit` en `contact_submit` als conversies in GA4 Beheer → Events.
+**Taak 1 — `vloerverwarming-zuidlaren.html`:** klaar. Nieuwe landingspagina met H1 Zuidlaren, H2 installateur en infrezen/renovatie, schema `Service` + `areaServed` Zuidlaren, hero-CTA (prijsindicatie + bel + offerte-dieplink), GA4-snippet, Search Console-placeholder, footer Regio op alle root-HTML-pagina’s uitgebreid met link naar Zuidlaren, `sitemap.xml` bijgewerkt.
 
-**Aandachtspunten voor volgende sprint:**
-- De twee nieuwe stadspagina's hebben nog geen lokaal referentieproject (foto + plaatsnaam) — zodra Hans materiaal aanlevert, vullen we dat aan.
-- Mobiele check op wizard en contactformulier nog niet uitgevoerd (vraagt echt apparaat).
-- Footer is op `prijsindicatie.html` qua structuur licht afwijkend (Regio-blok was er niet, nu wel toegevoegd) — in een toekomstige refactor kan de footer als één gedeelde include-component worden uitgewerkt.
+**Taak 2 — CTA Groningen/Assen:** klaar. Hero-blokken gebruiken `hero-cta-row` met drie acties (Prijsindicatie, bellen, offerte).
+
+**Taak 3 — Canonieke home:** klaar. Alle `href="index.html"` voor logo en Home-nav vervangen door `href="/"`. `index.html` had al `<link rel="canonical" href="https://www.vlwarmte.nl/">`. Toelichting `file://` vs. `/` in `README.md`.
+
+**Taak 4 — Interne links:** klaar. `index.html` (hero-lead), `over-ons.html` (bezoekadres), `diensten.html` (korte sectie) wijzen naar Zuidlaren-pagina.
+
+**Taak 5 — Wizard-CTA:** klaar. `werkwijze.html` en `systemen-producten.html` hebben elk een `cta-band` naar `prijsindicatie.html`.
+
+**Tests:** `bash tests/smoke/navigation-links.sh` en `form-behavior.sh` PASS. Lokaal: `curl` naar `/` en `/vloerverwarming-zuidlaren.html` op `python3 -m http.server` → 200, HTML `<!doctype`.

@@ -4,6 +4,52 @@
 
 ---
 
+## Zuidlaren — zoekwoord- en concurrentieverdieping (1 mei 2026)
+
+_(Marketing Research Agent, naar aanleiding van analytics-signaal "installateur Zuidlaren" en het analyticsrapport van 1 mei — `docs/website-manager/analytics_report.md`.)_
+
+### Koppeling analytics ↔ content
+
+GA4 laat **sterk Drenthe-volume** zien; een eigen URL met **Zuidlaren in pad en H1** vangt zoekers die niet op "Groningen" of "Assen" formuleren. Exact Google-zoekvolume staat niet in de repo (geen Ahrefs/SEMrush); hieronder staan **indicaties** op basis van SERP-dichtheid en zoekintentie.
+
+### "Vloerverwarming Zuidlaren" vs "installateur Zuidlaren"
+
+| Zoekvariatie | Volume (indicatie) | Concurrentie | Lading |
+|--------------|-------------------|--------------|--------|
+| vloerverwarming Zuidlaren | midden (binnen regio) | hoog | Transactioneel: offerte, vergelijken |
+| installateur Zuidlaren | midden | hoog — brede installateurs, gidsen (Trustoo), vloerverwarming-merken | Deels CV/algemeen; vloerverwarming is vaak bijkomst |
+| vloerverwarming frezen Zuidlaren / Tynaarlo | laag–midden | midden | Lemmers spreekt "frezen" expliciet uit — goede H2 voor jullie |
+| schuimbeton vloerverwarming Zuidlaren | laag | laag | Sluit aan bij jullie USP; smalle term, weinig diepgang bij concurrenten |
+
+**Conclusie:** beide hoofdtermen overlappen sterk. **Eén** goede landingspagina kan in `<title>`, H1 en H2's natuurlijk zowel **vloerverwarming** als **installateur** en **Zuidlaren** laten voorkomen — geen tweede, dunne "alleen-installateur"-pagina nodig.
+
+### Concurrentie (websearch, voorjaar 2026)
+
+| Speler | Patroon | Sterk | Kanttekening t.o.v. VLWarmte |
+|--------|---------|-------|------------------------------|
+| ComfortFloors | `/vloerverwarming-drenthe/zuidlaren` | merkbekendheid, offerteverzoek | template-gemeente; Hoogeveen-base; vrij algemene copy |
+| Lemmers Vloerverwarming | `/vloerverwarming-zuidlaren/` | renovatie/frezen, Tynaarlo genoemd | tel. **0318** (streek Apeldoorn) terwijl "heel Drenthe" — voor zoekers die **echt lokaal** willen is een bedrijf **met adres Zuidlaren** scherper te verdedigen |
+| Knulst | vloerverwarming + vloer Zuidlaren | totaalpakket vloer, showroom | ander vakgebied; minder schuimbeton/ondervloer-diepgang |
+| R&E Installaties | installatietechniek Zuidlaren | brede installatielijst incl. vloerverwarming | alleskunner, geen specialistenverhaal traject |
+| Bobex / Trustoo | aggregators | vergelijken | geen eigenaar — jullie prijsindicatie + direct contact is het tegenwicht |
+
+### Differentiatie (in copy, niet als slogans)
+
+- **Vestiging Zuidlaren** (concreet adres): geen regionale inbound-only partij.
+- **Traject**: ondervloer → schuimbeton waar nodig → leggen → dekvloer; geen alleen-leggers- of alleen-vloerwinkelprofiel.
+- **Prijsindicatie-wizard** als tastbare CTA — hetzelfde voordeel als op Groningen/Assen.
+
+### Aanbevelingen (aanvulling mei 2026)
+
+1. **Hoog — `vloerverwarming-zuidlaren.html`** — Zelfde kapstok als bestaande stadspagina's; H1 op **Zuidlaren + vloerverwarming**; aparte H2 **installateur** (lokale vakman); korte opsomming omliggend: Tynaarlo, Paterswolde, Bunne, evt. Zuidwolde. Schema `Service` + `areaServed` Zuidlaren. Footer + sitemap.
+2. **Hoog — Google Bedrijfsprofiel** — Voor "installateur [plaats]" zit Maps/local vaak boven organische lijsten; sluit aan bij bestaande aanbeveling 8 (april-rapport).
+3. **Midden — H2 infrezen/renovatie** — Long-tail tegen Lemmers zonder hun tone over te nemen.
+4. **Midden — Interne links** — Van `index.html`, `over-ons.html` en evt. footer naar de nieuwe pagina met natuurlijke ankertekst.
+5. **Midden — Na live: Search Console** — 2–4 weken query-data op "zuidlaren"; titel en description schaven op basis van impressies en CTR.
+6. **Laag — Geen tweede URL** voor alleen "installateur"; voorkomt cannibaliseren en dunne content.
+
+---
+
 ## GA4-koppeling — 28 april 2026
 
 _(Bron: `docs/website-manager/ga4_report.json`, laatste fetch.)_

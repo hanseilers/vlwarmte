@@ -1,4 +1,4 @@
-/* Homepage above-the-fold + mobiele header. Sync wijzigingen in hero/header met styles.css. */
+/* Eerste paint: mobiele header + woordmerk (alle pagina’s). Homepage-hero hieronder; sync met styles.css. */
 :root {
   --brand: #e0552f;
   --brand-dark: #bc3f1f;
@@ -16,7 +16,7 @@
   --glow-warm-ease: ease-in-out;
 }
 
-/* Above-the-fold shell: rest komt uit styles.css (non-blocking). */
+/* Header/woordmerk: rest komt uit styles.css (non-blocking op index en subpagina’s). */
 * {
   box-sizing: border-box;
 }
