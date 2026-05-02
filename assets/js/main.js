@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
   initFaq();
   initLeadForm();
+  initFacebookOutboundGa();
   setYear();
 });
 
@@ -188,6 +189,25 @@ function validateLeadForm(form, mode) {
   }
 
   return { ok: true };
+}
+
+function initFacebookOutboundGa() {
+  document.addEventListener("click", (event) => {
+    const a = event.target && event.target.closest && event.target.closest("a[href]");
+    if (!a || !(a instanceof HTMLAnchorElement)) return;
+    let url;
+    try {
+      url = new URL(a.href, window.location.href);
+    } catch {
+      return;
+    }
+    if (!url.hostname.includes("facebook.com")) return;
+    if (typeof gtag !== "function") return;
+    gtag("event", "facebook_outbound", {
+      link_url: a.href,
+      link_text: (a.textContent || "").trim().slice(0, 100)
+    });
+  });
 }
 
 function setYear() {
