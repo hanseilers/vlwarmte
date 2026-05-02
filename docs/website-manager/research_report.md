@@ -1,5 +1,27 @@
 # Marketing Research Rapport — 27 april 2026
 
+## Update — PM-cyclus 2 mei 2026
+
+**Bron:** `analytics_report.md` (2 mei), verse GA4-export, sitemap met `faq.html`, webcheck concurrentie Groningen (InFloor, Lemmers, Groningen Vloerverwarming, Easy Floorheating e.a.).
+
+**Korte synthese:** Concurrenten hameren op **snelle montage** en **infrezen** met duidelijke offerte-hooks. VLWarmte blijft differentiëren met **volledig traject**, **werkadres Zuidlaren**, en **prijsindicatie-wizard**. De nieuwe **FAQ** vult vraag-long-tail; nu vooral **interne links** en **vroege CTA’s** op pagina’s met korte verblijftijd (met name **Systemen**).
+
+### Aanbevelingen deze ronde (max. 8)
+
+1. **Hoog — Vroege CTA op `systemen-producten.html`** — analytics toont korte verblijftijd; voorkom scan-exit.  
+2. **Hoog — Links naar `faq.html`** vanaf `diensten.html`, `projecten.html`, `contact.html`, korte verwijzing op `prijsindicatie.html`.  
+3. **Midden — Stadspagina’s:** één regel onder hero-CTA met link naar FAQ voor doorstroom.  
+4. **Midden — `index.html`:** deeplink `diensten.html#schuimbeton` bij schuimbeton in stappen-sectie.  
+5. **Midden — `projecten.html`:** hero expliciet naar FAQ + prijsindicatie verwijzen tot echte foto-cases live zijn.  
+6. **Midden — Social:** FAQ-thema’s (frezen, warmtepomp, kosten) in posts met diepe contact-URL’s waar passend.  
+7. **Laag — Toon concurrentie:** geen onbewuste “binnen één dag”-claims overnemen; planning realistisch houden.  
+8. **Laag — GBP/reviews:** blijft off-site prioriteit voor eigenaar.
+
+### Prijscalculator — status
+Live op `prijsindicatie.html`; GA4 toont **sterk conversiepad**. Geen herbouw; focus op **verkeer er naartoe** van zwakkere pagina’s.
+
+---
+
 > Vorige iteratie (26 april 2026) bevatte een brede contentinventarisatie inclusief het haalbaarheidsonderzoek prijscalculator. Die calculator staat inmiddels live op `prijsindicatie.html` (4 stappen, slider, lead-gate, Formspree). Deze update verdiept de vier focusvragen van deze week: stedelijke landingspagina's, long-tail kansen, content gaps en concurrentie. Conclusies en aanbevelingen uit de vorige ronde die nog open staan, blijven geldig en zijn hieronder samengevat.
 
 ---

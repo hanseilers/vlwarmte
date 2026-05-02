@@ -4,6 +4,29 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 19 mei 2026
+**Deployment:** (na push / GitHub Pages — lokaal gevalideerd 02-05-2026)  
+**Versie:** zie `git log -1 --oneline` op main na deze release — PM-cyclus: doorstroom FAQ + systemen-CTA + GA4-rapport
+
+### Wat is er veranderd
+- **Analytics:** verse GA4-export (`ga4_fetch.py` via project-`.venv`) en bijgewerkt `analytics_report.md` (2 mei).
+- **Research & social:** `research_report.md` uitgebreid met PM-cyclus-update 2 mei; nieuwe `social/weekly_calendar.md` voor week 19 mei (LinkedIn/Instagram/Facebook-richting + diepe contact-URL’s).
+- **`systemen-producten.html`:** vroege **cta-band** onder de hero naar prijsindicatie + link naar FAQ (korte verblijftijd in GA4 aangepakt).
+- **Interne links naar FAQ en wizard:** `diensten.html`, `projecten.html`, `contact.html`, `prijsindicatie.html` met natuurlijke verwijzingen naar `faq.html` (en projecten ook naar prijsindicatie).
+- **Stadspagina’s Groningen, Assen, Zuidlaren:** korte FAQ-regel onder de hero-CTA’s.
+- **`index.html`:** in stap 2 van “4 stappen” linkt het woord **schuimbeton** naar `diensten.html#schuimbeton`.
+
+### Waarom
+Data toonde sterkere home- en contactpatronen, maar **zeer korte tijd** op systemen en **hoge bounce als landing** op stadspagina’s/projecten. FAQ staat live maar had nog weinig meetpad — interne links en vroege CTA’s verlagen de kans op “één hit en weg”.
+
+### Verwacht effect
+Meer sessies op `/faq.html`; langere engagement op `/systemen-producten.html`; vaker een tweede pagina per sessie vanaf stadspagina’s.
+
+### Social media deze week
+Zie `docs/website-manager/social/weekly_calendar.md` (week van 19 mei 2026).
+
+---
+
 ## Release — week van 5 mei 2026
 **Deployment:** (na push / GitHub Pages — lokaal gevalideerd 01-05-2026)  
 **Versie:** (volgt na commit — werkdirectory sprint Zuidlaren + canonical + CTA’s)

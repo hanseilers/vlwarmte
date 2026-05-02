@@ -1,89 +1,137 @@
-# Social Media Kalender — week van 5 mei 2026
+# Social Media Kalender — week van 19 mei 2026
 
-> Inputmap `docs/website-manager/social/input/` is leeg op de README na. Onderstaande posts zijn conceptteksten met `[FOTO NODIG: ...]` placeholders.  
-> **Afstemming:** `sprint.md` (week 27 apr) — stadspagina’s en wizard-events staan live; GA4 (28 apr) toont vooral **direct** verkeer en nog weinig volume — social helpt nu vooral **diepte** (wizard, stadspagina’s) en **vertrouwen**.
+**Afstemming:** Sprint “week van 19 mei 2026” — doorstroom naar `faq.html`, `prijsindicatie.html` en contact-dieplinks. Hashtags volgens `marketing-research-agent.md` (spaarzaam Facebook, rijker Instagram, 3–5 LinkedIn).
 
-## LinkedIn Posts (3x — di/wo/do 8–10u, B2B)
+**Materiaal:** o.a. `docs/website-manager/social/input/vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`, Facebook-profiel/cover assets in dezelfde map.
 
-### Post 1 — dinsdag 6 mei, 09:00
+---
 
-**Foto:** [FOTO NODIG: detailfoto verdeler in technische ruimte, of buisleiding net voor de schuimbeton]
+## LinkedIn Posts
+
+### Post 1 — dinsdag 08:30
+
+**Foto:** `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg` (werk onder de vloer — herkenbaar vakmanschap)
+
 **Caption:**
-Vloerverwarming in een renovatie zit in de details. Een verdeler op de juiste plek, de juiste flow per groep, en een buislengte die past bij de m². Dat is geen rocket science — wel het verschil tussen een vloer die overal even warm wordt en een vloer met koude hoeken.
 
-We werken vanuit Zuid-Laren in heel Groningen, Friesland en Drenthe. Eén aanspreekpunt van opname tot oplevering.
+Vloerverwarming is pas “af” als de opbouw klopt: ondervloer, isolatie of schuimbeton waar nodig, daarna het systeem en de dekvloer. Wij werken vanuit Zuidlaren door Noord-Nederland — één aanspreekpunt van intake tot oplevering.
 
-**Hashtags:** #vloerverwarming #installatietechniek #NoordNederland #renovatie #Drenthe
-**CTA link:** https://www.vlwarmte.nl/werkwijze.html
+Heb je een renovatie of nieuwbouw in Groningen, Assen of Drenthe? Op onze site staan antwoorden op veelgestelde vragen (infrezen, warmtepomp, kostenindicatie): **FAQ** staat nu centraal — handig om vooraf te lezen voordat je belt.
 
-### Post 2 — woensdag 7 mei, 09:30
+**Hashtags:** `#vloerverwarming` `#NoordNederland` `#Drenthe` `#renovatie`
 
-**Foto:** [FOTO NODIG: schuimbeton wordt gestort, of net afgewerkt — actiefoto]
+**CTA link:** https://www.vlwarmte.nl/faq.html
+
+---
+
+### Post 2 — woensdag 09:00
+
+**Foto:** `[FOTO NODIG: close-up verdeler of leggen van buis — zelfde stijl als bestaande werkshots]`
+
+**Caption (NL/EN mix toegestaan):**
+
+Particulieren én aannemers: als je een richtbedrag wilt zonder meteen een offerte te “locken”, loopt onze prijsindicatie stap voor stap door ondergrond en m². Vrijblijvend — wél concreet genoeg om te beslissen of vervolgstappen zinvol zijn.
+
+EN: Underfloor heating in NL often fails on planning, not pipe — we keep one owner for prep → install → floor finish.
+
+**Hashtags:** `#vloerverwarming` `#installatie` `#Groningen`
+
+**CTA link:** https://www.vlwarmte.nl/prijsindicatie.html
+
+---
+
+### Post 3 — donderdag 08:45
+
+**Foto:** `facebook-page-cover-vlwarmte-851x315.jpg` (breed beeld — merk/herkenning)
+
 **Caption:**
-Schuimbeton als ondervloer onder vloerverwarming heeft drie voordelen die voor een aannemer tellen: licht gewicht, isolerend en in één dag aan te brengen op vrijwel elke ondergrond. Voor verbouwingen waar opbouwhoogte een issue is, is het vaak de schoonste oplossing.
 
-Heb je een project waar de planning krap zit? We denken graag mee over fasering en aansluiting op andere disciplines.
+Lokaal betekent bij ons: korte lijnen vanaf Zuidlaren naar Groningen en Assen. Geen callcenter — wel iemand die je vloer ook echt heeft gezien tijdens de opname.
 
-**Hashtags:** #schuimbeton #vloerverwarming #aannemer #bouw #Groningen
-**CTA link:** https://www.vlwarmte.nl/systemen-producten.html
+Vraag informatie of offerte via het formulier; kies het tabblad dat bij je past (informatie / offerte / bel mij).
 
-### Post 3 — donderdag 8 mei, 08:30
+**Hashtags:** `#vloerverwarming` `#ZuidLaren` `#Assen` `#vakmanschap`
 
-**Foto:** [FOTO NODIG: opgeleverde vloer, lege ruimte — voor sfeer]
+**CTA link:** https://www.vlwarmte.nl/contact.html?modus=informatie#aanvraag
+
+---
+
+## Instagram Posts
+
+### Post 1 — woensdag 19:00
+
+**Foto:** `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`
+
 **Caption:**
-We hebben twee vaste landingspagina’s voor wie lokaal zoekt: vloerverwarming in **Groningen** en in **Assen** — met reistijd vanaf Zuid-Laren, welke wijken we bedienen, en een duidelijke route naar prijsindicatie en contact. Geen tiental dunne “SEO-deurtjes”; wel inhoud waar je als opdrachtgever iets aan hebt.
 
-Voor aannemers en projectontwikkelaars: deel dit geren in je netwerk in het noorden.
+Renovatie in de regio? Infrezen kan — als de dekvloer het toelaat. We meten vlakheid en draagkracht eerst. Meer uitleg over frezen, warmtepomp en schuimbeton → link in bio naar **Veelgestelde vragen**.
 
-**Hashtags:** #vloerverwarming #Groningen #Assen #NoordNederland #bouw #aannemer
-**CTA link:** https://www.vlwarmte.nl/vloerverwarming-groningen.html  
-_(Variant voor Assen in week erna of A/B in comments: `vloerverwarming-assen.html`)_
+**Hashtags:** `#vloerverwarming` `#renovatie` `#Groningen` `#Drenthe` `#NoordNederland` `#verbouwing` `#interieur`
 
-## Instagram Posts (4x — wo/vr/za 18–20u, particulieren)
+**CTA:** Link in bio → https://www.vlwarmte.nl/faq.html
 
-### Post 1 — woensdag 7 mei, 19:00
+---
 
-**Foto:** [FOTO NODIG: opgeleverde woonkamer met afgewerkte vloer, warm avondlicht]
+### Post 2 — vrijdag 19:30
+
+**Foto:** `[FOTO NODIG: eindresultaat vloer met tegels of hout — zonder klantgezicht tenzij toestemming]`
+
 **Caption:**
-De vloer is het ding waar je elke dag op staat. Bij ons komt er pas afwerking op als de installatie eronder helemaal klopt. Geen koude plekken, geen geluid, geen verrassingen na een jaar.
 
-Werken vanuit Zuid-Laren in heel Groningen, Drenthe en Friesland.
+Comfort is geen luxe-label — het is een netjes gelegd systeem met de juiste opwarmtijd. Wil je weten wat bij jouw m² en ondergrond past? Tik de link in bio: **Prijsindicatie** (wizard).
 
-**Hashtags:** #vloerverwarming #wonen #interieur #renovatie #Drenthe #Groningen #verbouwing
-**CTA:** Link in bio → https://www.vlwarmte.nl/
+**Hashtags:** `#vloerverwarming` `#nieuwbouw` `#Assen` `#schuimbeton` `#wooninspiratie`
 
-### Post 2 — vrijdag 9 mei, 19:30
-
-**Foto:** [FOTO NODIG: close-up buisleiding net voor de afwerking]
-**Caption:**
-Wat je straks niet meer ziet, bepaalt of de vloer doet wat hij moet doen. Buislengte, leidingafstand, isolatie eronder — als dat niet klopt, voel je het de eerste winter al.
-
-Zoek je vloerverwarming in **Groningen** of het omliggende? Op de site staat een aparte pagina met wat we daar doen en hoe dicht we bij je zitten.
-
-**Hashtags:** #vloerverwarming #Groningen #Haren #Helpman #renovatie #wonen
-**CTA:** Link in bio → https://www.vlwarmte.nl/vloerverwarming-groningen.html
-
-### Post 3 — zaterdag 10 mei, 18:30
-
-**Foto:** [FOTO NODIG: team aan het werk, of detail van handen die werk doen]
-**Caption:**
-Wij zijn geen bouwmarkt en geen anonieme installateur. Eén aanspreekpunt, van de eerste opname tot de oplevering. Bel je over twee jaar nog terug, dan krijg je dezelfde mensen aan de lijn.
-
-**Hashtags:** #vloerverwarming #vakmanschap #lokaal #Drenthe #Groningen #installatie
-**CTA:** Link in bio → https://www.vlwarmte.nl/over-ons.html
-
-### Post 4 — woensdag 14 mei, 19:00
-
-**Foto:** [FOTO NODIG: laptop of telefoon met prijsindicatie-wizard open]
-**Caption:**
-Snel een idee wat het kost? Onze prijsindicatie loopt in 4 stappen. Geen verplichting, geen verkooppraatje. Je krijgt een eerlijke bandbreedte op basis van m², systeemkeuze en regio.
-
-**Hashtags:** #vloerverwarming #verbouwen #renovatie #prijsindicatie #wonen #NoordNederland
 **CTA:** Link in bio → https://www.vlwarmte.nl/prijsindicatie.html
+
+---
+
+### Post 3 — zaterdag 18:30
+
+**Foto:** `facebook-page-profile-vlwarmte-640.png` (logo/profiel — herkenning)
+
+**Caption:**
+
+Vragen over garantie op buis versus systeem? Dat lees je het helderst bij **Systemen → Garantie** op de site. Aanvullende context over traject en onderdelen staat ook bij de FAQ.
+
+**Hashtags:** `#vloerverwarming` `#installateur` `#ZuidLaren` `#Friesland` `#Drenthe`
+
+**CTA:** Link in bio → https://www.vlwarmte.nl/systemen-producten.html#garantie
+
+---
+
+### Post 4 — zondag 11:00 (optioneel — lichtere post)
+
+**Foto:** `[FOTO NODIG: busje/auto met regio — subtiel, geen kenteken focus]`
+
+**Caption:**
+
+Zaterdag: even geen klus op de planning — wél tijd om je aanvraag te lezen. Stuur gerust je situatie door (offerte of informatie); we reageren maandag.
+
+**Hashtags:** `#vloerverwarming` `#NoordNederland`
+
+**CTA:** Link in bio → https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag
+
+---
+
+## Facebook (optioneel, 0–1 post)
+
+### Post — donderdag 12:00
+
+**Foto:** `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`
+
+**Caption:**
+
+Nieuw op de site: **veelgestelde vragen** over vloerverwarming, schuimbeton, renovatie vs nieuwbouw en warmtepomp. Geen marketingpraat — gewoon wat je vaak hoort in de meterkast en de kruipruimte.
+
+**Hashtags:** `#vloerverwarming` `#Drenthe`
+
+**CTA link:** https://www.vlwarmte.nl/faq.html
+
+---
 
 ## Campagne notities
 
-- **GA4 (28 apr):** weinig sessies, vooral **direct**; **prijsindicatie** haalt al meerdere bezoeken met redelijke tijd op pagina — Instagram-post 4 en LinkedIn waar passend expliciet naar **wizard** verwijzen.
-- **Stadspagina’s** staan live: deze week LinkedIn 3 + Instagram 2 naar **Groningen**; volgende kalender Assen-post prominent (of spiegelpost in stories).
-- **Search Console:** zodra de site geverifieerd is, social-copy koppelen aan concrete zoektermen (“vloerverwarming Groningen”) — nu al voorbereid in captions.
-- **Foto’s:** zonder `social/input/` blijven placeholders; na eerste projectfoto’s dezelfde captions hergebruiken.
+- Instagram-post 3: gebruik **systemen#garantie**-URL (niet `faq#garantie`); in caption wel “FAQ + systemen” noemen.  
+- Koppel campagnes aan **diepe contact-URL’s** (`?modus=…#aanvraag`) zodat tab + scroll klopt.  
+- Na deploy: één week **FAQ** promoten, daarna weer mix stadspagina’s + wizard.
