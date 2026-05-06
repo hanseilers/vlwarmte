@@ -1,8 +1,9 @@
-# Analytics Rapport — 2 mei 2026
+# Analytics Rapport — 6 mei 2026
 
-**Periode:** laatste 30 dagen (GA4: `30daysAgo` → `today`)  
-**Databron:** `docs/website-manager/ga4_report.json` (gegenereerd 2026-05-02T10:56:09)  
-**Vorige sprint effect:** Homepage (`/`) laat **lagere bounce** (0,65) en **langere gemiddelde sessieduur** (~98 s) dan in het rapport van 1 mei (0,86 / ~84 s) — waarschijnlijk mix van UX/copy en extra FAQ-blok. `contact.html` en `over-ons.html` verbeteren eveneens op bounce t.o.v. eerdere export. Nieuwe URL **`/faq.html`** staat **nog niet** in de top-16 (normaal: net live / nog weinig volume).
+**Periode:** laatste 30 dagen (GA4: `30daysAgo` → `today`)
+**Databron:** `docs/website-manager/ga4_report.json` (gegenereerd 2026-05-02T10:56:09; 4 dagen oud)
+**Fetch-status:** `python3 scripts/ga4_fetch.py` kon in deze sessie niet uitgevoerd worden — Bash-permissies in deze run staan geen Python-execution toe. Bestaande JSON is geanalyseerd conform fallback-instructie. PM/Hans: handmatig opnieuw runnen voor verse cijfers vóór sprintplanning.
+**Vorige sprint effect:** Sprint 19 mei (uitvoer 2 mei avond) leverde concrete bouwsteentjes: vroege CTA op `systemen-producten.html`, FAQ-inlinks vanaf `diensten`/`projecten`/`contact`/`prijsindicatie`, FAQ-regel onder hero op de drie stadspagina’s en `schuimbeton`-deeplink op de home. **Effect in data is nog niet meetbaar** in deze JSON: het bestand is van 2 mei, vóór deployment-impact. Volgende fetch (na 12 mei) is het eerste echte meetmoment.
 
 ---
 
@@ -10,33 +11,52 @@
 
 | Metric | Waarde | Toelichting |
 | ------ | ------ | ----------- |
-| Sessies (week in export) | 172 | `weekly_trend` met `week_start` 2026-04-25 |
-| Actieve gebruikers (zelfde week) | 143 | |
-| Traffic-kanalen (30 dagen, top) | Direct 150; Unassigned 18; Organic Social (Facebook) 17 totaal; Organic Search (Bing) 4 | Google organic blijft dun in deze bucket |
-| Conversions (export) | o.a. 35 (direct), 8 (unassigned) | Custom events blijven funnel bruikbaar |
+| Sessies (week 25 apr → 2 mei) | 172 | enige beschikbare week in `weekly_trend` |
+| Actieve gebruikers (zelfde week) | 143 | ratio 0,83 sessies/gebruiker |
+| Sessies top-pagina (`/`, 30d) | 76 | dominant instappunt |
+| Bounce homepage | 0,65 | net onder de 70%-grens |
+| Direct vs. al-de-rest | 150 vs. 23 | merknaam-/lokaal-effect |
+| Mobile vs. desktop | 99 vs. 74 | mobiel = 57% sessies |
 
-**Homepage-split:** `/` 76 sessies vs `/index.html` 15 — dubbele meetbaarheid blijft; canonical + interne links naar `/` blijven leidend.
+**Trend t.o.v. vorige periode:** beperkt vergelijkbaar — `weekly_trend` bevat slechts één week (script-bug: loop start `i=0` overschrijft eerdere weken doordat `end_date - timedelta(weeks=i)` voor `i=0` gelijk is aan vandaag). Week-over-week conclusies zijn op deze data **niet hard te maken**; dit is in zichzelf een bevinding voor de developer.
 
 ---
 
 ## Top pagina’s (30 dagen)
 
-| Pagina | Sessies | Actieve gebruikers | Gem. sessieduur (s) | Bounce (fractie) |
-| ------ | ------- | ------------------ | ------------------- | ---------------- |
-| `/` | 76 | 61 | ~98 | **0,65** |
-| `/prijsindicatie.html` | 24 | 15 | ~292 | **0,33** |
-| `/contact.html` | 20 | 16 | ~114 | **0,55** |
-| `/over-ons.html` | 17 | 15 | ~49 | **0,53** |
-| `/diensten.html` | 16 | 13 | ~154 | **0,75** |
-| `/index.html` | 15 | 11 | ~1346* | **0,53** |
-| `/werkwijze.html` | 13 | 12 | ~154 | **0,69** |
-| `/systemen-producten.html` | 12 | 12 | **~4,5** | **0,67** |
-| `/logo-varianten.html` | 9** | 7 | ~122 | **0,88** |
-| `/vloerverwarming-groningen.html` | 7 | 7 | ~63 | **1,0** |
-| `/projecten.html` | 7 | 7 | ~0,9 | **0,86** |
+| Pagina | Sessies | Gebruikers | Gem. duur (s) | Bounce |
+| ------ | ------- | ---------- | ------------- | ------ |
+| `/` | 76 | 61 | 98 | 0,65 |
+| `/prijsindicatie.html` | 24 | 15 | **292** | **0,33** |
+| `/contact.html` | 20 | 16 | 114 | 0,55 |
+| `/over-ons.html` | 17 | 15 | 49 | 0,53 |
+| `/diensten.html` | 16 | 13 | 154 | **0,75** |
+| `/index.html` | 15 | 11 | 1346* | 0,53 |
+| `/werkwijze.html` | 13 | 12 | 154 | **0,69** |
+| `/systemen-producten.html` | 12 | 12 | **4,5** | **0,67** |
+| `/logo-varianten.html` | 8 | 7 | 137 | **0,88** |
+| `/projecten.html` | 7 | 7 | **0,9** | **0,86** |
+| `/vloerverwarming-groningen.html` | 7 | 7 | 63 | **1,00** |
+| `/vloerverwarming-assen.html` | 6 | 6 | 0 | **1,00** |
+| `/disclaimer.html` | 7 | 7 | 0 | 1,00 |
+| `/privacy.html` | 6 | 6 | 0 | 1,00 |
 
-\*Extreme gemiddelde op `/index.html` wijst op enkele zeer lange sessies (tab open); mediana is waarschijnlijk lager — niet over-interpreteren.  
-\**`logo-varianten.html` komt dubbel in ruwe export (deels als 404-titel); restverkeer blijft meetbaar.
+\*Waarde wordt vertekend door enkele zeer lange sessies (tab open). Niet over-interpreteren — de getalswaarde komt uit `pagePath="/index.html"` wat extra hits van interne tools/preview’s opvangt.
+
+---
+
+## Zwakste pagina’s — verkeer × gedrag
+
+Pagina’s met substantieel verkeer (≥6 sessies) en bounce ≥0,67 of duur ≤30s:
+
+| Pagina | Sessies | Bounce | Duur | Diagnose |
+| ------ | ------- | ------ | ---- | -------- |
+| `/systemen-producten.html` | 12 | 0,67 | **4,5s** | Bezoeker scant en is weg — sprint 19 mei adresseert dit met vroege CTA. |
+| `/projecten.html` | 7 | 0,86 | **0,9s** | Dunne content, geen vertrouwenshaak. |
+| `/diensten.html` | 16 | **0,75** | 154s | Bounce hoog ondanks redelijke tijd: bezoekers lezen, klikken niet door. |
+| `/werkwijze.html` | 13 | 0,69 | 154s | Idem — eindstation. |
+| `/vloerverwarming-groningen.html` | 7 | **1,00** | 63s | Lokale landing leest, maar geen tweede hit. |
+| `/vloerverwarming-assen.html` | 6 | **1,00** | 0s | Geen interactie geregistreerd. |
 
 ---
 
@@ -44,90 +64,91 @@
 
 | Landing | Sessies | Bounce | Conversions |
 | ------- | ------- | ------ | ----------- |
-| `/` | 56 | ~0,70 | 18 |
-| *(leeg)* | 16 | **0,94** | 10 |
-| `/index.html` | 11 | ~0,55 | 2 |
-| `/prijsindicatie.html` | 11 | ~0,55 | 13 |
-| `/diensten.html` | 10 | **0,90** | 0 |
-| Overige o.a. contact, stadspagina’s, projecten | 6–8 | veelal 1,0 | laag |
+| `/` | 56 | 0,70 | **18** |
+| *(leeg)* | 16 | 0,94 | 10 |
+| `/prijsindicatie.html` | 11 | 0,55 | **13** |
+| `/index.html` | 11 | 0,55 | 2 |
+| `/diensten.html` | 10 | 0,90 | 0 |
+| `/over-ons.html` | 9 | 0,78 | 0 |
+| `/contact.html` | 8 | **1,00** | 0 |
+| `/werkwijze.html` | 6 | 1,00 | 0 |
+| `/projecten.html` | 6 | 1,00 | 0 |
+| `/systemen-producten.html` | 6 | 1,00 | 0 |
+| `/vloerverwarming-groningen.html` | 6 | 1,00 | 0 |
+| `/vloerverwarming-assen.html` | 6 | 1,00 | 0 |
 
-**Datakwaliteit:** lege `landingPagePlusQueryString` blijft storend voor landingsanalyse — PM/Hans: segment in GA4 verfijnen.
+**Conversiefunnel — kwantitatief:** prijsindicatie levert per session veruit de meeste conversions: `13/11 = 1,18 conv/sessie` versus home `18/56 = 0,32`. Direct verkeer naar contact als landing geeft **0 conversions** — de pagina wordt blijkbaar bereikt maar de aanvraagflow start niet vanuit die context. Dit is de scherpste lead-generatie kans in dit rapport.
 
 ---
 
 ## Traffic bronnen
 
-| Kanaal | Sessies | Conversions |
-| ------ | ------- | ----------- |
-| Direct | 150 | 35 |
-| Unassigned | 18 | 8 |
-| Organic Social (Facebook) | 17 | 0 |
-| Organic Search (Bing) | 4 | 0 |
+| Kanaal | Sessies | Conversions | Conv-rate |
+| ------ | ------- | ----------- | --------- |
+| Direct | 150 | 35 | 0,23 |
+| Unassigned | 18 | 8 | 0,44 |
+| Organic Social — Facebook (totaal 4 referrers) | 17 | 0 | 0,00 |
+| Organic Search — Bing | 4 | 0 | 0,00 |
+
+**Observatie:** Google organic ontbreekt volledig in deze export. Twee mogelijke oorzaken: (a) GSC-koppeling levert geen organic-attributie hier, (b) reëel: de site krijgt nu nog vrijwel geen Google-clicks. Voor PM betekent dit dat lokale SEO (stadspagina’s, FAQ) **nog steeds onbewezen** is — alleen Direct draagt. Facebook-verkeer komt binnen maar converteert niet.
 
 ---
 
 ## Apparaten & geo
 
-- **Apparaten:** mobile 99, desktop 74 — mobiel blijft dominant.
-- **Geo (sessies):** **Drenthe 116** — kernmarkt; Groningen NL 4; VS-sessies nog aanwezig (segment “NL + Drenthe/Groningen” voor lezen).
+- **Apparaten:** mobile 99, desktop 74. Mobiel domineert maar minder zwaar dan landelijk gemiddelde.
+- **Geo (NL):** Drenthe **116** sessies = doelregio. Groningen **4** is laag, gegeven dat er een eigen stadspagina is. Friesland en Overijssel ontbreken in de top-10.
+- **Ruis:** Noord-Holland 12, Zuid-Holland 7 — buiten doelregio. VS-sessies (Colorado, Oregon, Iowa, NC, Virginia samen 23) zijn vrijwel zeker bot- of bouncerverkeer en moeten **uit het PM-segment**.
 
 ---
 
 ## Observaties
 
-1. **Prijsindicatie en contact** — beide stijgen in sessies en hebben **relatief lage bounce**; dit zijn de sterkste commerciële routes na de home.
-2. **`systemen-producten.html`** — veel sessies maar **zeer korte gemiddelde tijd (~4,5 s)** in deze slice: typisch “snel scan / geen tweede hit” of tab-weg; vraagt om **vroege, duidelijke CTA** naar prijsindicatie of FAQ.
-3. **Stadspagina’s** — als **landingspagina** nog **bounce 1,0** en weinig tijd bij Assen; Groningen iets meer tijd. Interne doorverwijzing naar FAQ/wizard kan helpen naast bestaande hero-CTA.
-4. **`projecten.html`** — dunne pagina, hoge bounce als landing; **vertrouwen + doorstroom** (naar prijsindicatie/FAQ) versterken tot echte cases binnen zijn.
-5. **`logo-varianten.html`** — blijft in data; hosting/redirect blijft wenselijk, geen harde dev-prioriteit tenzij volume groeit.
+1. **Prijsindicatie is de motor van conversies** — 24 sessies, bounce 0,33, gem. 292s en **13 conversions** als landing op 11 sessies. Geen andere pagina komt in de buurt.
+2. **Contact is een zwart gat** — 8 directe landingen, **bounce 1,00**, **0 conversions** als landing. Sterke disconnect tussen verwachting (call/aanvraag) en uitvoering. Deeplinks `?modus=` / `?tab=` / `#aanvraag` werden ingebouwd; de data toont nog geen onderscheid omdat de query-string niet in de pagePath-export staat.
+3. **Stadspagina’s converteren niet** — drie pagina’s, alle drie 1,00 bounce als landing. Sprint 19 mei voegt een FAQ-link toe; zonder lokale projectcases blijft het waarschijnlijk dun.
+4. **Google organic = nul in export** — alle SEO-werk landt momenteel onbewezen. Search Console-data is parallel kanaal, vereist apart.
+5. **Drenthe domineert, Groningen nauwelijks aanwezig** — Drenthe 116 vs. Groningen 4 sessies. Stadspagina-strategie voor Groningen presteert nog niet.
+6. **Facebook-verkeer 17 sessies, 0 conversions** — bron komt door, maar landingsflow vangt het niet op. Past bij observatie 2 (contact-flow).
+7. **`weekly_trend` is kapot** — de loop in `ga4_fetch.py` levert maar één week. Trend-analyse is daardoor onmogelijk in deze export.
 
 ---
 
 ## Voorstellen voor Product Manager
 
-1. **Prioriteit: Hoog — Vroege CTA op `systemen-producten.html`**  
-   - **Onderbouwing:** 12 sessies, gem. duur ~4,5 s — sterke hint op snelle exit.  
-   - **Actie:** Direct onder de hero een compact CTA-blok (zelfde patroon als onderaan de pagina: prijsindicatie).  
-   - **Verwacht effect:** meer `wizard_start` vanaf systemen-pagina.
+### 1. `[Hoog]` Contact-landing repareren als conversiepad
 
-2. **Prioriteit: Hoog — Interne links naar `faq.html` op drukke/supportpagina’s**  
-   - **Onderbouwing:** FAQ is nieuw; nog geen meetpad in top-pages — indexering + interne links versnellen.  
-   - **Actie:** Korte zinnen + links vanaf `diensten.html`, `projecten.html`, `contact.html` (en evt. `prijsindicatie.html` intro).  
-   - **Verwacht effect:** sessies op `/faq.html`; lagere “orphan”-kans.
+- **Onderbouwing:** 8 directe landingen op `/contact.html` met bounce 1,00 en 0 conversions. Tegelijk: prijsindicatie levert 13 conversions op 11 landingen. Het verschil is overtuigend genoeg om hier prioriteit te geven.
+- **Actie:** Bovenaan `contact.html` (boven de form) **direct zichtbare keuze** tussen: (a) bel nu, (b) WhatsApp/sms, (c) prijsindicatie eerst. Form blijft, maar is niet langer enige route. Test: clickable phone-link bovenaan voor mobile (57% sessies).
+- **Verwacht effect:** ≥1 conversion uit contact-landing in volgende 30d-window; bounce <0,80.
 
-3. **Prioriteit: Midden — Stadspagina’s: doorstroom naar FAQ**  
-   - **Onderbouwing:** 100% bounce als landing op Groningen/Assen in entry-tabel.  
-   - **Actie:** Onder hero-CTA één regel met link naar `faq.html` (infrezen, warmtepomp, kosten).  
-   - **Verwacht effect:** tweede hit-rate; langere sessies.
+### 2. `[Hoog]` `weekly_trend`-bug in `ga4_fetch.py` fixen
 
-4. **Prioriteit: Midden — Home “4 stappen”: schuimbeton deeplink**  
-   - **Onderbouwing:** USP-schuimbeton in stap 2 zonder link; sprint-deeplink `#schuimbeton` bestaat.  
-   - **Actie:** Link `diensten.html#schuimbeton` op het woord schuimbeton in stap 2.  
-   - **Verwacht effect:** betere interne verdeling en ankerverkeer.
+- **Onderbouwing:** Loop genereert `end_date = today - i*week` met start `i=0`, wat `start=today-7d, end=today` betekent voor i=0 en bij overlap één week wegschrijft. JSON-export bevat nu één week — week-over-week-analyse kan niet.
+- **Actie:** In `scripts/ga4_fetch.py` regel ~198: loop herzien zodat acht **niet-overlappende** weken worden weggeschreven (gebruik `weeks=i+1` voor start, `weeks=i` voor end, of een datum-array vooraf).
+- **Verwacht effect:** Trend-tabel in volgend rapport, kan groei/krimp pas aantonen.
 
-5. **Prioriteit: Midden — `projecten.html` helderder maken als tussenstap**  
-   - **Onderbouwing:** hoge bounce, weinig tijd.  
-   - **Actie:** In hero-tekst expliciet verwijzen naar FAQ + prijsindicatie (één zin).  
-   - **Verwacht effect:** minder doodlopende landingservaring.
+### 3. `[Hoog]` Google Search Console naast GA4 ophalen
 
-6. **Prioriteit: Laag — Lege landing (16 sessies)**  
-   - **Onderbouwing:** bounce ~0,94.  
-   - **Actie:** GA4-exploratie (bron/medium/apparaat); geen sitecode tot oorzaak helder is.  
-   - **Verwacht effect:** schonere rapportage.
+- **Onderbouwing:** Organic Google = niet zichtbaar in GA4-export. Sprint 19 mei zet vol in op SEO (FAQ-inlinks, deeplinks); zonder GSC-data is succes onmeetbaar.
+- **Actie:** GSC API koppelen aan service account, fetch-script uitbreiden met top queries / pages / impressies / CTR voor `vlwarmte.nl`. Aparte JSON of toevoegen aan bestaande report.
+- **Verwacht effect:** Eerste meetbare SEO-rapportage in 2-4 weken; vooral op `faq.html` en `vloerverwarming-{stad}` URL’s.
 
-7. **Prioriteit: Laag — `logo-varianten.html` resthits**  
-   - **Onderbouwing:** 9 sessies in top_pages.  
-   - **Actie:** 301/redirect via hosting indien mogelijk.  
-   - **Verwacht effect:** schonere toplijst.
+### 4. `[Midden]` `projecten.html` tijdelijk vermageren tot doorstroom
 
-8. **Prioriteit: Laag — Search Console op “faq” en “vloerverwarming + plaats”**  
-   - **Onderbouwing:** geen query-dimensie in JSON-export.  
-   - **Actie:** over 2–4 weken impressies/CTR checken op nieuwe FAQ-URL.  
-   - **Verwacht effect:** titel/description bijschaven op data.
+- **Onderbouwing:** 7 sessies, bounce 0,86, gem. 0,9s. Pagina is een dood spoor.
+- **Actie:** Tot er echte projectfoto’s zijn: hero-tekst herschrijven naar één eerlijke alinea ("nog geen cases gepubliceerd, neem contact op voor referenties") + twee duidelijke knoppen (FAQ + prijsindicatie). Geen lege placeholders.
+- **Verwacht effect:** Bounce <0,70; gem. duur >20s.
+
+### 5. `[Midden]` GA4-segment opschonen: alleen NL + doelregio
+
+- **Onderbouwing:** ~23 VS-sessies en 19 NL-sessies buiten doelregio (NH+ZH) vertroebelen alle bounce/duur-cijfers in deze export.
+- **Actie:** In GA4 standaardrapport een PM-segment "Drenthe + Groningen + Friesland + Overijssel + NH/ZH" inrichten en `ga4_fetch.py` daar laten filteren via `dimensionFilter` op `region`.
+- **Verwacht effect:** Realistischere bouncerates op stadspagina’s; betere besluitvorming.
 
 ---
 
-## Data snapshot (top 5 sessies)
+## Bijlage — top 5 sessies snapshot
 
 | pagePath | sessies |
 | -------- | ------- |

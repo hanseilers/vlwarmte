@@ -194,10 +194,14 @@ def main() -> None:
     )
 
     print("Fetching weekly trend...")
+    # GA4 DateRange is inclusief aan beide kanten, dus 8 disjuncte weken bouwen
+    # we vooraf op met stappen van precies 7 dagen. Iedere week beslaat 7 dagen
+    # (Y-MM-DD t/m Y-MM-DD+6) en heeft een uniek week_start.
     weekly = []
+    today = datetime.today().date()
     for i in range(8):
-        end_date = datetime.today() - timedelta(weeks=i)
-        start_date = end_date - timedelta(weeks=1)
+        end_date = today - timedelta(days=7 * i + 1)
+        start_date = end_date - timedelta(days=6)
         rows = run(
             dimensions=[],
             metrics=["sessions", "activeUsers"],
@@ -207,6 +211,7 @@ def main() -> None:
         )
         if rows:
             rows[0]["week_start"] = start_date.strftime("%Y-%m-%d")
+            rows[0]["week_end"] = end_date.strftime("%Y-%m-%d")
             weekly.append(rows[0])
     report["weekly_trend"] = list(reversed(weekly))
 

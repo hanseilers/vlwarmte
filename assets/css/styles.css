@@ -439,6 +439,64 @@ h2 {
   margin: 0.35rem 0 0;
 }
 
+/* Compact direct-contactblok — boven het lead-formulier op contact.html en als korte regel onder de hero op stadspagina's. */
+.contact-direct {
+  margin: 1.25rem 0 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(95, 163, 224, 0.22);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.contact-direct__intro {
+  margin: 0 0 0.6rem;
+}
+
+.contact-direct__choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.75rem;
+}
+
+.contact-direct__btn {
+  flex: 1 1 auto;
+  text-align: center;
+  min-width: 0;
+}
+
+.contact-direct__note {
+  margin: 0.7rem 0 0;
+  opacity: 0.8;
+}
+
+@media (max-width: 540px) {
+  .contact-direct__choices {
+    flex-direction: column;
+  }
+  .contact-direct__btn {
+    width: 100%;
+  }
+}
+
+/* Lichte regel onder de hero-CTA op stadspagina's: bel + informatie aanvragen. */
+.hero-soft-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.85rem;
+  align-items: center;
+  margin: 0.6rem 0 0;
+}
+
+.hero-soft-row .hero-soft-row__intro {
+  margin: 0;
+  flex: 1 1 100%;
+}
+
+.hero-soft-row .btn {
+  padding: 0.55rem 1rem;
+  font-size: 0.95rem;
+}
+
 .section {
   padding: 4rem 0;
 }

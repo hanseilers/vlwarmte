@@ -968,6 +968,11 @@
           schuim_mm: b.schuimMm,
         });
         vlGtag('event', 'calculator_result', { traject: 'schuim', m2: state.schuimM2, diepte_mm: state.diepteMm });
+        vlGtag('event', 'calculator_complete', {
+          m2: Math.round(Number(state.schuimM2) || 0),
+          ondergrond: state.kruipOndergrond || 'onbekend',
+          systeem: 'vloerverwarming-schuimbeton',
+        });
       }
 
       function fmt(n) { return '€ ' + Math.round(n).toLocaleString('nl-NL'); }
@@ -1140,6 +1145,11 @@
 
         vlGtag('event', 'wizard_calculate', { projecttype: state.projecttype, m2: state.m2, zones, traject: 'vl_beton' });
         vlGtag('event', 'calculator_result', { projecttype: state.projecttype, m2: state.m2, zones, traject: 'vl_beton' });
+        vlGtag('event', 'calculator_complete', {
+          m2: Math.round(Number(state.m2) || 0),
+          ondergrond: state.ondergrond || 'onbekend',
+          systeem: 'vloerverwarming-beton',
+        });
       }
 
       function resetWizard() {
