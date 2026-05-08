@@ -68,6 +68,18 @@
 
 ---
 
+### Taak 6: `contact.html` — volgorde formulier vóór adreskaart `[GOEDGEKEURD]`
+
+**Bron:** Product owner — betere flow: eerst aanvraag, daarna adres en bedrijfsgegevens.  
+**Prioriteit:** Midden  
+**Type:** UX / layout
+
+**Actie:** In `<main>`: sectie met `#aanvraag` + leadformulier **boven** de sectie “Adres en bedrijfsgegevens”. `id="aanvraag"`, deep links (`?modus=…#aanvraag`, `#lead-form`) en formuliergedrag ongewijzigd.
+
+**Succescriterium:** Geen wijziging aan velden of head; alleen volgorde van de twee secties.
+
+---
+
 ## Uitgestelde voorstellen `[WACHT]`
 
 - **Google Ads RSA / conversies** — na voldoende organische baseline deze sprint.  
@@ -110,6 +122,7 @@
 - **Taak 3 — `systemen-producten.html`:** head SEO + **Terugbelverzoek** in vroege `cta-band`.
 - **Taak 4 — `projecten.html`:** **Terugbelverzoek** in `hero-soft-row`.
 - **Taak 5 — `faq.html`:** head SEO (infrezen, warmtepomp, kosten, routes).
+- **Taak 6 — `contact.html`:** volgorde — leadblok (`#aanvraag`) boven “Adres en bedrijfsgegevens”.
 
 ### Kwaliteit
 
