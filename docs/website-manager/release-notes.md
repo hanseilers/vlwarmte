@@ -4,6 +4,28 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 16 juni 2026
+**Deployment:** 08-05-2026 (PM: `git push origin main` — GitHub Pages)  
+**Versie:** _(na commit)_
+
+### Wat is er veranderd
+- **`diensten.html` en `contact.html`:** scherpere **title + meta + sociale previews** (Zuidlaren, Drenthe, traject; contact met offerte/informatie/**terugbel** en reactie binnen werkdag).
+- **`systemen-producten.html`:** zelfde snippet-aanscherping + knop **Terugbelverzoek** naast prijsindicatie en FAQ in het vroege CTA-blok.
+- **`projecten.html`:** **Terugbelverzoek** naast informatie in de hero-soft-row.
+- **`faq.html`:** snippet richting **infrezen, warmtepomp, kosten** en routes naar prijs/contact/terugbel.
+- **PM-docs:** analytics (cyclus 4, verse fetch), marketingkop, sprint + social kalender week 16 juni; archief sprint week 9 juni en vorige socialweek.
+
+### Waarom
+- GA4: hoge landingsbounce op diensten/contact/systemen/projecten; Paid Search 12 sessies zonder conversie — duidelijkere SERP en dezelfde terugbel-CTA als elders.
+
+### Verwacht effect
+- Betere alignment zoeksnippet ↔ pagina; meer tweede stappen vanaf systemen en projecten.
+
+### Social media deze week
+Zie `docs/website-manager/social/weekly_calendar.md` (week van 16 juni 2026).
+
+---
+
 ## Release — week van 9 juni 2026
 **Deployment:** 08-05-2026 (PM: `git push origin main` — GitHub Pages, run **25554936393**, succesvol)  
 **Versie:** `1d6bc5e`

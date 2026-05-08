@@ -1,115 +1,115 @@
-# Sprint — week van 9 juni 2026
+# Sprint — week van 16 juni 2026
 
-**PM beslissing genomen op:** 08-05-2026 (cyclus 3 — archive vorige sprint; analytics op bestaande GA4-export; marketing korte WebSearch; developer + PM commit/push).  
-**Doel deze sprint:** **Vorige sprint live zetten** én **organische snippet + lichte CTA’s** versterken (werkwijze/over-ons SEO, terugbel op diensten/FAQ, homepage-meta) zodat de funnel richting prijs/contact duidelijker wordt.  
-**Meetdoel:** Per **5 juli 2026** in GA4: stijging `wizard_start` of `contact_submit` vanaf `/diensten.html` of `/faq.html`; bounce **werkwijze**-landing niet hoger dan nu; minstens één **Paid Search**-conversie óf duidelijk lagere bounce op `/prijsindicatie.html`-landing.
+**PM beslissing genomen op:** 08-05-2026 (cyclus 4 — verse GA4-fetch; archive sprint week 9 juni; developer + PM commit/push).  
+**Doel deze sprint:** **Landings-SERP en tweede stap** verbeteren waar bounce hoog blijft: **diensten**, **contact**, **systemen**, **projecten**, **FAQ** — alles binnen bestaande URL’s, met nadruk op **Zuidlaren** en **terugbelverzoek** naast prijs/FAQ.  
+**Meetdoel:** Per **12 juli 2026** in GA4: lagere bounce op `/diensten.html`- en `/contact.html`-landing óf meer `contact_submit` / terugbel-gerelateerde sessies; Paid Search nog steeds monitoren (12 sessies / 0 conv in huidige export).
 
 ---
 
 ## Goedgekeurde taken voor Developer Agent
 
-### Taak 0: Repo-sync vorige sprint `[GOEDGEKEURD]`
+### Taak 1: `diensten.html` — head SEO `[GOEDGEKEURD]`
 
-**Bron:** PM — vorige sprint stond geïmplementeerd maar niet op `origin/main`.  
-**Prioriteit:** Hoog  
-**Type:** release
-
-**Actie:** Geen extra code — wijzigingen uit sprint week 2 juni (`prijsindicatie.html` CTA-band, `disclaimer.html` + `privacy.html` exits, `projecten.html` hero-soft-row, `google_ads_lead_campaign_defaults.json` indien nog niet op main) gaan **in dezelfde commit** mee als onderstaande taken.
-
-**Succescriterium:** `git diff` toont die bestanden mee in de release-commit.
-
----
-
-### Taak 1: `werkwijze.html` — lokale SEO in head `[GOEDGEKEURD]`
-
-**Bron:** Analytics — korte sessies op werkwijze; snippet miste expliciete regio/traject-hint.  
+**Bron:** Analytics — landing bounce **~0,79** (14 sessies); snippet nog generiek.  
 **Prioriteit:** Hoog  
 **Type:** SEO
 
-**Actie:** Pas `<title>`, `<meta name="description">`, `og:title`, `og:description`, `twitter:title`, `twitter:description` aan: noem **Zuidlaren**, **Drenthe** (en waar passend Groningen/Friesland), en **zes stappen / traject vloerverwarming** — blijf binnen redelijke lengtes, geen keyword-stuffing.
+**Actie:** Pas `<title>`, `<meta name="description">`, `og:title`, `og:description`, `twitter:title`, `twitter:description` aan: **Zuidlaren**, **Drenthe** (en waar passend Groningen/Friesland), **traject** ondervloer–oplevering, **vrijblijvende prijsindicatie**, licht contact/terugbel (zonder overdrijven).
 
-**Succescriterium:** Eén duidelijke H1 blijft; canonical ongewijzigd; geen dubbele title-tags.
+**Succescriterium:** H1 en body ongewijzigd; canonical blijft `diensten.html`.
 
 ---
 
-### Taak 2: `over-ons.html` — lokale SEO in head `[GOEDGEKEURD]`
+### Taak 2: `contact.html` — head SEO `[GOEDGEKEURD]`
 
-**Bron:** Analytics — `/over-ons.html` als landing met bounce **0,78** en 0 conversies in entry-tabel.  
+**Bron:** Analytics — landing bounce **0,86** (7 sessies); pagina heeft al sterke directe routes in de hero.  
 **Prioriteit:** Hoog  
 **Type:** SEO
 
-**Actie:** Zelfde patroon als Taak 1: title + meta + OG/Twitter met **vloerverwarmingsspecialist**, **Zuidlaren**, **Noord-Nederland** — nuchtere zin, geen superlatieven.
+**Actie:** Title + alle meta/OG/Twitter-descriptions: expliciet **informatie**, **offerte**, **terugbelverzoek**, **Zuidlaren**, **reactie binnen één werkdag** (nuchtere zin).
 
-**Succescriterium:** H1 en inhoud ongewijzigd; alleen head-metadata.
+**Succescriterium:** Geen wijziging aan formulier of hero-body; alleen `<head>`.
 
 ---
 
-### Taak 3: `diensten.html` + `faq.html` — terugbel in CTA-band `[GOEDGEKEURD]`
+### Taak 3: `systemen-producten.html` — head SEO + terugbel in CTA-band `[GOEDGEKEURD]`
 
-**Bron:** Marketing + analytics — diensten-landing bounce hoog; lichte derde stap naast prijs/FAQ.  
+**Bron:** Analytics + marketing — landing bounce **1,0** (kleine cohort); korte sessieduur op pagina-niveau.  
 **Prioriteit:** Hoog  
-**Type:** conversie / CTA
+**Type:** SEO + CTA
 
-**Actie:** In de bestaande `cta-band-stack` (direct onder de hero) een **secundaire knop** toevoegen: tekst **„Terugbelverzoek”** of **„Laat mij terugbellen”**, link `contact.html?modus=bel#aanvraag`. Zelfde knop op **beide** pagina’s.
+**Actie:** (1) Head: title + meta + OG/Twitter met **vergelijken vloerverwarmingssystemen**, **Zuidlaren/Noord-Nederland**, link naar **advies** en **prijsindicatie**. (2) In de bestaande vroege `cta-band-stack`: knop **Terugbelverzoek** → `contact.html?modus=bel#aanvraag`, naast prijsindicatie en FAQ.
 
-**Succescriterium:** Drie knoppen netjes gestapeld op smalle schermen (bestaande `.cta-band-stack`); geen tweede `h1`.
+**Succescriterium:** Geen tweede `h1`; knoppen gebruiken `.cta-band-stack`.
 
 ---
 
-### Taak 4: `index.html` — meta SERP-clariteit `[GOEDGEKEURD]`
+### Taak 4: `projecten.html` — terugbel in hero-soft-row `[GOEDGEKEURD]`
 
-**Bron:** Analytics — homepage grootste instap; beschrijving kan **online prijsindicatie** expliciet maken voor zoeksnippet.  
+**Bron:** Analytics — projecten-landing bounce **1,0**.  
+**Prioriteit:** Midden  
+**Type:** CTA
+
+**Actie:** In `hero-soft-row` naast **Informatie aanvragen** een tweede knop **Terugbelverzoek** (`contact.html?modus=bel#aanvraag`), zelfde button-stijl als andere soft-rows.
+
+**Succescriterium:** Geen extra `h1`; mobiel leesbaar naast/in lijn met bestaande knop.
+
+---
+
+### Taak 5: `faq.html` — head SEO `[GOEDGEKEURD]`
+
+**Bron:** Marketing — FAQ is inhoudelijk sterk; snippet kan **infrezen**, **warmtepomp**, **kosten** en route naar **prijsindicatie/terugbel** explicieter maken.  
 **Prioriteit:** Midden  
 **Type:** SEO
 
-**Actie:** Verleng `meta name="description"` (en gelijk `og:description` + `twitter:description`) met één korte zin over **vrijblijvende online prijsindicatie** — max. ~320 tekens totaal voor description.
+**Actie:** Title (indien nodig ingekort) + meta + OG/Twitter: bovenstaande onderwerpen + **Zuidlaren** waar natuurlijk.
 
-**Succescriterium:** Hero-HTML ongewijzigd; canonical blijft `/`.
+**Succescriterium:** Accordion/FAQ-body ongewijzigd.
 
 ---
 
 ## Uitgestelde voorstellen `[WACHT]`
 
-- **Google Ads RSA live zetten / tweede RSA** — na deze deploy en met `secrets/google-ads.env` op de agent-machine.  
-- **`systemen-producten.html` dieper uitmeten** — pagina heeft al vroege `cta-band`; eerst effect vorige releases meten.
+- **Google Ads RSA / conversies** — na voldoende organische baseline deze sprint.  
+- **Disclaimer/privacy** — exits staan live; cohort klein, pas opnieuw bijronden als volume stijgt.
 
 ---
 
 ## Afgewezen voorstellen `[AFGEWEZEN]`
 
-- **Nieuwe landingspagina’s** — niet nodig; bestaande URL’s versterken.
+- **Nieuwe pagina’s** — niet in deze sprint.
 
 ---
 
 ## Social Media
 
-**Status:** `docs/website-manager/social/weekly_calendar.md` — **week van 9 juni 2026**.  
+**Status:** `docs/website-manager/social/weekly_calendar.md` — **week van 16 juni 2026**.  
 **Actie vereist:** Handmatige publicatie door VLWarmte team.
 
 ---
 
-## Pilot — weer-accent (workshop, `proposals.md` voorstel 10)
+## Pilot — weer-accent (`proposals.md` voorstel 10)
 
-**Lopend:** start 8 mei 2026, evaluatie uiterlijk 4 juni 2026. Onveranderd t.o.v. vorige sprint.
+**Lopend:** start 8 mei 2026, evaluatie uiterlijk **4 juni 2026**. Na die datum in `proposals.md` vastleggen: doorzetten, bijsturen of afronden.
 
 ---
 
 ## Context voor volgende sprint
 
-- Verifiëren of **Paid Search** conversies oplopen na live copy + CTA’s.  
-- `calculator_complete` / `wizard_calculate` in GA4 gebruiken voor wizard-funnel.
+- Paid Search 12 / 0 — koppeling GA4 ↔ Ads en RSA-sync blijven op de lijst.  
+- Effect van snippet-wijzigingen in Search Console na 2–4 weken.
 
 ---
 
-## Developer Rapport — 8 mei 2026 (cyclus 3)
+## Developer Rapport — 8 mei 2026 (cyclus 4)
 
 ### Geïmplementeerde taken
 
-- **Taak 0 — vorige sprint mee in release:** `prijsindicatie.html` (CTA-band), `disclaimer.html` + `privacy.html` (exit onder hero), `projecten.html` (`hero-soft-row`); defaults JSON stond al op main.
-- **Taak 1 — `werkwijze.html`:** title + meta + OG/Twitter met Zuidlaren/Drenthe en traject/prijsindicatie.
-- **Taak 2 — `over-ons.html`:** title + meta + OG/Twitter met specialist Zuidlaren/Noord-Nederland.
-- **Taak 3 — `diensten.html` + `faq.html`:** knop **Terugbelverzoek** → `contact.html?modus=bel#aanvraag`.
-- **Taak 4 — `index.html`:** meta/og/twitter description met online prijsindicatie.
+- **Taak 1 — `diensten.html`:** head SEO (Zuidlaren, Drenthe, traject, prijs/terugbel in snippet).
+- **Taak 2 — `contact.html`:** head SEO (informatie, offerte, terugbel, Zuidlaren, werkdag).
+- **Taak 3 — `systemen-producten.html`:** head SEO + **Terugbelverzoek** in vroege `cta-band`.
+- **Taak 4 — `projecten.html`:** **Terugbelverzoek** in `hero-soft-row`.
+- **Taak 5 — `faq.html`:** head SEO (infrezen, warmtepomp, kosten, routes).
 
 ### Kwaliteit
 
@@ -118,4 +118,4 @@
 
 ### Deployment
 
-- **Status:** door **Product Manager** — `git push origin main` voltooid. **GitHub Actions:** run **25554936393** (`pages-build-deployment`, succes). **Commit:** `1d6bc5e`. Live-check: `Terugbelverzoek` zichtbaar op `https://www.vlwarmte.nl/diensten.html`.
+- **Status:** door **Product Manager** — na `git push origin main` (run-id volgt).
