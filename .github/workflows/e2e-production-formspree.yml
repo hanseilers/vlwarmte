@@ -11,7 +11,7 @@ permissions:
 jobs:
   formspree-inbox:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,4 +32,4 @@ jobs:
           IMAP_USER: ${{ secrets.IMAP_USER }}
           IMAP_PASSWORD: ${{ secrets.IMAP_PASSWORD }}
           E2E_FORMSPREE_URL: ${{ secrets.E2E_FORMSPREE_URL }}
-        run: python scripts/e2e_formspree_inbox.py
+        run: python scripts/e2e_formspree_inbox.py --with-thankyou

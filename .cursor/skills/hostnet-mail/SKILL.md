@@ -111,6 +111,9 @@ Standaard: **Playwright** opent **`https://www.vlwarmte.nl/contact.html?modus=of
 pip install -r scripts/requirements-e2e.txt
 python -m playwright install chromium
 python scripts/e2e_formspree_inbox.py
+# volledige keten inclusief bedankmail op dezelfde testsubmission:
+python scripts/e2e_formspree_inbox.py --with-thankyou
+# of: E2E_WITH_THANKYOU=1 python scripts/e2e_formspree_inbox.py
 ```
 
 Optioneel: **`--http-post`** (alleen debug), **`--headed`** (lokaal venster).
