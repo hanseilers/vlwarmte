@@ -4,6 +4,67 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 18 mei 2026
+**Deployment:** (ingevuld na push / GitHub Pages)  
+**Versie:** (zie `git log -1 --oneline` op `main` na deze release)
+
+### Wat is er veranderd
+- **`logo-varianten.html`:** minimale doorverwijspagina met canonical naar de homepage, meta-refresh en een zichtbare link voor bezoekers zonder automatische doorstuur — vangt bookmarks en oude links op zonder 404.
+- **`diensten.html`, `werkwijze.html`, `over-ons.html`:** direct onder de hero een **`cta-band`** met duidelijke paden naar de prijsindicatie en FAQ of contact (informatie-dieplink), zodat landers meteen een tweede stap zien.
+- **`assets/css/styles.css`:** helper **`.cta-band-stack`** voor nette stapeling van meerdere knoppen in donkere CTA-blokken op smalle schermen.
+- **`scripts/ga4_fetch.py`:** `weekly_trend` bevat altijd **8 weken**; weken zonder data in GA4 worden met nul-sessies ingevuld zodat trends in rapportages niet breken.
+
+### Waarom
+- Analytics (7 mei) toonde nog restverkeer naar de oude logo-URL en een hoge bounce op `diensten.html` als landing, korte sessies op `werkwijze.html` en weinig vroege vervolgstap op `over-ons.html`.
+- De fetch-export had soms minder dan acht weken in `weekly_trend` doordat de GA4-API geen rij teruggeeft bij nul sessies — dat maakt weekvergelijking onmogelijk voor de PM-cyclus.
+
+### Verwacht effect (meting rond 4 juni 2026)
+- Minder “dood” verkeer op `/logo-varianten.html`; consolidatie richting homepage.
+- Lagere bounce en vaker tweede hit vanaf `diensten.html` en `werkwijze.html`; vaker start vanuit `over-ons.html` richting prijsindicatie of licht contact.
+- Betrouwbare 8-punts weekreeks in `ga4_report.json` na elke fetch.
+
+### Social media deze week
+Zie `docs/website-manager/social/weekly_calendar.md` (week van 18 mei 2026).
+
+---
+
+## Release — week van 11 mei 2026
+**Deployment:** 06-05-2026 10:28 (commit `2f22120`, GitHub Pages run `25424644693`, in_progress bij rapportage)
+**Versie:** `2f22120` — Sprint 11 mei: conversiepaden contact + stadspagina's + projecten, GA4 weekly_trend fix, calculator_complete
+
+### Wat is er veranderd
+- **`contact.html`:** boven het bestaande formulier staat nu een directe-keuze blok met drie paden — bel-knop, sms-knop ("stuur een berichtje") en een secundaire route naar de prijsindicatie. Op mobiel staan de drie keuzes onder elkaar full-width. Het formulier zelf is ongewijzigd.
+- **Stadspagina's** (Groningen, Assen, Zuidlaren): onder de bestaande hero-CTA een korte regel "liever bellen of even iets vragen?" met een bel-knop en een knop "informatie aanvragen" die `contact.html?modus=informatie#aanvraag` opent.
+- **`projecten.html`:** de hero-tekst is herschreven naar één eerlijke alinea (er zijn nog geen openbaar gepubliceerde cases; referenties op verzoek), met daaronder twee knoppen: prijsindicatie en FAQ. De rest van de pagina blijft staan.
+- **`prijsindicatie.html`:** nieuw GA4-event `calculator_complete` op het moment dat de eindberekening getoond wordt — met de ingevoerde m², ondergrond en gekozen systeem (geen persoonsgegevens). Bestaande events blijven staan.
+- **`scripts/ga4_fetch.py`:** loop voor `weekly_trend` is gefixt — schrijft nu acht niet-overlappende weken in plaats van één. Maakt week-over-week analyse mogelijk vanaf de volgende fetch.
+
+### Waarom
+- Analytics Agent (6 mei) liet zien dat `contact.html` als landing 8 sessies trekt met bounce 1,00 en 0 conversions, terwijl `prijsindicatie.html` ter vergelijking 13 conversions levert op 11 landingen — sterkste lead-generatie kans van de week.
+- Stadspagina's bouncen 1,00 als landing op Groningen en Assen; FAQ-link uit sprint 19 mei was het lichte pad, een bel-knop en lichte "informatie"-route maken de tweede stap nog expliciter.
+- `projecten.html` had bounce 0,86 en 0,9 s gemiddelde tijd — de pagina was een dood spoor. Klant-akkoord voor echte cases is nog niet binnen, dus voor nu een eerlijke alinea + doorstroom in plaats van leeg laten.
+- `calculator_complete`-event is voorwaarde om drop-off in de wizard te kunnen meten; zonder kunnen we de wizard wel zien werken, maar niet zien wáár het beter kan.
+- `weekly_trend`-bug blokkeerde alle trend-analyse — pure infrastructuur-fix.
+
+### Verwacht effect (meting per 3 juni 2026)
+- ≥1 conversion uit `/contact.html` als landing (was 0).
+- Bounce `/contact.html`-landing onder 0,80 (was 1,00).
+- Tweede-hit-rate stijgt op stadspagina's; iets minder strakke 1,00 landingsbounce.
+- `calculator_complete` verschijnt in GA4 met genoeg events om over 2–4 weken drop-off-analyse te doen.
+- Volgende `ga4_fetch.py`-run levert 8 unieke weken in `weekly_trend` zodat trends meetbaar worden.
+
+### Social media deze week (week van 11 mei)
+- **LinkedIn (3 posts):** di 12 mei renovatie-opbouw infrezen vs schuimbeton; wo 13 mei prijsindicatie als planningstool; do 14 mei nieuwe Zuidlaren-pagina + Drentse dorpen.
+- **Instagram (4 posts):** wo 13 mei schuimbeton onder de vloer; vr 15 mei comfort + opwarmtijd per vloerafwerking; za 16 mei lokaal werken vanuit Zuidlaren; zo 17 mei renovatie Assen.
+- **Facebook (1 optionele post):** do 14 mei Zuidlaren-pagina.
+- **Drie posts hebben een [FOTO NODIG]-placeholder** — VLWarmte moet beeld aanleveren in `social/input/` voor publicatie.
+
+### Bekende kanttekeningen
+- Geen WhatsApp-nummer expliciet bekend, dus contact-keuze gebruikt `sms:+31618817459` met label "stuur een berichtje". Kan later naar `wa.me` zonder UI-aanpassing.
+- Smoke tests en `python3 scripts/ga4_fetch.py` konden in de developer-sessie niet draaien (sandbox-restrictie). Hans/PM moet ze handmatig draaien om de GA4-fix te valideren — verwacht 8 unieke weken in `weekly_trend`.
+
+---
+
 ## Release — week van 19 mei 2026
 **Deployment:** (na push / GitHub Pages — lokaal gevalideerd 02-05-2026)  
 **Versie:** zie `git log -1 --oneline` op main na deze release — PM-cyclus: doorstroom FAQ + systemen-CTA + GA4-rapport

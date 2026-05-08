@@ -210,9 +210,13 @@ def main() -> None:
             limit=1,
         )
         if rows:
-            rows[0]["week_start"] = start_date.strftime("%Y-%m-%d")
-            rows[0]["week_end"] = end_date.strftime("%Y-%m-%d")
-            weekly.append(rows[0])
+            row = rows[0]
+        else:
+            # GA4 geeft geen rij bij 0 sessies — backfill zodat PM altijd 8 weken heeft
+            row = {"sessions": "0", "activeUsers": "0"}
+        row["week_start"] = start_date.strftime("%Y-%m-%d")
+        row["week_end"] = end_date.strftime("%Y-%m-%d")
+        weekly.append(row)
     report["weekly_trend"] = list(reversed(weekly))
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)

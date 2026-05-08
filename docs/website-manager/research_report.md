@@ -1,5 +1,7 @@
 # Marketing Research Rapport — 6 mei 2026
 
+**Update 7 mei (Product Manager-ronde):** Geen nieuwe SERP-fetch; verse GA4-export 7 mei bevestigt dat **prijsindicatie** en **direct** het volume en de conversies dragen, dat **contact-landing** voorzichtig herstelt (3 conv op 7 sessies in huidige export), en dat **diensten-landing** + **korte werkwijze-sessies** de grootste on-site gaten blijven naast restverkeer naar verwijderde logo-URL. Marketing-aanbevelingen uit dit document blijven geldig; volgende research-deep-dive wanneer WebSearch/SC-export weer beschikbaar zijn.
+
 **Methode-noot (eerlijk):** WebSearch en WebFetch waren tijdens deze ronde niet beschikbaar; deze iteratie is een **synthese-update** op basis van de bestaande inventaris (sitemap, FAQ, drie stadspagina's, prijsindicatie-wizard), `analytics_report.md` (2 mei) en eerdere research-iteraties (april + 1 mei Zuidlaren-verdieping). Externe SERP-checks van vandaag staan dus niet in deze update — die staan op de openstaande lijst voor de eerstvolgende ronde wanneer WebSearch weer aan kan.
 
 ## Samenvatting

@@ -670,6 +670,20 @@ h2 {
   color: #fff;
 }
 
+.cta-band-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  align-items: stretch;
+  min-width: min(100%, 15.5rem);
+}
+
+@media (min-width: 769px) {
+  .cta-band-stack {
+    align-items: flex-end;
+  }
+}
+
 .page-hero {
   position: relative;
   z-index: 0;
