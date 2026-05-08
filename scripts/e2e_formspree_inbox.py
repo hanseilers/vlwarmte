@@ -8,6 +8,7 @@ Optioneel: `--http-post` voor directe POST (alleen voor debug; kan 404 geven als
 niet meer geldig is).
 
 Secrets: zie secrets/hostnet-mail.env.example (IMAP_*). CI: GitHub Actions secrets.
+Marker-matching decodeert multipart mail (Formspree-HTML/base64), niet alleen ruwe RFC822.
 Klant-e-mail in testsubmissions: E2E_CUSTOMER_EMAIL of default jceilers@icloud.com.
 `--no-inbox` / `E2E_NO_INBOX=1`: Playwright op productie (default `E2E_BASE_URL`) zonder IMAP-wacht.
 
@@ -30,7 +31,11 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import uuid
+from email import message_from_bytes
+from email.header import decode_header, make_header
 from pathlib import Path
+
+import email.policy
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 _DEFAULT_ENV = REPO_ROOT / "secrets" / "hostnet-mail.env"
@@ -101,6 +106,89 @@ def _uid_list_desc(conn: imaplib.IMAP4_SSL, limit: int) -> list[int]:
     uids = [int(x) for x in raw.split() if x.isdigit()]
     uids.sort(reverse=True)
     return uids[:limit]
+
+
+def _decode_mime_header(raw: str | None) -> str:
+    if not raw:
+        return ""
+    try:
+        return str(make_header(decode_header(raw)))
+    except Exception:
+        return raw or ""
+
+
+def _rfc822_contains_marker(raw: bytes, marker: str) -> bool:
+    """Zoek marker in mail; Formspree stuurt vaak multipart HTML (base64) — dan staat de tekst niet raw in RFC822."""
+    if not raw or not marker:
+        return False
+    ml = marker.lower()
+    if marker.encode("utf-8") in raw:
+        return True
+    try:
+        wire = raw.decode("utf-8", errors="ignore")
+    except Exception:
+        wire = ""
+    if marker in wire or ml in wire.lower():
+        return True
+    try:
+        msg = message_from_bytes(raw, policy=email.policy.default)
+    except Exception:
+        return False
+    chunks: list[str] = []
+    subj = _decode_mime_header(msg.get("Subject"))
+    if subj:
+        chunks.append(subj)
+    if msg.is_multipart():
+        for part in msg.walk():
+            ctype = (part.get_content_type() or "").lower()
+            if ctype not in ("text/plain", "text/html"):
+                continue
+            try:
+                pl = part.get_payload(decode=True)
+            except Exception:
+                pl = None
+            if isinstance(pl, bytes):
+                cs = part.get_content_charset() or "utf-8"
+                try:
+                    chunks.append(pl.decode(cs, errors="replace"))
+                except LookupError:
+                    chunks.append(pl.decode("utf-8", errors="replace"))
+            elif isinstance(pl, str):
+                chunks.append(pl)
+    else:
+        try:
+            pl = msg.get_payload(decode=True)
+            if isinstance(pl, bytes):
+                cs = msg.get_content_charset() or "utf-8"
+                try:
+                    chunks.append(pl.decode(cs, errors="replace"))
+                except LookupError:
+                    chunks.append(pl.decode("utf-8", errors="replace"))
+        except Exception:
+            pass
+    blob = "\n".join(chunks).lower()
+    return ml in blob
+
+
+def _debug_imap_recent(conn: imaplib.IMAP4_SSL, scan_last: int) -> None:
+    """Laatste berichten per map (onderwerp) — zet E2E_DEBUG_IMAP=1 bij timeout-debug."""
+    print("E2E_DEBUG_IMAP: recente onderwerpen (max 5 per map):", file=sys.stderr)
+    for mbox in _MAILBOXES:
+        if not _select(conn, mbox, readonly=True):
+            print(f"  {mbox}: (niet te openen)", file=sys.stderr)
+            continue
+        uids = _uid_list_desc(conn, scan_last)[:5]
+        if not uids:
+            print(f"  {mbox}: (leeg)", file=sys.stderr)
+            continue
+        for uid in uids:
+            raw = _fetch_rfc822(conn, uid)
+            try:
+                msg = message_from_bytes(raw, policy=email.policy.default)
+                subj = _decode_mime_header(msg.get("Subject"))
+            except Exception as exc:
+                subj = f"<parse {exc}>"
+            print(f"  {mbox} uid={uid} {subj[:120]!r}", file=sys.stderr)
 
 
 def _fetch_rfc822(conn: imaplib.IMAP4_SSL, uid: int) -> bytes:
@@ -370,10 +458,16 @@ def _wait_delete_marker(
             print(f"Deleted {mbox} UID {uid}", file=sys.stderr)
             return
         time.sleep(interval)
+    if _truthy(os.environ.get("E2E_DEBUG_IMAP")):
+        try:
+            _debug_imap_recent(conn, scan_last)
+        except Exception as exc:
+            print(f"E2E_DEBUG_IMAP failed: {exc}", file=sys.stderr)
     raise SystemExit(
         f"Timeout after {timeout}s: no mail containing {marker!r}. "
-        "Controleer Formspree-notifications, spamfilters en IMAP-mappen; "
-        "voor alleen productie-UI: --no-inbox of E2E_NO_INBOX=1."
+        "Formspree levert wél — controleer IMAP_USER (zelfde inbox), triage-map, "
+        "E2E_SCAN_LAST (te weinig recente berichten?), of zet E2E_DEBUG_IMAP=1. "
+        "Alleen site-UI: --no-inbox / E2E_NO_INBOX=1."
     )
 
 
@@ -383,7 +477,7 @@ def _find_marker_in_mailboxes(conn: imaplib.IMAP4_SSL, marker: str, scan_last: i
             continue
         for uid in _uid_list_desc(conn, scan_last):
             raw = _fetch_rfc822(conn, uid)
-            if marker.encode() in raw or marker in raw.decode(errors="replace"):
+            if _rfc822_contains_marker(raw, marker):
                 return (mbox, uid)
     return None
 
@@ -484,7 +578,7 @@ def main() -> int:
 
     timeout = int(os.environ.get("E2E_INBOX_TIMEOUT_SEC", "240"))
     interval = int(os.environ.get("E2E_POLL_INTERVAL_SEC", "8"))
-    scan_last = int(os.environ.get("E2E_SCAN_LAST", "40"))
+    scan_last = int(os.environ.get("E2E_SCAN_LAST", "80"))
     with_ty = bool(ns.with_thankyou) or _truthy(os.environ.get("E2E_WITH_THANKYOU"))
     ty_max = max(1, int(ns.thankyou_max))
 

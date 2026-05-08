@@ -107,6 +107,8 @@ Standaard: **Playwright** opent **`https://www.vlwarmte.nl/contact.html?modus=of
 
 **Waarom geen “handmatige” POST meer?** Een losse `urllib`-POST naar `formspree.io/f/…` kan **404 Form not found** geven als de hash bij Formspree niet (meer) klopt, terwijl de **live pagina** wél werkt. De browser-test volgt de productiesite.
 
+**Als Formspree wél mailt maar IMAP timeout:** notificaties zijn vaak **multipart HTML (base64)** — het script zoekt de marker in **gedecodeerde** tekst (`_rfc822_contains_marker`). Zet **`E2E_DEBUG_IMAP=1`** bij een run om recente onderwerpen per map te zien; verhoog eventueel **`E2E_SCAN_LAST`**.
+
 ```bash
 pip install -r scripts/requirements-e2e.txt
 python -m playwright install chromium
