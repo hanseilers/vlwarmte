@@ -118,4 +118,4 @@
 
 ### Deployment
 
-- **Status:** door **Product Manager** — na `git push origin main` run-id hieronder.
+- **Status:** door **Product Manager** — `git push origin main` voltooid. **GitHub Actions:** run **25554936393** (`pages-build-deployment`, succes). **Commit:** `1d6bc5e`. Live-check: `Terugbelverzoek` zichtbaar op `https://www.vlwarmte.nl/diensten.html`.

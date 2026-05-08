@@ -5,8 +5,8 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 ---
 
 ## Release — week van 9 juni 2026
-**Deployment:** 08-05-2026 (PM: `git push origin main` — GitHub Pages)  
-**Versie:** _(na commit: `git log --oneline -1`)_
+**Deployment:** 08-05-2026 (PM: `git push origin main` — GitHub Pages, run **25554936393**, succesvol)  
+**Versie:** `1d6bc5e`
 
 ### Wat is er veranderd
 - **Live zetten sprint week 2 juni:** `prijsindicatie.html` CTA-band boven de wizard, navigatie-exit op `disclaimer.html` en `privacy.html`, `hero-soft-row` op `projecten.html`.
