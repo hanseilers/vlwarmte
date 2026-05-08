@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "description": "VLWarmte info@ inbox triage. Rules are evaluated top to bottom; first match wins. Edit lists to tune. Hostnet uses slash hierarchy (INBOX/…).",
+  "ensure_folders": [
+    "INBOX/Leads",
+    "INBOX/Systeem",
+    "INBOX/Promoties",
+    "INBOX/Overig"
+  ],
+  "rules": [
+    {
+      "id": "spam_domains",
+      "folder": "INBOX/Spam",
+      "from_contains_any": [
+        "bedrijfswagenverkoop.com",
+        "seo-dienst",
+        "linkbuilding",
+        "guest post",
+        "crypto",
+        "bitcoin",
+        "cbd "
+      ]
+    },
+    {
+      "id": "spam_subject",
+      "folder": "INBOX/Spam",
+      "subject_contains_any": [
+        "auto of bus verkopen",
+        "verdien snel",
+        "congratulations you won",
+        "you have won"
+      ]
+    },
+    {
+      "id": "newsletters_bulk",
+      "folder": "INBOX/Promoties",
+      "has_header": "List-Unsubscribe"
+    },
+    {
+      "id": "precedence_list",
+      "folder": "INBOX/Promoties",
+      "precedence_bulk": true
+    },
+    {
+      "id": "platform_system",
+      "folder": "INBOX/Systeem",
+      "from_contains_any": [
+        "facebookmail.com",
+        "businessprofile-noreply",
+        "google.com",
+        "microsoft.com",
+        "apple.com",
+        "hostnet.nl",
+        "amazon.",
+        "linkedin.com",
+        "mailchimp.com",
+        "sendgrid.net",
+        "mailgun.org",
+        "postmarkapp.com",
+        "zendesk.com",
+        "freshdesk.com"
+      ]
+    },
+    {
+      "id": "leads_forms",
+      "folder": "INBOX/Leads",
+      "from_contains_any": [
+        "formspree.io",
+        "formspree",
+        "formsubmit",
+        "netlify.com",
+        "getform.io",
+        "webflow.io",
+        "typeform.com"
+      ]
+    },
+    {
+      "id": "leads_subject_nl",
+      "folder": "INBOX/Leads",
+      "subject_contains_any": [
+        "offerte",
+        "aanvraag",
+        "prijsindicatie",
+        "vrijblijvend",
+        "informatie over",
+        "vraag over",
+        "klantnummer",
+        "terugbel",
+        "bel mij",
+        "contactformulier",
+        "vloerverwarming offerte",
+        "offerte vloerverwarming",
+        "vraag over vloerverwarming",
+        "informatie vloerverwarming"
+      ]
+    },
+    {
+      "id": "catch_all",
+      "folder": "INBOX/Overig",
+      "match_always": true
+    }
+  ]
+}

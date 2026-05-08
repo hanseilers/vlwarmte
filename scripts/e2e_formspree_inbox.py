@@ -8,6 +8,7 @@ Optioneel: `--http-post` voor directe POST (alleen voor debug; kan 404 geven als
 niet meer geldig is).
 
 Secrets: zie secrets/hostnet-mail.env.example (IMAP_*). CI: GitHub Actions secrets.
+Klant-e-mail in testsubmissions: E2E_CUSTOMER_EMAIL of default jceilers@icloud.com.
 """
 
 from __future__ import annotations
@@ -27,9 +28,23 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 _DEFAULT_ENV = REPO_ROOT / "secrets" / "hostnet-mail.env"
-_DEFAULT_FORMSPREE = "https://formspree.io/f/29885138860528105515"
+_DEFAULT_FORMSPREE = "https://formspree.io/f/xaqvdrvq"
 _DEFAULT_BASE = "https://www.vlwarmte.nl"
-_MAILBOXES = ("INBOX", "INBOX/Leads", "INBOX/Overig", "INBOX/Systeem")
+_DEFAULT_E2E_CUSTOMER_EMAIL = "jceilers@icloud.com"
+_MAILBOXES = (
+    "INBOX",
+    "INBOX/Leads",
+    "INBOX/Overig",
+    "INBOX/Systeem",
+    "INBOX/Promoties",
+    "INBOX/Spam",
+)
+
+
+def _e2e_customer_email() -> str:
+    """Reply-to / klant-e-mail in testsubmissions. Overschrijf met E2E_CUSTOMER_EMAIL."""
+    v = (os.environ.get("E2E_CUSTOMER_EMAIL") or "").strip()
+    return v or _DEFAULT_E2E_CUSTOMER_EMAIL
 
 
 def _truthy(v: str | None) -> bool:
@@ -129,7 +144,7 @@ def _post_offerte(marker: str, formspree_url: str, base_url: str) -> None:
         "soort_aanvraag": "Offerte",
         "name": "VLWarmte E2E Bot",
         "phone": "+31618817459",
-        "email": "e2e-deploy-test@example.com",
+        "email": _e2e_customer_email(),
         "region": "Zuidlaren (test)",
         "m2": "95",
         "vloerdiepte": "520",
@@ -195,7 +210,7 @@ def _submit_offerte_playwright(base: str, marker: str, *, headed: bool) -> None:
 
             page.locator("#name").fill("VLWarmte E2E Bot")
             page.locator("#phone").fill("+31618817459")
-            page.locator("#email").fill("e2e-deploy-test@example.com")
+            page.locator("#email").fill(_e2e_customer_email())
             page.locator("#region").fill("Zuidlaren (test)")
             page.locator("#m2").fill("95")
             page.locator("#vloerdiepte").fill("520")
@@ -204,19 +219,120 @@ def _submit_offerte_playwright(base: str, marker: str, *, headed: bool) -> None:
             page.locator("#planning").fill("Test — geen echte planning")
             page.locator("#message").fill(message)
 
+            # Formspree: klassieke POST kan redirect tonen; sommige clients blijven kort op de site-URL
+            # met alleen #lead-status succes — daarom wachten we op de POST-response, niet alleen navigatie.
             try:
-                with page.expect_navigation(timeout=60000):
+                with page.expect_response(
+                    lambda r: "formspree.io" in r.url and r.request.method == "POST",
+                    timeout=90000,
+                ) as resp_info:
                     page.locator("form#lead-form button[type='submit']").click()
+                resp = resp_info.value
+                print(
+                    f"Formspree POST {resp.status} {getattr(resp, 'url', '')[:100]}",
+                    file=sys.stderr,
+                )
+                if resp.status >= 400:
+                    raise SystemExit(f"Formspree HTTP {resp.status} na submit")
             except PlaywrightTimeout:
                 status = page.locator("#lead-status").inner_text(timeout=5000)
                 raise SystemExit(
-                    f"Geen navigatie na Versturen (validatie of netwerk?). lead-status: {status!r}"
+                    f"Geen Formspree-POST-response na Versturen. lead-status: {status!r}"
                 ) from None
 
             final = page.url
-            print(f"Navigated after submit: {final[:120]}…", file=sys.stderr)
+            print(f"URL na submit: {final[:120]}…", file=sys.stderr)
         finally:
             browser.close()
+
+
+def _submit_calc_playwright(base: str, marker: str, *, headed: bool) -> None:
+    """Prijsindicatie calc-form: JS fetch() naar Formspree — geen volledige navigatie."""
+    try:
+        from playwright.sync_api import TimeoutError as PlaywrightTimeout
+        from playwright.sync_api import sync_playwright
+    except ImportError as e:
+        raise SystemExit(
+            "Playwright ontbreekt. Installeer: pip install -r scripts/requirements-e2e.txt\n"
+            "Daarna: python -m playwright install chromium"
+        ) from e
+
+    url = f"{base.rstrip('/')}/prijsindicatie.html"
+    uit = f"E2E prijscalculator (automatische test).\nReferentie: {marker}\n"
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=not headed)
+        try:
+            context = browser.new_context(
+                locale="nl-NL",
+                viewport={"width": 1280, "height": 900},
+                user_agent="VLWarmte-E2E/1.0 (+https://www.vlwarmte.nl)",
+            )
+            page = context.new_page()
+            page.goto(url, wait_until="domcontentloaded", timeout=90000)
+            # Form staat in #result; die is pas zichtbaar na wizard — voor E2E alleen tonen.
+            page.evaluate(
+                """() => {
+                  const r = document.getElementById('result');
+                  if (r) r.classList.add('is-visible');
+                }"""
+            )
+            page.wait_for_selector("#calc-form", state="visible", timeout=30000)
+            page.locator("#calc-form").scroll_into_view_if_needed()
+
+            # type="hidden": geen fill() in Playwright — waarden via DOM zetten
+            hidden_fields = {
+                "f-product": "E2E test",
+                "f-traject": "e2e_traject",
+                "f-m2": "80",
+                "f-type": "Nieuwbouw",
+                "f-ondergrond": "beton",
+                "f-zones": "1",
+                "f-vloerdiepte": "500",
+                "f-schuim-m2": "",
+                "f-kruip-ondergrond": "",
+                "f-prijs": "indicatie E2E",
+                "f-uitgangspunten": uit,
+            }
+            page.evaluate(
+                """(fields) => {
+                  for (const [id, val] of Object.entries(fields)) {
+                    const el = document.getElementById(id);
+                    if (el) el.value = val;
+                  }
+                }""",
+                hidden_fields,
+            )
+
+            page.locator("#c-name").fill("VLWarmte E2E Calc")
+            page.locator("#c-phone").fill("+31618817459")
+            page.locator("#c-email").fill(_e2e_customer_email())
+            page.locator("#c-place").fill("Zuidlaren (test)")
+            page.locator("#c-planning").fill("Test")
+
+            page.locator("#calc-form button[type='submit']").click()
+            try:
+                page.locator("#calc-status .status-msg.ok").wait_for(state="visible", timeout=60000)
+            except PlaywrightTimeout:
+                status = page.locator("#calc-status").inner_text(timeout=5000)
+                raise SystemExit(f"calc-form geen succes-status: {status!r}") from None
+            print("calc-form: Formspree fetch OK (status-msg ok)", file=sys.stderr)
+        finally:
+            browser.close()
+
+
+def _wait_delete_marker(conn: imaplib.IMAP4_SSL, marker: str, scan_last: int, timeout: int, interval: int) -> None:
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        hit = _find_marker_in_mailboxes(conn, marker, scan_last)
+        if hit:
+            mbox, uid = hit
+            print(f"Found marker in {mbox} UID {uid}", file=sys.stderr)
+            _delete_in_mailbox(conn, mbox, uid)
+            print(f"Deleted {mbox} UID {uid}", file=sys.stderr)
+            return
+        time.sleep(interval)
+    raise SystemExit(f"Timeout after {timeout}s: no mail containing {marker!r}")
 
 
 def _find_marker_in_mailboxes(conn: imaplib.IMAP4_SSL, marker: str, scan_last: int) -> tuple[str, int] | None:
@@ -237,11 +353,17 @@ def _delete_in_mailbox(conn: imaplib.IMAP4_SSL, mbox: str, uid: int) -> None:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="E2E: offerte via Playwright + IMAP cleanup")
+    ap = argparse.ArgumentParser(description="E2E: Formspree via Playwright + IMAP cleanup")
+    ap.add_argument(
+        "--form",
+        choices=("lead", "calc", "both"),
+        default="lead",
+        help="lead=contact offerte; calc=prijsindicatie wizard-formulier; both=beide",
+    )
     ap.add_argument(
         "--http-post",
         action="store_true",
-        help="Debug: directe POST naar Formspree-URL i.p.v. browser (kan 404 geven)",
+        help="Alleen bij --form lead: debug POST i.p.v. Playwright",
     )
     ap.add_argument(
         "--headed",
@@ -270,35 +392,46 @@ def main() -> int:
             return 0
         raise SystemExit("Missing IMAP credentials. Create secrets/hostnet-mail.env or export IMAP_*.")
 
-    marker = f"VLW-E2E-{uuid.uuid4().hex[:16]}"
     base = (os.environ.get("E2E_BASE_URL") or _DEFAULT_BASE).strip().rstrip("/")
-
-    if ns.http_post:
-        formspree = _resolve_formspree_url(base)
-        print("Posting offerte via HTTP POST …", file=sys.stderr)
-        _post_offerte(marker, formspree, base)
-    else:
-        print("Vullen en verzenden via Playwright (productiebrowser) …", file=sys.stderr)
-        _submit_offerte_playwright(base, marker, headed=ns.headed)
-
     timeout = int(os.environ.get("E2E_INBOX_TIMEOUT_SEC", "240"))
     interval = int(os.environ.get("E2E_POLL_INTERVAL_SEC", "8"))
     scan_last = int(os.environ.get("E2E_SCAN_LAST", "40"))
-    deadline = time.monotonic() + timeout
+
+    def run_lead(marker: str) -> None:
+        if ns.http_post:
+            formspree = _resolve_formspree_url(base)
+            print("Posting offerte via HTTP POST …", file=sys.stderr)
+            _post_offerte(marker, formspree, base)
+        else:
+            print("Lead: Playwright contact offerte …", file=sys.stderr)
+            _submit_offerte_playwright(base, marker, headed=ns.headed)
+
+    def run_calc(marker: str) -> None:
+        if ns.http_post:
+            raise SystemExit("--http-post werkt alleen met --form lead")
+        print("Calc: Playwright prijsindicatie formulier …", file=sys.stderr)
+        _submit_calc_playwright(base, marker, headed=ns.headed)
+
+    markers: list[str] = []
+    if ns.form in ("lead", "both"):
+        markers.append(f"VLW-E2E-{uuid.uuid4().hex[:16]}")
+    if ns.form in ("calc", "both"):
+        markers.append(f"VLW-E2E-{uuid.uuid4().hex[:16]}")
 
     conn = connect_imap()
     try:
-        while time.monotonic() < deadline:
-            hit = _find_marker_in_mailboxes(conn, marker, scan_last)
-            if hit:
-                mbox, uid = hit
-                print(f"Found marker in {mbox} UID {uid}", file=sys.stderr)
-                _delete_in_mailbox(conn, mbox, uid)
-                print(f"Deleted {mbox} UID {uid}", file=sys.stderr)
-                print("OK e2e_formspree_inbox")
-                return 0
-            time.sleep(interval)
-        raise SystemExit(f"Timeout after {timeout}s: no mail containing {marker!r}")
+        if ns.form in ("lead", "both"):
+            m = markers[0]
+            run_lead(m)
+            _wait_delete_marker(conn, m, scan_last, timeout, interval)
+            print("OK e2e lead", file=sys.stderr)
+        if ns.form in ("calc", "both"):
+            m = markers[-1] if ns.form == "both" else markers[0]
+            run_calc(m)
+            _wait_delete_marker(conn, m, scan_last, timeout, interval)
+            print("OK e2e calc", file=sys.stderr)
+        print("OK e2e_formspree_inbox")
+        return 0
     finally:
         try:
             conn.logout()

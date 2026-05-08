@@ -210,6 +210,24 @@ Schrijf naar `docs/website-manager/release-notes.md` — voeg bovenaan toe (nieu
 ---
 ```
 
+## Stap 8b: E-mail release notes (intern, vaste ontvanger)
+
+Na het bijwerken van `release-notes.md` stuur je **de bovenste release** (nieuwste blok onder `## Release`) per e-mail naar **`jceilers@icloud.com`**, in **dezelfde HTML-shell** als klantmail: `scripts/data/email_vlwarmte_customer_template.html` (logo, gradient, footer — voetregel is **intern** geformuleerd, geen “u heeft contact gehad”-tekst).
+
+**Voorwaarde:** lokaal `secrets/hostnet-mail.env` met dezelfde SMTP/IMAP-variabelen als voor `hostnet_imap_read.py` (minimaal `IMAP_USER` of `MAIL_FROM` voor de From-header).
+
+```bash
+# Eerste keer of na wijzigingen: controleren zonder te verzenden
+python3 scripts/send_pm_release_notes_email.py --dry-run
+
+# Versturen (default-ontvanger: jceilers@icloud.com)
+python3 scripts/send_pm_release_notes_email.py
+```
+
+Optioneel ander adres: `--to ander@voorbeeld.nl`. Script: `scripts/send_pm_release_notes_email.py`.
+
+---
+
 ## Stap 9: Sluit de cyclus af
 
 Controleer of de deployment geslaagd is via:

@@ -11,6 +11,8 @@ formspree.json
 # Python / GA4 fetch
 .venv/
 venv/
+__pycache__/
+*.py[cod]
 secrets/*.json
 # Meta / Facebook marketing API (page token — niet committen)
 secrets/*.env
