@@ -4,9 +4,9 @@
 
 **Materiaal:** `docs/website-manager/social/input/` — o.a. `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`. **Update 8 mei:** nieuw beeldmateriaal uit `beeldmateriaal/` gekopieerd naar `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (pex op net, U-vorm; sterk “vakwerk”-signaal).
 
-**Marketing / Social-agent beslissing — Facebook-weekpost:** één vaste weekpost (hieronder onder **Facebook**), gebaseerd op het **nieuwste** bruikbare werkbeeld (mtime 8 mei). Reden: Facebook levert wel sessies maar **weinig conversies** in GA4; daarom **foto die vertrouwen opbouwt** + **CTA naar prijsindicatie** (beste converter) met zachte boodschap, geen harde verkoop.
+**Marketing / Social-agent beslissing — Facebook + Instagram (zelfde beeld):** het **nieuwste** bruikbare werkbeeld (`vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`) wordt **deze week op beide kanalen** ingezet: **Facebook** = lange caption + link in post; **Instagram** = visueel strakker, **andere copy**, 5–10 hashtags, link in bio (zelfde URL-prioriteit: prijsindicatie). **Crop-tip IG:** vierkant of 4:5, **focus op het bochtenstuk** — zo blijft het patroon op klein scherm leesbaar.
 
-**Verdeling:** 3× LinkedIn, 3× Instagram, **1× Facebook (aanbevolen deze week)**. Hashtags: FB 0–3, IG 5–10, LI 3–5.
+**Verdeling:** 3× LinkedIn, 3× Instagram, **1× Facebook**. Hashtags: FB 0–3, IG 5–10, LI 3–5.
 
 ---
 
@@ -62,13 +62,20 @@
 
 ### Post 2 — donderdag 22 mei, 19:15
 
-**Foto:** `[FOTO NODIG: eindresultaat vloer — tegels of hout, geen gezichten]`
+**Foto:** `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` *(zelfde bron als Facebook-weekpost; in de IG-app **vierkant of 4:5** croppen — liefst het **U-stuk / bocht** centraal)*
 
-**Caption:** Comfort = opwarmtijd + verdeling + juiste aanvoer. Wil je weten wat bij jouw m² past? Prijsindicatie in vier stappen.
+**Caption:**
 
-**Hashtags:** `#vloerverwarming` `#interieur` `#nieuwbouw` `#Assen` `#verbouwing`
+Wat je straks niet meer ziet: wel **zo** gelegd — op het net, vaste tussenruimte, strak door de bocht. Dat is het verschil tussen “er ligt iets” en **gelijkmatig warm** straks.
 
-**CTA:** https://www.vlwarmte.nl/prijsindicatie.html
+Verbouw je in Groningen, Assen of Drenthe? **Link in bio** → prijsindicatie op vlwarmte.nl (vier stappen, geen account). Alleen even iets vragen: via de site het contactformulier, tab **informatie**.
+
+**Hashtags:** `#vloerverwarming` `#verbouwing` `#renovatie` `#vakmanschap` `#Drenthe` `#Groningen` `#NoordNederland` `#installatie` `#nieuwbouw`
+
+**CTA (link in bio):** https://www.vlwarmte.nl/prijsindicatie.html  
+**Alternatief 2e link in profiel:** https://www.vlwarmte.nl/contact.html?modus=informatie#aanvraag
+
+**Afstemming met Facebook diezelfde dag:** FB 12:15 = **bereik lokaal / doordeweeks**; IG 19:15 = **avond-scroll** — zelfde boodschap, **andere hook**, geen copy-paste.
 
 ---
 
@@ -103,11 +110,13 @@ Werkgebied: Groningen, Assen, Drenthe en de kop van Friesland. Vragen? Tik even 
 
 **Rationale (kort):** nieuw beeld toont **kwaliteit van het leggen** i.p.v. alleen “werk onder de vloer”; koppeling aan **prijsindicatie** volgt GA4 (sterkste conversiepad). Geen offerte-dieplink in de hoofdlink om drempel op Facebook laag te houden; offerte volgt na warm lead.
 
+**Parallel Instagram:** zie **Instagram post 2** (zelfde avond, ander tijdstip en andere caption) — zelfde bestand, andere crop.
+
 ---
 
 ## Campagne notities
 
 - **Contact deeplinks:** `?modus=informatie|offerte|bel` + `#aanvraag` voor juiste tab.
-- **FOTO NODIG:** nog twee slots elders in deze week (LinkedIn/IG); aanvullen in `social/input/` indien mogelijk.
+- **FOTO NODIG:** nog één slot (LinkedIn post 2 — meetlat/opname); IG-post 2 gebruikt nu het **buiswerk op net**-beeld.
 - **Tone:** nuchter, geen superlatieven — zie `product-manager.md`.
 - **Beeldmateriaal-workflow:** nieuwe WhatsApp-foto’s eerst naar `beeldmateriaal/`, daarna door social/marketing naar `social/input/` met **herkenbare bestandsnaam** voor publicatie.
