@@ -1,61 +1,77 @@
-# Sprint — week van 2 juni 2026
+# Sprint — week van 9 juni 2026
 
-**PM beslissing genomen op:** 08-05-2026 (tweede volledige cyclus dezelfde dag: Analytics-fetch → rapporten → social → sprint → developer → **PM commit+push**).  
-**Doel deze sprint:** **Paid + organische funnel naar prijsindicatie/contact versterken** — wizard zichtbaarder vóór scroll; juridische pagina’s geen dood spoor; projecten-page lichte informatie-route; RSA-headlines in defaults afgestemd op richtbedrag.  
-**Meetdoel:** Per **12 juni 2026** in GA4: bounce op `/prijsindicatie.html`-landing ≤0,65 óf ≥1 **Paid Search**-conversie; disclaimer/privacy-landings <1,0 bounce of duidelijk tweede hit.
+**PM beslissing genomen op:** 08-05-2026 (cyclus 3 — archive vorige sprint; analytics op bestaande GA4-export; marketing korte WebSearch; developer + PM commit/push).  
+**Doel deze sprint:** **Vorige sprint live zetten** én **organische snippet + lichte CTA’s** versterken (werkwijze/over-ons SEO, terugbel op diensten/FAQ, homepage-meta) zodat de funnel richting prijs/contact duidelijker wordt.  
+**Meetdoel:** Per **5 juli 2026** in GA4: stijging `wizard_start` of `contact_submit` vanaf `/diensten.html` of `/faq.html`; bounce **werkwijze**-landing niet hoger dan nu; minstens één **Paid Search**-conversie óf duidelijk lagere bounce op `/prijsindicatie.html`-landing.
 
 ---
 
 ## Goedgekeurde taken voor Developer Agent
 
-### Taak 1: `prijsindicatie.html` — CTA-band boven de wizard `[GOEDGEKEURD]`
+### Taak 0: Repo-sync vorige sprint `[GOEDGEKEURD]`
 
-**Bron:** Analytics — prijsindicatie converteert sterk; extra vertrouwen + **anker `#wizard`** helpt scroll-gedrag en koppelt offerte-route (cpc).  
+**Bron:** PM — vorige sprint stond geïmplementeerd maar niet op `origin/main`.  
 **Prioriteit:** Hoog  
-**Type:** conversie
+**Type:** release
 
-**Actie:** Direct onder `page-hero`, vóór de wizard-sectie: een **`section` + `cta-band`** met korte uitleg (geen account), knoppen **Start de wizard** (`href="#wizard"`) en **Direct offerte aanvragen** (`contact.html?modus=offerte#aanvraag`), plus link naar informatieformulier in de tekst.
+**Actie:** Geen extra code — wijzigingen uit sprint week 2 juni (`prijsindicatie.html` CTA-band, `disclaimer.html` + `privacy.html` exits, `projecten.html` hero-soft-row, `google_ads_lead_campaign_defaults.json` indien nog niet op main) gaan **in dezelfde commit** mee als onderstaande taken.
 
-**Succescriterium:** Eerste viewport toont duidelijk pad naar wizard én offerte; geen dubbele `h1`; wizard-ID `#wizard` blijft werken.
+**Succescriterium:** `git diff` toont die bestanden mee in de release-commit.
 
 ---
 
-### Taak 2: `scripts/data/google_ads_lead_campaign_defaults.json` — RSA-headlines prijsfokus `[GOEDGEKEURD]`
+### Taak 1: `werkwijze.html` — lokale SEO in head `[GOEDGEKEURD]`
 
-**Bron:** Marketing — Paid Search 11 sessies, 0 conversies; headlines moeten **prijsindicatie** en **richtbedrag** expliciet noemen (binnen 30 tekens).  
+**Bron:** Analytics — korte sessies op werkwijze; snippet miste expliciete regio/traject-hint.  
 **Prioriteit:** Hoog  
-**Type:** betaald / copy in repo
+**Type:** SEO
 
-**Actie:** Vervang drie bestaande headlines door: **"Online prijsindicatie"**, **"Richtbedrag in minuten"**, **"Eerst prijs dan offerte"** (uniek, ≤30 tekens). Geen wijziging aan `final_urls` in deze taak.
+**Actie:** Pas `<title>`, `<meta name="description">`, `og:title`, `og:description`, `twitter:title`, `twitter:description` aan: noem **Zuidlaren**, **Drenthe** (en waar passend Groningen/Friesland), en **zes stappen / traject vloerverwarming** — blijf binnen redelijke lengtes, geen keyword-stuffing.
 
-**Succescriterium:** JSON blijft valide; `python -m json.tool` slaagt; eventueel `google_ads_create_search_campaign.py --dry-run` alleen als er een test-campagne wordt aangemaakt (niet verplicht voor bestaande campagne — wijziging is voor **volgende** API-deploy of handmatige RSA-sync).
-
----
-
-### Taak 3: `disclaimer.html` + `privacy.html` — exitlinks onder hero `[GOEDGEKEURD]`
-
-**Bron:** Analytics — beide als landing **bounce 1,0**, 6–7 sessies; snelle exit naar homepage/prijs/contact verlaagt doodlopend gevoel.
-
-**Actie:** Onder `page-hero`, vóór de bestaande content-sectie: compacte **`<section class="section">`** met links naar `/`, `prijsindicatie.html`, `contact.html?modus=informatie#aanvraag`.
-
-**Succescriterium:** Geen wijziging aan juridische tekst zelf; alleen navigatiehulp; geen tweede `h1`.
+**Succescriterium:** Eén duidelijke H1 blijft; canonical ongewijzigd; geen dubbele title-tags.
 
 ---
 
-### Taak 4: `projecten.html` — `hero-soft-row` informatie-CTA `[GOEDGEKEURD]`
+### Taak 2: `over-ons.html` — lokale SEO in head `[GOEDGEKEURD]`
 
-**Bron:** Analytics — landing bounce **1,0**; pagina heeft al knoppen maar mist expliciet **licht** contactpad zoals op stadspagina’s.
+**Bron:** Analytics — `/over-ons.html` als landing met bounce **0,78** en 0 conversies in entry-tabel.  
+**Prioriteit:** Hoog  
+**Type:** SEO
 
-**Actie:** Onder `hero-cta-row` een **`hero-soft-row`** met korte intro + knop **Informatie aanvragen** naar `contact.html?modus=informatie#aanvraag`.
+**Actie:** Zelfde patroon als Taak 1: title + meta + OG/Twitter met **vloerverwarmingsspecialist**, **Zuidlaren**, **Noord-Nederland** — nuchtere zin, geen superlatieven.
 
-**Succescriterium:** Zelfde CSS-patroon als stadspagina’s; geen conflicterende `h1`.
+**Succescriterium:** H1 en inhoud ongewijzigd; alleen head-metadata.
+
+---
+
+### Taak 3: `diensten.html` + `faq.html` — terugbel in CTA-band `[GOEDGEKEURD]`
+
+**Bron:** Marketing + analytics — diensten-landing bounce hoog; lichte derde stap naast prijs/FAQ.  
+**Prioriteit:** Hoog  
+**Type:** conversie / CTA
+
+**Actie:** In de bestaande `cta-band-stack` (direct onder de hero) een **secundaire knop** toevoegen: tekst **„Terugbelverzoek”** of **„Laat mij terugbellen”**, link `contact.html?modus=bel#aanvraag`. Zelfde knop op **beide** pagina’s.
+
+**Succescriterium:** Drie knoppen netjes gestapeld op smalle schermen (bestaande `.cta-band-stack`); geen tweede `h1`.
+
+---
+
+### Taak 4: `index.html` — meta SERP-clariteit `[GOEDGEKEURD]`
+
+**Bron:** Analytics — homepage grootste instap; beschrijving kan **online prijsindicatie** expliciet maken voor zoeksnippet.  
+**Prioriteit:** Midden  
+**Type:** SEO
+
+**Actie:** Verleng `meta name="description"` (en gelijk `og:description` + `twitter:description`) met één korte zin over **vrijblijvende online prijsindicatie** — max. ~320 tekens totaal voor description.
+
+**Succescriterium:** Hero-HTML ongewijzigd; canonical blijft `/`.
 
 ---
 
 ## Uitgestelde voorstellen `[WACHT]`
 
-- **Bestaande Search-campagne RSA’s bijwerken in Google Ads** — na defaults-wijziging: agent draait mutatie of UI; niet in deze HTML-sprint.
-- **Stadspagina’s** — cohort klein; meten na live push.
+- **Google Ads RSA live zetten / tweede RSA** — na deze deploy en met `secrets/google-ads.env` op de agent-machine.  
+- **`systemen-producten.html` dieper uitmeten** — pagina heeft al vroege `cta-band`; eerst effect vorige releases meten.
 
 ---
 
@@ -67,33 +83,33 @@
 
 ## Social Media
 
-**Status:** `docs/website-manager/social/weekly_calendar.md` — **week van 2 juni 2026**.  
+**Status:** `docs/website-manager/social/weekly_calendar.md` — **week van 9 juni 2026**.  
 **Actie vereist:** Handmatige publicatie door VLWarmte team.
 
 ---
 
 ## Pilot — weer-accent (workshop, `proposals.md` voorstel 10)
 
-**Start:** **8 mei 2026** (vandaag). **Eind (evaluatie):** **4 juni 2026** (vier weken, 28 dagen).  
-**Afspraken:** koel-story **A**; homepage-teaser **B** (handmatig per week); max. **1** post/week met weer-hook; **°C** uit openbaar weerbericht toegestaan. Volledige onderbouwing en checklist: `docs/website-manager/proposals.md`.
+**Lopend:** start 8 mei 2026, evaluatie uiterlijk 4 juni 2026. Onveranderd t.o.v. vorige sprint.
 
 ---
 
 ## Context voor volgende sprint
 
-- Controleren of Paid Search conversies verschijnen na copy + live CTA’s.
-- `calculator_complete` data gebruiken voor wizard-drop-off.
+- Verifiëren of **Paid Search** conversies oplopen na live copy + CTA’s.  
+- `calculator_complete` / `wizard_calculate` in GA4 gebruiken voor wizard-funnel.
 
 ---
 
-## Developer Rapport — 8 mei 2026 (avond, cyclus 2)
+## Developer Rapport — 8 mei 2026 (cyclus 3)
 
 ### Geïmplementeerde taken
 
-- **Taak 1 — `prijsindicatie.html`:** CTA-band boven wizard met ankers en offerte/informatie-links.
-- **Taak 2 — `google_ads_lead_campaign_defaults.json`:** Drie prijsgerichte RSA-headlines.
-- **Taak 3 — `disclaimer.html` + `privacy.html`:** Navigatie-exit onder hero.
-- **Taak 4 — `projecten.html`:** `hero-soft-row` met informatie-aanvraag.
+- **Taak 0 — vorige sprint mee in release:** `prijsindicatie.html` (CTA-band), `disclaimer.html` + `privacy.html` (exit onder hero), `projecten.html` (`hero-soft-row`); defaults JSON stond al op main.
+- **Taak 1 — `werkwijze.html`:** title + meta + OG/Twitter met Zuidlaren/Drenthe en traject/prijsindicatie.
+- **Taak 2 — `over-ons.html`:** title + meta + OG/Twitter met specialist Zuidlaren/Noord-Nederland.
+- **Taak 3 — `diensten.html` + `faq.html`:** knop **Terugbelverzoek** → `contact.html?modus=bel#aanvraag`.
+- **Taak 4 — `index.html`:** meta/og/twitter description met online prijsindicatie.
 
 ### Kwaliteit
 
@@ -102,4 +118,4 @@
 
 ### Deployment
 
-- **Status:** door **Product Manager** — `git commit` + `git push origin main` (stap 7b playbook). **Commit:** `bab08a8` — GitHub Actions-run: na `git push` controleren met `gh run list`.
+- **Status:** door **Product Manager** — na `git push origin main` run-id hieronder.

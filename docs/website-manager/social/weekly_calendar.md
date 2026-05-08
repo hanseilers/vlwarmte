@@ -1,10 +1,10 @@
-# Social Media Kalender — week van 2 juni 2026
+# Social Media Kalender — week van 9 juni 2026
 
-**Afstemming:** PM-cyclus 8 mei (2) — focus **prijsindicatie** (wizard boven de vouw), **paid funnel** (headlines in defaults), **projecten** + **juridische pagina’s** met betere doorstroom. Toon: nuchter, vakman, Noord-Nederland.
+**Afstemming:** PM-cyclus 8 mei (3) — na live push: **terugbel-CTA** op diensten/FAQ, **snippet-SEO** werkwijze/over-ons, homepage-meta met prijsindicatie. Toon: nuchter, vakman, Noord-Nederland.
 
-**Materiaal:** `docs/website-manager/social/input/` — hergebruik `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` en `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`.
+**Materiaal:** `docs/website-manager/social/input/` — `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`, `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`.
 
-**Vorige week (26 mei):** `docs/website-manager/social/archive/weekly_calendar-2026-05-26.md`
+**Vorige week:** `docs/website-manager/social/archive/weekly_calendar-2026-06-02.md`
 
 **Verdeling:** 3× LinkedIn, 3× Instagram, 1× Facebook. Hashtags: FB 0–3, IG 5–10, LI 3–5.
 
@@ -12,84 +12,84 @@
 
 ## LinkedIn
 
-### Post 1 — maandag 2 juni, 08:15
+### Post 1 — maandag 9 juni, 08:20
 
 **Foto:** `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`
 
-**Caption:** Een richtbedrag vóór de opname helpt bij keuzes in de opbouw — niet als offerte, wel als bandbreedte. Onze site heeft de wizard bovenaan staan: vier stappen, geen account.
+**Caption:** Niet iedereen wil meteen een offerte. Soms wil je eerst weten hoe zo’n traject loopt — zes stappen, van intake tot oplevering. Op de site lees je het in gewone taal, met Zuidlaren als uitvalsbasis voor Drenthe en Groningen.
 
-**Hashtags:** `#vloerverwarming` `#NoordNederland` `#Drenthe`
+**Hashtags:** `#vloerverwarming` `#Drenthe` `#ZuidLaren`
 
-**CTA:** https://www.vlwarmte.nl/prijsindicatie.html
+**CTA:** https://www.vlwarmte.nl/werkwijze.html
 
 ---
 
-### Post 2 — woensdag 4 juni, 08:45
+### Post 2 — woensdag 11 juni, 08:40
 
 **Foto:** `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`
 
-**Caption:** Projectpagina’s zijn bij ons eerlijk: we tonen geen voordeur-foto’s zonder toestemming. Wel een heldere route: prijsindicatie, FAQ, of een licht informatieverzoek als je eerst iets wilt uitleggen.
+**Caption:** Tussen prijs en mail zit vaak nog een vraag. Daarom staat bij ons ook een terugbelverzoek naast de prijsindicatie — geen verplichting, wel een vast moment om het kort te laten horen.
 
-**Hashtags:** `#vloerverwarming` `#renovatie` `#Groningen`
+**Hashtags:** `#vloerverwarming` `#renovatie` `#NoordNederland`
 
-**CTA:** https://www.vlwarmte.nl/projecten.html
+**CTA:** https://www.vlwarmte.nl/diensten.html
 
 ---
 
-### Post 3 — vrijdag 6 juni, 08:30
+### Post 3 — vrijdag 13 juni, 08:30
 
-**Caption:** Disclaimer en privacy horen netjes te zijn — maar een website moet vooral uitnodigen om verder te lezen. Check je eigen juridische landings: help je bezoeker terug naar je kernaanbod?
+**Caption:** FAQ-pagina’s zijn handig voor infrezen en warmtepomp — maar help je bezoeker ook verder als hij liever even belt? Wij zetten daar een aparte route voor.
 
-**Hashtags:** `#MKB` `#vloerverwarming` `#webshop`
+**Hashtags:** `#MKB` `#installatie` `#vloerverwarming`
 
-**CTA:** https://www.vlwarmte.nl/
+**CTA:** https://www.vlwarmte.nl/faq.html
 
 ---
 
 ## Instagram
 
-### Post 1 — woensdag 4 juni, 18:30
+### Post 1 — woensdag 11 juni, 18:30
 
 **Foto:** buiswerk-net (4:5 crop)
 
-**Caption:** Wizard staat klaar. Link in bio → prijsindicatie.
+**Caption:** Zes stappen, één aanspreekpunt. Link in bio → werkwijze.
 
 **Hashtags:** `#vloerverwarming` `#nieuwbouw` `#renovatie` `#drenthe` `#groningen` `#interieur`
-
-**CTA (bio):** https://www.vlwarmte.nl/prijsindicatie.html
-
----
-
-### Post 2 — vrijdag 6 juni, 19:00
-
-**Foto:** werk onder de vloer
-
-**Caption:** Eerst uitleggen, later offerte? Dat mag. Link in bio → informatieformulier.
-
-**Hashtags:** `#vloerverwarming` `#wonen` `#assen` `#zuidlaren`
-
-**CTA (bio):** https://www.vlwarmte.nl/contact.html?modus=informatie#aanvraag
-
----
-
-### Post 3 — zaterdag 7 juni, 18:45
-
-**Caption:** Drie woorden die bij ons samenhangen: ondervloer, schuimbeton, dekvloer. Vraag het traject na op de site.
-
-**Hashtags:** `#vloerverwarming` `#schuimbeton` `#vakmanschap`
 
 **CTA (bio):** https://www.vlwarmte.nl/werkwijze.html
 
 ---
 
+### Post 2 — vrijdag 13 juni, 19:00
+
+**Foto:** werk onder de vloer
+
+**Caption:** Liever terugbellen dan typen? Kan. Link in bio → contact, tab terugbel.
+
+**Hashtags:** `#vloerverwarming` `#wonen` `#assen` `#zuidlaren`
+
+**CTA (bio):** https://www.vlwarmte.nl/contact.html?modus=bel#aanvraag
+
+---
+
+### Post 3 — zaterdag 14 juni, 18:45
+
+**Caption:** Specialist in het hele pakket — niet alleen de buis. Even lezen wie we zijn? Link in bio.
+
+**Hashtags:** `#vloerverwarming` `#vakmanschap` `#noordnederland`
+
+**CTA (bio):** https://www.vlwarmte.nl/over-ons.html
+
+---
+
 ## Facebook
 
-### Post 1 — dinsdag 3 juni, 19:30
+### Post 1 — dinsdag 10 juni, 19:30
 
 **Foto:** `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`
 
-**Caption:** VLWarmte werkt vanuit Zuid-Laren in Groningen, Drenthe en Friesland. Online krijg je een bandbreedte via de prijsindicatie; wil je meteen in gesprek, dan kan een offerte of een kort informatieverzoek — we reageren doorgaans binnen één werkdag.
+**Caption:** VLWarmte zit in Zuidlaren en werkt in Groningen, Drenthe en Friesland. Op de site kun je een richtbedrag pakken, de FAQ lezen, of een terugbelmoment kiezen — wat bij jou past.
 
 **Hashtags:** `#vloerverwarming` `#ZuidLaren`
 
-**CTA:** https://www.vlwarmte.nl/prijsindicatie.html
+**CTA:** https://www.vlwarmte.nl/contact.html?modus=bel#aanvraag

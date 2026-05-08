@@ -4,6 +4,29 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 9 juni 2026
+**Deployment:** 08-05-2026 (PM: `git push origin main` — GitHub Pages)  
+**Versie:** _(na commit: `git log --oneline -1`)_
+
+### Wat is er veranderd
+- **Live zetten sprint week 2 juni:** `prijsindicatie.html` CTA-band boven de wizard, navigatie-exit op `disclaimer.html` en `privacy.html`, `hero-soft-row` op `projecten.html`.
+- **`werkwijze.html` en `over-ons.html`:** betere **SEO-snippet** (title + description + sociale previews) met Zuidlaren, Drenthe en traject/prijsindicatie — helpt verwachting bij korte sessies.
+- **`diensten.html` en `faq.html`:** derde knop **Terugbelverzoek** in het donkere CTA-blok — licht pad naast prijs en FAQ.
+- **`index.html`:** meta/OG/Twitter-description noemt **online prijsindicatie** voor duidelijkere SERP.
+- **PM-docs:** nieuwe sprint, analytics (cyclus 3), marketing-update, social kalender week 9 juni; archief van vorige sprint/kalender.
+
+### Waarom
+- Vorige developer-ronde stond nog lokaal; zonder push geen meting op productie.
+- Analytics: hoge bounce op diensten-landing; werkwijze korte sessies — snippets + terugbel verlagen drempel.
+
+### Verwacht effect
+- Meer gestarte contactflows vanuit diensten/FAQ; betere CTR vanuit organisch op werkwijze/over-ons na herindexering.
+
+### Social media deze week
+Zie `docs/website-manager/social/weekly_calendar.md` (week van 9 juni 2026).
+
+---
+
 ## Release — week van 2 juni 2026
 **Deployment:** 08-05-2026 (PM: `git push origin main` — GitHub Pages)  
 **Versie:** `bab08a8`

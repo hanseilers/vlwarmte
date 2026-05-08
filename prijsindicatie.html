@@ -1,1259 +1,1569 @@
 <!doctype html>
 <html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="REPLACE_WITH_TOKEN" />
-    <!-- TODO Hans: vervang door echte token uit Search Console -->
-    <title>Prijsindicatie vloerverwarming | VLWarmte</title>
-    <meta
-      name="description"
-      content="Prijsindicatie vloerverwarming of vloerverwarming met schuimbeton: eerst je situatie, daarna gerichte vragen. Vrijblijvend."
-    />
-    <link rel="canonical" href="https://www.vlwarmte.nl/prijsindicatie.html" />
-    <meta property="og:locale" content="nl_NL" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Prijsindicatie vloerverwarming | VLWarmte" />
-    <meta property="og:description" content="Prijsindicatie vloerverwarming of vloerverwarming met schuimbeton: eerst je situatie, daarna gerichte vragen. Vrijblijvend." />
-    <meta property="og:url" content="https://www.vlwarmte.nl/prijsindicatie.html" />
-    <meta property="og:site_name" content="VLWarmte" />
-    <meta property="og:image" content="https://www.vlwarmte.nl/assets/img/og-default.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="assets/css/critical-index.css" />
-    <link rel="preload" href="assets/css/styles.css" as="style" />
-    <link rel="stylesheet" href="assets/css/styles.css" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="assets/css/styles.css" /></noscript>
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="favicon.ico" sizes="32x32" type="image/x-icon" />
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
-    <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
-    <script defer src="assets/js/ga-deferred.js"></script>
-    <script defer src="assets/js/main.js"></script>
 
-    <style>
-      .wizard { max-width: 680px; margin: 0 auto; }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="REPLACE_WITH_TOKEN" />
+  <!-- TODO Hans: vervang door echte token uit Search Console -->
+  <title>Prijsindicatie vloerverwarming | VLWarmte</title>
+  <meta name="description"
+    content="Prijsindicatie vloerverwarming of vloerverwarming met schuimbeton: eerst je situatie, daarna gerichte vragen. Vrijblijvend." />
+  <link rel="canonical" href="https://www.vlwarmte.nl/prijsindicatie.html" />
+  <meta property="og:locale" content="nl_NL" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Prijsindicatie vloerverwarming | VLWarmte" />
+  <meta property="og:description"
+    content="Prijsindicatie vloerverwarming of vloerverwarming met schuimbeton: eerst je situatie, daarna gerichte vragen. Vrijblijvend." />
+  <meta property="og:url" content="https://www.vlwarmte.nl/prijsindicatie.html" />
+  <meta property="og:site_name" content="VLWarmte" />
+  <meta property="og:image" content="https://www.vlwarmte.nl/assets/img/og-default.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="assets/css/critical-index.css" />
+  <link rel="preload" href="assets/css/styles.css" as="style" />
+  <link rel="stylesheet" href="assets/css/styles.css" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </noscript>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon.ico" sizes="32x32" type="image/x-icon" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+  <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
+  <script defer src="assets/js/ga-deferred.js"></script>
+  <script defer src="assets/js/main.js"></script>
 
-      .wizard-progress {
-        height: 4px; border-radius: 2px; background: var(--line);
-        margin-bottom: 2.5rem; overflow: hidden;
-      }
-      .wizard-progress-fill {
-        height: 100%; background: var(--brand); border-radius: 2px;
-        width: 0%; transition: width .35s ease;
-      }
+  <style>
+    .wizard {
+      max-width: 680px;
+      margin: 0 auto;
+    }
 
-      .wizard-step { display: none; }
-      .wizard-step.is-active { display: block; }
-      .wizard-step h2 { font-size: 1.4rem; margin: 0 0 .4rem; }
-      .wizard-step .step-sub { color: var(--muted); margin: 0 0 1.8rem; font-size: .95rem; }
+    .wizard-progress {
+      height: 4px;
+      border-radius: 2px;
+      background: var(--line);
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+    }
 
-      .option-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 1rem; margin-bottom: 2rem;
-      }
-      .option-card {
-        cursor: pointer; border: 2px solid var(--line);
-        border-radius: var(--radius); padding: 1.2rem 1rem;
-        text-align: center; transition: border-color .2s, background .2s;
-        background: transparent; color: var(--ink);
-        font-size: 1rem; font-family: inherit;
-      }
-      .option-card:hover { border-color: var(--brand); }
-      .option-card.is-selected { border-color: var(--brand); background: rgba(224,85,47,.12); }
-      .option-card .option-icon  { font-size: 2rem; display: block; margin-bottom: .5rem; line-height: 1; }
-      .option-card .option-label { font-weight: 600; display: block; margin-bottom: .2rem; }
-      .option-card .option-hint  { font-size: .8rem; color: var(--muted); display: block; }
+    .wizard-progress-fill {
+      height: 100%;
+      background: var(--brand);
+      border-radius: 2px;
+      width: 0%;
+      transition: width .35s ease;
+    }
 
-      .slider-wrap { margin-bottom: 2rem; }
-      .slider-display { font-size: 3rem; font-weight: 700; color: var(--brand); margin-bottom: .5rem; line-height: 1; }
-      .slider-display span { font-size: 1.2rem; color: var(--muted); font-weight: 400; }
-      input[type="range"] {
-        -webkit-appearance: none; width: 100%; height: 6px;
-        border-radius: 3px; background: var(--line); outline: none; margin: .8rem 0;
-      }
-      input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none; width: 22px; height: 22px;
-        border-radius: 50%; background: var(--brand); cursor: pointer;
-        border: 3px solid var(--surface); box-shadow: 0 0 0 2px var(--brand);
-      }
-      .slider-limits { display: flex; justify-content: space-between; font-size: .8rem; color: var(--muted); }
+    .wizard-step {
+      display: none;
+    }
 
-      .wizard-nav { display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem; }
-      .btn-back {
-        background: transparent; border: 1px solid var(--line); color: var(--muted);
-        padding: .7rem 1.4rem; border-radius: 8px; font-size: .95rem;
-        cursor: pointer; font-family: inherit; transition: border-color .2s;
-      }
-      .btn-back:hover { border-color: var(--muted); }
+    .wizard-step.is-active {
+      display: block;
+    }
 
-      /* Result */
-      .result-block { display: none; margin-top: 3rem; }
-      .result-block.is-visible { display: block; }
+    .wizard-step h2 {
+      font-size: 1.4rem;
+      margin: 0 0 .4rem;
+    }
 
-      .price-card {
-        background: linear-gradient(135deg, rgba(224,85,47,.15) 0%, rgba(15,76,129,.1) 100%);
-        border: 1px solid rgba(224,85,47,.3); border-radius: var(--radius);
-        padding: 2.5rem 2rem; text-align: center; margin-bottom: 2.5rem;
-      }
-      .price-label {
-        font-size: .9rem; color: var(--muted); text-transform: uppercase;
-        letter-spacing: .08em; margin-bottom: .8rem;
-      }
-      .price-range { font-size: clamp(2rem, 6vw, 3.4rem); font-weight: 700; color: var(--white); line-height: 1.1; margin-bottom: .6rem; }
-      .price-range strong { color: var(--brand); }
-      .price-meta { color: var(--muted); font-size: .88rem; margin-bottom: 1.5rem; }
-      .price-breakdown { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 1.4rem; }
-      .price-tag { background: rgba(255,255,255,.06); border: 1px solid var(--line); border-radius: 6px; padding: .3rem .75rem; font-size: .82rem; color: var(--muted); }
-      .price-disclaimer { font-size: .8rem; color: var(--muted); margin-top: 1.2rem; line-height: 1.5; }
+    .wizard-step .step-sub {
+      color: var(--muted);
+      margin: 0 0 1.8rem;
+      font-size: .95rem;
+    }
 
-      .price-assumptions {
-        margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.08);
-        text-align: left; max-width: 34rem; margin-left: auto; margin-right: auto;
-      }
-      .price-assumptions-intro {
-        font-size: .88rem; color: var(--ink); margin: 0 0 .85rem; line-height: 1.45;
-      }
-      .price-assumptions-intro .assumption-count { font-weight: 600; color: var(--brand); }
-      .price-assumptions-list {
-        margin: 0; padding-left: 1.15rem; font-size: .82rem; color: var(--muted); line-height: 1.55;
-      }
-      .price-assumptions-list li { margin-bottom: .55rem; }
-      .price-assumptions-list li:last-child { margin-bottom: 0; }
-      .price-assumption-sub { display: block; margin-top: .35rem; font-size: .92em; opacity: .95; }
-      .price-assumptions-foot {
-        font-size: .78rem; color: var(--muted); margin: .9rem 0 0; line-height: 1.45; font-style: italic;
-      }
+    .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
 
-      .lead-after { background: rgba(255,255,255,.03); border: 1px solid var(--line); border-radius: var(--radius); padding: 2rem; }
-      .lead-after h3 { margin: 0 0 .4rem; font-size: 1.2rem; }
-      .lead-after .lead-sub { color: var(--muted); font-size: .9rem; margin: 0 0 1.5rem; }
+    .option-card {
+      cursor: pointer;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.2rem 1rem;
+      text-align: center;
+      transition: border-color .2s, background .2s;
+      background: transparent;
+      color: var(--ink);
+      font-size: 1rem;
+      font-family: inherit;
+    }
 
-      .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-      @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
-      .form-row label { display: block; font-size: .85rem; color: var(--muted); margin-bottom: .35rem; }
-      .form-row input {
-        width: 100%; background: rgba(255,255,255,.05); border: 1px solid var(--line);
-        border-radius: 8px; color: var(--ink); padding: .65rem .9rem;
-        font-size: .95rem; font-family: inherit; outline: none; transition: border-color .2s;
+    .option-card:hover {
+      border-color: var(--brand);
+    }
+
+    .option-card.is-selected {
+      border-color: var(--brand);
+      background: rgba(224, 85, 47, .12);
+    }
+
+    .option-card .option-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: .5rem;
+      line-height: 1;
+    }
+
+    .option-card .option-label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: .2rem;
+    }
+
+    .option-card .option-hint {
+      font-size: .8rem;
+      color: var(--muted);
+      display: block;
+    }
+
+    .slider-wrap {
+      margin-bottom: 2rem;
+    }
+
+    .slider-display {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: .5rem;
+      line-height: 1;
+    }
+
+    .slider-display span {
+      font-size: 1.2rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--line);
+      outline: none;
+      margin: .8rem 0;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--brand);
+      cursor: pointer;
+      border: 3px solid var(--surface);
+      box-shadow: 0 0 0 2px var(--brand);
+    }
+
+    .slider-limits {
+      display: flex;
+      justify-content: space-between;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .wizard-nav {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+
+    .btn-back {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: .7rem 1.4rem;
+      border-radius: 8px;
+      font-size: .95rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color .2s;
+    }
+
+    .btn-back:hover {
+      border-color: var(--muted);
+    }
+
+    /* Result */
+    .result-block {
+      display: none;
+      margin-top: 3rem;
+    }
+
+    .result-block.is-visible {
+      display: block;
+    }
+
+    .price-card {
+      background: linear-gradient(135deg, rgba(224, 85, 47, .15) 0%, rgba(15, 76, 129, .1) 100%);
+      border: 1px solid rgba(224, 85, 47, .3);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .price-label {
+      font-size: .9rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: .8rem;
+    }
+
+    .price-range {
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: .6rem;
+    }
+
+    .price-range strong {
+      color: var(--brand);
+    }
+
+    .price-meta {
+      color: var(--muted);
+      font-size: .88rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-breakdown {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      justify-content: center;
+      margin-top: 1.4rem;
+    }
+
+    .price-tag {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: .3rem .75rem;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+
+    .price-disclaimer {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .price-assumptions {
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      text-align: left;
+      max-width: 34rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .price-assumptions-intro {
+      font-size: .88rem;
+      color: var(--ink);
+      margin: 0 0 .85rem;
+      line-height: 1.45;
+    }
+
+    .price-assumptions-intro .assumption-count {
+      font-weight: 600;
+      color: var(--brand);
+    }
+
+    .price-assumptions-list {
+      margin: 0;
+      padding-left: 1.15rem;
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .price-assumptions-list li {
+      margin-bottom: .55rem;
+    }
+
+    .price-assumptions-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .price-assumption-sub {
+      display: block;
+      margin-top: .35rem;
+      font-size: .92em;
+      opacity: .95;
+    }
+
+    .price-assumptions-foot {
+      font-size: .78rem;
+      color: var(--muted);
+      margin: .9rem 0 0;
+      line-height: 1.45;
+      font-style: italic;
+    }
+
+    .lead-after {
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .lead-after h3 {
+      margin: 0 0 .4rem;
+      font-size: 1.2rem;
+    }
+
+    .lead-after .lead-sub {
+      color: var(--muted);
+      font-size: .9rem;
+      margin: 0 0 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 520px) {
+      .form-row {
+        grid-template-columns: 1fr;
       }
-      .form-row input:focus { border-color: var(--brand); }
-      .lead-privacy { font-size: .78rem; color: var(--muted); margin: .8rem 0 1.2rem; }
+    }
 
-      .status-msg { margin-top: 1rem; padding: .8rem 1rem; border-radius: 8px; font-size: .9rem; }
-      .status-msg.ok  { background: rgba(0,200,100,.12); border: 1px solid rgba(0,200,100,.25); color: #6ee7b7; }
-      .status-msg.err { background: rgba(224,85,47,.12); border: 1px solid rgba(224,85,47,.3);  color: #fca5a5; }
+    .form-row label {
+      display: block;
+      font-size: .85rem;
+      color: var(--muted);
+      margin-bottom: .35rem;
+    }
 
-      .recalc-link {
-        display: inline-flex; align-items: center; gap: .4rem;
-        font-size: .85rem; color: var(--muted); cursor: pointer;
-        background: none; border: none; font-family: inherit; padding: 0;
-        margin-bottom: 2rem; text-decoration: underline; text-underline-offset: 3px;
-      }
-      .recalc-link:hover { color: var(--ink); }
+    .form-row input {
+      width: 100%;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      padding: .65rem .9rem;
+      font-size: .95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color .2s;
+    }
 
-      .result-alt-body {
-        text-align: left; max-width: 36rem; margin: 0 auto 1.25rem;
-        font-size: .95rem; line-height: 1.55; color: var(--muted);
-      }
-      .result-alt-card .price-label { text-transform: none; letter-spacing: .02em; }
-      #price-output-wrap.is-hidden,
-      #result-priced-wrap.is-hidden { display: none !important; }
-    </style>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container site-header-inner">
-        <a class="brand" href="/" aria-label="VLWarmte — home"><img class="brand-mark" src="assets/img/logo-mark-krul.svg" alt="" decoding="async" /><span class="brand-text-stack"><span class="brand-wordmark-row"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span><span class="brand-tagline" aria-hidden="true">Slim gelegd. Gelijkmatig warm.</span></span></a>
-        <nav class="site-nav" data-nav>
-          <a href="/">Home</a>
-          <a href="diensten.html">Diensten</a>
+    .form-row input:focus {
+      border-color: var(--brand);
+    }
+
+    .lead-privacy {
+      font-size: .78rem;
+      color: var(--muted);
+      margin: .8rem 0 1.2rem;
+    }
+
+    .status-msg {
+      margin-top: 1rem;
+      padding: .8rem 1rem;
+      border-radius: 8px;
+      font-size: .9rem;
+    }
+
+    .status-msg.ok {
+      background: rgba(0, 200, 100, .12);
+      border: 1px solid rgba(0, 200, 100, .25);
+      color: #6ee7b7;
+    }
+
+    .status-msg.err {
+      background: rgba(224, 85, 47, .12);
+      border: 1px solid rgba(224, 85, 47, .3);
+      color: #fca5a5;
+    }
+
+    .recalc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      color: var(--muted);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      padding: 0;
+      margin-bottom: 2rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .recalc-link:hover {
+      color: var(--ink);
+    }
+
+    .result-alt-body {
+      text-align: left;
+      max-width: 36rem;
+      margin: 0 auto 1.25rem;
+      font-size: .95rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .result-alt-card .price-label {
+      text-transform: none;
+      letter-spacing: .02em;
+    }
+
+    #price-output-wrap.is-hidden,
+    #result-priced-wrap.is-hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a class="brand" href="/" aria-label="VLWarmte — home"><img class="brand-mark" src="assets/img/logo-mark-krul.svg"
+          alt="" decoding="async" /><span class="brand-text-stack"><span class="brand-wordmark-row"><span
+              class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span><span class="brand-tagline"
+            aria-hidden="true">Slim gelegd. Gelijkmatig warm.</span></span></a>
+      <nav class="site-nav" data-nav>
+        <a href="/">Home</a>
+        <a href="diensten.html">Diensten</a>
+        <a href="systemen-producten.html">Systemen</a>
+        <a href="werkwijze.html">Werkwijze</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a class="is-current" href="prijsindicatie.html">Prijsindicatie</a>
+        <a class="drawer-cta" href="contact.html">Informatie / Offerte aanvragen</a>
+      </nav>
+      <div class="header-actions">
+        <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open navigatie"><span
+            aria-hidden="true">☰</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Prijsindicatie vloerverwarming</h1>
+        <p class="lead">
+          Eerst kies je wat je wilt laten prijzen — daarna stellen we de passende vragen. Geen verplichtingen. Veel
+          context over
+          infrezen, warmtepomp en kosten vind je ook op de pagina
+          <a href="faq.html">veelgestelde vragen</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container cta-band">
+        <div>
+          <h2>Online een bandbreedte — geen account</h2>
+          <p>
+            Vier korte stappen in de wizard. Liever eerst iets vragen vóór je getallen invult? Gebruik het
+            <a href="contact.html?modus=informatie#aanvraag">informatieformulier</a> — we reageren doorgaans binnen één
+            werkdag.
+          </p>
+        </div>
+        <div class="cta-band-stack">
+          <a class="btn btn-primary" href="#wizard">Start de wizard</a>
+          <a class="btn btn-secondary" href="contact.html?modus=offerte#aanvraag">Direct offerte aanvragen</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="wizard" id="wizard">
+          <div class="wizard-progress" aria-hidden="true">
+            <div class="wizard-progress-fill" id="wizard-progress-fill"></div>
+          </div>
+
+          <!-- Stap 0: productkeuze -->
+          <div class="wizard-step is-active" id="step-product">
+            <h2>Waar wil je een prijs voor?</h2>
+            <p class="step-sub">Dan weten we welke vragen bij jouw situatie passen.</p>
+            <div class="option-grid">
+              <button type="button" class="option-card" data-field="product" data-value="vl"
+                onclick="selectOption(this)">
+                <span class="option-icon">〰️</span>
+                <span class="option-label">Alleen vloerverwarming</span>
+                <span class="option-hint">Infrarood / infrezen op bestaande vloer</span>
+              </button>
+              <button type="button" class="option-card" data-field="product" data-value="schuim"
+                onclick="selectOption(this)">
+                <span class="option-icon">🏠</span>
+                <span class="option-label">Vloerverwarming met schuimbeton</span>
+                <span class="option-hint">Kruipruimte isoleren en vloer opbouwen</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Traject alleen vloerverwarming: ondergrond vloer (hout → contact, beton → door) -->
+          <div class="wizard-step" id="step-vl-grond">
+            <h2>Wat is de huidige ondergrond van de vloer?</h2>
+            <p class="step-sub">Vloerverwarming op hout vraagt maatwerk: daar maken we geen vaste rekensom voor in dit
+              stappenplan.</p>
+            <div class="option-grid">
+              <button type="button" class="option-card" data-field="vlOndergrond" data-value="beton"
+                onclick="selectOption(this)">
+                <span class="option-icon">🧱</span>
+                <span class="option-label">Beton / steenachtig</span>
+                <span class="option-hint">Betonvloer of begane grond</span>
+              </button>
+              <button type="button" class="option-card" data-field="vlOndergrond" data-value="hout"
+                onclick="selectOption(this)">
+                <span class="option-icon">🪵</span>
+                <span class="option-label">Hout / balken</span>
+                <span class="option-hint">Houten vloer of verdieping</span>
+              </button>
+            </div>
+            <div class="wizard-nav">
+              <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
+            </div>
+          </div>
+
+          <!-- Alleen vloerverwarming + beton: m² -->
+          <div class="wizard-step" id="step-m2">
+            <h2>Hoeveel vierkante meter vloerverwarming?</h2>
+            <p class="step-sub">Schat het totale vloeroppervlak dat verwarmd moet worden.</p>
+            <div class="slider-wrap">
+              <div class="slider-display"><span id="m2-val">80</span> <span>m²</span></div>
+              <input type="range" id="m2-slider" min="20" max="500" value="80" step="5"
+                aria-label="Oppervlakte in m²" />
+              <div class="slider-limits"><span>20 m²</span><span>500 m²</span></div>
+            </div>
+            <div class="wizard-nav">
+              <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
+              <button type="button" class="btn btn-primary" onclick="wizardForward()">Volgende →</button>
+            </div>
+          </div>
+
+          <!-- Alleen vloerverwarming + beton: nieuwbouw / renovatie -->
+          <div class="wizard-step" id="step-projecttype">
+            <h2>Nieuwbouw of renovatie?</h2>
+            <p class="step-sub">Dit bepaalt welk systeem het meest geschikt is.</p>
+            <div class="option-grid">
+              <button type="button" class="option-card" data-field="projecttype" data-value="nieuwbouw"
+                onclick="selectOption(this)">
+                <span class="option-icon">🏗️</span>
+                <span class="option-label">Nieuwbouw</span>
+                <span class="option-hint">Vloer wordt nog aangelegd</span>
+              </button>
+              <button type="button" class="option-card" data-field="projecttype" data-value="renovatie"
+                onclick="selectOption(this)">
+                <span class="option-icon">🔨</span>
+                <span class="option-label">Renovatie</span>
+                <span class="option-hint">Bestaande woning verbouwen</span>
+              </button>
+            </div>
+            <div class="wizard-nav">
+              <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
+            </div>
+          </div>
+
+          <!-- Alleen vloerverwarming + beton: zones -->
+          <div class="wizard-step" id="step-zones">
+            <h2>Hoeveel verwarmingszones?</h2>
+            <p class="step-sub">Elke zone heeft een eigen thermostaat. Denk aan: woonkamer, slaapkamers, badkamer.</p>
+            <div class="option-grid">
+              <button type="button" class="option-card" data-field="zones" data-value="1" onclick="selectOption(this)">
+                <span class="option-icon">1️⃣</span>
+                <span class="option-label">1 zone</span>
+                <span class="option-hint">Één ruimte of kleine woning</span>
+              </button>
+              <button type="button" class="option-card" data-field="zones" data-value="2" onclick="selectOption(this)">
+                <span class="option-icon">2️⃣</span>
+                <span class="option-label">2 zones</span>
+                <span class="option-hint">Beneden / boven</span>
+              </button>
+              <button type="button" class="option-card" data-field="zones" data-value="3" onclick="selectOption(this)">
+                <span class="option-icon">3️⃣</span>
+                <span class="option-label">3 zones</span>
+              </button>
+              <button type="button" class="option-card" data-field="zones" data-value="4" onclick="selectOption(this)">
+                <span class="option-icon">4️⃣</span>
+                <span class="option-label">4 of meer</span>
+              </button>
+            </div>
+            <div class="wizard-nav">
+              <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
+            </div>
+          </div>
+
+          <!-- Schuimbeton: diepte kruipruimte -->
+          <div class="wizard-step" id="step-schuim-diepte">
+            <h2>Hoe diep is je kruipruimte?</h2>
+            <p class="step-sub">Meet de vrije hoogte onder de bodem (in millimeters). Twijfel je? Schat zo goed mogelijk
+              — we controleren het bij de opname.</p>
+            <div class="slider-wrap">
+              <div class="slider-display"><span id="diepte-val">500</span> <span>mm</span></div>
+              <input type="range" id="diepte-slider" min="250" max="2000" value="500" step="10"
+                aria-label="Diepte kruipruimte in mm" />
+              <div class="slider-limits"><span>250 mm</span><span>2000 mm</span></div>
+            </div>
+            <div class="wizard-nav">
+              <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
+              <button type="button" class="btn btn-primary" onclick="wizardForward()">Volgende →</button>
+            </div>
+          </div>
+
+          <!-- Schuimbeton: oppervlakte woning -->
+          <div class="wizard-step" id="step-schuim-m2">
+            <h2>Hoeveel vierkante meter is de woning?</h2>
+            <p class="step-sub">Bruto vloeroppervlak of bewoonbaar oppervlak — waar je zelf het meest mee uit de voeten
+              kunt.</p>
+            <div class="slider-wrap">
+              <div class="slider-display"><span id="schuim-m2-val">120</span> <span>m²</span></div>
+              <input type="range" id="schuim-m2-slider" min="40" max="350" value="120" step="5"
+                aria-label="Oppervlakte woning in m²" />
+              <div class="slider-limits"><span>40 m²</span><span>350 m²</span></div>
+            </div>
+            <div class="wizard-nav">
+              <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
+              <button type="button" class="btn btn-primary" onclick="wizardForward()">Volgende →</button>
+            </div>
+          </div>
+
+          <!-- Schuimbeton: ondergrond kruipruimte -->
+          <div class="wizard-step" id="step-schuim-kruip">
+            <h2>Wat is de ondergrond in de kruipruimte?</h2>
+            <p class="step-sub">Onder de kruipruimte — niet de vloer erboven.</p>
+            <div class="option-grid">
+              <button type="button" class="option-card" data-field="kruipOndergrond" data-value="zand"
+                onclick="selectOption(this)">
+                <span class="option-icon">▓</span>
+                <span class="option-label">Zand / funderingsgrind</span>
+                <span class="option-hint">Veel voorkomend</span>
+              </button>
+              <button type="button" class="option-card" data-field="kruipOndergrond" data-value="klei"
+                onclick="selectOption(this)">
+                <span class="option-icon">💧</span>
+                <span class="option-label">Klei / vochtige bodem</span>
+                <span class="option-hint">Extra aandacht isolatie</span>
+              </button>
+              <button type="button" class="option-card" data-field="kruipOndergrond" data-value="deels-beton"
+                onclick="selectOption(this)">
+                <span class="option-icon">▤</span>
+                <span class="option-label">Deels beton / stroken</span>
+                <span class="option-hint">Gemengde ondergrond</span>
+              </button>
+              <button type="button" class="option-card" data-field="kruipOndergrond" data-value="beton"
+                onclick="selectOption(this)">
+                <span class="option-icon">🧱</span>
+                <span class="option-label">Overwegend beton</span>
+                <span class="option-hint">Bijv. keldervloer bodem</span>
+              </button>
+              <button type="button" class="option-card" data-field="kruipOndergrond" data-value="onbekend"
+                onclick="selectOption(this)">
+                <span class="option-icon">❓</span>
+                <span class="option-label">Weet ik (nog) niet</span>
+                <span class="option-hint">Geen probleem</span>
+              </button>
+            </div>
+            <div class="wizard-nav">
+              <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resultaat -->
+        <div class="result-block wizard" id="result">
+          <button type="button" class="recalc-link" onclick="resetWizard()">← Opnieuw starten</button>
+
+          <div id="result-priced-wrap">
+            <div class="price-card">
+              <p class="price-label" id="result-price-title">Vrijblijvende prijsindicatie</p>
+              <div id="price-output-wrap">
+                <div class="price-range" id="price-output"></div>
+                <p class="price-meta" id="price-meta-line">Indicatie incl. materiaal en arbeid, excl. btw</p>
+              </div>
+              <div class="price-breakdown" id="price-breakdown"></div>
+              <section class="price-assumptions" id="price-assumptions" aria-label="Uitgangspunten bij deze indicatie"
+                hidden></section>
+              <p class="price-disclaimer" id="price-disclaimer">
+                Dit is een indicatie op basis van gemiddelde projectkosten in Noord-Nederland.<br />
+                De werkelijke prijs hangt af van de specifieke situatie ter plaatse — twijfel je ergens over, bel gerust
+                even.
+              </p>
+            </div>
+          </div>
+
+          <div id="result-alt-wrap" hidden>
+            <div class="price-card result-alt-card">
+              <p class="price-label" id="result-alt-title">Volgende stap</p>
+              <div id="result-alt-body" class="result-alt-body"></div>
+              <div class="price-breakdown" id="result-alt-tags"></div>
+            </div>
+          </div>
+
+          <div class="lead-after">
+            <h3 id="lead-after-heading">Wil je dat we meedenken?</h3>
+            <p class="lead-sub" id="lead-after-sub">Laat je gegevens achter, dan nemen we contact op. Gratis,
+              vrijblijvend en zonder gedoe.</p>
+
+            <form id="calc-form" action="https://formspree.io/f/29885138860528105515" method="POST" novalidate>
+              <input type="hidden" name="productkeuze" id="f-product" />
+              <input type="hidden" name="calculator_traject" id="f-traject" />
+              <input type="hidden" name="oppervlakte_m2" id="f-m2" />
+              <input type="hidden" name="projecttype" id="f-type" />
+              <input type="hidden" name="ondergrond" id="f-ondergrond" />
+              <input type="hidden" name="zones" id="f-zones" />
+              <input type="hidden" name="vloerdiepte" id="f-vloerdiepte" />
+              <input type="hidden" name="oppervlakte_woning_m2" id="f-schuim-m2" />
+              <input type="hidden" name="ondergrond_kruipruimte" id="f-kruip-ondergrond" />
+              <input type="hidden" name="prijsindicatie" id="f-prijs" />
+              <input type="hidden" name="uitgangspunten" id="f-uitgangspunten" />
+              <input type="hidden" name="_subject" value="Offerte aanvraag via prijscalculator" />
+
+              <div class="form-row">
+                <div>
+                  <label for="c-name">Naam *</label>
+                  <input id="c-name" name="name" required placeholder="Jan de Vries" />
+                </div>
+                <div>
+                  <label for="c-phone">Telefoon *</label>
+                  <input id="c-phone" name="phone" required placeholder="06 – – – –" />
+                </div>
+                <div>
+                  <label for="c-email">E-mail</label>
+                  <input id="c-email" name="email" type="email" placeholder="jan@voorbeeld.nl" />
+                </div>
+                <div>
+                  <label for="c-place">Woonplaats</label>
+                  <input id="c-place" name="woonplaats" placeholder="bijv. Groningen" />
+                </div>
+                <div>
+                  <label for="c-planning">Gewenste startdatum</label>
+                  <input id="c-planning" name="gewenste_startdatum" placeholder="bijv. mei 2026 of zo snel mogelijk" />
+                </div>
+              </div>
+
+              <p class="lead-privacy">Je gegevens worden alleen gebruikt voor contact over jouw project. Geen spam.</p>
+              <button class="btn btn-primary" type="submit">Offerte aanvragen</button>
+              <div id="calc-status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer-grid">
+      <section>
+        <h3><span class="wordmark"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span></h3>
+        <p class="small footer-tagline">Slim gelegd. Gelijkmatig warm.</p>
+        <p class="small">Vragen? We denken graag mee.</p>
+        <address class="small footer-address">Verlengde Stationsweg 58<br />9471 PM Zuidlaren</address>
+        <p class="small footer-contact">
+          <a href="tel:+31618817459">06 188 17 459</a><br />
+          <a href="mailto:info@vlwarmte.nl">info@<span class="email-domain-vl">vl</span>Warmte.nl</a>
+        </p>
+      </section>
+      <section>
+        <h3>Diensten</h3>
+        <nav class="small footer-nav">
+          <a href="diensten.html">Alle diensten</a>
           <a href="systemen-producten.html">Systemen</a>
           <a href="werkwijze.html">Werkwijze</a>
-          <a href="over-ons.html">Over ons</a>
-          <a href="faq.html">FAQ</a>
-          <a href="contact.html">Contact</a>
-          <a class="is-current" href="prijsindicatie.html">Prijsindicatie</a>
-          <a class="drawer-cta" href="contact.html">Informatie / Offerte aanvragen</a>
+          <a href="prijsindicatie.html">Prijsindicatie</a>
         </nav>
-        <div class="header-actions">
-          <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open navigatie"><span aria-hidden="true">☰</span></button>
-        </div>
-      </div>
-    </header>
-
-    <main>
-      <section class="page-hero">
-        <div class="container">
-          <h1>Prijsindicatie vloerverwarming</h1>
-          <p class="lead">
-            Eerst kies je wat je wilt laten prijzen — daarna stellen we de passende vragen. Geen verplichtingen. Veel context over
-            infrezen, warmtepomp en kosten vind je ook op de pagina
-            <a href="faq.html">veelgestelde vragen</a>.
-          </p>
-        </div>
       </section>
-
-      <section class="section section-muted">
-        <div class="container cta-band">
-          <div>
-            <h2>Online een bandbreedte — geen account</h2>
-            <p>
-              Vier korte stappen in de wizard. Liever eerst iets vragen vóór je getallen invult? Gebruik het
-              <a href="contact.html?modus=informatie#aanvraag">informatieformulier</a> — we reageren doorgaans binnen één werkdag.
-            </p>
-          </div>
-          <div class="cta-band-stack">
-            <a class="btn btn-primary" href="#wizard">Start de wizard</a>
-            <a class="btn btn-secondary" href="contact.html?modus=offerte#aanvraag">Direct offerte aanvragen</a>
-          </div>
-        </div>
+      <section>
+        <h3>Bedrijf</h3>
+        <nav class="small footer-nav">
+          <a href="over-ons.html">Over ons</a>
+          <a href="faq.html">Veelgestelde vragen</a>
+          <a href="contact.html">Contact</a>
+          <a class="btn-social-facebook" href="https://www.facebook.com/1068733929659423" rel="noopener noreferrer"
+            target="_blank" aria-label="VLWarmte op Facebook — opent in een nieuw tabblad"><svg
+              class="btn-social-facebook__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M24 12.073C24 5.446 18.627 0 12 0S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078V9.072h3.047V6.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V9.07h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.063 24 12.073z" />
+            </svg><span>Volg ons</span></a>
+        </nav>
       </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="wizard" id="wizard">
-            <div class="wizard-progress" aria-hidden="true">
-              <div class="wizard-progress-fill" id="wizard-progress-fill"></div>
-            </div>
-
-            <!-- Stap 0: productkeuze -->
-            <div class="wizard-step is-active" id="step-product">
-              <h2>Waar wil je een prijs voor?</h2>
-              <p class="step-sub">Dan weten we welke vragen bij jouw situatie passen.</p>
-              <div class="option-grid">
-                <button type="button" class="option-card" data-field="product" data-value="vl" onclick="selectOption(this)">
-                  <span class="option-icon">〰️</span>
-                  <span class="option-label">Alleen vloerverwarming</span>
-                  <span class="option-hint">Infrarood / infrezen op bestaande vloer</span>
-                </button>
-                <button type="button" class="option-card" data-field="product" data-value="schuim" onclick="selectOption(this)">
-                  <span class="option-icon">🏠</span>
-                  <span class="option-label">Vloerverwarming met schuimbeton</span>
-                  <span class="option-hint">Kruipruimte isoleren en vloer opbouwen</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Traject alleen vloerverwarming: ondergrond vloer (hout → contact, beton → door) -->
-            <div class="wizard-step" id="step-vl-grond">
-              <h2>Wat is de huidige ondergrond van de vloer?</h2>
-              <p class="step-sub">Vloerverwarming op hout vraagt maatwerk: daar maken we geen vaste rekensom voor in dit stappenplan.</p>
-              <div class="option-grid">
-                <button type="button" class="option-card" data-field="vlOndergrond" data-value="beton" onclick="selectOption(this)">
-                  <span class="option-icon">🧱</span>
-                  <span class="option-label">Beton / steenachtig</span>
-                  <span class="option-hint">Betonvloer of begane grond</span>
-                </button>
-                <button type="button" class="option-card" data-field="vlOndergrond" data-value="hout" onclick="selectOption(this)">
-                  <span class="option-icon">🪵</span>
-                  <span class="option-label">Hout / balken</span>
-                  <span class="option-hint">Houten vloer of verdieping</span>
-                </button>
-              </div>
-              <div class="wizard-nav">
-                <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-              </div>
-            </div>
-
-            <!-- Alleen vloerverwarming + beton: m² -->
-            <div class="wizard-step" id="step-m2">
-              <h2>Hoeveel vierkante meter vloerverwarming?</h2>
-              <p class="step-sub">Schat het totale vloeroppervlak dat verwarmd moet worden.</p>
-              <div class="slider-wrap">
-                <div class="slider-display"><span id="m2-val">80</span> <span>m²</span></div>
-                <input type="range" id="m2-slider" min="20" max="500" value="80" step="5" aria-label="Oppervlakte in m²" />
-                <div class="slider-limits"><span>20 m²</span><span>500 m²</span></div>
-              </div>
-              <div class="wizard-nav">
-                <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-                <button type="button" class="btn btn-primary" onclick="wizardForward()">Volgende →</button>
-              </div>
-            </div>
-
-            <!-- Alleen vloerverwarming + beton: nieuwbouw / renovatie -->
-            <div class="wizard-step" id="step-projecttype">
-              <h2>Nieuwbouw of renovatie?</h2>
-              <p class="step-sub">Dit bepaalt welk systeem het meest geschikt is.</p>
-              <div class="option-grid">
-                <button type="button" class="option-card" data-field="projecttype" data-value="nieuwbouw" onclick="selectOption(this)">
-                  <span class="option-icon">🏗️</span>
-                  <span class="option-label">Nieuwbouw</span>
-                  <span class="option-hint">Vloer wordt nog aangelegd</span>
-                </button>
-                <button type="button" class="option-card" data-field="projecttype" data-value="renovatie" onclick="selectOption(this)">
-                  <span class="option-icon">🔨</span>
-                  <span class="option-label">Renovatie</span>
-                  <span class="option-hint">Bestaande woning verbouwen</span>
-                </button>
-              </div>
-              <div class="wizard-nav">
-                <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-              </div>
-            </div>
-
-            <!-- Alleen vloerverwarming + beton: zones -->
-            <div class="wizard-step" id="step-zones">
-              <h2>Hoeveel verwarmingszones?</h2>
-              <p class="step-sub">Elke zone heeft een eigen thermostaat. Denk aan: woonkamer, slaapkamers, badkamer.</p>
-              <div class="option-grid">
-                <button type="button" class="option-card" data-field="zones" data-value="1" onclick="selectOption(this)">
-                  <span class="option-icon">1️⃣</span>
-                  <span class="option-label">1 zone</span>
-                  <span class="option-hint">Één ruimte of kleine woning</span>
-                </button>
-                <button type="button" class="option-card" data-field="zones" data-value="2" onclick="selectOption(this)">
-                  <span class="option-icon">2️⃣</span>
-                  <span class="option-label">2 zones</span>
-                  <span class="option-hint">Beneden / boven</span>
-                </button>
-                <button type="button" class="option-card" data-field="zones" data-value="3" onclick="selectOption(this)">
-                  <span class="option-icon">3️⃣</span>
-                  <span class="option-label">3 zones</span>
-                </button>
-                <button type="button" class="option-card" data-field="zones" data-value="4" onclick="selectOption(this)">
-                  <span class="option-icon">4️⃣</span>
-                  <span class="option-label">4 of meer</span>
-                </button>
-              </div>
-              <div class="wizard-nav">
-                <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-              </div>
-            </div>
-
-            <!-- Schuimbeton: diepte kruipruimte -->
-            <div class="wizard-step" id="step-schuim-diepte">
-              <h2>Hoe diep is je kruipruimte?</h2>
-              <p class="step-sub">Meet de vrije hoogte onder de bodem (in millimeters). Twijfel je? Schat zo goed mogelijk — we controleren het bij de opname.</p>
-              <div class="slider-wrap">
-                <div class="slider-display"><span id="diepte-val">500</span> <span>mm</span></div>
-                <input type="range" id="diepte-slider" min="250" max="2000" value="500" step="10" aria-label="Diepte kruipruimte in mm" />
-                <div class="slider-limits"><span>250 mm</span><span>2000 mm</span></div>
-              </div>
-              <div class="wizard-nav">
-                <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-                <button type="button" class="btn btn-primary" onclick="wizardForward()">Volgende →</button>
-              </div>
-            </div>
-
-            <!-- Schuimbeton: oppervlakte woning -->
-            <div class="wizard-step" id="step-schuim-m2">
-              <h2>Hoeveel vierkante meter is de woning?</h2>
-              <p class="step-sub">Bruto vloeroppervlak of bewoonbaar oppervlak — waar je zelf het meest mee uit de voeten kunt.</p>
-              <div class="slider-wrap">
-                <div class="slider-display"><span id="schuim-m2-val">120</span> <span>m²</span></div>
-                <input type="range" id="schuim-m2-slider" min="40" max="350" value="120" step="5" aria-label="Oppervlakte woning in m²" />
-                <div class="slider-limits"><span>40 m²</span><span>350 m²</span></div>
-              </div>
-              <div class="wizard-nav">
-                <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-                <button type="button" class="btn btn-primary" onclick="wizardForward()">Volgende →</button>
-              </div>
-            </div>
-
-            <!-- Schuimbeton: ondergrond kruipruimte -->
-            <div class="wizard-step" id="step-schuim-kruip">
-              <h2>Wat is de ondergrond in de kruipruimte?</h2>
-              <p class="step-sub">Onder de kruipruimte — niet de vloer erboven.</p>
-              <div class="option-grid">
-                <button type="button" class="option-card" data-field="kruipOndergrond" data-value="zand" onclick="selectOption(this)">
-                  <span class="option-icon">▓</span>
-                  <span class="option-label">Zand / funderingsgrind</span>
-                  <span class="option-hint">Veel voorkomend</span>
-                </button>
-                <button type="button" class="option-card" data-field="kruipOndergrond" data-value="klei" onclick="selectOption(this)">
-                  <span class="option-icon">💧</span>
-                  <span class="option-label">Klei / vochtige bodem</span>
-                  <span class="option-hint">Extra aandacht isolatie</span>
-                </button>
-                <button type="button" class="option-card" data-field="kruipOndergrond" data-value="deels-beton" onclick="selectOption(this)">
-                  <span class="option-icon">▤</span>
-                  <span class="option-label">Deels beton / stroken</span>
-                  <span class="option-hint">Gemengde ondergrond</span>
-                </button>
-                <button type="button" class="option-card" data-field="kruipOndergrond" data-value="beton" onclick="selectOption(this)">
-                  <span class="option-icon">🧱</span>
-                  <span class="option-label">Overwegend beton</span>
-                  <span class="option-hint">Bijv. keldervloer bodem</span>
-                </button>
-                <button type="button" class="option-card" data-field="kruipOndergrond" data-value="onbekend" onclick="selectOption(this)">
-                  <span class="option-icon">❓</span>
-                  <span class="option-label">Weet ik (nog) niet</span>
-                  <span class="option-hint">Geen probleem</span>
-                </button>
-              </div>
-              <div class="wizard-nav">
-                <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Resultaat -->
-          <div class="result-block wizard" id="result">
-            <button type="button" class="recalc-link" onclick="resetWizard()">← Opnieuw starten</button>
-
-            <div id="result-priced-wrap">
-              <div class="price-card">
-                <p class="price-label" id="result-price-title">Vrijblijvende prijsindicatie</p>
-                <div id="price-output-wrap">
-                  <div class="price-range" id="price-output"></div>
-                  <p class="price-meta" id="price-meta-line">Indicatie incl. materiaal en arbeid, excl. btw</p>
-                </div>
-                <div class="price-breakdown" id="price-breakdown"></div>
-                <section class="price-assumptions" id="price-assumptions" aria-label="Uitgangspunten bij deze indicatie" hidden></section>
-                <p class="price-disclaimer" id="price-disclaimer">
-                  Dit is een indicatie op basis van gemiddelde projectkosten in Noord-Nederland.<br />
-                  De werkelijke prijs hangt af van de specifieke situatie ter plaatse — twijfel je ergens over, bel gerust even.
-                </p>
-              </div>
-            </div>
-
-            <div id="result-alt-wrap" hidden>
-              <div class="price-card result-alt-card">
-                <p class="price-label" id="result-alt-title">Volgende stap</p>
-                <div id="result-alt-body" class="result-alt-body"></div>
-                <div class="price-breakdown" id="result-alt-tags"></div>
-              </div>
-            </div>
-
-            <div class="lead-after">
-              <h3 id="lead-after-heading">Wil je dat we meedenken?</h3>
-              <p class="lead-sub" id="lead-after-sub">Laat je gegevens achter, dan nemen we contact op. Gratis, vrijblijvend en zonder gedoe.</p>
-
-              <form id="calc-form" action="https://formspree.io/f/29885138860528105515" method="POST" novalidate>
-                <input type="hidden" name="productkeuze" id="f-product" />
-                <input type="hidden" name="calculator_traject" id="f-traject" />
-                <input type="hidden" name="oppervlakte_m2" id="f-m2" />
-                <input type="hidden" name="projecttype" id="f-type" />
-                <input type="hidden" name="ondergrond" id="f-ondergrond" />
-                <input type="hidden" name="zones" id="f-zones" />
-                <input type="hidden" name="vloerdiepte" id="f-vloerdiepte" />
-                <input type="hidden" name="oppervlakte_woning_m2" id="f-schuim-m2" />
-                <input type="hidden" name="ondergrond_kruipruimte" id="f-kruip-ondergrond" />
-                <input type="hidden" name="prijsindicatie" id="f-prijs" />
-                <input type="hidden" name="uitgangspunten" id="f-uitgangspunten" />
-                <input type="hidden" name="_subject" value="Offerte aanvraag via prijscalculator" />
-
-                <div class="form-row">
-                  <div>
-                    <label for="c-name">Naam *</label>
-                    <input id="c-name" name="name" required placeholder="Jan de Vries" />
-                  </div>
-                  <div>
-                    <label for="c-phone">Telefoon *</label>
-                    <input id="c-phone" name="phone" required placeholder="06 – – – –" />
-                  </div>
-                  <div>
-                    <label for="c-email">E-mail</label>
-                    <input id="c-email" name="email" type="email" placeholder="jan@voorbeeld.nl" />
-                  </div>
-                  <div>
-                    <label for="c-place">Woonplaats</label>
-                    <input id="c-place" name="woonplaats" placeholder="bijv. Groningen" />
-                  </div>
-                  <div>
-                    <label for="c-planning">Gewenste startdatum</label>
-                    <input id="c-planning" name="gewenste_startdatum" placeholder="bijv. mei 2026 of zo snel mogelijk" />
-                  </div>
-                </div>
-
-                <p class="lead-privacy">Je gegevens worden alleen gebruikt voor contact over jouw project. Geen spam.</p>
-                <button class="btn btn-primary" type="submit">Offerte aanvragen</button>
-                <div id="calc-status" aria-live="polite"></div>
-              </form>
-            </div>
-          </div>
-        </div>
+      <section>
+        <h3>Regio</h3>
+        <ul class="small">
+          <li>Groningen</li>
+          <li>Friesland</li>
+          <li>Drenthe</li>
+        </ul>
+        <ul class="small">
+          <li><a href="vloerverwarming-groningen.html">Vloerverwarming Groningen</a></li>
+          <li><a href="vloerverwarming-assen.html">Vloerverwarming Assen</a></li>
+          <li><a href="vloerverwarming-zuidlaren.html">Vloerverwarming Zuidlaren</a></li>
+        </ul>
       </section>
-    </main>
+      <section>
+        <h3>Juridisch</h3>
+        <nav class="small footer-nav">
+          <a href="privacy.html">Privacybeleid</a>
+          <a href="disclaimer.html">Disclaimer</a>
+        </nav>
+      </section>
+    </div>
+    <div class="container site-footer-bottom">
+      <p class="small">&copy; <span id="yr"></span> <span class="wordmark"><span class="brand-vl">VL</span><span
+            class="brand-warmte">Warmte</span></span> &mdash; Zuidlaren</p>
+    </div>
+  </footer>
 
-    <footer class="site-footer">
-      <div class="container site-footer-grid">
-        <section>
-          <h3><span class="wordmark"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span></h3>
-          <p class="small footer-tagline">Slim gelegd. Gelijkmatig warm.</p>
-          <p class="small">Vragen? We denken graag mee.</p>
-          <address class="small footer-address">Verlengde Stationsweg 58<br />9471 PM Zuidlaren</address>
-          <p class="small footer-contact">
-            <a href="tel:+31618817459">06 188 17 459</a><br />
-            <a href="mailto:info@vlwarmte.nl">info@<span class="email-domain-vl">vl</span>Warmte.nl</a>
-          </p>
-        </section>
-        <section>
-          <h3>Diensten</h3>
-          <nav class="small footer-nav">
-            <a href="diensten.html">Alle diensten</a>
-            <a href="systemen-producten.html">Systemen</a>
-            <a href="werkwijze.html">Werkwijze</a>
-            <a href="prijsindicatie.html">Prijsindicatie</a>
-          </nav>
-        </section>
-        <section>
-          <h3>Bedrijf</h3>
-          <nav class="small footer-nav">
-            <a href="over-ons.html">Over ons</a>
-            <a href="faq.html">Veelgestelde vragen</a>
-            <a href="contact.html">Contact</a>
-            <a class="btn-social-facebook" href="https://www.facebook.com/1068733929659423" rel="noopener noreferrer" target="_blank" aria-label="VLWarmte op Facebook — opent in een nieuw tabblad"><svg class="btn-social-facebook__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M24 12.073C24 5.446 18.627 0 12 0S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078V9.072h3.047V6.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V9.07h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.063 24 12.073z"/></svg><span>Volg ons</span></a>
-          </nav>
-        </section>
-        <section>
-          <h3>Regio</h3>
-          <ul class="small"><li>Groningen</li><li>Friesland</li><li>Drenthe</li></ul>
-          <ul class="small">
-            <li><a href="vloerverwarming-groningen.html">Vloerverwarming Groningen</a></li>
-            <li><a href="vloerverwarming-assen.html">Vloerverwarming Assen</a></li>
-            <li><a href="vloerverwarming-zuidlaren.html">Vloerverwarming Zuidlaren</a></li>
-          </ul>
-        </section>
-        <section>
-          <h3>Juridisch</h3>
-          <nav class="small footer-nav">
-            <a href="privacy.html">Privacybeleid</a>
-            <a href="disclaimer.html">Disclaimer</a>
-          </nav>
-        </section>
-      </div>
-      <div class="container site-footer-bottom">
-        <p class="small">&copy; <span id="yr"></span> <span class="wordmark"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span> &mdash; Zuidlaren</p>
-      </div>
-    </footer>
+  <script>
+    const PRIJZEN = {
+      m2: {
+        nieuwbouw_beton: { laag: 45, hoog: 55 },
+        nieuwbouw_hout: { laag: 56, hoog: 68 },
+        nieuwbouw_onbekend: { laag: 48, hoog: 62 },
+        renovatie_beton: { laag: 68, hoog: 82 },
+        renovatie_hout: { laag: 80, hoog: 96 },
+        renovatie_onbekend: { laag: 70, hoog: 88 },
+      },
+      extra_zone: 175,
+      minimum: 2500,
+    };
 
-    <script>
-      const PRIJZEN = {
-        m2: {
-          nieuwbouw_beton:    { laag: 45, hoog: 55 },
-          nieuwbouw_hout:     { laag: 56, hoog: 68 },
-          nieuwbouw_onbekend: { laag: 48, hoog: 62 },
-          renovatie_beton:    { laag: 68, hoog: 82 },
-          renovatie_hout:     { laag: 80, hoog: 96 },
-          renovatie_onbekend: { laag: 70, hoog: 88 },
-        },
-        extra_zone: 175,
-        minimum: 2500,
-      };
+    /**
+     * Schuimbeton-indicatie: ruwe bandbreedte. Meer dan ~thermMax mm schuimbeton stopt we in de rekensom
+     * (dalende isolatie-opbrengst); de rest wordt als zandophoging geprijsd (materiaal + grove plaatsing/pomp).
+     * Cijfers zijn bewust breed — offerte op maat na opname.
+     */
+    const SCHUIM_REKEN = {
+      minVrijOnderVloerMm: 400,
+      schuimThermMaxMm: 400,
+      zandEurM3: { laag: 60, hoog: 150 },
+      schuimEurM3: { laag: 175, hoog: 360 },
+      vlEurM2: { laag: 36, hoog: 62 },
+      ondergrondKruipMult: { zand: 1, klei: 1.1, 'deels-beton': 1.05, beton: 1.03, onbekend: 1.07 },
+      minimum: 3500,
+    };
 
-      /**
-       * Schuimbeton-indicatie: ruwe bandbreedte. Meer dan ~thermMax mm schuimbeton stopt we in de rekensom
-       * (dalende isolatie-opbrengst); de rest wordt als zandophoging geprijsd (materiaal + grove plaatsing/pomp).
-       * Cijfers zijn bewust breed — offerte op maat na opname.
-       */
-      const SCHUIM_REKEN = {
-        minVrijOnderVloerMm: 400,
-        schuimThermMaxMm: 400,
-        zandEurM3: { laag: 60, hoog: 150 },
-        schuimEurM3: { laag: 175, hoog: 360 },
-        vlEurM2: { laag: 36, hoog: 62 },
-        ondergrondKruipMult: { zand: 1, klei: 1.1, 'deels-beton': 1.05, beton: 1.03, onbekend: 1.07 },
-        minimum: 3500,
-      };
+    const STEPS_VL = ['step-product', 'step-vl-grond', 'step-m2', 'step-projecttype', 'step-zones'];
+    const STEPS_SCHUIM = ['step-product', 'step-schuim-diepte', 'step-schuim-m2', 'step-schuim-kruip'];
 
-      const STEPS_VL = ['step-product', 'step-vl-grond', 'step-m2', 'step-projecttype', 'step-zones'];
-      const STEPS_SCHUIM = ['step-product', 'step-schuim-diepte', 'step-schuim-m2', 'step-schuim-kruip'];
+    const state = {
+      product: null,
+      vlOndergrond: null,
+      ondergrond: null,
+      projecttype: null,
+      zones: null,
+      m2: 80,
+      diepteMm: 500,
+      schuimM2: 120,
+      kruipOndergrond: null,
+      steps: ['step-product'],
+      idx: 0,
+      resultMode: null,
+    };
 
-      const state = {
-        product: null,
-        vlOndergrond: null,
-        ondergrond: null,
-        projecttype: null,
-        zones: null,
-        m2: 80,
-        diepteMm: 500,
-        schuimM2: 120,
-        kruipOndergrond: null,
-        steps: ['step-product'],
-        idx: 0,
-        resultMode: null,
-      };
-
-      function vlGtag() {
-        if (typeof gtag === "function") {
-          return gtag.apply(null, arguments);
-        }
+    function vlGtag() {
+      if (typeof gtag === "function") {
+        return gtag.apply(null, arguments);
       }
+    }
 
-      const slider = document.getElementById('m2-slider');
-      const m2Display = document.getElementById('m2-val');
-      slider.addEventListener('input', () => {
-        state.m2 = +slider.value;
-        m2Display.textContent = state.m2;
+    const slider = document.getElementById('m2-slider');
+    const m2Display = document.getElementById('m2-val');
+    slider.addEventListener('input', () => {
+      state.m2 = +slider.value;
+      m2Display.textContent = state.m2;
+    });
+
+    const diepteSlider = document.getElementById('diepte-slider');
+    const diepteDisplay = document.getElementById('diepte-val');
+    diepteSlider.addEventListener('input', () => {
+      state.diepteMm = +diepteSlider.value;
+      diepteDisplay.textContent = state.diepteMm;
+    });
+
+    const schuimSlider = document.getElementById('schuim-m2-slider');
+    const schuimM2Display = document.getElementById('schuim-m2-val');
+    schuimSlider.addEventListener('input', () => {
+      state.schuimM2 = +schuimSlider.value;
+      schuimM2Display.textContent = state.schuimM2;
+    });
+
+    let wizardStarted = false;
+
+    /** Keuze-stappen hebben geen aparte Volgende-knop; selectOption stuurt direct door. */
+    const nextBtnByStep = {};
+
+    function currentStepId() {
+      return state.steps[state.idx];
+    }
+
+    function renderWizardStep() {
+      const id = currentStepId();
+      document.querySelectorAll('.wizard-step').forEach(s => {
+        s.classList.toggle('is-active', s.id === id);
       });
+      const fill = document.getElementById('wizard-progress-fill');
+      let denom = state.steps.length;
+      if (denom <= 1) denom = 5;
+      const pct = Math.min(100, Math.round(((state.idx + 1) / denom) * 100));
+      fill.style.width = pct + '%';
+      enableForCurrentStep();
+    }
 
-      const diepteSlider = document.getElementById('diepte-slider');
-      const diepteDisplay = document.getElementById('diepte-val');
-      diepteSlider.addEventListener('input', () => {
-        state.diepteMm = +diepteSlider.value;
-        diepteDisplay.textContent = state.diepteMm;
+    function enableForCurrentStep() {
+      Object.values(nextBtnByStep).forEach(nid => {
+        const b = document.getElementById(nid);
+        if (b) b.disabled = true;
       });
+    }
 
-      const schuimSlider = document.getElementById('schuim-m2-slider');
-      const schuimM2Display = document.getElementById('schuim-m2-val');
-      schuimSlider.addEventListener('input', () => {
-        state.schuimM2 = +schuimSlider.value;
-        schuimM2Display.textContent = state.schuimM2;
+    function clearSelectionsExceptProduct() {
+      state.vlOndergrond = null;
+      state.ondergrond = null;
+      state.projecttype = null;
+      state.zones = null;
+      state.kruipOndergrond = null;
+      document.querySelectorAll('.option-card').forEach(c => {
+        if (c.dataset.field !== 'product') c.classList.remove('is-selected');
       });
+    }
 
-      let wizardStarted = false;
-
-      /** Keuze-stappen hebben geen aparte Volgende-knop; selectOption stuurt direct door. */
-      const nextBtnByStep = {};
-
-      function currentStepId() {
-        return state.steps[state.idx];
+    function selectOption(card) {
+      const field = card.dataset.field;
+      const val = card.dataset.value;
+      if (field === 'product') {
+        if (state.product && state.product !== val) clearSelectionsExceptProduct();
+        state.product = val;
+      } else {
+        state[field] = val;
       }
-
-      function renderWizardStep() {
-        const id = currentStepId();
-        document.querySelectorAll('.wizard-step').forEach(s => {
-          s.classList.toggle('is-active', s.id === id);
-        });
-        const fill = document.getElementById('wizard-progress-fill');
-        let denom = state.steps.length;
-        if (denom <= 1) denom = 5;
-        const pct = Math.min(100, Math.round(((state.idx + 1) / denom) * 100));
-        fill.style.width = pct + '%';
-        enableForCurrentStep();
+      document.querySelectorAll('[data-field="' + field + '"]').forEach(c => c.classList.remove('is-selected'));
+      card.classList.add('is-selected');
+      enableForCurrentStep();
+      if (!wizardStarted && field === 'product') {
+        wizardStarted = true;
+        vlGtag('event', 'wizard_start', { stap: 'productkeuze', product: val });
       }
-
-      function enableForCurrentStep() {
-        Object.values(nextBtnByStep).forEach(nid => {
-          const b = document.getElementById(nid);
-          if (b) b.disabled = true;
-        });
+      if (field === 'product') {
+        advanceFromProduct();
+        return;
       }
+      const sid = currentStepId();
+      if (field === 'vlOndergrond' && sid === 'step-vl-grond') advanceFromVlGrond();
+      else if (field === 'projecttype' && sid === 'step-projecttype') wizardForward();
+      else if (field === 'zones' && sid === 'step-zones') calculate();
+      else if (field === 'kruipOndergrond' && sid === 'step-schuim-kruip') finishSchuim();
+    }
 
-      function clearSelectionsExceptProduct() {
-        state.vlOndergrond = null;
-        state.ondergrond = null;
-        state.projecttype = null;
-        state.zones = null;
-        state.kruipOndergrond = null;
-        document.querySelectorAll('.option-card').forEach(c => {
-          if (c.dataset.field !== 'product') c.classList.remove('is-selected');
-        });
-      }
-
-      function selectOption(card) {
-        const field = card.dataset.field;
-        const val = card.dataset.value;
-        if (field === 'product') {
-          if (state.product && state.product !== val) clearSelectionsExceptProduct();
-          state.product = val;
-        } else {
-          state[field] = val;
-        }
-        document.querySelectorAll('[data-field="' + field + '"]').forEach(c => c.classList.remove('is-selected'));
-        card.classList.add('is-selected');
-        enableForCurrentStep();
-        if (!wizardStarted && field === 'product') {
-          wizardStarted = true;
-          vlGtag('event', 'wizard_start', { stap: 'productkeuze', product: val });
-        }
-        if (field === 'product') {
-          advanceFromProduct();
-          return;
-        }
-        const sid = currentStepId();
-        if (field === 'vlOndergrond' && sid === 'step-vl-grond') advanceFromVlGrond();
-        else if (field === 'projecttype' && sid === 'step-projecttype') wizardForward();
-        else if (field === 'zones' && sid === 'step-zones') calculate();
-        else if (field === 'kruipOndergrond' && sid === 'step-schuim-kruip') finishSchuim();
-      }
-
-      function advanceFromProduct() {
-        if (!state.product) return;
-        state.steps = state.product === 'vl' ? STEPS_VL.slice() : STEPS_SCHUIM.slice();
-        state.idx = 1;
-        renderWizardStep();
-        vlGtag('event', 'wizard_product', { product: state.product });
-      }
-
-      function advanceFromVlGrond() {
-        if (!state.vlOndergrond) return;
-        if (state.vlOndergrond === 'hout') {
-          finishVlHout();
-          return;
-        }
-        state.ondergrond = 'beton';
-        state.idx = 2;
-        renderWizardStep();
-        vlGtag('event', 'wizard_vl_ondergrond', { ondergrond: 'beton' });
-      }
-
-      function wizardForward() {
-        const sid = currentStepId();
-        if (sid === 'step-m2') {
-          state.idx++;
-          renderWizardStep();
-          vlGtag('event', 'wizard_m2', { m2: state.m2 });
-        } else if (sid === 'step-schuim-diepte') {
-          state.idx++;
-          renderWizardStep();
-          vlGtag('event', 'wizard_schuim_diepte', { diepte_mm: state.diepteMm });
-        } else if (sid === 'step-schuim-m2') {
-          state.idx++;
-          renderWizardStep();
-          vlGtag('event', 'wizard_schuim_m2', { m2: state.schuimM2 });
-        } else if (sid === 'step-projecttype') {
-          if (!state.projecttype) return;
-          state.idx++;
-          renderWizardStep();
-        }
-      }
-
-      function wizardBack() {
-        if (state.idx <= 0) return;
-        state.idx--;
-        renderWizardStep();
-      }
-
-      function showResultShell() {
-        document.getElementById('wizard').style.display = 'none';
-        document.getElementById('result').classList.add('is-visible');
-      }
-
-      function setLeadCopy(heading, sub) {
-        document.getElementById('lead-after-heading').textContent = heading;
-        document.getElementById('lead-after-sub').textContent = sub;
-      }
-
-      function setPriceDisclaimerDefault() {
-        const d = document.getElementById('price-disclaimer');
-        d.replaceChildren();
-        d.appendChild(document.createTextNode('Dit is een indicatie op basis van gemiddelde projectkosten in Noord-Nederland.'));
-        d.appendChild(document.createElement('br'));
-        d.appendChild(
-          document.createTextNode(
-            'De werkelijke prijs hangt af van de specifieke situatie ter plaatse — twijfel je ergens over, bel gerust even.'
-          )
-        );
-      }
-
-      function resetContactResultLayout() {
-        document.getElementById('result-priced-wrap').classList.remove('is-hidden');
-        document.getElementById('result-alt-wrap').hidden = true;
-        document.getElementById('price-output-wrap').classList.remove('is-hidden');
-        document.getElementById('result-price-title').textContent = 'Vrijblijvende prijsindicatie';
-        document.getElementById('price-meta-line').textContent = 'Indicatie incl. materiaal en arbeid, excl. btw';
-        setPriceDisclaimerDefault();
-        setLeadCopy('Wil je een offerte op maat?', 'Laat je gegevens achter, dan nemen we contact op. Gratis, vrijblijvend en zonder gedoe.');
-      }
-
-      function finishVlHout() {
-        state.resultMode = 'vl_hout';
-        showResultShell();
-        document.getElementById('result-priced-wrap').classList.add('is-hidden');
-        document.getElementById('result-alt-wrap').hidden = false;
-        document.getElementById('result-alt-title').textContent = 'We nemen contact met je op';
-        const body = document.getElementById('result-alt-body');
-        body.textContent =
-          'Vloerverwarming op een houten ondergrond is maatwerk: stijfheid, doorbuiging en aansluiting moeten kloppen. ' +
-          'Daarom maken we hier geen automatische prijsindicatie. Laat hieronder je gegevens achter — dan belt iemand van ons je terug om het kort door te nemen.';
-        const tags = document.getElementById('result-alt-tags');
-        tags.replaceChildren();
-        ['Alleen vloerverwarming', 'Houten ondergrond'].forEach(txt => {
-          const tag = document.createElement('span');
-          tag.className = 'price-tag';
-          tag.textContent = txt;
-          tags.appendChild(tag);
-        });
-        setLeadCopy('Gegevens achterlaten', 'We reageren zo snel mogelijk — vrijblijvend.');
-        document.getElementById('f-product').value = 'Alleen vloerverwarming';
-        document.getElementById('f-traject').value = 'vl_hout_contact';
-        document.getElementById('f-ondergrond').value = 'hout';
-        document.getElementById('f-m2').value = '';
-        document.getElementById('f-type').value = '';
-        document.getElementById('f-zones').value = '';
-        document.getElementById('f-prijs').value = 'Geen online indicatie (houten ondergrond)';
-        document.getElementById('f-vloerdiepte').value = '';
-        document.getElementById('f-schuim-m2').value = '';
-        document.getElementById('f-kruip-ondergrond').value = '';
-        document.getElementById('f-uitgangspunten').value =
-          'Traject: alleen vloerverwarming, houten ondergrond — contact i.p.v. rekensom.';
-        vlGtag('event', 'wizard_vl_hout_contact', {});
-      }
-
-      function kruipLabel(key) {
-        const m = {
-          zand: 'Zand / funderingsgrind',
-          klei: 'Klei / vochtige bodem',
-          'deels-beton': 'Deels beton',
-          beton: 'Overwegend beton',
-          onbekend: 'Ondergrond kruip (onbekend)',
-        };
-        return m[key] || key;
-      }
-
-      /** Berekent schuim-/zanddiktes en €-bandbreedte (excl. btw). */
-      function computeSchuimBreakdown() {
-        const R = SCHUIM_REKEN;
-        const D = state.diepteMm;
-        const m2 = state.schuimM2;
-        let ruimteMm = D - R.minVrijOnderVloerMm;
-        if (ruimteMm < 0) ruimteMm = 0;
-        const schuimMm = Math.min(R.schuimThermMaxMm, ruimteMm);
-        const zandMm = Math.max(0, ruimteMm - schuimMm);
-        const volSchuimM3 = (m2 * schuimMm) / 1000;
-        const volZandM3 = (m2 * zandMm) / 1000;
-        const mult = R.ondergrondKruipMult[state.kruipOndergrond] || 1.07;
-        let laag =
-          volSchuimM3 * R.schuimEurM3.laag +
-          volZandM3 * R.zandEurM3.laag +
-          m2 * R.vlEurM2.laag;
-        let hoog =
-          volSchuimM3 * R.schuimEurM3.hoog +
-          volZandM3 * R.zandEurM3.hoog +
-          m2 * R.vlEurM2.hoog;
-        laag *= mult;
-        hoog *= mult;
-        laag = Math.round(Math.max(R.minimum, laag) / 250) * 250;
-        hoog = Math.round(Math.max(R.minimum, hoog) / 250) * 250;
-        if (hoog < laag) {
-          const t = laag;
-          laag = hoog;
-          hoog = t;
-        }
-        return { ruimteMm, schuimMm, zandMm, volSchuimM3, volZandM3, laag, hoog, mult };
-      }
-
-      function setPriceDisclaimerSchuim() {
-        const d = document.getElementById('price-disclaimer');
-        d.replaceChildren();
-        d.appendChild(
-          document.createTextNode(
-            'Ruwe bandbreedte: schuimbeton tot maximaal ca. ' +
-              SCHUIM_REKEN.schuimThermMaxMm +
-              ' mm in deze berekening (meer levert snel weinig extra isolatie); dieper opvullen rekenen we als zandophoging (pomp-/aanvoercondities verschillen).'
-          )
-        );
-        d.appendChild(document.createElement('br'));
-        d.appendChild(
-          document.createTextNode(
-            'Geen offerte — bij grote diepte of bijzondere bodem altijd even afstemmen; bel gerust als je twijfelt.'
-          )
-        );
-      }
-
-      function renderSchuimAssumptions(b) {
-        const wrap = document.getElementById('price-assumptions');
-        wrap.replaceChildren();
-        wrap.hidden = false;
-        const intro = document.createElement('p');
-        intro.className = 'price-assumptions-intro';
-        const n = document.createElement('span');
-        n.className = 'assumption-count';
-        n.textContent = 'vijf';
-        intro.append(
-          document.createTextNode('Deze schatting sluit aan op '),
-          n,
-          document.createTextNode(
-            ' korte uitgangspunten — vooral om diepe kruipruimtes eerlijk te vergelijken met een “standaard” situatie.'
-          )
-        );
-        wrap.appendChild(intro);
-        const ul = document.createElement('ul');
-        ul.className = 'price-assumptions-list';
-        let zandUitleg;
-        if (b.ruimteMm <= 0) {
-          zandUitleg =
-            'Weinig opvulruimte in dit model (kruip lijkt krap t.o.v. gereserveerde vrije hoogte). De bandbreedte is dan vooral het vloerverwarmings-onderdeel — bel even voor maatwerk als je tóch wilt opvullen.';
-        } else if (b.zandMm > 0) {
-          zandUitleg =
-            'Zandophoging: ca. ' +
-            b.zandMm +
-            ' mm (≈ ' +
-            b.volZandM3.toFixed(1) +
-            ' m³ over ' +
-            state.schuimM2 +
-            ' m²) om eerst op te hogen; pompafstand, aanvoer en bodem bepalen de echte prijs sterk mee.';
-        } else {
-          zandUitleg =
-            'Geen zandophoging in deze schatting: na gereserveerde vrije hoogte blijft er ' +
-            b.ruimteMm +
-            ' mm over — dat past binnen de “nuttige” schuimlaag (max. ' +
-            SCHUIM_REKEN.schuimThermMaxMm +
-            ' mm), zonder eerst zand te hoeven prijzen.';
-        }
-        const bodemExtra =
-          b.mult > 1.005
-            ? 'Ondergrond kruip: ' +
-              kruipLabel(state.kruipOndergrond) +
-              ' — in deze schatting ca. ' +
-              Math.round((b.mult - 1) * 100) +
-              '% correctie voor extra risico of werk.'
-            : 'Ondergrond kruip: ' +
-              kruipLabel(state.kruipOndergrond) +
-              ' — zonder extra bodemcorrectie bovenop de basisbandbreedte.';
-        const items = [
-          'Kruipruimte: ' +
-            state.diepteMm +
-            ' mm vrij gemeten; we houden in de rekensom rekening met ongeveer ' +
-            SCHUIM_REKEN.minVrijOnderVloerMm +
-            ' mm ruimte onder de vloer na het werk (toegang, leidingen).',
-          'Schuimbeton: maximaal ' +
-            b.schuimMm +
-            ' mm in deze berekening — boven ~' +
-            SCHUIM_REKEN.schuimThermMaxMm +
-            ' mm neemt de extra isolatie sterk af; meer vullen is meestal geen slimme euro per cm.',
-          zandUitleg,
-            'Vloerverwarming: onderdeel voor het verwarmde oppervlak (' +
-              state.schuimM2 +
-              ' m²) zodra de opbouw geschikt is — zonder zones-detail zoals bij het traject “alleen vloerverwarming”.',
-          bodemExtra,
-        ];
-        items.forEach(text => {
-          const li = document.createElement('li');
-          li.textContent = text;
-          ul.appendChild(li);
-        });
-        wrap.appendChild(ul);
-        const foot = document.createElement('p');
-        foot.className = 'price-assumptions-foot';
-        foot.textContent =
-          'Zand- en schuimbetonmarkten verschillen per week en regio; gebruik dit als gesprekspunt, niet als plafond of vloer.';
-        wrap.appendChild(foot);
-      }
-
-      function finishSchuim() {
-        if (!state.kruipOndergrond) return;
-        const b = computeSchuimBreakdown();
-        state.resultMode = 'schuim_indicatie';
-        resetContactResultLayout();
-        showResultShell();
-
-        document.getElementById('result-price-title').textContent =
-          'Vrijblijvende prijsindicatie (schuimbeton + vloerverwarming)';
-        document.getElementById('price-meta-line').textContent =
-          'Indicatie incl. schuimbeton, eventuele zandophoging, vloerverwarming en arbeid — excl. btw';
-        setPriceDisclaimerSchuim();
-
-        const priceEl = document.getElementById('price-output');
-        priceEl.textContent = '';
-        const lo = document.createElement('strong');
-        lo.textContent = fmt(b.laag);
-        const sep = document.createTextNode(' – ');
-        const hi = document.createElement('strong');
-        hi.textContent = fmt(b.hoog);
-        priceEl.append(lo, sep, hi);
-
-        const bd = document.getElementById('price-breakdown');
-        bd.replaceChildren();
-        const tagParts = [
-          'Vloerverwarming + schuimbeton',
-          state.diepteMm + ' mm kruip',
-          state.schuimM2 + ' m²',
-          kruipLabel(state.kruipOndergrond),
-          'Schuim tot ' + b.schuimMm + ' mm',
-        ];
-        if (b.zandMm > 0) tagParts.push('Zand ca. ' + b.zandMm + ' mm');
-        tagParts.forEach(txt => {
-          const tag = document.createElement('span');
-          tag.className = 'price-tag';
-          tag.textContent = txt;
-          bd.appendChild(tag);
-        });
-
-        renderSchuimAssumptions(b);
-
-        setLeadCopy('Offerte op maat?', 'Laat je gegevens achter — dan checken we pompafstand, bodem en detailplan. Gratis en vrijblijvend.');
-
-        document.getElementById('f-product').value = 'Vloerverwarming met schuimbeton';
-        document.getElementById('f-traject').value = 'schuim_indicatie';
-        document.getElementById('f-vloerdiepte').value = String(state.diepteMm);
-        document.getElementById('f-schuim-m2').value = String(state.schuimM2);
-        document.getElementById('f-kruip-ondergrond').value = kruipLabel(state.kruipOndergrond);
-        document.getElementById('f-m2').value = '';
-        document.getElementById('f-type').value = '';
-        document.getElementById('f-ondergrond').value = '';
-        document.getElementById('f-zones').value = '';
-        document.getElementById('f-prijs').value = fmt(b.laag) + ' – ' + fmt(b.hoog);
-        document.getElementById('f-uitgangspunten').value = [
-          'Traject: vloerverwarming + schuimbeton (indicatie)',
-          'Kruip ' + state.diepteMm + ' mm; woning ' + state.schuimM2 + ' m²',
-          'Ruimte na gereserveerde vrije hoogte: ' + b.ruimteMm + ' mm; schuim ' + b.schuimMm + ' mm; zand ' + b.zandMm + ' mm',
-          'Volumes: schuim ' + b.volSchuimM3.toFixed(2) + ' m³, zand ' + b.volZandM3.toFixed(2) + ' m³',
-          'Ondergrond kruip: ' + kruipLabel(state.kruipOndergrond),
-        ].join('\n');
-
-        vlGtag('event', 'wizard_schuim_indicatie', {
-          diepte_mm: state.diepteMm,
-          m2: state.schuimM2,
-          kruip: state.kruipOndergrond,
-          zand_mm: b.zandMm,
-          schuim_mm: b.schuimMm,
-        });
-        vlGtag('event', 'calculator_result', { traject: 'schuim', m2: state.schuimM2, diepte_mm: state.diepteMm });
-        vlGtag('event', 'calculator_complete', {
-          m2: Math.round(Number(state.schuimM2) || 0),
-          ondergrond: state.kruipOndergrond || 'onbekend',
-          systeem: 'vloerverwarming-schuimbeton',
-        });
-      }
-
-      function fmt(n) { return '€ ' + Math.round(n).toLocaleString('nl-NL'); }
-
-      /** Gangbare m buis per m² vloer (tussenafstand ~15–20 cm); afgerond per 10 m voor leesbaarheid. */
-      function estimatePipeRangeM(m2) {
-        const low = Math.max(20, Math.round((m2 * 5) / 10) * 10);
-        const high = Math.max(low + 10, Math.round((m2 * 6.5) / 10) * 10);
-        return [low, high];
-      }
-
-      function zonesDisplay(stateZones) {
-        const z = parseInt(stateZones, 10) || 1;
-        if (stateZones === '4') return { n: z, phrase: 'minimaal 4 zones', groupsLabel: 'minimaal 4' };
-        return { n: z, phrase: z + (z === 1 ? ' zone' : ' zones'), groupsLabel: String(z) };
-      }
-
-      function elStrong(text) {
-        const s = document.createElement('strong');
-        s.textContent = text;
-        return s;
-      }
-
-      function renderPriceAssumptions() {
-        const zonesMeta = zonesDisplay(state.zones);
-        const zonesN = zonesMeta.n;
-        const [pipeLo, pipeHi] = estimatePipeRangeM(state.m2);
-        const midPipe = (pipeLo + pipeHi) / 2;
-        const mPipePerZone = midPipe / zonesN;
-        const longLoopHint = mPipePerZone > 100;
-
-        const typeLabel = state.projecttype === 'nieuwbouw' ? 'Nieuwbouw' : 'Renovatie';
-        const ogLabel =
-          state.ondergrond === 'beton'
-            ? 'beton- of steenachtige vloer'
-            : state.ondergrond === 'hout'
-              ? 'houten vloer / houten onderconstructie'
-              : 'ondergrond nog nader te bepalen';
-
-        const wrap = document.getElementById('price-assumptions');
-        wrap.replaceChildren();
-        wrap.hidden = false;
-
-        const intro = document.createElement('p');
-        intro.className = 'price-assumptions-intro';
-        const countSpan = document.createElement('span');
-        countSpan.className = 'assumption-count';
-        countSpan.textContent = 'zes';
-        intro.append(
-          document.createTextNode('Deze bandbreedte sluit aan op '),
-          countSpan,
-          document.createTextNode(' korte uitgangspunten — ruwe schattingen die bij veel vergelijkbare woningen kloppen. Ze geven houvast; details finetunen we tijdens de opname.')
-        );
-        wrap.appendChild(intro);
-
-        const ul = document.createElement('ul');
-        ul.className = 'price-assumptions-list';
-
-        const li1 = document.createElement('li');
-        li1.append(document.createTextNode('Oppervlakte: '), elStrong(state.m2 + ' m²'), document.createTextNode(' verwarmd vloeroppervlak als basis voor materiaal en montagetijd.'));
-        ul.appendChild(li1);
-
-        const li2 = document.createElement('li');
-        li2.append(elStrong(typeLabel + ', ' + ogLabel), document.createTextNode(' — zoals je hierboven koos.'));
-        ul.appendChild(li2);
-
-        const li3 = document.createElement('li');
-        li3.append(
-          document.createTextNode('Indicatieve hoeveelheid vloerbuis: ongeveer '),
-          elStrong(pipeLo + '–' + pipeHi + ' m'),
-          document.createTextNode(' totaal (gangbare tussenafstanden; exacte kringlengtes verschillen per plattegrond).')
-        );
-        ul.appendChild(li3);
-
-        const li4 = document.createElement('li');
-        li4.append(
-          document.createTextNode('Aan de verdeler: doorgaans '),
-          elStrong(zonesMeta.groupsLabel + ' regelgroep' + (zonesN > 1 ? 'en' : '')),
-          document.createTextNode(', passend bij ' + zonesMeta.phrase + '.')
-        );
-        if (longLoopHint) {
-          const sub = document.createElement('span');
-          sub.className = 'price-assumption-sub';
-          sub.textContent =
-            'Bij een groot oppervlak met weinig zones kan het soms handiger zijn om extra kringen te splitsen — dat bekijken we rustig op locatie.';
-          li4.appendChild(sub);
-        }
-        ul.appendChild(li4);
-
-        const li5 = document.createElement('li');
-        li5.appendChild(
-          document.createTextNode(
-            'Ligging van de verdeler en het leidingwerk naar de zones verschilt per woning. In het merendeel van de projecten past dit gewoon binnen deze bandbreidte.'
-          )
-        );
-        ul.appendChild(li5);
-
-        const li6 = document.createElement('li');
-        li6.appendChild(
-          document.createTextNode(
-            'Komt er ongebruikelijk zwaar doorwerk bij (lang traject of heel dik beton), dan zetten we dat vooraf en helder in de offerte — geen verrassing achteraf. Twijfel je? Bel gerust even: dan denken we meteen met je mee.'
-          )
-        );
-        ul.appendChild(li6);
-
-        wrap.appendChild(ul);
-
-        const foot = document.createElement('p');
-        foot.className = 'price-assumptions-foot';
-        foot.textContent = 'Dit blijft een online indicatie — geen offerte. Voor een prijs op maat volstaat vaak al een kort gesprek.';
-        wrap.appendChild(foot);
-
-        const lines = [
-          'Uitgangspunten (6):',
-          state.m2 + ' m²; ' + typeLabel + '; ' + ogLabel + '; buis ca. ' + pipeLo + '-' + pipeHi + ' m; ' + zonesMeta.groupsLabel + ' groep(en); ' + zonesMeta.phrase,
-        ];
-        document.getElementById('f-uitgangspunten').value = lines.join('\n');
-      }
-
-      function calculate() {
-        if (!state.zones || !state.projecttype || state.ondergrond !== 'beton') return;
-        const key = state.projecttype + '_' + state.ondergrond;
-        const tarief = PRIJZEN.m2[key] || PRIJZEN.m2[state.projecttype + '_onbekend'];
-        const zones = parseInt(state.zones, 10) || 1;
-        const extra = Math.max(0, zones - 1) * PRIJZEN.extra_zone;
-
-        const laag = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.laag + extra) / 250) * 250;
-        const hoog = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.hoog + extra) / 250) * 250;
-
-        state.resultMode = 'vl_beton';
-        resetContactResultLayout();
-        showResultShell();
-
-        const priceEl = document.getElementById('price-output');
-        priceEl.textContent = '';
-        const lo = document.createElement('strong');
-        lo.textContent = fmt(laag);
-        const sep = document.createTextNode(' – ');
-        const hi = document.createElement('strong');
-        hi.textContent = fmt(hoog);
-        priceEl.append(lo, sep, hi);
-
-        const bd = document.getElementById('price-breakdown');
-        bd.replaceChildren();
-        [
-          'Alleen vloerverwarming, beton',
-          state.m2 + ' m²',
-          state.projecttype === 'nieuwbouw' ? 'Nieuwbouw' : 'Renovatie',
-          'Betonvloer',
-          zones + ' zone' + (zones > 1 ? 's' : ''),
-        ].forEach(txt => {
-          const tag = document.createElement('span');
-          tag.className = 'price-tag';
-          tag.textContent = txt;
-          bd.appendChild(tag);
-        });
-
-        renderPriceAssumptions();
-
-        document.getElementById('f-product').value = 'Alleen vloerverwarming';
-        document.getElementById('f-traject').value = 'vl_beton_indicatie';
-        document.getElementById('f-m2').value = String(state.m2);
-        document.getElementById('f-type').value = state.projecttype;
-        document.getElementById('f-ondergrond').value = state.ondergrond;
-        document.getElementById('f-zones').value = state.zones;
-        document.getElementById('f-prijs').value = fmt(laag) + ' – ' + fmt(hoog);
-        document.getElementById('f-vloerdiepte').value = '';
-        document.getElementById('f-schuim-m2').value = '';
-        document.getElementById('f-kruip-ondergrond').value = '';
-
-        vlGtag('event', 'wizard_calculate', { projecttype: state.projecttype, m2: state.m2, zones, traject: 'vl_beton' });
-        vlGtag('event', 'calculator_result', { projecttype: state.projecttype, m2: state.m2, zones, traject: 'vl_beton' });
-        vlGtag('event', 'calculator_complete', {
-          m2: Math.round(Number(state.m2) || 0),
-          ondergrond: state.ondergrond || 'onbekend',
-          systeem: 'vloerverwarming-beton',
-        });
-      }
-
-      function resetWizard() {
-        state.product = null;
-        state.vlOndergrond = null;
-        state.ondergrond = null;
-        state.projecttype = null;
-        state.zones = null;
-        state.m2 = 80;
-        state.diepteMm = 500;
-        state.schuimM2 = 120;
-        state.kruipOndergrond = null;
-        state.steps = ['step-product'];
-        state.idx = 0;
-        state.resultMode = null;
-
-        slider.value = 80;
-        m2Display.textContent = '80';
-        diepteSlider.value = 500;
-        diepteDisplay.textContent = '500';
-        schuimSlider.value = 120;
-        schuimM2Display.textContent = '120';
-
-        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('is-selected'));
-        Object.values(nextBtnByStep).forEach(nid => {
-          const b = document.getElementById(nid);
-          if (b) b.disabled = true;
-        });
-
-        document.getElementById('result').classList.remove('is-visible');
-        document.getElementById('wizard').style.display = '';
-        document.getElementById('calc-status').textContent = '';
-        document.getElementById('wizard-progress-fill').style.width = '10%';
-
-        const ass = document.getElementById('price-assumptions');
-        ass.replaceChildren();
-        ass.hidden = true;
-        document.getElementById('f-uitgangspunten').value = '';
-        document.getElementById('price-output').textContent = '';
-        document.getElementById('price-breakdown').replaceChildren();
-
-        resetContactResultLayout();
-        wizardStarted = false;
-        renderWizardStep();
-      }
-
-      document.getElementById('calc-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const btn = this.querySelector('button[type="submit"]');
-        const status = document.getElementById('calc-status');
-        btn.disabled = true;
-        btn.textContent = 'Versturen…';
-        status.textContent = '';
-        status.className = '';
-        try {
-          const res = await fetch(this.action, { method: 'POST', body: new FormData(this), headers: { Accept: 'application/json' } });
-          if (res.ok) {
-            const msg = document.createElement('div');
-            msg.className = 'status-msg ok';
-            msg.textContent = 'Bedankt! We nemen zo snel mogelijk contact op.';
-            status.appendChild(msg);
-            this.reset();
-            vlGtag('event', 'wizard_lead_submit', {
-              traject: state.resultMode,
-              projecttype: state.projecttype,
-              m2: state.m2,
-              zones: state.zones,
-            });
-            vlGtag('event', 'lead_form_submit', { event_category: 'prijsindicatie' });
-          } else {
-            throw new Error();
-          }
-        } catch {
-          const msg = document.createElement('div');
-          msg.className = 'status-msg err';
-          const txt = document.createTextNode('Er ging iets mis. Bel ons op ');
-          const link = document.createElement('a');
-          link.href = 'tel:+31618817459';
-          link.textContent = '06 188 17 459';
-          msg.append(txt, link);
-          status.appendChild(msg);
-          btn.disabled = false;
-          btn.textContent = 'Offerte aanvragen';
-        }
-      });
-
+    function advanceFromProduct() {
+      if (!state.product) return;
+      state.steps = state.product === 'vl' ? STEPS_VL.slice() : STEPS_SCHUIM.slice();
+      state.idx = 1;
       renderWizardStep();
-      document.getElementById('yr').textContent = new Date().getFullYear();
-    </script>
-  </body>
+      vlGtag('event', 'wizard_product', { product: state.product });
+    }
+
+    function advanceFromVlGrond() {
+      if (!state.vlOndergrond) return;
+      if (state.vlOndergrond === 'hout') {
+        finishVlHout();
+        return;
+      }
+      state.ondergrond = 'beton';
+      state.idx = 2;
+      renderWizardStep();
+      vlGtag('event', 'wizard_vl_ondergrond', { ondergrond: 'beton' });
+    }
+
+    function wizardForward() {
+      const sid = currentStepId();
+      if (sid === 'step-m2') {
+        state.idx++;
+        renderWizardStep();
+        vlGtag('event', 'wizard_m2', { m2: state.m2 });
+      } else if (sid === 'step-schuim-diepte') {
+        state.idx++;
+        renderWizardStep();
+        vlGtag('event', 'wizard_schuim_diepte', { diepte_mm: state.diepteMm });
+      } else if (sid === 'step-schuim-m2') {
+        state.idx++;
+        renderWizardStep();
+        vlGtag('event', 'wizard_schuim_m2', { m2: state.schuimM2 });
+      } else if (sid === 'step-projecttype') {
+        if (!state.projecttype) return;
+        state.idx++;
+        renderWizardStep();
+      }
+    }
+
+    function wizardBack() {
+      if (state.idx <= 0) return;
+      state.idx--;
+      renderWizardStep();
+    }
+
+    function showResultShell() {
+      document.getElementById('wizard').style.display = 'none';
+      document.getElementById('result').classList.add('is-visible');
+    }
+
+    function setLeadCopy(heading, sub) {
+      document.getElementById('lead-after-heading').textContent = heading;
+      document.getElementById('lead-after-sub').textContent = sub;
+    }
+
+    function setPriceDisclaimerDefault() {
+      const d = document.getElementById('price-disclaimer');
+      d.replaceChildren();
+      d.appendChild(document.createTextNode('Dit is een indicatie op basis van gemiddelde projectkosten in Noord-Nederland.'));
+      d.appendChild(document.createElement('br'));
+      d.appendChild(
+        document.createTextNode(
+          'De werkelijke prijs hangt af van de specifieke situatie ter plaatse — twijfel je ergens over, bel gerust even.'
+        )
+      );
+    }
+
+    function resetContactResultLayout() {
+      document.getElementById('result-priced-wrap').classList.remove('is-hidden');
+      document.getElementById('result-alt-wrap').hidden = true;
+      document.getElementById('price-output-wrap').classList.remove('is-hidden');
+      document.getElementById('result-price-title').textContent = 'Vrijblijvende prijsindicatie';
+      document.getElementById('price-meta-line').textContent = 'Indicatie incl. materiaal en arbeid, excl. btw';
+      setPriceDisclaimerDefault();
+      setLeadCopy('Wil je een offerte op maat?', 'Laat je gegevens achter, dan nemen we contact op. Gratis, vrijblijvend en zonder gedoe.');
+    }
+
+    function finishVlHout() {
+      state.resultMode = 'vl_hout';
+      showResultShell();
+      document.getElementById('result-priced-wrap').classList.add('is-hidden');
+      document.getElementById('result-alt-wrap').hidden = false;
+      document.getElementById('result-alt-title').textContent = 'We nemen contact met je op';
+      const body = document.getElementById('result-alt-body');
+      body.textContent =
+        'Vloerverwarming op een houten ondergrond is maatwerk: stijfheid, doorbuiging en aansluiting moeten kloppen. ' +
+        'Daarom maken we hier geen automatische prijsindicatie. Laat hieronder je gegevens achter — dan belt iemand van ons je terug om het kort door te nemen.';
+      const tags = document.getElementById('result-alt-tags');
+      tags.replaceChildren();
+      ['Alleen vloerverwarming', 'Houten ondergrond'].forEach(txt => {
+        const tag = document.createElement('span');
+        tag.className = 'price-tag';
+        tag.textContent = txt;
+        tags.appendChild(tag);
+      });
+      setLeadCopy('Gegevens achterlaten', 'We reageren zo snel mogelijk — vrijblijvend.');
+      document.getElementById('f-product').value = 'Alleen vloerverwarming';
+      document.getElementById('f-traject').value = 'vl_hout_contact';
+      document.getElementById('f-ondergrond').value = 'hout';
+      document.getElementById('f-m2').value = '';
+      document.getElementById('f-type').value = '';
+      document.getElementById('f-zones').value = '';
+      document.getElementById('f-prijs').value = 'Geen online indicatie (houten ondergrond)';
+      document.getElementById('f-vloerdiepte').value = '';
+      document.getElementById('f-schuim-m2').value = '';
+      document.getElementById('f-kruip-ondergrond').value = '';
+      document.getElementById('f-uitgangspunten').value =
+        'Traject: alleen vloerverwarming, houten ondergrond — contact i.p.v. rekensom.';
+      vlGtag('event', 'wizard_vl_hout_contact', {});
+    }
+
+    function kruipLabel(key) {
+      const m = {
+        zand: 'Zand / funderingsgrind',
+        klei: 'Klei / vochtige bodem',
+        'deels-beton': 'Deels beton',
+        beton: 'Overwegend beton',
+        onbekend: 'Ondergrond kruip (onbekend)',
+      };
+      return m[key] || key;
+    }
+
+    /** Berekent schuim-/zanddiktes en €-bandbreedte (excl. btw). */
+    function computeSchuimBreakdown() {
+      const R = SCHUIM_REKEN;
+      const D = state.diepteMm;
+      const m2 = state.schuimM2;
+      let ruimteMm = D - R.minVrijOnderVloerMm;
+      if (ruimteMm < 0) ruimteMm = 0;
+      const schuimMm = Math.min(R.schuimThermMaxMm, ruimteMm);
+      const zandMm = Math.max(0, ruimteMm - schuimMm);
+      const volSchuimM3 = (m2 * schuimMm) / 1000;
+      const volZandM3 = (m2 * zandMm) / 1000;
+      const mult = R.ondergrondKruipMult[state.kruipOndergrond] || 1.07;
+      let laag =
+        volSchuimM3 * R.schuimEurM3.laag +
+        volZandM3 * R.zandEurM3.laag +
+        m2 * R.vlEurM2.laag;
+      let hoog =
+        volSchuimM3 * R.schuimEurM3.hoog +
+        volZandM3 * R.zandEurM3.hoog +
+        m2 * R.vlEurM2.hoog;
+      laag *= mult;
+      hoog *= mult;
+      laag = Math.round(Math.max(R.minimum, laag) / 250) * 250;
+      hoog = Math.round(Math.max(R.minimum, hoog) / 250) * 250;
+      if (hoog < laag) {
+        const t = laag;
+        laag = hoog;
+        hoog = t;
+      }
+      return { ruimteMm, schuimMm, zandMm, volSchuimM3, volZandM3, laag, hoog, mult };
+    }
+
+    function setPriceDisclaimerSchuim() {
+      const d = document.getElementById('price-disclaimer');
+      d.replaceChildren();
+      d.appendChild(
+        document.createTextNode(
+          'Ruwe bandbreedte: schuimbeton tot maximaal ca. ' +
+          SCHUIM_REKEN.schuimThermMaxMm +
+          ' mm in deze berekening (meer levert snel weinig extra isolatie); dieper opvullen rekenen we als zandophoging (pomp-/aanvoercondities verschillen).'
+        )
+      );
+      d.appendChild(document.createElement('br'));
+      d.appendChild(
+        document.createTextNode(
+          'Geen offerte — bij grote diepte of bijzondere bodem altijd even afstemmen; bel gerust als je twijfelt.'
+        )
+      );
+    }
+
+    function renderSchuimAssumptions(b) {
+      const wrap = document.getElementById('price-assumptions');
+      wrap.replaceChildren();
+      wrap.hidden = false;
+      const intro = document.createElement('p');
+      intro.className = 'price-assumptions-intro';
+      const n = document.createElement('span');
+      n.className = 'assumption-count';
+      n.textContent = 'vijf';
+      intro.append(
+        document.createTextNode('Deze schatting sluit aan op '),
+        n,
+        document.createTextNode(
+          ' korte uitgangspunten — vooral om diepe kruipruimtes eerlijk te vergelijken met een “standaard” situatie.'
+        )
+      );
+      wrap.appendChild(intro);
+      const ul = document.createElement('ul');
+      ul.className = 'price-assumptions-list';
+      let zandUitleg;
+      if (b.ruimteMm <= 0) {
+        zandUitleg =
+          'Weinig opvulruimte in dit model (kruip lijkt krap t.o.v. gereserveerde vrije hoogte). De bandbreedte is dan vooral het vloerverwarmings-onderdeel — bel even voor maatwerk als je tóch wilt opvullen.';
+      } else if (b.zandMm > 0) {
+        zandUitleg =
+          'Zandophoging: ca. ' +
+          b.zandMm +
+          ' mm (≈ ' +
+          b.volZandM3.toFixed(1) +
+          ' m³ over ' +
+          state.schuimM2 +
+          ' m²) om eerst op te hogen; pompafstand, aanvoer en bodem bepalen de echte prijs sterk mee.';
+      } else {
+        zandUitleg =
+          'Geen zandophoging in deze schatting: na gereserveerde vrije hoogte blijft er ' +
+          b.ruimteMm +
+          ' mm over — dat past binnen de “nuttige” schuimlaag (max. ' +
+          SCHUIM_REKEN.schuimThermMaxMm +
+          ' mm), zonder eerst zand te hoeven prijzen.';
+      }
+      const bodemExtra =
+        b.mult > 1.005
+          ? 'Ondergrond kruip: ' +
+          kruipLabel(state.kruipOndergrond) +
+          ' — in deze schatting ca. ' +
+          Math.round((b.mult - 1) * 100) +
+          '% correctie voor extra risico of werk.'
+          : 'Ondergrond kruip: ' +
+          kruipLabel(state.kruipOndergrond) +
+          ' — zonder extra bodemcorrectie bovenop de basisbandbreedte.';
+      const items = [
+        'Kruipruimte: ' +
+        state.diepteMm +
+        ' mm vrij gemeten; we houden in de rekensom rekening met ongeveer ' +
+        SCHUIM_REKEN.minVrijOnderVloerMm +
+        ' mm ruimte onder de vloer na het werk (toegang, leidingen).',
+        'Schuimbeton: maximaal ' +
+        b.schuimMm +
+        ' mm in deze berekening — boven ~' +
+        SCHUIM_REKEN.schuimThermMaxMm +
+        ' mm neemt de extra isolatie sterk af; meer vullen is meestal geen slimme euro per cm.',
+        zandUitleg,
+        'Vloerverwarming: onderdeel voor het verwarmde oppervlak (' +
+        state.schuimM2 +
+        ' m²) zodra de opbouw geschikt is — zonder zones-detail zoals bij het traject “alleen vloerverwarming”.',
+        bodemExtra,
+      ];
+      items.forEach(text => {
+        const li = document.createElement('li');
+        li.textContent = text;
+        ul.appendChild(li);
+      });
+      wrap.appendChild(ul);
+      const foot = document.createElement('p');
+      foot.className = 'price-assumptions-foot';
+      foot.textContent =
+        'Zand- en schuimbetonmarkten verschillen per week en regio; gebruik dit als gesprekspunt, niet als plafond of vloer.';
+      wrap.appendChild(foot);
+    }
+
+    function finishSchuim() {
+      if (!state.kruipOndergrond) return;
+      const b = computeSchuimBreakdown();
+      state.resultMode = 'schuim_indicatie';
+      resetContactResultLayout();
+      showResultShell();
+
+      document.getElementById('result-price-title').textContent =
+        'Vrijblijvende prijsindicatie (schuimbeton + vloerverwarming)';
+      document.getElementById('price-meta-line').textContent =
+        'Indicatie incl. schuimbeton, eventuele zandophoging, vloerverwarming en arbeid — excl. btw';
+      setPriceDisclaimerSchuim();
+
+      const priceEl = document.getElementById('price-output');
+      priceEl.textContent = '';
+      const lo = document.createElement('strong');
+      lo.textContent = fmt(b.laag);
+      const sep = document.createTextNode(' – ');
+      const hi = document.createElement('strong');
+      hi.textContent = fmt(b.hoog);
+      priceEl.append(lo, sep, hi);
+
+      const bd = document.getElementById('price-breakdown');
+      bd.replaceChildren();
+      const tagParts = [
+        'Vloerverwarming + schuimbeton',
+        state.diepteMm + ' mm kruip',
+        state.schuimM2 + ' m²',
+        kruipLabel(state.kruipOndergrond),
+        'Schuim tot ' + b.schuimMm + ' mm',
+      ];
+      if (b.zandMm > 0) tagParts.push('Zand ca. ' + b.zandMm + ' mm');
+      tagParts.forEach(txt => {
+        const tag = document.createElement('span');
+        tag.className = 'price-tag';
+        tag.textContent = txt;
+        bd.appendChild(tag);
+      });
+
+      renderSchuimAssumptions(b);
+
+      setLeadCopy('Offerte op maat?', 'Laat je gegevens achter — dan checken we pompafstand, bodem en detailplan. Gratis en vrijblijvend.');
+
+      document.getElementById('f-product').value = 'Vloerverwarming met schuimbeton';
+      document.getElementById('f-traject').value = 'schuim_indicatie';
+      document.getElementById('f-vloerdiepte').value = String(state.diepteMm);
+      document.getElementById('f-schuim-m2').value = String(state.schuimM2);
+      document.getElementById('f-kruip-ondergrond').value = kruipLabel(state.kruipOndergrond);
+      document.getElementById('f-m2').value = '';
+      document.getElementById('f-type').value = '';
+      document.getElementById('f-ondergrond').value = '';
+      document.getElementById('f-zones').value = '';
+      document.getElementById('f-prijs').value = fmt(b.laag) + ' – ' + fmt(b.hoog);
+      document.getElementById('f-uitgangspunten').value = [
+        'Traject: vloerverwarming + schuimbeton (indicatie)',
+        'Kruip ' + state.diepteMm + ' mm; woning ' + state.schuimM2 + ' m²',
+        'Ruimte na gereserveerde vrije hoogte: ' + b.ruimteMm + ' mm; schuim ' + b.schuimMm + ' mm; zand ' + b.zandMm + ' mm',
+        'Volumes: schuim ' + b.volSchuimM3.toFixed(2) + ' m³, zand ' + b.volZandM3.toFixed(2) + ' m³',
+        'Ondergrond kruip: ' + kruipLabel(state.kruipOndergrond),
+      ].join('\n');
+
+      vlGtag('event', 'wizard_schuim_indicatie', {
+        diepte_mm: state.diepteMm,
+        m2: state.schuimM2,
+        kruip: state.kruipOndergrond,
+        zand_mm: b.zandMm,
+        schuim_mm: b.schuimMm,
+      });
+      vlGtag('event', 'calculator_result', { traject: 'schuim', m2: state.schuimM2, diepte_mm: state.diepteMm });
+      vlGtag('event', 'calculator_complete', {
+        m2: Math.round(Number(state.schuimM2) || 0),
+        ondergrond: state.kruipOndergrond || 'onbekend',
+        systeem: 'vloerverwarming-schuimbeton',
+      });
+    }
+
+    function fmt(n) { return '€ ' + Math.round(n).toLocaleString('nl-NL'); }
+
+    /** Gangbare m buis per m² vloer (tussenafstand ~15–20 cm); afgerond per 10 m voor leesbaarheid. */
+    function estimatePipeRangeM(m2) {
+      const low = Math.max(20, Math.round((m2 * 5) / 10) * 10);
+      const high = Math.max(low + 10, Math.round((m2 * 6.5) / 10) * 10);
+      return [low, high];
+    }
+
+    function zonesDisplay(stateZones) {
+      const z = parseInt(stateZones, 10) || 1;
+      if (stateZones === '4') return { n: z, phrase: 'minimaal 4 zones', groupsLabel: 'minimaal 4' };
+      return { n: z, phrase: z + (z === 1 ? ' zone' : ' zones'), groupsLabel: String(z) };
+    }
+
+    function elStrong(text) {
+      const s = document.createElement('strong');
+      s.textContent = text;
+      return s;
+    }
+
+    function renderPriceAssumptions() {
+      const zonesMeta = zonesDisplay(state.zones);
+      const zonesN = zonesMeta.n;
+      const [pipeLo, pipeHi] = estimatePipeRangeM(state.m2);
+      const midPipe = (pipeLo + pipeHi) / 2;
+      const mPipePerZone = midPipe / zonesN;
+      const longLoopHint = mPipePerZone > 100;
+
+      const typeLabel = state.projecttype === 'nieuwbouw' ? 'Nieuwbouw' : 'Renovatie';
+      const ogLabel =
+        state.ondergrond === 'beton'
+          ? 'beton- of steenachtige vloer'
+          : state.ondergrond === 'hout'
+            ? 'houten vloer / houten onderconstructie'
+            : 'ondergrond nog nader te bepalen';
+
+      const wrap = document.getElementById('price-assumptions');
+      wrap.replaceChildren();
+      wrap.hidden = false;
+
+      const intro = document.createElement('p');
+      intro.className = 'price-assumptions-intro';
+      const countSpan = document.createElement('span');
+      countSpan.className = 'assumption-count';
+      countSpan.textContent = 'zes';
+      intro.append(
+        document.createTextNode('Deze bandbreedte sluit aan op '),
+        countSpan,
+        document.createTextNode(' korte uitgangspunten — ruwe schattingen die bij veel vergelijkbare woningen kloppen. Ze geven houvast; details finetunen we tijdens de opname.')
+      );
+      wrap.appendChild(intro);
+
+      const ul = document.createElement('ul');
+      ul.className = 'price-assumptions-list';
+
+      const li1 = document.createElement('li');
+      li1.append(document.createTextNode('Oppervlakte: '), elStrong(state.m2 + ' m²'), document.createTextNode(' verwarmd vloeroppervlak als basis voor materiaal en montagetijd.'));
+      ul.appendChild(li1);
+
+      const li2 = document.createElement('li');
+      li2.append(elStrong(typeLabel + ', ' + ogLabel), document.createTextNode(' — zoals je hierboven koos.'));
+      ul.appendChild(li2);
+
+      const li3 = document.createElement('li');
+      li3.append(
+        document.createTextNode('Indicatieve hoeveelheid vloerbuis: ongeveer '),
+        elStrong(pipeLo + '–' + pipeHi + ' m'),
+        document.createTextNode(' totaal (gangbare tussenafstanden; exacte kringlengtes verschillen per plattegrond).')
+      );
+      ul.appendChild(li3);
+
+      const li4 = document.createElement('li');
+      li4.append(
+        document.createTextNode('Aan de verdeler: doorgaans '),
+        elStrong(zonesMeta.groupsLabel + ' regelgroep' + (zonesN > 1 ? 'en' : '')),
+        document.createTextNode(', passend bij ' + zonesMeta.phrase + '.')
+      );
+      if (longLoopHint) {
+        const sub = document.createElement('span');
+        sub.className = 'price-assumption-sub';
+        sub.textContent =
+          'Bij een groot oppervlak met weinig zones kan het soms handiger zijn om extra kringen te splitsen — dat bekijken we rustig op locatie.';
+        li4.appendChild(sub);
+      }
+      ul.appendChild(li4);
+
+      const li5 = document.createElement('li');
+      li5.appendChild(
+        document.createTextNode(
+          'Ligging van de verdeler en het leidingwerk naar de zones verschilt per woning. In het merendeel van de projecten past dit gewoon binnen deze bandbreidte.'
+        )
+      );
+      ul.appendChild(li5);
+
+      const li6 = document.createElement('li');
+      li6.appendChild(
+        document.createTextNode(
+          'Komt er ongebruikelijk zwaar doorwerk bij (lang traject of heel dik beton), dan zetten we dat vooraf en helder in de offerte — geen verrassing achteraf. Twijfel je? Bel gerust even: dan denken we meteen met je mee.'
+        )
+      );
+      ul.appendChild(li6);
+
+      wrap.appendChild(ul);
+
+      const foot = document.createElement('p');
+      foot.className = 'price-assumptions-foot';
+      foot.textContent = 'Dit blijft een online indicatie — geen offerte. Voor een prijs op maat volstaat vaak al een kort gesprek.';
+      wrap.appendChild(foot);
+
+      const lines = [
+        'Uitgangspunten (6):',
+        state.m2 + ' m²; ' + typeLabel + '; ' + ogLabel + '; buis ca. ' + pipeLo + '-' + pipeHi + ' m; ' + zonesMeta.groupsLabel + ' groep(en); ' + zonesMeta.phrase,
+      ];
+      document.getElementById('f-uitgangspunten').value = lines.join('\n');
+    }
+
+    function calculate() {
+      if (!state.zones || !state.projecttype || state.ondergrond !== 'beton') return;
+      const key = state.projecttype + '_' + state.ondergrond;
+      const tarief = PRIJZEN.m2[key] || PRIJZEN.m2[state.projecttype + '_onbekend'];
+      const zones = parseInt(state.zones, 10) || 1;
+      const extra = Math.max(0, zones - 1) * PRIJZEN.extra_zone;
+
+      const laag = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.laag + extra) / 250) * 250;
+      const hoog = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.hoog + extra) / 250) * 250;
+
+      state.resultMode = 'vl_beton';
+      resetContactResultLayout();
+      showResultShell();
+
+      const priceEl = document.getElementById('price-output');
+      priceEl.textContent = '';
+      const lo = document.createElement('strong');
+      lo.textContent = fmt(laag);
+      const sep = document.createTextNode(' – ');
+      const hi = document.createElement('strong');
+      hi.textContent = fmt(hoog);
+      priceEl.append(lo, sep, hi);
+
+      const bd = document.getElementById('price-breakdown');
+      bd.replaceChildren();
+      [
+        'Alleen vloerverwarming, beton',
+        state.m2 + ' m²',
+        state.projecttype === 'nieuwbouw' ? 'Nieuwbouw' : 'Renovatie',
+        'Betonvloer',
+        zones + ' zone' + (zones > 1 ? 's' : ''),
+      ].forEach(txt => {
+        const tag = document.createElement('span');
+        tag.className = 'price-tag';
+        tag.textContent = txt;
+        bd.appendChild(tag);
+      });
+
+      renderPriceAssumptions();
+
+      document.getElementById('f-product').value = 'Alleen vloerverwarming';
+      document.getElementById('f-traject').value = 'vl_beton_indicatie';
+      document.getElementById('f-m2').value = String(state.m2);
+      document.getElementById('f-type').value = state.projecttype;
+      document.getElementById('f-ondergrond').value = state.ondergrond;
+      document.getElementById('f-zones').value = state.zones;
+      document.getElementById('f-prijs').value = fmt(laag) + ' – ' + fmt(hoog);
+      document.getElementById('f-vloerdiepte').value = '';
+      document.getElementById('f-schuim-m2').value = '';
+      document.getElementById('f-kruip-ondergrond').value = '';
+
+      vlGtag('event', 'wizard_calculate', { projecttype: state.projecttype, m2: state.m2, zones, traject: 'vl_beton' });
+      vlGtag('event', 'calculator_result', { projecttype: state.projecttype, m2: state.m2, zones, traject: 'vl_beton' });
+      vlGtag('event', 'calculator_complete', {
+        m2: Math.round(Number(state.m2) || 0),
+        ondergrond: state.ondergrond || 'onbekend',
+        systeem: 'vloerverwarming-beton',
+      });
+    }
+
+    function resetWizard() {
+      state.product = null;
+      state.vlOndergrond = null;
+      state.ondergrond = null;
+      state.projecttype = null;
+      state.zones = null;
+      state.m2 = 80;
+      state.diepteMm = 500;
+      state.schuimM2 = 120;
+      state.kruipOndergrond = null;
+      state.steps = ['step-product'];
+      state.idx = 0;
+      state.resultMode = null;
+
+      slider.value = 80;
+      m2Display.textContent = '80';
+      diepteSlider.value = 500;
+      diepteDisplay.textContent = '500';
+      schuimSlider.value = 120;
+      schuimM2Display.textContent = '120';
+
+      document.querySelectorAll('.option-card').forEach(c => c.classList.remove('is-selected'));
+      Object.values(nextBtnByStep).forEach(nid => {
+        const b = document.getElementById(nid);
+        if (b) b.disabled = true;
+      });
+
+      document.getElementById('result').classList.remove('is-visible');
+      document.getElementById('wizard').style.display = '';
+      document.getElementById('calc-status').textContent = '';
+      document.getElementById('wizard-progress-fill').style.width = '10%';
+
+      const ass = document.getElementById('price-assumptions');
+      ass.replaceChildren();
+      ass.hidden = true;
+      document.getElementById('f-uitgangspunten').value = '';
+      document.getElementById('price-output').textContent = '';
+      document.getElementById('price-breakdown').replaceChildren();
+
+      resetContactResultLayout();
+      wizardStarted = false;
+      renderWizardStep();
+    }
+
+    document.getElementById('calc-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      const status = document.getElementById('calc-status');
+      btn.disabled = true;
+      btn.textContent = 'Versturen…';
+      status.textContent = '';
+      status.className = '';
+      try {
+        const res = await fetch(this.action, { method: 'POST', body: new FormData(this), headers: { Accept: 'application/json' } });
+        if (res.ok) {
+          const msg = document.createElement('div');
+          msg.className = 'status-msg ok';
+          msg.textContent = 'Bedankt! We nemen zo snel mogelijk contact op.';
+          status.appendChild(msg);
+          this.reset();
+          vlGtag('event', 'wizard_lead_submit', {
+            traject: state.resultMode,
+            projecttype: state.projecttype,
+            m2: state.m2,
+            zones: state.zones,
+          });
+          vlGtag('event', 'lead_form_submit', { event_category: 'prijsindicatie' });
+        } else {
+          throw new Error();
+        }
+      } catch {
+        const msg = document.createElement('div');
+        msg.className = 'status-msg err';
+        const txt = document.createTextNode('Er ging iets mis. Bel ons op ');
+        const link = document.createElement('a');
+        link.href = 'tel:+31618817459';
+        link.textContent = '06 188 17 459';
+        msg.append(txt, link);
+        status.appendChild(msg);
+        btn.disabled = false;
+        btn.textContent = 'Offerte aanvragen';
+      }
+    });
+
+    renderWizardStep();
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+
 </html>
