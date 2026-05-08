@@ -39,7 +39,7 @@ import email.policy
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 _DEFAULT_ENV = REPO_ROOT / "secrets" / "hostnet-mail.env"
-_DEFAULT_FORMSPREE = "https://formspree.io/f/xaqvdrvq"
+_DEFAULT_FORMSPREE = "https://formspree.io/f/xgodnvoq"
 _DEFAULT_BASE = "https://www.vlwarmte.nl"
 _DEFAULT_E2E_CUSTOMER_EMAIL = "jceilers@icloud.com"
 _MAILBOXES = (
