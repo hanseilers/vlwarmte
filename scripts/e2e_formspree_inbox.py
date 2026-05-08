@@ -9,6 +9,11 @@ niet meer geldig is).
 
 Secrets: zie secrets/hostnet-mail.env.example (IMAP_*). CI: GitHub Actions secrets.
 Klant-e-mail in testsubmissions: E2E_CUSTOMER_EMAIL of default jceilers@icloud.com.
+`--no-inbox` / `E2E_NO_INBOX=1`: Playwright op productie (default `E2E_BASE_URL`) zonder IMAP-wacht.
+
+Optioneel **volledige keten**: ``--with-thankyou`` of ``E2E_WITH_THANKYOU=1`` — na het
+vinden van de Formspree-mail met marker wordt ``inbox_auto_thankyou.py --include-e2e``
+gedraaid (bedankmail naar het testadres), daarna wordt de testmail verwijderd.
 """
 
 from __future__ import annotations
@@ -18,6 +23,7 @@ import imaplib
 import os
 import re
 import ssl
+import subprocess
 import sys
 import time
 import urllib.error
@@ -323,18 +329,52 @@ def _submit_calc_playwright(base: str, marker: str, *, headed: bool) -> None:
             browser.close()
 
 
-def _wait_delete_marker(conn: imaplib.IMAP4_SSL, marker: str, scan_last: int, timeout: int, interval: int) -> None:
+def _run_inbox_thankyou(env_file: Path, max_msgs: int) -> None:
+    """Zelfde repo, apart proces: SMTP + IMAP-mark-read in inbox_auto_thankyou."""
+    script = REPO_ROOT / "scripts" / "inbox_auto_thankyou.py"
+    cmd = [
+        sys.executable,
+        str(script),
+        "--include-e2e",
+        "--max",
+        str(max_msgs),
+        "--env-file",
+        str(env_file),
+    ]
+    print("Bedankmail-keten: " + " ".join(cmd), file=sys.stderr)
+    r = subprocess.run(cmd, cwd=str(REPO_ROOT))
+    if r.returncode != 0:
+        raise SystemExit(f"inbox_auto_thankyou exited {r.returncode}")
+
+
+def _wait_delete_marker(
+    conn: imaplib.IMAP4_SSL,
+    marker: str,
+    scan_last: int,
+    timeout: int,
+    interval: int,
+    *,
+    env_file: Path | None = None,
+    with_thankyou: bool = False,
+    thankyou_max: int = 5,
+) -> None:
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
         hit = _find_marker_in_mailboxes(conn, marker, scan_last)
         if hit:
             mbox, uid = hit
             print(f"Found marker in {mbox} UID {uid}", file=sys.stderr)
+            if with_thankyou and env_file is not None:
+                _run_inbox_thankyou(env_file, thankyou_max)
             _delete_in_mailbox(conn, mbox, uid)
             print(f"Deleted {mbox} UID {uid}", file=sys.stderr)
             return
         time.sleep(interval)
-    raise SystemExit(f"Timeout after {timeout}s: no mail containing {marker!r}")
+    raise SystemExit(
+        f"Timeout after {timeout}s: no mail containing {marker!r}. "
+        "Controleer Formspree-notifications, spamfilters en IMAP-mappen; "
+        "voor alleen productie-UI: --no-inbox of E2E_NO_INBOX=1."
+    )
 
 
 def _find_marker_in_mailboxes(conn: imaplib.IMAP4_SSL, marker: str, scan_last: int) -> tuple[str, int] | None:
@@ -377,6 +417,24 @@ def main() -> int:
         type=Path,
         default=Path(os.environ.get("HOSTNET_MAIL_ENV", str(_DEFAULT_ENV))),
     )
+    ap.add_argument(
+        "--no-inbox",
+        action="store_true",
+        help="Alleen Playwright-flow op de site (succes-UI); geen IMAP-wacht of verwijderen. "
+        "Ook: omgeving E2E_NO_INBOX=1.",
+    )
+    ap.add_argument(
+        "--with-thankyou",
+        action="store_true",
+        help="Na vinden van testmail: inbox_auto_thankyou --include-e2e, daarna verwijderen",
+    )
+    ap.add_argument(
+        "--thankyou-max",
+        type=int,
+        default=5,
+        metavar="N",
+        help="Max berichten door te geven aan inbox_auto_thankyou (default 5)",
+    )
     ns = ap.parse_args()
 
     load_env_file(ns.env_file)
@@ -384,8 +442,11 @@ def main() -> int:
         print("E2E_SKIP set — skipping.", file=sys.stderr)
         return 0
 
+    base = (os.environ.get("E2E_BASE_URL") or _DEFAULT_BASE).strip().rstrip("/")
+    no_inbox = bool(ns.no_inbox) or _truthy(os.environ.get("E2E_NO_INBOX"))
+
     in_ci = os.environ.get("GITHUB_ACTIONS") == "true"
-    if not (os.environ.get("IMAP_PASSWORD") or "").strip():
+    if not no_inbox and not (os.environ.get("IMAP_PASSWORD") or "").strip():
         if in_ci:
             print(
                 "::warning::E2E skipped: set repository secrets IMAP_USER and IMAP_PASSWORD (Hostnet).",
@@ -394,10 +455,38 @@ def main() -> int:
             return 0
         raise SystemExit("Missing IMAP credentials. Create secrets/hostnet-mail.env or export IMAP_*.")
 
-    base = (os.environ.get("E2E_BASE_URL") or _DEFAULT_BASE).strip().rstrip("/")
+    if no_inbox:
+        markers: list[str] = []
+        if ns.form in ("lead", "both"):
+            markers.append(f"VLW-E2E-{uuid.uuid4().hex[:16]}")
+        if ns.form in ("calc", "both"):
+            markers.append(f"VLW-E2E-{uuid.uuid4().hex[:16]}")
+        print("E2E_NO_INBOX: alleen UI, geen mailbox.", file=sys.stderr)
+        if ns.form in ("lead", "both"):
+            m = markers[0]
+            if ns.http_post:
+                formspree = _resolve_formspree_url(base)
+                print("Posting offerte via HTTP POST …", file=sys.stderr)
+                _post_offerte(m, formspree, base)
+            else:
+                print("Lead: Playwright contact offerte …", file=sys.stderr)
+                _submit_offerte_playwright(base, m, headed=ns.headed)
+            print("OK e2e lead (no-inbox)", file=sys.stderr)
+        if ns.form in ("calc", "both"):
+            m = markers[-1] if ns.form == "both" else markers[0]
+            if ns.http_post:
+                raise SystemExit("--http-post werkt alleen met --form lead")
+            print("Calc: Playwright prijsindicatie formulier …", file=sys.stderr)
+            _submit_calc_playwright(base, m, headed=ns.headed)
+            print("OK e2e calc (no-inbox)", file=sys.stderr)
+        print("OK e2e_formspree_inbox (no-inbox)")
+        return 0
+
     timeout = int(os.environ.get("E2E_INBOX_TIMEOUT_SEC", "240"))
     interval = int(os.environ.get("E2E_POLL_INTERVAL_SEC", "8"))
     scan_last = int(os.environ.get("E2E_SCAN_LAST", "40"))
+    with_ty = bool(ns.with_thankyou) or _truthy(os.environ.get("E2E_WITH_THANKYOU"))
+    ty_max = max(1, int(ns.thankyou_max))
 
     def run_lead(marker: str) -> None:
         if ns.http_post:
@@ -425,12 +514,30 @@ def main() -> int:
         if ns.form in ("lead", "both"):
             m = markers[0]
             run_lead(m)
-            _wait_delete_marker(conn, m, scan_last, timeout, interval)
+            _wait_delete_marker(
+                conn,
+                m,
+                scan_last,
+                timeout,
+                interval,
+                env_file=ns.env_file,
+                with_thankyou=with_ty,
+                thankyou_max=ty_max,
+            )
             print("OK e2e lead", file=sys.stderr)
         if ns.form in ("calc", "both"):
             m = markers[-1] if ns.form == "both" else markers[0]
             run_calc(m)
-            _wait_delete_marker(conn, m, scan_last, timeout, interval)
+            _wait_delete_marker(
+                conn,
+                m,
+                scan_last,
+                timeout,
+                interval,
+                env_file=ns.env_file,
+                with_thankyou=with_ty,
+                thankyou_max=ty_max,
+            )
             print("OK e2e calc", file=sys.stderr)
         print("OK e2e_formspree_inbox")
         return 0
