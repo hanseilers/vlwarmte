@@ -126,33 +126,50 @@ In de laatste 30 dagen is het verkeer **klein maar meetbaar** (~13 sessies in de
 
 | Veld | Invulling |
 |------|-----------|
-| **Status** | Gepland — **datum/tijd hier invullen** na afstemming |
+| **Status** | **Tekst-workshop uitgevoerd** (8 mei 2026) — **vraag 1 (koel-claim)** nog open tot keuze A/B/C hieronder. |
 | **Duur** | **45 minuten** (harde stop op 45 om drift te voorkomen) |
 | **Doel** | Eén set **afspraken** waar PM en marketing zich aan kunnen houden: *waar* mogen we koelen/combineren benoemen, *hoe* formuleren we het veilig, *wat* is de wekelijkse “accent”-workflow zonder de kernsite te verliezen. |
-| **Deelnemers** | Product Manager (orkest), Marketing Research / Social-lijn, **Hans** (technische waarheid + wat jullie echt leveren). |
+| **Deelnemers** | Solo: **Hans** (PM + marketing + technisch eindoordeel). |
 
-**Voorbereiding (iedereen, max. 10 min eigen tijd)**
+**Korte research — koelen met watergedragen vloerverwarming**
 
-- **Hans:** 2–3 bullets “koelen: wanneer wél / wanneer niet / typische beperkingen” + of er **foto’s of korte cases** zijn die we mogen tonen.
-- **Marketing:** 1 voorbeeld **warme week** + 1 **koude week** — welk accent zou je *nu* kiezen (headline-niveau, geen lange copy).
-- **PM:** Welke **CTA** blijft leidend (prijsindicatie vs. contact vs. FAQ) als we het accent verschuiven.
+*(Algemene branche-informatie; geen juridisch advies — copy altijd afstemmen op wat VLWarmte concreet ontwerpt/levert.)*
 
-**Agenda (live)**
+- **Het kan:** bij hydraulische vloerverwarming kan dezelfde vloerafgifte in veel ontwerpen **ook koelen** (kouder medium door de kring). Praktisch vaak gekoppeld aan een **omkeerbare warmtepomp** of andere bron die koud water kan leveren; een **traditionele gas-cv zonder koelbron** levert die optie niet.
+- **Randvoorwaarden:** **dauwpunt en luchtvochtigheid** bepalen grenzen — **condens** op of in vloer/bouw is het risico; ontwerp gebruikt **regeling**, vaak **dauwpuntbewaking** en zorgvuldige **aanvoertemperaturen** (oppervlak boven dauwpunt houden).
+- **Comfort / verwachting:** koelen via de vloer is meestal **zacht** (geen koude luchtstraal); koelvermogen hangt af van vocht, aanvoer, afwerking (o.a. **hout** vraagt extra zorg) en bron — niet te vergelijken met airco op max.
+- **Marketing:** “Koelen kan” is **inhoudelijk verdedigbaar** als categorie, maar **niet** als universele belofte per woning zonder intake.
 
-1. **5 min — Context:** waarom weer als haak; accent ≠ exclusieve boodschap.  
-2. **15 min — Technische waarheid (Hans):** grenzen koelen met vloerverwarming; standaardtraject vs. uitzonderingen; woorden die we **vermijden**.  
-3. **15 min — Marketing + PM:** 2–3 veilige **formules** (headline + 1 zin) voor “warm weer” en voor “koud weer”; welk kanaal eerst (site-teaser vs. alleen social).  
-4. **10 min — Workflow:** bron weer (KNMI weekoverzicht / app); waar vastleggen (`sprint.md` / `weekly_calendar`); pilot: **handmatig 2 weken** vóór automatisering.  
+**Besluiten (tekst-workshop, 8 mei 2026)**
 
-**Besluiten om aan het eind expliciet ja/nee op te zeggen**
+| Onderwerp | Besluit |
+|-----------|---------|
+| **Vraag 2 — Site in pilot** | **B:** één korte **teaser/regel** op de homepage (of één vaste plek), **handmatig** per week. |
+| **Vraag 3 — Max. posts met weer-hook** | **1 per week** *(ingave “Vraag E” geïnterpreteerd als één; bij 0 of 2 bedoeld: document aanpassen)*. |
+| **Vraag 4 — Pilotduur** | **4 weken** handmatig (geen automatisering vóór evaluatie). |
+| **Vraag 5 — °C uit weerbericht** | **Ja**, mits de post niet impliceert dat elke woning exact zo wordt. |
+| **Vraag 1 — Koel-story** | **Open** — kies **A, B of C** in chat; daarna hier invullen. |
+| **Review** | **Hans** (solo). |
 
-- [ ] **Koel-story:** mogen we in marketing “koelen” noemen als **X** (definitie invullen in workshop).  
-- [ ] **Pilot:** startdatum + einddatum handmatige wekelijkse accenten.  
-- [ ] **Site:** geen wijziging / één vaste FAQ / klein herbruikbaar teaser-blok (kies één).  
-- [ ] **Social:** max. posts per week die naar weer verwijzen (richtlijn).  
-- [ ] **Review:** wie checkt elke week de copy vóór publicatie (naam).
+**Vraag 1 (herformuleerd, na research) — kies één optie**
 
-**Na de workshop:** PM zet de besluiten in **één** bestaand document (`sprint.md` *Context* of `research_report.md` kop *Workshop*) — geen losse drive zonder trace.
+Welke uitspraak mag **algemene** marketing (site-teaser + social) doen **vóór** project-specifieke intake?
+
+- **A)** Koelen alleen als **mogelijkheid bij geschikte installatie** (typisch met **omkeerbare warmtepomp** + regeling); verwijzen naar FAQ/diensten — geen “wij koelen je huis”-claim.  
+- **B)** Vloerverwarming kan **ook koel dragen** (“twee richtingen”), **mits** elke post minstens **één zin** over **dauwpunt/regeling/ontwerp door specialist** heeft.  
+- **C)** **Eerst** vaste **FAQ-/siteparagraaf** over koelen+voorwaarden **live**, daarna pas weer-accenten met koel-hook.
+
+**Checklist**
+
+- [ ] **Koel-story:** A / B / C *(afvinken na keuze)*.  
+- [x] **Pilot:** 4 weken — *start/eind in sprint of kalender invullen*.  
+- [x] **Site:** teaser **B**.  
+- [x] **Social:** max. **1** weer-hook-post/week.  
+- [x] **°C uit weerbericht:** toegestaan.  
+- [x] **Review:** Hans.
+
+**Na de workshop:** besluiten ook vastleggen in `sprint.md` (*Context*) of `research_report.md` wanneer vraag 1 gekozen is.
+
 
 ---
 
