@@ -95,4 +95,4 @@
 
 ### Deployment
 
-- **Status:** door **Product Manager** — `git commit` + `git push origin main` (stap 7b playbook). **Commit:** `c43d609` — GitHub Actions-run: na `git push` controleren met `gh run list`.
+- **Status:** door **Product Manager** — `git commit` + `git push origin main` (stap 7b playbook). **Commit:** `bab08a8` — GitHub Actions-run: na `git push` controleren met `gh run list`.

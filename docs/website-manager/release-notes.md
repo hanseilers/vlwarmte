@@ -6,7 +6,7 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ## Release — week van 2 juni 2026
 **Deployment:** 08-05-2026 (PM: `git push origin main` — GitHub Pages)  
-**Versie:** `c43d609`
+**Versie:** `bab08a8`
 
 ### Wat is er veranderd
 - **`prijsindicatie.html`:** CTA-blok direct onder de hero met link naar de wizard (`#wizard`), directe offerte-route en informatieformulier — betere aansluiting op **Paid Search**-landings en snellere tweede stap.
