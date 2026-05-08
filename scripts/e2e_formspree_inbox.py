@@ -204,17 +204,30 @@ def _submit_offerte_playwright(base: str, marker: str, *, headed: bool) -> None:
             page.locator("#planning").fill("Test — geen echte planning")
             page.locator("#message").fill(message)
 
+            url_before = page.url
+            page.locator("form#lead-form button[type='submit']").click()
+
             try:
-                with page.expect_navigation(timeout=60000):
-                    page.locator("form#lead-form button[type='submit']").click()
+                page.locator("#lead-status.success").wait_for(state="visible", timeout=60000)
             except PlaywrightTimeout:
-                status = page.locator("#lead-status").inner_text(timeout=5000)
+                status_text = ""
+                try:
+                    status_text = page.locator("#lead-status").inner_text(timeout=2000)
+                except Exception:
+                    pass
                 raise SystemExit(
-                    f"Geen navigatie na Versturen (validatie of netwerk?). lead-status: {status!r}"
+                    f"Geen success-status na Versturen (validatie of netwerk?). "
+                    f"lead-status: {status_text!r}, url: {page.url!r}"
                 ) from None
 
-            final = page.url
-            print(f"Navigated after submit: {final[:120]}…", file=sys.stderr)
+            if page.url != url_before:
+                raise SystemExit(
+                    f"Onverwachte navigatie na Versturen: {url_before!r} -> {page.url!r}. "
+                    "Verwacht: blijven op contact.html (fetch i.p.v. redirect)."
+                )
+
+            status_text = page.locator("#lead-status").inner_text(timeout=2000)
+            print(f"Inline success on {page.url[:120]}: {status_text!r}", file=sys.stderr)
         finally:
             browser.close()
 

@@ -142,25 +142,47 @@ function initLeadForm() {
     button.addEventListener("click", () => applyMode(button.dataset.leadMode));
   });
 
-  form.addEventListener("submit", (event) => {
-    const result = validateLeadForm(form, mode);
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
     if (!status) return;
 
+    const result = validateLeadForm(form, mode);
     if (!result.ok) {
-      event.preventDefault();
       status.className = "status error";
       status.textContent = result.message;
       return;
     }
 
-    status.className = "status success";
-    status.textContent = "Bedankt! We nemen binnen 1 werkdag contact met je op. Je wordt doorgestuurd...";
-    // GA4: contact_submit event met soort_aanvraag (informatie/offerte/terugbelverzoek)
-    if (typeof gtag === "function") {
-      const soort = mode === "info" ? "informatie" : mode === "offerte" ? "offerte" : "terugbelverzoek";
-      gtag("event", "contact_submit", { soort_aanvraag: soort });
+    const btn = form.querySelector('button[type="submit"]');
+    const origLabel = btn ? btn.textContent : null;
+    if (btn) { btn.disabled = true; btn.textContent = "Versturen…"; }
+    status.className = "";
+    status.textContent = "";
+
+    const soort = mode === "info" ? "informatie" : mode === "offerte" ? "offerte" : "terugbelverzoek";
+
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      });
+      if (res.ok) {
+        status.className = "status success";
+        status.textContent = "Bedankt! We nemen binnen 1 werkdag contact met je op.";
+        form.reset();
+        applyMode("info");
+        if (typeof gtag === "function") {
+          gtag("event", "contact_submit", { soort_aanvraag: soort });
+        }
+      } else {
+        throw new Error();
+      }
+    } catch {
+      status.className = "status error";
+      status.textContent = "Er ging iets mis. Bel ons op 06 188 17 459 of mail info@vlwarmte.nl.";
+      if (btn) { btn.disabled = false; btn.textContent = origLabel; }
     }
-    // Let the form submit to Formspree
   });
 
   const fromUrl = readLeadModeFromUrl();
