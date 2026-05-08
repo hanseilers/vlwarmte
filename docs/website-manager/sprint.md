@@ -128,9 +128,9 @@
 - `tests/smoke/form-behavior.sh` — **PASS**
 
 ### Deployment
-- **Status:** na `git push origin main` — GitHub Pages workflow (run-id volgt in release-notes bij eerste groene run).
+- **Status:** succesvol — `git push origin main` → GitHub Actions **pages-build-deployment** run **`25543472674`** (groen).
+- **Commit:** `3e97a18`
 - **Live URL:** https://www.vlwarmte.nl
 
 ### Aandachtspunten volgende sprint
 - In GA4 monitoren of `/logo-varianten.html` nog als aparte landings-URL voorkomt en of bounce op `diensten.html`/`werkwijze.html` daalt.
-- Eventueel tweede commit om release-notes deploymentregel aan te vullen met exacte GitHub Actions run-id (indien nog placeholder bij merge).

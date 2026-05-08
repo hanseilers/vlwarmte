@@ -5,8 +5,8 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 ---
 
 ## Release — week van 18 mei 2026
-**Deployment:** (ingevuld na push / GitHub Pages)  
-**Versie:** (zie `git log -1 --oneline` op `main` na deze release)
+**Deployment:** 08-05-2026 (GitHub Pages run `25543472674`, succesvol)
+**Versie:** `3e97a18` — Sprint 18 mei: vroege CTA’s, logo-URL redirect, GA4 weekly_trend backfill
 
 ### Wat is er veranderd
 - **`logo-varianten.html`:** minimale doorverwijspagina met canonical naar de homepage, meta-refresh en een zichtbare link voor bezoekers zonder automatische doorstuur — vangt bookmarks en oude links op zonder 404.
