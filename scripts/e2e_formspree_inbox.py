@@ -219,29 +219,31 @@ def _submit_offerte_playwright(base: str, marker: str, *, headed: bool) -> None:
             page.locator("#planning").fill("Test — geen echte planning")
             page.locator("#message").fill(message)
 
-            # Formspree: klassieke POST kan redirect tonen; sommige clients blijven kort op de site-URL
-            # met alleen #lead-status succes — daarom wachten we op de POST-response, niet alleen navigatie.
+            # Contact gebruikt fetch() naar Formspree: blijf op contact.html, succes in #lead-status
+            url_before = page.url
+            page.locator("form#lead-form button[type='submit']").click()
+
             try:
-                with page.expect_response(
-                    lambda r: "formspree.io" in r.url and r.request.method == "POST",
-                    timeout=90000,
-                ) as resp_info:
-                    page.locator("form#lead-form button[type='submit']").click()
-                resp = resp_info.value
-                print(
-                    f"Formspree POST {resp.status} {getattr(resp, 'url', '')[:100]}",
-                    file=sys.stderr,
-                )
-                if resp.status >= 400:
-                    raise SystemExit(f"Formspree HTTP {resp.status} na submit")
+                page.locator("#lead-status.success").wait_for(state="visible", timeout=60000)
             except PlaywrightTimeout:
-                status = page.locator("#lead-status").inner_text(timeout=5000)
+                status_text = ""
+                try:
+                    status_text = page.locator("#lead-status").inner_text(timeout=2000)
+                except Exception:
+                    pass
                 raise SystemExit(
-                    f"Geen Formspree-POST-response na Versturen. lead-status: {status!r}"
+                    f"Geen success-status na Versturen (validatie of netwerk?). "
+                    f"lead-status: {status_text!r}, url: {page.url!r}"
                 ) from None
 
-            final = page.url
-            print(f"URL na submit: {final[:120]}…", file=sys.stderr)
+            if page.url != url_before:
+                raise SystemExit(
+                    f"Onverwachte navigatie na Versturen: {url_before!r} -> {page.url!r}. "
+                    "Verwacht: blijven op contact.html (fetch i.p.v. redirect)."
+                )
+
+            status_text = page.locator("#lead-status").inner_text(timeout=2000)
+            print(f"Inline success on {page.url[:120]}: {status_text!r}", file=sys.stderr)
         finally:
             browser.close()
 
