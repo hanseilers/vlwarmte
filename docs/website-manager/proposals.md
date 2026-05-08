@@ -107,6 +107,23 @@ In de laatste 30 dagen is het verkeer **klein maar meetbaar** (~13 sessies in de
 
 ---
 
+### 10. Weer-gedreven **accent** (verwarming vs. koelen) — PM + Marketing (discussie)
+
+- **Prioriteit:** Te bepalen na akkoord (inhoudelijk + technisch)
+- **Type:** Campagne / content / (optioneel) lichte site-“spotlight” per week
+- **Idee (eigenaar):** Elke week in de PM-cyclus **kort naar het weer kijken** (bijv. KNMI/ECMWF-consensus voor Noord-Nederland) en op basis van de **verwachte temperatuur** een **klein verschuifbaar accent** kiezen: bij warme weken iets meer nadruk op **comfort + koelen met laagtemperatuur-vloer** (waar het past), bij koudere weken op **warmte en opbouw** — **niet** één thema exclusief, maar een **extra haak** voor social, e-mail en eventueel een **licht zichtbaar blok** op de site (hero-teaser, FAQ-item van de week, korte bannerregel).
+- **Onderbouwing:** Seizoensbeeld en hittegolven verhogen **zoek- en gespreksintentie** rond “te warm in huis”, warmtepomp + koelen, vloer als afgifte — kan helpen om **breder** te landen bij wie nu vooral aan “verwarmen” denkt. Past bij wekelijkse cadans: PM en Marketing Research kunnen dit **vast laten landen** in `weekly_calendar.md` + sprintcontext zonder zware herbouw.
+- **Technische voorwaarde (must):** Koelen met vloerverwarming gaat **niet** overal hetzelfde en niet zonder voorwaarden (o.a. **dauwpunt** / ontvochtiging, bron-koeling, regeling, ontwerp). Marketing en PM moeten copy **laten alignen met wat VLWarmte écht levert en adviseert** — geen brede belofte “wij koelen je huis” als dat niet klopt voor het merendeel van de trajecten.
+- **Actie (discussie → plan):**
+  1. **Workshop 30–45 min:** PM + Marketing + (Hans) — afbakening “waar mogen we over praten?” en voorbeelden van bestaande installaties.
+  2. **Vaste rubriek** in de wekelijkse cyclus: 5 regels in `sprint.md` of `research_report.md`: *weer deze week → gekozen accent → bewijs/CTA*.
+  3. **Site:** basiscontent die **koelen + voorwaarden** al uitlegt (FAQ of `diensten.html`/`systemen-producten.html`); het “wekelijkse” deel is dan vooral **zichtbaarheid** (teaser, social, optioneel klein data-attribuut in HTML voor handmatige wissel — automatische weer-API op GitHub Pages is beperkt tenzij client-side fetch + fallback).
+  4. **Social/Marketing:** 1 post per week die het accent **expliciet** koppelt aan het weerbeeld (“komende week richting X °C → tip over …”) zonder sensatie.
+- **Verwacht effect:** Meer **relevantie** in de feed, iets sterkere **intentie-match** in de copy, mogelijk extra sessies op FAQ/diensten — te meten in GA4 na 4–8 weken (kleine n: voorzichtig interpreteren).
+- **Risico’s:** Overclaimen, juridisch/technisch incorrecte koelbelofte, onderhoudslast van automatisering. **Mitigatie:** accent = **marketinglaag**, kernsite = **eeuwig waar**; automatisering pas na handmatige pilotweken.
+
+---
+
 ## Campagne-notitie (social + site)
 
 Koppel social posts expliciet aan **prijsindicatie**, **vloerverwarming-groningen**, **vloerverwarming-assen** en **werkwijze** — past bij sprintdoel en helpt direct-verkeer om te zetten naar diepte en leads.
