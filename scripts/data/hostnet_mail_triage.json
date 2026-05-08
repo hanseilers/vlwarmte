@@ -42,6 +42,22 @@
       "precedence_bulk": true
     },
     {
+      "id": "formspree_accounts_from",
+      "folder": "INBOX/Systeem",
+      "from_contains_any": [
+        "accounts@formspree.io"
+      ]
+    },
+    {
+      "id": "formspree_verification_subject",
+      "folder": "INBOX/Systeem",
+      "subject_contains_any": [
+        "email verification for your formspree account",
+        "verify your formspree email",
+        "confirm your formspree email"
+      ]
+    },
+    {
       "id": "platform_system",
       "folder": "INBOX/Systeem",
       "from_contains_any": [

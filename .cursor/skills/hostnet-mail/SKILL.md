@@ -125,7 +125,7 @@ Formspree kan IP’s throttlen; bij falen Formspree-dashboard en workflow opnieu
 
 ## Inbox “agent”: bedankmail (geen LLM)
 
-**Script:** `scripts/inbox_auto_thankyou.py` — zoekt **ongelezen** mail in `INBOX`, `INBOX/Leads`, `INBOX/Overig` die op een **Formspree-/offerte-aanvraag** lijkt, bouwt een **lopende NL-bedanktekst** (geen bulletlist met velden), stuurt die met het **zelfde HTML-sjabloon** als `send-customer`, zet **`In-Reply-To`** op de originele mail en markeert daarna **gelezen**.
+**Script:** `scripts/inbox_auto_thankyou.py` — behandelt **Formspree-notificaties als website-klantmail**: zoekt **ongelezen** berichten in `INBOX`, `INBOX/Leads`, `INBOX/Overig`, herkent o.a. contact- vs. **prijsindicatie**-submissions (velden als `productkeuze`, `soort_aanvraag`), sluit **account-/verificatiemail** van Formspree uit, bouwt een **lopende NL-bedanktekst**, stuurt via hetzelfde template als `send-customer`, zet **`In-Reply-To`** en markeert **gelezen**.
 
 - Slaat berichten over met **`VLW-E2E-`** in de inhoud (deploy-test).
 - Start altijd met **`--dry-run`**.
