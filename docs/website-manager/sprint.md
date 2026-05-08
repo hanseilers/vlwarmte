@@ -132,3 +132,4 @@
 ### Deployment
 
 - **Status:** door **Product Manager** — `git push origin main` voltooid. **GitHub Actions:** run **25555351102** (`pages-build-deployment`, succes). **Commit:** `ff6c9b9`. Live-check: **Terugbelverzoek** op `https://www.vlwarmte.nl/systemen-producten.html`.
+- **Taak 6 (contact volgorde):** commit **816f182**; **GitHub Actions** run **25556001845** (`pages-build-deployment`, succes). Live: `contact.html` — `#aanvraag` staat vóór “Adres en bedrijfsgegevens” (curl-check op `https://www.vlwarmte.nl/contact.html`).
