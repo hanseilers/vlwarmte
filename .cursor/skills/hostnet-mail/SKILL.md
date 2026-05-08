@@ -70,7 +70,7 @@ python scripts/hostnet_imap_read.py move --uid 5 --to-folder "INBOX/Spam"
 
 **Template (outer shell):** `scripts/data/email_vlwarmte_customer_template.html`  
 Placeholders: `{{VLW_EMAIL_BODY}}`, `{{VLW_EMAIL_TITLE}}`, `{{VLW_EMAIL_PREHEADER}}` (filled by the script).  
-Logo in mail is **`assets/img/vlwarmte-email-logo.png`** (PNG — veel clients tonen **geen SVG** in e-mail). Het template laadt die PNG via **raw.githubusercontent.com** zodat het logo direct werkt na een push; op **www.vlwarmte.nl/assets/img/…** staat hetzelfde bestand zodra GitHub Pages klaar is (optioneel daarna `src` aanpassen). Zonder “Afbeeldingen laden” zie je alsnog de **oranje VLWarmte-tekst** onder het blok.
+Logo in mail is **`assets/img/vlwarmte-email-logo.png`** (PNG — veel clients tonen **geen SVG** in e-mail). Publieke URL: **https://www.vlwarmte.nl/assets/img/vlwarmte-email-logo.png**. Zonder “Afbeeldingen laden” zie je alsnog de **oranje VLWarmte-tekst** onder het blok.
 
 **Voorbeeldfragment (alleen inhoud):** `scripts/data/email_fragment_offertebevestiging.nl.html` — bevestiging offerteaanvraag; kopieer/aanpas voor vergelijkbare replies.
 
