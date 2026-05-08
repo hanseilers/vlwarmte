@@ -5,8 +5,8 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 ---
 
 ## Release — week van 16 juni 2026
-**Deployment:** 08-05-2026 (PM: `git push origin main` — GitHub Pages)  
-**Versie:** _(na commit)_
+**Deployment:** 08-05-2026 (PM: `git push origin main` — GitHub Pages, run **25555351102**, succesvol)  
+**Versie:** `ff6c9b9`
 
 ### Wat is er veranderd
 - **`diensten.html` en `contact.html`:** scherpere **title + meta + sociale previews** (Zuidlaren, Drenthe, traject; contact met offerte/informatie/**terugbel** en reactie binnen werkdag).
