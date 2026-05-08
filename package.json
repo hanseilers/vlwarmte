@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "test:e2e:install": "pip install -r scripts/requirements-e2e.txt && python -m playwright install chromium",
+    "test:e2e": "python scripts/e2e_formspree_inbox.py"
+  },
   "devDependencies": {
     "@formspree/cli": "^0.9.6"
   }

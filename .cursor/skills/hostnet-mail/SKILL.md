@@ -85,24 +85,41 @@ python scripts/hostnet_imap_read.py send-customer \
 ```
 
 Body mag ook inline: `--body-html '<p>…</p>'` of plat met alinea’s: `--body-text $'Alinea 1\n\nAlinea 2'`.  
-Optioneel: `--template pad/naar/ander_template.html`, `--reply-to`, `--dry-run`.
+Optioneel: `--template pad/naar/ander_template.html`, `--reply-to`, `--footer-disclaimer "…"` (onderaan de kaart; default is klanttekst), `--dry-run`.
+
+### PM-cyclus: release notes mailen (zelfde template)
+
+Na elke cyclus stuurt de Product Manager Agent de **bovenste** sectie uit `docs/website-manager/release-notes.md` naar **`jceilers@icloud.com`**:
+
+```bash
+python3 scripts/send_pm_release_notes_email.py --dry-run   # controle
+python3 scripts/send_pm_release_notes_email.py              # verzendt
+```
+
+Zelfde outer template; interne **footer-disclaimer** zit in het script. Zie `.claude/commands/product-manager.md` stap **8b**.
 
 ---
 
 ## E2E na deploy (Formspree → `info@`)
 
 **Script:** `scripts/e2e_formspree_inbox.py`  
-POST een **offerte** naar het **productie**-Formspree-endpoint (zelfde als `contact.html`), zoekt een unieke marker in **INBOX / INBOX/Leads / INBOX/Overig / INBOX/Systeem**, verwijdert de testmail na succes.
+Standaard: **Playwright** opent **`https://www.vlwarmte.nl/contact.html?modus=offerte`**, klikt **offerte**, vult het formulier in en klikt **Versturen** — dezelfde flow als een echte gebruiker (dus dezelfde `action`-URL en client-side logica). Daarna zoekt het een unieke marker **`VLW-E2E-…`** in **INBOX / INBOX/Leads / INBOX/Overig / INBOX/Systeem** en verwijdert de testmail.
+
+**Waarom geen “handmatige” POST meer?** Een losse `urllib`-POST naar `formspree.io/f/…` kan **404 Form not found** geven als de hash bij Formspree niet (meer) klopt, terwijl de **live pagina** wél werkt. De browser-test volgt de productiesite.
 
 ```bash
+pip install -r scripts/requirements-e2e.txt
+python -m playwright install chromium
 python scripts/e2e_formspree_inbox.py
 ```
 
-Env: zelfde **`IMAP_*`** als `secrets/hostnet-mail.env`. Optioneel: `E2E_FORMSPREE_URL`, `E2E_BASE_URL`, `E2E_INBOX_TIMEOUT_SEC` (default 240), `E2E_POLL_INTERVAL_SEC` (8), `E2E_SKIP=1` om over te slaan.
+Optioneel: **`--http-post`** (alleen debug), **`--headed`** (lokaal venster).
 
-**GitHub Actions:** `.github/workflows/e2e-production-formspree.yml` — draait op **`push` naar `main`** (met 120 s wachttijd voor Pages) en **`workflow_dispatch`**. Zet repository secrets **`IMAP_USER`** + **`IMAP_PASSWORD`** (optioneel `IMAP_HOST`, `IMAP_PORT`, `E2E_FORMSPREE_URL`). Zonder wachtwoord: job slaat over met een **notice** (handig voor forks).
+Env: zelfde **`IMAP_*`** als `secrets/hostnet-mail.env`. Optioneel: `E2E_BASE_URL`, `E2E_INBOX_TIMEOUT_SEC` (240), `E2E_POLL_INTERVAL_SEC` (8), `E2E_SKIP=1`.
 
-Let op: Formspree kan soms **throttlen** of verdachte IP’s beperken; bij falen eerst **handmatig** het script lokaal proberen en Formspree-dashboard checken.
+**GitHub Actions:** `.github/workflows/e2e-production-formspree.yml` — installeert Playwright + Chromium, daarna het script. Secrets: **`IMAP_USER`**, **`IMAP_PASSWORD`** (optioneel `IMAP_HOST`, `IMAP_PORT`). Zonder wachtwoord: job slaat over met een **notice**.
+
+Formspree kan IP’s throttlen; bij falen Formspree-dashboard en workflow opnieuw draaien.
 
 ---
 

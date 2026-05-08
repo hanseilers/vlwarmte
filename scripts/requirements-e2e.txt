@@ -1,0 +1,2 @@
+# E2E: Playwright + IMAP (scripts/e2e_formspree_inbox.py)
+playwright>=1.42.0

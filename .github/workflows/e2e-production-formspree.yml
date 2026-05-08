@@ -20,7 +20,11 @@ jobs:
       - name: Wait for GitHub Pages (push only)
         if: github.event_name == 'push'
         run: sleep 120
-      - name: Run Formspree IMAP E2E
+      - name: Install Playwright (Chromium)
+        run: |
+          pip install -r scripts/requirements-e2e.txt
+          python -m playwright install --with-deps chromium
+      - name: Run Formspree IMAP E2E (browser)
         env:
           GITHUB_ACTIONS: "true"
           IMAP_HOST: ${{ secrets.IMAP_HOST }}

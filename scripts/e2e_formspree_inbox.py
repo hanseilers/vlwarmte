@@ -1,20 +1,18 @@
 #!/usr/bin/env python3
-"""E2E: POST offerte to production Formspree, wait for mail at info@, verify marker, delete.
+"""E2E: vul productie-offerteformulier (Playwright), wacht op mail op info@, verwijder testmail.
 
-Uses the same Formspree endpoint as contact.html. Loads IMAP from secrets/hostnet-mail.env
-or from environment variables (GitHub Actions secrets).
+Standaard: **Playwright** opent de echte contactpagina — dezelfde JavaScript en form-`action` als
+een bezoeker. Daarmee vermijd je een mis-match tussen handmatige POST-URL en wat de site echt doet.
 
-Env (see secrets/hostnet-mail.env.example + workflow comments):
-  IMAP_HOST, IMAP_PORT, IMAP_USER, IMAP_PASSWORD
-  E2E_FORMSPREE_URL — optional; default matches contact.html
-  E2E_BASE_URL — default https://www.vlwarmte.nl (Referer only)
-  E2E_SKIP — if set to 1/true, exit 0 without running (optional CI opt-out)
+Optioneel: `--http-post` voor directe POST (alleen voor debug; kan 404 geven als Formspree-hash
+niet meer geldig is).
 
-Exit codes: 0 success or skipped, 1 failure.
+Secrets: zie secrets/hostnet-mail.env.example (IMAP_*). CI: GitHub Actions secrets.
 """
 
 from __future__ import annotations
 
+import argparse
 import imaplib
 import os
 import re
@@ -29,7 +27,6 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 _DEFAULT_ENV = REPO_ROOT / "secrets" / "hostnet-mail.env"
-# Fallback if live contact.html cannot be read (prefer resolving from production)
 _DEFAULT_FORMSPREE = "https://formspree.io/f/29885138860528105515"
 _DEFAULT_BASE = "https://www.vlwarmte.nl"
 _MAILBOXES = ("INBOX", "INBOX/Leads", "INBOX/Overig", "INBOX/Systeem")
@@ -116,7 +113,7 @@ def _resolve_formspree_url(base_url: str) -> str:
     except (urllib.error.URLError, OSError) as e:
         print(f"Could not fetch {contact}: {e}; using default Formspree URL.", file=sys.stderr)
         return _DEFAULT_FORMSPREE
-    m = re.search(r'https://formspree\.io/f/[a-zA-Z0-9]+', html)
+    m = re.search(r"https://formspree\.io/f/[a-zA-Z0-9]+", html)
     if m:
         return m.group(0)
     print("No formspree.io URL in live contact.html; using default.", file=sys.stderr)
@@ -159,10 +156,67 @@ def _post_offerte(marker: str, formspree_url: str, base_url: str) -> None:
             if code not in (200, 302):
                 print(f"Formspree HTTP {code}", file=sys.stderr)
     except urllib.error.HTTPError as e:
-        body = e.read().decode(errors="replace")[:2000]
-        raise SystemExit(f"Formspree HTTP error {e.code}: {body}") from e
+        body_err = e.read().decode(errors="replace")[:2000]
+        raise SystemExit(f"Formspree HTTP error {e.code}: {body_err}") from e
     except urllib.error.URLError as e:
         raise SystemExit(f"Formspree request failed: {e}") from e
+
+
+def _submit_offerte_playwright(base: str, marker: str, *, headed: bool) -> None:
+    try:
+        from playwright.sync_api import TimeoutError as PlaywrightTimeout
+        from playwright.sync_api import sync_playwright
+    except ImportError as e:
+        raise SystemExit(
+            "Playwright ontbreekt. Installeer: pip install -r scripts/requirements-e2e.txt\n"
+            "Daarna: python -m playwright install chromium"
+        ) from e
+
+    message = (
+        f"Dit is een automatische deploy-test van VLWarmte. Referentie: {marker}\n\n"
+        "U kunt dit bericht negeren."
+    )
+    url = f"{base.rstrip('/')}/contact.html?modus=offerte#aanvraag"
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=not headed)
+        try:
+            context = browser.new_context(
+                locale="nl-NL",
+                viewport={"width": 1280, "height": 900},
+                user_agent="VLWarmte-E2E/1.0 (+https://www.vlwarmte.nl)",
+            )
+            page = context.new_page()
+            page.goto(url, wait_until="domcontentloaded", timeout=90000)
+            page.wait_for_selector("#lead-form", state="visible", timeout=30000)
+
+            page.get_by_role("button", name="Ik wil een offerte").click()
+            page.locator("#m2").wait_for(state="visible", timeout=20000)
+
+            page.locator("#name").fill("VLWarmte E2E Bot")
+            page.locator("#phone").fill("+31618817459")
+            page.locator("#email").fill("e2e-deploy-test@example.com")
+            page.locator("#region").fill("Zuidlaren (test)")
+            page.locator("#m2").fill("95")
+            page.locator("#vloerdiepte").fill("520")
+            page.locator("#ondergrond").select_option(label="Beton")
+            page.locator("#projecttype").select_option(label="Nieuwbouw")
+            page.locator("#planning").fill("Test — geen echte planning")
+            page.locator("#message").fill(message)
+
+            try:
+                with page.expect_navigation(timeout=60000):
+                    page.locator("form#lead-form button[type='submit']").click()
+            except PlaywrightTimeout:
+                status = page.locator("#lead-status").inner_text(timeout=5000)
+                raise SystemExit(
+                    f"Geen navigatie na Versturen (validatie of netwerk?). lead-status: {status!r}"
+                ) from None
+
+            final = page.url
+            print(f"Navigated after submit: {final[:120]}…", file=sys.stderr)
+        finally:
+            browser.close()
 
 
 def _find_marker_in_mailboxes(conn: imaplib.IMAP4_SSL, marker: str, scan_last: int) -> tuple[str, int] | None:
@@ -183,7 +237,25 @@ def _delete_in_mailbox(conn: imaplib.IMAP4_SSL, mbox: str, uid: int) -> None:
 
 
 def main() -> int:
-    load_env_file(Path(os.environ.get("HOSTNET_MAIL_ENV", str(_DEFAULT_ENV))))
+    ap = argparse.ArgumentParser(description="E2E: offerte via Playwright + IMAP cleanup")
+    ap.add_argument(
+        "--http-post",
+        action="store_true",
+        help="Debug: directe POST naar Formspree-URL i.p.v. browser (kan 404 geven)",
+    )
+    ap.add_argument(
+        "--headed",
+        action="store_true",
+        help="Chromium met venster (lokaal debuggen)",
+    )
+    ap.add_argument(
+        "--env-file",
+        type=Path,
+        default=Path(os.environ.get("HOSTNET_MAIL_ENV", str(_DEFAULT_ENV))),
+    )
+    ns = ap.parse_args()
+
+    load_env_file(ns.env_file)
     if _truthy(os.environ.get("E2E_SKIP")):
         print("E2E_SKIP set — skipping.", file=sys.stderr)
         return 0
@@ -200,10 +272,14 @@ def main() -> int:
 
     marker = f"VLW-E2E-{uuid.uuid4().hex[:16]}"
     base = (os.environ.get("E2E_BASE_URL") or _DEFAULT_BASE).strip().rstrip("/")
-    formspree = _resolve_formspree_url(base)
 
-    print("Posting offerte to Formspree …", file=sys.stderr)
-    _post_offerte(marker, formspree, base)
+    if ns.http_post:
+        formspree = _resolve_formspree_url(base)
+        print("Posting offerte via HTTP POST …", file=sys.stderr)
+        _post_offerte(marker, formspree, base)
+    else:
+        print("Vullen en verzenden via Playwright (productiebrowser) …", file=sys.stderr)
+        _submit_offerte_playwright(base, marker, headed=ns.headed)
 
     timeout = int(os.environ.get("E2E_INBOX_TIMEOUT_SEC", "240"))
     interval = int(os.environ.get("E2E_POLL_INTERVAL_SEC", "8"))
