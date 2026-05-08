@@ -1,0 +1,31 @@
+name: E2E production (Formspree to inbox)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  formspree-inbox:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Wait for GitHub Pages (push only)
+        if: github.event_name == 'push'
+        run: sleep 120
+      - name: Run Formspree IMAP E2E
+        env:
+          GITHUB_ACTIONS: "true"
+          IMAP_HOST: ${{ secrets.IMAP_HOST }}
+          IMAP_PORT: ${{ secrets.IMAP_PORT }}
+          IMAP_USER: ${{ secrets.IMAP_USER }}
+          IMAP_PASSWORD: ${{ secrets.IMAP_PASSWORD }}
+          E2E_FORMSPREE_URL: ${{ secrets.E2E_FORMSPREE_URL }}
+        run: python scripts/e2e_formspree_inbox.py

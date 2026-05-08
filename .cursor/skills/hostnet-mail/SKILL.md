@@ -89,6 +89,39 @@ Optioneel: `--template pad/naar/ander_template.html`, `--reply-to`, `--dry-run`.
 
 ---
 
+## E2E na deploy (Formspree → `info@`)
+
+**Script:** `scripts/e2e_formspree_inbox.py`  
+POST een **offerte** naar het **productie**-Formspree-endpoint (zelfde als `contact.html`), zoekt een unieke marker in **INBOX / INBOX/Leads / INBOX/Overig / INBOX/Systeem**, verwijdert de testmail na succes.
+
+```bash
+python scripts/e2e_formspree_inbox.py
+```
+
+Env: zelfde **`IMAP_*`** als `secrets/hostnet-mail.env`. Optioneel: `E2E_FORMSPREE_URL`, `E2E_BASE_URL`, `E2E_INBOX_TIMEOUT_SEC` (default 240), `E2E_POLL_INTERVAL_SEC` (8), `E2E_SKIP=1` om over te slaan.
+
+**GitHub Actions:** `.github/workflows/e2e-production-formspree.yml` — draait op **`push` naar `main`** (met 120 s wachttijd voor Pages) en **`workflow_dispatch`**. Zet repository secrets **`IMAP_USER`** + **`IMAP_PASSWORD`** (optioneel `IMAP_HOST`, `IMAP_PORT`, `E2E_FORMSPREE_URL`). Zonder wachtwoord: job slaat over met een **notice** (handig voor forks).
+
+Let op: Formspree kan soms **throttlen** of verdachte IP’s beperken; bij falen eerst **handmatig** het script lokaal proberen en Formspree-dashboard checken.
+
+---
+
+## Inbox “agent”: bedankmail (geen LLM)
+
+**Script:** `scripts/inbox_auto_thankyou.py` — zoekt **ongelezen** mail in `INBOX`, `INBOX/Leads`, `INBOX/Overig` die op een **Formspree-/offerte-aanvraag** lijkt, bouwt een **lopende NL-bedanktekst** (geen bulletlist met velden), stuurt die met het **zelfde HTML-sjabloon** als `send-customer`, zet **`In-Reply-To`** op de originele mail en markeert daarna **gelezen**.
+
+- Slaat berichten over met **`VLW-E2E-`** in de inhoud (deploy-test).
+- Start altijd met **`--dry-run`**.
+
+```bash
+python scripts/inbox_auto_thankyou.py --dry-run --max 3
+python scripts/inbox_auto_thankyou.py --max 3
+```
+
+**GitHub Actions:** `.github/workflows/inbox-auto-thankyou.yml` — alleen **`workflow_dispatch`** (geen cron), secrets zoals E2E + optioneel **`MAIL_FROM`** (anders `IMAP_USER`). Pas heuristiek in het script aan voordat je dit op een schema zet.
+
+---
+
 ## Read vs write
 
 - **`recent` / `headers`:** readonly `SELECT` + `BODY.PEEK[HEADER]`.
