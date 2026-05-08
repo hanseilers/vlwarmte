@@ -4,6 +4,30 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 2 juni 2026
+**Deployment:** 08-05-2026 (PM: `git push origin main` — GitHub Pages)  
+**Versie:** `c43d609`
+
+### Wat is er veranderd
+- **`prijsindicatie.html`:** CTA-blok direct onder de hero met link naar de wizard (`#wizard`), directe offerte-route en informatieformulier — betere aansluiting op **Paid Search**-landings en snellere tweede stap.
+- **`scripts/data/google_ads_lead_campaign_defaults.json`:** Drie RSA-headlines gericht op **online prijsindicatie** en **richtbedrag** (voor volgende campagne-updates of handmatige RSA-sync).
+- **`disclaimer.html` + `privacy.html`:** Korte navigatie-exit onder de hero (homepage, prijsindicatie, contact) om landings-bounce 1,0 te verzachten.
+- **`projecten.html`:** `hero-soft-row` met **Informatie aanvragen** — lichtere stap naast bestaande knoppen.
+- **Playbooks + `AGENTS.md`:** Product Manager voert **commit en push** zelf uit na developer (geen eigenaar nodig behalve bij git-auth).
+
+### Waarom
+- Analytics (cyclus 2, 8 mei): **google/cpc** zonder conversies; prijsindicatie en contactroutes moeten in copy én op de pagina maximaal zichtbaar zijn.
+- Disclaimer/privacy als instap met bounce 1,0 — minimale exit-hulp.
+
+### Verwacht effect
+- Meer `wizard_start` / conversies vanaf prijsindicatie-landing; eerste signalen voor Paid Search na RSA-sync in Ads.
+- Minder directe exit op disclaimer/privacy.
+
+### Social media deze week
+Zie `docs/website-manager/social/weekly_calendar.md` (week van 2 juni 2026).
+
+---
+
 ## Release — week van 18 mei 2026
 **Deployment:** 08-05-2026 (GitHub Pages run `25543472674`, succesvol)
 **Versie:** `3e97a18` (code) + `d396fa9` (documentatie deploymentregels) — Sprint 18 mei: vroege CTA’s, logo-URL redirect, GA4 weekly_trend backfill

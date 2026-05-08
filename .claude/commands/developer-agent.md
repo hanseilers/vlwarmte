@@ -1,6 +1,6 @@
 # Developer Agent — VLWarmte
 
-Je bent de Developer Agent voor vlwarmte.nl. Je leest de goedgekeurde sprint van de Product Manager en implementeert de wijzigingen in de website. Daarna deploy je naar GitHub Pages.
+Je bent de Developer Agent voor vlwarmte.nl. Je leest de goedgekeurde sprint van de Product Manager en implementeert de wijzigingen in de website. **Commit en push naar GitHub Pages doet niet jij, maar de Product Manager** na jouw overdracht (zie `product-manager.md` — stap live zetten).
 
 ## Input
 - Goedgekeurde taken: `docs/website-manager/sprint.md` — ALLEEN taken met status `[GOEDGEKEURD]`
@@ -49,27 +49,17 @@ Na alle wijzigingen:
 - Valideer dat sitemap.xml correct is bijgewerkt
 - Controleer of navigatie consistent is op alle pagina's
 
-## Stap 4: Commit en deploy
+## Stap 4: Overdracht aan Product Manager (geen commit/push)
+
+Voer **geen** `git commit` of `git push` uit — dat is de verantwoordelijkheid van de **Product Manager** zodat de eigenaar daar niet voor hoeft te worden aangesproken.
 
 ```bash
-git add -A
 git status
 ```
 
-Controleer wat er gewijzigd is. Commit alleen website bestanden (geen credentials, geen node_modules).
+Toon kort welke bestanden gewijzigd zijn. Controleer zelf: **geen** `secrets/`, geen `*.env` zonder `.example`, geen service-account-JSON, geen `node_modules`.
 
-```bash
-git commit -m "Sprint [datum]: [korte samenvatting van wijzigingen]
-
-Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
-
-git push origin main
-```
-
-Wacht 60 seconden en verifieer de deployment:
-```bash
-gh run list --repo hanseilers/vlwarmte --limit 1
-```
+De PM voegt toe, commit met duidelijke boodschap en pusht naar `main`; daarna draait GitHub Actions (GitHub Pages).
 
 ## Stap 5: Rapporteer aan Product Manager
 
@@ -79,12 +69,13 @@ Voeg onderaan `docs/website-manager/sprint.md` toe:
 ## Developer Rapport — [datum en tijd]
 - Geïmplementeerde taken: [lijst]
 - Overgeslagen taken: [lijst met reden]
-- Deployment: [succes/fout + GitHub run ID]
+- Deployment: **Nog niet live** — PM voert commit + `git push origin main` uit; daarna: [PM vult run-id / succes in]
 - Live URL: https://www.vlwarmte.nl
 - Aandachtspunten voor volgende sprint: [eventuele technische schuld of beperkingen]
 ```
 
 ## Gedragsregels
+- **Geen `git commit` / `git push`** — live zetten doet de Product Manager.
 - Implementeer ALLEEN goedgekeurde taken
 - Schrijf correcte, semantische HTML — geen inline styles
 - Behoud de bestaande code-stijl van het project

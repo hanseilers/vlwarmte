@@ -1,0 +1,3 @@
+# Google Ads API (optional; use with repo .venv)
+google-ads>=26.0.0
+google-auth-oauthlib>=1.2.0

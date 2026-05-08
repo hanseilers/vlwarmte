@@ -1,0 +1,83 @@
+{
+  "ad_group_suffix": "Leads NL",
+  "final_urls": [
+    "https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag",
+    "https://www.vlwarmte.nl/prijsindicatie.html"
+  ],
+  "keywords": [
+    {
+      "text": "vloerverwarming groningen",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming assen",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming drenthe",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming installateur",
+      "match": "PHRASE"
+    },
+    {
+      "text": "schuimbeton vloerverwarming",
+      "match": "PHRASE"
+    },
+    {
+      "text": "ondervloer vloerverwarming",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming nieuwbouw",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming renovatie",
+      "match": "PHRASE"
+    }
+  ],
+  "headlines": [
+    "Vloerverwarming uit de regio",
+    "VLWarmte — vakmanschap",
+    "Vrijblijvende offerte",
+    "Schuimbeton & ondervloer",
+    "Installateur Noord-NL",
+    "Plan vrijblijvend gesprek",
+    "Lokaal geïnstalleerd",
+    "Kwaliteit boven prijs",
+    "Traject tot dekvloer",
+    "Meer wooncomfort",
+    "Watergedragen vloerverwarming",
+    "Dekvloer & chape meedenken",
+    "Online prijsindicatie",
+    "Richtbedrag in minuten",
+    "Eerst prijs dan offerte"
+  ],
+  "descriptions": [
+    "Vloerverwarming, schuimbeton en afwerking — vakmanschap rondom Zuid-Laren en Noord-Nederland.",
+    "Vraag vrijblijvend een offerte of informatie aan; we denken mee over uw project.",
+    "Heldere werkwijze en persoonlijk advies voor woningverbouwing en nieuwbouw.",
+    "Bel of vraag terugbel aan — ook prijsindicatie online mogelijk."
+  ],
+  "path1": "offerte",
+  "path2": "vloerverwarming",
+  "extra_rsa": {
+    "comment": "Second RSA in same ad group — improves Ad strength / variety",
+    "headlines": [
+      "Compleet vloerverwarming",
+      "Van ondervloer tot afwerking",
+      "Snel antwoord op aanvragen",
+      "Geen verrassingen achteraf",
+      "Maatwerk voor uw woning",
+      "Zuid-Laren uitgangspunt",
+      "Referenties op aanvraag",
+      "Heldere planning traject"
+    ],
+    "descriptions": [
+      "Wij combineren vloerverwarming met schuimbeton en dekvloer — één aanspreekpunt.",
+      "Vraag een offerte aan of start met de online prijsindicatie op vlwarmte.nl."
+    ]
+  }
+}

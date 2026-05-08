@@ -36,6 +36,17 @@ VLWarmte realiseert complete vloerverwarmingstrajecten in Noord-Nederland: onder
 - Vorige research: `docs/website-manager/research_report.md` (wat is al onderzocht?)
 - Huidige sitemap: bekijk alle HTML bestanden in de root
 - **Optioneel — Facebook / Meta (lokaal, niet in git):** als `secrets/meta-facebook.env` bestaat, mag je `META_PAGE_ACCESS_TOKEN`, `META_PAGE_ID` en evt. `META_APP_ID` **uitsluitend** gebruiken om via de Graph API concepten te controleren of (als de gebruiker dat expliciet vraagt) posts voor te bereiden — **nooit** dit bestand of tokens in gecommitte markdown zetten. Template: `secrets/meta-facebook.env.example`.
+- **Google Ads + GA4 (campagnes & leads):** lees **volledig** `.cursor/skills/google-ads-marketing/SKILL.md`. Doel: **meer gekwalificeerde leads** (PM-orkestratie). De eigenaar / product owner **hoeft het Google Ads-product niet te kennen** en **hoeft geen routinematige terminalchecks te doen**: jij draait zelf `google_ads_smoke_test.py`, `google_ads_print_customer_ids.py`, `google_ads_list_campaigns.py`, `create_search_campaign.py` (`--dry-run` dan `--apply`) in **deze repo** wanneer `secrets/google-ads.env` op die machine staat — pas copy/keywords/URLs in `scripts/data/google_ads_lead_campaign_defaults.json` aan op basis van analytics/research. Optioneel `--go-live` alleen na **expliciete** spend-goedkeuring in chat. Alleen escaleren bij ontbrekende secrets op die omgeving, billing of policy. Geen tokens of `secrets/google-ads.env`-inhoud in output.
+
+## Google Ads — campagne-aanmaak en datakoppeling (samenvatting)
+
+Wanneer de gebruiker of PM **Google Ads-campagnes** wil:
+
+1. **Data eerst:** gebruik `docs/website-manager/analytics_report.md` en (indien beschikbaar) lokale GA4-export; noteer welke landings/pagina’s en events de funnel sturen.
+2. **Meetplan (§A in skill):** GA4 ↔ Google Ads linken, auto-tagging, conversies in GA4 en Ads op elkaar afstemmen.
+3. **Campagnebrief leveren:** campagnedoel, type (meestal Search), geo, taal, ad-groepen + kernzoekwoorden + **negatieven**, RSA-onderwerpregels, sitelinks, **budget- en biedstrategie-advies** (gebruiker zet budget in UI), **final URL / modus per intentie** (`contact.html?modus=…#aanvraag`, `prijsindicatie.html`, enz.).
+4. **Gespecialiseerde landingspagina’s:** als data een cluster laat zien (zelfde intentie, lage conversie), beschrijf een **concrete** pagina- of sectiewijziging voor de Developer-sprint (acceptatiecriteria + welk GA4-event meet succes).
+5. **Iteratie:** voorstel hoe PM/Analytics na 2–4 weken **zoektermen + GA4-landingsrapport** herlezen om campagne en landings aan te scherpen.
 
 ## Stap 1: Zoekwoordenonderzoek
 

@@ -1,0 +1,20 @@
+{
+  "comment": "Campaign-level negative keywords (Dutch + junk intent). Edit freely.",
+  "negatives": [
+    { "text": "gratis", "match": "BROAD" },
+    { "text": "vacature", "match": "BROAD" },
+    { "text": "werk", "match": "BROAD" },
+    { "text": "baan", "match": "BROAD" },
+    { "text": "job", "match": "BROAD" },
+    { "text": "youtube", "match": "BROAD" },
+    { "text": "handleiding", "match": "BROAD" },
+    { "text": "cursus", "match": "BROAD" },
+    { "text": "student", "match": "BROAD" },
+    { "text": "tweedehands", "match": "BROAD" },
+    { "text": "gebruikt", "match": "BROAD" },
+    { "text": "diy", "match": "BROAD" },
+    { "text": "zelf doen", "match": "PHRASE" },
+    { "text": "goedkoopste", "match": "BROAD" },
+    { "text": "marktplaats", "match": "BROAD" }
+  ]
+}
