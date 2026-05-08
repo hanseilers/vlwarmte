@@ -126,7 +126,7 @@ In de laatste 30 dagen is het verkeer **klein maar meetbaar** (~13 sessies in de
 
 | Veld | Invulling |
 |------|-----------|
-| **Status** | **Tekst-workshop uitgevoerd** (8 mei 2026) — **vraag 1 (koel-claim)** nog open tot keuze A/B/C hieronder. |
+| **Status** | **Tekst-workshop afgerond** (8 mei 2026) — **vraag 1 = optie A** (koel alleen als mogelijk bij geschikte installatie + doorverwijzen). |
 | **Duur** | **45 minuten** (harde stop op 45 om drift te voorkomen) |
 | **Doel** | Eén set **afspraken** waar PM en marketing zich aan kunnen houden: *waar* mogen we koelen/combineren benoemen, *hoe* formuleren we het veilig, *wat* is de wekelijkse “accent”-workflow zonder de kernsite te verliezen. |
 | **Deelnemers** | Solo: **Hans** (PM + marketing + technisch eindoordeel). |
@@ -148,20 +148,16 @@ In de laatste 30 dagen is het verkeer **klein maar meetbaar** (~13 sessies in de
 | **Vraag 3 — Max. posts met weer-hook** | **1 per week** *(ingave “Vraag E” geïnterpreteerd als één; bij 0 of 2 bedoeld: document aanpassen)*. |
 | **Vraag 4 — Pilotduur** | **4 weken** handmatig (geen automatisering vóór evaluatie). |
 | **Vraag 5 — °C uit weerbericht** | **Ja**, mits de post niet impliceert dat elke woning exact zo wordt. |
-| **Vraag 1 — Koel-story** | **Open** — kies **A, B of C** in chat; daarna hier invullen. |
+| **Vraag 1 — Koel-story** | **A** — koelen in algemene marketing alleen als **mogelijkheid bij geschikte installatie** (typisch WP + regeling); doorverwijzen naar FAQ/diensten; geen “wij koelen je huis”-claim. |
 | **Review** | **Hans** (solo). |
 
-**Vraag 1 (herformuleerd, na research) — kies één optie**
+**Vraag 1 (herformuleerd, na research) — keuze**
 
-Welke uitspraak mag **algemene** marketing (site-teaser + social) doen **vóór** project-specifieke intake?
-
-- **A)** Koelen alleen als **mogelijkheid bij geschikte installatie** (typisch met **omkeerbare warmtepomp** + regeling); verwijzen naar FAQ/diensten — geen “wij koelen je huis”-claim.  
-- **B)** Vloerverwarming kan **ook koel dragen** (“twee richtingen”), **mits** elke post minstens **één zin** over **dauwpunt/regeling/ontwerp door specialist** heeft.  
-- **C)** **Eerst** vaste **FAQ-/siteparagraaf** over koelen+voorwaarden **live**, daarna pas weer-accenten met koel-hook.
+**Gekozen: A.** Algemene marketing (site-teaser + social) benoemt koelen alleen als **mogelijkheid bij geschikte installatie** (typisch **omkeerbare warmtepomp** + regeling), met **doorverwijzing** naar FAQ/diensten — geen brede “wij koelen je huis”-claim.
 
 **Checklist**
 
-- [ ] **Koel-story:** A / B / C *(afvinken na keuze)*.  
+- [x] **Koel-story:** **A** (8 mei 2026).  
 - [x] **Pilot:** 4 weken — *start/eind in sprint of kalender invullen*.  
 - [x] **Site:** teaser **B**.  
 - [x] **Social:** max. **1** weer-hook-post/week.  
