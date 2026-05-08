@@ -1,121 +1,71 @@
-# Marketing Research Rapport — 6 mei 2026
+# Marketing Research Rapport — 8 mei 2026
 
-**Update 8 mei 2026 (cyclus 4):** Verse GA4-fetch (14:21). **Paid Search 12 sessies / 0 conv.** Landings: **diensten** en **over-ons** ~0,78 bounce; **contact** 0,86; **systemen** en **projecten** 1,0 bij kleine n. Aanbeveling: **SERP-teksten** aanscherpen op Zuidlaren + drie contactpaden (incl. terugbel) en **systemen/projecten** dezelfde terugbel-CTA als diensten/FAQ. Geen nieuwe URL’s.
-
-**Update 8 mei 2026 (cyclus 3 — volledige PM-ronde):** WebSearch (kort): markt blijft **renovatie/nieuwbouw + warmtepomp/lage temperatuur** als hoofdverhaal; content dat **traject, regio en richtbedrag** in één adem noemt blijft onderscheidend t.o.v. generieke installateursites. GA4-export nog 8 mei; technische fetch op agent-VM faalde zonder `google-analytics-data` — geen nieuwe JSON vandaag. **Prioriteit:** (1) live zetten prijs-CTA + juridische exits + projecten-soft-row; (2) **lichtgewicht terugbel-CTA** op diensten/FAQ naast prijs; (3) **snippet-SEO** op werkwijze/over-ons voor lokale intentie; (4) Paid Search RSA-sync na push. Geen nieuwe URL’s nodig.
-
-**Update 8 mei 2026 (cyclus 2):** Tweede `ga4_fetch` dezelfde dag; beeld gelijk aan cyclus 1. **Nieuwe site-aanpassingen in repo:** prijsindicatie krijgt extra **cta-band** boven de wizard; **disclaimer/privacy** krijgen **navigatie-exit** onder de hero; **projecten** krijgt **informatie-CTA** in hero-soft-row; **Google Ads defaults** headlines met focus op online richtbedrag. Paid Search blijft **11 sessies / 0 conv** — na live push RSA’s opnieuw deployen of `google_ads_add_rsa_variant.py` indien nog niet gedaan.
-
-**Update 8 mei 2026 (volledige PM-agentcyclus):** Nieuwe `ga4_report.json` (8 mei). **Paid Search (`google/cpc`): 11 sessies, 0 conversies** — hoogste prioriteit: final URL’s + RSA-landingspad gelijk trekken met `prijsindicatie.html` / `contact.html?modus=…#aanvraag` (zie `.cursor/skills/google-ads-marketing/SKILL.md`). **Diensten** als pagina bounce daalt (0,52), als **landing** nog zwak (0,79, 0 conv). **Systemen-producten** blijft korte sessies (~7 s) ondanks vroege tekst-CTA — voorstel: zelfde **knoppenstack** als andere pagina’s. Korte markt-context (WebSearch): zoekintentie blijft sterk gekoppeld aan *renovatie/nieuwbouw + plaats + installateur*; concurrentie op stadstermen blijft hoog — differentiatie via traject (ondervloer → oplevering) en lokaal adres blijft de boodschap.
-
-**Update 7 mei (Product Manager-ronde):** Geen nieuwe SERP-fetch; verse GA4-export 7 mei bevestigt dat **prijsindicatie** en **direct** het volume en de conversies dragen, dat **contact-landing** voorzichtig herstelt (3 conv op 7 sessies in huidige export), en dat **diensten-landing** + **korte werkwijze-sessies** de grootste on-site gaten blijven naast restverkeer naar verwijderde logo-URL. Marketing-aanbevelingen uit dit document blijven geldig; volgende research-deep-dive wanneer WebSearch/SC-export weer beschikbaar zijn.
-
-**Methode-noot (eerlijk):** WebSearch en WebFetch waren tijdens deze ronde niet beschikbaar; deze iteratie is een **synthese-update** op basis van de bestaande inventaris (sitemap, FAQ, drie stadspagina's, prijsindicatie-wizard), `analytics_report.md` (2 mei) en eerdere research-iteraties (april + 1 mei Zuidlaren-verdieping). Externe SERP-checks van vandaag staan dus niet in deze update — die staan op de openstaande lijst voor de eerstvolgende ronde wanneer WebSearch weer aan kan.
+**Bronnen:** `docs/website-manager/analytics_report.md` (fetch 8 mei 2026), `.cursor/skills/google-ads-marketing/SKILL.md`, korte SERP-check (WebSearch), repo-scripts voor Google Ads (read-only + `--dry-run` mutaties). Geen credentials of accountnummers in dit document.
 
 ## Samenvatting
 
-De grote bouwblokken staan: stadspagina's (Groningen, Assen, Zuidlaren), volwaardige FAQ, prijsindicatie-wizard live met sterk conversiepad, schuimbeton-anker op `diensten.html`. De grootste open kansen zitten **niet** in nieuwe pagina's, maar in **drie zwakke plekken in het verkeer dat er al is**: `systemen-producten.html` (~4,5 s gemiddelde tijd), de stadspagina's als landing (bounce 1,0), en de dunne `projecten.html`. Daarnaast blijft één off-site hefboom doorslaggevend voor lokaal converteren: Google Bedrijfsprofiel + reviews. Maximaal 5 voorstellen, gesorteerd op verwachte impact-per-uur.
+GA4 toont **sterke conversies via Direct** en vooral **homepage + prijsindicatie-wizard**; **Paid Search (`google/cpc`) blijft 12 sessies en 0 conversies** — dat wijst eerder op **meet- en landingsafstemming** dan op gebrek aan vraag. Week-op-week daalde het sessievolume sterk (**134 → 54**); dat vraagt een korte PM-hypothese (seizoen, campagne, meetruis). Lokaal blijft concurrentie op stadstermen hoog (ComfortFloors, Lemmers, InFloor, RM Vloeren, ReWo & De Jong, enz.); onderscheid blijft **traject, regio en transparant richtbedrag**.
 
-## Top zoekwoorden (huidige stand)
+## Top zoekwoorden (indicatief)
 
-| Zoekwoord | Volume (indicatie) | Concurrentie | Pagina | Status |
-|-----------|-------------------|--------------|--------|--------|
-| vloerverwarming Groningen | hoog | hoog | `vloerverwarming-groningen.html` | live, monitoren CTR |
-| vloerverwarming Assen | midden-hoog | midden-hoog | `vloerverwarming-assen.html` | live, monitoren CTR |
-| vloerverwarming Zuidlaren | midden | hoog | `vloerverwarming-zuidlaren.html` | live |
-| installateur Zuidlaren | midden | hoog (gidsen + CV-installateurs) | zelfde pagina, H2 inzetten | dekking ok — geen 2e URL |
-| vloerverwarming infrezen + plaats | midden | midden | H2 binnen stadspagina + FAQ-item | aanwezig, kan verdiepen |
-| schuimbeton vloerverwarming | laag-midden | laag | `diensten.html#schuimbeton` + FAQ | dekking ok, weinig diepgang |
-| vloerverwarming op houten vloer | midden | laag | FAQ-item | dekking ok |
-| wat kost vloerverwarming per m2 | hoog | hoog | `prijsindicatie.html` | dekking via wizard |
-| vloerverwarming + warmtepomp | midden | midden | FAQ + systemen | dekking ok |
+| Zoekwoord / cluster | Volume | Concurrentie | Pagina / actie |
+| ------------------- | ------ | ------------- | -------------- |
+| vloerverwarming + Groningen/Assen/Drenthe | hoog | hoog | bestaande stadspagina’s; snippets blijven bijschaven |
+| schuimbeton / ondervloer + vloerverwarming | midden | midden | `diensten.html`, FAQ, Ads-termen |
+| wat kost / € per m² / kosten | hoog | hoog | `prijsindicatie.html` + Ads-intentie (zie defaults JSON) |
+| installateur + regio | hoog | hoog (gidsen + CV-breed) | lokaal adres + werkwijze + GBP |
 
-**Nieuw t.o.v. eerdere rondes:** geen nieuwe long-tails geïdentificeerd zonder verse SERP-data. **Volgende stap voor research:** Search Console-export over 2–4 weken (FAQ + stadspagina's) om titel/description op echte impressies bij te schaven — geen gokwerk meer.
+## Google Ads — agentverificatie (deze omgeving)
 
-## Concurrentie — top 3 lokaal (synthese eerdere rondes)
+- **Smoke test** en **campagneoverzicht (read-only):** API bereikbaar; er draait een **ENABLED Search-campagne** (naam begint met `VLW-API-`).
+- **`google_ads_create_search_campaign.py --dry-run`:** gelukt na bijstelling RSA-headlines (max. 15); defaults-JSON is syntactisch geldig voor toekomstige API-aanmaak.
+- **`google_ads_add_rsa_variant.py --dry-run`:** validatie **OK** voor tweede RSA op de bestaande Search-campagne — **`--apply` alleen na expliciete goedkeuring** in chat (geen spend-go-live nodig voor alleen creatie).
+- **`scripts/data/google_ads_lead_campaign_defaults.json`:** uitgebreid met **phrase**-keywords *vloerverwarming kosten* en *prijs vloerverwarming* en headlines gericht op **richtbedrag online** en **werkgebied Zuid-Laren** (bestaande live campagne synchroniseert dit **niet automatisch**; Developer/Marketing: keywords en RSA’s in Ads alsnog alignen of nieuwe mutatie-ronde plannen).
 
-1. **ComfortFloors (Hoogeveen)** — brede `gemeente`-template, sterke merkbekendheid, dunne lokale inhoud. **VLWarmte tegenhanger:** vestiging Zuidlaren (echt adres) + traject-verhaal + prijsindicatie.
-2. **Lemmers Vloerverwarming** — sterk op renovatie/frezen, `Tynaarlo` benoemd; telefoonnummer 0318 (Apeldoorn) ondergraaft "lokaal". **VLWarmte tegenhanger:** lokaal nummer en adres expliciet, niet alleen op contactpagina maar in hero/CTA-band waar de bezoeker landt.
-3. **Drentse Vloerverwarming Specialist (Klazienaveen) / Kentech (Groningen-Assen)** — gemeentepagina's resp. installatiebedrijf met vloerverwarming als bijproduct. **VLWarmte tegenhanger:** specialist (alleen vloerverwarming) i.p.v. alleskunner.
+## Prijscalculator — kort (site al voorzien)
 
-### Concurrentie — URL’s: “systemen / producten”-achtige pagina’s (handmatige snapshot)
+De site heeft al een **prijsindicatie-wizard** met sterk conversiepad in GA4. **Conclusie:** geen aparte “nieuwe calculator” bouwen; wel **meting en copy** blijven verfijnen (zie voorstellen). Juridisch: blijft vrijblijvende indicatie communiceren zoals nu in wizard en disclaimer.
 
-Live homepage + diepte-URL’s gecontroleerd (curl / fetch). Geen volledige SERP-audit; wel bruikbaar voor IA-vergelijk met `https://www.vlwarmte.nl/systemen-producten.html`.
+## Concurrentie (kort)
 
-| Bedrijf | Plek in site (geen exacte menustructuur vastgelegd) | URL’s waar “wat leveren we / welke methode” staat | Korte inhoud | Vergelijkbaar met VLW **Systemen**-pagina? |
-|--------|-----------------------------------------------------|---------------------------------------------------|--------------|-------------------------------------------|
-| **ComfortFloors** (Hoogeveen) | Thema **Vloerverwarming** + **Vloersoorten** + **Materialen** | [Vloerverwarming](https://www.comfortfloors.nl/vloerverwarming); vloertype-routes o.a. [betonvloer](https://www.comfortfloors.nl/vloersoorten/betonvloer), [houten constructievloer](https://www.comfortfloors.nl/vloersoorten/houten-constructievloer), [zandcement](https://www.comfortfloors.nl/vloersoorten/zandcementvloer); [materialen / kwaliteit](https://www.comfortfloors.nl/informatie/onze-materialen/) | Methodes per ondergrond, Robot/ALL-in, hybride warmtepomp, projecten | **Deels:** zelfde onderwerpen, maar **verspreid** over vloertype- en infopaden; geen enkele “systemen & producten”-brochurepagina als menupilaar. |
-| **Lemmers Vloerverwarming** | Geen apart systemen-item; **Werkwijze** + homepage + **gemeente-landingspagina’s** | [Werkwijze](https://www.lemmersvloerverwarming.nl/werkwijze/); voorbeeld landingspagina [Tynaarlo](https://www.lemmersvloerverwarming.nl/vloerverwarming-tynaarlo/) | Keuze infrezen vs binden op raster; voorbereiding, afwerking, verdeler | **Nee:** vergelijkbare **methodetekst**, vooral onder **Werkwijze** en in **lokale templates**, niet één overzicht. |
-| **Drentse Vloerverwarming Specialist** | **Diensten** + **Oplossingen** (+ ruimte/thema’s) | [Infrezen](https://www.drentsevloerverwarmingspecialist.nl/diensten/vloerverwarming-infrezen); [traditioneel leggen](https://www.drentsevloerverwarmingspecialist.nl/diensten/vloerverwarming-traditioneel-leggen); [watergedragen](https://www.drentsevloerverwarmingspecialist.nl/diensten/watergedragen-vloerverwarming); [natbouw-oplossing](https://www.drentsevloerverwarmingspecialist.nl/oplossingen/vloerverwarming-natbouw); [warmtepomp-oplossing](https://www.drentsevloerverwarmingspecialist.nl/oplossingen/vloerverwarming-warmtepomp) | Veel **smalle URL’s** per methode/situatie; sterke SEO-surface | **Deels:** inhoud overlapt, maar **gefragmenteerd**; homepage deelt het op in tegels i.p.v. één scanbare overzichtspagina. |
-| **Kentech** (Groningen–Assen) | **Duurzame verwarming** als brede dienst; vloer is één optie | [Duurzame verwarming (diensten)](https://kentechbv.nl/diensten/verwarming-vloer-wand-warmtepomp-groningen-assen/); [vloerverwarming aanleggen (comforttabel)](https://kentechbv.nl/vloerverwarming-aanleggen-groningen-assen/) | LTV, vloer + wand + warmtepomp; veel kruislinks naar ketel/radiator | **Nee:** **CV-installateur**-breedte; geen equivalent van een vloer-specialist-productoverzicht. |
-
-**Fabrikanten / webshops** (Uponor, Uniwarm, Warmup NL, Vloerverwarming Nederland, Vloerverwarming-Direct, enz.) hebben wél uitgebreide **product- en systeemnamen** (droogbouw/natbouw, tackersysteem, enz.) — ander model (verkoop/levering catalogus) dan regionale **monteur-sites**.
-
-## Content gaps — wat ontbreekt nog?
-
-Geen nieuwe **paginagaten** met hoge prioriteit. De resterende gaten zitten **binnen bestaande pagina's**:
-
-- `systemen-producten.html` mist een **vroege CTA** (eerste schermhoogte) — enige pagina in de top met gem. tijd ~4,5 s.
-- `projecten.html` mist **echte cases met plaatsnaam + foto** — versterkt zowel SEO (lokaal signaal) als vertrouwen.
-- Stadspagina's missen **één expliciete tweede stap** onder de hero (FAQ-link of belknop) — landing-bounce 1,0.
-- Off-site: **Google Bedrijfsprofiel** + reviewstroom blijft het zwaarste lokale-SEO-signaal dat nog niet structureel geregeld is.
-
-Bewust **niet** aanmaken (zoals eerder besloten): aparte `kosten.html`, aparte `vloerverwarming-infrezen.html`, dunne dorpspagina's (Roden/Leek/Veendam etc.), aparte aannemerspagina.
-
-## Aanbevelingen voor Product Manager (max 5)
-
-### 1. Vroege CTA op `systemen-producten.html` — Prioriteit: Hoog
-
-- **Type:** Content/UX update bestaande pagina.
-- **Onderbouwing:** GA4 toont 12 sessies met gem. ~4,5 s — typisch scan-en-weg. De pagina heeft inhoudelijk wel gewicht (garantie, schema), maar de bezoeker ziet geen volgende stap zonder te scrollen.
-- **Actie:** Direct onder hero een compact CTA-blok met twee paden — `prijsindicatie.html` (richtbedrag) en `faq.html` (snelle antwoorden). Pak hetzelfde patroon als onderaan, gewoon naar boven kopiëren.
-- **Effort:** ~30 min.
-- **Verwacht effect:** halveren bounce/exit op deze pagina, meer `wizard_start`-events vanuit systemen.
-
-### 2. Stadspagina's — tweede stap expliciet maken — Prioriteit: Hoog
-
-- **Type:** Content update op `vloerverwarming-groningen.html`, `vloerverwarming-assen.html`, `vloerverwarming-zuidlaren.html`.
-- **Onderbouwing:** Bounce 1,0 als landing op Groningen/Assen in entry-tabel. Hero-CTA lijkt onvoldoende zichtbaar of te zwaar (offerte vs. lichter informatieverzoek).
-- **Actie:** Onder hero-CTA één regel met **twee lichtere paden**: link naar FAQ (infrezen, warmtepomp, kosten) en directe belknop met `tel:` — afgestemd op contact-deeplink (`?modus=informatie#aanvraag` of `?modus=bel#aanvraag`) zodat het formulier direct in de juiste modus opent.
-- **Effort:** ~1 uur (3 pagina's, 1 patch).
-- **Verwacht effect:** tweede-hit-rate omhoog op stadspagina's; betere data om titel/description in Search Console op te schaven.
-
-### 3. `projecten.html` — twee echte cases met plaatsnaam + foto — Prioriteit: Hoog
-
-- **Type:** Content update + 1 zin akkoord van klant.
-- **Onderbouwing:** Pagina is dun, gem. tijd ~0,9 s als landing en bounce 0,86. Tegelijk is dit **het sterkste lokale-SEO-signaal** dat de site nog kan toevoegen zonder nieuwe URL's: project + plaats in body-copy + alt-text op foto's.
-- **Actie:** Twee opgeleverde projecten omzetten naar case-blokken — m², ondergrond, gekozen systeem, plaats. Foto met beschrijvende `alt`. Klanttoestemming: 1 zin per mail volstaat (geen formulier nodig).
-- **Effort:** 2–3 uur, exclusief klant-akkoord.
-- **Verwacht effect:** vermindert "doorways"-gevoel van stadspagina's (echte content op `projecten.html`); maakt social posts inhoudelijk sterker (dezelfde foto + caption).
-
-### 4. Prijsindicatie — tracking-event op afgeronde berekening — Prioriteit: Midden
-
-- **Type:** JS-mini-uitbreiding op `prijsindicatie.html`.
-- **Onderbouwing:** Wizard heeft sterk conversiepad (~292 s gem. tijd, bounce 0,33), maar zonder `gtag('event', 'calculator_complete', …)` op het moment van eindberekening is drop-off per stap niet zichtbaar in GA4. We kunnen wel zien dat het werkt, niet **waar het beter kan**.
-- **Actie:** Eén regel `gtag(...)` bij de berekenfunctie + bestaande `wizard_start` blijft. Daarna 2–4 weken meten voor uitspraken.
-- **Effort:** ~30 min dev, 0 contentwerk.
-- **Verwacht effect:** verschuift de prijsindicatie-discussie van "goed gevoel" naar gemeten funnel — voorwaarde voor latere micro-optimalisaties (mini-proof, exit-redder, slider-UX).
-
-### 5. Google Bedrijfsprofiel + reviewstroom inrichten — Prioriteit: Midden (off-site, eigenaar)
-
-- **Type:** Off-site, geen code.
-- **Onderbouwing:** Voor zoekopdrachten als "vloerverwarming installateur Groningen" zit Maps/local pack vrijwel altijd **boven** organische resultaten. Dit is voor de doelgroep (vergelijken, lokaal willen) een groter signaal dan een extra landingspagina. Blijft de enige aanbeveling die niet op de site zelf landt — bewust hier laten staan tot het écht gepakt is.
-- **Actie:** GBP-profiel checken/aanvullen (categorieën, foto's, openingstijden, KVK-nummer, link naar `vloerverwarming-zuidlaren.html`). Standaardmail na oplevering: 1 zin met directe reviewlink. Doel: 10 reviews binnen 3 maanden.
-- **Effort:** ~1 uur setup, daarna 5 min per oplevering.
-- **Verwacht effect:** lokale rank-bump zonder dat er een regel code aan te pas komt; ondersteunt **alle** stadspagina's tegelijk.
+Regionale en landelijke spelers combineren **stadspagina’s**, **snelle montagebeloftes** en **gratis offerte**. VLWarmte blijft differentiëren met **compleet traject** (ondervloer, schuimbeton, installatie, dekvloer), **echt Noord-Nederlands werkgebied** en **online richtbedrag vóór offerte**.
 
 ---
 
-## Bewust niet deze ronde
+## Aanbevelingen voor Product Manager (6)
 
-- Geen nieuwe stads- of dorpspagina's — `vloerverwarming-zuidlaren.html` is live (1 mei-iteratie), volgende uitbreiding pas als Search Console-data daar aanleiding toe geeft.
-- Geen tweede "alleen-installateur"-URL voor Zuidlaren — risico op dunne dubbelcontent, beslist in 1 mei-rapport.
-- Geen herbouw prijsindicatie-wizard — die werkt; alleen meten toevoegen.
-- Geen extra hashtags-experiment in social-research — sociale richtlijn (FB 0–3, IG 5–10, LI 3–5) staat in de agent-omschrijving en is voor concept-posts leidend, niet voor research.
+1. **Prioriteit Hoog — GA4 ↔ Google Ads + conversies**  
+   - **Type:** Analytics / Ads-config (geen site-code vereist, wel admin).  
+   - **Onderbouwing:** Paid Search met **0 conversies** terwijl Direct wél converteert → typisch **koppeling, auto-tagging of primary/secondary conversions** niet op één lijn.  
+   - **Actie:** Skill §A doorlopen (property link, auto-tagging `gclid`,zelfde events als site: o.a. formulier- en wizard-events). Daarna 2–4 weken opnieuw `analytics_report.md` genereren.
 
-## Volgende ronde — research backlog (wanneer WebSearch weer kan)
+2. **Prioriteit Hoog — Paid landings = wizard of offerte-deeplink**  
+   - **Type:** Ads + landings/copy.  
+   - **Onderbouwing:** Beste conversielandings zijn **`/`** en **`/prijsindicatie.html`**; contact als landing heeft hoge bounce.  
+   - **Actie:** RSA’s en sitelinks laten verwijzen naar **`prijsindicatie.html`** en **`contact.html?modus=offerte#aanvraag`** (niet generiek contact zonder modus). Defaults JSON in repo is hierop al afgestemd; live campagne-inhoud expliciet vergelijken.
 
-1. SERP-check op "vloerverwarming Groningen", "infrezen Drenthe", "schuimbeton vloerverwarming Noord-Nederland" — actuele top 5 per query.
-2. Search Console: queries op `/faq.html` en de drie stadspagina's na 2–4 weken (impressies + CTR).
-3. ComfortFloors / Lemmers / DVS opnieuw bekijken — copy- of CTA-veranderingen sinds april?
-4. Eventueel: vergelijkende prijspaginas in de markt (€/m²-bandbreedtes) — consistent houden met onze wizard-uitkomsten.
+3. **Prioriteit Hoog — Week-op-week sessiedaling onderzoeken**  
+   - **Type:** PM / data (eventueel Search Console + Ads-impressieszelfde week).  
+   - **Onderbouwing:** **134 → 54** sessies in opeenvolgende 7-dagenblokken.  
+   - **Actie:** Eén hypothesetabel (seizoen, budget/pauze, indexering, meetgap); één correctieve actie op backlog.
+
+4. **Prioriteit Midden — Tweede RSA (`add_rsa_variant`) toepassen**  
+   - **Type:** Ads-creatie (API `--apply` na chat-goedkeuring).  
+   - **Onderbouwing:** Dry-run succesvol; tweede RSA verbetert vaak **Ad strength** en headline-variatie voor dezelfde keywords.  
+   - **Actie:** Na PM-go: `google_ads_add_rsa_variant.py --apply` met `extra_rsa` uit defaults JSON (geen `--go-live` nodig tenzij campagne gepauzeerd was).
+
+5. **Prioriteit Midden — Hoge-bounce landings (`diensten`, `over-ons`, `systemen`, `projecten`)**  
+   - **Type:** Content / CTA (Developer-sprint, reeds deels ingepland).  
+   - **Onderbouwing:** Analytics toont bounce **0,79–1,0** op meerdere instappagina’s met laag volume.  
+   - **Actie:** Vroege **terugbel / prijsindicatie**-CTA’s en interne links vanaf homepage; sprint SEO snippets + formulier boven adres op contact waar van toepassing.
+
+6. **Prioriteit Laag — Restverkeer `logo-varianten.html` + GBP**  
+   - **Type:** Redirect/opschonen + off-site.  
+   - **Onderbouwing:** Nog sessies op verwijderde/verwarde route; **Google Bedrijfsprofiel** blijft zwaar lokaal signaal naast organische pagina’s.  
+   - **Actie:** 301 naar home of FAQ; GBP foto’s, categorie en reviewstroom (eigenaar).
+
+---
+
+## Hashtags (social)
+
+Zie playbook in `.claude/commands/marketing-research-agent.md`: Facebook 0–3 optioneel, Instagram 5–10 relevant, LinkedIn 3–5 vak/regio — spaarzaam, geen trend-spam.

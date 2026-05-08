@@ -36,6 +36,14 @@
     {
       "text": "vloerverwarming renovatie",
       "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming kosten",
+      "match": "PHRASE"
+    },
+    {
+      "text": "prijs vloerverwarming",
+      "match": "PHRASE"
     }
   ],
   "headlines": [
@@ -46,14 +54,13 @@
     "Installateur Noord-NL",
     "Plan vrijblijvend gesprek",
     "Lokaal geïnstalleerd",
-    "Kwaliteit boven prijs",
     "Traject tot dekvloer",
-    "Meer wooncomfort",
     "Watergedragen vloerverwarming",
     "Dekvloer & chape meedenken",
     "Online prijsindicatie",
     "Richtbedrag in minuten",
-    "Eerst prijs dan offerte"
+    "Eerst richtbedrag online",
+    "Werkgebied rond Zuid-Laren"
   ],
   "descriptions": [
     "Vloerverwarming, schuimbeton en afwerking — vakmanschap rondom Zuid-Laren en Noord-Nederland.",
