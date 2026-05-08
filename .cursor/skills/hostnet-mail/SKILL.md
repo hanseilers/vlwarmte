@@ -127,7 +127,7 @@ Formspree kan IP’s throttlen; bij falen Formspree-dashboard en workflow opnieu
 
 **Script:** `scripts/inbox_auto_thankyou.py` — behandelt **Formspree-notificaties als website-klantmail**: zoekt **ongelezen** berichten in `INBOX`, `INBOX/Leads`, `INBOX/Overig`, herkent o.a. contact- vs. **prijsindicatie**-submissions (velden als `productkeuze`, `soort_aanvraag`), sluit **account-/verificatiemail** van Formspree uit, bouwt een **lopende NL-bedanktekst**, stuurt via hetzelfde template als `send-customer`, zet **`In-Reply-To`** en markeert **gelezen**.
 
-- Slaat berichten over met **`VLW-E2E-`** in de inhoud (deploy-test).
+- Slaat berichten over met **`VLW-E2E-`** in de inhoud (deploy-test), tenzij **`--include-e2e`** of **`INCLUDE_E2E_THANKYOU=1`** — handig voor end-to-end inclusief bedankmail.
 - Start altijd met **`--dry-run`**.
 
 ```bash

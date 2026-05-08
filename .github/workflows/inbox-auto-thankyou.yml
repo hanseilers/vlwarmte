@@ -2,6 +2,12 @@ name: Inbox auto thank-you (manual)
 
 on:
   workflow_dispatch:
+    inputs:
+      include_e2e:
+        description: "Ook bedankmail voor VLW-E2E-testsubmissions (Formspree E2E)"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -22,4 +28,8 @@ jobs:
           IMAP_USER: ${{ secrets.IMAP_USER }}
           IMAP_PASSWORD: ${{ secrets.IMAP_PASSWORD }}
           MAIL_FROM: ${{ secrets.MAIL_FROM }}
-        run: python scripts/inbox_auto_thankyou.py --max 5
+        run: |
+          set -e
+          EXTRA=""
+          if [ "${{ inputs.include_e2e }}" = "true" ]; then EXTRA="--include-e2e"; fi
+          python scripts/inbox_auto_thankyou.py --max 5 $EXTRA

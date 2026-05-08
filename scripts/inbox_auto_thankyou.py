@@ -8,11 +8,16 @@ calculator) en sturen een nette bedankmail naar het adres van de klant.
 Loads secrets/hostnet-mail.env (or env vars). Reuses send + HTML template from
 hostnet_imap_read.py via importlib.
 
-Skips messages whose body contains VLW-E2E- (deploy test). Does not use external LLM APIs.
+Standaard slaat het berichten over waar **VLW-E2E-** in staat (deploy-test); zet
+``--include-e2e`` of **INCLUDE_E2E_THANKYOU=1** om end-to-end ook een bedankmail
+te sturen op die testsubmissions. Does not use external LLM APIs.
 
 Usage:
   python scripts/inbox_auto_thankyou.py --dry-run --max 5
   python scripts/inbox_auto_thankyou.py --max 3
+  python scripts/inbox_auto_thankyou.py --include-e2e --max 3   # ook VLW-E2E-testsubmissions (E2E doorloop)
+
+Env (na load van hostnet-mail.env): INCLUDE_E2E_THANKYOU=1 zelfde effect als --include-e2e.
 """
 
 from __future__ import annotations
@@ -31,6 +36,12 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 _DEFAULT_ENV = REPO_ROOT / "secrets" / "hostnet-mail.env"
+
+
+def _truthy_env(val: str | None) -> bool:
+    if not val:
+        return False
+    return val.strip().lower() in ("1", "true", "yes", "on")
 
 
 def _load_hostnet():
@@ -229,11 +240,11 @@ def _is_formspree_transactional(msg: Message, body: str) -> bool:
     return False
 
 
-def _looks_like_submission(msg: Message, body: str) -> bool:
+def _looks_like_submission(msg: Message, body: str, *, include_e2e: bool = False) -> bool:
     """True = notificatie van een ingevuld formulier op vlwarmte.nl (via Formspree e.d.)."""
     subj = _decode(msg.get("Subject")).lower()
     blob = (body + "\n" + subj).lower()
-    if "vlw-e2e-" in blob:
+    if not include_e2e and "vlw-e2e-" in blob:
         return False
     if _is_formspree_transactional(msg, body):
         return False
@@ -453,11 +464,22 @@ def main() -> int:
         default="INBOX,INBOX/Leads,INBOX/Overig",
         help="Comma-separated IMAP folders to scan",
     )
+    ap.add_argument(
+        "--include-e2e",
+        action="store_true",
+        help="Ook bedankmail voor berichten met VLW-E2E- (Formspree deploy-/Playwright-test)",
+    )
     ap.add_argument("--dry-run", action="store_true")
     ns = ap.parse_args()
 
     him = _load_hostnet()
     him.load_env_file(ns.env_file)
+    include_e2e = bool(ns.include_e2e) or _truthy_env(os.environ.get("INCLUDE_E2E_THANKYOU"))
+    if include_e2e:
+        print(
+            "include-e2e: berichten met VLW-E2E- worden ook als lead behandeld (bedankmail).",
+            file=sys.stderr,
+        )
 
     subj_out = "Bedankt voor uw bericht — VLWarmte"
     pre = "We hebben uw aanvraag ontvangen en reageren zo snel mogelijk."
@@ -476,7 +498,7 @@ def main() -> int:
             for uid in _uid_search_unseen(conn):
                 msg = _fetch_full(conn, uid)
                 body = _extract_text_body(msg)
-                if not _looks_like_submission(msg, body):
+                if not _looks_like_submission(msg, body, include_e2e=include_e2e):
                     continue
                 fields = _submission_fields(body)
                 to_addr = _reply_to_address(msg, body)
