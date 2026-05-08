@@ -112,6 +112,8 @@ Werkgebied: Groningen, Assen, Drenthe en de kop van Friesland. Vragen? Tik even 
 
 **Parallel Instagram:** zie **Instagram post 2** (zelfde avond, ander tijdstip en andere caption) — zelfde bestand, andere crop.
 
+**Gepubliceerd op Facebook:** 2026-05-08 (Graph API `/{page-id}/photos`). Post: `https://www.facebook.com/1068733929659423/posts/122101775865296907/` *(controleer in ingelogde weergave; permalink kan per account iets verschillen).*
+
 ---
 
 ## Campagne notities
