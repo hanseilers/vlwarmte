@@ -158,7 +158,7 @@ In de laatste 30 dagen is het verkeer **klein maar meetbaar** (~13 sessies in de
 **Checklist**
 
 - [x] **Koel-story:** **A** (8 mei 2026).  
-- [x] **Pilot:** 4 weken — *start/eind in sprint of kalender invullen*.  
+- [x] **Pilot:** 4 weken — **start: 8 mei 2026**, **eind (evaluatie): 4 juni 2026** (28 dagen; vastgelegd in `sprint.md`).  
 - [x] **Site:** teaser **B**.  
 - [x] **Social:** max. **1** weer-hook-post/week.  
 - [x] **°C uit weerbericht:** toegestaan.  

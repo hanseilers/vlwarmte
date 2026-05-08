@@ -72,6 +72,13 @@
 
 ---
 
+## Pilot — weer-accent (workshop, `proposals.md` voorstel 10)
+
+**Start:** **8 mei 2026** (vandaag). **Eind (evaluatie):** **4 juni 2026** (vier weken, 28 dagen).  
+**Afspraken:** koel-story **A**; homepage-teaser **B** (handmatig per week); max. **1** post/week met weer-hook; **°C** uit openbaar weerbericht toegestaan. Volledige onderbouwing en checklist: `docs/website-manager/proposals.md`.
+
+---
+
 ## Context voor volgende sprint
 
 - Controleren of Paid Search conversies verschijnen na copy + live CTA’s.
