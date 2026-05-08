@@ -2,9 +2,11 @@
 
 **Afstemming:** Na sprint **11 mei** (contact/stadspagina’s/projecten + tracking) en PM-sprint **18 mei** (diensten/werkwijze vroege CTA’s, logo-URL redirect). Focus: **prijsindicatie**, **FAQ**, **werkwijze**, en **diensten** als anker — geen nieuwe productclaims.
 
-**Materiaal:** zelfde map `docs/website-manager/social/input/`; hergebruik `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg` waar geen nieuwe foto is.
+**Materiaal:** `docs/website-manager/social/input/` — o.a. `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`. **Update 8 mei:** nieuw beeldmateriaal uit `beeldmateriaal/` gekopieerd naar `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (pex op net, U-vorm; sterk “vakwerk”-signaal).
 
-**Verdeling:** 3× LinkedIn, 3× Instagram, 1× Facebook (optioneel). Hashtags: FB 0–3, IG 5–10, LI 3–5.
+**Marketing / Social-agent beslissing — Facebook-weekpost:** één vaste weekpost (hieronder onder **Facebook**), gebaseerd op het **nieuwste** bruikbare werkbeeld (mtime 8 mei). Reden: Facebook levert wel sessies maar **weinig conversies** in GA4; daarom **foto die vertrouwen opbouwt** + **CTA naar prijsindicatie** (beste converter) met zachte boodschap, geen harde verkoop.
+
+**Verdeling:** 3× LinkedIn, 3× Instagram, **1× Facebook (aanbevolen deze week)**. Hashtags: FB 0–3, IG 5–10, LI 3–5.
 
 ---
 
@@ -80,22 +82,32 @@
 
 ---
 
-## Facebook (optioneel)
+## Facebook — weekpost (aanbevolen)
 
-### Post — woensdag 21 mei, 12:00
+### Post — donderdag 22 mei 2026, 12:15
 
-**Foto:** `facebook-page-cover-vlwarmte-851x315.jpg` of werkfoto
+**Foto:** `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (bron: WhatsApp-export **2026-05-05** uit `beeldmateriaal/`, gekopieerd naar `social/input/`)
 
-**Caption:** Vanuit Zuidlaren: korte lijnen voor Groningen, Assen en Drenthe. Eerst helder wat er moet gebeuren, daarna pas de offerte na opname.
+**Caption:**
 
-**Hashtags:** `#vloerverwarming`
+Zo ligt het straks onder de dekvloer: netjes op het net, vaste afstand, geen slingerende slangen. Bij ons hoort dat erbij — anders wordt het nooit rustig in je vloer.
 
-**CTA:** https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag
+Wil je weten wat zo’n traject in jouw situatie **ongeveer** kost vóór we langskomen? Op vlwarmte.nl staat een korte prijsindicatie — vier stappen, geen account.
+
+Werkgebied: Groningen, Assen, Drenthe en de kop van Friesland. Vragen? Tik even een informatieverzoek aan via de site.
+
+**Hashtags:** `#vloerverwarming` `#Drenthe` (optioneel; mag ook zonder tags — FB haalt vooral uit tekst + link)
+
+**CTA-link (primair):** https://www.vlwarmte.nl/prijsindicatie.html  
+**Secundair (comment of tweede zin):** https://www.vlwarmte.nl/contact.html?modus=informatie#aanvraag
+
+**Rationale (kort):** nieuw beeld toont **kwaliteit van het leggen** i.p.v. alleen “werk onder de vloer”; koppeling aan **prijsindicatie** volgt GA4 (sterkste conversiepad). Geen offerte-dieplink in de hoofdlink om drempel op Facebook laag te houden; offerte volgt na warm lead.
 
 ---
 
 ## Campagne notities
 
 - **Contact deeplinks:** `?modus=informatie|offerte|bel` + `#aanvraag` voor juiste tab.
-- **FOTO NODIG:** twee slots; aanleveren in `social/input/` met duidelijke bestandsnaam.
+- **FOTO NODIG:** nog twee slots elders in deze week (LinkedIn/IG); aanvullen in `social/input/` indien mogelijk.
 - **Tone:** nuchter, geen superlatieven — zie `product-manager.md`.
+- **Beeldmateriaal-workflow:** nieuwe WhatsApp-foto’s eerst naar `beeldmateriaal/`, daarna door social/marketing naar `social/input/` met **herkenbare bestandsnaam** voor publicatie.
