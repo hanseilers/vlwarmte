@@ -115,12 +115,44 @@ In de laatste 30 dagen is het verkeer **klein maar meetbaar** (~13 sessies in de
 - **Onderbouwing:** Seizoensbeeld en hittegolven verhogen **zoek- en gespreksintentie** rond “te warm in huis”, warmtepomp + koelen, vloer als afgifte — kan helpen om **breder** te landen bij wie nu vooral aan “verwarmen” denkt. Past bij wekelijkse cadans: PM en Marketing Research kunnen dit **vast laten landen** in `weekly_calendar.md` + sprintcontext zonder zware herbouw.
 - **Technische voorwaarde (must):** Koelen met vloerverwarming gaat **niet** overal hetzelfde en niet zonder voorwaarden (o.a. **dauwpunt** / ontvochtiging, bron-koeling, regeling, ontwerp). Marketing en PM moeten copy **laten alignen met wat VLWarmte écht levert en adviseert** — geen brede belofte “wij koelen je huis” als dat niet klopt voor het merendeel van de trajecten.
 - **Actie (discussie → plan):**
-  1. **Workshop 30–45 min:** PM + Marketing + (Hans) — afbakening “waar mogen we over praten?” en voorbeelden van bestaande installaties.
+  1. **Workshop** — zie kop **Workshop — weer & koelaccent** hieronder (agenda + besluiten).
   2. **Vaste rubriek** in de wekelijkse cyclus: 5 regels in `sprint.md` of `research_report.md`: *weer deze week → gekozen accent → bewijs/CTA*.
   3. **Site:** basiscontent die **koelen + voorwaarden** al uitlegt (FAQ of `diensten.html`/`systemen-producten.html`); het “wekelijkse” deel is dan vooral **zichtbaarheid** (teaser, social, optioneel klein data-attribuut in HTML voor handmatige wissel — automatische weer-API op GitHub Pages is beperkt tenzij client-side fetch + fallback).
   4. **Social/Marketing:** 1 post per week die het accent **expliciet** koppelt aan het weerbeeld (“komende week richting X °C → tip over …”) zonder sensatie.
 - **Verwacht effect:** Meer **relevantie** in de feed, iets sterkere **intentie-match** in de copy, mogelijk extra sessies op FAQ/diensten — te meten in GA4 na 4–8 weken (kleine n: voorzichtig interpreteren).
 - **Risico’s:** Overclaimen, juridisch/technisch incorrecte koelbelofte, onderhoudslast van automatisering. **Mitigatie:** accent = **marketinglaag**, kernsite = **eeuwig waar**; automatisering pas na handmatige pilotweken.
+
+#### Workshop — weer & koelaccent
+
+| Veld | Invulling |
+|------|-----------|
+| **Status** | Gepland — **datum/tijd hier invullen** na afstemming |
+| **Duur** | **45 minuten** (harde stop op 45 om drift te voorkomen) |
+| **Doel** | Eén set **afspraken** waar PM en marketing zich aan kunnen houden: *waar* mogen we koelen/combineren benoemen, *hoe* formuleren we het veilig, *wat* is de wekelijkse “accent”-workflow zonder de kernsite te verliezen. |
+| **Deelnemers** | Product Manager (orkest), Marketing Research / Social-lijn, **Hans** (technische waarheid + wat jullie echt leveren). |
+
+**Voorbereiding (iedereen, max. 10 min eigen tijd)**
+
+- **Hans:** 2–3 bullets “koelen: wanneer wél / wanneer niet / typische beperkingen” + of er **foto’s of korte cases** zijn die we mogen tonen.
+- **Marketing:** 1 voorbeeld **warme week** + 1 **koude week** — welk accent zou je *nu* kiezen (headline-niveau, geen lange copy).
+- **PM:** Welke **CTA** blijft leidend (prijsindicatie vs. contact vs. FAQ) als we het accent verschuiven.
+
+**Agenda (live)**
+
+1. **5 min — Context:** waarom weer als haak; accent ≠ exclusieve boodschap.  
+2. **15 min — Technische waarheid (Hans):** grenzen koelen met vloerverwarming; standaardtraject vs. uitzonderingen; woorden die we **vermijden**.  
+3. **15 min — Marketing + PM:** 2–3 veilige **formules** (headline + 1 zin) voor “warm weer” en voor “koud weer”; welk kanaal eerst (site-teaser vs. alleen social).  
+4. **10 min — Workflow:** bron weer (KNMI weekoverzicht / app); waar vastleggen (`sprint.md` / `weekly_calendar`); pilot: **handmatig 2 weken** vóór automatisering.  
+
+**Besluiten om aan het eind expliciet ja/nee op te zeggen**
+
+- [ ] **Koel-story:** mogen we in marketing “koelen” noemen als **X** (definitie invullen in workshop).  
+- [ ] **Pilot:** startdatum + einddatum handmatige wekelijkse accenten.  
+- [ ] **Site:** geen wijziging / één vaste FAQ / klein herbruikbaar teaser-blok (kies één).  
+- [ ] **Social:** max. posts per week die naar weer verwijzen (richtlijn).  
+- [ ] **Review:** wie checkt elke week de copy vóór publicatie (naam).
+
+**Na de workshop:** PM zet de besluiten in **één** bestaand document (`sprint.md` *Context* of `research_report.md` kop *Workshop*) — geen losse drive zonder trace.
 
 ---
 
