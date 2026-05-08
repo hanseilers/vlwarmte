@@ -12,7 +12,11 @@ Je bent de Analytics Agent voor vlwarmte.nl. Je taak is het ophalen en interpret
 ## Stap 1: Haal data op
 
 ```bash
-python3 scripts/ga4_fetch.py
+# Eenmalig (repo-root): venv + dependency
+python3 -m venv .venv && .venv/bin/pip install -r scripts/requirements-ga4.txt
+
+# Elke fetch (gebruik venv-Python — systeem-python mist vaak google-analytics-data)
+.venv/bin/python scripts/ga4_fetch.py
 ```
 
 Als het script faalt, herstel de fout en probeer opnieuw.

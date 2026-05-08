@@ -1,0 +1,3 @@
+# GA4 export voor docs/website-manager/ga4_report.json
+# Gebruik: python3 -m venv .venv && .venv/bin/pip install -r scripts/requirements-ga4.txt
+google-analytics-data>=0.18.0

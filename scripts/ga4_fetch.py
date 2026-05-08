@@ -10,7 +10,8 @@ Credentials (eerste match wint):
   4. Legacy pad: iCloud Downloads (werkt vaak niet vanuit Terminal / sandbox)
 
 Python: gebruik een venv in de repo (PEP 668 blokkeert pip op systeem-Python):
-  python3 -m venv .venv && source .venv/bin/activate && pip install google-analytics-data
+  python3 -m venv .venv && .venv/bin/pip install -r scripts/requirements-ga4.txt
+  .venv/bin/python scripts/ga4_fetch.py
 """
 
 import json
