@@ -45,6 +45,27 @@ a {
   margin: 0 auto;
 }
 
+/* Subpagina’s: page-hero in eerste paint (padding sync met styles.css). */
+.page-hero {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  padding: 2rem 0 0.95rem;
+  isolation: isolate;
+  background: linear-gradient(180deg, #0f1724 0%, #101a2a 100%);
+}
+
+.page-hero>* {
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1081px) {
+  .page-hero {
+    padding: 3.4rem 0 1.4rem;
+  }
+}
+
 #aanvraag,
 #lead-form {
   scroll-margin-top: 5.5rem;
@@ -359,7 +380,7 @@ a {
   will-change: auto;
 }
 
-.hero > * {
+.hero>* {
   position: relative;
   z-index: 1;
 }
@@ -506,6 +527,15 @@ h2 {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .hero {
+    padding: 2.5rem 0 2rem;
+  }
+
+  .page-hero+.section,
+  .hero+.section {
+    padding-top: 1.75rem;
+  }
 }
 
 @media (max-width: 560px) {
@@ -537,11 +567,19 @@ h2 {
     font-size: 1.25rem;
   }
 
+  .hero {
+    padding: 2rem 0 1.65rem;
+  }
+
+  .page-hero {
+    padding: 1.65rem 0 0.85rem;
+  }
 }
 
 .section {
   padding: 4rem 0;
 }
+
 .section-muted {
   position: relative;
   z-index: 0;
@@ -549,6 +587,7 @@ h2 {
   background: var(--surface);
   isolation: isolate;
 }
+
 .section-head {
   max-width: 750px;
   margin-bottom: 1.6rem;
