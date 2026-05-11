@@ -3,8 +3,24 @@ document.addEventListener("DOMContentLoaded", () => {
   initFaq();
   initLeadForm();
   initFacebookOutboundGa();
+  initStickyCta();
   setYear();
 });
+
+function initStickyCta() {
+  const cta = document.querySelector("[data-sticky-cta]");
+  const band = document.querySelector(".cta-band");
+  if (!cta || !band || typeof IntersectionObserver === "undefined") return;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        cta.setAttribute("data-hide", entry.isIntersecting ? "true" : "false");
+      }
+    },
+    { rootMargin: "0px 0px -10% 0px", threshold: 0 }
+  );
+  observer.observe(band);
+}
 
 function initMobileNav() {
   const header = document.querySelector(".site-header");
@@ -122,6 +138,9 @@ function initLeadForm() {
       button.classList.toggle("is-active", button.dataset.leadMode === mode);
     });
     setSoortAanvraag();
+    document.body.classList.toggle("lead-mode-offerte", mode === "offerte");
+    document.body.classList.toggle("lead-mode-info", mode === "info");
+    document.body.classList.toggle("lead-mode-bel", mode === "bel");
 
     form.querySelectorAll("[data-only='offerte']").forEach((fieldWrap) => {
       const hidden = mode !== "offerte";

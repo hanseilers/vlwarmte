@@ -1,4 +1,12 @@
 {
+  "location_targeting": {
+    "comment": "Noord-Nederland: Drenthe, Groningen, Friesland (Google Ads geo target constants)",
+    "geo_target_constants": [
+      "geoTargetConstants/20759",
+      "geoTargetConstants/20763",
+      "geoTargetConstants/20761"
+    ]
+  },
   "ad_group_suffix": "Leads NL",
   "final_urls": [
     "https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag",
@@ -6,7 +14,15 @@
   ],
   "keywords": [
     {
-      "text": "vloerverwarming groningen",
+      "text": "vloerverwarming groningen installateur",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming friesland installateur",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming drenthe installateur",
       "match": "PHRASE"
     },
     {
@@ -14,27 +30,43 @@
       "match": "PHRASE"
     },
     {
-      "text": "vloerverwarming drenthe",
+      "text": "vloerverwarming leeuwarden",
       "match": "PHRASE"
     },
     {
-      "text": "vloerverwarming installateur",
+      "text": "vloerverwarming emmen",
       "match": "PHRASE"
     },
     {
-      "text": "schuimbeton vloerverwarming",
+      "text": "schuimbeton vloerverwarming drenthe",
       "match": "PHRASE"
     },
     {
-      "text": "ondervloer vloerverwarming",
+      "text": "schuimbeton vloerverwarming groningen",
       "match": "PHRASE"
     },
     {
-      "text": "vloerverwarming nieuwbouw",
+      "text": "ondervloer vloerverwarming kruipruimte",
       "match": "PHRASE"
     },
     {
-      "text": "vloerverwarming renovatie",
+      "text": "watergedragen vloerverwarming woning",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming nieuwbouw noord nederland",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming renovatie bestaande bouw",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming offerte groningen",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming offerte friesland",
       "match": "PHRASE"
     },
     {
@@ -43,6 +75,62 @@
     },
     {
       "text": "prijs vloerverwarming",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming kosten per m2",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming offerte",
+      "match": "PHRASE"
+    },
+    {
+      "text": "schuimbeton kosten",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming infrezen",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming infrezen kosten",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming bestaande vloer",
+      "match": "PHRASE"
+    },
+    {
+      "text": "kruipruimte isoleren schuimbeton",
+      "match": "PHRASE"
+    },
+    {
+      "text": "prijsindicatie vloerverwarming",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming aanleggen kosten",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming warmtepomp combinatie",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming hoogeveen",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming meppel",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming drachten",
+      "match": "PHRASE"
+    },
+    {
+      "text": "vloerverwarming heerenveen",
       "match": "PHRASE"
     }
   ],
@@ -58,20 +146,21 @@
     "Watergedragen vloerverwarming",
     "Dekvloer & chape meedenken",
     "Online prijsindicatie",
-    "Richtbedrag in minuten",
+    "Richtbedrag in 2 minuten",
     "Eerst richtbedrag online",
-    "Werkgebied rond Zuid-Laren"
+    "Werkgebied rond Zuid-Laren",
+    "Reactie binnen 1 werkdag"
   ],
   "descriptions": [
     "Vloerverwarming, schuimbeton en afwerking — vakmanschap rondom Zuid-Laren en Noord-Nederland.",
     "Vraag vrijblijvend een offerte of informatie aan; we denken mee over uw project.",
     "Heldere werkwijze en persoonlijk advies voor woningverbouwing en nieuwbouw.",
-    "Bel of vraag terugbel aan — ook prijsindicatie online mogelijk."
+    "Online richtbedrag in 2 minuten — daarna offerte op maat na opname."
   ],
   "path1": "offerte",
   "path2": "vloerverwarming",
   "extra_rsa": {
-    "comment": "Second RSA in same ad group — improves Ad strength / variety",
+    "comment": "Second RSA in same ad group — improves Ad strength / variety; kost/garantie-hoek",
     "headlines": [
       "Compleet vloerverwarming",
       "Van ondervloer tot afwerking",
@@ -80,11 +169,16 @@
       "Maatwerk voor uw woning",
       "Zuid-Laren uitgangspunt",
       "Referenties op aanvraag",
-      "Heldere planning traject"
+      "Heldere planning traject",
+      "Online richtbedrag",
+      "Vraag prijsindicatie aan",
+      "10 jaar garantie op buis",
+      "Geschikt voor warmtepomp"
     ],
     "descriptions": [
       "Wij combineren vloerverwarming met schuimbeton en dekvloer — één aanspreekpunt.",
-      "Vraag een offerte aan of start met de online prijsindicatie op vlwarmte.nl."
+      "Vraag een offerte aan of start met de online prijsindicatie op vlwarmte.nl.",
+      "Eerlijke bandbreedte in de prijsindicatie, daarna offerte op maat na opname."
     ]
   }
 }

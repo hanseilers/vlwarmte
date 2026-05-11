@@ -4,6 +4,62 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 25 mei 2026 (cyclus 7)
+**Deployment:** 11-05-2026 (PM: `git push origin main` — GitHub Pages)
+**Versie:** _wordt na push ingevuld_
+
+### Wat is er veranderd
+- **Home (`index.html`):** carry-over van cyclus 6 is nu live — strakker hero met eyebrow, één heldere kop, **trust-strip** ("10 jaar garantie op de buis · Groningen · Friesland · Drenthe · Reactie binnen 1 werkdag") en een **mobiele sticky-CTA** naar de offerte-flow. Geen wijzigingen aan GA4-tracking.
+- **Prijsindicatie (`prijsindicatie.html`):** onder de wizard staat nu ~340 woorden **leesbare uitleg** — wat een prijs per m² beïnvloedt, een nuchtere richtbandbreedte (€45-95/m², afhankelijk van situatie), regio-uitgangspunten en de expliciete disclaimer "indicatie ≠ offerte, geen verkoopgesprek". Wizard zelf is ongewijzigd.
+- **Contact (`contact.html`):** boven de tabs (informatie / offerte / bel) staat nu een compact **"Zo werkt het na insturen"-blok**: 3 stappen + reactietijd binnen 1 werkdag + wat de klant terugkrijgt. In de **offerte-modus** is de "Bel ..."-knop tot secundair gedegradeerd, zodat het formulier de duidelijke primaire actie is. Voor informatie- en bel-modi blijft de hiërarchie ongewijzigd.
+- **Projecten (`projecten.html`):** eerste viewport herschreven naar één concreet renovatieproject (Drenthe, opname tot oplevering in 8 werkdagen), één echte klantfoto, en twee duidelijke CTA's: prijsindicatie + "Plan een opname". De projectenlijst eronder is ongewijzigd.
+- **Meetruis dichten:** `disclaimer.html` en `privacy.html` krijgen `noindex,follow` (geen indexering meer). `logo-varianten.html` (cyclus 5 redirect-pagina) is geverifieerd — geen interne links meer.
+- **PM-docs:** verse GA4-analyse (cyclus 7), marketing-research rapport (incl. Google Ads keyword-uitbreiding voor infrezen, kruipruimte, prijsindicatie + extra Friesland/Drenthe-steden) en social weekplanning week 18-23 mei. Cyclus 6 sprint gearchiveerd.
+
+### Waarom
+- GA4 toont week-op-week een scherpe daling (171 → 72 sessies, -57,9%) en **0 conversies op 12 Paid Search sessies**. Dat laatste wijst op message-match + tracking-mismatch, niet op intent — vandaar de focus op kosten-content op `prijsindicatie.html` en één primaire actie op `contact.html?modus=offerte`.
+- `projecten.html` had 87,5% bounce en 0,83 sec gem. sessieduur — een lek dat bezoekers verloren laat gaan vóór ze scrollden. Een concreet voorbeeld + helder klikpad biedt direct vervolg.
+- `disclaimer.html`, `privacy.html` en `logo-varianten.html` werden samen 21 keer als landing geserveerd met 100% bounce — meetruis die de cijfers vertroebelt.
+- De carry-over hero refresh + sticky-CTA versterken de toegevoegde trust-strip: kerngebied, reactietijd en buisgarantie zonder te hoeven scrollen.
+
+### Verwacht effect
+- **Paid Search:** eerste meetbare conversies in `google / cpc` binnen 2-4 weken zodra de message-match staat (offerte- en kosten-landings beter afgestemd).
+- **Prijsindicatie:** lagere bounce voor organisch verkeer met "kosten per m²"-intent — Search Console laat binnen 2-4 weken nieuwe queries op dat cluster zien.
+- **Projecten:** bounce onder 70% (was 87,5%) en gem. sessieduur naar minimaal 20 sec.
+- **Meetruis:** sessies op `disclaimer.html` + `privacy.html` + `logo-varianten.html` als landing naar nul; schonere kanaaltoewijzing in GA4.
+
+### Social media deze week
+Week 18-23 mei: 3× LinkedIn (di/wo/do, 08:30-09:30) en 4× Instagram (wo/vr/za, 18:30-19:30). Captions versterken trust-signalen (werkgebied, 1 werkdag reactie, 10 jaar buisgarantie, één aanspreekpunt) en sturen intentgericht naar `prijsindicatie.html`, `?modus=offerte`, `?modus=informatie` of `?modus=bel`. Hoofdbeeld: nieuwe klantfoto `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`. Het tweede inputbeeld (oogt AI) is afgewezen — vragen om een echte vakman-aan-het-werk-foto.
+
+---
+
+## Release — week van 18 mei 2026 (cyclus 5)
+**Deployment:** 08-05-2026 16:28 (PM: `git push origin main` — GitHub Pages, run **25566957636**, succesvol)  
+**Versie:** `75977ba`
+
+### Wat is er veranderd
+- **`logo-varianten.html`:** vervangen door een minimale **doorverwijspagina** naar de homepage — `noindex,follow`, canonical naar `/`, meta-refresh, zichtbare link en `noscript`-fallback. GA4-meting blijft staan zodat we kunnen zien of het restverkeer daadwerkelijk daalt.
+- **`over-ons.html`:** **head SEO refresh** (title, meta, Open Graph, Twitter): Zuidlaren, werkgebied Drenthe / Groningen / Friesland, compleet traject (ondervloer, schuimbeton, installatie, dekvloer) bij **één partij**. H1 en body ongemoeid.
+- **`vloerverwarming-assen.html`:** vroege **CTA-band** met drie knoppen — **Prijsindicatie**, **FAQ**, **Terugbelverzoek** — direct na de hero. In de openingsalinea een nuchtere link naar `werkwijze.html`.
+- **Stadspagina-cluster (Assen, Groningen, Zuidlaren):** onderaan een sectie **"Ook actief in:"** met kruislinks naar de twee zusterstadspagina's. Geen aparte H1, gewoon een korte tekstuele verbinding.
+- **`index.html` en `diensten.html`:** secundaire tekstlinks **Bekijk onze systemen** en **Bekijk projecten** toegevoegd (geen wijziging aan hero of head); de bestaande prijsindicatie/contact-CTA's blijven dominant.
+- **PM-docs:** verse GA4-fetch (cyclus 5, 8 mei), marketing research-rapport (incl. Google Ads dry-run check), sprint cyclus 5 + social kalender week 11 mei. Archief van cyclus 4 toegevoegd.
+
+### Waarom
+- GA4 toont nog steeds **single-page bounces (1,0)** op stadspagina Assen, systemen, projecten en restverkeer op `/logo-varianten.html` (7 sessies); homepage en prijsindicatie blijven de echte conversiemotor (Direct dominant). Deze sprint richt zich op **opschonen van ruis** en **secundaire klikpaden** — geen grote nieuwe pagina's, wel duidelijkere routes naar de wizard, FAQ en terugbel.
+- Marketing-research bevestigt: **geen nieuwe calculator** nodig, en de Google Ads-defaults (RSA + keywords) blijven dry-run-only tot er expliciete spend-/mutatie-goedkeuring is.
+
+### Verwacht effect
+- Minder sessies op `/logo-varianten.html` richting 0; signaal of er nog externe links blijven aanvoeren.
+- Lagere single-page bounce op `/vloerverwarming-assen.html` en `/over-ons.html`; meer secundaire pageviews vanaf homepage en `/diensten.html` naar systemen/projecten.
+- Stadspagina-onderlinge links → meer kans op vervolgklik bij regio-mismatch.
+- Effecten in GA4 + Search Console pas zichtbaar na 2–4 weken.
+
+### Social media deze week
+Zie `docs/website-manager/social/weekly_calendar.md` (week van 11 mei 2026): 3× LinkedIn (di–do, 8–10u), 4× Instagram (wo/do avond + vr/za), met thema's prijsindicatie, werkwijze, FAQ en terugbel — geen paniek-copy over sessievolume, wel duidelijke vervolgstap.
+
+---
+
 ## Release — week van 16 juni 2026
 **Deployment:** 08-05-2026 (PM: `git push origin main` — GitHub Pages, run **25555351102**, succesvol)  
 **Versie:** `ff6c9b9`

@@ -5,7 +5,9 @@ Create a **lead-ready Search campaign** in one or two API steps — no Google Ad
 Creates (single GoogleAdsService.mutate, grouped by resource type):
   - Daily budget
   - Search campaign (PAUSED by default so nothing serves until you choose)
-  - Netherlands geo
+  - Location targeting from `location_targeting.geo_target_constants` in defaults
+    (default: three northern provinces — Drenthe, Groningen, Friesland); falls back
+    to Netherlands-wide if that key is missing or empty
   - One ad group (SEARCH_STANDARD) with default CPC bid
   - Phrase keywords (from JSON)
   - One responsive search ad (RSA) with final URLs from JSON
@@ -45,7 +47,7 @@ from google_ads_common import (  # noqa: E402
 )
 
 _DATA_FILE = _SCRIPTS_DIR / "data" / "google_ads_lead_campaign_defaults.json"
-_GEO_TARGET_NETHERLANDS = "geoTargetConstants/2528"
+_GEO_TARGET_NETHERLANDS = "geoTargetConstants/2528"  # fallback if JSON has no locations
 # Temporary negative IDs (must be unique within one mutate request)
 _BUDGET_TEMP = "-1"
 _CAMPAIGN_TEMP = "-2"
@@ -70,6 +72,15 @@ def _load_defaults() -> dict:
     if not _DATA_FILE.is_file():
         raise FileNotFoundError(f"Missing defaults file: {_DATA_FILE}")
     return json.loads(_DATA_FILE.read_text(encoding="utf-8"))
+
+
+def _geo_targets_from_defaults(defaults: dict) -> list[str]:
+    loc = defaults.get("location_targeting") or {}
+    raw = loc.get("geo_target_constants")
+    if not raw or not isinstance(raw, list):
+        return [_GEO_TARGET_NETHERLANDS]
+    out = [str(g).strip() for g in raw if str(g).strip()]
+    return out or [_GEO_TARGET_NETHERLANDS]
 
 
 def _match_type_enum(client, name: str):
@@ -115,10 +126,14 @@ def _build_full_mutate_operations(
         client.enums.EuPoliticalAdvertisingStatusEnum.DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING
     )
 
-    mo_geo = client.get_type("MutateOperation")
-    geo_create = mo_geo.campaign_criterion_operation.create
-    geo_create.campaign = c_create.resource_name
-    geo_create.location.geo_target_constant = _GEO_TARGET_NETHERLANDS
+    geo_targets = _geo_targets_from_defaults(defaults)
+    geo_ops: list = []
+    for geo in geo_targets:
+        mo_geo = client.get_type("MutateOperation")
+        geo_create = mo_geo.campaign_criterion_operation.create
+        geo_create.campaign = c_create.resource_name
+        geo_create.location.geo_target_constant = geo
+        geo_ops.append(mo_geo)
 
     mo_ag = client.get_type("MutateOperation")
     ag_create = mo_ag.ad_group_operation.create
@@ -129,7 +144,7 @@ def _build_full_mutate_operations(
     ag_create.status = client.enums.AdGroupStatusEnum.ENABLED
     ag_create.cpc_bid_micros = ad_group_cpc_micros
 
-    ops: list = [mo_budget, mo_c, mo_geo, mo_ag]
+    ops: list = [mo_budget, mo_c, *geo_ops, mo_ag]
 
     kw_temp_id = -4
     for row in defaults.get("keywords", []):
@@ -301,6 +316,7 @@ def main() -> int:
     print("Daily budget (EUR):", args.daily_budget_eur)
     print("Ad group default CPC (EUR):", args.ad_group_cpc_eur)
     print("Defaults file:", args.defaults_json)
+    print("Location targets:", ", ".join(_geo_targets_from_defaults(defaults)))
     if args.go_live and args.apply:
         print("--go-live: campaign will be set to ENABLED after create.")
 

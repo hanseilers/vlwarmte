@@ -30,6 +30,14 @@ description: >-
 4. **MCC / API Center:** developer token comes from a **manager account** API Center when required; client accounts still hold campaigns and conversions.
 5. **No PO busywork:** when `secrets/google-ads.env` exists in the workspace, agents run read/write scripts themselves; only escalate to humans for missing credentials on that machine, billing, policy blocks, or **explicit spend approval** — not for “please run this command and paste output”.
 
+## Creative asset policy (VLWarmte)
+
+1. **No AI-generated campaign images:** for Ads creatives, use only real VLWarmte imagery from `beeldmateriaal/` (or approved derivatives from those files).
+2. **Allowed edits:** crop, resize, brightness/contrast, white balance, and minor color correction are allowed when needed for readability and platform specs.
+3. **Not allowed:** generated scenes, synthetic people/interiors, or mixed composites that can appear fabricated.
+4. **Search vs image campaigns:** Search campaigns in this repo are text-first (RSA) and may not consume image assets. For image-led channels (e.g. PMax asset groups), source image files from `beeldmateriaal/`.
+5. **Change logging:** when launching or updating image-based campaigns, list the exact source filenames in the PM/marketing report for traceability.
+
 ---
 
 ## A. Google Analytics 4 ↔ Google Ads (do this before scaling spend)
@@ -49,7 +57,7 @@ description: >-
 
 ## B.1 Automated lead campaign (preferred when repo + secrets are available)
 
-1. Tune copy/URLs/keywords in **`scripts/data/google_ads_lead_campaign_defaults.json`** (committed; PR-style edits).
+1. Tune copy/URLs/keywords in **`scripts/data/google_ads_lead_campaign_defaults.json`** (committed; PR-style edits). Optional **`location_targeting.geo_target_constants`** narrows geo for **new** campaigns from this file (defaults: Drenthe, Groningen, Friesland); omit or leave empty to fall back to Netherlands-wide.
 2. Ensure `GOOGLE_ADS_CUSTOMER_ID` is set in `secrets/google-ads.env`.
 3. Agent runs: `python scripts/google_ads_create_search_campaign.py --dry-run --daily-budget-eur <N> --campaign-name "<label>"`.
 4. After validation, same command with **`--apply`**. Campaign stays **PAUSED** unless **`--go-live`** is used.
@@ -105,7 +113,9 @@ Use this structure for **Search** campaigns unless strategy dictates otherwise.
 | `python scripts/google_ads_campaign_next_steps.py` | **`negatives`** — add campaign negatives from `scripts/data/google_ads_campaign_negatives.json`. **`enable`** — set campaign **ENABLED** (spend can start). Use `--dry-run` / `--apply`; needs `--campaign-id` (from `list_campaigns`). |
 | `python scripts/google_ads_list_campaigns.py` | Read-only campaign list: **id**, **advertising channel type** (e.g. `SEARCH`, `PERFORMANCE_MAX`), status, name. |
 | `python scripts/google_ads_get_refresh_token.py` | OAuth path only if not using service-account JSON. |
-| `python scripts/google_ads_create_search_campaign.py` | **Full lead Search setup in one mutate:** budget + **PAUSED** campaign + NL geo + **ad group** + **phrase keywords** + **RSA** (URLs/copy from `scripts/data/google_ads_lead_campaign_defaults.json`). Flow: **`--dry-run`** then **`--apply`**. Optional **`--go-live`** after apply sets campaign **ENABLED** (spend can start — use a low `--daily-budget-eur` at first). Hard cap `--max-daily-budget-eur` (default 100). Name prefix `VLW-API-`. **No Ads UI required** for this skeleton. |
+| `python scripts/google_ads_create_search_campaign.py` | **Full lead Search setup in one mutate:** budget + **PAUSED** campaign + geo from **`location_targeting`** in defaults (else NL) + **ad group** + **phrase keywords** + **RSA**. Flow: **`--dry-run`** then **`--apply`**. Optional **`--go-live`** after apply sets campaign **ENABLED** (spend can start — use a low `--daily-budget-eur` at first). Hard cap `--max-daily-budget-eur` (default 100). Name prefix `VLW-API-`. |
+| `python scripts/google_ads_update_campaign_geo.py` | Replace **positive LOCATION** criteria on an existing campaign with the geo list from defaults (`--campaign-id`; **`--dry-run`** / **`--apply`**). |
+| `python scripts/google_ads_add_keywords_from_defaults.py` | Add **missing** positive keywords from defaults to the **first ad group** of a campaign (`--campaign-id`; does not remove old keywords). **`--dry-run`** / **`--apply`**. |
 | `python scripts/google_ads_add_rsa_variant.py` | Adds a **second responsive search ad** to the **first ad group** of an existing Search campaign (`--campaign-id`). Copy from **`extra_rsa`** in `google_ads_lead_campaign_defaults.json`. **`--dry-run`** / **`--apply`**. Not for Performance Max asset groups. |
 
 For **new** read-only GAQL (search terms, impression share, conversion by campaign), add small scripts under `scripts/` following `google_ads_common.get_google_ads_client()` — prefer read-only until the user approves writes.
