@@ -41,7 +41,7 @@
 
 ### Post 1 — woensdag 27 mei 2026, 18:45
 **Foto:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`  
-**Caption:** Emmen: nieuwe pagina,zelfde nuchtere toon. Vloerverwarming van ondervloer tot oplevering, met infrezen waar het kan. Link in bio.
+**Caption:** Emmen: nieuwe pagina, zelfde nuchtere toon. Vloerverwarming van ondervloer tot oplevering, met infrezen waar het kan. Link in bio.
 
 **Hashtags:** #vloerverwarming #Emmen #Drenthe #wonen #verbouwing #vakmanschap #interieur  
 **CTA:** https://www.vlwarmte.nl/vloerverwarming-emmen.html  
