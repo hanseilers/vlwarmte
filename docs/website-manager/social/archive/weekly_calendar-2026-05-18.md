@@ -1,124 +1,128 @@
 # Social Media Kalender — week van 18 mei 2026
 
-**Afstemming:** Na sprint **11 mei** (contact/stadspagina’s/projecten + tracking) en PM-sprint **18 mei** (diensten/werkwijze vroege CTA’s, logo-URL redirect). Focus: **prijsindicatie**, **FAQ**, **werkwijze**, en **diensten** als anker — geen nieuwe productclaims.
+**Afstemming met sprintdoelen (cyclus 6):** versterk trust-hierarchie (werkgebied, reactietijd binnen 1 werkdag, 10 jaar garantie op buis, vast aanspreekpunt), help paid message-match (kosten/offerte/schuimbeton-intent) en stuur intentiegericht naar `prijsindicatie.html` of `contact.html?modus=...#aanvraag`.
 
-**Materiaal:** `docs/website-manager/social/input/` — o.a. `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`. **Update 8 mei:** nieuw beeldmateriaal uit `beeldmateriaal/` gekopieerd naar `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (pex op net, U-vorm; sterk “vakwerk”-signaal).
+**Beeldbron:** primair klantbeeld uit `docs/website-manager/social/input/` en `beeldmateriaal/`. Het bestand `input/vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg` oogt als AI-gegenereerd (te idealistische scene, glanzende luxehal, lasconnectoren in afwijkende kleurstelling) — niet gebruiken zolang we het beleid "alleen eigen beeld" volgen. Zie campagne notities voor opvolgactie.
 
-**Marketing / Social-agent beslissing — Facebook + Instagram (zelfde beeld):** het **nieuwste** bruikbare werkbeeld (`vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`) wordt **deze week op beide kanalen** ingezet: **Facebook** = lange caption + link in post; **Instagram** = visueel strakker, **andere copy**, 5–10 hashtags, link in bio (zelfde URL-prioriteit: prijsindicatie). **Crop-tip IG:** vierkant of 4:5, **focus op het bochtenstuk** — zo blijft het patroon op klein scherm leesbaar.
-
-**Verdeling:** 3× LinkedIn, 3× Instagram, **1× Facebook**. Hashtags: FB 0–3, IG 5–10, LI 3–5.
+**Posting-tijden:** LinkedIn di-do 08:30-10:00, Instagram wo/vr/za 18:30-20:00 (conform agent-richtlijn).
 
 ---
 
-## LinkedIn
+## LinkedIn Posts
 
-### Post 1 — maandag 19 mei, 08:15
-
-**Foto:** `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`
-
-**Caption:** Renovatie of nieuwbouw: eerst klopt de opbouw onder de vloer, daarna pas de leidingen. Wij werken het traject in vaste stappen uit — zie **werkwijze** op de site als je wilt weten waar je aan toe bent vóór de opname.
-
-**Hashtags:** `#vloerverwarming` `#renovatie` `#NoordNederland`
-
-**CTA:** https://www.vlwarmte.nl/werkwijze.html
-
----
-
-### Post 2 — woensdag 21 mei, 08:45
-
-**Foto:** `[FOTO NODIG: detail opname — meetlat of waterpas op dekvloer]`
-
-**Caption:** Een richtbedrag vóór de opname helpt bij interne afstemming — niet als offerte, wel als bandbreedte. Onze prijsindicatie vraagt vier stappen; geen account, geen verplichting.
-
-**Hashtags:** `#vloerverwarming` `#Drenthe` `#Groningen` `#Assen`
-
-**CTA:** https://www.vlwarmte.nl/prijsindicatie.html
-
----
-
-### Post 3 — vrijdag 23 mei, 08:30
-
-**Caption:** Veel vragen over infrezen, warmtepomp en houten ondergrond staan al in de FAQ — scheelt mailtjes heen en weer. Mist er iets? Dan liever één telefoontje dan gissen.
-
-**Hashtags:** `#vloerverwarming` `#FAQ` `#installatie`
-
-**CTA:** https://www.vlwarmte.nl/faq.html
-
----
-
-## Instagram
-
-### Post 1 — dinsdag 20 mei, 19:00
-
-**Foto:** `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`
-
-**Caption:** Schuimbeton waar het nodig is, niet standaard overal. Koppel aan wat er al ligt — link in bio naar diensten (sectie schuimbeton).
-
-**Hashtags:** `#vloerverwarming` `#schuimbeton` `#renovatie` `#Drenthe` `#Groningen` `#NoordNederland`
-
-**CTA:** https://www.vlwarmte.nl/diensten.html#schuimbeton
-
----
-
-### Post 2 — donderdag 22 mei, 19:15
-
-**Foto:** `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` *(zelfde bron als Facebook-weekpost; in de IG-app **vierkant of 4:5** croppen — liefst het **U-stuk / bocht** centraal)*
-
+### Post 1 — dinsdag 19 mei 2026, 08:45
+**Foto:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (PEX-buis op wapeningsnet, strak slingerpatroon)
+**Backup foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.16.jpeg`
 **Caption:**
+Zo ziet de basis eruit voordat er ook maar een liter dekvloer overheen gaat: strak op net, gelijke afstanden, geen kruisingen waar het niet moet.
 
-Wat je straks niet meer ziet: wel **zo** gelegd — op het net, vaste tussenruimte, strak door de bocht. Dat is het verschil tussen “er ligt iets” en **gelijkmatig warm** straks.
+Goede aanleg is geen kunst; het is geduld en discipline. Daar valt later het rendement op terug — minder zwakke plekken, gelijkmatige warmte, en een installatie die over tien jaar nog steeds doet wat hij moet doen.
 
-Verbouw je in Groningen, Assen of Drenthe? **Link in bio** → prijsindicatie op vlwarmte.nl (vier stappen, geen account). Alleen even iets vragen: via de site het contactformulier, tab **informatie**.
+VLWarmte werkt vanuit Zuid-Laren door heel Drenthe, Groningen en Friesland. Eén aanspreekpunt van opname tot oplevering, reactie binnen 1 werkdag, 10 jaar garantie op de buis.
 
-**Hashtags:** `#vloerverwarming` `#verbouwing` `#renovatie` `#vakmanschap` `#Drenthe` `#Groningen` `#NoordNederland` `#installatie` `#nieuwbouw`
+EN: This is what a proper underfloor heating layout looks like before the screed: clean spacing, no unnecessary crossings, every loop where it should be. The payoff comes years later — even heat, fewer weak spots, and an install that still performs after a decade.
 
-**CTA (link in bio):** https://www.vlwarmte.nl/prijsindicatie.html  
-**Alternatief 2e link in profiel:** https://www.vlwarmte.nl/contact.html?modus=informatie#aanvraag
-
-**Afstemming met Facebook diezelfde dag:** FB 12:15 = **bereik lokaal / doordeweeks**; IG 19:15 = **avond-scroll** — zelfde boodschap, **andere hook**, geen copy-paste.
-
----
-
-### Post 3 — zaterdag 24 mei, 11:00
-
-**Caption:** Informatie, offerte of terugbelverzoek — je kiest het tabblad zelf. Link in bio opent direct het aanvraagblok.
-
-**Hashtags:** `#vloerverwarming` `#ZuidLaren` `#vakmanschap`
-
-**CTA:** https://www.vlwarmte.nl/contact.html?modus=informatie#aanvraag
+**Hashtags:** #vloerverwarming #installatie #vakmanschap #NoordNederland
+**CTA link:** https://www.vlwarmte.nl/werkwijze.html  (intentie: vertrouwen / vakinhoud — geen formulier-push)
 
 ---
 
-## Facebook — weekpost (aanbevolen)
-
-### Post — donderdag 22 mei 2026, 12:15
-
-**Foto:** `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (bron: WhatsApp-export **2026-05-05** uit `beeldmateriaal/`, gekopieerd naar `social/input/`)
-
+### Post 2 — woensdag 20 mei 2026, 09:15
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.16.jpeg`
+**Backup foto:** `beeldmateriaal/WhatsApp Image 2026-04-29 at 21.50.31.jpeg`
 **Caption:**
+Voor aannemers en projectleiders is het vaak dezelfde vraag in de voorfase: "Wat ga ik kwijt zijn aan vloerverwarming bij dit project, en past het in de begroting?"
 
-Zo ligt het straks onder de dekvloer: netjes op het net, vaste afstand, geen slingerende slangen. Bij ons hoort dat erbij — anders wordt het nooit rustig in je vloer.
+Op `prijsindicatie.html` zit een wizard die met een paar vragen (m², ondergrond, kruipruimte, schuimbeton ja/nee) een realistische bandbreedte teruggeeft. Geen offerte, wel een richting — handig om mee verder te kunnen in een bouwoverleg of klantgesprek.
 
-Wil je weten wat zo’n traject in jouw situatie **ongeveer** kost vóór we langskomen? Op vlwarmte.nl staat een korte prijsindicatie — vier stappen, geen account.
+Past het beeld? Dan stuurt de pagina je door naar een offerte op maat, met de wizard-velden voor-gevuld.
 
-Werkgebied: Groningen, Assen, Drenthe en de kop van Friesland. Vragen? Tik even een informatieverzoek aan via de site.
+EN: A quick, realistic cost range for underfloor heating during the early design phase — useful before going into a full quotation round with the client.
 
-**Hashtags:** `#vloerverwarming` `#Drenthe` (optioneel; mag ook zonder tags — FB haalt vooral uit tekst + link)
+**Hashtags:** #vloerverwarming #renovatie #nieuwbouw #Drenthe
+**CTA link:** https://www.vlwarmte.nl/prijsindicatie.html  (intentie: kosten/offerte — paid message-match)
 
-**CTA-link (primair):** https://www.vlwarmte.nl/prijsindicatie.html  
-**Secundair (comment of tweede zin):** https://www.vlwarmte.nl/contact.html?modus=informatie#aanvraag
+---
 
-**Rationale (kort):** nieuw beeld toont **kwaliteit van het leggen** i.p.v. alleen “werk onder de vloer”; koppeling aan **prijsindicatie** volgt GA4 (sterkste conversiepad). Geen offerte-dieplink in de hoofdlink om drempel op Facebook laag te houden; offerte volgt na warm lead.
+### Post 3 — donderdag 21 mei 2026, 08:50
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-29 at 21.50.31.jpeg`
+**Backup foto:** `beeldmateriaal/WhatsApp Image 2026-04-29 at 21.42.36.jpeg`
+**Caption:**
+Schuimbeton, vloerverwarming, dekvloer en afwerking: vier disciplines die normaal door vier partijen worden gedaan, met evenzoveel overdrachten en evenzoveel kans op miscommunicatie.
 
-**Parallel Instagram:** zie **Instagram post 2** (zelfde avond, ander tijdstip en andere caption) — zelfde bestand, andere crop.
+VLWarmte pakt het complete traject onder de vloer. Eén planning, één aanspreekpunt, en duidelijke afstemming met de stukadoor of vloerlegger die erna komt. Dat scheelt onverwacht meerwerk en houdt het tempo erin.
 
-**Gepubliceerd op Facebook:** 2026-05-08 (Graph API `/{page-id}/photos`). Post: `https://www.facebook.com/1068733929659423/posts/122101775865296907/` *(controleer in ingelogde weergave; permalink kan per account iets verschillen).*
+Voor projecten in Noord-Nederland: stuur de stukken en we plannen een opname binnen 1 werkdag.
+
+EN: One coordinated trajectory for foam concrete, underfloor heating and screed — fewer handovers, fewer surprises, and clearer alignment with whoever finishes the floor afterwards.
+
+**Hashtags:** #vloerverwarming #schuimbeton #bouw #ZuidLaren
+**CTA link:** https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag  (intentie: offerte / B2B-project)
+
+---
+
+## Instagram Posts
+
+### Post 1 — woensdag 20 mei 2026, 18:40
+**Foto:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (close-up buiswerk op net — sterk visueel patroon, scrollstopper)
+**Backup foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.17.jpeg`
+**Caption:**
+Hier begint je warme vloer. Niet sexy, wel waar het op aankomt: gelijke loops, vaste afstand, geen knikken.
+
+Wat dit voor jouw huis kost, hangt af van m², ondergrond en of er ook schuimbeton bij moet. Met de prijsindicatie op de site krijg je in twee minuten een eerlijke bandbreedte — geen verkoopgesprek, gewoon een richting.
+
+**Hashtags:** #vloerverwarming #renovatie #nieuwbouw #wonen #Drenthe #vakmanschap #interieur
+**CTA:** Link in bio → https://www.vlwarmte.nl/prijsindicatie.html  (intentie: kosten / oriënterend)
+
+---
+
+### Post 2 — vrijdag 22 mei 2026, 19:10
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.17 (1).jpeg`
+**Backup foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.17 (3).jpeg`
+**Caption:**
+Renovatie of nieuwbouw in Groningen, Assen, Roden of omstreken? Voordat je een offerte aanvraagt, kun je op de contactpagina kort lezen hoe het bij ons gaat: wat je terugkrijgt en binnen welke tijd.
+
+Eerst een vraag stellen kan ook — dan kies je de informatie-ingang en hoor je binnen een werkdag van ons.
+
+**Hashtags:** #vloerverwarming #verbouwing #renovatie #Groningen #Assen #wonen
+**CTA:** Link in bio → https://www.vlwarmte.nl/contact.html?modus=informatie#aanvraag  (intentie: informatie / lage drempel)
+
+---
+
+### Post 3 — zaterdag 23 mei 2026, 18:45
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-29 at 21.50.49.jpeg`
+**Backup foto:** `beeldmateriaal/WhatsApp Image 2026-04-29 at 21.44.39.jpeg`
+**Caption:**
+Het werk dat je later niet meer ziet, bepaalt jarenlang hoe je huis aanvoelt.
+
+Twijfel je nog tussen direct een offerte aanvragen of eerst even bellen om je situatie te bespreken? Op de contactpagina kun je beide kiezen — terugbelmoment plannen mag ook in het weekend.
+
+**Hashtags:** #vloerverwarming #nieuwbouw #renovatie #Emmen #Hoogeveen #NoordNederland
+**CTA:** Link in bio → https://www.vlwarmte.nl/contact.html?modus=bel#aanvraag  (intentie: terugbel / persoonlijk contact)
+
+---
+
+### Post 4 — zaterdag 23 mei 2026, 19:30 (Reel of carousel-suggestie)
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.17 (2).jpeg`
+**Backup foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.17 (4).jpeg`
+**Caption:**
+Even oriënteren in het weekend?
+
+Op de dienstenpagina staat helder wat we doen binnen het complete traject onder de vloer: schuimbeton, ondervloer, vloerverwarming, dekvloer. Klaar voor een richting? Dan kun je vanuit dezelfde pagina door naar de prijsindicatie of meteen een offerte aanvragen.
+
+Tip voor wie het bij de buurman zag staan: vraag of je even mag voelen. Niets overtuigt zo goed als een vloer die gewoon klopt.
+
+**Hashtags:** #vloerverwarming #diensten #schuimbeton #Drenthe #Leek #interieur
+**CTA:** Link in bio → https://www.vlwarmte.nl/diensten.html  (intentie: oriëntatie → doorklik prijsindicatie/offerte)
 
 ---
 
 ## Campagne notities
 
-- **Contact deeplinks:** `?modus=informatie|offerte|bel` + `#aanvraag` voor juiste tab.
-- **FOTO NODIG:** nog één slot (LinkedIn post 2 — meetlat/opname); IG-post 2 gebruikt nu het **buiswerk op net**-beeld.
-- **Tone:** nuchter, geen superlatieven — zie `product-manager.md`.
-- **Beeldmateriaal-workflow:** nieuwe WhatsApp-foto’s eerst naar `beeldmateriaal/`, daarna door social/marketing naar `social/input/` met **herkenbare bestandsnaam** voor publicatie.
+- **Sprint-alignment (cyclus 6):** captions versterken de trust-strip-boodschap (regio, reactietijd, garantie, vast aanspreekpunt) die de Developer Agent boven de vouw op `index.html` plaatst. Wanneer die live staat, kunnen we vanaf week 25 mei expliciet refereren ("zoals je nu op de site ziet…").
+- **Message-match paid:** twee LinkedIn-posts en twee Instagram-posts sturen naar `prijsindicatie.html` / `?modus=offerte#aanvraag` — sluit aan op de Ads-adgroep "kosten/prijs/berekenen" en "offerte/installateur/city". Helpt 0-conversie-probleem uit `research_report.md` § Paid Search ontstoppen.
+- **CTA-intentie expliciet:** elke post benoemt welke `modus=…` of pagina past bij de boodschap (informatie / offerte / bel). Zo komt verkeer direct op het juiste tabblad — vermindert frictie van de drie-knoppen-rij die research_report.md aanstipt.
+- **Beeld-discipline:** het ingeleverde bestand `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg` is hoogstwaarschijnlijk AI-gegenereerd en valt buiten de "alleen klantbeeld"-regel uit AGENTS / marketing-research. Niet inplannen. Voorstel aan PM: vragen of de klant zelf eenzelfde vakman-aan-het-werk-foto kan aanleveren (echte plek, echt team) — dat is voor LinkedIn en Reels veel sterker dan een gestylede installatieflat.
+- **Friesland-signal:** Friesland-keywords staan in de Ads-defaults maar nog geen city-pagina. Houd social-CTA's voorlopig op werkwijze/prijsindicatie/contact, niet op een Friese stad — anders mismatch met landingspagina.
+- **Volgende cyclus (week 25 mei):** zodra sprintdoelen live zijn (trust-strip + pre-form blok + premium wizard-visuals), één post wijden aan "Zo werkt het na insturen" om het nieuwe contact-blok in te luiden. Idem een korte Reel/Instagram-post over de aangescherpte prijsindicatie-wizard.
+- **Facebook/Meta:** het cross-posten van Instagram Post 1 en Post 2 naar de Facebook-pagina is logisch (zelfde particuliere doelgroep, lokaal bereik). Hashtags daar terugbrengen naar 0-3 stuks conform richtlijn (bv. `#vloerverwarming #Drenthe`). Token/Graph-API niet nodig zolang er handmatig wordt gepost.

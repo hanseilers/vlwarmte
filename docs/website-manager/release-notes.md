@@ -4,9 +4,37 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 2 juni 2026 (cyclus 8)
+**Deployment:** _na `git push` door PM — invullen met GitHub Actions run-id_  
+**Versie:** _invullen met `git log --oneline -1`_
+
+### Wat is er veranderd
+- **Stadspagina’s:** `vloerverwarming-assen.html` en `vloerverwarming-groningen.html` hebben nu een **twee-koloms hero** met echt klantbeeld en korte trustregel (werkgebied, reactie binnen 1 werkdag, 10 jaar garantie op de buis).
+- **Nieuwe pagina:** `vloerverwarming-emmen.html` voor Emmen en Zuidoost-Drenthe — zelfde technische basis als andere citypages, unieke copy, JSON-LD Service.
+- **Footer + sitemap:** Regio-links en `sitemap.xml` uitgebreid met Emmen op alle relevante pagina’s.
+- **Diensten (`diensten.html`):** direct onder de hero een **keuzehulp** met drie kaarten (compleet traject / schuimbeton-kruipruimte / systeem+aanleg) met duidelijke doorklikken.
+- **Systemen (`systemen-producten.html`):** extra toelichting voor zoek-landers + **offerte**-deeplink in de hero.
+- **PM-docs:** verse `analytics_report.md` (13-05), bijgewerkt `research_report.md` (Ads-campagne ENABLED), nieuwe social kalender week 26 mei, sprint cyclus 8.
+
+### Waarom
+- GA4 toont op Assen **0 seconden** gemiddelde sessieduur en **100% bounce** — dat is geen “lastige klant”, dat is een **te zwakke eerste indruk**.
+- `diensten.html` verliest landers in het eerste scherm; keuzehulp verlaagt cognitieve last en stuurt sneller naar prijsindicatie of offerte.
+- Emmen ontbrak als landing terwijl keywords en werkgebied die richting al logisch maken.
+- Systemen-pagina ving verkeer met hoge landingsbounce; heldere **volgende stap** moet daar direct zichtbaar zijn.
+
+### Verwacht effect
+- Stadspagina’s: bounce en tijd op pagina meetbaar verbeteren; Emmen: eerste organische sessies en betere aansluiting op Ads-termen.
+- Diensten: landingsbounce richting **<70%**.
+- Systemen: meer sessies met tweede pagina (prijs/contact).
+
+### Social media deze week
+Zie `weekly_calendar.md`: focus op Emmen-lancering, diensten-keuzehulp, systemen-route en Groningen-in-beeld; CTAs met `?modus=offerte` waar passend.
+
+---
+
 ## Release — week van 25 mei 2026 (cyclus 7)
-**Deployment:** 11-05-2026 (PM: `git push origin main` — GitHub Pages)
-**Versie:** _wordt na push ingevuld_
+**Deployment:** 11-05-2026 10:07 (PM: `git push origin main` — GitHub Pages, runs **25658133756** (pages) en **25658134654** (E2E))  
+**Versie:** `ecadcb7`
 
 ### Wat is er veranderd
 - **Home (`index.html`):** carry-over van cyclus 6 is nu live — strakker hero met eyebrow, één heldere kop, **trust-strip** ("10 jaar garantie op de buis · Groningen · Friesland · Drenthe · Reactie binnen 1 werkdag") en een **mobiele sticky-CTA** naar de offerte-flow. Geen wijzigingen aan GA4-tracking.

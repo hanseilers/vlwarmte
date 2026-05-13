@@ -1,14 +1,16 @@
-# Marketing Research Rapport — 11 mei 2026
+# Marketing Research Rapport — 11 mei 2026 (bijgewerkt 13 mei 2026)
+
+**Cyclus 8 — korte update (13-05-2026):** Verse GA4-fetch staat in `analytics_report.md` (13-05). Paid Search + cross-network leveren samen nog steeds **0 conversies**; conversiekoppeling en final URL’s per intentie blijven P0. **Lokaal gecontroleerd:** `python scripts/google_ads_list_campaigns.py` — campagne **`VLW-API-Leads NL auto`** (id `23834672782`, SEARCH) staat **`ENABLED`**. Geen `--go-live`- of budgetwijziging in deze run; spend blijft voorbehouden aan expliciete PO-goedkeuring.
 
 **Scope deze cyclus:** lead-generatie via Google Ads + on-site optimalisatie, voortbouwend op `docs/website-manager/analytics_report.md` (9 mei 2026) en sprint cyclus 6 (CRO/UX) uit `docs/website-manager/sprint.md`.
 **Bronnen:** `.claude/commands/marketing-research-agent.md`, `.cursor/skills/google-ads-marketing/SKILL.md`, GA4-snapshot in analytics_report.md, huidige pagina's (`index.html`, `prijsindicatie.html`, `contact.html`, `diensten.html`, `werkwijze.html`, `vloerverwarming-{groningen,assen,zuidlaren}.html`, `faq.html`), defaults `scripts/data/google_ads_lead_campaign_defaults.json` en `scripts/data/google_ads_campaign_negatives.json`.
 **Opmerking over volumes/competitie:** richtinggevend (hoog/midden/laag) — geen exacte cijfers zonder Keyword Planner of betaalde tool.
 
-> **Tooling-restrictie deze sessie:** in deze chat-omgeving stonden `Bash` (script-uitvoer) en `WebSearch` op "don't ask = deny". Daardoor heb ik in deze run **niet zelf** `google_ads_list_campaigns.py`, `google_ads_create_search_campaign.py --dry-run` of WebSearch kunnen draaien. Het script-werk is voorbereid: de defaults JSON is bijgewerkt (zie §Google Ads), zodat de eerstvolgende run het kan toepassen. Voor de volgende cyclus: zet voor deze agent Bash-permissies op `ask` of `allow` voor `python scripts/google_ads_*.py` zodat we de Dry-run + Apply zelf draaien.
+> Eerdere tooling-restrictie (sandbox) is voor deze PM-cyclus gedeeltelijk opgeheven: **Google Ads list-campaigns** is succesvol gedraaid. Dry-run/apply op campagnemutaties alleen bij expliciete sprinttaak of spend-goedkeuring.
 
 ## Samenvatting
 
-De grootste leadwinst ligt nu in (1) **Paid Search ontstoppen**: 12 sessies in 30 dagen, 0 conversies — vrijwel zeker een mix van zwakke message-match (kale `contact.html`/home als landing) en/of GA4↔Ads conversie-mismatch. (2) **Indexeerbare kosten-content op `prijsindicatie.html`** boven de wizard, zodat "kosten per m2"-zoekers organisch landen en niet meteen tegen een formulier-wall aanlopen. (3) **City-uitbreiding** met Emmen, Hoogeveen, Meppel, Leeuwarden, Drachten, Heerenveen — nu ontbreken die volledig in pagina's én in Ads-keywords. De CRO/UX-sprint van cyclus 6 (trust-strip, pre-form blok, rustigere wizard) blijft inhoudelijk juist: minder frictie, één primaire CTA per landings-viewport.
+De grootste leadwinst ligt nu in (1) **Paid Search ontstoppen**: ~25 gecombineerde sessies (`google / cpc` + cross-network) in de laatste 30d-export, **0 conversies** — blijft wijzen op conversiekoppeling en/of message-match. (2) **Landingskwaliteit stadspagina’s en diensten** — Assen/Groningen kregen visuele heroes; Emmen als nieuwe indexeerbare city; diensten kreeg keuzehulp. (3) **Indexeerbare kosten-content** op `prijsindicatie.html` is in cyclus 7 afgerond; nu focus op **doorklik** vanaf `systemen-producten.html` en city-cluster.
 
 ## Top zoekwoorden
 
