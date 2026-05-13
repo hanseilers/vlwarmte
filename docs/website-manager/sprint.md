@@ -95,4 +95,4 @@
 
 ### Deployment
 
-**Nog niet live** — PM voert `git commit` + `git push origin main` uit na deze sprint.
+**Live** na `git push origin main` — GitHub Pages run **25784369037** (succes), E2E **25784370229**. Commit **`2f911bb`**.

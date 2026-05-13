@@ -5,8 +5,8 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 ---
 
 ## Release — week van 2 juni 2026 (cyclus 8)
-**Deployment:** _na `git push` door PM — invullen met GitHub Actions run-id_  
-**Versie:** _invullen met `git log --oneline -1`_
+**Deployment:** 13-05-2026 ~09:17 UTC (PM: `git push origin main` — GitHub Pages run **25784369037**, succesvol; E2E **25784370229**)  
+**Versie:** `2f911bb`
 
 ### Wat is er veranderd
 - **Stadspagina’s:** `vloerverwarming-assen.html` en `vloerverwarming-groningen.html` hebben nu een **twee-koloms hero** met echt klantbeeld en korte trustregel (werkgebied, reactie binnen 1 werkdag, 10 jaar garantie op de buis).
