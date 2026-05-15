@@ -188,7 +188,7 @@ function initLeadForm() {
       });
       if (res.ok) {
         status.className = "status success";
-        status.textContent = "Bedankt! We nemen binnen 1 werkdag contact met je op.";
+        status.textContent = "Bedankt! We nemen binnen één werkdag contact met je op.";
         form.reset();
         applyMode("info");
         if (typeof gtag === "function") {
