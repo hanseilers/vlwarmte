@@ -536,6 +536,29 @@ h2 {
 }
 
 /* "Zo werkt het na insturen" — staat boven de mode-switch op contact.html voor alle modi. */
+.contact-intent-strip {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-intent-strip__intro {
+  margin: 0 0 0.35rem;
+}
+
+.contact-intent-strip__list {
+  margin: 0.25rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.contact-intent-strip__list li {
+  margin: 0.35rem 0;
+}
+
+.project-hero__readnext {
+  margin: 0.35rem 0 0;
+}
+
 .contact-process {
   margin: 0 0 1.4rem;
   padding: 1.1rem 1.25rem;

@@ -1,95 +1,81 @@
 # Social Media Kalender — week van 26 mei 2026
 
-**Afstemming:** PM-cyclus 8 mei — analytics toont **Paid Search** met volume maar **0 conversies**; FAQ en systemen krijgen vroege CTA’s op de site. Social ondersteunt: **prijsindicatie**, **FAQ**, **werkwijze**, **contact-dieplinks** (`?modus=…#aanvraag`).
+**Afstemming met sprintdoelen (cyclus 8):** stadspagina Emmen live, sterkere city-heroes (Assen/Groningen) met echt beeld, keuzehulp op diensten voor landers, systemen-pagina met duidelijke offerte-route. CTAs blijven intentiegericht: `prijsindicatie.html`, `contact.html?modus=offerte#aanvraag`, `?modus=bel`, `?modus=informatie`.
 
-**Materiaal:** `docs/website-manager/social/input/` — gebruik waar mogelijk `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (vakwerk-signaal) en `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`.
+**Beeldbron:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` en `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.16.jpeg` / `12.52.17.jpeg`. Geen gebruik van `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg` (AI-achtig).
 
-**Verdeling:** 3× LinkedIn, 3× Instagram, 1× Facebook. Hashtags: FB 0–3, IG 5–10, LI 3–5.
-
-**Vorige kalender (18 mei):** `docs/website-manager/social/archive/weekly_calendar-2026-05-18.md`
+**Posting-tijden:** LinkedIn di–do 08:30–10:00, Instagram wo / vr / za 18:30–20:00.
 
 ---
 
-## LinkedIn
+## LinkedIn Posts
 
-### Post 1 — maandag 26 mei, 08:15
+### Post 1 — dinsdag 26 mei 2026, 08:45
+**Foto:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`  
+**Caption:** Emmen en Zuidoost-Drenthe zitten net buiten de “standaard” installatieradius van veel landelijke spelers. Wij rijden het wél: Zuidlaren als uitvalsbasis, zelfde team op de klus, één aanspreekpunt. Nieuwe stadspagina op de site voor wie lokaal wil vergelijken vóór er een meter wordt gelegd.
 
-**Foto:** `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`
-
-**Caption:** Nieuwbouw of renovatie: het net op de vloer is pas het zichtbare deel. Wij plannen het traject vanaf de ondergrond — zie **werkwijze** als je wilt weten hoe we dat aanpakken vóór de chape.
-
-**Hashtags:** `#vloerverwarming` `#NoordNederland` `#ZuidLaren`
-
-**CTA:** https://www.vlwarmte.nl/werkwijze.html
+**Hashtags:** #vloerverwarming #Drenthe #ZuidLaren #vakmanschap  
+**CTA link:** https://www.vlwarmte.nl/vloerverwarming-emmen.html  
 
 ---
 
-### Post 2 — woensdag 28 mei, 08:45
+### Post 2 — woensdag 27 mei 2026, 09:10
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.16.jpeg`  
+**Caption:** “Welke dienst past bij ons?” is op de site nu de eerste vraag op `diensten.html`: compleet traject, schuimbeton/kruipruimte, of alleen systeem en aanleg. Minder ruis, sneller de juiste verdieping — precies wat aannemers en serieuze particulieren zoeken vóór ze bellen.
 
-**Foto:** `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`
-
-**Caption:** Twijfel je tussen infrezen, schuimbeton of een andere opbouw? Onze **FAQ** beantwoordt de meest voorkomende vragen zonder verkooppraat. Staat je situatie er niet tussen? Vraag gerust **informatie** aan — we reageren normaal binnen één werkdag.
-
-**Hashtags:** `#vloerverwarming` `#renovatie` `#Drenthe` `#Groningen`
-
-**CTA:** https://www.vlwarmte.nl/faq.html
+**Hashtags:** #vloerverwarming #renovatie #nieuwbouw #NoordNederland  
+**CTA link:** https://www.vlwarmte.nl/diensten.html  
 
 ---
 
-### Post 3 — vrijdag 30 mei, 08:30
+### Post 3 — donderdag 28 mei 2026, 08:55
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-29 at 21.50.31.jpeg`  
+**Caption:** Wie via Google op “systemen” of “PEX op net” landt, wil geen catalogus — die wil weten wat de volgende stap is. Daarom staat op `systemen-producten.html` nu expliciet: prijsindicatie voor een bandbreedte, of meteen offerte met reactie binnen 1 werkdag.
 
-**Caption:** Een richtbedrag helpt bij interne afstemming — niet als offerte, wel als bandbreedte. De **prijsindicatie** op de site vraagt vier stappen; geen account, geen verplichting.
-
-**Hashtags:** `#vloerverwarming` `#Assen` `#Emmen`
-
-**CTA:** https://www.vlwarmte.nl/prijsindicatie.html
-
----
-
-## Instagram
-
-### Post 1 — woensdag 28 mei, 18:30
-
-**Foto:** `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (crop 4:5, focus op bocht)
-
-**Caption:** Patroon op het net — strak gelegd. Vloerverwarming in Noord-Nederland met het werkadres in Zuidlaren. Link in bio voor prijsindicatie.
-
-**Hashtags:** `#vloerverwarming` `#vloeren` `#nieuwbouw` `#renovatie` `#drenthe` `#groningen` `#vakmanschap`
-
-**CTA (bio):** https://www.vlwarmte.nl/prijsindicatie.html
+**Hashtags:** #vloerverwarming #installatie #Groningen #Assen  
+**CTA link:** https://www.vlwarmte.nl/systemen-producten.html  
 
 ---
 
-### Post 2 — vrijdag 30 mei, 19:00
+## Instagram Posts
 
-**Foto:** `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg`
+### Post 1 — woensdag 27 mei 2026, 18:45
+**Foto:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`  
+**Caption:** Emmen: nieuwe pagina, zelfde nuchtere toon. Vloerverwarming van ondervloer tot oplevering, met infrezen waar het kan. Link in bio.
 
-**Caption:** Onder de vloer telt de voorbereiding. Swipe niet alleen voor het plaatje — lees op de site **hoe** we werken.
-
-**Hashtags:** `#vloerverwarming` `#werkplaats` `#installateur` `#noordnederland`
-
-**CTA (bio):** https://www.vlwarmte.nl/werkwijze.html
-
----
-
-### Post 3 — zaterdag 31 mei, 18:45
-
-**Caption:** Wil je iets vragen vóór je een offerte overweegt? Gebruik het formulier op “informatie” — geen druk, wel een concreet antwoord.
-
-**Hashtags:** `#vloerverwarming` `#warmte` `#interieur` `#wonen` `#assen`
-
-**CTA (bio):** https://www.vlwarmte.nl/contact.html?modus=informatie#aanvraag
+**Hashtags:** #vloerverwarming #Emmen #Drenthe #wonen #verbouwing #vakmanschap #interieur  
+**CTA:** https://www.vlwarmte.nl/vloerverwarming-emmen.html  
 
 ---
 
-## Facebook
+### Post 2 — vrijdag 29 mei 2026, 19:05
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.17.jpeg`  
+**Caption:** Drie kaarten, drie situaties — op diensten leg je in één scroll uit waar je op moet klikken. Geen marketingfolder, gewoon een route.
 
-### Post 1 — dinsdag 27 mei, 19:30
+**Hashtags:** #vloerverwarming #schuimbeton #renovatie #nieuwbouw #NoordNederland  
+**CTA:** https://www.vlwarmte.nl/diensten.html  
 
-**Foto:** `vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`
+---
 
-**Caption:** Vloerverwarming is maatwerk: ondergrond, isolatie en gewenste opwarmtijd bepalen het systeem. VLWarmte werkt vanaf Zuid-Laren in Groningen, Drenthe en Friesland. Vraag vrijblijvend een prijsindicatie aan via de site — of laat een bericht achter als je eerst iets wilt bespreken.
+### Post 3 — zaterdag 30 mei 2026, 18:50
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 13.34.00.jpeg`  
+**Caption:** Groningen in beeld: wat je boven de vouw ziet is wat je ook op de klus krijgt. Offerte of prijsindicatie — allebei vrijblijvend.
 
-**Hashtags:** `#vloerverwarming` `#ZuidLaren` `#Groningen`
+**Hashtags:** #vloerverwarming #Groningen #Drenthe #ZuidLaren #wonen #vakmanschap  
+**CTA:** https://www.vlwarmte.nl/vloerverwarming-groningen.html  
 
-**CTA (link in post):** https://www.vlwarmte.nl/prijsindicatie.html
+---
+
+### Post 4 — zondag 31 mei 2026, 19:00
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.17 (1).jpeg`  
+**Caption:** Twijfel je tussen bellen en een formulier? Voor een richtbedrag: prijsindicatie. Voor een plan op maat: offerte — `?modus=offerte` opent direct het juiste tabblad.
+
+**Hashtags:** #vloerverwarming #offerte #prijsindicatie #Drenthe  
+**CTA:** https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag  
+
+---
+
+## Campagne notities
+
+- Google Ads Search-campagne **VLW-API-Leads NL auto** staat **ENABLED** (13-05-2026); spend en zoektermen blijven door PM/owner monitoren. Geen API-mutaties in deze release.
+- Vier Instagram-slots deze week i.v.m. extra Emmen-lancering + diensten-keuzehulp; volgende week weer 3× LI + 4× IG indien gewenst.

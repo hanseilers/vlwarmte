@@ -1,8 +1,8 @@
-# Social Media Kalender — week van 26 mei 2026
+# Social Media Kalender — week van 2 juni 2026
 
-**Afstemming met sprintdoelen (cyclus 8):** stadspagina Emmen live, sterkere city-heroes (Assen/Groningen) met echt beeld, keuzehulp op diensten voor landers, systemen-pagina met duidelijke offerte-route. CTAs blijven intentiegericht: `prijsindicatie.html`, `contact.html?modus=offerte#aanvraag`, `?modus=bel`, `?modus=informatie`.
+**Afstemming met sprintdoelen (cyclus 9):** nieuwe stadspagina Hoogeveen, projecten-hero met offerte-route, prijsindicatie met kosten-uitleg vóór de wizard, contact met intentie-keuze voor cold landers, Assen met lees-verder-link. CTAs blijven: `prijsindicatie.html`, `contact.html?modus=offerte#aanvraag`, `?modus=bel`, `?modus=informatie`.
 
-**Beeldbron:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` en `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.16.jpeg` / `12.52.17.jpeg`. Geen gebruik van `vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg` (AI-achtig).
+**Beeldbron:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`, `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.16.jpeg` / `12.52.17.jpeg` / `13.34.00.jpeg`. Geen AI-achtige beelden.
 
 **Posting-tijden:** LinkedIn di–do 08:30–10:00, Instagram wo / vr / za 18:30–20:00.
 
@@ -10,72 +10,71 @@
 
 ## LinkedIn Posts
 
-### Post 1 — dinsdag 26 mei 2026, 08:45
+### Post 1 — dinsdag 3 juni 2026, 08:50
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.17.jpeg`  
+**Caption:** Hoogeveen en midden-Drenthe: veel renovatie en verduurzaming, weinig tijd voor ruis. Op de site staat nu een eigen stadspagina — wie lokaal wil vergelijken ziet meteen wie het werk doet en hoe we plannen.
+
+**Hashtags:** #vloerverwarming #Drenthe #Hoogeveen #vakmanschap  
+**CTA link:** https://www.vlwarmte.nl/vloerverwarming-hoogeveen.html  
+
+---
+
+### Post 2 — woensdag 4 juni 2026, 09:05
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 13.34.00.jpeg`  
+**Caption:** Wie op “projecten” landt, wil vaak snel weten: past dit bij mijn verbouwing? Daarom staat naast prijsindicatie en opname nu ook meteen **offerte** in de hero — geen omweg door een marketingfolder.
+
+**Hashtags:** #vloerverwarming #renovatie #Drenthe #NoordNederland  
+**CTA link:** https://www.vlwarmte.nl/projecten.html  
+
+---
+
+### Post 3 — donderdag 5 juni 2026, 08:55
 **Foto:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`  
-**Caption:** Emmen en Zuidoost-Drenthe zitten net buiten de “standaard” installatieradius van veel landelijke spelers. Wij rijden het wél: Zuidlaren als uitvalsbasis, zelfde team op de klus, één aanspreekpunt. Nieuwe stadspagina op de site voor wie lokaal wil vergelijken vóór er een meter wordt gelegd.
+**Caption:** “Wat kost vloerverwarming per m²?” is een eerlijke vraag. De prijsindicatie-wizard bleef staan; erboven staat nu in gewone tekst welke drie dingen de bandbreedte het meest sturen — handig voor wie eerst wil lezen vóór hij sliders indrukt.
 
-**Hashtags:** #vloerverwarming #Drenthe #ZuidLaren #vakmanschap  
-**CTA link:** https://www.vlwarmte.nl/vloerverwarming-emmen.html  
-
----
-
-### Post 2 — woensdag 27 mei 2026, 09:10
-**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.16.jpeg`  
-**Caption:** “Welke dienst past bij ons?” is op de site nu de eerste vraag op `diensten.html`: compleet traject, schuimbeton/kruipruimte, of alleen systeem en aanleg. Minder ruis, sneller de juiste verdieping — precies wat aannemers en serieuze particulieren zoeken vóór ze bellen.
-
-**Hashtags:** #vloerverwarming #renovatie #nieuwbouw #NoordNederland  
-**CTA link:** https://www.vlwarmte.nl/diensten.html  
-
----
-
-### Post 3 — donderdag 28 mei 2026, 08:55
-**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-29 at 21.50.31.jpeg`  
-**Caption:** Wie via Google op “systemen” of “PEX op net” landt, wil geen catalogus — die wil weten wat de volgende stap is. Daarom staat op `systemen-producten.html` nu expliciet: prijsindicatie voor een bandbreedte, of meteen offerte met reactie binnen 1 werkdag.
-
-**Hashtags:** #vloerverwarming #installatie #Groningen #Assen  
-**CTA link:** https://www.vlwarmte.nl/systemen-producten.html  
+**Hashtags:** #vloerverwarming #prijsindicatie #wonen  
+**CTA link:** https://www.vlwarmte.nl/prijsindicatie.html  
 
 ---
 
 ## Instagram Posts
 
-### Post 1 — woensdag 27 mei 2026, 18:45
-**Foto:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg`  
-**Caption:** Emmen: nieuwe pagina, zelfde nuchtere toon. Vloerverwarming van ondervloer tot oplevering, met infrezen waar het kan. Link in bio.
+### Post 1 — woensdag 4 juni 2026, 18:50
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.16.jpeg`  
+**Caption:** Assen: soms blijft iemand hangen in de hero. Nu staat er een korte “lees verder” naar de uitleg eronder — het werk blijft hetzelfde, de route op de site is duidelijker.
 
-**Hashtags:** #vloerverwarming #Emmen #Drenthe #wonen #verbouwing #vakmanschap #interieur  
-**CTA:** https://www.vlwarmte.nl/vloerverwarming-emmen.html  
+**Hashtags:** #vloerverwarming #Assen #Drenthe #verbouwing #interieur  
+**CTA:** https://www.vlwarmte.nl/vloerverwarming-assen.html  
 
 ---
 
-### Post 2 — vrijdag 29 mei 2026, 19:05
+### Post 2 — vrijdag 6 juni 2026, 19:00
+**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-29 at 21.50.31.jpeg`  
+**Caption:** Contact zonder voorkeur? Dan zie je nu eerst drie korte routes: informatie, offerte, bel mij — dezelfde keuze als in het formulier, maar dan vóór je scrollt.
+
+**Hashtags:** #vloerverwarming #offerte #NoordNederland #klantcontact  
+**CTA:** https://www.vlwarmte.nl/contact.html#aanvraag  
+
+---
+
+### Post 3 — zaterdag 7 juni 2026, 18:45
 **Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.17.jpeg`  
-**Caption:** Drie kaarten, drie situaties — op diensten leg je in één scroll uit waar je op moet klikken. Geen marketingfolder, gewoon een route.
+**Caption:** Hoogeveen: nieuwe pagina,zelfde nuchtere toon. Link in bio.
 
-**Hashtags:** #vloerverwarming #schuimbeton #renovatie #nieuwbouw #NoordNederland  
-**CTA:** https://www.vlwarmte.nl/diensten.html  
-
----
-
-### Post 3 — zaterdag 30 mei 2026, 18:50
-**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 13.34.00.jpeg`  
-**Caption:** Groningen in beeld: wat je boven de vouw ziet is wat je ook op de klus krijgt. Offerte of prijsindicatie — allebei vrijblijvend.
-
-**Hashtags:** #vloerverwarming #Groningen #Drenthe #ZuidLaren #wonen #vakmanschap  
-**CTA:** https://www.vlwarmte.nl/vloerverwarming-groningen.html  
+**Hashtags:** #vloerverwarming #Hoogeveen #Drenthe #wonen #vakmanschap  
+**CTA:** https://www.vlwarmte.nl/vloerverwarming-hoogeveen.html  
 
 ---
 
-### Post 4 — zondag 31 mei 2026, 19:00
-**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.17 (1).jpeg`  
-**Caption:** Twijfel je tussen bellen en een formulier? Voor een richtbedrag: prijsindicatie. Voor een plan op maat: offerte — `?modus=offerte` opent direct het juiste tabblad.
+### Post 4 — zaterdag 7 juni 2026, 19:10
+**Caption (tekst-only / story-teaser):** Betaald verkeer zonder conversie = eerst meten en koppelen, niet harder roepen. Intern: GA4 ↔ Ads nalopen; extern: offerte-deeplink blijft de goudstandaard.
 
-**Hashtags:** #vloerverwarming #offerte #prijsindicatie #Drenthe  
-**CTA:** https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag  
+**Hashtags:** #vloerverwarming #marketing #MKB  
+**CTA link:** https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag  
 
 ---
 
-## Campagne notities
+## Notities team
 
-- Google Ads Search-campagne **VLW-API-Leads NL auto** staat **ENABLED** (13-05-2026); spend en zoektermen blijven door PM/owner monitoren. Geen API-mutaties in deze release.
-- Vier Instagram-slots deze week i.v.m. extra Emmen-lancering + diensten-keuzehulp; volgende week weer 3× LI + 4× IG indien gewenst.
+- Week **26 mei** staat gearchiveerd als `docs/website-manager/social/archive/weekly_calendar-2026-05-26.md`.
+- Voor Facebook UI-posts: waar offerte-intentie duidelijk is, gebruik `?modus=offerte#aanvraag`.

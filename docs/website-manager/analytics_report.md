@@ -1,19 +1,19 @@
-# Analytics Rapport — 13 mei 2026
+# Analytics Rapport — 15 mei 2026
 
 **Periode:** `30daysAgo` t/m `today` (GA4 property `properties/534641753`)  
-**Vorige sprint effect:** Sprint cyclus 7 (live 11-05-2026) bracht o.a. kosten-sectie op `prijsindicatie.html`, pre-form op `contact.html`, hero op `projecten.html`, `noindex` op disclaimer/privacy en home trust-strip + sticky CTA. In deze **30-daags** export zijn disclaimer/privacy als landings nog zichtbaar (historische sessies + vertraging indexering). `prijsindicatie.html` als pagina presteert sterk (bounce ~30%); als **landing** is de bounce hoger (~60%) — waarschijnlijk mix van instappen halverwege de wizard.
+**Vorige sprint effect:** Sprint cyclus 8 (live ca. 13-05-2026) leverde o.a. `project-hero` op `vloerverwarming-assen.html` en `vloerverwarming-groningen.html`, keuzehulp op `diensten.html`, lander-copy + offerte-knop op `systemen-producten.html`, en nieuwe `vloerverwarming-emmen.html`. Deze export overlapt de live-datum: effect op stadspagina’s en diensten is **nog beperkt zichtbaar** in 30d-aggregaten; 90d-scroll op Assen blijft **0** — eerst post-deploy meten, daarna bijsturen.
 
-**Data-fetch:** `.venv/bin/python scripts/ga4_fetch.py` — `docs/website-manager/ga4_report.json`, timestamp **`2026-05-13T09:08:07`**.
+**Data-fetch:** `.venv/bin/python scripts/ga4_fetch.py` — `docs/website-manager/ga4_report.json`, timestamp **`2026-05-15T12:48:01`**.
 
 ## Kerncijfers
 
 | Metric | Waarde | Trend / context |
 | ------ | ------ | ---------------- |
-| Sessies (laatste volledige week in export) | 92 (week 6–12 mei) | week ervoor 29 apr–5 mei: **170** → **-45,9%** week-op-week; wel **herstel** t.o.v. de extreem lage week in het vorige rapport (~72) |
-| Homepage `/` (30d pad) | 141 sessies, bounce **56,7%** | hoofdingang; engagement scroll 90d: 24 scrolled users op 141 sessies |
-| Paid Search (`google / cpc`) | **13** sessies, **0** conversies | zelfde patroon: kanaal levert verkeer, conversies ontbreken |
-| Cross-network (`google / cpc`) | **12** sessies, **0** conversies | naast Paid Search — in rapportage apart geclusterd |
-| Unassigned `(not set)` | **2** sessies, **2** conversies | sterk verbeterd t.o.v. eerdere cyclus (21/15) — attributie iets schoner |
+| Sessies (laatste volledige week in export) | **100** (week 8–14 mei) | week ervoor 1–7 mei: **54** → **+85%** week-op-week (herstel na lage week) |
+| Homepage `/` (30d pad) | **153** sessies, bounce **58,2%** | licht meer verkeer dan vorig rapport (141); engagement scroll 90d: **25** scrolled users op 153 sessies |
+| Paid Search (`google / cpc`) | **13** sessies, **0** conversies | ongewijzigd patroon |
+| Cross-network (`google / cpc`) | **20** sessies, **0** conversies | iets hoger volume dan vorige export (+8) |
+| Unassigned `(not set)` | **2** sessies, **1** conversie | blijft laag — attributie relatief stabiel |
 
 > GA4 telt sessies per dimensie; sommen over tabellen zijn indicatief. Trendrichting gaat voor.
 
@@ -21,78 +21,81 @@
 
 | Pagina | Sessies | Gem. sessieduur | Bounce |
 | ------ | ------- | ---------------- | ------ |
-| `/` | 141 | ~68 s | 56,7% |
-| `/prijsindicatie.html` | 43 | ~95 s | **30,2%** |
-| `/contact.html` (beide titels samen) | 50 | ~60 s | mix — zie landings |
-| `/diensten.html` | 23 | ~75 s | 52,4% |
+| `/` | 153 | ~65 s | 58,2% |
+| `/prijsindicatie.html` | 46 | ~84 s | **32,6%** |
+| `/contact.html` (beide titels samen) | 51 | ~59 s | mix — zie landings |
+| `/diensten.html` | 21 | ~81 s | **52,4%** |
+| `/over-ons.html` | 18 | ~32 s | 38,9% |
 | `/werkwijze.html` | 20 | ~63 s | 40% |
-| `/over-ons.html` | 19 | ~30 s | 38,9% |
-| `/systemen-producten.html` | 17 | ~124 s | 46,2% |
-| `/projecten.html` | 8 | **~7,5 s** | **75%** |
-| `/vloerverwarming-groningen.html` | 8 | ~51 s | **87,5%** |
-| `/vloerverwarming-assen.html` | 6 | **0 s** | **100%** |
+| `/systemen-producten.html` | 17* | wisselend† | wisselend† |
+| `/projecten.html` | 8 | ~7,5 s | **75%** |
+| `/vloerverwarming-groningen.html` | 8 | ~51 s | **75%** |
+| `/vloerverwarming-assen.html` | 7 | **~0,7 s** | **85,7%** |
+
+\* Twee titelvarianten in GA4: korte sessies op hoofd-URL (13 sessies, ~7 s gem.) versus diepe vergelijk-sessies op oudere titel (4 sessies, langere duur, 0% bounce).  
+† Geaggregeerd in export als aparte rijen; interpretatie: **landingprobleem vs. diep onderzoek** naast elkaar.
 
 ## Zwakste signalen (landings + engagement)
 
 | Landing / pad | Sessies | Bounce | Opmerking |
 | --------------- | ------- | ------ | --------- |
 | `/contact.html?modus=offerte` | 11 | **9,1%** | **10 conversies** — deeplink blijft de goudstandaard |
-| `/contact.html` (zonder query) | 9 | 77,8% | 12 conversies (deels terugkerende gebruikers) |
-| `/diensten.html` | 14 | **78,6%** | als landing: te weinig directe keuze boven de vouw |
-| `/systemen-producten.html` | 9 | 77,8% | landers zoeken houvast; lange sessies op andere titelvariant, korte op vergelijk-pagina |
-| `/projecten.html` | 6 | **100%** (entry) | hero-cyclus 7 staat kort in data; 90d scrolled users nog **1** op 8 sessies — nog monitoren |
-| `/disclaimer.html` / `/privacy.html` | 7 + 6 | 100%, 0 s | `noindex` live — verwacht teruglopend |
-| `/vloerverwarming-assen.html` | 6 | 100%, **0 s** | **0 scrolled users (90d)** — eerste viewport moet sterker (bewijs, beeld, vertrouwen) |
+| `/contact.html` (zonder query) | 10 | **80%** | koud landen zonder intentie-keuze blijft zwaar |
+| `/diensten.html` | 14 | **78,6%** | als landing: keuzehulp staat kort live — volgende export bepalen of bounce daalt |
+| `/systemen-producten.html` | 8 | **75%** | als landing: nog steeds hoog na hero-aanpassing |
+| `/projecten.html` | 6 | **100%** (entry) | hero cyclus 7/8 nog geen doorbraak op entry-bounce |
+| `/vloerverwarming-assen.html` | 6 | **100%** | **0 scrolled users (90d)** — eerste scherm nog geen scroll-traction |
+| `/disclaimer.html` / `/privacy.html` | 7 + 6 | 100%, 0 s | `noindex` live — historische landings; blijven monitoren |
+| `/logo-varianten.html` | 7 | **85,7%** | stub/redirect-verkeer blijft binnenkomen — SEO-technische check nuttig |
 
 ## Traffic bronnen (selectie)
 
 | Kanaal | Source / medium | Sessies | Conversies |
 | ------ | ----------------- | ------- | ---------- |
-| Direct | `(direct) / (none)` | 211 | 82 |
+| Direct | `(direct) / (none)` | 212 | 87 |
+| Cross-network | `google / cpc` | 20 | 0 |
 | Paid Search | `google / cpc` | 13 | 0 |
-| Cross-network | `google / cpc` | 12 | 0 |
-| Organic Social | Facebook-varianten | ~30 | 0 |
-| Organic Search | `google / organic` | 4 | 1 |
-| Unassigned | `(not set)` | 2 | 2 |
+| Organic Social | Facebook-varianten | ~28 | 0 |
+| Organic Search | `google / organic` | 5 | 1 |
+| Unassigned | `(not set)` | 2 | 1 |
 
 ## Geografie (top)
 
 | Regio | Sessies | Doelregio? |
 | ----- | ------- | ---------- |
-| NL — Drenthe | 159 | Ja, kern |
-| NL — Groningen | 11 | Ja — relatief laag volume |
+| NL — Drenthe | 161 | Ja, kern |
+| NL — Groningen | 16 | Ja — groei t.o.v. vorige export (11) |
+| NL — North Holland | 23 | Buiten kern |
 | NL — Friesland | 4 | Ja — ondervertegenwoordigd |
-| NL — North Holland | 19 | Buiten kern |
-| VS (diverse staten) | ~28 totaal | waarschijnlijk ruis |
+| VS (diverse) | ~28 totaal | waarschijnlijk ruis |
 
 ## Observaties
 
-1. **Weekvolume blijft onder piek (170) maar herstelt licht** (92 vs eerder gemelde 72) — oorzaak van de dip nog steeds monitoren (Ads, index, tracking).
-2. **Paid + cross-network samen ~25 sessies, 0 conversies** — conversiekoppeling en message-match blijven prioriteit (Marketing Research + Ads-scripts).
-3. **`contact.html?modus=offerte` blijft extreem sterk** als landing (lage bounce, hoge conversies) — alle campagnes en social moeten deze URL blijven gebruiken waar offerte-intentie klopt.
-4. **`vloerverwarming-assen.html` is een rode vlag** (0 s, 100% bounce, geen scroll) — technisch en inhoudelijk de eerste viewport scherper maken (zelfde principes als `projecten.html`-hero).
-5. **`diensten.html` als landing verliest** (78,6% bounce) — keuzehulp met drie duidelijke paden helpt intentie-match.
-6. **`systemen-producten.html` als landing** — korte verbinding naar prijsindicatie/offerte in de hero verlaagt doodlopende lezing.
+1. **Weekvolume herstelt duidelijk** (100 vs 54 vorige week) — goed teken na dip; volhouden met meetplan.
+2. **Paid + cross-network samen 33 sessies, 0 conversies** — conversiekoppeling en message-match blijven P0 voor Marketing Research (Ads + GA4).
+3. **`contact.html?modus=offerte` blijft extreem sterk** — alle betaalde en social routes met offerte-intentie deze URL laten gebruiken.
+4. **`vloerverwarming-assen.html`:** bounce iets lager dan 100%, maar **gemiddelde duur ~0,7 s** en **0 scrollers (90d)** — viewport/vertrouwen nog niet “sticky” genoeg; meet na volle 14 dagen post-live.
+5. **`diensten.html` als landing** blijft op **78,6%** bounce — effect keuzehulp pas volgende cyclus hard beoordelen.
+6. **`systemen-producten.html`:** mix van “snelle exit” en “diep vergelijken” — landingsegment verder helpen met duidelijke **volgende stap** boven de vouw.
 
 ## Aanbevelingen voor Marketing Research Agent
 
-- **Google Ads:** campagne **`VLW-API-Leads NL auto`** staat **ENABLED** (check 13-05-2026). Bevestig budget, zoektermen, final URL’s per ad group en conversie-import — 0 conversies op betaald verkeer blijft het kernprobleem.
+- **Google Ads:** herbevestig campagne-status, zoektermen, final URL’s en **conversie-import** (GA4 → Ads) — 0 conversies op betaald blijft het kernprobleem.
 - **GA4 ↔ Ads:** auto-tagging, conversie-acties (`wizard_lead_submit`, `lead_form_submit`, `contact_submit`) en landings-URL’s nalopen tegen `.cursor/skills/google-ads-marketing/SKILL.md`.
+- **Content:** crawlbare kosten-uitleg op `prijsindicatie.html` en volgende city-gap (**Hoogeveen** na Emmen) blijven hoog renderen in SEO-wachtrij.
 
 ## Voorstellen voor Product Manager
 
-1. **Prioriteit: Hoog** — **Onderbouwing:** Assen-stadspagina 6 sessies, 0 s, 100% bounce, 0 scrollers (90d). **Actie:** Hero herschrijven met visueel bewijs + zelfde vertrouwen als projecten/home (werkgebied, 1 werkdag, buisgarantie), zonder city-template te breken. **Verwacht:** bounce <75%, sessieduur >20 s.
+1. **Prioriteit: Hoog (SEO)** — **Onderbouwing:** city-cluster na Emmen; Friesland/Drenthe-corridor. **Actie:** `vloerverwarming-hoogeveen.html` (max. 1 nieuwe pagina), gelijkwaardig aan Emmen/Assen, sitemap + footer + kruislinks. **Verwacht:** eerste organische sessies binnen 4–8 weken.
 
-2. **Prioriteit: Hoog** — **Onderbouwing:** `diensten.html` landing bounce 78,6%. **Actie:** Eerste scherm **keuzehulp**: drie kaarten (compleet traject / schuimbeton-kern / aanleg systeem) met duidelijke doorklik naar `werkwijze`, `#schuimbeton`, `systemen-producten` + gedeelde CTA prijsindicatie. **Verwacht:** landingsbounce <65%.
+2. **Prioriteit: Hoog (CTA)** — **Onderbouwing:** `projecten.html` entry **100%** bounce (6 sessies), 90d **1** scrolled user op 8 pagina-sessies. **Actie:** eerste scherm compacter + **duidelijke primaire duo-CTA** (prijsindicatie + offerte-deeplink) vóór zware galerij. **Verwacht:** landingsbounce <85%, meer scroll.
 
-3. **Prioriteit: Hoog (SEO + bereik)** — **Onderbouwing:** research backlog — Emmen binnen radius, geen stadspagina. **Actie:** Nieuwe pagina `vloerverwarming-emmen.html` (max. 1 nieuwe pagina deze sprint), zelfde kwaliteit als Assen/Groningen, footer + sitemap. **Verwacht:** eerste organische sessies + betere Ads-landing voor Emmen-termen.
+3. **Prioriteit: Hoog (SEO)** — **Onderbouwing:** `prijsindicatie.html` sterk als sessie-pagina, maar **als landing** bounce **64,7%** op 17 sessies — zoekers met “kosten”-intent missen crawlbare uitleg boven wizard. **Actie:** 200–400 woorden statische uitleg (drivers: m², ondergrond, schuimbeton), interne links naar FAQ/contact. **Verwacht:** betere SEO-match + lagere landingbounce.
 
-4. **Prioriteit: Midden** — **Onderbouwing:** `systemen-producten.html` landing 77,8% bounce. **Actie:** Korte “als je via zoeken hier landt”-regel + **offerte**-CTA in hero naast prijsindicatie/FAQ. **Verwacht:** meer doorklik naar prijsindicatie en contact.
+4. **Prioriteit: Midden (CTA)** — **Onderbouwing:** `/contact.html` zonder query: **80%** bounce als landing. **Actie:** boven het modus-blok een korte **intentie-keuze** (info / offerte / bel) met links naar dezelfde tabs — geen dubbele formulieren. **Verwacht:** lagere bounce op cold contact-landings.
 
-5. **Prioriteit: Midden** — **Onderbouwing:** Groningen-stadspagina 87,5% bounce. **Actie:** Eén **echte** projectfoto in eerste viewport (zelfde patroon als Assen/projecten), plus behouden CTA’s. **Verwacht:** bounce richting <75%.
+5. **Prioriteit: Midden** — **Onderbouwing:** Assen **0 scrollers (90d)** ondanks nieuwe hero. **Actie:** visuele **“lees verder”**/anchor naar eerste contentblok of compact trust-bandje direct onder hero-afbeelding (geen extra zware LCP). **Verwacht:** >0 scrollers binnen 30d.
 
-6. **Prioriteit: Laag** — **Onderbouwing:** `projecten.html` entry nog 100% bounce op klein volume na hero-update. **Actie:** Na cyclus 8 opnieuw meten; eventueel tweede trust-element of FAQ-link in hero.
-
-7. **Prioriteit: Laag** — **Onderbouwing:** disclaimer/privacy nog als landings in 30d-venster. **Actie:** Search Console URL-inspectie na `noindex`; geen extra dev tenzij Google blijft indexeren.
+6. **Prioriteit: Laag** — **Onderbouwing:** `logo-varianten.html` blijft verkeer trekken. **Actie:** Search Console + server redirect controleren; geen nieuwe features tenzij indexatie aanhoudt.
 
 **Tone:** nuchter, direct, geen superlatieven — conform AGENTS.md.

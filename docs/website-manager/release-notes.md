@@ -4,6 +4,30 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 9 juni 2026 (cyclus 9)
+**Deployment:** _(na push door PM)_  
+**Versie:** _(git log -1 na commit)_
+
+### Wat is er veranderd
+- **Nieuwe stadspagina:** `vloerverwarming-hoogeveen.html` met eigen copy, JSON-LD Service, hero-beeld uit `beeldmateriaal/`.
+- **Projecten:** compactere kop + **offerte**-CTA naast prijsindicatie en opname in de hero.
+- **Prijsindicatie:** de bestaande **kosten-uitleg** (drivers m², ondergrond, schuimbeton) staat nu **boven** de wizard voor betere SEO en cold landers.
+- **Contact:** boven het tabblad-formulier een korte **intentie-keuze** met deeplinks naar dezelfde modi.
+- **Assen:** **Lees verder**-link naar het eerste inhoudsblok om scroll/trust te helpen.
+- **Footers + sitemap:** Hoogeveen toegevoegd op alle relevante pagina’s.
+
+### Waarom
+- GA4 (15-05): weekvolume herstelt; zwakke punten blijven cold **contact**-landings, **projecten** entry-bounce, **prijsindicatie** als landing, en **Assen** zonder scrollers.
+- City-cluster: Hoogeveen is de logische volgende stap na Emmen.
+
+### Verwacht effect
+- Eerste organische sessies op Hoogeveen-URL; lagere bounce op prijs- en contactlandings; meer zichtbare scroll op Assen.
+
+### Social media deze week
+Zie `weekly_calendar.md` (week 2 juni): Hoogeveen-lancering, projecten-offerte, prijs-uitleg, contact-intent, meetnoot betaald.
+
+---
+
 ## Release — week van 2 juni 2026 (cyclus 8)
 **Deployment:** 13-05-2026 ~09:17 UTC (PM: `git push origin main` — GitHub Pages run **25784369037**, succesvol; E2E **25784370229**)  
 **Versie:** `2f911bb`
