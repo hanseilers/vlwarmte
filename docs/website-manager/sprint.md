@@ -93,4 +93,4 @@
 
 ### Deployment
 
-**Nog niet live** — PM voert `git commit` + `git push origin main` uit; run-id volgt hierna.
+**Live** na `git push origin main` — GitHub Pages run **25914206844** (succes), E2E **25914207646** (IMAP E2E overgeslagen: geen `IMAP_USER` / `IMAP_PASSWORD` secrets op de repo). Commit **`d2bea47`**.

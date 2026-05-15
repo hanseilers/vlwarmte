@@ -5,8 +5,8 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 ---
 
 ## Release — week van 9 juni 2026 (cyclus 9)
-**Deployment:** _(na push door PM)_  
-**Versie:** _(git log -1 na commit)_
+**Deployment:** 15-05-2026 UTC — GitHub Pages run **25914206844** (succes); E2E **25914207646** (workflow succes; IMAP-stap overgeslagen zonder repo-secrets).  
+**Versie:** `d2bea47`
 
 ### Wat is er veranderd
 - **Nieuwe stadspagina:** `vloerverwarming-hoogeveen.html` met eigen copy, JSON-LD Service, hero-beeld uit `beeldmateriaal/`.

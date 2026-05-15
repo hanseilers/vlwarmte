@@ -59,7 +59,7 @@
 
 ### Post 3 — zaterdag 7 juni 2026, 18:45
 **Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.17.jpeg`  
-**Caption:** Hoogeveen: nieuwe pagina,zelfde nuchtere toon. Link in bio.
+**Caption:** Hoogeveen: nieuwe pagina, zelfde nuchtere toon. Link in bio.
 
 **Hashtags:** #vloerverwarming #Hoogeveen #Drenthe #wonen #vakmanschap  
 **CTA:** https://www.vlwarmte.nl/vloerverwarming-hoogeveen.html  
