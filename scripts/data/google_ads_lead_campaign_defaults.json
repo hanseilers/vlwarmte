@@ -10,7 +10,9 @@
   "ad_group_suffix": "Leads NL",
   "final_urls": [
     "https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag",
-    "https://www.vlwarmte.nl/prijsindicatie.html"
+    "https://www.vlwarmte.nl/prijsindicatie.html",
+    "https://www.vlwarmte.nl/vloerverwarming-leeuwarden.html",
+    "https://www.vlwarmte.nl/vloerverwarming-hoogeveen.html"
   ],
   "keywords": [
     {

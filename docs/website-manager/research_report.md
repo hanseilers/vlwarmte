@@ -11,7 +11,7 @@
 
 ## Samenvatting
 
-Het verkeer herstelt week-op-week (export: **100** sessies in de laatste volledige week vs **54** de week ervoor). Dat helpt met meten; de knel blijft **betaald**: **Paid Search** en **cross-network** (`google / cpc`) samen **33** sessies in 30 dagen met **0** conversies — dat wijst op **conversiekoppeling / import**, **auto-tagging** en/of **message-match** (welke landings krijgen de klik?) vóór opschalen van biedstrategie. Sterk blijft **`contact.html?modus=offerte`** (laag bounce, conversies in de export). Zwak blijven koude landings op **`contact.html` zonder query**, **`diensten.html`** en **`vloerverwarming-assen.html`** (weinig engagement); **`prijsindicatie.html`** is inhoudelijk sterk als pagina, maar als **landing** nog een **hogere bounce** — daar past **crawlbare kosten-uitleg** naast de wizard. **Friesland** blijft dun in sessies (**4** in 30 dagen); **Hoogeveen** en **Leeuwarden** ontbreken nog als indexeerbare city-URL. **`vloerverwarming-emmen.html`** staat live na cyclus 8; effect in 30d-aggregaten is nog beperkt zichtbaar.
+Het verkeer herstelt week-op-week (export: **100** sessies in de laatste volledige week vs **54** de week ervoor). Dat helpt met meten; de knel blijft **betaald**: **Paid Search** en **cross-network** (`google / cpc`) samen **33** sessies in 30 dagen met **0** conversies — dat wijst op **conversiekoppeling / import**, **auto-tagging** en/of **message-match** (welke landings krijgen de klik?) vóór opschalen van biedstrategie. Sterk blijft **`contact.html?modus=offerte`** (laag bounce, conversies in de export). Zwak blijven koude landings op **`contact.html` zonder query**, **`diensten.html`** en **`vloerverwarming-assen.html`** (weinig engagement); **`prijsindicatie.html`** is inhoudelijk sterk als pagina, maar als **landing** nog een **hogere bounce** — daar past **crawlbare kosten-uitleg** naast de wizard. **Friesland** blijft dun in sessies (**4** in 30 dagen); **Leeuwarden** heeft nu een indexeerbare stadspagina — Drachten/Heerenveen kunnen later volgen. **`vloerverwarming-emmen.html`** staat live na cyclus 8; effect in 30d-aggregaten is nog beperkt zichtbaar.
 
 ## Top zoekwoorden
 
@@ -26,7 +26,8 @@ Het verkeer herstelt week-op-week (export: **100** sessies in de laatste volledi
 | vloerverwarming assen | midden-hoog | hoog | bestaand (`vloerverwarming-assen.html`) — inhoud/ATF verder meten |
 | vloerverwarming emmen | midden | midden-hoog | bestaand (`vloerverwarming-emmen.html`, nieuw live) |
 | vloerverwarming hoogeveen / meppel | midden-laag (per stad) | midden | bestaand (`vloerverwarming-hoogeveen.html`, nieuw live) |
-| vloerverwarming leeuwarden / drachten / heerenveen | midden (per stad) | midden-hoog | **gap** — Friesland structureel onderbediend |
+| vloerverwarming leeuwarden | midden | midden-hoog | bestaand (`vloerverwarming-leeuwarden.html`, nieuw live) |
+| vloerverwarming drachten / heerenveen | midden (per stad) | midden-hoog | **gap** — eigen URL later; nu kruislink vanaf Leeuwarden |
 | installateur vloerverwarming noord-nederland | midden | hoog | bestaand (`index.html`, `werkwijze.html`) |
 | vloerverwarming nieuwbouw / renovatie | midden | midden-hoog | bestaand + FAQ; renovatie/hout als aparte URL nog zwak |
 | vloerverwarming warmtepomp combinatie | midden | midden | bestaand (FAQ) — in city- en dienstcopy uitlichten |
@@ -41,8 +42,8 @@ Het verkeer herstelt week-op-week (export: **100** sessies in de laatste volledi
 ## Content gaps (ontbrekende of zwakke pagina's/secties)
 
 - **`prijsindicatie.html` — crawlbare prijs-sectie (ca. 200–400 woorden):** drivers (m², ondergrond, schuimbeton ja/nee), wat wél in een offerte zit, link naar FAQ/contact. Helpt SEO op “kosten”-termen én betaalde landings die hierop uitkomen.
-- **`vloerverwarming-hoogeveen.html`:** logische volgende city na Emmen (corridor Drenthe, werkgebied-radius); sitemap, footer, kruislinks volgens patroon Emmen/Assen/Groningen.
-- **`vloerverwarming-leeuwarden.html` (+ eventueel Drachten/Heerenveen later):** Friesland telt in GA4 nog weinig sessies; dedicated URL helpt Ads-keyword “Leeuwarden” en organische lokale intent.
+- **`vloerverwarming-leeuwarden.html`:** live — sitemap, footer, kruislinks; Drachten/Heerenveen desnoods later als aparte URL.
+- **`vloerverwarming-hoogeveen.html`:** live (cyclus 9); Meppel blijft backlog tot zoekdata anders zegt.
 - **`vloerverwarming-meppel.html`:** grens Drenthe/Overijssel; lagere prioriteit dan Hoogeveen/Leeuwarden tenzij zoektermenrapport anders zegt.
 - **`vloerverwarming-renovatie-houten-vloer.html` (of zware FAQ-cluster met vaste URL):** commerciële twijfelvraag, nu vooral in wizard/FAQ verspreid.
 - **`projecten.html`:** entry blijft zwak (hoge bounce, weinig scroll in eerdere exports); geen nieuwe “pagina”, wel **ATF**: compacter, één project + duidelijke duo-CTA (prijsindicatie + offerte-deeplink).
