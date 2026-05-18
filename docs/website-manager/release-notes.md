@@ -4,6 +4,32 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 18 mei 2026 (cyclus 10)
+**Deployment:** 18-05-2026 UTC — GitHub Pages run **26013287851** (`pages-build-deployment`); E2E-run **26013288326** gestart na push.
+**Versie:** `de6596b`
+
+### Wat is er veranderd
+- **Nieuwe stadspagina:** `vloerverwarming-drachten.html` voor Drachten én Heerenveen (zelfde opzet als de Leeuwarden-pagina), opgenomen in de sitemap.
+- **Offerte-knoppen site-breed aangescherpt:** elke "Informatie / Offerte aanvragen"-knop gaat nu direct naar het offerteformulier (`contact.html?modus=offerte#aanvraag`) in plaats van de kale contactpagina — op alle 19 pagina's.
+- **Over ons:** onderaan een duidelijk vervolgblok met twee knoppen — prijsindicatie en offerte aanvragen.
+- **Projecten:** het eerste scherm is compacter gemaakt zodat de twee actieknoppen meteen zichtbaar zijn, vóór de fotogalerij.
+- **Homepage + diensten:** een paar natuurlijke tekstlinks toegevoegd naar de kosten-uitleg en de stadspagina's (waaronder Drachten).
+- **Google Ads-instelling:** de zoekwoorden "vloerverwarming drachten" en "vloerverwarming heerenveen" wijzen nu naar de nieuwe Drachten-pagina (alleen het instellingenbestand in de repo; geen advertenties live gezet, geen uitgaven gewijzigd).
+
+### Waarom
+- **Drachten/Heerenveen-pagina:** in de Google Ads-instellingen stonden zoekwoorden voor Drachten en Heerenveen zonder bijpassende pagina — bezoekers van die zoekopdrachten kwamen op een algemene pagina terecht. Dat lekt aanvragen. Friesland is bovendien sterk ondervertegenwoordigd in het bezoek (4 sessies tegen 164 in Drenthe).
+- **Offerte-deeplink:** cijfers zijn helder — wie direct op het offerteformulier landt bouncet 9% en levert veel aanvragen op; wie op de kale contactpagina landt bouncet 80%. Alle offerte-knoppen sturen nu naar de bewezen route.
+- **Over ons / projecten:** beide pagina's zijn zwakke instappunten (rond 80–100% bounce, vrijwel geen doorstroom). Een duidelijke vervolgstap naar prijs/offerte moet bezoekers vasthouden.
+- **Interne links:** de homepage trekt het meeste verkeer; vandaar contextuele links naar de kosten-uitleg en stadspagina's voor zowel doorstroom als vindbaarheid.
+
+### Verwacht effect
+Bij de volgende meting (GA4-fetch rond 15 juni): eerste organische sessies op de Drachten-pagina, lagere bounce op de kale contactpagina met meer doorstroom naar het offerteformulier, lagere entry-bounce op over-ons en projecten, en geen Ads-zoekwoord meer zonder bijpassende pagina. De cyclus-9-wijzigingen worden bij diezelfde meting pas hard beoordeeld (3 dagen is nog ruis). De grote openstaande kwestie blijft de GA4↔Ads-conversiekoppeling — die vraagt een sessie met scriptrechten, gepland rond 1 juni.
+
+### Social media deze week
+7 posts gepland (handmatig te publiceren): 3 op LinkedIn (di–do, B2B/aannemers, kosten-uitleg, projecten-offerteroute) en 4 op Instagram (wo/vr/za, Assen-werkbeeld, eerlijke prijsbandbreedte, contactkeuze, vakmanschap). Kosten-intent linkt naar de prijsindicatie, offerte-intent naar de offerte-deeplink. Drachten/Heerenveen bewust nog geen stadsclaim tot de pagina geïndexeerd is.
+
+---
+
 ## Release — week van 9 juni 2026 (cyclus 9)
 **Deployment:** 15-05-2026 UTC — GitHub Pages run **25914206844** (succes); E2E **25914207646** (workflow succes; IMAP-stap overgeslagen zonder repo-secrets).  
 **Versie:** `d2bea47`

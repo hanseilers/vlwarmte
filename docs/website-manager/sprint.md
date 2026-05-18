@@ -105,7 +105,7 @@
 - Natuurlijke ankerteksten, geen keyword-stuffing, ≤3 links per pagina. Alle hrefs verwijzen naar bestaande bestanden/anchors.
 
 ### Overig
-- **Deployment:** **Nog niet live** — geen `git commit`/`git push` uitgevoerd (conform developer-agent.md; PM voert commit + `git push origin main` uit). [PM vult run-id / succes in]
+- **Deployment:** **Live gezet door PM** op 18-05-2026 — commit `de6596b`, `git push origin main` geslaagd (`5917fc2..de6596b`). GitHub Pages run-id `26013287851` (`pages-build-deployment`) + E2E-run `26013288326` gestart direct na push. Live-verificatie via `curl` GA4-check uitgevoerd in stap 9.
 - **Live URL:** https://www.vlwarmte.nl
 - **Geen** credentials/secrets/service-account-JSON/`node_modules` aangeraakt. Alleen `scripts/data/google_ads_lead_campaign_defaults.json` (defaults, geen geheimen). Géén `google_ads_*`-scripts gedraaid.
 - **Aandachtspunten volgende sprint:** (1) footer-citylijsten van de bestaande root-pagina's zijn niet uniform en bevatten Drachten nog niet — overweeg een uniformerings-taak; (2) `index.html` "Ja, graag" en `diensten.html` "Plan een informatiegesprek" zijn bewust niet ge-deeplinkt (mixed/info-intentie) — herijken bij juni-data indien conversie tegenvalt.
