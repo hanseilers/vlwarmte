@@ -4,6 +4,31 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 20 mei 2026 (cyclus 11)
+**Deployment:** 20-05-2026 — push `dc3d2de` naar `main` (GitHub Pages).
+**Versie:** `dc3d2de`
+
+### Wat is er veranderd
+- **Projecten:** twee echte cases live — Zeegse (100 m², souterrain + begane grond) en Zuidlaren (50 m² op draadstaalnetten, benedenverdieping), met werkbeelden en korte situatie/oplossing/resultaat.
+- **Foto’s:** productie-afbeeldingen in `assets/img/projecten/`; bronmateriaal blijft in `beeldmateriaal/projecten/`.
+- **Projecten in sitemap** en link “Bekijk uitgevoerd werk” op homepage en diensten.
+- **Diensten:** compacte keuze direct onder de hero — prijsindicatie of offerte, zonder eerst te scrollen.
+- **Footer:** Drachten-link op alle pagina’s (zelfde plek als op de Drachten-stadspagina).
+- **Google Ads-voorbereiding:** RSA-tekst in defaults wijst naar uitgevoerd werk op `projecten.html` (alleen repo; geen live advertentiewijziging).
+
+### Waarom
+- Eerste echte projectinput van de eigenaar: placeholders ondermijnen vertrouwen; analytics toonde 100% entry-bounce op projecten en ~7,5 s gemiddelde tijd.
+- `diensten.html` als landing: 78,6% bounce, 0 conversies — vroege keuze-CTA volgt het bewezen offerte-deeplink-patroon.
+- Drachten-pagina was live maar nog niet overal vindbaar; Friesland blijft ondervertegenwoordigd in GA4.
+
+### Verwacht effect
+GA4 rond 15 juni: lagere entry-bounce op `projecten.html`, meer scrollers, eerste sessies op Drachten-pagina, betere doorstroom vanaf diensten. Cyclus 9–10 meetdoelen pas dan hard beoordelen. GA4↔Ads-attributie blijft gepland rond 1 juni (geen extra spend deze sprint).
+
+### Social media deze week
+7 posts (handmatig): Zeegse- en Zuidlaren-foto’s, Drachten-pagina, projecten-route met offerte-deeplink. Na deze release mogen posts met plaatsnamen live; LinkedIn 2 en Instagram 1–2 gebruiken de nieuwe cases.
+
+---
+
 ## Release — week van 18 mei 2026 (cyclus 10)
 **Deployment:** 18-05-2026 UTC — GitHub Pages run **26013287851** (`pages-build-deployment`); E2E-run **26013288326** gestart na push.
 **Versie:** `de6596b`
