@@ -69,11 +69,24 @@ function initMobileNav() {
 
 function initFaq() {
   const faqButtons = document.querySelectorAll("[data-faq-toggle]");
-  faqButtons.forEach((button) => {
+  faqButtons.forEach((button, index) => {
+    const item = button.closest(".faq-item");
+    const answer = item?.querySelector(".faq-answer");
+    if (!item || !answer) return;
+
+    const btnId = button.id || `faq-question-${index + 1}`;
+    const answerId = answer.id || `faq-answer-${index + 1}`;
+    button.id = btnId;
+    answer.id = answerId;
+
+    button.setAttribute("aria-controls", answerId);
+    button.setAttribute("aria-expanded", item.classList.contains("is-open") ? "true" : "false");
+    answer.setAttribute("role", "region");
+    answer.setAttribute("aria-labelledby", btnId);
+
     button.addEventListener("click", () => {
-      const item = button.closest(".faq-item");
-      if (!item) return;
       item.classList.toggle("is-open");
+      button.setAttribute("aria-expanded", item.classList.contains("is-open") ? "true" : "false");
     });
   });
 }
@@ -242,12 +255,20 @@ function initFacebookOutboundGa() {
     } catch {
       return;
     }
-    if (!url.hostname.includes("facebook.com")) return;
     if (typeof gtag !== "function") return;
-    gtag("event", "facebook_outbound", {
-      link_url: a.href,
-      link_text: (a.textContent || "").trim().slice(0, 100)
-    });
+    if (url.hostname.includes("facebook.com")) {
+      gtag("event", "facebook_outbound", {
+        link_url: a.href,
+        link_text: (a.textContent || "").trim().slice(0, 100)
+      });
+      return;
+    }
+    if (url.hostname === "wa.me" || url.hostname.includes("whatsapp.com")) {
+      gtag("event", "whatsapp_outbound", {
+        link_url: a.href,
+        link_text: (a.getAttribute("aria-label") || a.textContent || "").trim().slice(0, 100)
+      });
+    }
   });
 }
 

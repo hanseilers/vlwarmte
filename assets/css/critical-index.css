@@ -262,6 +262,24 @@ a {
   box-shadow: 0 8px 20px rgba(15, 76, 129, 0.16);
 }
 
+.btn:focus-visible,
+.nav-toggle:focus-visible,
+.faq-question:focus-visible,
+a.brand:focus-visible,
+.drawer-cta:focus-visible,
+.sticky-cta-mobile:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.92);
+  outline-offset: 2px;
+}
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 4px rgba(95, 163, 224, 0.28);
+}
+
+.btn-primary:focus-visible {
+  box-shadow: 0 0 0 4px rgba(224, 85, 47, 0.35), 0 10px 24px rgba(188, 63, 31, 0.32);
+}
+
 .btn-social-facebook {
   display: inline-flex;
   align-items: center;
@@ -314,6 +332,75 @@ a {
 
 .site-footer .footer-nav .btn-social-facebook {
   margin-top: 0.15rem;
+}
+
+.footer-phone-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  vertical-align: middle;
+}
+
+.site-footer .footer-contact a:not(.btn-social-whatsapp) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding-block: 0.15rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.btn-social-whatsapp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 1.125rem;
+  height: 1.125rem;
+  padding: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: #25d366;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 1px 4px rgba(37, 211, 102, 0.28);
+  text-decoration: none;
+  vertical-align: middle;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.btn-social-whatsapp::after {
+  content: "";
+  position: absolute;
+  inset: -0.45rem;
+}
+
+.btn-social-whatsapp:hover {
+  background: #1fb855;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.38);
+}
+
+.btn-social-whatsapp:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: 2px;
+}
+
+.btn-social-whatsapp__icon {
+  width: 0.6rem;
+  height: 0.6rem;
+  flex-shrink: 0;
 }
 
 .nav-toggle {
