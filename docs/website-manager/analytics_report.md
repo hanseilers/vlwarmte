@@ -1,119 +1,150 @@
-# Analytics Rapport — 18 mei 2026
+# Analytics Rapport — 20 mei 2026
 
 **Periode:** `30daysAgo` t/m `today` (GA4 property `properties/534641753`)
-**Databron:** verse export `docs/website-manager/ga4_report.json`, timestamp **`2026-05-18T06:05:10`** — dit is de **eerste meting ná de cyclus-9-deploy** van 15-05 (commit `d2bea47`). Data loopt nu ~3 dagen post-deploy.
+**Databron:** `docs/website-manager/ga4_report.json`, timestamp **`2026-05-20T13:06:34`**
+**Vorige sprint:** cyclus 10 live sinds **18-05-2026** (commit `de6596b`); vorige fetch **18-05** was nog vóór/op rand van deploy. Deze fetch is de **eerste meting met cyclus 10 in het venster** (~2 dagen post-deploy) én bevat ~17 dagen cyclus-9-data.
 
-**Vorige sprint effect (cyclus 9):** Te vroeg voor harde conclusies — 3 dagen post-deploy is binnen ruis. Alle vijf taken zijn opnieuw bevestigd live in de HTML (Hoogeveen-pagina + sitemap, prijsindicatie `#kosten-uitleg` boven wizard, contact-intent-strip, Assen-anker, projecten offerte-CTA). De vroege signalen op de vier meetdoelen zijn echter **vlak**: geen van de bounce-cijfers is meetbaar bewogen, geen organische Hoogeveen-sessies, Assen nog steeds 0 scrollers. Volledig oordeel pas bij de meting over 2–3 weken.
+**Vorige sprint effect (cyclus 10):** Te vroeg voor harde conclusies op de vijf meetdoelen. Drachten-pagina staat nog **niet** in GA4-tabellen (0 sessies). Offerte-deeplink, over-ons vervolg-CTA, projecten ATF-duo-CTA en interne links zijn live — bounce/scroll op projecten, over-ons entry en cold contact zijn **ongewijzigd** t.o.v. 18-05. Wel: Cross-network `google / cpc` groeit licht in conversies (5→9); Paid Search blijft **0/13**.
+
+---
 
 ## Kerncijfers
 
-| Metric | Waarde | Trend / context |
-| ------ | ------ | ---------------- |
-| Sessies laatste **volledige** week (11–17 mei) | **48** | week ervoor (4–10 mei) **75** → **−36%** wow; piekweek 27/4–3/5 was 172 |
-| Actieve gebruikers (laatste volle week) | **41** | volgt sessiedaling |
-| Homepage `/` (30d pad) | **164** sessies, bounce **57,3%** | gem. duur ~62 s; 26 scrolled users (90d) op 164 |
-| `/prijsindicatie.html` (30d pad) | **50** sessies, bounce **30%** | gem. duur **104 s** — sterkste inhoudspagina |
-| Direct | **215** sessies, **89** conversies | conversies vrijwel volledig uit Direct |
-| Betaald totaal (`google / cpc`, beide groupings) | **42** sessies, **5** conversies | Cross-network 29 ses / **5 conv**; Paid Search 13 ses / **0 conv** |
+| Metric | Waarde | Trend t.o.v. fetch 18-05 |
+| ------ | ------ | ------------------------ |
+| Sessies (30d, som devices) | **~322** | devices 172+139+11; homepage-pad `/` **182** (+11%) |
+| Laatste volledige week (13–19 mei) | **44** sessies, **40** users | week ervoor (6–12 mei) **92** → **−52%** wow; piekweek 29/4–5/5 **170** |
+| Homepage `/` (30d pad) | **182** sessies, bounce **59,9%** | was 164 / 57,3% — iets meer verkeer, bounce licht omhoog |
+| `/prijsindicatie.html` (30d pad) | **51** sessies, bounce **29,4%** | was 50 / 30% — stabiel sterk; gem. duur **~101 s** |
+| Direct | **219** sessies, **90** conversies | was 215 / 89 |
+| Betaald totaal (`google / cpc`) | **55** sessies (42+13), **9** conv. | Cross-network **42** / **9** (was 29/5); Paid Search **13** / **0** (ongewijzigd) |
+| Organic Search `google` | **8** sessies, **1** conv. | was 7 / 1 |
 
-> GA4 telt sessies per dimensie; sommen over tabellen zijn indicatief. Trendrichting gaat voor absolute optelsom.
+> GA4 telt sessies per dimensie; sommen zijn indicatief. Bij dalend weekvolume zijn landing-cijfers (6–17 sessies) ruis, geen sprint-falen.
+
+---
 
 ## Top pagina's (30d, pagePath)
 
 | Pagina | Sessies | Gem. sessieduur | Bounce |
 | ------ | ------- | ---------------- | ------ |
-| `/` | 164 | ~62 s | 57,3% |
-| `/prijsindicatie.html` | 50 | **~104 s** | **30%** |
+| `/` | 182 | ~58 s | 59,9% |
+| `/prijsindicatie.html` | 51 | **~101 s** | **29,4%** |
 | `/contact.html` (beide titels) | 52 | ~58 s | mix — zie landings |
-| `/diensten.html` | 21 | ~81 s | 52,4% |
-| `/over-ons.html` | 18 | ~32 s | 38,9% |
-| `/werkwijze.html` | 15 | ~81 s | 40% |
-| `/systemen-producten.html` | 13 | ~7 s (hoofdtitel) | 46,2% |
+| `/diensten.html` | 25 | ~73 s | 52,4% (regio-titel 25%) |
+| `/over-ons.html` | 21 | ~29 s | 38,9% |
+| `/werkwijze.html` | 20 | ~63 s | 40% |
+| `/systemen-producten.html` | 17 | mix | 46,2% |
 | `/projecten.html` | 8 | **~7,5 s** | **75%** |
 | `/vloerverwarming-groningen.html` | 8 | ~51 s | **75%** |
 | `/vloerverwarming-assen.html` | 7 | **~0,7 s** | **85,7%** |
 
-## Zwakste signalen (landings + engagement)
+**Niet in top:** `vloerverwarming-drachten.html`, `vloerverwarming-hoogeveen.html`, `vloerverwarming-leeuwarden.html` — nog geen meetbaar verkeer in deze export.
 
-| Landing / pad | Sessies | Bounce | Conv. | Opmerking |
-| --------------- | ------- | ------ | ----- | --------- |
-| `/contact.html?modus=offerte` | 11 | **9,1%** | **10** | deeplink blijft de goudstandaard |
-| `/contact.html` (zonder query) | 10 | **80%** | 12 | koud landen; intent-strip nog **geen** zichtbaar effect (3d post-deploy) |
-| `/diensten.html` | 14 | **78,6%** | 0 | als landing; keuzehulp staat live — nog niet bewogen |
-| `/over-ons.html` (entry) | 10 | **80%** | 0 | hoog als instappunt; weinig doorstroom |
-| `/systemen-producten.html` (entry) | 8 | **75%** | 0 | als landing nog hoog |
-| `/projecten.html` (entry) | 6 | **100%** | 0 | offerte-CTA cyclus 9 nog **geen** effect — kritiek blijven volgen |
-| `/vloerverwarming-assen.html` (entry) | 6 | **100%** | 0 | **0 scrolled users (90d)**; lees-verder-link nog **geen** effect |
-| `/prijsindicatie.html` (entry) | 17 | **64,7%** | **24** | bounce **ongewijzigd** vs 64% pre-deploy; conversiewaarde blijft hoog |
-| `/disclaimer.html` / `/privacy.html` | 7 + 6 | 100%, 0 s | 0 | `noindex` live — historische landings/ruis |
-| `/logo-varianten.html` | 7 | **85,7%** | 0 | stub-verkeer blijft binnenkomen — SEO-tech check nuttig |
+---
+
+## Landingspagina's (instappunten)
+
+| Landing | Sessies | Bounce | Conv. | Opmerking |
+| ------- | ------- | ------ | ----- | --------- |
+| `/` | 155 | 62,6% | 47 | hoofdinstroom |
+| `/prijsindicatie.html` | 17 | **64,7%** | **24** | entry-bounce ongewijzigd; conversiewaarde hoog |
+| `/contact.html?modus=offerte` | 11 | **9,1%** | **10** | goudstandaard deeplink |
+| `/contact.html` (zonder query) | 10 | **80%** | 12 | cold contact — intent-strip nog geen zichtbaar effect |
+| `/diensten.html` | 14 | **78,6%** | 0 | zwakste commerciële landing |
+| `/over-ons.html` | 10 | **80%** | 0 | entry ongewijzigd; onderaan-CTA helpt entry niet |
+| `/projecten.html` | 6 | **100%** | 0 | ATF cyclus 10 nog **geen** effect (2d) |
+| `/werkwijze.html` | 9 | 66,7% | 7 | redelijk |
+| `/systemen-producten.html` | 8 | 75% | 0 | |
+| `/vloerverwarming-assen.html` | 6 | **100%** | 0 | **0 scrollers (90d)** |
+
+---
 
 ## Traffic bronnen (selectie)
 
 | Kanaal | Source / medium | Sessies | Conversies |
 | ------ | ----------------- | ------- | ---------- |
-| Direct | `(direct) / (none)` | 215 | 89 |
-| Cross-network | `google / cpc` | 29 | **5** |
+| Direct | `(direct) / (none)` | 219 | 90 |
+| Cross-network | `google / cpc` | 42 | **9** |
 | Organic Social | `m.facebook.com / referral` | 13 | 0 |
 | Paid Search | `google / cpc` | 13 | **0** |
 | Organic Social | `facebook.com / referral` | 12 | 0 |
-| Organic Search | `google / organic` | 7 | 1 |
+| Organic Search | `google / organic` | 8 | 1 |
 | Organic Search | `bing / organic` | 4 | 0 |
-| Organic Social | `l.`/`lm.facebook.com` | 6 | 0 |
-| Unassigned | `(not set)` | 3 | 1 |
+
+---
 
 ## Geografie (top)
 
 | Regio | Sessies | Doelregio? |
 | ----- | ------- | ---------- |
-| NL — Drenthe | 164 | Ja, kern |
-| NL — North Holland | 29 | Buiten kern |
-| NL — Groningen | 16 | Ja — kern |
-| NL — South Holland | 14 | Buiten kern |
-| NL — Friesland | 4 | Ja — sterk ondervertegenwoordigd |
-| VS (Oregon/Colorado/NC/Iowa) | ~30 | Ruis (bots/crawlers) |
+| NL — Drenthe | 168 | Ja, kern (+4 t.o.v. 18-05) |
+| NL — North Holland | 34 | Buiten kern (+5) |
+| NL — Groningen | 18 | Ja (+2) |
+| NL — South Holland | 16 | Buiten kern (+2) |
+| NL — Friesland | 4 | Ja — **sterk ondervertegenwoordigd** (ongewijzigd) |
+| VS (Oregon/Colorado/NC/Iowa) | ~32 | Ruis/bots |
 
-## Cyclus-9 meetdoelen — eerste post-deploy stand (3 dagen)
+---
 
-| Meetdoel | Doel | Stand 18-05 | Oordeel |
-| -------- | ---- | ----------- | ------- |
-| (a) Organische sessies `vloerverwarming-hoogeveen.html` | >0 | **0** (pagina nog niet in top/entry/engagement) | Te vroeg — indexering loopt; herbeoordelen over 2–4 wk |
-| (b) `projecten.html` landingsbounce | <90% | **100%** (6 ses) | **Geen effect** zichtbaar; volumes klein |
-| (c) Cold `/contact.html` bounce | lager | **80%** (10 ses) | **Geen effect** zichtbaar |
-| (d) `prijsindicatie.html` landingsbounce | <64% | **64,7%** (17 ses) | **Geen effect** zichtbaar; conversie blijft sterk (24) |
-| (e) Assen scrolled users (90d) | >0 | **0** | **Geen effect** — Assen blijft het zwakste scherm |
+## Cyclus-10 meetdoelen — eerste post-deploy stand (~2 dagen)
+
+| Meetdoel | Doel (4 wk) | Stand 20-05 | Oordeel |
+| -------- | ----------- | ----------- | ------- |
+| (a) Sessies `vloerverwarming-drachten.html` | >0 (org.) | **0** in export | Te vroeg — indexering + Ads-defaults pas live 18-05 |
+| (b) Cold `/contact.html` + doorstroom offerte | lagere bounce | **80%** entry (10 ses) | Geen effect zichtbaar |
+| (c) `over-ons.html` entry | <80% bounce, >0 conv | **80%**, **0** conv | Geen effect; vervolg-CTA staat onderaan |
+| (d) `projecten.html` entry | <90% bounce, >0 scrollers | **100%** entry (6), **1** scroller 90d | Geen effect |
+| (e) Ads-defaults zonder pagina | 0 mismatches | **voldaan in repo** | Drachten-URL in defaults; **meting** pas na `--apply`/live Ads |
+
+### Cyclus-9 meetdoelen (nog in venster, ~17 dagen data)
+
+| Meetdoel | Stand 20-05 | Oordeel |
+| -------- | ----------- | ------- |
+| Hoogeveen organisch | **0** | Nog geen index-traffic |
+| Prijsindicatie entry-bounce | **64,7%** (17 ses) | Nog niet <64% |
+| Assen scrollers 90d | **0** | Lees-verder nog zonder effect |
+| Projecten entry | **100%** | Blijft kritiek |
+
+---
 
 ## Observaties
 
-1. **Cyclus 9 vertoont op 3 dagen géén meetbaar effect op de vier on-page meetdoelen.** Bounces op projecten (100%), cold contact (80%), prijsindicatie-entry (64,7%) en Assen-scroll (0) staan op of vlak bij de pre-deploy waarden. Dit is **verwacht** bij 3 dagen en lage volumes (6–17 sessies per landing) — het is nog ruis, geen falen. Hard oordeel pas bij de fetch over ~2 weken. De aanbeveling is niet "bijsturen" maar "doorlaten meten".
-2. **Verkeer daalt week-over-week:** laatste volle week (11–17 mei) **48 sessies**, vorige week 75, piekweek 172. Sinds de piek eind april/begin mei zakt het volume drie weken op rij. De homepage trekt nog steeds het leeuwendeel (164/30d), maar het totale instroomvolume neemt af — relevant voor de PM: de kleine landing-volumes maken sprint-effecten traag meetbaar.
-3. **Betaald: lichte verschuiving, maar Paid Search blijft op 0.** Cross-network `google / cpc` laat nu **5 conversies op 29 sessies** zien (was 0) — eerste teken dat de GA4↔Ads-koppeling deels werkt. Maar het label **Paid Search `google / cpc` blijft 13 sessies / 0 conversies**. Dat split-patroon (Cross-network converteert, Paid Search niet) wijst op een attributie-/labelingkwestie óf een landings-mismatch specifiek op de Search-campagnes. P0 voor Marketing Research.
-4. **`prijsindicatie.html` is de sterkste inhoudspagina van de site:** 50 sessies, ~104 s gemiddelde duur, 30% pagina-bounce, en als entry 24 conversies op 17 sessies. De kosten-sectie-boven-wizard uit cyclus 9 schaadt de conversie in elk geval **niet**; de entry-bounce van 64,7% is het enige zwakke punt en moet over 2 weken opnieuw beoordeeld.
-5. **`contact.html?modus=offerte` blijft de goudstandaard:** 9,1% bounce, 10 conversies op 11 sessies. Kale `/contact.html` als landing scoort onverminderd 80% bounce. De business case voor het overal hard doorlinken naar de offerte-deeplink is alleen maar sterker geworden.
-6. **`over-ons.html` als instappunt is zwak:** 10 entry-sessies, 80% bounce, 0 conversies, en als pagina maar ~32 s gemiddelde duur (laagste van de inhoudspagina's). Wie hier binnenkomt haakt af. Kandidaat voor een duidelijke vervolg-CTA.
-7. **Assen blijft het kritieke zwakke scherm:** ~0,7 s gemiddelde duur, 0 scrollers in 90d, 85,7%/100% bounce — ondanks de cyclus-9 lees-verder-link. Bij uitblijvend effect over 30d is een herontwerp van het eerste scherm onvermijdelijk.
-8. **VS-verkeer (~30 sessies, korte duur) is ruis** en vertroebelt bounce-/conversie-aggregaten — onveranderd advies om een NL-only rapportagesegment of bot-filter te overwegen.
+1. **Cyclus 10 is ~2 dagen live — géén meetbaar effect op projecten, over-ons entry of cold contact.** Dat is verwacht bij 6–10 sessies per landing. Geen bijsturing op deze pagina's nu; volgende harde beoordeling **rond 1–15 juni** (sprint.md).
+2. **Verkeer zakt verder week-op-week:** 44 sessies (13–19 mei) na 92 en 170 — kleine landing-samples blijven onbetrouwbaar voor sprint-A/B.
+3. **Betaald: Cross-network converteert (9/42), Paid Search niet (0/13).** Split is **ongewijzigd** t.o.v. 18-05 maar Cross-network conv. steeg (5→9). P0 voor Marketing Research: attributie, Final URL's, conversie-import — zie `.cursor/skills/google-ads-marketing/SKILL.md`.
+4. **`contact.html?modus=offerte` blijft de beste route:** 9,1% bounce, 10 conversies op 11 sessies. Cyclus-10 drawer-deeplink versterkt dit patroon; effect op **kale** `/contact.html` (80%) volgt pas in juni-data.
+5. **`prijsindicatie.html` blijft de sterkste inhoudspagina** (29% pagina-bounce, ~101 s). Entry-bounce 64,7% is het enige zwakke punt — cyclus-9 kosten-sectie schaadt conversie niet.
+6. **`diensten.html` als landing blijft zwak:** 78,6% bounce, 0 conversies op 14 sessies — keuzehulp/cyclus-9 nog zonder verbetering.
+7. **Inbound projectbeelden (Zeegse + Zuidlaren) staan nog niet op de site** — `projecten.html` heeft placeholder-cards en een oud root-hero-beeld; **niet genoeg data** om te beoordelen of echte cases de bounce omlaag trekken, maar het huidige signaal (100% entry, ~7,5 s, 1 scroller) rechtvaardigt de PM-beslissing in sprint.md om placeholders te vervangen zodra privacy akkoord is.
+8. **Drachten/Heerenveen:** pagina + sitemap + defaults live; **0 GA4-sessies** — normaal binnen 48 uur; betaald verkeer meetbaar pas na Ads `--apply` + spend.
 
-## Aanbevelingen voor Marketing Research Agent
+---
 
-- **Conversie-attributie Paid Search vs Cross-network (P0):** Cross-network `google / cpc` toont nu 5 conversies (29 ses), maar Paid Search `google / cpc` blijft op 0 (13 ses). Onderzoek dit split-patroon: is dit attributiemodel/auto-tagging, of landen Search-campagnes op een andere (slechtere) URL dan de converterende Cross-network/Demand-Gen-routes? Loop na tegen `.cursor/skills/google-ads-marketing/SKILL.md` (sectie GA4 ↔ Ads).
-- **Final URL's:** zet betaalde offerte-/bel-campagnes op de bewezen deeplink `contact.html?modus=offerte#aanvraag` (9,1% bounce, 10 conv) — niet op kale `/contact.html` (80%) of generieke landings.
-- **Search Terms review:** controleer of het Paid Search-verkeer op koop-/offerte-intentie zit; 13 sessies zonder enige conversie is verdacht voor informationele of brede match-termen.
+## Betaald zoekverkeer — notities voor Marketing Research Agent
+
+- **Paid Search `google / cpc`:** 13 sessies, **0** conversies (ongewijzigd).
+- **Cross-network `google / cpc`:** 42 sessies, **9** conversies (+4 t.o.v. vorige fetch) — eerste consistente conversies op betaald, maar niet op het Paid Search-label.
+- **Actie:** GA4 ↔ Ads conversiekoppeling en Search Terms-review **vóór** nieuwe spend; Final URL's voor Drachten/Heerenveen naar `vloerverwarming-drachten.html` staan in repo-defaults — **live campagne** pas na expliciete `--apply` + goedkeuring.
+- **Deeplink:** campagnes met offerte-intent op `contact.html?modus=offerte#aanvraag` (niet kale `/contact.html`).
+
+---
 
 ## Voorstellen voor Product Manager
 
-1. **Prioriteit: Hoog (Meten/Process)** — **Onderbouwing:** dit is de eerste post-deploy fetch (3 dagen na cyclus 9); volumes per landing zijn klein (6–17 ses) en geen meetdoel is bewogen. **Actie:** géén bijsturing op de cyclus-9-pagina's nu; plan expliciet een vervolg-fetch ~2 weken vooruit (rond 1 juni) en beoordeel meetdoelen a–e dan pas hard. **Verwacht effect:** beslissingen op signaal i.p.v. ruis.
+Max. 8 items, gesorteerd op prioriteit. Tags: **CRO** / **SEO** / **Ads**.
 
-2. **Prioriteit: Hoog (Conversie/Meting)** — **Onderbouwing:** Cross-network cpc converteert (5/29) maar Paid Search cpc blijft 0/13; 89 van ~95 conversies komen uit Direct. **Actie:** Marketing Research het Paid-Search-attributiegat en Final URL's laten verifiëren vóór nieuwe spend. **Verwacht effect:** betaalde Search-conversies zichtbaar of meetgat dichtgezet.
+| # | P | Tag | Voorstel | Onderbouwing | Actie |
+| - | - | --- | -------- | ------------ | ----- |
+| 1 | **P0** | Ads | **GA4 ↔ Ads + Paid Search-attributie** | 13 Paid Search-sessies / 0 conv vs 9 conv op Cross-network (42 ses); ~90 conv uit Direct | Geplande sessie ~1 juni: conversie-import, auto-tagging, Search Terms; geen `--apply` zonder spend-go |
+| 2 | **P0** | CRO | **Cyclus 9+10 niet bijsturen — doorlaten meten** | Projecten entry 100%, over-ons entry 80%, cold contact 80% — ongewijzigd na 2d cyclus 10 | Vervolg-fetch juni; meetdoelen a–e hard beoordelen |
+| 3 | **P0** | CRO | **Echte cases op `projecten.html` (Zeegse + Zuidlaren)** | 6 entry-sessies, 100% bounce, 1 scroller; placeholders + geen nav/sitemap | Na PO-akkoord plaatsnamen: 2 case-cards uit `beeldmateriaal/projecten/`; hero naar sterkste foto; optioneel nav/sitemap |
+| 4 | **P1** | SEO | **Drachten indexering + interne distributie** | 0 sessies op nieuwe pagina; Friesland 4 vs Drenthe 168 | Search Console inspect; footer-city Drachten op overige root-pagina's (PM-voorstel sprint) |
+| 5 | **P1** | CRO | **`over-ons.html` entry — ATF-CTA overwegen** | Entry 80% bounce, 0 conv; onderaan-CTA (cyclus 10) raakt instappers niet | Bij juni-fetch: als nog 80%/0 conv, compacte prijs/offerte-knop in hero of direct onder lead |
+| 6 | **P1** | CRO | **`diensten.html` landing** | 78,6% bounce, 0 conv op 14 entry-sessies | Eerste scherm: duidelijke split kosten (`prijsindicatie#kosten-uitleg`) vs offerte-deeplink |
+| 7 | **P1** | SEO | **Friesland-cluster na Drachten-meting** | Hoogeveen/Leeuwarden/Drachten zonder traffic in export | Juni: als Drachten >0 ses, volgende city (Leeuwarden of Heerenveen-eigen pagina) uit backlog |
+| 8 | **P1** | Ads | **Live zetten Drachten Final URL's** | Keywords in defaults wijzen naar live pagina; repo-only tot `--apply` | Marketing: `google_ads_add_keywords_from_defaults.py` / campagne-update na spend-go |
 
-3. **Prioriteit: Hoog (CTA)** — **Onderbouwing:** kale `/contact.html` 80% bounce als landing tegenover `?modus=offerte` 9,1% / 10 conversies; patroon onverminderd. **Actie:** alle interne en externe verwijzingen met offerte-intentie hard naar `contact.html?modus=offerte#aanvraag` laten wijzen; cyclus-9 intent-strip-effect bij de juni-fetch beoordelen. **Verwacht effect:** lagere bounce op cold contact-instroom.
+**Uitgesteld (geen P0 nu):** Assen hero-herontwerp (0 scrollers 90d), NL-only GA4-segment, `logo-varianten.html`-ruis.
 
-4. **Prioriteit: Midden (CRO)** — **Onderbouwing:** `over-ons.html` als entry 80% bounce, 0 conversies, ~32 s duur — zwakste inhoudspagina als instappunt, nog niet eerder geadresseerd. **Actie:** onderaan/over-ons een duidelijke vervolg-CTA toevoegen ("Bekijk prijsindicatie" / "Vraag offerte aan", deeplink). **Verwacht effect:** doorstroom van over-ons naar prijs/offerte i.p.v. afhaken.
-
-5. **Prioriteit: Midden (SEO)** — **Onderbouwing:** Friesland 4 sessies vs Drenthe 164, ondanks doelregio; Hoogeveen nog niet geïndexeerd dus city-cluster heeft ruimte. **Actie:** na de Hoogeveen-evaluatie (juni-fetch) `vloerverwarming-leeuwarden.html` als volgende city-pagina activeren (backlog-item uit sprint.md). **Verwacht effect:** eerste organische Friesland-sessies binnen 4–8 weken.
-
-6. **Prioriteit: Midden (CRO)** — **Onderbouwing:** Assen ~0,7 s duur, 0 scrollers 90d, 100% entry-bounce — lees-verder-link cyclus 9 toont na 3d (begrijpelijk) niets. **Actie:** bij de juni-fetch hard beoordelen; als nog steeds 0 scrollers, hero-concept Assen herontwerpen (kortere copy, eerste contentblok direct zichtbaar). **Verwacht effect:** >0 scrollers binnen 30d na bijsturing.
-
-7. **Prioriteit: Laag (Datakwaliteit)** — **Onderbouwing:** ~30 VS-sessies + `disclaimer`/`privacy`/`logo-varianten` (alle 100%/85% bounce, 0 s) vervuilen aggregaten en verbergen echte trends in de kleine landing-volumes. **Actie:** NL-only rapportagesegment of internal/bot-filter in GA4; SEO-tech check op `logo-varianten.html` (redirect/`noindex`). **Verwacht effect:** schonere KPI's, betrouwbaardere sprint-evaluatie.
-
-**Tone:** nuchter, direct, geen superlatieven — conform AGENTS.md.
+**Tone:** nuchter, direct — conform AGENTS.md.

@@ -1,111 +1,94 @@
-# Sprint — week van 18 mei 2026 (cyclus 10)
+# Sprint — week van 20 mei 2026 (cyclus 11)
 
-**PM beslissing genomen op:** 18-05-2026 (verse GA4-fetch `2026-05-18T06:05:10`, eerste meting ná cyclus-9-deploy)
-**Doel deze sprint:** Friesland-lek op betaald verkeer dichten (Drachten/Heerenveen), de bewezen offerte-deeplink site-breed afdwingen, en de zwakste instappunten (over-ons, projecten) naar de offerte-/prijsroute laten doorstromen.
-**Meetdoel:** binnen 4 weken in GA4 (fetch rond 15 juni): (a) eerste organische sessies op `vloerverwarming-drachten.html`; (b) lagere bounce op cold `/contact.html` mét hogere doorstroom naar `?modus=offerte`; (c) `over-ons.html` entry-bounce <80% en >0 conversies; (d) `projecten.html` entry-bounce <90% en >0 scrollers; (e) géén keyword in Ads-defaults meer zonder bijpassende landingspagina.
+**PM beslissing genomen op:** 20-05-2026 (GA4-fetch `2026-05-20T13:06:34`, cyclus 10 ~2 dagen live)
+**Doel deze sprint:** Eerste echte projectcases live zetten op `projecten.html` (vertrouwen + doorstroom), Drachten beter vindbaar maken, en `diensten.html` als zwakke landing versterken — zonder premature bijsturing op cyclus-9/10-meetpunten of Ads-spend.
+**Meetdoel:** binnen 4 weken in GA4 (fetch rond 15 juni): (a) `projecten.html` entry-bounce <90% en ≥2 scrollers (90d); (b) ≥1 sessie op `vloerverwarming-drachten.html`; (c) `diensten.html` landing-bounce <70% of ≥1 conversie; (d) cold `/contact.html` bounce daalt t.o.v. 80% entry; (e) juni-fetch hard beoordelen cyclus 9–10 meetdoelen (geen extra tweaks vóór die fetch).
 
 ---
 
 ## Goedgekeurde taken voor Developer Agent
 
-### Taak 1: Nieuwe stadspagina `vloerverwarming-drachten.html` `[GOEDGEKEURD]`
-**Bron:** Marketing Research Agent (P0/Hoog), Analytics Agent (Friesland sterk ondervertegenwoordigd: 4 vs Drenthe 164)
-**Prioriteit:** Hoog — SEO + sluit betaald message-match-lek
-**Actie:** Maak `vloerverwarming-drachten.html` exact volgens het patroon van `vloerverwarming-leeuwarden.html` (zelfde structuur, meta, schema, hero, trust-band, CTA's). Inhoud toegespitst op Drachten én de directe omgeving (Heerenveen, Friesland-zuidoost) — noem Heerenveen expliciet in de copy/koppen zodat het Ads-keyword `vloerverwarming heerenveen` message-match houdt. Voeg de pagina toe aan `sitemap.xml` en aan de footer-citylijst (zelfde plek als de andere city-pagina's). Pas in `scripts/data/google_ads_lead_campaign_defaults.json` de `final_urls` zo aan dat de keywords `vloerverwarming drachten` en `vloerverwarming heerenveen` naar `https://www.vlwarmte.nl/vloerverwarming-drachten.html` wijzen. **Géén `--go-live`, geen spend, geen Ads-mutatiescript draaien** — alleen het defaults-JSON-bestand in de repo bijwerken.
-**Succescriterium:** pagina is lokaal valide HTML, staat in sitemap + footer, deeplinkt naar `contact.html?modus=offerte#aanvraag`; defaults-JSON heeft geen keyword meer zonder bijpassende live URL.
+### Taak 1: Echte projectcases op `projecten.html` `[GOEDGEKEURD]`
+**Bron:** Product owner inbound (20-05) + Marketing Research Agent (P0) + Analytics Agent (P0 CRO)
+**Prioriteit:** Hoog — conversie / vertrouwen
+**Akkoord:** PO heeft beeldmateriaal en README-metadata aangeleverd in `beeldmateriaal/projecten/` (Zeegse, Zuidlaren) — dat geldt als akkoord voor publicatie van deze twee plaatsnamen en werkbeelden op de site.
+**Actie:**
+1. Vervang de drie generieke kaarten (Groningen/Friesland/Drenthe) door **twee case-cards** op basis van de README’s:
+   - **Zeegse:** 100 m² vloerverwarming; souterrain + begaande grond (kort, nuchter: situatie / oplossing / resultaat).
+   - **Zuidlaren:** 50 m² op draadstaalnetten; benedenverdieping.
+2. Kopieer de projectfoto’s naar `assets/img/projecten/` (hernoem naar korte webvriendelijke namen, bijv. `zeegse-1.jpeg`, `zuidlaren-1.jpeg`); gebruik in HTML **alleen** die paden (geen `beeldmateriaal/` in `src`).
+3. Hero: vervang het huidige root-beeld door het sterkste Zuidlaren- of Zeegse-foto uit de nieuwe assets; passende `alt`-tekst met plaats + werkfase.
+4. Voeg per case-card een link toe: Zuidlaren → `vloerverwarming-zuidlaren.html`; Zeegse → `contact.html?modus=offerte#aanvraag` (geen city-pagina).
+5. ATF duo-CTA (prijsindicatie + offerte) **ongewijzigd** laten.
+6. **Geen** `projecten` in hoofdnavigatie (nog <3 cases); wel op `index.html` en `diensten.html` één contextuele tekstlink “Bekijk uitgevoerd werk” → `projecten.html` (max. 1 link per pagina, binnen bestaande copy).
+**Succescriterium:** twee echte cases met foto + metadata live; hero uit projectassets; geen placeholder-cards meer; interne links kloppen; pagina laadt normaal.
 
-### Taak 2: Offerte-deeplink site-breed afdwingen `[GOEDGEKEURD]`
-**Bron:** Analytics Agent (Hoog/CTA) + Marketing Research Agent
-**Prioriteit:** Hoog — conversie
-**Actie:** Loop alle pagina's in de repo-root na op knoppen/links met offerte-/aanvraag-intentie ("Offerte aanvragen", "Vraag offerte", "Aanvragen", primaire CTA's) die nu naar kale `contact.html` of `contact.html#aanvraag` linken. Laat al die offerte-intentie-links hard naar `contact.html?modus=offerte#aanvraag` wijzen. Links met expliciet informatie-/bel-intentie ongemoeid laten. Niet de cyclus-9 contact-intent-strip zelf herschrijven — alleen verwijzende links elders op de site.
-**Succescriterium:** geen enkele offerte-CTA op de site linkt nog naar kale `contact.html`; alle naar `?modus=offerte#aanvraag` (data: 9,1% bounce / 10 conv vs 80% kaal).
+### Taak 2: `projecten.html` in sitemap + footer-distributie Drachten `[GOEDGEKEURD]`
+**Bron:** Analytics Agent (P1 SEO) + Marketing Research Agent
+**Prioriteit:** Midden — SEO
+**Actie:**
+1. Zet `projecten.html` in `sitemap.xml` met `lastmod` 2026-05-20 en passende `priority` (0.7).
+2. Voeg op **alle root-HTML-pagina’s** in de footer-citylijst (zelfde `<ul>` als andere stadspagina’s) een link toe naar `vloerverwarming-drachten.html` (“Vloerverwarming Drachten”), op dezelfde positie als op `vloerverwarming-drachten.html` zelf (na Leeuwarden of logische alfabetische volgorde — consistent houden).
+**Succescriterium:** sitemap bevat `projecten.html`; elke root-pagina footer linkt naar Drachten; geen gebroken hrefs.
 
-### Taak 3: `over-ons.html` vervolg-CTA-blok `[GOEDGEKEURD]`
-**Bron:** Analytics Agent (Midden/CRO — nieuw signaal: entry 80% bounce, 0 conv, ~32 s)
+### Taak 3: `diensten.html` — compacte keuze-CTA boven de vouw `[GOEDGEKEURD]`
+**Bron:** Analytics Agent (P1 CRO — 78,6% landing-bounce, 0 conv)
 **Prioriteit:** Midden — conversie
-**Actie:** Voeg onderaan `over-ons.html` (vóór de footer) een duidelijk, nuchter vervolg-CTA-blok toe in dezelfde stijl als andere pagina's: korte regel + twee knoppen — "Bekijk prijsindicatie" → `prijsindicatie.html#kosten-uitleg` en "Vraag offerte aan" → `contact.html?modus=offerte#aanvraag`.
-**Succescriterium:** CTA-blok staat live onderaan over-ons, links kloppen, stijl consistent met de rest van de site.
+**Actie:** Direct onder de hero-lead (vóór de eerste grote contentblokken) een korte regel + duo-CTA in bestaande site-stijl (`hero-cta-row` of `cta-band`): “Eerst een bandbreedte of meteen offerte?” — knoppen naar `prijsindicatie.html#kosten-uitleg` en `contact.html?modus=offerte#aanvraag`. Geen nieuwe zware afbeeldingen.
+**Succescriterium:** duo-CTA zichtbaar zonder scroll op desktop; op mobiel plausibel in eerste scherm; links kloppen.
 
-### Taak 4: `projecten.html` ATF compacter + duo-CTA `[GOEDGEKEURD]`
-**Bron:** Marketing Research Agent (Hoog/CRO) + Analytics Agent (entry ~100% bounce, ~7,5 s — persistent sinds cyclus 7/8)
-**Prioriteit:** Midden — conversie
-**Actie:** Maak het eerste scherm van `projecten.html` compacter zodat er binnen één beeldhoogte een primaire duo-CTA zichtbaar is vóór de zware projectgalerij: "Bekijk prijsindicatie" → `prijsindicatie.html#kosten-uitleg` en "Vraag offerte aan" → `contact.html?modus=offerte#aanvraag`. Galerij eronder intact laten; geen nieuwe pagina, geen zware LCP-elementen toevoegen.
-**Succescriterium:** duo-CTA zichtbaar boven de vouw op `projecten.html`; pagina laadt normaal; galerij ongewijzigd.
+### Taak 4: Ads-defaults copy — referenties naar live projecten `[GOEDGEKEURD]`
+**Bron:** Marketing Research Agent (P1 Ads)
+**Prioriteit:** Laag — voorbereiding (geen live Ads-mutatie)
+**Actie:** Pas in `scripts/data/google_ads_lead_campaign_defaults.json` onder `extra_rsa` (of equivalent) minstens één headline/description aan van “Referenties op aanvraag” naar copy die verwijst naar uitgevoerd werk op `https://www.vlwarmte.nl/projecten.html` (bijv. “Bekijk uitgevoerd werk in Drenthe”). **Geen** `google_ads_*`-scripts draaien, geen `--apply`, geen `--go-live`.
+**Succescriterium:** JSON syntactisch geldig; RSA-tekst sluit aan op live projectenpagina na taak 1.
 
-### Taak 5: Interne contextuele links naar kosten-sectie + city-pagina's `[GOEDGEKEURD]`
-**Bron:** Marketing Research Agent (interne linkstructuur) + Analytics Agent (homepage trekt 164/30d — distributiepunt)
-**Prioriteit:** Midden — SEO/funnel, versterkt taken 1, 2 en 4
-**Actie:** Voeg vanaf `index.html` en `diensten.html` enkele contextuele tekstlinks toe (binnen bestaande content, geen nieuwe blokken forceren) naar `prijsindicatie.html#kosten-uitleg` ("wat kost vloerverwarming per m²") en naar de city-pagina's inclusief de nieuwe `vloerverwarming-drachten.html`. Natuurlijke ankerteksten, geen keyword-stuffing, max 2–3 links per pagina.
-**Succescriterium:** relevante interne links live op homepage + diensten, ankerteksten lopen natuurlijk, alle hrefs valide.
+### Taak 5: Commit `beeldmateriaal/projecten/` + README’s `[GOEDGEKEURD]`
+**Bron:** Product owner inbound
+**Prioriteit:** Laag — bronnen behouden
+**Actie:** Zorg dat `beeldmateriaal/projecten/` (submappen, README’s, bron-JPEG’s) in de repo staat voor social/PM — geen secrets. Als al getrackt: alleen controleren; anders toevoegen aan git in PM-commit.
+**Succescriterium:** beide projectmappen + README’s versioneerbaar in repo na deploy.
 
 ---
 
 ## Uitgestelde voorstellen `[WACHT]`
 
-- **GA4 ↔ Ads conversiekoppeling (P0):** kernprobleem blijft (betaald ~42 ses, Paid Search 0 conv). Vereist een sessie mét Ads-script- en GA4-accountrechten; deze automatische run kon `google_ads_*`-scripts niet draaien en GA4-admin niet wijzigen. **Plannen rond 1 juni** samen met de vervolg-fetch — geen developer-code-taak.
-- **Cyclus-9 meetdoelen niet bijsturen:** contact-intent-strip, Assen lees-verder-anker, prijsindicatie `#kosten-uitleg`, projecten offerte-CTA — 3 dagen post-deploy is ruis. Hard beoordelen bij de juni-fetch; nu bewust niet hertweaken (op projecten doen we alleen een aanvullende ATF-ingreep, taak 4, geen herziening van de cyclus-9-CTA).
-- **`vloerverwarming-assen.html` hero-herontwerp:** 0 scrollers 90d, maar cyclus-9-anker eerst 30 dagen laten meten. Bij juni-fetch beslissen.
-- **`vloerverwarming-renovatie-houten-vloer.html`:** zinvolle contentgap, maar max 1 nieuwe pagina/sprint (Drachten heeft voorrang: betaald lek). Volgende cyclus.
-- **NL-only GA4-rapportagesegment / bot-filter:** GA4-config, geen repo-code; backlog voor de meet-sessie van 1 juni.
+- **GA4 ↔ Ads + Paid Search-attributie (P0):** 13 Paid Search-sessies / 0 conv vs Cross-network 9/42 — account/skill-sessie rond **1 juni**, geen developer-code.
+- **Cyclus 9–10 meetdoelen bijsturen:** projecten/over-ons/cold contact/prijsindicatie entry — **niet** hertweaken vóór juni-fetch (~15 juni); cyclus-11 projectcases zijn inhoud, geen rollback van ATF/deeplinks.
+- **`over-ons.html` entry ATF-CTA:** pas als juni-fetch nog 80% bounce / 0 conv.
+- **`vloerverwarming-assen.html` hero-herontwerp:** 0 scrollers 90d — juni-fetch.
+- **`vloerverwarming-renovatie-houten-vloer.html`:** max 1 nieuwe pagina/sprint — volgende cyclus.
+- **`vloerverwarming-meppel.html`:** alleen bij zoekterm-signaal.
+- **Ads `--apply` / Final URL-sync / `--go-live`:** na spend-goedkeuring + attributiefix.
+- **`projecten` in hoofdnav:** pas bij ≥3 echte cases.
 
 ---
 
 ## Afgewezen voorstellen `[AFGEWEZEN]`
 
-- **Keywords Drachten/Heerenveen uit defaults verwijderen:** afgewezen ten gunste van taak 1 — een landingspagina draagt direct bij aan leadgeneratie, het schrappen van keywords doet het tegenovergestelde (PM-regel: bij twijfel de leadgen-positieve variant).
-- **`logo-varianten.html` herontwerp:** geen sprintwaarde; alleen een low-prio technische redirect-/Search Console-check, hoort niet in een developer-sprint thuis.
+- **Wachten op meer cases vóór publicatie:** afgewezen — twee cases vervangen drie placeholders; PO-materiaal is voldoende voor deze sprint.
+- **Aparte referrals-URL of city-pagina Zeegse:** afgewezen — geen extra pagina; case op `projecten.html` volstaat.
+- **RSA live pushen via API deze sprint:** afgewezen — alleen defaults-JSON; PM/owner beslist over `--apply`.
 
 ---
 
 ## Social Media
-**Status:** Weekplanning staat in `docs/website-manager/social/weekly_calendar.md` (7 posts: 3 LinkedIn di–do, 4 Instagram wo/vr/za). CTA's sturen kosten-intent naar `prijsindicatie.html` en offerte-intent naar `contact.html?modus=offerte#aanvraag`. Drachten/Heerenveen bewust geen city-claim tot de pagina live is.
+**Status:** Weekplanning in `docs/website-manager/social/weekly_calendar.md` (7 posts; Zeegse/Zuidlaren-foto’s, Drachten-pagina, projecten-route). **Na taak 1 live:** LinkedIn post 2 en Instagram-posts met Zeegse/Zuidlaren mogen plaatsnamen gebruiken; post 3 CTA naar `projecten.html` toont dan echte cases.
 **Actie vereist:** Handmatige publicatie door VLWarmte-team.
 
 ---
 
 ## Context voor volgende sprint
-- **Plan een GA4-fetch + Ads-verificatiesessie rond 1 juni 2026** in een omgeving waar de `google_ads_*`-scripts én WebSearch mogen draaien. Dan pas: (1) cyclus-9 meetdoelen a–e hard beoordelen, (2) GA4↔Ads-koppeling sluiten, (3) verse zoekvolumes/SERP toevoegen.
-- Verkeer daalt drie weken op rij (48 ses laatste volle week vs piek 172) — kleine landing-volumes maken sprint-effecten traag meetbaar; beoordeel op trend, niet op absolute weekcijfers.
-- Na Drachten: Friesland-cluster verder uitbouwen (Heerenveen eigen pagina of Assen-herontwerp) afhankelijk van juni-data.
+- **Juni-fetch (~1–15 juni):** harde beoordeling cyclus 9–10 + 11 meetdoelen; Paid Search vs Cross-network; Drachten organisch.
+- **Na live projectcases:** RSA `--apply` overwegen; social “referenties”-posts hergebruiken met site-URL.
+- Verkeer blijft laag (44 sessies/week 13–19 mei) — trend meten, niet overreageren op kleine samples.
 
 ---
 
-## Developer Rapport — 18-05-2026 (automatische run)
+## Developer Rapport — 20-05-2026
 
-- **Geïmplementeerde taken:** Taak 1, 2, 3, 4, 5 (alle 5 `[GOEDGEKEURD]`).
-- **Overgeslagen taken:** alle `[WACHT]` en `[AFGEWEZEN]` voorstellen (buiten scope, conform opdracht).
-
-### Per taak
-
-**Taak 1 — `vloerverwarming-drachten.html` — GELUKT**
-- Bestanden: `vloerverwarming-drachten.html` (nieuw, exact patroon van `vloerverwarming-leeuwarden.html`), `sitemap.xml` (regel toegevoegd, lastmod 2026-05-18, priority 0.8), `scripts/data/google_ads_lead_campaign_defaults.json` (`final_urls` uitgebreid met de Drachten-URL — géén script gedraaid, géén `--go-live`, géén spend).
-- Copy toegespitst op Drachten én Heerenveen (Heerenveen expliciet in title, meta, H1 en koppen → message-match voor Ads-keyword `vloerverwarming heerenveen`). Footer-citylijst van de nieuwe pagina bevat Drachten op de vaste plek.
-- Smoke: GA4 `ga-deferred.js` aanwezig (1×); Drachten 1× in sitemap; 1× in JSON `final_urls`; JSON- en XML-blok syntactisch correct (komma/sluittags gecontroleerd); noscript CSS-fallback aanwezig (leesbaar zonder JS); hero deeplinkt naar `contact.html?modus=offerte#aanvraag`. Keywords `vloerverwarming drachten` + `vloerverwarming heerenveen` hebben nu een live landingspagina.
-- Aandachtspunt: Drachten staat nog niet in de footer-citylijst van de ANDERE bestaande pagina's (die lijsten zijn niet uniform en de sprint vroeg expliciet alleen om opname op "dezelfde plek als de andere city-pagina's" + sitemap + JSON). Footer-citylijst van overige pagina's is bewust ongemoeid gelaten (conservatieve variant; geen scope-creep). PM kan dit als losse vervolgtaak oppakken indien gewenst.
-
-**Taak 2 — Offerte-deeplink site-breed — GELUKT**
-- Bestanden: alle 19 root-HTML-pagina's (`404, contact, diensten, disclaimer, faq, index, over-ons, prijsindicatie, privacy, projecten, systemen-producten, werkwijze, vloerverwarming-{assen,emmen,groningen,hoogeveen,leeuwarden,zuidlaren}` + nieuwe `drachten`).
-- Wijziging: de site-brede primaire CTA `<a class="drawer-cta">Informatie / Offerte aanvragen</a>` wees naar kale `contact.html` → nu hard `contact.html?modus=offerte#aanvraag`. Dit was de enige offerte-intentie-link site-breed die nog naar kaal contact ging.
-- Bewust ongemoeid (informatie-/bel-intentie of ambigu, conform sprintregel): `diensten.html` "Plan een informatiegesprek", `index.html` "Ja, graag" (copy zegt expliciet "informatie aan of direct een offerte" → mixed/ambigu, conservatief gelaten), `404.html` "Contact", alle nav-/footer-/inline "Contact"-tekstlinks (info-intentie), `tel:`-links, `?modus=bel`/`?modus=informatie`-links. De cyclus-9 contact-intent-strip zelf is niet herschreven.
-- Smoke: 0 resterende `drawer-cta` met kale `contact.html`; 19/19 deeplinked.
-
-**Taak 3 — `over-ons.html` vervolg-CTA-blok — GELUKT**
-- Bestanden: `over-ons.html`. Nieuw `cta-band`-blok vóór de footer, zelfde stijl als de rest van de site: regel + twee knoppen — "Bekijk prijsindicatie" → `prijsindicatie.html#kosten-uitleg`, "Vraag offerte aan" → `contact.html?modus=offerte#aanvraag`.
-- Smoke: blok staat ná de laatste content-sectie en vóór `</main>`/footer; `#kosten-uitleg`-anchor bestaat in `prijsindicatie.html`; semantische HTML, geen inline styles.
-
-**Taak 4 — `projecten.html` ATF compacter + duo-CTA — GELUKT**
-- Bestanden: `projecten.html`. Hero ingekort: kortere lead, eyebrow → "Uitgevoerd werk", de note-regel verwijderd, CTA-rij teruggebracht tot een primaire duo-CTA ("Bekijk prijsindicatie" → `prijsindicatie.html#kosten-uitleg`, "Vraag offerte aan" → `contact.html?modus=offerte#aanvraag`) — zichtbaar binnen het eerste scherm vóór de projectgalerij.
-- Galerij ("Typische uitdaging, passende oplossing" + cards) volledig ongewijzigd; geen nieuwe zware/LCP-elementen toegevoegd (hero-afbeelding ongewijzigd).
-- Smoke: duo-CTA staat boven de galerij-sectie; pagina-structuur intact.
-
-**Taak 5 — Interne contextuele links — GELUKT**
-- Bestanden: `index.html`, `diensten.html`. Binnen bestaande `<p class="small">`-content (geen nieuwe blokken):
-  - `index.html`: link "Wat kost vloerverwarming per m²" → `prijsindicatie.html#kosten-uitleg`, plus regel met links naar `vloerverwarming-drachten.html` en `vloerverwarming-leeuwarden.html`.
-  - `diensten.html`: regio-alinea aangevuld met `vloerverwarming-drachten.html` en "wat vloerverwarming per m² kost" → `prijsindicatie.html#kosten-uitleg`.
-- Natuurlijke ankerteksten, geen keyword-stuffing, ≤3 links per pagina. Alle hrefs verwijzen naar bestaande bestanden/anchors.
-
-### Overig
-- **Deployment:** **Live gezet door PM** op 18-05-2026 — commit `de6596b`, `git push origin main` geslaagd (`5917fc2..de6596b`). GitHub Pages run-id `26013287851` (`pages-build-deployment`) + E2E-run `26013288326` gestart direct na push. Live-verificatie via `curl` GA4-check uitgevoerd in stap 9.
-- **Live URL:** https://www.vlwarmte.nl
-- **Geen** credentials/secrets/service-account-JSON/`node_modules` aangeraakt. Alleen `scripts/data/google_ads_lead_campaign_defaults.json` (defaults, geen geheimen). Géén `google_ads_*`-scripts gedraaid.
-- **Aandachtspunten volgende sprint:** (1) footer-citylijsten van de bestaande root-pagina's zijn niet uniform en bevatten Drachten nog niet — overweeg een uniformerings-taak; (2) `index.html` "Ja, graag" en `diensten.html` "Plan een informatiegesprek" zijn bewust niet ge-deeplinkt (mixed/info-intentie) — herijken bij juni-data indien conversie tegenvalt.
+- Geïmplementeerde taken: Taak 1 (Zeegse + Zuidlaren cases op `projecten.html`, hero + assets), Taak 2 (`sitemap.xml` + Drachten in footer op alle root-HTML), Taak 3 (duo-CTA onder hero op `diensten.html`), Taak 4 (`extra_rsa` copy in `google_ads_lead_campaign_defaults.json`), Taak 5 (`beeldmateriaal/projecten/` bronmappen aanwezig en versioneerbaar).
+- Overgeslagen taken: geen — alle `[GOEDGEKEURD]` taken uitgevoerd; `[WACHT]` en `[AFGEWEZEN]` niet aangeraakt.
+- Deployment: **Nog niet live** — PM voert commit + `git push origin main` uit; daarna: [PM vult run-id / succes in]
+- Live URL: https://www.vlwarmte.nl
+- Aandachtspunten voor volgende sprint: `logo-varianten.html` heeft geen footer (redirect-stub). RSA `--apply` nog niet gedraaid (bewust). Optioneel: `zeegse-2.jpeg` later als tweede beeld in case-card; OG-image `projecten.html` nog `og-default.png`.
