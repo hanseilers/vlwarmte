@@ -89,6 +89,6 @@
 
 - Geïmplementeerde taken: Taak 1 (Zeegse + Zuidlaren cases op `projecten.html`, hero + assets), Taak 2 (`sitemap.xml` + Drachten in footer op alle root-HTML), Taak 3 (duo-CTA onder hero op `diensten.html`), Taak 4 (`extra_rsa` copy in `google_ads_lead_campaign_defaults.json`), Taak 5 (`beeldmateriaal/projecten/` bronmappen aanwezig en versioneerbaar).
 - Overgeslagen taken: geen — alle `[GOEDGEKEURD]` taken uitgevoerd; `[WACHT]` en `[AFGEWEZEN]` niet aangeraakt.
-- Deployment: **Nog niet live** — PM voert commit + `git push origin main` uit; daarna: [PM vult run-id / succes in]
+- Deployment: **Live** 20-05-2026 — commits `dc3d2de` (sprint) + `8eb42a2` (release notes); `git push origin main` geslaagd. GitHub Pages run **26158815036** (success, ~49s); E2E **26158816238** (gestart na push). Live-check: `projecten.html` toont Zeegse/Zuidlaren + `assets/img/projecten/`.
 - Live URL: https://www.vlwarmte.nl
 - Aandachtspunten voor volgende sprint: `logo-varianten.html` heeft geen footer (redirect-stub). RSA `--apply` nog niet gedraaid (bewust). Optioneel: `zeegse-2.jpeg` later als tweede beeld in case-card; OG-image `projecten.html` nog `og-default.png`.
