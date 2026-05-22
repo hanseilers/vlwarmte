@@ -4,6 +4,28 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 22 mei 2026 (cyclus 12)
+**Deployment:** 22-05-2026 — PM push naar `main` (GitHub Pages).
+**Versie:** [PM vult commit-hash na push]
+
+### Wat is er veranderd
+- **Drachten ↔ projecten:** onderlinge links — vanaf projecten naar Drachten/Heerenveen, vanaf Drachten naar uitgevoerd werk met foto’s.
+- **Diensten:** in de hero een link “Bekijk uitgevoerd werk” (geen tweede primaire knop).
+- **Drachten delen:** social preview gebruikt nu het echte projectbeeld (`og-projecten.jpg`).
+- **Sitemap:** `lastmod` bijgewerkt voor projecten en Drachten.
+- **Google Ads-voorbereiding:** `projecten.html` in defaults-`final_urls`; zoekwoord Meppel uit de defaults-keywords (nog geen landingspagina).
+
+### Waarom
+Cyclus 11 staat nog in het meetvenster — geen retweak van projecten/over-ons/diensten-hero. Wel: social-kalender en Ads message-match op echte cases; Drachten had 0 GA4-sessies ondanks live pagina; Meppel-keyword zonder URL kost relevantie.
+
+### Verwacht effect
+Juni-fetch (~15 juni): eerste organisch verkeer Drachten, betere interne doorstroom naar projecten, voorbereid RSA/sitelinks met projecten-URL. Cyclus 9–11 meetdoelen dan hard beoordelen. GA4↔Ads-attributie blijft gepland ~1 juni.
+
+### Social media deze week
+7 posts (handmatig): live cases Zeegse/Zuidlaren, projecten-route, diensten, Drachten-pagina — sluit aan op nieuwe links op diensten en Drachten.
+
+---
+
 ## Release — week van 20 mei 2026 (cyclus 11)
 **Deployment:** 20-05-2026 — push `dc3d2de` naar `main` (GitHub Pages).
 **Versie:** `dc3d2de`

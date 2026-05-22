@@ -1,179 +1,164 @@
-# Marketing Research Rapport — 20 mei 2026
+# Marketing Research Rapport — 22 mei 2026
 
-**Cyclus 11** — volledige update na cyclus-10-deploy (18 mei) en eerste projectinput in `beeldmateriaal/projecten/`.
-**Scope:** leadgeneratie (organisch + betaald), landingskwaliteit, contentgaps, Google Ads message-match en besluitvorming rond echte projectcases.
-**Bronnen:** `.claude/commands/marketing-research-agent.md`, `.cursor/skills/google-ads-marketing/SKILL.md`, WebSearch (mei 2026), `docs/website-manager/analytics_report.md` + `ga4_report.json` (export `2026-05-18T06:05:10`), site-HTML, `sitemap.xml`, `scripts/data/google_ads_lead_campaign_defaults.json`, `google_ads_list_campaigns.py` (verse run 20-05-2026).
+**Cyclus 12** — eerste research na cyclus-11-deploy (20 mei): echte cases Zeegse/Zuidlaren op `projecten.html`, Drachten in footer + sitemap, RSA-defaults met projecten-copy, `diensten.html` hero-CTA aangepast (zie opmerking hieronder).
+**Scope:** leadgeneratie (organisch + betaald), landingskwaliteit, contentgaps, Google Ads message-match, meetplan juni — **geen premature bijsturing** op cyclus 9–11-meetdoelen.
+**Bronnen:** `.claude/commands/marketing-research-agent.md`, `.cursor/skills/google-ads-marketing/SKILL.md`, WebSearch (mei 2026), `docs/website-manager/ga4_report.json` (export **`2026-05-22T17:32:56`**), `docs/website-manager/analytics_report.md` (20-05, ter referentie), `docs/website-manager/archive/sprint-2026-05-22.md`, root-HTML + `sitemap.xml`, `scripts/data/google_ads_lead_campaign_defaults.json`, read-only `google_ads_list_campaigns.py`.
 
 ## Samenvatting
 
-Cyclus 10 heeft het **betaalde Friesland-lek** grotendeels gedicht: `vloerverwarming-drachten.html` is live (Drachten + Heerenveen in copy), staat in `sitemap.xml`, en `final_urls` in de Ads-defaults wijzen ernaar. De site gebruikt nu **site-breed** de bewezen offerte-deeplink (`contact.html?modus=offerte#aanvraag`). Het grootste resterende meetprobleem is **Paid Search zonder conversies** (13 sessies / 0 conv) terwijl Cross-network `google / cpc` wél 5 conversies op 29 sessies toont — dat vraagt GA4↔Ads-attributie en Final-URL-controle vóór opschalen, niet meer pagina’s.
+Cyclus 11 staat **~2 dagen live** op het moment van deze fetch (4 dagen na deploy) — te vroeg om projecten-bounce, over-ons-entry of Assen-scroll hard te beoordelen. Wel zichtbaar: **betaald blijft gesplitst** (Cross-network 61 sessies / 9 conversies vs Paid Search 13 / 0); **offerte-deeplink** blijft de sterkste route (9,1% entry-bounce, 10 conv op 11 sessies). Echte projectcases en RSA-copy in defaults zijn klaar voor **message-match**; live Ads-sync (`--apply`) blijft achter tot PO + attributiesessie. **Geen `--go-live`**, geen budgetverhoging.
 
-De grootste **contentkans** is geen nieuwe stadspagina maar **echt bewijs**: twee verse cases (Zeegse 100 m² souterrain, Zuidlaren 50 m² draadstaalnetten) kunnen `projecten.html` van generieke placeholders naar vertrouwen voor de doelgroep tillen. **Aanbeveling:** publiceer beide cases zodra de product owner **expliciet akkoord** geeft op plaatsnamen en foto’s — **niet wachten** op een grotere case-bibliotheek; wel geen publicatie zonder dat akkoord.
+## GA4-kern (30d, fetch 22-05-2026)
+
+| Metric | 22-05 | Trend t.o.v. 20-05 |
+| ------ | ----- | ------------------- |
+| Sessies (devices) | **~343** (181+149+13) | +~6% |
+| Homepage `/` | 198 sessies, bounce **60,1%** | +16 sessies |
+| `/prijsindicatie.html` | 56 sessies, **~94 s**, bounce **32,1%** | stabiel sterk |
+| Betaald `google / cpc` | Cross-network **61 / 9 conv**; Paid Search **13 / 0** | meer Cross-sessies, Paid Search ongewijzigd |
+| Organic `google` | 8 sessies, 1 conv | stabiel laag |
+| NL — Drenthe / Groningen / Friesland | 172 / 20 / **6** | Friesland +2 |
+
+**Landings (instap, selectie):**
+
+| Landing | Sessies | Bounce | Conv. | Opmerking cyclus 11 |
+| ------- | ------- | ------ | ----- | ------------------- |
+| `/contact.html?modus=offerte` | 11 | **9,1%** | 10 | ongewijzigd goudstandaard |
+| `/contact.html` (koud) | 10 | **80%** | 12 | nog geen effect intent-strip |
+| `/diensten.html` | 15 | **73,3%** | **3** | vroeg signaal conv., sample klein |
+| `/projecten.html` | 7 | **100%** | 0 | cases live; nog geen verbetering |
+| `/over-ons.html` | 10 | **80%** | 0 | vervolg-CTA onderaan raakt entry niet |
+| `/vloerverwarming-assen.html` | 6 | **100%** | 0 | 0 scrollers (90d) |
+| `vloerverwarming-drachten.html` | — | — | — | **niet** in top/entry (0 meetbaar) |
+
+**Weekvolume:** 49 sessies (15–21 mei) — blijft laag; landing-cijfers blijven ruis tot juni-fetch (~1–15 juni).
 
 ## Top zoekwoorden (indicatief — WebSearch + site/defaults)
 
-| Zoekwoord | Zoekvolume (indicatie) | Concurrentie | Pagina nodig |
-|-----------|-------------------------|--------------|--------------|
-| vloerverwarming kosten per m2 | hoog | hoog (aggregators) | bestaand — `prijsindicatie.html#kosten-uitleg` |
-| prijs vloerverwarming / prijsindicatie | hoog | hoog | bestaand — `prijsindicatie.html` (wizard) |
-| vloerverwarming groningen | hoog | hoog | bestaand — `vloerverwarming-groningen.html` |
-| vloerverwarming assen | midden-hoog | hoog (aggregators + lokaal) | bestaand — `vloerverwarming-assen.html` (engagement zwak) |
-| vloerverwarming drachten / heerenveen | midden | midden-hoog | bestaand — `vloerverwarming-drachten.html` (beide in copy) |
-| vloerverwarming leeuwarden | midden | midden-hoog | bestaand — `vloerverwarming-leeuwarden.html` |
-| vloerverwarming emmen / hoogeveen | midden | midden | bestaand — eigen pagina’s |
-| schuimbeton vloerverwarming | midden | midden-hoog | bestaand — `diensten.html#schuimbeton`; concurrenten EcoFloorNoord, Bull Schuimbeton |
-| vloerverwarming infrezen kosten | midden | midden | bestaand — FAQ/werkwijze; lokale infrezen-spelers (ComfortFloors, Nadergas) |
-| vloerverwarming installateur [stad] | midden-hoog | hoog (Solvari, vloerverwarmingsinstallatie.nl) | city-cluster dekt kern; **meppel** nog gap |
-| kruipruimte isoleren schuimbeton | midden | midden | bestaand — diensten |
-| vloerverwarming renovatie houten vloer | midden | midden | **gap** — geen eigen landingspagina |
-| vloerverwarming souterrain / kelder | laag-midden | laag-midden | **gap** — Zeegse-case dekt inhoudelijk; geen URL |
-| vloerverwarming zuidlaren | laag-midden | laag | bestaand — `vloerverwarming-zuidlaren.html` + case-kans |
-
-**Iteratie:** zoektermenrapport in Google Ads wekelijks; nieuwe varianten via `google_ads_campaign_negatives.json` en defaults-JSON. Juni-fetch (rond 1 juni) voor organische Drachten/Hoogeveen-sessies.
+| Zoekwoord | Volume (indic.) | Concurrentie | Pagina |
+| --------- | --------------- | ------------ | ------ |
+| vloerverwarming kosten / per m² | hoog | hoog (aggregators) | `prijsindicatie.html#kosten-uitleg` |
+| prijs vloerverwarming / prijsindicatie | hoog | hoog | `prijsindicatie.html` (wizard) |
+| vloerverwarming groningen / assen | hoog | hoog lokaal + aggregators | city-pagina’s |
+| vloerverwarming drachten / heerenveen / leeuwarden | midden | midden-hoog | `vloerverwarming-drachten.html` enz. |
+| schuimbeton vloerverwarming | midden | midden-hoog (EcoFloorNoord, WarmerHuis) | `diensten.html#schuimbeton` |
+| vloerverwarming installateur [stad] | midden-hoog | hoog (Solvari, lead-platforms) | city-cluster |
+| vloerverwarming renovatie houten vloer | midden | midden | **gap** — geen eigen URL |
+| vloerverwarming meppel | laag-midden | midden | keyword in defaults, **geen** pagina |
+| kruipruimte isoleren schuimbeton | midden | midden | diensten + wizard |
 
 ## Prijscalculator — haalbaarheidsonderzoek
 
 ### Conclusie
 
-**Niet opnieuw bouwen.** De wizard op `prijsindicatie.html` is live, meet sterk (30d: ~50 sessies, ~104 s gem. duur, 30% bounce), en de crawlbare `#kosten-uitleg` (€45–€95/m²) dekt kosten-intent voor SEO. Vervolg = **meten en Ads-koppeling**, geen tweede calculator.
+**Niet opnieuw bouwen.** Wizard + `#kosten-uitleg` dekken kosten-intent; 56 sessies / ~94 s gem. duur bevestigen engagement.
 
 ### Onderbouwing
 
-- Concurrentie en aggregators (OfferteAdviseur, Vastlegg, 123Vloerverwarming, Verwarminginfo) bieden online rekenhulpen — dat bevestigt vraag, niet dat VLWarmte een generieke m²-calculator moet kopiëren.
-- VLWarmte differentieert op **traject** (ondervloer, schuimbeton, kruipruimte-diepte) — dat past bij de bestaande wizard, niet bij een vlakke €/m²-tool.
-- Juridisch: bestaande copy houdt vast aan “indicatie, geen offerte”; houten ondergrond stuurt bewust naar contact.
+Aggregators (Vastlegg, Klussendirect, LeadAngels) en content-sites domineren brede kosten-SERP’s met generieke €/m²-tools. VLWarmte wint met **traject** (kruipruimte-diepte, schuimbeton-bandbreedte) en **lokaal bewijs** (`projecten.html`), niet met een vlakkere calculator.
 
 ### Voorgestelde opbouw wizard
 
-Geen wijziging voorgesteld deze cyclus. Bestaande flow: productkeuze → ondergrond → m²/diepte → bandbreedte → optioneel lead.
+Geen wijziging deze cyclus.
 
 ### Leadgeneratie koppeling
 
-Blijf `wizard_calculate`, `wizard_lead_submit` en `lead_form_submit` als GA4-key events; import naar Ads na §A skill.
+Blijf `wizard_calculate`, `wizard_lead_submit`, `lead_form_submit` als key events; import naar Ads na GA4↔Ads-fix (skill §A).
 
 ### Risico's en aandachtspunten
 
-- Aggregators domineren brede “kosten”-SERP — win met **lokale stad + traject + echt projectbeeld**, niet met lagere claim-prijzen.
-- Entry-bounce op `prijsindicatie.html` als landing blijft ~64,7% (17 sessies) — herbeoordelen na juni-fetch.
+Entry-bounce `prijsindicatie.html` als landing **65%** (20 sessies) — pas beoordelen na juni-fetch.
 
 ### Aanbeveling aan Product Manager
 
-- **Prioriteit:** Laag (onderhoud)
-- **Geschatte ontwikkeltijd:** 0 (alleen meting)
-- **Verwacht effect op leads:** indirect via betere Ads-attributie en projectcases
+- **Prioriteit:** Laag (onderhoud/meting)
+- **Ontwikkeltijd:** 0
+- **Effect:** indirect via Ads-attributie + projectcases
 
-## Content gaps (ontbrekende of zwakke pagina's/secties)
+## Content gaps
 
-**Afgevinkt sinds cyclus 9–10:**
-- ✅ Crawlbare kosten-sectie op `prijsindicatie.html`
-- ✅ City-pagina’s Emmen, Hoogeveen, Leeuwarden, **Drachten/Heerenveen**
-- ✅ Site-breed offerte-deeplink, `over-ons` vervolg-CTA, `projecten` ATF duo-CTA, interne links index/diensten
+**Afgevinkt (cyclus 9–11):**
+- City-cluster incl. Drachten/Heerenveen; `projecten.html` in sitemap; echte cases Zeegse/Zuidlaren; footer Drachten site-breed; RSA-defaults projecten-copy; interne link “Bekijk uitgevoerd werk” op `index.html`.
 
-**Open gaps:**
-- **`projecten.html` — inhoud, niet structuur:** ATF duo-CTA is live (cyclus 10), maar de pagina toont nog **drie generieke kaarten** (Groningen/Friesland/Drenthe) zonder echte plaats, foto uit de nieuwe projectmappen of technische details. Analytics: 8 sessies / 30d, **75% bounce**, entry **100%** bounce, ~7,5 s — inhoudelijke upgrade is de hefboom.
-- **`vloerverwarming-meppel.html`:** keyword in defaults, geen URL — lagere prioriteit dan meet/Ads; pas na zoektermenrapport of organische vraag.
-- **`vloerverwarming-renovatie-houten-vloer.html`:** commerciële twijfelvraag; wizard stuurt al naar contact — max. één nieuwe pagina per sprint.
-- **`vloerverwarming-assen.html`:** 0 scrollers (90d), ~0,7 s gem. duur — hero-herontwerp backlog (juni-fetch).
-- **`contact.html` zonder `?modus=`:** 80% bounce als landing; intent-strip nog geen effect na 3 dagen post-deploy — doorlaten tot juni-fetch.
-- **Zeegse / souterrain:** geen city-pagina; case op `projecten.html` volstaat; eventueel één zin op `diensten.html` of FAQ over souterrain/kruipruimte.
+**Open / zwak:**
+- **`projecten.html`:** inhoud live, **entry 100% bounce** (7 sessies) — meet pas na 2–4 weken; optioneel OG-beeld + tweede Zeegse-foto (developer backlog).
+- **`vloerverwarming-drachten.html`:** 0 GA4-sessies — indexering + tijd; footer/sitemap/defaults kloppen.
+- **`diensten.html` ATF:** cyclus-11 duo-CTA onder hero is **later verwijderd** (commit `b040cea` — minder dubbele CTA’s). Landing toont nu één primaire knop naar prijsindicatie; onderaan nog `cta-band`. **Niet opnieuw tweaken vóór juni-fetch** tenzij PM bewust terug wil naar sprint-opzet.
+- **`vloerverwarming-renovatie-houten-vloer.html`:** commerciële gap; max. 1 nieuwe pagina per sprint — volgende cyclus.
+- **`vloerverwarming-meppel.html`:** keyword in defaults zonder URL — pauzeren in Ads of pagina later.
+- **`vloerverwarming-assen.html`:** 0 scrollers 90d — hero-backlog na juni.
+- **`contact.html` zonder query:** 80% entry-bounce — doorlaten.
+
+**Sitemap (22-05):** 17 URL’s incl. `projecten.html` (`lastmod` 2026-05-20); geen `logo-varianten.html` (correct).
 
 ## Concurrentie observaties (WebSearch, mei 2026)
 
-**Wie rankt op kerntermen:**
-- **Aggregators / lead-platforms:** Solvari, Slimster, vloerverwarmingsinstallatie.nl — domineren “installateur [stad]” en offertevergelijking; sterke op reviews en “tot 4 offertes”.
-- **Lokale installateurs (Noord-NL):** Infloor (Groningen, frees in één dag), ComfortFloors (Groningen, infrezen €25–50/m² claim), Stef over de Vloer (Friesland/Groningen), Eric Haikens / Nadergas (Assen), D. Huberts (G/F/D).
-- **Schuimbeton-combinatie:** Bull Schuimbeton, EcoFloorNoord — benadrukken “alles-in-één” en snelle oplevering; overlap met VLWarmte-traject maar vaak minder nadruk op **complete** particuliere woningrenovatie uit één regio.
+**Wie rankt / adverteert op kerntermen:**
+- **Aggregators:** Solvari, Slimster, Klussendirect, LeadAngels — “tot X offertes”, brede prijsranges.
+- **Lokaal Noord-NL:** ReWo & de Jong (Groningen/Drenthe/Friesland, infrezen), vloerverwarminggroningen.com, DRO Renovaties (“tot 100 m² in 1 dag”), Infloor/ComfortFloors-stijl spelers op infrezen-prijsclaims.
+- **Schuimbeton-combo:** EcoFloorNoord, WarmerHuis, Faber — alles-in-één + kostencontent + subsidie-hooks.
 
-**Wat zij beter doen:** brede prijsranges en calculators op content-sites; sterke lokale SEO-titels per stad; soms agressieve “binnen één dag”-beloftes.
-
-**Waar VLWarmte kan winnen:** één aanspreekpunt ondervloer → schuimbeton → leidingwerk → dekvloer; **echte projectfoto’s** uit `beeldmateriaal/` (geen AI, conform skill); nuchtere bandbreedte i.p.v. schreeuwerige laagste prijs; offerte-deeplink met bewezen conversie.
+**Waar VLWarmte kan winnen:** één traject particulier renovatie/nieuwbouw; **echte foto’s** uit `beeldmateriaal/` (geen AI); nuchtere bandbreedte; bewezen `?modus=offerte#aanvraag`; nu ook **uitgevoerd werk** op `projecten.html`.
 
 ## Google Ads — status en acties
 
-**Verificatie 20-05-2026 (verse run, geen secrets in output):**
+**Secrets op onderzoeks-machine:** `secrets/google-ads.env` **aanwezig** — alleen **read-only** verificatie uitgevoerd; **geen** `--apply`, `--go-live`, geo/keyword-mutaties of spend (conform opdracht).
+
+**Campagne (read-only 22-05-2026):**
 
 | id | channel_type | status | name |
 |----|--------------|--------|------|
 | 23834672782 | SEARCH | ENABLED | VLW-API-Leads NL auto |
 
 **Defaults (`google_ads_lead_campaign_defaults.json`):**
-- `final_urls` bevat o.a. offerte-deeplink, `prijsindicatie.html`, Leeuwarden, Hoogeveen, **Drachten** — keywords Drachten/Heerenveen hebben weer message-match.
-- Geo: Drenthe, Groningen, Friesland — past bij playbook.
-- RSA bevat “Referenties op aanvraag” in `extra_rsa` — na live projectcases copy aanpassen naar “Bekijk uitgevoerd werk” + link `projecten.html`.
+- `extra_rsa` bevat “Bekijk uitgevoerd werk” + description met `projecten.html` — **repo klaar**, live RSA mogelijk nog oud tot `--apply`.
+- `final_urls`: offerte-deeplink, prijsindicatie, Leeuwarden, Hoogeveen, Drachten — **`projecten.html` ontbreekt** (voorstel hieronder).
+- Geo: Drenthe, Groningen, Friesland.
+- Keyword `vloerverwarming meppel` zonder landingspagina.
 
 | Onderwerp | Actie |
-|-----------|--------|
-| GA4 ↔ Ads | **P0** — Cross-network 5 conv / Paid Search 0 conv (GA4 18-05) wijst op attributie of URL-split; skill §A nalopen (link, auto-tagging, conversie-import). |
-| Final URL's in live campagne | Bevestig in Ads UI of RSA’s de defaults-URL’s gebruiken; prioriteit offerte-deeplink voor koop-intent. |
-| Negatives / zoektermen | Wekelijks zoektermenrapport; `google_ads_campaign_next_steps.py negatives` indien nodig. |
-| Geo/keywords sync | `google_ads_update_campaign_geo.py` / `google_ads_add_keywords_from_defaults.py` na defaults-wijzigingen — alleen `--dry-run` dan `--apply` na PM-goedkeuring. |
-| Spend | Campagne ENABLED — geen `--go-live` of budgetverhoging zonder expliciete spend-goedkeuring; geen opschalen vóór betrouwbare Search-conversies. |
+| --------- | ----- |
+| GA4 ↔ Ads | **P0** — Paid Search 0 conv vs Cross-network 9 conv; skill §A (~1 juni gepland) |
+| RSA sync | Na PO: `google_ads_add_rsa_variant.py --dry-run --campaign-id 23834672782` → `--apply` |
+| Spend | Campagne ENABLED — geen opschalen vóór attributiefix + expliciete PO-goedkeuring |
+| Negatives | Wekelijks zoektermen; `google_ads_campaign_next_steps.py negatives` indien nodig |
 
-## Echte projectcases — expliciete aanbeveling (publish vs wachten)
+### Voorstel defaults-JSON (geen API-run)
 
-**Besluit voor PM:** **Publiceer, maar niet zonder akkoord.**
+1. Voeg toe aan `final_urls`: `https://www.vlwarmte.nl/projecten.html` (sitelink / variant voor vertrouwen-intent).
+2. Overweeg headline in primaire RSA: “Projecten in Drenthe — bekijk foto’s” (max. 30 tekens controleren).
+3. **Pauzeer of negatief** `vloerverwarming meppel` tot `vloerverwarming-meppel.html` bestaat, of plan pagina in backlog.
 
-| Optie | Voor | Tegen |
-|-------|------|-------|
-| **Nu publiceren (na PO-akkoord)** | Sluit gat tussen “referenties op aanvraag” en site; versterkt Ads/organisch vertrouwen; past bij doelgroep (lokaal bewijs); slechts 2 cases is genoeg om **drie placeholder-kaarten te vervangen**; Zuidlaren-case versterkt thuisbasis + `vloerverwarming-zuidlaren.html`. | Privacy/AVG: plaatsnamen en werkbeelden op site/social vereisen expliciete toestemming. |
-| **Wachten op meer cases** | Rijkere galerij later. | `projecten.html` blijft generiek; bounce/7,5 s blijft waarschijnlijk; RSA “referenties op aanvraag” blijft zwakker dan concurrenten met foto’s. |
+## Aanbevelingen voor Product Manager (max. 5)
 
-**Aanbevolen uitvoering (developer-sprint na PO-akkoord):**
-1. Vervang de drie generieke kaarten door **twee case-cards** (Zeegse, Zuidlaren) met README-metadata (m², ondergrond, oplossing in 3 regels).
-2. Kopieer geoptimaliseerde WebP/JPEG naar `assets/img/projecten/` (niet zware WhatsApp-paden in HTML); bron blijft in `beeldmateriaal/projecten/`.
-3. Hero: sterkste foto (bijv. Zuidlaren leidingwerk) i.p.v. oud root-beeld.
-4. Cross-link Zuidlaren-case → `vloerverwarming-zuidlaren.html`; Zeegse → algemene Drenthe/Friesland-tekst (geen city-pagina nodig).
-5. **Navigatie:** `projecten` terug in footer-regio of “Werk”-link op `over-ons`/`index` — **niet** per se hoofdnav tot er ≥3 cases zijn; **wel** `sitemap.xml` + `lastmod` bij publicatie voor SEO.
-6. **Social/Ads:** één post met echt beeld (skill: `beeldmateriaal/`, geen AI); optioneel sitelink naar `projecten.html` na livegang.
+| P | Tag | Voorstel | Onderbouwing | Actie |
+| - | --- | -------- | ------------ | ----- |
+| **P0** | Ads / meet | **GA4 ↔ Ads + Paid Search-attributie** | 13 Paid Search-sessies / 0 conv vs 61 Cross-network / 9 conv | Sessie ~1 juni: link, auto-tagging, conversie-import, Final URL’s in UI; geen budget↑ |
+| **P0** | Analytics | **Cyclus 9–11 niet bijsturen vóór juni-fetch** | Projecten entry 100%, over-ons 80%/0 conv, Assen 0 scrollers — ~4d post-cyclus-11 | Fetch 1–15 juni; harde beoordeling meetdoelen sprint 11 |
+| **P1** | Ads | **RSA-variant met projecten-copy live zetten (na PO)** | Defaults klaar; live campagne kan nog “referenties op aanvraag” tonen | `--dry-run` → `--apply` op `google_ads_add_rsa_variant.py`; geen `--go-live` |
+| **P1** | SEO | **Drachten indexering afwachten + Search Console** | 0 sessies op nieuwe pagina; footer/sitemap/defaults OK | URL inspecteren; geen extra city-pagina deze cyclus |
+| **P2** | SEO / dev | **Backlog: renovatie houten vloer + Meppel-keuze** | Commerciële gap; meppel-keyword mismatch | Max. 1 nieuwe HTML/sprint; anders keyword pauzeren in defaults |
 
-**Tot akkoord:** item op `[WACHT]`; geen plaatsnamen op de live site.
+## Concrete developer-voorstellen (cyclus 12, alleen na PM-go)
 
-## Aanbevelingen voor Product Manager (max. 8)
+1. **Geen wijziging** aan `projecten.html` / `over-ons.html` / Assen **tot juni-fetch** — tenzij meetdoelen expliciet falen na 4 weken data.
+2. **`projecten.html` (optioneel P2 na juni):** OG-image uit Zeegse/Zuidlaren i.p.v. `og-default.png`; `zeegse-2.jpeg` in case-card.
+3. **`diensten.html`:** alleen als juni-fetch landing nog >70% bounce **én** 0 conv: heroverweeg compacte duo-CTA onder hero (zoals cyclus 11, verwijderd in `b040cea`) — acceptatie: bounce <70% of ≥1 conv op ≥15 entry-sessies.
+4. **`over-ons.html`:** bij aanhoudend 80% entry / 0 conv na juni: één ATF-knop prijsindicatie of offerte-deeplink in hero (niet alleen onderaan).
+5. **`vloerverwarming-renovatie-houten-vloer.html`:** nieuwe pagina met FAQ-kruislink + wizard/contact-CTA; 1 sprint, geen tweede city-pagina tegelijk.
+6. **Tracking:** geen nieuwe events; wel controleren dat Ads-auto-tagging `gclid` op offerte-deeplink landt.
 
-1. **Prioriteit: Hoog — GA4 ↔ Ads + Paid Search-attributie**
-   **Type:** Meetplan + accountcontrole.
-   **Onderbouwing:** 42 betaalde sessies / 30d; Paid Search 0 conv vs Cross-network 5 conv — opschalen zonder fix is blind varen.
-   **Actie:** Skill §A (link, auto-tagging, conversies); in Ads UI controleren welke final URL’s de ENABLED Search-campagne (id 23834672782) daadwerkelijk serveert; rapporteer split Paid Search vs Cross-network.
+## Uitgesteld
 
-2. **Prioriteit: Hoog — Projectcases publiceren na PO-akkoord**
-   **Type:** Content/CRO + trust.
-   **Onderbouwing:** Eerste echte input 20-05; placeholders ondermijnen “vakmanschap tonen”; analytics projecten blijft zwak.
-   **Actie:** PO bevestigt publicatie Zeegse + Zuidlaren; developer vervangt placeholder-cards + hero; meet entry-bounce & scrollers in juni-fetch.
-
-3. **Prioriteit: Hoog — Juni-meetronde cyclus 9–10 (geen premature bijsturing)**
-   **Type:** Analytics-proces.
-   **Onderbouwing:** 3 dagen post-deploy was ruis; nu ~5 dagen — nog steeds kleine volumes per landing.
-   **Actie:** GA4-fetch rond 1 juni; hard beoordelen meetdoelen a–e (Drachten organisch, projecten bounce, cold contact, prijsindicatie entry, Assen scroll).
-
-4. **Prioriteit: Midden — RSA/copy na projectcases**
-   **Type:** Ads copy.
-   **Onderbouwing:** `extra_rsa` headline “Referenties op aanvraag” is zwakker dan bewezen werk op de site.
-   **Actie:** Na live `projecten.html` tweede RSA of headlines bijwerken (“Bekijk project in Zuidlaren”); geen `--apply` zonder dry-run + goedkeuring.
-
-5. **Prioriteit: Midden — `vloerverwarming-assen.html` engagement**
-   **Type:** UX/CRO.
-   **Onderbouwing:** 0 scrollers 90d; aggregerende concurrentie op Assen-zoektermen.
-   **Actie:** Bij uitblijvend effect juni-fetch: hero herontwerp (eerste contentblok + trust direct zichtbaar).
-
-6. **Prioriteit: Midden — `over-ons.html` entry (cyclus 10 CTA live)**
-   **Type:** Meting → eventueel bijsturing.
-   **Onderbouwing:** 80% entry-bounce, 0 conv; vervolg-CTA net toegevoegd.
-   **Actie:** Juni-fetch; pas bij geen verbetering extra trust-regel (werkwijze-link of één projectfoto).
-
-7. **Prioriteit: Midden — `vloerverwarming-renovatie-houten-vloer.html`**
-   **Type:** Nieuwe pagina (max. 1/sprint).
-   **Onderbouwing:** commerciële intent; geen SERP-eigen URL.
-   **Actie:** Volgende cyclus na projectcases + juni-data; kruislink wizard/contact.
-
-8. **Prioriteit: Laag — `vloerverwarming-meppel.html`**
-   **Type:** SEO/landing.
-   **Onderbouwing:** keyword in defaults zonder URL; grens Drenthe/Overijssel.
-   **Actie:** Alleen als zoektermenrapport of Search Console vraag toont; anders keyword tijdelijk pauzeren in Ads.
+- Budgetverhoging, `--go-live`, PMax/image-campagnes.
+- Assen hero-herontwerp, NL-only GA4-segment, `logo-varianten.html`-ruis.
+- Friesland-cluster (Leeuwarden/Heerenveen apart) tot Drachten >0 organisch.
+- Social: handmatige posts uit `weekly_calendar.md` — na live projecten mogen Zeegse/Zuidlaren in captions.
 
 ## Seizoenspatroon (indicatief)
 
-Mei–augustus: verbouw- en offerte-intent, kostenvragen — sluit aan op live `#kosten-uitleg` en prijsindicatie. September–november: planning renovatie/warmtepomp; RSA pas roteren na 6–8 weken **betrouwbare** betaalde data post-attributiefix. Winter: comfort- en binnenklimaat-hooks bruikbaar in social, niet primair voor nieuwe Search-keywords.
+Mei–augustus: verbouw- en kostenintent — `#kosten-uitleg` + wizard blijven kern. September–november: planning renovatie/warmtepomp in RSA pas na **betrouwbare** betaalde data post-attributiefix.
 
 ---
 
-**Tone:** nuchter, direct, conform AGENTS.md — geen overdreven claims. Geen secrets in dit document.
+**Tone:** nuchter, direct — conform AGENTS.md. Geen secrets of tokens in dit document.
