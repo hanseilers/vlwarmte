@@ -83,6 +83,6 @@
 
 - Geïmplementeerde taken: Taak 1 (kruislinks projecten↔Drachten + sitemap `lastmod`), Taak 2 (hero-link projecten op `diensten.html`), Taak 3 (`final_urls` + meppel-keyword uit defaults), Taak 4 (OG/twitter `og-projecten.jpg` op Drachten), Taak 5 (`diensten.html` formatting-only diff teruggedraaid).
 - Overgeslagen taken: geen.
-- Deployment: **Nog niet live** — PM voert commit + `git push origin main` uit.
+- Deployment: **Live** 22-05-2026 — commit `8fff9dd`; `git push origin main` geslaagd. GitHub Pages run **26297204197** (success, ~39s); E2E **26297205481** gestart na push.
 - Live URL: https://www.vlwarmte.nl
 - Aandachtspunten: RSA `--apply` en live Meppel-keyword in Ads UI nog handmatig/API na PO; juni-fetch bepaalt vervolg op projecten/over-ons/Assen.

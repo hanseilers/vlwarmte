@@ -6,7 +6,7 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ## Release — week van 22 mei 2026 (cyclus 12)
 **Deployment:** 22-05-2026 — PM push naar `main` (GitHub Pages).
-**Versie:** [PM vult commit-hash na push]
+**Versie:** `8fff9dd`
 
 ### Wat is er veranderd
 - **Drachten ↔ projecten:** onderlinge links — vanaf projecten naar Drachten/Heerenveen, vanaf Drachten naar uitgevoerd werk met foto’s.
