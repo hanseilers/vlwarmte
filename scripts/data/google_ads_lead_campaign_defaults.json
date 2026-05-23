@@ -160,6 +160,38 @@
   ],
   "path1": "offerte",
   "path2": "vloerverwarming",
+  "sitelinks": [
+    {
+      "link_text": "Prijsindicatie",
+      "description1": "Richtbedrag in 2 minuten",
+      "description2": "Excl. btw, vrijblijvend",
+      "final_url": "https://www.vlwarmte.nl/prijsindicatie.html"
+    },
+    {
+      "link_text": "Uitgevoerd werk",
+      "description1": "Zeegse & Zuidlaren",
+      "description2": "Echte projectfoto's",
+      "final_url": "https://www.vlwarmte.nl/projecten.html"
+    },
+    {
+      "link_text": "Offerte aanvragen",
+      "description1": "Reactie binnen één werkdag",
+      "description2": "Met kruipruimte-maat",
+      "final_url": "https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag"
+    },
+    {
+      "link_text": "Werkwijze",
+      "description1": "Ondervloer tot oplevering",
+      "description2": "Eén aanspreekpunt",
+      "final_url": "https://www.vlwarmte.nl/werkwijze.html"
+    },
+    {
+      "link_text": "Drachten & Heerenveen",
+      "description1": "Friesland vanuit Zuidlaren",
+      "description2": "Complete trajecten",
+      "final_url": "https://www.vlwarmte.nl/vloerverwarming-drachten.html"
+    }
+  ],
   "extra_rsa": {
     "comment": "Second RSA in same ad group — improves Ad strength / variety; kost/garantie-hoek",
     "headlines": [
