@@ -79,6 +79,66 @@
 
 ---
 
+## Addendum — laagopbouw / droge vloerverwarming (23-05-2026)
+
+**Trigger:** concurrent-analyse `vloerverwarminggroningen.com/droogbouw-vloerverwarming-groningen/` (lead-aggregator, geen installateur).
+
+### PM review `[GOEDGEKEURD MET AANPASSINGEN]`
+- **Sectie i.p.v. losse pagina** op `systemen-producten.html#laagopbouw` — past bij eerdere infrezen-beslissing (max. 1 pagina/sprint); standalone URL pas na GSC-volume.
+- **Geen extra hero-knoppen** op stad- of diensten-pagina’s; trust-strip + bestaande CTA’s volstaan.
+- **Trust-strip** op alle 7 stad-pagina’s; `project-hero__note` verwijderen waar het dupliceert (werkgebied / reactie / garantie).
+- **Meetdoel addendum (4 weken):** ≥1 organisch sessie op `systemen-producten.html` met referrer Google + query-term laagopbouw/droog in GSC; bounce stad-pagina’s niet verslechteren.
+
+### Marketing review `[GOEDGEKEURD MET AANPASSINGEN]`
+- Primair keyword **“droge vloerverwarming”** en **“laagopbouw vloerverwarming”**; **“droogbouw”** alleen als secundair synoniem in body (niet in H1 — klinkt te bouwkundig/generiek).
+- **Final URL** toevoegen: `https://www.vlwarmte.nl/systemen-producten.html#laagopbouw` in Ads defaults; CTA blijft prijsindicatie/offerte — **niet** “offertes vergelijken”.
+- **Keywords toevoegen** (JSON only, geen `--apply`): `droge vloerverwarming`, `laagopbouw vloerverwarming`, `droogbouw vloerverwarming groningen`.
+- **Tone:** je/jij, één werkdag, 10 jaar buis; geen superlatieven; onderscheid droge opbouw vs schuimbeton/kruipruimte expliciet houden (message-match met prijsindicatie-wizard).
+
+---
+
+## Goedgekeurde taken — laagopbouw cluster (Developer Agent)
+
+### Taak 6: `systemen-producten.html` — sectie `#laagopbouw` + meta `[GOEDGEKEURD]`
+**Prioriteit:** Hoog — SEO / intent-dekking
+**Actie:** Nieuwe sectie vóór `#garantie`: uitleg droge vloerverwarming/laagopbouw, wanneer wel/niet, comfort-hook, genummerde voordelen, doorlooptijd, CTA prijsindicatie + offerte. Meta title/description uitbreiden. Card “Laagopbouw en renovatie” linkt naar `#laagopbouw` en scheidt schuimbeton.
+**Succescriterium:** anker `#laagopbouw` bereikbaar; copy onderscheidt droge opbouw vs schuimbeton vs infrezen.
+
+### Taak 7: Topic-FAQ + FAQPage schema op systemen `[GOEDGEKEURD]`
+**Prioriteit:** Hoog — SEO rich results
+**Actie:** 5 laagopbouw-FAQ’s (accordion + JSON-LD FAQPage); kruislink `faq.html`.
+**Succescriterium:** 5 vragen zichtbaar; valid FAQPage JSON-LD.
+
+### Taak 8: Trust-strip stad-pagina’s `[GOEDGEKEURD]`
+**Prioriteit:** Midden — CRO
+**Actie:** `.trust-strip` (patroon `index.html`) op 7× `vloerverwarming-*.html`; reistijd per stad; verwijder dubbele `project-hero__note`.
+**Succescriterium:** strip ATF op desktop; geen dubbele garantie/reactie-tekst.
+
+### Taak 9: H2 laagopbouw Groningen `[GOEDGEKEURD]`
+**Prioriteit:** Hoog — local SEO
+**Actie:** Sectie tussen infrezen-H2 en nieuwbouw; lokale context Korrewegwijk/Vinkhuizen; link `#laagopbouw`.
+**Succescriterium:** H2 + 2–3 alinea’s + prijsindicatie-link.
+
+### Taak 10: Interne link-mesh `[GOEDGEKEURD]`
+**Prioriteit:** Midden — SEO distributie
+**Actie:** Links in `diensten.html`, `systemen-producten.html` hero, `faq.html` (schuimbeton + nieuwe FAQ droge vloerverwarming), `index.html` home-services.
+**Succescriterium:** min. 4 pagina’s kruisen naar `#laagopbouw`.
+
+### Taak 11: Verificatie + Ads defaults prep `[GOEDGEKEURD]`
+**Prioriteit:** Laag
+**Actie:** `sitemap.xml` lastmod; keywords + final_url in `google_ads_lead_campaign_defaults.json`; **geen** `--apply`. Deploy via push `main`.
+**Succescriterium:** sitemap datums 2026-05-23; JSON geldig; live op vlwarmte.nl.
+
+---
+
+## Developer Rapport — laagopbouw cluster (23-05-2026)
+
+- Geïmplementeerd: Taak 6–11 (systemen `#laagopbouw`, FAQ+schema, trust-strip 7 stad-pagina’s, Groningen H2, link-mesh, sitemap + Ads defaults prep).
+- PM/Marketing review: vastgelegd in addendum boven; geen extra hero-CTA’s; “droogbouw” secundair synoniem.
+- Deployment: commit + push `main` (GitHub Pages).
+
+---
+
 ## Developer Rapport — 22-05-2026
 
 - Geïmplementeerde taken: Taak 1 (kruislinks projecten↔Drachten + sitemap `lastmod`), Taak 2 (hero-link projecten op `diensten.html`), Taak 3 (`final_urls` + meppel-keyword uit defaults), Taak 4 (OG/twitter `og-projecten.jpg` op Drachten), Taak 5 (`diensten.html` formatting-only diff teruggedraaid).

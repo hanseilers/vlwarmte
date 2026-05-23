@@ -12,11 +12,13 @@
     "https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag",
     "https://www.vlwarmte.nl/prijsindicatie.html",
     "https://www.vlwarmte.nl/projecten.html",
+    "https://www.vlwarmte.nl/systemen-producten.html#laagopbouw",
+    "https://www.vlwarmte.nl/vloerverwarming-groningen.html",
     "https://www.vlwarmte.nl/vloerverwarming-leeuwarden.html",
     "https://www.vlwarmte.nl/vloerverwarming-hoogeveen.html",
     "https://www.vlwarmte.nl/vloerverwarming-drachten.html"
   ],
-  "keywords_comment": "vloerverwarming meppel verwijderd 2026-05-22 — geen landingspagina; backlog city-pagina of pauzeren in Ads UI",
+  "keywords_comment": "vloerverwarming meppel verwijderd 2026-05-22 — geen landingspagina; laagopbouw-keywords toegevoegd 2026-05-23 (final URL systemen#laagopbouw)",
   "keywords": [
     {
       "text": "vloerverwarming groningen installateur",
@@ -132,6 +134,18 @@
     },
     {
       "text": "vloerverwarming heerenveen",
+      "match": "PHRASE"
+    },
+    {
+      "text": "droge vloerverwarming",
+      "match": "PHRASE"
+    },
+    {
+      "text": "laagopbouw vloerverwarming",
+      "match": "PHRASE"
+    },
+    {
+      "text": "droogbouw vloerverwarming groningen",
       "match": "PHRASE"
     }
   ],
