@@ -4,6 +4,37 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 26 mei 2026 (cyclus 13)
+**Deployment:** 26-05-2026 17:20 — PM push naar `main` (GitHub Pages).
+**Versie:** `47a9583`
+**GitHub Actions:** pages-build run `26457537868` (success, 51s); E2E production `26457539329` (success, 2m35s).
+
+### Wat is er veranderd
+- **Prijsindicatie-pagina** krijgt een scherpere zichtbaarheids-tekst: titel en omschrijving in Google noemen nu expliciet Drenthe en Noord-NL met de belofte "richtbedrag in 2 minuten". De wizard zelf en de pagina-inhoud blijven ongewijzigd.
+- **Hoogeveen-pagina** vermeldt nu Hollandscheveld, Fluitenberg, Noordscheschut, Elim en Tiendeveen in één zin in de bestaande "Ook actief in"-sectie. Titel en omschrijving in Google ook bijgewerkt richting omgeving Hoogeveen.
+- **Homepage** krijgt een compacte regio-sectie "Vloerverwarming in heel Drenthe" met links naar de zes stadspagina's (Groningen, Assen, Hoogeveen e.o., Emmen, Drachten, Leeuwarden) plus links naar uitgevoerd werk en prijsindicatie. Eén klik vanaf de homepage naar elke regio.
+- **Werkwijze-pagina** krijgt zachtjes meer interne traffic: één tekstlink in de diensten-uitleg en één zin met link in de projecten-intro verwijzen nu naar `werkwijze.html`. Geen extra knoppen.
+- **Diagnose Assen-pagina:** vastgesteld dat een extra "lees verder"-regel en een dubbele knoppen-band tussen hero en eerste content-sectie ervoor zorgen dat mobiele bezoekers de eigenlijke uitleg niet zien. Fix staat klaar voor volgende sprint — geen wijziging deze release.
+
+### Waarom
+- **Prijsindicatie & Hoogeveen titels:** Search Console laat zien dat beide pagina's veel vertoningen krijgen (75 en 30 in 28 dagen) maar 0 clicks — de Google-snippet matcht niet met wat mensen zoeken. Title- en meta-aanscherping is de goedkoopste hefboom om die vertoningen om te zetten in clicks. Hoogeveen rangt al op 4,8 voor "vloerverwarming fluitenberg" zonder dat het dorp in de body stond — nu wel.
+- **Drenthe-hub op homepage:** 82 vertoningen op "vloerverwarming drenthe" verspreid over 5 URL's, geen ervan rangt — Google weet niet welke pagina de "Drenthe-pagina" is. Eén duidelijk regio-blok op `/` met links naar de stadspagina's geeft dat signaal af, zónder een nieuwe thin-content pagina te bouwen.
+- **Werkwijze interne links:** GA4 laat zien dat `werkwijze.html` ~78% conversie haalt als landing-pagina, maar krijgt amper instromers. Twee kleine tekstlinks vanaf de twee grootste pagina's (diensten, projecten) is een laagdrempelige test.
+- **Assen-diagnose:** GA4 toonde 0,7 seconden gemiddelde sessieduur en 0 scrollers op 7 bezoeken — extreem. Statische broncode-vergelijking met Groningen (werkt wel) wees twee structurele blokken aan; bevestiging dat het géén content-probleem maar een layout-probleem is.
+
+### Verwacht effect
+Bij de meet-cyclus over ~4 weken (juni-fetch ~22 juni):
+- `prijsindicatie.html` GSC CTR van 0% naar >0,5% (eerste echte clicks vanuit Google).
+- `vloerverwarming-hoogeveen.html` gemiddelde rang onder de 10, óf ≥1 GSC-click op "vloerverwarming hoogeveen".
+- `/` zichtbaar op rang <30 voor "vloerverwarming drenthe" (nu 65,7).
+- `werkwijze.html` entry-sessies +20% (van 9 naar ≥11) zonder dat `diensten` of `projecten` verzwakt.
+- Assen-diagnose afgerond — fix uitgevoerd in cyclus 14, daarna 4–6 weken meten.
+
+### Social media deze week
+Weekplanning 27 mei – 4 juni 2026 in `docs/website-manager/social/weekly_calendar.md`. 10 posts: 3× LinkedIn, 4× Instagram, 3× Facebook. Thema's: Zeegse- en Zuidlaren-projecten (cyclus 11), laagopbouw op LinkedIn, Friesland-zuidoost via Drachten. Facebook-blok herstelt nadrukkelijk message-match (analytics-bevinding: 32 sessies / 0 conversies via FB tot nu toe) — één intentie + één link per post, met deeplinks naar `?modus=offerte#aanvraag`, `?modus=bel#aanvraag` of `prijsindicatie.html`.
+
+---
+
 ## Release — week van 22 mei 2026 (cyclus 12)
 **Deployment:** 22-05-2026 — PM push naar `main` (GitHub Pages).
 **Versie:** `8fff9dd`

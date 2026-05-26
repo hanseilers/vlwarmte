@@ -173,7 +173,16 @@ Geen. Alle 5 goedgekeurde taken afgewerkt (Taak 5 diagnose-only zoals afgesproke
 - Géén secrets, geen `.env`, geen service-account JSON aangeraakt.
 
 ### Deployment
-**Nog niet live** — PM voert `git add` + `git commit` + `git push origin main` uit; daarna controleert PM de GitHub Actions deploy en vult run-id/status hier in.
+**Live op 2026-05-26 17:20 UTC** door PM:
+- Commit `47a9583` — `Sprint 26 mei (cyclus 13): GSC-aanscherping op drie kanslocaties + werkwijze-voeding`
+- `git push origin main` geslaagd (7a45234..47a9583).
+- GitHub Actions `pages build and deployment` run-id `26457537868` — **success** in 51s.
+- GitHub Actions `E2E production (Formspree to inbox)` run-id `26457539329` — **success** in 2m35s.
+- Live-verificatie (curl):
+  - `https://www.vlwarmte.nl/` bevat sectie "Vloerverwarming in heel Drenthe" ✓
+  - `/prijsindicatie.html` title = `Prijsindicatie vloerverwarming Drenthe & Noord-NL — richtbedrag in 2 minuten` ✓
+  - `/vloerverwarming-hoogeveen.html` title = `Vloerverwarming Hoogeveen, Hollandscheveld & omgeving — installateur uit Zuidlaren` ✓
+  - GA4-tag `G-0BB9M7HYSF` aanwezig via `assets/js/ga-deferred.js` ✓
 
 ### Aandachtspunten voor volgende sprint (cyclus 14)
 - **Assen-fix (~10 regels):** verwijder `<p class="small project-hero__readnext">…</p>` uit hero én verwijder de duplicaat-`cta-band`-sectie tussen hero en `#waarom-vlwarmte-assen`. Test daarna mobiel opnieuw (devtools 375×667 Slow 4G) en meet 4–6 weken later of bouncerate <70% en gem. duur >5 s.
