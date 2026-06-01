@@ -115,7 +115,7 @@
   - `bash tests/smoke/form-behavior.sh` — **PASS**
   - Lokaal `curl` op `127.0.0.1:8765`: `/vloerverwarming-assen.html`, `/prijsindicatie.html`, `/index.html` → HTTP 200, body start `<!doctype html>`.
 
-- **Deployment:** **Nog niet live** — PM voert commit + `git push origin main` uit; daarna: *(PM vult run-id / succes in)*
+- **Deployment:** **Live** — commit `0099874`, push 01-06-2026. GitHub Actions pages-build `26745905059` (success, 41s). E2E production `26745905886` (in progress bij push).
 
 - **Live URL:** https://www.vlwarmte.nl
 

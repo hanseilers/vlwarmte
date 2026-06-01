@@ -6,7 +6,7 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ## Release — week van 2 juni 2026 (cyclus 14)
 **Deployment:** 01-06-2026 — PM push naar `main` (GitHub Pages).
-**Versie:** *(na commit)*
+**Versie:** `0099874`
 
 ### Wat is er veranderd
 - **Assen-pagina:** de extra "lees verder"-regel en de knoppenband direct onder de hero zijn weg. De pagina volgt nu hetzelfde patroon als Groningen — eerst uitleg, daarna pas acties onderaan.
