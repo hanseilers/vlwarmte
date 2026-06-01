@@ -7,16 +7,13 @@
       "geoTargetConstants/20761"
     ]
   },
+  "daily_budget_eur": 2,
+  "daily_budget_comment": "Startup cap: EUR 2/day on live Search campaign VLW-API-Leads NL auto (id 23834672782). Change via google_ads_update_campaign_budget.py — not on keyword apply.",
   "ad_group_suffix": "Leads NL",
+  "final_urls_comment": "2026-06-01: RSA beperkt tot offerte-deeplink + prijsindicatie — GA4 Paid Search 0/13 conv.; brede final_urls lieten Google op / (67% bounce) of projecten landen. Stad-URLs blijven sitelinks; live RSA in Ads UI handmatig syncen (geen update-script).",
   "final_urls": [
     "https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag",
-    "https://www.vlwarmte.nl/prijsindicatie.html",
-    "https://www.vlwarmte.nl/projecten.html",
-    "https://www.vlwarmte.nl/systemen-producten.html#laagopbouw",
-    "https://www.vlwarmte.nl/vloerverwarming-groningen.html",
-    "https://www.vlwarmte.nl/vloerverwarming-leeuwarden.html",
-    "https://www.vlwarmte.nl/vloerverwarming-hoogeveen.html",
-    "https://www.vlwarmte.nl/vloerverwarming-drachten.html"
+    "https://www.vlwarmte.nl/prijsindicatie.html"
   ],
   "keywords_comment": "vloerverwarming meppel verwijderd 2026-05-22 — geen landingspagina; laagopbouw-keywords toegevoegd 2026-05-23 (final URL systemen#laagopbouw)",
   "keywords": [

@@ -1,266 +1,241 @@
-# Marketing Research Rapport — 26 mei 2026
+# Marketing Research Rapport — 1 juni 2026
 
-**Cyclus 13** — eerste research na laagopbouw-cluster-deploy (23 mei, commit `7a45234`) en cyclus-11-deploy (20 mei). Eerste rapport dat **GSC-data** (vlwarmte.nl, 25 apr – 22 mei) meeneemt naast GA4.
-**Scope:** leadgeneratie (organisch + betaald), landingskwaliteit, content-gaps die zichtbaar worden in GSC, Google Ads message-match. Geen premature bijsturing op cyclus 9–11-meetdoelen (juni-fetch ~1–15 juni blijft het ijkpunt).
-**Bronnen:** `docs/website-manager/analytics_report.md` (22-05), `docs/website-manager/ga4_report.json` (23-05), `docs/website-manager/gsc_report.json` (23-05, 28 dagen), `docs/website-manager/sprint.md` cyclus 12 + addendum laagopbouw, `scripts/data/google_ads_lead_campaign_defaults.json`, `.cursor/skills/google-ads-marketing/SKILL.md`, root-HTML, WebSearch (mei 2026).
+**Cyclus 14** — eerste research na sprint-13-deploy (26 mei, commit `47a9583`: prijsindicatie title/meta, Drenthe-hub op `/`, Hoogeveen-dorpen, werkwijze-links op diensten/projecten).
+**Scope:** leadgeneratie (organisch + betaald), landingskwaliteit, content-gaps, Google Ads message-match. GSC ontbreekt deze cyclus — SEO-evaluatie sprint 13 uitgesteld tot GSC-OAuth.
+**Bronnen:** `docs/website-manager/analytics_report.md` (01-06), `docs/website-manager/ga4_report.json` (01-06T11:03), vorig rapport (26-05), `scripts/data/google_ads_lead_campaign_defaults.json`, `.cursor/skills/google-ads-marketing/SKILL.md`, root-HTML, WebSearch (juni 2026).
 
-> **Ads-uitvoering deze sessie:** harness verbood Bash voor Python-scripts; `google_ads_list_campaigns.py` en `--dry-run`-runs **niet** opnieuw gedraaid. Read-only conclusies komen uit het vorige rapport (campagne `23834672782` ENABLED, €2/dag) plus de defaults-JSON. Bij volgende sessie zonder Bash-block: smoke-test + `list_campaigns` herhalen vóór elke mutatie-aanbeveling.
+> **Ads-uitvoering deze sessie:** `google_ads_list_campaigns.py` bevestigt campagne `23834672782` SEARCH ENABLED (€2/dag). `create_search_campaign --dry-run` faalt verwacht (campagnenaam bestaat al). Defaults-JSON aangepast: RSA `final_urls` teruggebracht tot offerte-deeplink + prijsindicatie. **Geen `--apply`, geen `--go-live`.** Live RSA in Ads UI handmatig syncen — geen update-script in repo.
 
 ## Samenvatting
 
-GSC bevestigt wat GA4 alleen suggereerde: **vlwarmte.nl is zichtbaar in heel Noord-Nederland**, maar de meeste vertoningen zitten **buiten pagina 1** (rang 30–80) en leveren dus 0 klikken. Drie patronen springen eruit als concrete leadkans:
+Verkeer normaliseert na de campagne-piek (206 sess/30d vs 352 vorige fetch); post-piek ~50 sess/week is realistischer. Het echte probleem blijft **Paid Search 13 sess / 0 conv.** terwijl `contact.html?modus=offerte` **10 conv. op 11 entry-sess** haalt. Waarschijnlijke oorzaak: RSA met **8 final URLs** liet Google op `/` (67% entry-bounce) of zwakke pagina's landen — defaults zijn nu teruggebracht tot 2 conversie-URL's.
 
-1. **`vloerverwarming-hoogeveen.html`** rankt op rang 10,6 voor _vloerverwarming hoogeveen_ (8 vert.) en pakt veel small-town vertoningen (Hollandscheveld, Fluitenberg, Noordscheschut, Elim) — **close-to-page-1** is grijpbaar met title/meta + dorpen-cluster in body.
-2. **`prijsindicatie.html`** krijgt 75 GSC-vertoningen en 56 GA4-sessies / ~94 s — maar 0 GSC-clicks (rang 52) **én** 65% entry-bounce op de 20 directe landings. De wizard converteert (24 conv. in GA4-pad), maar als landing voor "vloerverwarming drenthe / zuidlaren" is de eerste schermhelft te zwak.
-3. **`vloerverwarming-drenthe`** is de grootste regio-term in GSC (82 vert., 0 clicks, gem. rang 65,7) — gespreid over `/`, `/diensten`, `/prijsindicatie`, `/faq` zonder duidelijke hub. **Geen toegewezen landings-URL** voor "Drenthe"; Google kiest zelf en niemand rankt.
+Drie leadkansen voor juni:
 
-Daarnaast: Paid Search blijft 13 / 0 conv vs Cross-network 64 / 9 conv; GA4↔Ads-attributiesessie staat nog open voor ~1 juni. `projecten.html` rankt al op gem. rang 3,3 op zijn 3 vertoningen — goed nieuws, maar 8 sessies / 0 conv blijft te dun om over bij te sturen.
+1. **Attributie + landing fix betaald** — GA4↔Ads koppeling afronden én live RSA final URL op offerte-deeplink zetten (P0).
+2. **`vloerverwarming-assen.html` layout-fix** — 90d 7 sess / 0,7 s / 0 scrollers; Developer-rapport cyclus 13 klaar (P0 content).
+3. **GSC OAuth** — blocker voor sprint-13 SEO-check (prijsindicatie CTR, Hoogeveen-rang, Drenthe-hub); zonder GSC blijft organische optimalisatie giswerk.
 
-**Geen `--apply`, geen `--go-live`, geen budgetverhoging deze cyclus.** Wel: kleine content-aanscherpingen die organische impressies omzetten in clicks, plus voorbereiding voor de juni-attributiesessie.
+Sprint-13-wijzigingen (Drenthe-hub, prijsindicatie-title) zijn **6 dagen live** — te vroeg voor harde meting; juni-fetch ~22 juni is ijkpunt.
 
-## GA4-kern (30d, fetch 23-05-2026)
+## GA4-kern (30d, fetch 01-06-2026)
 
-| Metric | 23-05 | Trend t.o.v. 22-05 |
+| Metric | 01-06 | Trend t.o.v. 23-05 |
 | ------ | ----- | ------------------ |
-| Sessies (devices) | ~352 (186 desktop + 150 mobile + 16 tablet) | +~3% |
-| Homepage `/` | 202 sessies, bounce 60,9% | +4 sessies, bounce stabiel |
-| `/prijsindicatie.html` | 56 sessies, ~94 s, bounce 32,1% | stabiel |
-| Betaald `google / cpc` | Cross-network 64 / 9; Paid Search 13 / 0 | +3 Cross, Paid ongewijzigd |
-| Organic `google` | 8 sessies, 1 conv. | stabiel laag |
-| Geo NL — Drenthe / Groningen / Friesland | 174 / 21 / 6 | +2 / +1 / 0 |
+| Sessies (devices) | **206** (119 desktop + 70 mobile + 17 tablet) | ↓ −41%* |
+| Homepage `/` | 147 sess, bounce **66%**, gem. **35 s** | ↓ sessies; bounce ↑ |
+| `/prijsindicatie.html` | 35 sess, **86 s**, bounce 34% | ↓ sessies; engagement stabiel |
+| Betaald `google / cpc` | Cross-network **75 / 20**; Paid Search **13 / 0** | Cross +11 conv.; Paid ongewijzigd |
+| Organic `google` | 8 sess, 1 conv. | stabiel mager |
+| Facebook (3 bronnen) | 20 sess, 0 conv. | ↓ sess; conv nog nul |
+| Geo NL — Drenthe / Groningen / Friesland | 62 / 23 / 8 | Friesland +2 |
+
+\*Deels meetvenster-effect: piekweek 172 sess (27 apr–3 mei) rolt uit venster. Stabiel post-piek: ~49–56 sess/week.
 
 **Top entry-landings (selectie):**
 
 | Landing | Sessies | Bounce | Conv. | Opmerking |
 | ------- | ------- | ------ | ----- | --------- |
-| `/contact.html?modus=offerte` | 11 | 9,1% | 10 | goudstandaard, ongewijzigd |
-| `/prijsindicatie.html` | 20 | 65% | 24 | conv. hoog (paths), entry-bounce blijft P1 |
-| `/diensten.html` | 15 | 73,3% | 3 | sprint-12 hero-link projecten live (commit `8fff9dd`) |
-| `/contact.html` (koud) | 10 | 80% | 12 | intent-strip live; effect pas juni meetbaar |
-| `/over-ons.html` | 10 | 80% | 0 | wacht juni-fetch |
-| `/projecten.html` | 7 | 100% | 0 | cases live + Drachten-kruislink (cyclus 12) |
-| `/vloerverwarming-assen.html` | 6 | 100% | 0 | 7 sessies in 90d engagement, **0 scrollers** |
+| `/contact.html?modus=offerte` | 11 | **9,1%** | **10** | goudstandaard campagne-landing |
+| `/prijsindicatie.html` | 12 | 58,3% | 8 | conv. hoog als pad; entry-bounce koud |
+| `/` | 138 | **67,4%** | 37 | veel conv. via direct/retour; slechte Search-landing |
+| `/werkwijze.html` | 2 | 0% | **4** | sterk signaal; volume laag |
+| `/diensten.html` | 4 | 75% | 0 | werkwijze-link net live; te vroeg |
+| `/projecten.html` | 2 | 50% | 0 | 90d zwak (14 s gem.) |
 
-> Weekvolume blijft laag; landing-cijfers blijven ruis tot juni-fetch.
-
-## GSC-kern (28d, fetch 23-05-2026)
-
-**Top vertoningen (queries, alle clicks 0 tenzij genoemd):**
-
-| Query | Vert. | Gem. rang | Pagina (top) | Kans |
-| ----- | ----- | --------- | ------------ | ---- |
-| `vloerverwarming drenthe` | **82** | 65,7 | `/` + 4 andere URL's | **regiohub gap** |
-| `vloerverwarming zuidlaren` | **33** | 9,3 | `/`, `/contact`, `/prijsindicatie`, `/diensten` | **close-to-page-1**, intern verspreid |
-| `installatiebedrijf zuidlaren` | 20 | 6,5 | `/` | rang OK, copy-aanscherping op `/over-ons` of `/` ondertitel kan CTR helpen |
-| `vloerverwarming schoonebeek` | 10 | 61,5 | `/` | mismatch — geen Emmen-omgeving binding |
-| `vloerverwarming friesland` | 10 | 87,7 | `/vloerverwarming-leeuwarden.html` | rang slecht; Drachten-page beter? |
-| `installateur zuidlaren` | 9 | 3,7 | `/` | top-3 organisch — vertaal naar CTR |
-| `vloerverwarming hoogeveen` | 8 | 10,6 | `/vloerverwarming-hoogeveen.html` | **page-2-rand**, snelle winst |
-| `vloerverwarming leeuwarden` | 7 | 27,3 | `/vloerverwarming-leeuwarden.html` | rang stabiel, body verdiepen |
-| `vloerverwarming heerenveen` | 5 | 50,4 | `/vloerverwarming-drachten.html` | mapping klopt, rang slecht |
-| `vloerverwarming hollandscheveld` | 6 | 20,3 | `/vloerverwarming-hoogeveen.html` | dorp-binnen-Hoogeveen, kruis-link werkt |
-| `vloerverwarming fluitenberg` | 6 | 4,8 | `/vloerverwarming-hoogeveen.html` | **rang 4,8** — al sterk! |
-| `warmtepomp zuidlaren` | 4 | 1,8 | `/` | **1 click / 25% CTR** — enige clickende query |
-
-**Top vertoningen (pagina's):**
-
-| Pagina | Vert. | Clicks | Rang |
-| ------ | ----- | ------ | ---- |
-| `/` (www + non-www) | 190 | 4 | mix 5,6–52,8 |
-| `/prijsindicatie.html` | 75 | 0 | 52,0 |
-| `/vloerverwarming-hoogeveen.html` | 30 | 0 | 18,3 |
-| `/diensten.html` | 27 | 0 | 48,1 |
-| `/contact.html` | 21 | 0 | 34 |
-| `/vloerverwarming-leeuwarden.html` | 21 | 0 | 60,3 |
-| `/vloerverwarming-drachten.html` | 8 | 0 | 37,6 |
-| `/systemen-producten.html` | 5 | 0 | 29,4 |
-| `/projecten.html` | 3 | 0 | **3,3** |
-| `/faq.html` | 5 | 0 | 71 |
-
-**Observaties:**
-
-- `prijsindicatie.html` heeft de **op-één-na-grootste impression share** maar rangt slecht (52) — title/meta past niet bij brede stad/regio-queries die er nu op landen.
-- `projecten.html` rangt op gem. rang 3,3 (3 vert.) — Drenthe-cases helpen al; meer crawl-tijd nodig.
-- Stad-pagina Hoogeveen pakt 30 vertoningen op rang 18 — title/H1-tweak kan dit naar page-1 trekken.
-- Domein non-www (`vlwarmte.nl/`) pakt 81 vert. naast www (109 vert.) — canonical/redirect-status check waard (geen drama; één huishouden naar www).
-- `warmtepomp zuidlaren` rangt op 1,8 — niet hun core, maar laat zien dat lokale Zuidlaren-autoriteit gegrond is.
-
-## Top zoekwoorden (indicatief — WebSearch + GSC + defaults)
+## Top zoekwoorden (indicatief — WebSearch + vorig GSC + defaults)
 
 | Zoekwoord | Volume (indic.) | Concurrentie | Pagina |
 | --------- | --------------- | ------------ | ------ |
-| vloerverwarming drenthe | hoog (GSC 82 vert.) | hoog (aggregators) | **gap — geen hub** |
-| vloerverwarming kosten / per m² | hoog | hoog (aggregators) | `prijsindicatie.html#kosten-uitleg` |
-| vloerverwarming hoogeveen | midden | midden | `vloerverwarming-hoogeveen.html` (rang 10,6) |
-| vloerverwarming zuidlaren | midden-hoog (lokaal) | laag-midden | meerdere — versnipperd |
-| droge vloerverwarming / laagopbouw | midden (groeiend) | midden | `systemen-producten.html#laagopbouw` (live 23-05) |
+| vloerverwarming drenthe | hoog | hoog (aggregators) | `/` Drenthe-hub (live 26-05) — effect juni-fetch |
+| vloerverwarming kosten / per m² | hoog | hoog | `prijsindicatie.html` |
+| vloerverwarming hoogeveen | midden | midden | `vloerverwarming-hoogeveen.html` (vorig GSC rang 10,6) |
+| vloerverwarming zuidlaren | midden-hoog (lokaal) | laag-midden | versnipperd over meerdere URL's |
+| droge vloerverwarming / laagopbouw | midden (groeiend) | midden | `systemen-producten.html#laagopbouw` |
 | schuimbeton vloerverwarming | midden | midden-hoog | `diensten.html#schuimbeton` |
-| vloerverwarming leeuwarden / heerenveen / drachten | midden | midden-hoog | city-cluster, rangen 27–50 |
-| vloerverwarming renovatie houten vloer | midden | midden | **gap** — alleen sectie op Drachten |
-| installateur zuidlaren | laag (lokaal) | laag | `/` (rang 3,7) — vertaal naar CTR |
+| vloerverwarming heerenveen | laag-midden | midden | **gap** — geen dedicated pagina; keyword in Ads |
+| vloerverwarming groningen / leeuwarden / drachten | midden | midden-hoog | city-pagina's; dun GA4-volume |
+| vloerverwarming renovatie houten vloer | midden | midden | sectie Drachten; geen eigen pagina |
+| installateur zuidlaren | laag (lokaal) | laag | `/` (vorig GSC rang 3,7) |
+
+**Seizoenspatroon (WebSearch, indicatief):** interesse piekt richting herfst/winter (okt–dec) en bij renovatie-planning in voorjaar (apr–mei). Installaties plannen buiten winterpiek geeft kortere wachttijden — copy-kans op `werkwijze.html` en contact-CTA's ("plan nu voor najaar").
 
 ## Prijscalculator — haalbaarheidsonderzoek
 
 ### Conclusie
 
-**Niet opnieuw bouwen.** Conclusie cyclus 12 staat: wizard + `#kosten-uitleg` dekken kosten-intent (56 sessies / 94s / 24 path-conv.). GSC bevestigt dat de pagina vertoningen ophaalt; het echte probleem is **landing-message-match**, niet de wizard-logica.
+**Niet opnieuw bouwen.** De wizard op `prijsindicatie.html` is live, meetbaar (35 sess / 86 s / 34% bounce) en levert conv. op in het pad. Concurrenten (Benelux, DIJKO, aggregators) gebruiken vaste m²-banden of offerte-formulieren — geen interactieve calculator die VLWarmte mist.
 
 ### Onderbouwing
 
-Aggregators (Solvari, Slimster, Klussendirect) blijven domineren op brede `kosten` SERP's. VLWarmte wint met traject, lokaal bewijs, en heldere bandbreedte — niet met een vlakkere calculator. WebSearch mei 2026: geen nieuwe lokale concurrent met een interactieve calculator in Noord-NL die we onderschat hebben. Wel: meerdere installateurs gebruiken nu een **kort kostenblok in de hero** ("vanaf €X per m², afhankelijk van X factoren") — copy-tweak voor `prijsindicatie.html` ATF, geen nieuwe tool.
+- VLWarmte-wizard dekt productkeuze, schuimbeton-band, kruipruimte-diepte — dieper dan Vastlegg/Ikbenbint (technische buislengte-calculators, geen trajectprijs).
+- WebSearch juni 2026: leadplatforms (Slimster, BeterEnergie) domineren op brede kosten-SERP's; lokale installateurs winnen op vertrouwen + regio, niet op calculator-features.
+- GA4: entry-bounce prijsindicatie als landing 58% (12 sess) — message-match ATF, geen extra tool.
 
 ### Voorgestelde opbouw wizard
 
-Geen wijziging deze cyclus.
+Geen wijziging. Bestaande flow (product → oppervlakte → ondergrond → band → lead-form) blijft.
 
 ### Leadgeneratie koppeling
 
-`wizard_calculate`, `wizard_lead_submit`, `lead_form_submit` blijven key events. Import naar Ads na GA4↔Ads-fix (skill §A.4). **Risico:** als auto-tagging niet aanstaat, telt Paid Search GA4-conv. niet — verklaart wellicht een groot deel van de 0/13 op Paid Search.
+Key events: `wizard_lead_submit`, `contact_submit`. Import naar Ads na GA4↔Ads-fix. Prijs-keywords in Search-campagne landen op `prijsindicatie.html` (nu enige secundaire RSA-URL in defaults).
 
 ### Risico's en aandachtspunten
 
-- Entry-bounce `prijsindicatie.html` als landing 65% (20 sessies) — pas beoordelen na juni-fetch.
-- GSC: 75 vert., rang 52, 0 clicks — title/description matcht waarschijnlijk niet bij `vloerverwarming drenthe` of `vloerverwarming zuidlaren` waar de pagina op verschijnt. Title-tweak overwegen (zie aanbeveling P1 hieronder).
+- Prijsindicatie is **indicatie**, geen offerte — disclaimer blijft zichtbaar houden.
+- Schuimbeton-band zonder contactgegevens kan tire-kickers aantrekken; lead-form na band is juiste filter.
 
 ### Aanbeveling aan Product Manager
 
-- **Prioriteit:** Laag (onderhoud + title/meta-aanscherping P1)
-- **Ontwikkeltijd:** 0,5–1 uur (alleen title/description) als PM groen licht geeft
-- **Effect:** indirect via Ads-attributie + organische CTR
+- **Prioriteit:** Laag (onderhoud)
+- **Ontwikkeltijd:** 0 uur nieuwe build
+- **Effect:** bestaande wizard blijft kernconverter; focus op landing/attributie
 
 ## Content gaps
 
-**Afgevinkt (cyclus 9–12):**
+**Recent afgevinkt (sprint 12–13):**
 
-- City-cluster incl. Drachten/Heerenveen; `projecten.html` met echte cases; footer Drachten site-breed; RSA-defaults projecten-copy + `final_urls` projecten; `diensten.html` hero-link projecten; OG-image Drachten; sitemap `lastmod`; laagopbouw-cluster live op `systemen-producten.html#laagopbouw` met FAQ-schema; trust-strip op 7 stad-pagina's; H2 laagopbouw op `vloerverwarming-groningen.html`; defaults aangevuld met laagopbouw-keywords + final URL.
+Laagopbouw-cluster, Drenthe-hub op `/`, Hoogeveen-dorpen, prijsindicatie title/meta, werkwijze-links diensten/projecten, trust-strips stad-pagina's.
 
-**Open / nieuw zichtbaar in GSC:**
+**Open / actueel:**
 
-| Gap | GSC-signaal | Voorstel |
-| --- | ----------- | -------- |
-| **Geen "vloerverwarming Drenthe" hub** | 82 vert., 0 clicks, rang 65,7, verspreid over `/`, `/diensten`, `/prijsindicatie`, `/faq` | Provincie-pagina **óf** sterke Drenthe-section + canonical signaal op `index.html` (zie P1) |
-| **`prijsindicatie.html` title/meta** | 75 vert., 0 clicks, rang 52, gepakt op stad/regio-queries | Title herschrijven met regio-anker; meta met richtbedrag-belofte (P1) |
-| **`vloerverwarming-hoogeveen.html` close-to-page-1** | 30 vert., rang 18,3; pakt 4 dorpen rondom Hoogeveen | Title/H1-aanscherping + dorpen-lijst in body; **interne link** vanaf `index.html` (P1) |
-| **`vloerverwarming-leeuwarden.html` zwakke rang** | 21 vert., rang 60; pakt _vloerverwarming bolsward_, _friesland_ | Body verdiepen met Friesland-context, Heerenveen-link bestaat al via Drachten | (P2) |
-| **Renovatie houten vloer** | geen GSC-trekkers nog, sectie alleen op Drachten | Eigen pagina blijft P2-backlog (max. 1 pagina/sprint) |
-| **Schoonebeek / Emmen-omgeving** | 10 vert. _schoonebeek_, 1 vert. _emmen_, rangen 60–80 | `vloerverwarming-emmen.html` bestaat — body uitbreiden met dorpenring (Schoonebeek, Klazienaveen, Nieuw-Amsterdam) — (P2) |
-| **FAQ-pagina onzichtbaar** | 5 vert., rang 71 | Onderwerp-FAQs op service-pagina's blijven sterker dan losse `/faq.html`; geen actie nodig |
+| Gap | Signaal | Voorstel |
+| --- | ------- | -------- |
+| **`vloerverwarming-assen.html` kapotte UX** | 90d 7 sess / 0,7 s / 0 scrollers | Layout-fix cyclus 14 (zie #2) |
+| **`vloerverwarming heerenveen` zonder pagina** | Keyword in Ads; Friesland 8 sess | Pagina cyclus 15 **of** keyword pauzeren na GSC |
+| **Drenthe-hub effect** | Hub 6 dagen live | Juni-fetch + GSC: rang _vloerverwarming drenthe_ op `/` |
+| **Renovatie houten vloer** | Concurrenten (Bull, ThermoLamina) hebben droogbouw-pagina's | Sectie op Drachten/systemen; eigen pagina P2-backlog |
+| **`vloerverwarming-meppel`** | Geen pagina; keyword verwijderd uit defaults | Pagina of blijven weg — discipline 1 city/sprint |
+| **Emmen-dorpenring** | Schoonebeek-termen vorig GSC | `vloerverwarming-emmen.html` body uitbreiden (P2) |
 
-**Niet meer doen / afgewezen deze cyclus:**
+**Afgewezen deze cyclus:**
 
-- Standalone `vloerverwarming-drenthe.html` voordat GSC-clicks aantonen dat een hub-pagina effectiever is dan de huidige spread. Eerst aanscherpen op `/index.html` + `prijsindicatie.html` titles.
-- Nieuwe pagina `vloerverwarming-renovatie-houten-vloer.html` — backlog blijft P2; sprint-12 vol; cyclus-13 vol met meetwacht.
-- `vloerverwarming-meppel.html` — keyword pas terug zodra pagina bestaat (sprint-12 verwijderd uit defaults).
+- Standalone `vloerverwarming-drenthe.html` — hub op `/` net live; thin-content-risico.
+- Budgetverhoging Ads >€2/dag — Paid Search nog 0 conv.
+- Hero-CTA homepage wijzigen — Drenthe-hub effect eerst meten.
 
-## Concurrentie observaties (WebSearch + GSC, mei 2026)
+## Concurrentie observaties (WebSearch, juni 2026)
 
-**Wie rankt op Drenthe-termen (top 20 GSC voor _vloerverwarming drenthe_):**
+**Lokale spelers Noord-NL:**
 
-- Aggregators (Solvari, Slimster, Klussendirect, LeadAngels) bovenaan met "tot 6 offertes" en brede prijsranges.
-- Lokale spelers: **ReWo & de Jong** (Groningen/Drenthe/Friesland, infrezen), **DRO Renovaties** ("tot 100 m² in 1 dag"), **EcoFloorNoord**, **WarmerHuis** (schuimbeton + warmtepomp-combo), **Faber** (alles-in-één), **vloerverwarminggroningen.com** (lead-aggregator, **niet** installateur — relevant voor laagopbouw-narrative).
-- Generieke installateurs uit Randstad pakken regio-pagina's met thin content.
+- **ReWo & de Jong** (Siddeburen) — drie provincies, infrezen, geen voorrijkosten-claim.
+- **Kentech** (Groningen-Assen) — breed werkgebied, blog/FAQ.
+- **DIJKO** (Leeuwarden) — €55–75/m² in copy, warmtepomp-combo.
+- **Groningen Vloerverwarming / groningenvloerverwarming.com** — Therminon-merk, lead-aggregator.
 
-**Waar VLWarmte op kan winnen:**
+**Aggregators:** Solvari, BeterEnergie, Slimster — "vergelijk 4 offertes", domineren brede SERP's.
 
-- **Lokaal bewijs**: Zeegse + Zuidlaren cases op `projecten.html` zijn uniek; geen concurrent in top-20 toont vergelijkbaar werk op homepage of project-detail.
-- **Eén traject** (ondervloer → schuimbeton → dekvloer → afwerking) blijft een sterk anker; concurrenten richten zich op één onderdeel.
-- **Laagopbouw + droge vloerverwarming**: nieuwe cluster (sprint-12 addendum) onderscheidt VLWarmte van pure-schuimbeton en pure-infrezen-spelers. Concurrent _vloerverwarminggroningen.com_ heeft droogbouw maar is aggregator — vlwarmte wint op installatie-bewijs.
-- **Bandbreedtes** in copy ("rondom Zuid-Laren", "binnen één werkdag") matchen Noord-Nederlandse tone of voice — concurrenten gebruiken vaak marketing-claims ("snelste van Nederland", "beste prijs").
+**Laagopbouw/droogbouw:** Bull Vloerverwarming, ThermoLamina, Variokomp/Technea, WARP Systems — product×uitleg-pagina's; VLWarmte onderscheidt met **installatie + schuimbeton-traject** op `systemen-producten.html#laagopbouw`.
+
+**Waar VLWarmte wint:**
+
+- Echt projectwerk (Zeegse, Zuidlaren) vs stockfoto's.
+- Compleet traject (ondervloer → schuimbeton → dekvloer).
+- Online richtbedrag-wizard — zeldzamer bij lokale installateurs.
 
 **Waar VLWarmte achterloopt:**
 
-- **Snelheids-claims**: ReWo & DRO leiden met dag-snelheid ("tot 100 m² in 1 dag"). VLWarmte heeft dit niet in primaire copy — kan toegevoegd worden in hero `diensten.html` of laagopbouw-sectie zonder superlatief.
-- **Subsidie-hooks**: WarmerHuis en EcoFloorNoord noemen ISDE / warmtepomp-subsidie expliciet. VLWarmte noemt warmtepomp wel ("geschikt voor warmtepomp" — extra-RSA), maar geen subsidie-content. **Mogelijk gap** voor FAQ of body-paragraaf — laag prio.
+- Snelheidsclaims ("100 m² per dag") bij ReWo/DRO — optioneel in copy zonder superlatief.
+- Subsidie-hooks (ISDE/warmtepomp) — laag prio FAQ-toevoeging.
+- Stad-pagina Assen UX vs Groningen-template.
 
 ## Google Ads — status en acties
 
-**Secrets:** `secrets/google-ads.env` aanwezig op deze machine. **Geen** scripts gedraaid deze sessie (harness-block op Bash voor Python). Status hieronder is overgenomen uit `analytics_report.md` (22-05) en de defaults-JSON; **bij volgende sessie eerst `google_ads_list_campaigns.py` opnieuw draaien** voor live-bevestiging vóór mutaties.
+**Verificatie deze sessie:**
 
-**Campagne (laatst-bevestigd 22-05-2026):**
+```
+id=23834672782 | SEARCH | ENABLED | VLW-API-Leads NL auto | €2/dag
+```
 
-| id | channel_type | status | name | daily_budget |
-|----|--------------|--------|------|--------------|
-| 23834672782 | SEARCH | ENABLED | VLW-API-Leads NL auto | €2/dag |
+**Defaults-JSON wijziging (01-06, committed in repo):**
 
-**Defaults-JSON (na sprint-12 + laagopbouw-addendum):**
+| Veld | Was | Nu |
+| ---- | --- | -- |
+| `final_urls` | 8 URL's incl. projecten, city-pagina's, laagopbouw | **2 URL's:** offerte-deeplink + prijsindicatie |
+| Reden | GA4 Paid Search 0/13; `/` entry 67% bounce | Google rotatie naar zwakke landings voorkomen |
 
-- `final_urls`: offerte-deeplink, prijsindicatie, **projecten**, **systemen#laagopbouw**, Groningen, Leeuwarden, Hoogeveen, Drachten — compleet voor huidige intent-spread.
-- Geo: Drenthe, Groningen, Friesland.
-- Keywords: 32 keywords incl. laagopbouw-cluster; `vloerverwarming meppel` verwijderd.
-- `extra_rsa`: projecten-headline + "10 jaar garantie op buis", "Geschikt voor warmtepomp" — klaar voor `--apply`.
-- `sitelinks`: 5 sitelinks incl. _Uitgevoerd werk_ → projecten.html.
+Sitelinks ongewijzigd (projecten, werkwijze, Drachten blijven secundaire paden).
 
 | Onderwerp | Status | Actie |
 | --------- | ------ | ----- |
-| GA4 ↔ Ads + auto-tagging | **P0 open** | Sessie ~1 juni; check of `gclid` doorkomt op `?modus=offerte#aanvraag` (deeplink mag geen UTM-overschrijving doen) |
-| Conversie-import GA4 → Ads | Open | Primair `wizard_lead_submit` + `contact_submit`; secundair `wizard_calculate` (zie skill §A.4) |
-| RSA-variant live | Klaar in defaults, **niet** `--apply` zonder PO | `google_ads_add_rsa_variant.py --dry-run --campaign-id 23834672782` → `--apply` na PO |
-| Sitelinks live | `google_ads_add_sitelinks.py` aanwezig in repo (zie sprint-22-mei commit `4fde7b9`) | `--dry-run` herhalen pre-mutatie; check welke sitelinks al live zijn |
-| Negatieven | Onbekend (geen recente run) | Wekelijks zoektermen na attributiefix; `google_ads_campaign_next_steps.py negatives` |
-| Spend | €2/dag cap | **Niet** verhogen vóór attributiefix + 2 weken Paid Search-conv. > 0 |
-| `--go-live` | Reeds ENABLED | n.v.t. — campagne loopt al |
+| GA4 ↔ Ads + auto-tagging | **P0 open** | Admin-koppeling + gclid-test op offerte-deeplink |
+| Live RSA final URLs | **P0 — handmatig** | Ads UI: bestaande RSA → enkel `contact.html?modus=offerte#aanvraag` (prijs-keywords: prijsindicatie) |
+| Conversie-import | Open | `contact_submit` + `wizard_lead_submit` primair |
+| RSA-variant (`extra_rsa`) | Klaar in defaults | `--apply` pas na attributiefix + PO-akkoord |
+| Negatieven | Onbekend | `google_ads_campaign_next_steps.py negatives` na 2–4 weken search terms |
+| Heerenveen keyword | Actief, geen pagina | Pauzeren na GSC **of** pagina cyclus 15 |
 
-**Voorgestelde defaults-aanpassingen (geen API-run deze sessie):**
+**Geen `--go-live`** — campagne draait al ENABLED; geen budgetwijziging zonder PO.
 
-1. **Headline-experiment in `extra_rsa`:** vervang één van de "10 jaar garantie op buis" / "Geschikt voor warmtepomp" door **"Vloerverwarming binnen 1 dag"** of **"In één dag geïnstalleerd"** (max. 30 tekens — controleren op exacte char-count: `In één dag geïnstalleerd` = 25 tekens ✓). Reden: concurrent DRO leidt op snelheid; VLWarmte heeft dit niet in copy. Alleen toepassen op laagopbouw/infrezen-cases — niet voor schuimbeton-cases waar 1 dag onrealistisch is. Risico: ad-policy "exceptional claim" — voeg "vaak" of "tot 100 m²" toe om kwantificeerbaar te zijn.
-2. **Sitelink-variant `Drenthe-projecten`:** als sitelink `Drachten & Heerenveen` te smal blijft (alleen Friesland), overweeg variant `Cases Drenthe` → `projecten.html`. Pas na `google_ads_add_sitelinks.py --dry-run` om huidige live-staat te zien.
-3. **Negatieven-lijst aanvullen** (na zoekterm-rapport in juni-sessie): `meppel`, `huur`, `zelf aanleggen`, `cursus`, `vacature`, evt. `vlaanderen` / `belgie`.
+## Aanbevelingen voor Product Manager
 
-## Aanbevelingen voor Product Manager (max. 8)
+### 1. Paid Search landing + GA4↔Ads — deze week
+- **Prioriteit:** Hoog (P0)
+- **Type:** Google Ads / Analytics
+- **Onderbouwing:** Paid Search **13 sess / 0 conv.** vs offerte-deeplink **10 conv. / 11 sess.** RSA had 8 final URLs; Google landde waarschijnlijk op `/` (67% bounce).
+- **Actie:** (a) GA4 Admin → Product Links → Google Ads + auto-tagging; (b) Ads UI campagne `23834672782`: RSA final URL → `https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag`; prijs-keywords optioneel aparte ad/ad group → `prijsindicatie.html`. Defaults-JSON al aangepast.
+- **Verwacht effect:** Paid Search conv. 0% → 5–15% (= 1–2 leads/30d bij huidig volume).
 
-| # | P | Tag | Voorstel | Onderbouwing | Actie |
-| - | - | --- | -------- | ------------ | ----- |
-| 1 | **P0** | Ads / meet | **GA4 ↔ Ads + Paid Search-attributie** | 13 Paid Search-sessies / 0 conv vs 64 Cross / 9 conv; mogelijk auto-tagging mist op deeplink | Sessie ~1 juni: link, auto-tagging-check, conversie-import, geen budget↑ |
-| 2 | **P0** | Analytics | **Cyclus 9–11 niet bijsturen vóór juni-fetch** | Projecten 100% entry-bounce / 7 sessies, over-ons 80% / 0 conv, Assen 0 scrollers — ~6 dagen post-cyclus-11 | Fetch 1–15 juni; harde beoordeling sprint-11 + sprint-12 meetdoelen |
-| 3 | **P1** | SEO / CRO | **`prijsindicatie.html` title + meta herschrijven** | 75 GSC-vert., rang 52, 0 clicks; pakt regio-queries waar title niet bij past | Title: "Prijsindicatie vloerverwarming Drenthe & Noord-NL — richtbedrag in 2 minuten"; meta: richtbedrag + vrijblijvend + werkgebied. ~0,5 uur Developer; meet via GSC CTR over 4 weken |
-| 4 | **P1** | SEO | **`vloerverwarming-hoogeveen.html` title + dorpen-lijst** | 30 GSC-vert., rang 18,3; pakt al Fluitenberg (rang 4,8), Hollandscheveld (20,3), Noordscheschut (33,8), Elim (14,5) zonder dat ze in body staan | Title: "Vloerverwarming Hoogeveen, Hollandscheveld & omgeving — installateur uit Zuidlaren"; alinea "Ook actief in" met 5–6 dorpen; interne link vanaf `index.html` services-blok. ~1 uur |
-| 5 | **P1** | SEO | **Drenthe-hub: section-aanscherping op `index.html`** | 82 GSC-vert. `vloerverwarming drenthe` spread over 5 URL's, rang 65,7; geen kanonieke hub | Geen nieuwe pagina (max. 1/sprint, capaciteit op). In plaats daarvan: H2 of compacte hub-sectie op `index.html` ("Vloerverwarming in heel Drenthe") met links naar stad-pagina's + `projecten.html` + `prijsindicatie.html`. Internal-link signaal naar `/` als de-facto hub. ~1 uur |
-| 6 | **P1** | Ads | **RSA-variant + sitelinks-status live zetten (na PO + bash-toegang)** | Defaults klaar; campagne ENABLED €2/dag | `google_ads_list_campaigns.py` → `google_ads_add_rsa_variant.py --dry-run --campaign-id 23834672782` → rapport → `--apply` na PO. Geen `--go-live` (al live). Geen budgetverhoging |
-| 7 | **P2** | SEO / dev | **Renovatie houten vloer pagina** | Commerciële gap (cyclus 11+12 backlog); WebSearch toont geen sterke Noord-NL-pagina hierop | Eigen pagina `vloerverwarming-houten-vloer.html` met FAQ-kruislink + wizard-CTA. Plan voor cyclus 14 (na juni-fetch + Drenthe-hub) — niet deze sprint |
-| 8 | **P2** | SEO | **`vloerverwarming-emmen.html` body uitbreiden met dorpenring** | 10 GSC-vert. _schoonebeek_ landt op `/` (rang 61,5), niet op Emmen-pagina | Body op Emmen-pagina met Schoonebeek, Klazienaveen, Nieuw-Amsterdam, Coevorden-grens; kruis-link naar Hoogeveen. Backlog cyclus 14 |
+### 2. `vloerverwarming-assen.html` — layout-fix cyclus 14
+- **Prioriteit:** Hoog
+- **Type:** Content / Developer
+- **Onderbouwing:** 90d **7 sess / 0,7 s / 0 scrollers / 86% bounce**. Diagnose cyclus 13: readnext-link + CTA-band tussen hero en content verwijderen (Groningen-template).
+- **Actie:** Developer: ~10 regels HTML; optioneel hero-image lichter. Geen andere stad-pagina's.
+- **Verwacht effect:** Bounce <70%, gem. duur >5 s binnen 4–6 weken.
 
-## Concrete developer-voorstellen (cyclus 13, alleen na PM-go)
+### 3. GSC OAuth inrichten — blocker SEO-evaluatie
+- **Prioriteit:** Hoog
+- **Type:** Analytics / SEO
+- **Onderbouwing:** Sprint-13 meetdoelen (prijsindicatie CTR, Hoogeveen-rang, Drenthe-hub) vereisen GSC. `secrets/gsc.env` ontbreekt.
+- **Actie:** `cp secrets/gsc.env.example secrets/gsc.env`; `scripts/gsc_get_refresh_token.py`; `scripts/gsc_fetch.py` vóór juni-fetch ~22 juni.
+- **Verwacht effect:** Harde SEO-check op cyclus-13-wijzigingen.
 
-1. **`prijsindicatie.html` title + meta** (P1 #3) — alleen `<title>` en `<meta name="description">`; geen HTML-body-wijziging. Acceptatie: GSC CTR voor pagina stijgt van 0% naar >0,5% binnen 4 weken (juni-eind-fetch).
-2. **`vloerverwarming-hoogeveen.html` title + dorpen-blok** (P1 #4) — title + één paragraaf "Ook actief in: Hollandscheveld, Fluitenberg, Noordscheschut, Elim, Tiendeveen". Geen nieuwe sectie-H2; in bestaande "Ook actief in"-stijl van Drachten. Interne link vanaf `index.html` services-blok ("Vloerverwarming in Hoogeveen e.o."). Acceptatie: rang naar <10 binnen 4 weken op `vloerverwarming hoogeveen` of >1 GSC-click.
-3. **`index.html` Drenthe-hub-sectie** (P1 #5) — H2 of een compacte "regio-grid" tussen bestaande secties met links naar Groningen / Assen / Hoogeveen / Emmen / Drachten / Leeuwarden / Zuidlaren-stad-pagina's + projecten + prijsindicatie. Geen extra hero-CTA. Acceptatie: `index.html` rangt op rang <30 voor `vloerverwarming drenthe` (nu 63,4 op `/`) binnen 6 weken.
-4. **Geen wijziging** aan `projecten.html` / `over-ons.html` / `diensten.html` / Assen tot juni-fetch — meetvenster cyclus 9–12 nog open.
-5. **Tracking** (alleen check, geen code): controleer dat `?modus=offerte#aanvraag` geen UTM-overschrijving doet die `gclid` van Ads kapot maakt. Test-URL: `?modus=offerte&gclid=test123#aanvraag` → verwacht `gclid` blijft in URL en `_ga`-cookie.
-6. **Ads** (alleen na PO + bash-toegang): herhaal `google_ads_list_campaigns.py`, dan `--dry-run` op `add_rsa_variant` en `add_sitelinks` om delta te tonen vóór `--apply`.
+### 4. Facebook message-match — social kalender
+- **Prioriteit:** Midden
+- **Type:** Social / CTA
+- **Onderbouwing:** **20 Facebook-sess / 0 conv.**; fbclid-landings op `/` en contact 100% bounce.
+- **Actie:** Eén intentie + één link per post (`?modus=offerte#aanvraag`, `?modus=bel#aanvraag` of prijsindicatie). Geen developer-werk.
+- **Verwacht effect:** 1–2 leads per 30 social-sess (2–5% conv-rate).
 
-## Uitgesteld / niet deze cyclus
+### 5. Heerenveen — pagina of keyword pauzeren
+- **Prioriteit:** Midden
+- **Type:** SEO / Google Ads
+- **Onderbouwing:** Keyword `vloerverwarming heerenveen` in defaults; geen dedicated pagina. Friesland 8 sess (was 6). Vorig GSC: Drachten rankt op term, rang ~50.
+- **Actie:** Na GSC-fetch: rang <20 op Drachten? Zo niet: pauzeer keyword in Ads **of** plan `vloerverwarming-heerenveen.html` cyclus 15 (max. 1 city/sprint na Assen).
+- **Verwacht effect:** Geen budgetlek naar pagina-loze keyword.
 
-- Budgetverhoging > €2/dag — pas na 2 weken Paid Search-conv. > 0 én GA4↔Ads gelinkt.
-- `--go-live` — niet relevant (campagne al ENABLED).
-- PMax/image-campagnes — geen capaciteit, geen meetbasis.
-- Standalone `vloerverwarming-drenthe.html` — eerst section-aanscherping op `/` testen.
-- `vloerverwarming-renovatie-houten-vloer.html` — cyclus 14.
-- Assen hero-herontwerp — wacht juni-fetch.
-- Friesland-cluster (Leeuwarden body verdiepen, Heerenveen sub-page) — wacht op Drachten >0 organische sessies in GA4.
-- Snelheids-claim in RSA — alleen na compliance-check en sub-set keywords (laagopbouw/infrezen).
-- Subsidie-content (ISDE / warmtepomp) — laag prio; backlog cyclus 15+.
-- NL-only GA4-segment — US-bots in geo lijst (Oregon 13, Colorado 11, Iowa 5) zijn ruis maar geen lead-impact.
+### 6. Drenthe-hub + prijsindicatie-title — juni-fetch afwachten
+- **Prioriteit:** Midden
+- **Type:** SEO / monitor
+- **Onderbouwing:** Deploy 26-05 (~6 dagen in venster). Eén sessie met nieuwe prijsindicatie-title zichtbaar.
+- **Actie:** Geen wijziging. Juni-fetch: GSC rang _vloerverwarming drenthe_ op `/`; prijsindicatie CTR >0,5%?
+- **Verwacht effect:** Data-gedreven beslissing hub vs standalone pagina.
 
-## Seizoenspatroon (indicatief)
+### 7. `projecten.html` — monitor, geen hero-tweak nu
+- **Prioriteit:** Laag (uitgesteld)
+- **Type:** Content
+- **Onderbouwing:** 90d 18 sess / 14 s gem. / 2 scrollers. Werkwijze-link net live; entry-sample 2 sess.
+- **Actie:** Juni-fetch: entry-bounce >90% bij ≥10 entry-sess → hero compacter. Blijft sitelink, niet RSA-final-URL.
+- **Verwacht effect:** Voorkomt voortijdige roer-omgooi.
 
-Mei–juli: verbouw- en kostenintent — `prijsindicatie.html` + `#kosten-uitleg` blijven kern. **Renovatie-houten-vloer** piekt typisch september–november (planning voor stookseizoen) — pagina-launch idealiter voor 1 september. Schuimbeton/kruipruimte: stabiele intent jaarrond, piek februari–april (voor bouwseizoen) en augustus–september.
-
-## Meetdoel deze cyclus (cyclus 13)
-
-Geen nieuwe meetdoelen toevoegen; **bewaak** open meetdoelen cyclus 9–12 + addendum laagopbouw:
-
-- (a) Harde beoordeling cyclus 9–11 meetdoelen (juni-fetch).
-- (b) ≥1 organische sessie `vloerverwarming-drachten.html` (GA4).
-- (c) `projecten.html` entry-bounce <90% bij ≥10 entry-sessies.
-- (d) Paid Search-attributie vastgelegd in PM-notitie (juni-sessie).
-- (e) `diensten.html` landing bounce/conv niet verslechterd.
-- (f) **Nieuw**: ≥1 organische sessie `systemen-producten.html` met laagopbouw-query in GSC (addendum sprint 12).
-
-**Bij PM-go op P1 #3-#5:** voeg toe:
-- (g) `prijsindicatie.html` GSC CTR >0,5% in 4-weekse fetch.
-- (h) `vloerverwarming-hoogeveen.html` gem. rang <10 of ≥1 GSC-click op `vloerverwarming hoogeveen`.
-- (i) `index.html` zichtbaar op rang <30 voor `vloerverwarming drenthe`.
+### 8. Conversie-definitie audit — dubbeltelling
+- **Prioriteit:** Laag
+- **Type:** Analytics
+- **Onderbouwing:** `/contact.html` landing 3 sess / 9 conv. — meerdere events per sess mogelijk.
+- **Actie:** GA4 Admin: alleen `contact_submit` + `wizard_lead_submit` als key events (conform AGENTS.md).
+- **Verwacht effect:** Schonere vergelijking kanalen; betere Ads-bieding.
 
 ---
 
-**Tone:** nuchter, direct — conform AGENTS.md. Geen secrets of tokens in dit document. Geen `--apply` / `--go-live` aanbevolen zonder expliciete PO-goedkeuring én herhaalde read-only Ads-check.
+## Iteratie na 2–4 weken (juni-fetch ~22 juni)
+
+1. **GA4 ↔ Ads gekoppeld?** → herinterpreteer Direct (55% conv.) vs Paid/Cross-network.
+2. **GSC beschikbaar?** → prijsindicatie CTR, Hoogeveen-rang, Drenthe-hub op `/`.
+3. **Paid Search:** nog 0 conv. na RSA-fix? → search terms report + negatives.
+4. **`vloerverwarming-assen.html`:** bounce <70% na layout-fix?
+5. **Facebook:** conv. >0 na message-match kalender?
+6. **RSA-variant + sitelinks `--apply`:** pas na PO-akkoord en schone attributie.
+
+## Hashtags (social — referentie)
+
+Facebook 0–3 of geen; Instagram 5–10; LinkedIn 3–5. Standaard: `#vloerverwarming`, `#Drenthe` / `#Groningen`, `#renovatie` / `#nieuwbouw` — max. 1–2 regio-tags per post. Zie playbook `marketing-research-agent.md`.

@@ -4,6 +4,32 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 2 juni 2026 (cyclus 14)
+**Deployment:** 01-06-2026 — PM push naar `main` (GitHub Pages).
+**Versie:** *(na commit)*
+
+### Wat is er veranderd
+- **Assen-pagina:** de extra "lees verder"-regel en de knoppenband direct onder de hero zijn weg. De pagina volgt nu hetzelfde patroon als Groningen — eerst uitleg, daarna pas acties onderaan.
+- **Prijsindicatie:** de introtekst boven de wizard belooft nu expliciet een richtbedrag in ongeveer twee minuten, in lijn met de Google-titel. Social previews (Facebook/LinkedIn) tonen dezelfde boodschap.
+- **Homepage Drenthe-hub:** de link naar Assen heet nu "Vloerverwarming Assen en omgeving".
+- **Google Ads defaults (repo):** de RSA mag alleen nog landen op het offerte-formulier of de prijsindicatie — niet meer op projecten of losse stadspagina's. Live campagne in Ads UI moet handmatig worden gelijkgetrokken.
+
+### Waarom
+- **Assen:** GA4 toonde 0,7 seconden en nul scrollers — bezoekers zagen alleen hero en knoppen. Diagnose cyclus 13 bevestigde layout, geen inhoudsprobleem.
+- **Prijsindicatie ATF:** 58% bounce als landing; titel belooft "2 minuten" maar de hero verwees nog naar FAQ — message-match aangescherpt.
+- **Ads final URLs:** Paid Search had 13 sessies en 0 conversies terwijl het offerte-tabblad 10 conversies op 11 sessies haalt. Te brede final URLs lieten Google op de homepage landen (67% bounce).
+
+### Verwacht effect
+Bij juni-fetch (~22 juni):
+- Assen: bounce onder 70%, sessieduur boven 5 seconden.
+- Prijsindicatie: entry-bounce richting onder 45% bij voldoende verkeer.
+- Paid Search: eerste conversies zodra GA4↔Ads gekoppeld is én RSA in Ads UI op offerte-deeplink staat.
+
+### Social media deze week
+Weekplanning 2–9 juni 2026: Drenthe-hub, Hoogeveen-dorpen en werkwijze zichtbaar maken op social; Facebook message-match (één link per post). Zie `docs/website-manager/social/weekly_calendar.md`.
+
+---
+
 ## Release — week van 26 mei 2026 (cyclus 13)
 **Deployment:** 26-05-2026 17:20 — PM push naar `main` (GitHub Pages).
 **Versie:** `47a9583`
