@@ -347,6 +347,66 @@
       }
     }
 
+    /* Mobile ATF: wizard productkeuze zichtbaar zonder scroll (≤768px) */
+    @media (max-width: 768px) {
+      .page-hero--wizard-entry {
+        padding: 1rem 0 0.45rem;
+      }
+
+      .page-hero--wizard-entry h1 {
+        font-size: clamp(1.45rem, 5.8vw, 1.85rem);
+        margin-bottom: 0.3rem;
+      }
+
+      .page-hero--wizard-entry .lead {
+        font-size: 0.9rem;
+        line-height: 1.35;
+        margin-bottom: 0;
+      }
+
+      .page-hero--wizard-entry + .section {
+        padding-top: 0.75rem;
+        padding-bottom: 2.5rem;
+      }
+
+      .page-hero--wizard-entry + .section .wizard-progress {
+        margin-bottom: 0.85rem;
+      }
+
+      .page-hero--wizard-entry + .section .wizard-step h2 {
+        font-size: 1.12rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .page-hero--wizard-entry + .section .wizard-step .step-sub {
+        font-size: 0.82rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .page-hero--wizard-entry + .section .option-grid {
+        gap: 0.6rem;
+        margin-bottom: 0;
+      }
+
+      .page-hero--wizard-entry + .section .option-card {
+        padding: 0.7rem 0.55rem;
+      }
+
+      .page-hero--wizard-entry + .section .option-card .option-icon {
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .page-hero--wizard-entry + .section .option-card .option-label {
+        font-size: 0.88rem;
+      }
+
+      .page-hero--wizard-entry + .section .option-card .option-hint {
+        font-size: 0.7rem;
+        line-height: 1.2;
+      }
+    }
+
     .form-row label {
       display: block;
       font-size: .85rem;
@@ -463,12 +523,11 @@
   </header>
 
   <main>
-    <section class="page-hero">
+    <section class="page-hero page-hero--wizard-entry">
       <div class="container">
         <h1>Prijsindicatie vloerverwarming</h1>
         <p class="lead">
-          In ongeveer twee minuten krijg je een vrijblijvend richtbedrag — eerst kies je wat je wilt laten prijzen,
-          daarna de passende vragen.
+          Vrijblijvend richtbedrag in ongeveer twee minuten — kies hieronder wat je wilt laten prijzen.
         </p>
       </div>
     </section>
