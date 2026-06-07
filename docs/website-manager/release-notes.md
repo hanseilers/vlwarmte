@@ -4,6 +4,36 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 9 juni 2026 (cyclus 15)
+**Deployment:** 07-06-2026 — PM push naar `main` (GitHub Pages).
+**Versie:** `c284662`
+**GitHub Actions:** pages-build run `27094824700` (success, 37s); E2E production `27094825186`.
+
+### Wat is er veranderd
+- **Prijsindicatie (mobile):** op telefoon staat de wizard direct onder een compactere hero — je ziet meteen de productkeuze zonder eerst te scrollen.
+- **Projecten-pagina:** kortere intro boven de fold; interne links staan nu in de body.
+- **Systemen & producten:** extra uitleg onder laagopbouw — wanneer droge/laagopbouw vloerverwarming zinvol is in renovatie, met link naar de prijsindicatie.
+- **Drachten-pagina:** aparte kop over vloerverwarming in Heerenveen en Zuidwest-Friesland (zelfde traject, geen nieuwe stad-pagina).
+- **Werkwijze:** halverwege de pagina een offerte-knop (direct offerte-tabblad) plus link naar prijsindicatie.
+
+### Waarom
+- **Prijsindicatie:** entry-bounce daalde na cyclus 14 (58% → 55%) maar doel <45% niet gehaald — koude instappers haken af vóór de wizard.
+- **Projecten:** 60% bounce, 20 s gem. duur — hero was te lang met veel links.
+- **Laagopbouw/Heerenveen:** organische en Ads-gaps; Heerenveen-keyword actief zonder eigen pagina.
+- **Werkwijze:** sterke converter (4 conv. op 2 entry-sess) maar lange pagina zonder mid-CTA.
+
+### Verwacht effect
+Bij juni-fetch (~22 juni):
+- Prijsindicatie entry-bounce onder 45% bij voldoende verkeer.
+- Projecten bounce onder 50%.
+- Heerenveen-queries landen beter op Drachten-URL; laagopbouw SEO versterkt.
+- Paid Search conv. pas meetbaar na GA4↔Ads-koppeling + RSA-sync (PO-stap).
+
+### Social media deze week
+Weekplanning 9–15 juni: Assen na layout-fix, prijsindicatie "twee minuten" in copy, offerte-deeplink als primaire CTA (geen informatie-tab). Zie `docs/website-manager/social/weekly_calendar.md`.
+
+---
+
 ## Release — week van 2 juni 2026 (cyclus 14)
 **Deployment:** 01-06-2026 — PM push naar `main` (GitHub Pages).
 **Versie:** `0099874`

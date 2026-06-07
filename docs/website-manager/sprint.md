@@ -99,7 +99,7 @@
   4. **vloerverwarming-drachten.html** — H2 “Vloerverwarming Heerenveen en Zuidwest-Friesland” direct onder hero (geen extra CTA-band).
   5. **werkwijze.html** — mid-page `cta-band` na stappenblok: primary offerte-deeplink + secundair prijsindicatie.
 - Overgeslagen taken: geen (alle 5 `[GOEDGEKEURD]` taken uitgevoerd).
-- Deployment: **Nog niet live** — PM voert commit + `git push origin main` uit; daarna: [PM vult run-id / succes in]
+- Deployment: **Live** — commit `c284662`, push 07-06-2026. GitHub Actions pages-build `27094824700` (success, 37s); E2E production `27094825186` (in progress bij push).
 - Live URL: https://www.vlwarmte.nl
 - Smoke-tests: `navigation-links.sh` PASS · `form-behavior.sh` PASS
 - Lokale verificatie: `curl` HTTP 200 + `<!doctype html>` op alle 5 gewijzigde pagina's (poort 8765).
