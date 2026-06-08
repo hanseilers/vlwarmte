@@ -117,3 +117,10 @@ De Ads-verificatiescripts (`google_ads_smoke_test.py`, `google_ads_list_campaign
 - Eventueel `og:`/`twitter:`-tags op `index.html` (en `vloerverwarming-hoogeveen.html`) gelijktrekken met de nieuwe title/meta.
 - Effect van Taak 1 (CTR) en Taak 2 (Drenthe-consolidatie) pas toetsbaar bij de juni-fetch (~22 juni).
 - Geen secrets aangeraakt; alleen `.html` + dit rapport gewijzigd.
+
+### Deployment (Product Manager — stap 7b)
+- **Commit:** `0fee542` — "Sprint cyclus 16 (9 jun): title/meta CTR-fix, Drenthe interne links, offerte-CTA projecten"
+- **Push:** `main` → GitHub Pages, 08-06-2026.
+- **GitHub Actions:** `pages-build-deployment` run `27115772288` — **completed/success** (39s). E2E production `27115772682` (Formspree-to-inbox) draaide nog door bij afronding cyclus — niet-blokkerend voor de site-deploy.
+- **Live-verificatie (curl):** homepage-title = "Vloerverwarming Zuidlaren & Noord-NL — installateur | VLWarmte" ✓; Drenthe-link op stad-pagina's live ✓; offerte-CTA "Zelf zo'n vloer?" op `projecten.html` live ✓; Google Tag Manager geladen ✓ (measurement-ID via GTM-container, niet inline — conform vorige releases).
+- **PM-smoke i.p.v. developer-runner:** de PM had wél Bash en heeft de diffs gereviewd (markup gebalanceerd, alleen bedoelde wijzigingen), `git status` gecontroleerd (geen secrets gestaged) en de live-site geverifieerd — de door de developer gevraagde validatie is daarmee gedaan.

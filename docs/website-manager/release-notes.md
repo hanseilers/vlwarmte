@@ -4,6 +4,34 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 9 juni 2026 (cyclus 16)
+**Deployment:** 08-06-2026 — PM push naar `main` (GitHub Pages).
+**Versie:** `0fee542`
+**GitHub Actions:** pages-build run `27115772288`; E2E production `27115772682`.
+
+### Wat is er veranderd
+- **Homepage + Hoogeveen-pagina — vindbaarheid:** de titel en omschrijving die Google in de zoekresultaten toont zijn herschreven. De homepage zet nu "Vloerverwarming Zuidlaren & Noord-NL — installateur" vooraan met een nuchtere USP (heel traject, eigen ploeg, antwoord binnen één werkdag, 10 jaar garantie op de buis). De Hoogeveen-pagina kreeg een uitnodigender omschrijving. Aan de pagina's zelf is niets veranderd.
+- **Stad-pagina's — onderling verbonden:** alle zeven stad-pagina's (Zuidlaren, Assen, Groningen, Emmen, Hoogeveen, Drachten, Leeuwarden) verwijzen nu in de "Ook actief in"-sectie door naar de Drenthe-overzichtspagina op de homepage.
+- **Projecten-pagina — duidelijke vervolgstap:** onder de projectfoto's staat nu meteen een offerte-blok ("Zelf zo'n vloer?") dat naar het offerteformulier leidt. Geen losse band meer verderop; de oproep staat direct bij het werk.
+
+### Waarom
+- **Zoekresultaten zonder clicks (GSC):** VLWarmte staat op pagina 1 van Google voor termen als "vloerverwarming zuidlaren" (positie 9), "installatiebedrijf zuidlaren" (positie 6,5) en "vloerverwarming hoogeveen" (positie 10,6) — maar krijgt er geen clicks. De enige term mét een click ("warmtepomp zuidlaren", positie 1,8) bewijst dat een goede titel wél werkt. Een scherpere titel/omschrijving is de goedkoopste manier om die zichtbaarheid om te zetten in bezoek.
+- **Drenthe-signaal versnipperd:** "vloerverwarming drenthe" haalt 82 vertoningen maar staat op positie 65, verdeeld over drie pagina's. Google kiest geen duidelijke pagina. De interne links bundelen dat signaal richting de Drenthe-hub.
+- **Projecten haakt af:** de projecten-pagina had 60% bounce en gemiddeld maar ~20 seconden bezoek — mensen kijken en vertrekken zonder vervolgstap. De offerte-deeplink is de bewezen topconverter (in de sterke weken ~9% bounce en 10 aanvragen op 11 bezoeken).
+
+### Verwacht effect (meten bij juni-fetch ~22 juni)
+- Eerste organische clicks op de Zuid-Laren/Hoogeveen-termen die nu 0 clicks halen (CTR van 0% af).
+- "Vloerverwarming drenthe" consolideert op één pagina en stijgt richting top-30.
+- Projecten-bounce zakt richting <50%, met ≥1 offerte-klik vanaf de projecten-pagina.
+
+### Niet in deze release — escalatie Google Ads
+Het betaalde verkeer is fors teruggevallen (Paid Search 11 → 1 sessie) en de totale conversies daalden 44% (63 → 35). Dat wijst op een gepauzeerde of uitgeputte advertentiecampagne. Dit is geen websitewerk; het vraagt een check van de campagnestatus en de GA4↔Google Ads-koppeling zodra er een sessie met Ads-toegang is. Staat als P0-escalatie in de sprint.
+
+### Social media deze week
+Weekplanning (`social/weekly_calendar.md`): 7 posts — 3 LinkedIn (di–do, zakelijk/aannemers), 4 Instagram (wo/vr/za/zo, particulieren). Rode draad: social haalt de clicks die de zoekresultaten nu laten liggen — Zuid-Laren, Hoogeveen en Drenthe expliciet in de copy. CTA's wisselen tussen het offerteformulier (bewezen converter) en de prijsindicatie; geen informatie-modus (bouncet 100%). Eén intentie en één link per post.
+
+---
+
 ## Release — week van 9 juni 2026 (cyclus 15)
 **Deployment:** 07-06-2026 — PM push naar `main` (GitHub Pages).
 **Versie:** `c284662`
