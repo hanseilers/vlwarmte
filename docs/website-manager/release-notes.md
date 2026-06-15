@@ -4,6 +4,32 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 15 juni 2026 (cyclus 17)
+**Deployment:** 15-06-2026 — PM push naar `main` (GitHub Pages).
+**Versie:** _(zie git log -1 na push)_
+
+### Wat is er veranderd
+- **Zuidlaren goed op de kaart bij Google.** Google liet voor "vloerverwarming zuidlaren" verschillende pagina's tegelijk meedoen (homepage, diensten, prijsindicatie), waardoor geen enkele echt won. We sturen nu met duidelijke interne links en exacte tekst alles naar één pagina: `vloerverwarming-zuidlaren.html`. Eén duidelijke winnaar in plaats van vijf halve.
+- **Homepage — nieuw blok "Installatiebedrijf in Zuidlaren".** Een kort, eerlijk stuk tekst dat benoemt wat we zijn: het installatiebedrijf in Zuidlaren voor complete vloerverwarming, eigen ploeg, antwoord binnen één werkdag.
+- **Hoogeveen-pagina sterker gemaakt.** Extra interne links met de exacte tekst "vloerverwarming Hoogeveen" en onderaan een korte vraag-en-antwoord (werkgebied, kosten, infrezen) die Google als FAQ kan tonen in de zoekresultaten.
+- **Zoekresultaat-teksten herschreven.** De titel en omschrijving van de homepage zetten nu "Drenthe, Groningen & Friesland" vooraan, en de Zuidlaren-pagina kreeg een uitnodigender belofte (richtbedrag, eigen ploeg, antwoord binnen één werkdag).
+- **Homepage — duidelijke vervolgstap bovenaan.** Direct in beeld staan nu twee knoppen: naar de prijsindicatie (voor wie wil weten wat het kost) en naar het offerteformulier. Geen zoeken meer naar wat je moet doen.
+
+### Waarom
+- **Zuidlaren-versnippering (GSC):** "vloerverwarming zuidlaren" staat op positie 9,3 — randje pagina 1 — maar de signalen lagen verspreid over vijf pagina's. Bundelen op één pagina is de goedkoopste manier om over die grens te komen.
+- **Page-1-posities zonder clicks:** "installatiebedrijf zuidlaren" (positie 6,5) en "vloerverwarming hoogeveen" (10,6) staan hoog maar leveren geen bezoek. Een sterker contentblok, interne links en betere zoekresultaat-teksten zetten zichtbaarheid om in klikken.
+- **Leads leunen te zwaar op advertenties:** betaald verkeer levert het leeuwendeel van de aanvragen, organisch verkeer nog vrijwel niets. Elke positiewinst is gratis verkeer dat blijft staan.
+- **Homepage verliest bezoekers:** twee op de drie bezoekers vertrokken zonder actie (67% bounce). De prijsindicatie-pagina converteert juist sterk; een directe knop daarheen geeft twijfelaars meteen een volgende stap.
+
+### Verwacht effect
+- "vloerverwarming zuidlaren" richting pagina 1 (<8), "installatiebedrijf zuidlaren" naar de top 5, "vloerverwarming hoogeveen" onder de 10 — en de eerste echte clicks uit organisch verkeer (nu 0).
+- Lagere bounce op de homepage en meer bezoek op de prijsindicatie-pagina, wat zich over enkele weken in GA4 moet vertalen naar de eerste organische aanvragen.
+
+### Social media deze week
+Lichte Facebook-week: 3 handmatige posts (di 16/6, do 18/6, za 20/6) rond de boodschap "zomer is hét moment om vloerverwarming te laten aanleggen — klaar vóór het stookseizoen", inspelend op de juni-verkeersdip. Routing: prijsindicatie (kosten), offerte-deeplink (lokaal Zuidlaren), projecten (bewijs). Let op: beeldmateriaal raakt op — nieuwe foto's nodig voor cyclus 18.
+
+---
+
 ## Release — week van 9 juni 2026 (cyclus 16)
 **Deployment:** 08-06-2026 — PM push naar `main` (GitHub Pages).
 **Versie:** `0fee542`

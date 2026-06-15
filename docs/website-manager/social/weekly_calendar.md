@@ -1,129 +1,96 @@
-# Social Media Kalender — week van 9 juni 2026 (cyclus 16)
+# Social Media Kalender — week van 15 juni 2026 (cyclus 17)
 
-**Afstemming sprint cyclus 16 (07-06):** Koude instappers laten converteren. Developer leverde live (commit `c284662`): prijsindicatie mobile ATF-wizard (≤768px stap 0 zichtbaar zonder scroll), projecten-hero verkort, `systemen-producten.html#laagopbouw` versterkt ("droge vloerverwarming"), Heerenveen-H2 op `vloerverwarming-drachten.html`, mid-page offerte-CTA op `werkwijze.html`. **Cyclus 16 social:** die pagina's gericht voeden en de verse **GSC-bevinding** verzilveren.
+> **PUBLICATIE: HANDMATIG door het VLWarmte-team.** Geen API-posts, geen automatische publicatie, geen tokens in dit document. Deze kalender is een planning — iemand van het team zet de posts zelf live.
 
-**Nieuw signaal (GSC fetch 23-05):** veel impressies, bijna geen clicks. VLWarmte staat op pagina 1 voor `vloerverwarming zuidlaren` (pos 9,3 / 0 clicks), `installatiebedrijf zuidlaren` (pos 6,5), `vloerverwarming hoogeveen` (pos 10,6) — maar wordt niet aangeklikt. `vloerverwarming drenthe` heeft 82 impressies maar staat pagina 6–7. **Social-rol deze week:** de clicks halen die de SERP nu laat liggen — Zuid-Laren, Hoogeveen, Drenthe expliciet in de copy, en mensen naar de juiste landing sturen.
+**Focus deze week — Facebook (lokaal bereik + leads).** Cyclus 17 is een lichte week: 3 Facebook-posts, geen LinkedIn/Instagram-blok. Reden: de PM-brief vraagt om Facebook-voorstellen op basis van het verse input-materiaal, en om in te spelen op het zomersignaal uit analytics.
+
+**Analytics/SEO-context (deze cyclus):**
+- Prijsindicatie-pagina presteert sterk (lage bounce, lange sessieduur) → blijft een goede bestemming voor koud verkeer.
+- Leads komen vooral via Google Ads en direct verkeer.
+- Organisch verkeer voor "vloerverwarming zuidlaren / hoogeveen / drenthe" is de SEO-focus → plaatsnamen expliciet in de copy.
+- **Juni-verkeer gedaald (zomer).** Slimme insteek: de zomer is juist het rustige moment om vloerverwarming te laten aanleggen — klaar vóór het stookseizoen, geen koude vloer in oktober. Dat is de rode draad van deze week.
 
 **Beeldbron (echte bouwbeelden, geen AI):**
-- `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (meander-patroon op net — nieuwe upload mei)
-- `beeldmateriaal/projecten/20-05-2026 zeegse/WhatsApp Image 2026-05-20 at 11.46.24.jpeg` (Zeegse — spiraalpatroon in serre met bosrand)
-- `beeldmateriaal/projecten/20-05-2026 zeegse/WhatsApp Image 2026-05-20 at 11.46.23.jpeg` (Zeegse — souterrain/begane grond)
-- `beeldmateriaal/projecten/20-05-2026 zuidlaren/WhatsApp Image 2026-05-20 at 11.43.39.jpeg` (Zuidlaren — 50 m² draadstaalnetten)
-- `beeldmateriaal/WhatsApp Image 2026-04-30 at 13.34.00.jpeg` (schuimbeton / opbouw — technisch)
-- `beeldmateriaal/WhatsApp Image 2026-04-29 at 21.44.39.jpeg` (leidingwerk in patroon onder de vloer)
-- `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.16.jpeg` (strak meander op net)
+- `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` — echt bouwbeeld: strak meander-patroon op net over de ondervloer. Sterkste beeld in de input-map.
+- `beeldmateriaal/projecten/20-05-2026 zuidlaren/WhatsApp Image 2026-05-20 at 11.43.39.jpeg` — Zuidlaren, 50 m² draadstaalnetten.
+- `beeldmateriaal/projecten/20-05-2026 zeegse/WhatsApp Image 2026-05-20 at 11.46.24.jpeg` — Zeegse, spiraalpatroon in serre aan de bosrand.
 
-> **Let op:** `docs/website-manager/social/input/vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg` niet gebruiken — dat is een gestaged/AI-aandoend voorstelbeeld. Kalender-richtlijn: geen AI-beelden.
+> **Niet gebruiken:** `docs/website-manager/social/input/vlwarmte-facebook-voorstel-2026-05-werkonderdevloer.jpg` — dit is een gestaged/AI-aandoend voorstelbeeld (te perfecte belichting, modelfoto). Kalender-richtlijn: alleen echte bouwbeelden.
 
-**Posting-tijden:** LinkedIn di–do 08:30–10:00, Instagram wo / vr / za / zo 18:30–20:00.
-
-**Publicatie:** handmatig door VLWarmte-team — geen API-posts, geen tokens in dit document.
+**Posting-tijden Facebook:** doordeweeks 19:00–20:00 of zaterdag overdag — momenten waarop particulieren scrollen.
 
 **CTA-URL's (intentie → link):**
 - Kosten/oriëntatie → `https://www.vlwarmte.nl/prijsindicatie.html`
 - Offerte (topconverter) → `https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag`
-- Terugbellen → `https://www.vlwarmte.nl/contact.html?modus=bel#aanvraag`
 - Projecten-bewijs → `https://www.vlwarmte.nl/projecten.html`
-- Werkwijze → `https://www.vlwarmte.nl/werkwijze.html`
-- Laagopbouw/renovatie → `https://www.vlwarmte.nl/systemen-producten.html#laagopbouw`
-- Drachten/Heerenveen → `https://www.vlwarmte.nl/vloerverwarming-drachten.html`
 
-**Message-match principe:** één intentie per post, één link. Cold traffic → **offerte-deeplink** (bewezen: 9,1% bounce, 10 conv. op 11 sess) of **prijsindicatie** (kosten-intentie). Geen `modus=informatie` (100% bounce op Facebook-entries).
+**Message-match:** één intentie per post, één link. Koud verkeer → prijsindicatie (kosten-intentie) of offerte-deeplink. Geen `modus=informatie` (bewezen 100% bounce op Facebook-entries).
 
 ---
 
-## LinkedIn Posts
+## Facebook Posts
 
-### Post 1 — dinsdag 10 juni 2026, 08:45
-**Foto:** `beeldmateriaal/projecten/20-05-2026 zeegse/WhatsApp Image 2026-05-20 at 11.46.23.jpeg` (Zeegse — souterrain + begane grond, leidingwerk op net)
-**Caption:**
-Zeegse: 100 m² vloerverwarming over twee niveaus, souterrain en begane grond in één planning. Voor aannemers en projectontwikkelaars die dit soort trajecten uitbesteden: wij rijden vanuit Zuid-Laren door heel Noord-Nederland en pakken intake tot oplevering in zes vaste stappen. Die stappen staan op werkwijze.html — handig om eerst te checken hoe we werken voordat je een klant doorverwijst.
+### Post 1 — dinsdag 16 juni 2026, 19:30
+**Doel:** bereik + lead (kosten-intentie)
+**Foto:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (meander-patroon op net)
+**Copy:**
+Zomer is eigenlijk hét moment om vloerverwarming te laten aanleggen. Rustig op de bouw, geen koude vloer als straks de kachel weer aan moet. Wij leggen het netjes aan vanuit Zuid-Laren, door heel Drenthe en Groningen.
 
-**Hashtags:** #vloerverwarming #nieuwbouw #Drenthe #vakmanschap #installatie
-**CTA-intentie:** werkwijze (B2B, proces, hoge betrokkenheid)
-**CTA link:** https://www.vlwarmte.nl/werkwijze.html
+Benieuwd wat het ongeveer kost? Op onze site kies je wat je wilt laten prijzen en je krijgt in een paar minuten een vrijblijvend richtbedrag. Geen offerte, gewoon een eerlijk getal om mee te rekenen.
 
----
+👉 https://www.vlwarmte.nl/prijsindicatie.html
 
-### Post 2 — woensdag 11 juni 2026, 09:00
-**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 13.34.00.jpeg` (schuimbeton / opbouw — technisch beeld)
-**Caption:**
-Renovatie met een kruipruimte en weinig hoogte? Dan kijken we naar laagopbouw of schuimbeton: ophogen, isoleren en een vlakke ondergrond, zonder dat de deuren niet meer dicht kunnen. Niet elk project is daar geschikt voor — een houten ondervloer of te weinig diepte sturen we liever naar een gesprek. Voor aannemers die vooraf willen weten wanneer droge vloerverwarming zinvol is: we hebben het kort uitgelegd op de site.
-
-**Hashtags:** #vloerverwarming #renovatie #schuimbeton #vakmanschap #Drenthe
-**CTA-intentie:** laagopbouw/renovatie (B2B, content-match nieuwe sectie)
-**CTA link:** https://www.vlwarmte.nl/systemen-producten.html#laagopbouw
+**Hashtags/regio:** #vloerverwarming #ZuidLaren #Drenthe #verbouwing #wonen
+**CTA-intentie:** kosten/oriëntatie → prijsindicatie.html
 
 ---
 
-### Post 3 — donderdag 12 juni 2026, 08:40
-**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-29 at 21.44.39.jpeg` (leidingwerk in strak patroon — onder de vloer)
-**Caption:**
-Werkgebied Zuidwest-Friesland: vanuit Zuid-Laren bedienen we ook Drachten, Heerenveen en omgeving — zelfde traject, zelfde mensen op de vloer. Bouw je in die regio en wil je vloerverwarming meenemen in de planning? Het offerteformulier opent direct op het juiste tabblad; reactie binnen één werkdag.
-
-**Hashtags:** #vloerverwarming #Heerenveen #Friesland #nieuwbouw #installatie
-**CTA-intentie:** offerte (B2B, regio Heerenveen/Drachten — message-match GSC-keyword)
-**CTA link:** https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag
-
----
-
-## Instagram Posts
-
-### Post 1 — woensdag 11 juni 2026, 19:00
-**Foto:** `docs/website-manager/social/input/vlwarmte-facebook-2026-05-buiswerk-op-net.jpeg` (meander-patroon op net — nieuwe mei-upload)
-**Caption:**
-Benieuwd wat het ongeveer kost? Op vlwarmte.nl/prijsindicatie kies je eerst wat je wilt laten prijzen en krijg je daarna in twee minuten een vrijblijvend richtbedrag — geen verplicht telefoontje achteraf. Werkt nu ook fijn op je telefoon: je begint meteen, zonder eindeloos scrollen. Link in bio.
-
-**Hashtags:** #vloerverwarming #prijsindicatie #verbouwing #wonen #Drenthe #NoordNederland #renovatie
-**CTA-intentie:** kosten/oriëntatie (spiegelt mobile ATF-fix)
-**CTA:** Link in bio → https://www.vlwarmte.nl/prijsindicatie.html
-
----
-
-### Post 2 — vrijdag 13 juni 2026, 18:45
+### Post 2 — donderdag 18 juni 2026, 19:30
+**Doel:** bereik + lokaal vertrouwen (lead via offerte)
 **Foto:** `beeldmateriaal/projecten/20-05-2026 zuidlaren/WhatsApp Image 2026-05-20 at 11.43.39.jpeg` (50 m² Zuidlaren, draadstaalnetten)
-**Caption:**
-50 m² in Zuidlaren — bij ons om de hoek. Vloerverwarming op draadstaalnetten, klaar voor de dekvloer. Woon je in Zuidlaren, Annen of Vries en zoek je een installatiebedrijf uit de buurt? Dat zijn wij, vanuit Zuid-Laren. Meer klusbeelden (Zeegse, Zuidlaren) staan op projecten.html — geen stock, gewoon van de bouw. Link in bio.
+**Copy:**
+50 m² in Zuidlaren — bij ons om de hoek. Vloerverwarming op draadstaalnetten, klaar voor de dekvloer. Woon je in Zuidlaren, Annen of Vries en wil je dit nog deze zomer geregeld hebben vóór het stookseizoen?
 
-**Hashtags:** #vloerverwarming #ZuidLaren #Drenthe #wonen #verbouwing #interieur #vakmanschap
-**CTA-intentie:** projecten-bewijs (oogst Zuid-Laren page-1 CTR uit GSC)
-**CTA:** Link in bio → https://www.vlwarmte.nl/projecten.html
+Vraag een offerte aan, dan kijken we mee. Het formulier opent meteen op het juiste tabblad en je hoort binnen één werkdag van ons.
 
----
+👉 https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag
 
-### Post 3 — zaterdag 14 juni 2026, 19:15
-**Foto:** `beeldmateriaal/projecten/20-05-2026 zeegse/WhatsApp Image 2026-05-20 at 11.46.24.jpeg` (Zeegse — spiraalpatroon in serre met bosrand)
-**Caption:**
-Zeegse, in de serre aan de bosrand: vloerverwarming in een strak spiraalpatroon, klaar voor de afwerkvloer. Straks loop je hier op warme tegels met uitzicht op de bomen. Dit soort klussen draaien we door heel Drenthe en Groningen. Klaar om concreet te worden? Het offerteformulier opent direct op het offerte-tabblad — reactie binnen één werkdag. Link in bio.
-
-**Hashtags:** #vloerverwarming #Drenthe #wonen #renovatie #interieur #vakmanschap #NoordNederland
-**CTA-intentie:** offerte (proven converter)
-**CTA:** Link in bio → https://www.vlwarmte.nl/contact.html?modus=offerte#aanvraag
+**Hashtags/regio:** #vloerverwarming #ZuidLaren #Drenthe #installatiebedrijf #NoordNederland
+**CTA-intentie:** offerte → contact.html?modus=offerte#aanvraag
 
 ---
 
-### Post 4 — zondag 15 juni 2026, 18:55
-**Foto:** `beeldmateriaal/WhatsApp Image 2026-04-30 at 12.52.16.jpeg` (strak meander-patroon op net)
-**Caption:**
-Hoogeveen, Fluitenberg en omstreken: ook daar leggen we vloerverwarming, vanuit Zuid-Laren. Eerst een richtbedrag voordat je verder kijkt? Dat kan in twee minuten via de prijsindicatie — kies wat je wilt laten prijzen en je krijgt een vrijblijvende bandbreedte. Geen offerte nog, gewoon een eerlijk getal om mee te rekenen. Link in bio.
+### Post 3 — zaterdag 20 juni 2026, 11:00
+**Doel:** bereik (woonbeleving) + zachte lead
+**Foto:** `beeldmateriaal/projecten/20-05-2026 zeegse/WhatsApp Image 2026-05-20 at 11.46.24.jpeg` (Zeegse — spiraalpatroon in serre aan de bosrand)
+**Copy:**
+Zeegse, in de serre aan de bosrand: vloerverwarming in een strak spiraalpatroon, klaar voor de afwerkvloer. Straks loop je hier op warme tegels met uitzicht op de bomen — ook in oktober.
 
-**Hashtags:** #vloerverwarming #Hoogeveen #Drenthe #verbouwing #wonen #prijsindicatie #NoordNederland
-**CTA-intentie:** kosten/oriëntatie (oogst Hoogeveen page-1 CTR uit GSC)
-**CTA:** Link in bio → https://www.vlwarmte.nl/prijsindicatie.html
+Dit soort klussen draaien we door heel Drenthe en Groningen. Meer klusbeelden staan op onze projectenpagina: geen stockfoto's, gewoon van de bouw.
+
+👉 https://www.vlwarmte.nl/projecten.html
+
+**Hashtags/regio:** #vloerverwarming #Drenthe #Groningen #wonen #vakmanschap
+**CTA-intentie:** projecten-bewijs → projecten.html
 
 ---
 
-## Campagne notities
+## Materiaal dat nog ontbreekt (voor volgende week / cyclus 18)
 
-- **Cyclus 16 rode draad — GSC verzilveren:** social haalt de clicks die de SERP laat liggen. Zuid-Laren (IG 2 → projecten), Hoogeveen/Fluitenberg (IG 4 → prijsindicatie), Heerenveen/Drachten (LI 3 → offerte) en Drenthe-breed in meerdere captions. Plaatsnamen staan expliciet in de eerste regels.
-- **Sprint-pagina's gevoed:** prijsindicatie mobile ATF (IG 1 "ook op je telefoon"), projecten verkorte hero (IG 2), laagopbouw/droge vloerverwarming-sectie (LI 2), Heerenveen-H2 op Drachten-pagina (LI 3), werkwijze (LI 1). Geen post linkt naar de mid-page werkwijze-CTA apart — die dient on-page conversie.
-- **CTA-routing (één intentie per post):** werkwijze → LI 1; laagopbouw → LI 2; offerte → LI 3 + IG 3; prijsindicatie → IG 1 + IG 4; projecten → IG 2. Geen `modus=informatie` (100% bounce). Offerte-deeplink blijft primaire converter (9,1% bounce, 10 conv.).
-- **Beeld:** alleen echte bouwbeelden. Zeegse-serre (11.46.24) is het sterkste hero-beeld deze week — nog niet eerder gebruikt. AI-aandoend voorstelbeeld in input-map bewust overgeslagen.
-- **Tone:** geen "geen onderaannemers"-claim; tien jaar garantie op de buis (geen "fabrieksgarantie"); één werkdag reactietijd; "vrijblijvend richtbedrag, geen offerte" bij prijsindicatie.
-- **Meetmoment:** juni-fetch ~22 juni — check prijsindicatie entry-bounce (<45%), projecten bounce (<50%) en social conv. > 0. Volgende GSC-fetch: is Zuid-Laren/Hoogeveen-CTR omhoog en consolideert `vloerverwarming drenthe` op `/`?
-- **Voor de Product Manager:**
-  - Open P0: GA4↔Ads-koppeling + auto-tagging + live RSA final-URL sync (campagne `23834672782`) blokkeert Paid Search-interpretatie (11 sess / 0 conv.).
-  - GSC nu beschikbaar — laagst hangende SEO-winst los van social: title/meta-CTR op `/` (Zuid-Laren) en `vloerverwarming-hoogeveen.html`. Geen social-werk, wel parallel signaal.
-  - Geen Meta API-publicatie deze cyclus — handmatige message-match-meting eerst.
-  - Nieuwe projectfoto's in `docs/website-manager/social/input/` versnellen planning cyclus 17; graag echte bouwbeelden, geen gestagede/AI-beelden.
-  - Archief: vorige kalender (week van 9 juni, cyclus 15) → `docs/website-manager/social/archive/weekly_calendar-2026-06-09-cyclus15.md` indien gewenst.
+De input-map heeft sinds mei geen nieuwe foto's gekregen; we draaien op dezelfde drie bruikbare bouwbeelden. Voor variatie en om herhaling te voorkomen graag aanleveren in `docs/website-manager/social/input/`:
+
+- **Eindresultaat / afgewerkte vloer** — een afgewerkte tegel- of gietvloer mét zichtbaar comfort (interieurbeeld). Dit ontbreekt volledig; nu tonen we alleen het ruwe leidingwerk, nooit het resultaat.
+- **Een teamlid/vakman aan het werk** — een échte foto (geen gestaged glamourbeeld) geeft gezicht aan het bedrijf. Het huidige "voorstel"-beeld is AI-aandoend en wordt bewust niet gebruikt.
+- **Hoogeveen of Friesland-project** — voor de SEO-focus op die regio's hebben we nog geen lokaal bouwbeeld; nu leunen we op Zuidlaren en Zeegse.
+- **Detailfoto verdeler/regeling** — laat het "technische hart" zien; goed voor een uitlegpost richting prijsindicatie.
+
+Aanleveren: foto's in de input-map zetten met beschrijvende naam (zie `input/README.md`); optioneel een kort `briefing.txt` met locatie/m²/bijzonderheden.
+
+---
+
+## Samenvatting voor de Product Manager (max 4 regels)
+
+- Lichte Facebook-week: 3 handmatige posts (di/do/za), rode draad = "zomer is hét moment, klaar vóór het stookseizoen", inspelend op de juni-verkeersdip.
+- CTA-routing volgt bewezen patroon: prijsindicatie (koud/kosten), offerte-deeplink (lokaal Zuidlaren), projecten (bewijs); geen `modus=informatie`.
+- Beeld op = beeld op: alleen drie echte bouwbeelden beschikbaar — nieuw materiaal (eindresultaat, team, Hoogeveen/Friesland, verdeler) is nodig om herhaling vanaf cyclus 18 te voorkomen.
+- Geen Meta API-publicatie deze cyclus; AI-aandoend voorstelbeeld in de input-map blijft bewust ongebruikt.
