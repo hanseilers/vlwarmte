@@ -148,4 +148,10 @@ Alle 5 goedgekeurde taken geïmplementeerd. Taken met `[WACHT]`/escalatie zijn n
 - `vloerverwarming-hoogeveen.html`
 - `docs/website-manager/sprint.md` (dit rapport)
 
-**Deployment:** Nog niet live — PM voert commit + `git push origin main` uit.
+**Deployment:** ✅ Live op 15-06-2026. PM-commit `b84e089` gepusht naar `main` (na rebase op remote 21d0e46). GitHub Pages-build run `27523690274` — **completed/success**. E2E production run `27523690908` gestart.
+
+**Live verificatie (PM):**
+- Nieuw blok "Installatiebedrijf in Zuidlaren" staat live op de homepage. ✓
+- Homepage-title live: "Vloerverwarming Drenthe, Groningen & Friesland | VLWarmte". ✓
+- GA-tracking intact: `G-0BB9M7HYSF` actief via `assets/js/ga-deferred.js` (GA wordt deferred geladen; de stap-9 HTML-grep op `G-` is daardoor leeg — dat is by design, geen fout). ✓
+- FAQPage JSON-LD op `vloerverwarming-hoogeveen.html` is syntactisch correct (één regel, geldige structuur); aanrader: extra check via Google Rich Results Test in een interactieve sessie.
