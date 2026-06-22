@@ -4,6 +4,30 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 22 juni 2026 (cyclus 18)
+**Deployment:** 22-06-2026, 06:22 — PM push naar `main` (GitHub Pages). Commit `ef6de99`.
+
+### Wat is er veranderd
+- **Nieuwe pagina voor heel Drenthe.** "Vloerverwarming Drenthe" is de zoekterm met veruit de meeste vertoningen, maar er was geen eigen pagina voor — Google verdeelde het signaal over vier losse pagina's en koos er geen. Er staat nu één duidelijke provinciepagina (`vloerverwarming-drenthe.html`) die met alle plaatspagina's (Assen, Hoogeveen, Emmen, Zuidlaren) over en weer gelinkt is. Eén adres voor de hele provincie in plaats van vier halve.
+- **Aantrekkelijker in de zoekresultaten.** Voor "installateur/elektricien zuidlaren" stonden we al in de top 3, maar niemand klikte. De titel en omschrijving van de homepage en de Zuidlaren-pagina zijn herschreven met een concrete reden om te klikken ("richtbedrag in 2 minuten", vakman uit Zuidlaren), zodat het zoekresultaat zelf uitnodigt.
+- **Snelle prijsindruk op alle plaatspagina's.** De prijsindicatie-wizard is veruit de pagina waar bezoekers het langst blijven en het vaakst contact opnemen. Op zeven plaatspagina's staat nu boven de vouw een knop "Richtbedrag in 2 minuten →" die rechtstreeks naar die wizard leidt.
+- **Plaatsen beter aan de juiste pagina geknoopt.** Interne links met exacte plaatsnaam-tekst (Zuidlaren, Friesland, Heerenveen, Schoonebeek, Elim) wijzen nu naar de juiste plaatspagina, zodat Google de signalen niet meer over verkeerde pagina's verdeelt.
+- **Achter de schermen: de meetmotor draait weer.** Het script dat onze bezoekerscijfers ophaalt liep twee weken vast op een technisch detail. Dat is opgelost — we sturen vanaf nu weer op verse cijfers in plaats van een bevroren momentopname.
+
+### Waarom
+- De verse cijfers lieten een hard signaal zien: het **betaalde verkeer (Google Ads) is vrijwel stilgevallen** — de laatste week kwam er nog maar één bezoeker binnen en het aantal aanvragen zakte van 35 naar 9 in dertig dagen. Zolang we vrijwel volledig op betaald verkeer leunen, stopt de leadstroom zodra de campagne stilvalt. Daarom deze sprint vol inzetten op **gratis (organisch) vindbaar worden** — dat blijft werken ook als de advertenties uitstaan.
+- De Drenthe-pagina, de aantrekkelijker zoekresultaten en de interne links pakken precies de termen waarop we nét niet of versnipperd scoren. De prijsindicatie-knop benut de pagina die aantoonbaar het beste converteert.
+
+### Verwacht effect
+- "Vloerverwarming drenthe" van plek ~66 richting pagina 2–3; de eerste echte kliks op de Zuidlaren-/installateur-termen die nu nog op nul staan.
+- Meer bezoekers die op de prijsindicatie-wizard belanden (de pagina met de hoogste kans op een aanvraag).
+- **Belangrijk los van de website:** de eigenaar moet nakijken waarom de Google Ads-campagne is stilgevallen (gepauzeerd, budget op, of een blokkade) — dat is deze week de grootste hefboom voor leads en staat als urgente actie in de sprint.
+
+### Social media deze week
+Zeven posts (3 LinkedIn, 4 Instagram/Facebook), rode draad: "zomer is hét moment om vloerverwarming aan te leggen — klaar vóór het stookseizoen", met plaatsnamen expliciet in de tekst. Twee posts wachten nog op beeldmateriaal (verdeler-detail, eindresultaat-vloer). Handmatige publicatie door het team; planning staat in `social/weekly_calendar.md`.
+
+---
+
 ## Release — week van 15 juni 2026 (cyclus 17)
 **Deployment:** 15-06-2026 — PM push naar `main` (GitHub Pages).
 **Versie:** _(zie git log -1 na push)_
