@@ -1,202 +1,234 @@
-# Marketing Research Rapport — 2026-06-15
+# Marketing Research Rapport — 2026-06-22
 
-Bron: echte GSC-data 25 apr–22 mei 2026 (`gsc_report.json`) en GA4 30-daags
-(`ga4_report.json`). Werkwijze in deze ronde: alleen analyse op bestaande
-repo-bestanden — geen webonderzoek, geen scripts, geen Ads-mutaties (die zijn in
-deze modus geblokkeerd). Ads-advies staat als escalatie/aanbeveling onderaan.
+Bron: eerstegraads repo-data — GSC 25 apr–22 mei 2026 (`gsc_report.json`), GA4
+30-daags per 8 jun (`ga4_report.json` / `analytics_report.md`), Ads-defaults
+(`scripts/data/google_ads_lead_campaign_defaults.json`) en de live site-bestanden.
+
+> **Modus-waarschuwing (lees eerst).** Deze cyclus draait autonoom in don't-ask
+> mode. **WebSearch/WebFetch én alle `scripts/google_ads_*.py` zijn geblokkeerd**
+> (bevestigd: smoke-test, list-campaigns en `.venv/bin/python` werden geweigerd;
+> zie memory `pm-scheduled-run-permissions`). Er is dus **geen vers webonderzoek**
+> (live zoekvolumes, actuele concurrent-SERP's, calculator-benchmarkstudies) en
+> **geen live Ads-state/mutatie** uitgevoerd deze ronde. Alle conclusies hieronder
+> zijn gebaseerd op de echte first-party data in de repo; web- en Ads-afhankelijke
+> punten staan expliciet als **escalatie** met klaargezette commando's.
 
 ## Samenvatting
-De leads komen nu vrijwel volledig uit betaald (google/cpc: 22 conv) en direct
-(13 conv); organisch levert 0 conversies op 9 sessies. De grootste organische
-kansen liggen niet in nieuwe pagina's maar in drie termen die net buiten pagina
-1 hangen — "vloerverwarming zuidlaren" (9,3), "installatiebedrijf zuidlaren"
-(6,5) en "vloerverwarming hoogeveen" (10,6) — plus één term met veel latente
-vraag, "vloerverwarming drenthe" (82 impressies, positie 66). Daarnaast lekt de
-betaalde campagne budget naar buiten het kerngebied (25 sessies North Holland,
-11 South Holland), terwijl de geo-defaults wél Drenthe/Groningen/Friesland zijn.
 
-## 1. Stand van zaken — organisch vs. betaald
+De leadmotor is onverminderd **betaald + direct** (google/cpc 22 conv, direct 13
+conv); **organisch levert 0 conversies** terwijl de site honderden impressies op
+regiotermen verzamelt op posities die net buiten of ver buiten de kliks-zone
+liggen. De drie grootste gratis kansen zijn ongewijzigd: drie termen net buiten
+pagina 1 (**vloerverwarming zuidlaren** 9,3 · **installatiebedrijf zuidlaren** 6,5 ·
+**vloerverwarming hoogeveen** 10,6) plus één term met massale latente vraag,
+**vloerverwarming drenthe** (82 impr @ 66, versnipperd over 4 URL's, nog steeds
+géén dedicated pagina). Daarbovenop twee structurele lekken die los staan van
+content: een **www-/non-www ranking-splitsing** op de homepage en een **CTR-/
+snippet-probleem** waarbij top-3-posities (installateur/elektricien zuidlaren) 0
+clicks opleveren. De prijsindicatie-wizard bestaat al en is de sterkste
+conversiepagina (44% entry-conversie, bounce 0,32) — de kans zit in **méér
+verkeer ernaartoe sturen**, niet in nieuwbouw.
 
-| Kanaal | Sessies | Conversies | Opmerking |
-|--------|---------|------------|-----------|
-| google / cpc (Paid) | 85 + 1 | 22 | Draagt de leadmotor. |
-| (direct) / (none) | 42 | 13 | Sterk — merk/herhaalverkeer, deels Ads-naijl. |
-| google / organic | 9 | 0 | Veel impressies, nauwelijks clicks/conv. |
-| facebook (social) | 7 | 0 | Klein, geen leads. |
+## Top zoekwoorden (uit echte GSC-data, geen geschat extern volume)
 
-Kernpunt: **organisch presteert ver onder potentie.** Er staan honderden
-impressies op regio-termen, maar de rankings zitten grotendeels op pagina 3–9,
-dus die impressies leveren geen clicks (CTR 0). De site verdient zijn leads nu
-met advertentiegeld; elke positiewinst op een "bijna pagina 1"-term is gratis
-volume dat structureel blijft staan.
+| Zoekwoord | Impressies (28d) | Positie | Concurrentie* | Pagina nodig |
+|-----------|------------------|---------|---------------|--------------|
+| vloerverwarming drenthe | 82 | 65,7 | midden | **nieuw** (`vloerverwarming-drenthe.html`) |
+| vloerverwarming zuidlaren | 33 | 9,3 | laag | bestaand (cannibalisatie oplossen) |
+| installatiebedrijf zuidlaren | 20 | 6,5 | laag | bestaand (`index.html` blok) |
+| vloerverwarming friesland | 10 | 87,7 | midden | bestaand (Leeuwarden-pagina versterken) |
+| vloerverwarming schoonebeek | 10 | 61,5 | laag | bestaand (Emmen-hub) |
+| installateur zuidlaren | 9 | 3,7 | laag | bestaand — **CTR-fix** (top-3, 0 clicks) |
+| vloerverwarming hoogeveen | 8 | 10,6 | laag | bestaand (interne links + FAQ) |
+| vloerverwarming leeuwarden | 7 | 27,3 | midden | bestaand (Leeuwarden-pagina) |
+| vloerverwarming heerenveen | 5 | 50,4 | midden | bestaand (Drachten/Heerenveen-pagina) |
+| elektricien zuidlaren | 5 | 2,2 | laag | bestaand — **CTR-fix** (top-3, 0 clicks) |
 
-## 2. SEO-kansen, geprioriteerd
+\* Concurrentie-inschatting is **indicatief** op basis van termtype (lokale
+dienst + plaatsnaam = doorgaans laag/midden); **niet** geverifieerd met een live
+keyword-tool deze ronde (WebSearch geblokkeerd). Validatie staat als escalatie.
 
-### A. "Bijna pagina 1" — kleinste ingreep, snelste winst
+**Patroon dat de data toont:** zodra een term in de top 3 staat blijven clicks
+alsnog uit (installateur 3,7 / elektricien 2,2 / vloerverwarming laren 3,0 → alle
+0 clicks), behalve **warmtepomp zuidlaren** (pos 1,8 → 25% CTR, 1 click). Dat ene
+klikkende geval bewijst dat de **snippet (title + meta)** het verschil maakt, niet
+alleen de positie. Een CTR-/snippet-herschrijving op home + zuidlaren-cluster is
+daarmee net zo waardevol als positiewinst.
 
-**1. "vloerverwarming zuidlaren" — 33 impr, positie 9,3 (thuisbasis).**
-Diagnose uit `query_page`: Google laat hier **de homepage** ranken (pos 6,6, 17
-impr) náást de dedicated pagina `vloerverwarming-zuidlaren.html` (die voor déze
-term nauwelijks in beeld komt). Ook `diensten.html` (16,6) en
-`prijsindicatie.html` (19,4) pakken impressies. Dit is **keyword-cannibalisatie**:
-relevantie en linkkracht zijn verspreid over 5+ URL's, geen enkele wint. De
-dedicated pagina ís al sterk geschreven; ze mist alleen interne linkkracht met
-exacte ankertekst.
+## Content gaps (ontbrekende of zwakke pagina's)
 
-**2. "installatiebedrijf zuidlaren" — 20 impr, positie 6,5.**
-Rankt op de homepage. Verwante termen staan al hoog: "installateur zuidlaren"
-3,7, "elektricien zuidlaren" 2,2. De homepage mist een expliciete
-"installatiebedrijf in Zuidlaren"-formulering in een kop/contentblok. Kleinste
-ingreep: één H2 + alinea + LocalBusiness-bevestiging.
+- **`vloerverwarming-drenthe.html` (ontbreekt volledig).** Grootste regioterm op
+  impressies (82) zonder kanonieke pagina; signaal lekt nu weg over home (57),
+  prijsindicatie (49), diensten (13), faq (4). Dit is de enige content-gap die een
+  écht nieuwe pagina rechtvaardigt. Doelgroep: heel werkgebied. Onderbouwing: de
+  versnippering verklaart de diepe positie (Google weet niet welke URL te tonen).
+- **Friesland-dekking is zwak.** "vloerverwarming friesland" 87,7, "heerenveen"
+  50,4, "bolsward" 70,5 — ondanks bestaande Leeuwarden- en Drachten-pagina's. Geen
+  nieuwe pagina nodig; wél interne links + een Friesland-sectie/anker op de
+  bestaande pagina's met exacte ankertekst.
+- **Emmen-omgeving (Zuidoost-Drenthe) onderbenut.** "vloerverwarming schoonebeek"
+  (10 @ 61,5) en "vloerverwarming elim" (4) hangen bij home/Hoogeveen i.p.v. de
+  Emmen-pagina. Subdorpen aanhaken op `vloerverwarming-emmen.html`.
+- **Géén nieuwe doelgroep-/dienstpagina's nodig deze ronde.** Aparte pagina's voor
+  "alleen schuimbeton" of "aannemers/projectontwikkelaars" tonen **geen** vraag in
+  de huidige GSC-data; niet bouwen zonder bewijs van zoekvolume (escalatie:
+  keyword-tool). De prijsindicatie-, FAQ-, systemen- en werkwijze-pagina's dekken
+  de bestaande intentie al.
 
-**3. "vloerverwarming hoogeveen" — 8 impr, positie 10,6 (eigen pagina).**
-Dedicated pagina rankt al, hangt op de pagina-1-grens. Subtermen lopen mee:
-"vloerverwarming fluitenberg" 4,8, "vloerverwarming hollandscheveld" 20,3,
-"vloerverwarming noordscheschut" 33,8. Kleinste ingreep: een paar interne links
-mét ankertekst "vloerverwarming Hoogeveen" vanuit homepage/Drenthe-hub en
-zusterpagina's, plus een korte FAQ-blok met schema voor extra relevantie.
+## Concurrentie-observaties
 
-### B. Grote latente vraag — "vloerverwarming drenthe" (82 impr, positie 66)
+Geen verse SERP-scan deze ronde (WebSearch geblokkeerd). Wat de **eigen** GSC-data
+indirect laat zien over het speelveld:
 
-Dit is verreweg de grootste regioterm op impressies, maar rankt diep (pos 63–77)
-verspreid over homepage (57 impr), prijsindicatie (49), diensten (13) en faq (4).
-Er is **geen dedicated `vloerverwarming-drenthe.html`** — alleen een
-`#drenthe-hub`-sectie op de homepage. Voor een provinciedekkende hoofdterm met
-dit volume is een eigen, kanonieke landingspagina de logische zet: die bundelt de
-nu versnipperde signalen, kan intern linken naar alle stadspagina's (Assen,
-Hoogeveen, Emmen, Meppel, Beilen) en die linken terug. Dit is groter dan een
-title-tweak (>1 sprintdag inclusief content), maar het is de enige term waar de
-ranking-afstand zo groot is dat losse on-page-tweaks niet volstaan.
+- Op hyperlokale termen (zuidlaren, fluitenberg, laren) staat VLWarmte al hoog —
+  de lokale concurrentie op exacte dorps-/stadcombinaties is **dun**; dat is precies
+  waarom kleine on-page-ingrepen hier zoveel opleveren.
+- Op de bredere provincieterm (**vloerverwarming drenthe**) staat de site diep
+  (pos 66) — daar staan landelijke spelers/portals/aggregators sterker, en wint de
+  partij met één duidelijke, intern goed gelinkte provinciepagina. Dat is de te
+  veroveren ruimte.
+- **Te valideren (escalatie):** wie rankt nu top-5 op "vloerverwarming drenthe" en
+  "vloerverwarming friesland", en met wat voor pagina (provinciehub vs. portal)?
+  Dit bepaalt of een dedicated Drenthe-pagina top-10 haalbaar is of dat het een
+  portal-gedomineerde SERP is.
 
-## 3. Concrete on-page taken voor de Developer Agent (deze sprint)
+## Prijscalculator — haalbaarheidsonderzoek (geactualiseerd: tool bestaat al)
 
-> Alle taken zijn <4u en raken bestaande bestanden. Succes meet je in GSC
-> (positie/CTR per query) na 2–4 weken en in GA4 (`organic` sessies/landing).
+### Conclusie
+**Niet opnieuw bouwen — de calculator/wizard staat al live op
+`prijsindicatie.html` en is de best converterende pagina van de site.** De
+opdracht uit het commando ("onderzoek of een prijscalculator een goed idee is")
+is door de praktijk ingehaald: er is een meerstaps-wizard (`#wizard`, stappen
+product → … met `wizard_start` / `calculator_result` / `wizard_lead_submit`
+events, zie GA4-conversieconfig). De juiste vraag is nu **optimalisatie en
+instroom**, niet nieuwbouw.
 
-**Taak 1 — Zuidlaren-cannibalisatie oplossen (interne links + ankertekst).**
-Doel-URL's: `index.html`, `diensten.html`, `prijsindicatie.html`,
-`vloerverwarming-zuidlaren.html`.
-- In `index.html` staat in de hero de link `<a href="vloerverwarming-zuidlaren.html">Zuidlaren</a>`.
-  Verrijk de ankertekst naar de exacte zoekterm, bv.:
-  "Basis in <a href="vloerverwarming-zuidlaren.html">Zuidlaren — bekijk
-  vloerverwarming Zuidlaren</a>."
-- Voeg op `diensten.html` en `prijsindicatie.html` één regel toe met expliciete
-  link + ankertekst "vloerverwarming Zuidlaren" naar de dedicated pagina, zodat
-  Google die als kanoniek voor de term gaat zien (in plaats van die pagina's zelf).
-- Op `vloerverwarming-zuidlaren.html`: H1 staat goed ("Vloerverwarming
-  Zuidlaren"). Voeg in de eerste alinea de exacte combinatie
-  "vloerverwarming in Zuidlaren" toe (nu opent de lead met "We zitten aan de
-  Verlengde Stationsweg…").
-- Succes: GSC ranking dedicated pagina voor "vloerverwarming zuidlaren" stijgt
-  naar <5; homepage zakt voor die term. Doel: pagina 1.
+### Onderbouwing (eigen data)
+- Prijsindicatie als entry page: **~44% conversie** (9 sessies → 4 conv), bounce
+  **0,32**, sessieduur 100–132s. Veruit de hoogste kwaliteit van alle pagina's.
+- Maar: krijgt **te weinig instroom** (slechts 9 entry-sessies vs. home 115). De
+  hefboom zit in méér verkeer hierheen leiden, niet in de tool zelf.
+- GA4 key events zijn correct ingericht op `wizard_lead_submit` + `contact_submit`
+  als leads; funnel-events meten engagement (skill §A, regel 4). De meetkant is op
+  orde.
 
-**Taak 2 — "installatiebedrijf zuidlaren" op de homepage verankeren.**
-Doel-URL: `index.html`.
-- Voeg een kort contentblok toe (H2 + 1 alinea), bv.:
-  H2: "Installatiebedrijf in Zuidlaren"
-  Tekst: "VLWarmte is het installatiebedrijf in Zuidlaren voor complete
-  vloerverwarming — van ondervloer en schuimbeton tot dekvloer en oplevering.
-  Eén aanspreekpunt, eigen ploeg, reactie binnen één werkdag."
-- Controleer dat de `LocalBusiness`-schema op `#localbusiness` een logisch
-  `name`/`address` in Zuidlaren bevat (versterkt lokale relevantie).
-- Succes: "installatiebedrijf zuidlaren" van 6,5 naar pagina 1 (top 5).
+### Optimalisatie i.p.v. nieuwbouw
+1. **Instroom verhogen:** Ads vaker naar prijsindicatie laten landen i.p.v. home
+   (zie Ads-escalatie); interne CTA "richtbedrag in 2 minuten" boven de vouw op
+   home + stadspagina's.
+2. **Stap-drop-off meten:** als de funnel-events (`wizard_start` →
+   `calculator_result` → `wizard_lead_submit`) per stap worden uitgelezen, wijst
+   dat de zwakste stap aan. Vervolgvraag voor Analytics.
+3. **E-mail/lead-koppeling:** de wizard vraagt al om contact bij submit
+   (`wizard_lead_submit`); houd het richtbedrag expliciet **vrijblijvend en excl.
+   btw** (staat al in sitelink-copy) om bindendheid te vermijden.
 
-**Taak 3 — Hoogeveen over de pagina-1-grens duwen.**
-Doel-URL: `vloerverwarming-hoogeveen.html` + interne links.
-- Voeg minstens 2 interne links met exacte ankertekst "vloerverwarming
-  Hoogeveen" toe vanuit `index.html` (`#drenthe-hub` heeft al een link — maak de
-  ankertekst exact) en vanuit een zusterpagina (bv. Emmen/Assen "Ook actief in").
-- Voeg onderaan een korte FAQ toe (2–3 vragen: "Werken jullie ook in
-  Hollandscheveld/Fluitenberg?", "Wat kost vloerverwarming in Hoogeveen?") en
-  markeer met `FAQPage`-schema. De subdorpen ranken al mee; dit consolideert.
-- Succes: "vloerverwarming hoogeveen" van 10,6 naar <10; CTR > 0.
+### Risico's en aandachtspunten
+Bestaande implementatie dekt dit grotendeels af (vrijblijvendheid, btw-vermelding).
+Aandachtspunt blijft: een richtbedrag mag niet als offerte ogen — bewaak de
+disclaimer-tekst bij elke copy-wijziging.
 
-**Taak 4 — Title/meta-CTR op homepage voor "vloerverwarming drenthe".**
-Doel-URL: `index.html` (interim, vóór taak 5).
-- Homepage-title is nu "Vloerverwarming Zuidlaren & Noord-NL — installateur |
-  VLWarmte". Overweeg "Drenthe" expliciet in title/description op te nemen zolang
-  er nog geen dedicated pagina is, bv. description-opening:
-  "Vloerverwarming in Drenthe, Groningen en Friesland — het hele traject van
-  ondervloer tot oplevering…". Lage inspanning, houdt de term warm.
-- Succes: positie "vloerverwarming drenthe" beweegt; meet vóór taak 5 live gaat.
+### Aanbeveling aan Product Manager
+- Prioriteit: **Midden** (tool bestaat; optimaliseren, niet bouwen).
+- Ontwikkeltijd: 0 voor nieuwbouw; ~2–4u voor instroom-CTA's + funnel-drop-off-
+  rapport (Analytics).
+- Verwacht effect op leads: meer entry-sessies op de 44%-pagina = directe leadwinst
+  bij gelijk budget.
 
-**Taak 5 (groter, optioneel deze sprint) — dedicated `vloerverwarming-drenthe.html`.**
-- Nieuwe pagina naar model van de bestaande stadspagina's (zelfde head/schema-
-  patroon, `Service` + `areaServed` = "Drenthe", canonical naar nieuwe URL).
-- H1 "Vloerverwarming Drenthe"; content over provinciedekking; **interne links
-  naar én vanuit** alle stadspagina's (Assen, Hoogeveen, Emmen, plus Meppel/
-  Beilen als die later komen). Zet de homepage-`#drenthe-hub` om naar een korte
-  teaser die naar deze pagina linkt (voorkomt nieuwe cannibalisatie).
-- Succes: nieuwe pagina pakt de 82 impr over en stijgt richting top 20, daarna
-  verder. Dit is de enige structurele fix voor de grootste regioterm.
+## Google Ads — advies (ESCALATIE: geen verificatie/mutatie deze ronde)
 
-## 4. Google Ads-advies (escalatie — GEEN mutaties uitgevoerd)
+Scripts geblokkeerd in deze mode. Onderstaande staat klaar voor een sessie met
+Ads-permissies (of handmatig). Onderbouwing uit data ongewijzigd sinds 15 jun:
+GA4-geo toont **44 sessies buiten kerngebied** (North Holland 25 + South Holland
+11 + Brabant 8) — bijna evenveel als Drenthe (33). Live campagne "VLW-API-Leads NL
+auto" (id 23834672782, EUR 2/dag) draait landelijk, terwijl de geo-defaults wél
+Drenthe/Groningen/Friesland zijn → vermoedelijk budgetlek.
 
-Onderbouwing uit data: GA4-geo toont **25 sessies North Holland en 11 South
-Holland** — samen 36 sessies (28% van het verkeer) buiten het kerngebied. De
-live campagne heet "VLW-API-Leads NL auto" (id 23834672782, EUR 2/dag) en draait
-dus **landelijk**, terwijl `google_ads_lead_campaign_defaults.json` juist
-Drenthe/Groningen/Friesland als geo-constants heeft staan
-(`geoTargetConstants/20759, 20763, 20761`). Het buiten-regio-verkeer is vrijwel
-zeker (deels) betaald = budgetlek bij een dagbudget van EUR 2.
+**Stap 0 — verifiëren (read-only):**
+```
+python scripts/google_ads_list_campaigns.py
+```
+Bevestig id, status (ENABLED?), kanaaltype en of de geo al is aangescherpt.
 
-**Aanbeveling 1 — geo van de live campagne aanscherpen naar het kerngebied.**
-De eigenaar kan dit later handmatig draaien (script bestaat in repo):
+**Aanbeveling 1 — geo aanscherpen naar kerngebied** (stopt budgetlek):
 ```
 python scripts/google_ads_update_campaign_geo.py --campaign-id 23834672782 --dry-run
 python scripts/google_ads_update_campaign_geo.py --campaign-id 23834672782 --apply
 ```
-Dit vervangt de positieve LOCATION-criteria door de geo-lijst uit defaults
-(Drenthe/Groningen/Friesland). Verwacht effect: minder verspilling, hogere
-lead-relevantie bij gelijk budget.
 
-**Aanbeveling 2 — landingsafstemming is al goed; bewaken.** De final URLs zijn
-sinds 2026-06-01 beperkt tot offerte-deeplink + prijsindicatie (omdat brede URLs
-op de homepage met 67% bounce landden). Prijsindicatie presteert sterk
-(bounce 0,32, lange sessieduur) — laat staan. Geen wijziging nodig.
+**Aanbeveling 2 — landing richting prijsindicatie sturen.** GA4 toont prijsindicatie
+44% conv vs. home 23%. De final_urls in defaults zijn al beperkt tot
+offerte-deeplink + prijsindicatie (goed); overweeg in de live RSA de
+prijsindicatie als **primaire** landing voor de research-intentie-adgroep. RSA in
+Ads UI handmatig syncen (geen update-script).
 
-**Aanbeveling 3 — zoektermen oogsten na geo-fix.** Na 2–4 weken het
-zoektermenrapport herlezen: de organische "bijna pagina 1"-termen
-(installatiebedrijf/installateur zuidlaren) en subdorpen kunnen als negatieven
-óf juist als nieuwe keywords dienen, afhankelijk van intentie. Keyword-toevoegen
-kan later met:
-```
-python scripts/google_ads_add_keywords_from_defaults.py --campaign-id 23834672782 --dry-run
-```
-(voegt alleen ontbrekende keywords uit defaults toe; verwijdert niets.)
+**Aanbeveling 3 — verkeersdaling verifiëren.** Sessies vielen ~90% terug sinds de
+piek (27 apr 172 → 1 jun 16). Check of dit bewust lager budget is of zomerseizoen
+(vloerverwarming is winterproduct). Bij EUR 2/dag is dat plausibel budgetgedreven.
 
-**Niet doen zonder expliciete spend-goedkeuring:** budget verhogen of `--go-live`
-op nieuwe campagnes. Huidig dagbudget EUR 2 respecteren.
+**Niet doen zonder expliciete spend-goedkeuring:** budget verhogen of `--go-live`.
+Huidig dagbudget EUR 2 respecteren. Geen tokens/secrets in output.
 
-## 5. Top 5 aanbevolen acties (geprioriteerd op lead-impact × haalbaarheid <4u)
+## Aanbevelingen voor de Product Manager (geprioriteerd, max 8)
 
-1. **(SEO, Dev — <2u)** Zuidlaren-cannibalisatie oplossen via interne links +
-   exacte ankertekst naar `vloerverwarming-zuidlaren.html` (Taak 1). Hoogste
-   ratio: term staat op 9,3, dichtbij pagina 1, thuisbasis.
-2. **(Ads, Eigenaar — <30min)** Geo van live campagne 23834672782 beperken tot
-   Drenthe/Groningen/Friesland (Aanbeveling 1). Stopt direct budgetlek (28%
-   verkeer buiten regio).
-3. **(SEO, Dev — <1u)** Contentblok "Installatiebedrijf in Zuidlaren" op de
-   homepage (Taak 2). Term op 6,5; kleine ingreep, top-5 haalbaar.
-4. **(SEO, Dev — <2u)** Hoogeveen-pagina versterken met interne links + FAQ-
-   schema (Taak 3). Term op 10,6; subdorpen ranken al mee.
-5. **(SEO, Dev — <30min interim)** "Drenthe" in homepage-title/description tot
-   een dedicated pagina er is (Taak 4); plan Taak 5
-   (`vloerverwarming-drenthe.html`) als grotere vervolgactie voor de term met de
-   meeste latente vraag (82 impr).
+1. **(SEO/Dev — <2u, Hoog) Zuidlaren-cannibalisatie afmaken/verifiëren.** Type:
+   Content update + interne links. Onderbouwing: 33 impr @ 9,3, thuisbasis,
+   signaal versnipperd over 5+ URL's (home 6,6 / diensten 16,6 / prijsindicatie
+   19,4). Actie: exacte ankertekst "vloerverwarming Zuidlaren" naar de dedicated
+   pagina vanuit home/diensten/prijsindicatie; controleer of de vorige sprinttaak
+   (cyclus 17) al live staat in GSC bij de volgende fetch.
+2. **(SEO/Dev — 0,5–1 dag, Hoog) Dedicated `vloerverwarming-drenthe.html`.** Type:
+   Nieuwe pagina. Onderbouwing: 82 impr @ 66, grootste regioterm, geen kanonieke
+   pagina, signaal lekt over 4 URL's. Actie: nieuwe pagina naar model stadspagina's
+   (`Service` + `areaServed="Drenthe"`, canonical), interne links van/naar alle
+   stadspagina's; zet `#drenthe-hub` op home om naar een teaser die hierheen linkt
+   (voorkomt nieuwe cannibalisatie). Hoogste plafond, structurele gratis leadbron.
+3. **(SEO/Dev — <1u, Hoog) CTR-/snippet-fix top-3-termen.** Type: SEO (title/meta).
+   Onderbouwing: installateur (3,7), elektricien (2,2), laren (3,0) staan top-3 met
+   0 clicks; warmtepomp zuidlaren (1,8) haalt mét goede snippet 25% CTR. Actie:
+   title + meta van home + `vloerverwarming-zuidlaren.html` herschrijven zodat de
+   SERP-snippet uitnodigt tot klikken (USP + plaats + CTA). Gratis verkeer
+   ontsluiten dat nu blijft liggen.
+4. **(SEO/Dev — <1u, Hoog) www-/non-www ranking-splitsing laten controleren.**
+   Type: Technische SEO. Onderbouwing: GSC toont `vlwarmte.nl/` op pos 5,6 én
+   `www.vlwarmte.nl/` op pos 52,8 voor dezelfde homepage — ranking-signalen worden
+   verdund. Actie: canonical/redirect naar één hostvariant verifiëren (301 non-www
+   → www of andersom, consistent met canonical-tags). Mogelijk de grootste
+   onzichtbare hefboom: één homepage die op 5,6 staat i.p.v. gesplitst.
+5. **(CRO/Dev — 2–4u, Midden) Meer instroom naar prijsindicatie + home-bounce.**
+   Type: CTA/conversie. Onderbouwing: prijsindicatie 44% conv maar 9 entry-sessies;
+   home 67% bounce op 115 entry-sessies. Actie: prominente "richtbedrag in 2
+   minuten"-CTA boven de vouw op home en stadspagina's die naar de wizard linkt.
+6. **(SEO/Dev — <1u, Midden) Friesland- en Emmen-subdorpen aanhaken.** Type:
+   Content update + interne links. Onderbouwing: friesland 87,7 / heerenveen 50,4 /
+   schoonebeek 61,5 hangen bij verkeerde URL's. Actie: exacte ankertekst-links naar
+   `vloerverwarming-leeuwarden.html` (Friesland) en `vloerverwarming-emmen.html`
+   (Schoonebeek/Elim) vanuit zuster- en hubpagina's.
+7. **(Ads/Escalatie — <30min, Hoog zodra permissies) Geo aanscherpen + status
+   checken.** Type: Ads. Onderbouwing: 44 sessies buiten kerngebied bij EUR 2/dag.
+   Actie: `list_campaigns` → `update_campaign_geo` (commando's hierboven). Vraagt
+   een sessie met Ads-permissies; niet uit te voeren in deze mode.
+8. **(Proces — Hoog) GA4-fetch + WebSearch/Ads-permissies herstellen.** Type:
+   Infra. Onderbouwing: deze cyclus kon geen verse GA4, geen webonderzoek en geen
+   live Ads-state ophalen (Python-versie + don't-ask-mode). Actie: venv-runner
+   (3.10+) whitelisten voor `ga4_fetch.py`, en een Ads-/research-sessie met
+   netwerk- en script-permissies inplannen zodat zoekvolumes, concurrent-SERP's en
+   live campagnestatus geverifieerd worden.
 
 ---
 
 ### Samenvatting voor de Product Manager (max 5 regels)
-- Leads draaien op betaald + direct; organisch (0 conv) is onbenut terwijl drie
-  termen net buiten pagina 1 hangen (zuidlaren 9,3 / installatiebedrijf 6,5 /
-  hoogeveen 10,6) — kleine on-page ingrepen, grote kans.
-- Snelste winst: Zuidlaren-cannibalisatie oplossen via interne links/ankertekst
-  (één dedicated pagina als winnaar aanwijzen).
-- Grootste latente vraag: "vloerverwarming drenthe" (82 impr @ 66) heeft een
-  eigen landingspagina nodig — groter werk, hoogste plafond.
-- Ads-budgetlek: live campagne draait NL-breed (25 sessies North Holland) terwijl
-  geo-defaults het kerngebied zijn — eigenaar kan geo aanscherpen met het
-  `update_campaign_geo`-script (commando staat klaar). Geen mutaties uitgevoerd.
-- 5 acties klaargezet, alle <4u; 4 voor de Developer-sprint, 1 handmatige Ads-fix
-  voor de eigenaar.
+- **Modus:** autonoom, WebSearch + Ads-scripts geblokkeerd → analyse op echte
+  repo-data; verse zoekvolumes, concurrent-SERP's en live Ads-state staan als
+  escalatie met klaargezette commando's.
+- **Grootste gratis kansen (ongewijzigd):** drie termen net buiten pagina 1
+  (zuidlaren 9,3 / installatiebedrijf 6,5 / hoogeveen 10,6) + de dedicated
+  `vloerverwarming-drenthe.html` voor de term met de meeste latente vraag (82 impr).
+- **Twee nieuwe technische hefbomen:** CTR-/snippet-fix (top-3-termen halen 0 clicks)
+  en de **www-/non-www ranking-splitsing** op de homepage (5,6 vs 52,8) — beide
+  klein werk, mogelijk groot effect, los van content.
+- **Prijscalculator-vraag is achterhaald:** de wizard bestaat al en is de
+  44%-conversiepagina; focus op méér instroom (Ads + CTA) i.p.v. nieuwbouw.
+- **Ads:** vermoedelijk budgetlek (44 sessies buiten kerngebied bij EUR 2/dag) +
+  ~90% verkeersdaling sinds de piek — geo aanscherpen en status checken zodra een
+  sessie met Ads-permissies draait; budget niet verhogen zonder goedkeuring.

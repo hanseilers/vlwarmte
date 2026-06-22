@@ -1,157 +1,162 @@
-# Analytics Rapport — 15 juni 2026
+# Analytics Rapport — 22 juni 2026 (cyclus 18)
 
-**Periode GA4:** 30 dagen (verkeer/conversies), momentopname 8 jun 2026
-**Periode GSC:** 25 apr – 22 mei 2026 (28 dagen), opgehaald 23 mei 2026
+> **PM-CORRECTIE (22 jun, na schrijven van dit rapport): GA4-data is alsnog ververst.**
+> De PM heeft de fetch-blokkade opgelost (`from __future__ import annotations` in `scripts/ga4_fetch.py` → nu Python 3.9-compatibel) en verse data opgehaald (`ga4_report.json`, generated 2026-06-22T06:09). **De cijfers in de tabellen hieronder (8 juni-momentopname) zijn dus achterhaald.** Verse kernbevindingen:
+> - **Verkeer is bijna volledig ingestort:** weektrend 15–21 jun = **1 sessie** (vorige weken 15–16). De Google Ads-leadmotor lijkt gepauzeerd of zonder budget.
+> - **Conversies 30d gedaald van 35 → 9** (google/cpc 6 + direct 3; organic 0).
+> - **www/non-www is al correct:** `vlwarmte.nl` → `www.` (301), canonical wijst naar www — geen fix nodig, GSC-split is historisch en consolideert vanzelf.
+> - Home: 36 sessies, 94 sec, 61% bounce. Prijsindicatie: 9 sessies, **362 sec** duur, 22% bounce (sterkste pagina, te weinig instroom).
+> - Geo: Drenthe 13 / Groningen 8 / Friesland 7 = 28 kern; North+South Holland 12 buiten kern.
+> **Urgentste actie deze cyclus: eigenaar moet Ads-campagnestatus/budget checken — de leadstroom is feitelijk stilgevallen.**
+
+**Periode GA4:** 30 dagen, momentopname **8 juni 2026** (niet ververst — zie waarschuwing)
+**Vorige sprint:** cyclus 17 (15 juni) — SEO-cannibalisatie Zuidlaren, installatiebedrijf-blok, Hoogeveen FAQ-schema, home title/meta + prijsindicatie-CTA
 **Focus:** leadgeneratie voor vloerverwarming in Noord-Nederland
 
 ---
 
 ## Datawaarschuwing (lees dit eerst)
 
-De cijfers in dit rapport zijn **verouderd** en deze cyclus **niet ververst**:
+**De GA4-data is niet ververst en is nu twee weken oud (8 juni).** De fetch kon opnieuw niet draaien: in de autonome modus is het uitvoeren van Python (`.venv/bin/python scripts/ga4_fetch.py`) geblokkeerd — alleen lezen en read-only shell-commando's (zoals `grep`) zijn toegestaan. Dit is exact de escalatie die in cyclus 17 al als hoogste prioriteit stond en die nog steeds open is.
 
-- **GA4-data is van 8 juni** (ruim een week oud). De fetch kon niet draaien: de systeem-Python is 3.9, het script `scripts/ga4_fetch.py` vereist 3.10+, en de venv-runner mag niet worden gestart in deze autonome modus. De getoonde 30-daagse cijfers lopen dus feitelijk t/m begin juni.
-- **GSC-data is van 23 mei** (bijna vier weken oud) en dekt 25 apr – 22 mei. Posities en impressies kunnen inmiddels verschoven zijn.
-- De twee bronnen dekken **niet exact dezelfde periode**. Vergelijk kanalen en SEO niet één-op-één.
+Gevolg: de cijfers hieronder zijn **identiek aan die van cyclus 17**. Ik kan dus **niet** meten of de cyclus-17-wijzigingen effect hebben gehad — daar is verse data voor nodig. Behandel alle conclusies als richting, niet als actuele stand.
 
-Behandel alle conclusies als richting, niet als harde actuele stand. Eerste prioriteit voor de volgende cyclus: GA4-fetch weer werkend krijgen (Python 3.10+ in een toegestane venv).
+**Wat ik wél kon doen:** controleren of de cyclus-17-wijzigingen live in de HTML staan (zie volgende sectie) en op basis daarvan de voorstellen aanscherpen.
 
----
-
-## Kerncijfers (30d, per 8 jun)
-
-| Metric                     | Waarde            | Opmerking                                    |
-| -------------------------- | ----------------- | -------------------------------------------- |
-| Sessies (30d)              | ~149 (top-bronnen)| desktop 72 / mobile 59 / tablet 18           |
-| Conversies (30d)           | 35 totaal         | google/cpc 22 + direct 13                    |
-| Gem. sessieduur home       | 47,6 sec          | matig — bezoeker overtuigt nog te traag      |
-| Bounce home                | 67%               | net onder de zorggrens van 70%               |
-| Bounce prijsindicatie      | 32%               | sterk — dit is de werkpaardpagina            |
-
-Conversie-aandeel: **google/cpc + direct samen ~100% van de leads**. Organic search en social leveren in deze periode **0 conversies**.
+> **Escalatie #1 (onverminderd hoogste prioriteit):** GA4-fetch werkend krijgen. Zonder dit blijft de hele cyclus elke week op dezelfde verouderde momentopname sturen en kan geen enkel sprinteffect gemeten worden. Oplossing: óf de venv-runner (`.venv/bin/python`) toestaan in de autonome-modus-permissies, óf het script door de eigenaar handmatig laten draaien vóór de PM-cyclus zodat `ga4_report.json` vers is.
 
 ---
 
-## Belangrijkste bevindingen (leadgeneratie)
+## Vorige sprint: wat staat er live? (HTML-verificatie)
 
-- **Google Ads is de motor.** google/cpc = 85 sessies en **22 conversies** — verreweg de grootste leadbron. Stopt of zakt dit kanaal, dan zakt de leadstroom mee.
-- **Direct verkeer converteert opvallend goed:** 42 sessies, **13 conversies** (~31% conversieratio). Dit is deels merkbekendheid, deels waarschijnlijk Ads-bezoekers die later direct terugkomen. Een betrouwbare tweede leadbron.
-- **Organisch levert nul leads.** 9 organic sessies, 0 conversies. Veel SEO-impressies (zie GSC), maar posities te laag om klikken — laat staan leads — op te leveren. Onbenut potentieel.
-- **Prijsindicatie is de sterkste conversiepagina.** Lange sessieduur (100 sec, op 90d zelfs 132 sec), lage bounce (32%), 4 conversies als entry page. Bezoekers die hier landen, doen iets.
-- **Home draagt het leeuwendeel van de leads** (27 conversies als entry page) maar verliest met 67% bounce twee op de drie bezoekers direct. Grootste hefboom zit hier.
-- **Sterke verkeersdaling eind mei/juni** (zie aparte sectie) — signaal dat de leadmotor terugloopt.
+Zonder verse data is het beste signaal of de implementatie correct deployed is. Gecontroleerd in de live HTML:
 
----
+| Cyclus-17-taak | Status in HTML | Bewijs |
+| --- | --- | --- |
+| Home title "Vloerverwarming Drenthe, Groningen & Friesland" | ✅ live | `index.html` regel 9 |
+| Home description met "Drenthe" expliciet | ✅ live | `index.html` regel 10-11 |
+| Hero-CTA naar prijsindicatie + offerte-deeplink boven de vouw | ✅ live | `index.html` regel 81-84 |
+| Anker "vloerverwarming Zuidlaren" in hero-lead | ✅ live | `index.html` regel 79 |
+| Contentblok "Installatiebedrijf in Zuidlaren" | ✅ live | `index.html` regel 196 (H2) |
+| FAQPage-schema op Hoogeveen-pagina | ✅ live | `vloerverwarming-hoogeveen.html` (1× `FAQPage`) |
 
-## Conversie-analyse: wat levert leads, wat lekt
-
-**Levert leads:**
-
-| Kanaal / pagina        | Sessies | Conversies | Ratio   | Oordeel                         |
-| ---------------------- | ------- | ---------- | ------- | ------------------------------- |
-| google / cpc           | 85      | 22         | ~26%    | Hoofdmotor                      |
-| direct / (none)        | 42      | 13         | ~31%    | Sterke tweede bron              |
-| Home als entry page    | 115     | 27         | ~23%    | Volume-leverancier              |
-| Prijsindicatie (entry) | 9       | 4          | ~44%    | Hoogste kwaliteit, te weinig volume |
-| Werkwijze (entry)      | 2       | 4          | zeer hoog| Klein maar overtuigt sterk     |
-
-**Lekt:**
-
-- **Home bounce 67%.** Veruit het grootste lek in absolute aantallen: van 115 entry-sessies vertrekken er ~78 zonder actie. Eén procentpunt minder bounce hier weegt zwaarder dan welke optimalisatie elders ook.
-- **Organic search: 9 sessies, 0 conversies.** Het verkeer dat binnenkomt is of te koud, of landt op de verkeerde pagina.
-- **Prijsindicatie krijgt te weinig instroom** (9 entry-sessies) terwijl het de beste ratio heeft. Meer bezoekers naar deze pagina sturen = meer leads bij gelijke moeite.
-- **Werkwijze** converteert uitstekend maar trekt amper 2 entry-sessies — onzichtbaar in de funnel.
-
-**Voor de Marketing Research Agent:** google/cpc draagt de leadgeneratie. Aanbevolen vervolgvragen: (1) welke campagnes/zoektermen leveren die 22 conversies, (2) landen Ads-klikken op home of op prijsindicatie — gezien de veel hogere ratio van prijsindicatie kan landingsafstemming richting prijsindicatie/werkwijze de cost-per-lead verlagen, (3) zie geo-sectie over mogelijke verspilling. Koppelstappen: `.cursor/skills/google-ads-marketing/SKILL.md`, sectie GA4 ↔ Ads.
+Conclusie: alle vijf cyclus-17-taken staan correct live. Het **meten** van het effect (GSC-posities zuidlaren/hoogeveen/installatiebedrijf, home-bounce, prijsindicatie-instroom) kan pas zodra GA4 + GSC ververst zijn. Dat is de eerste taak van de PM/eigenaar deze week.
 
 ---
 
-## SEO-bevindingen uit GSC
+## Kerncijfers (30d, per 8 jun — ongewijzigd t.o.v. cyclus 17)
 
-CTR is **vrijwel overal 0**: veel impressies, posities te laag om geklikt te worden. De site is zichtbaar maar staat op de verkeerde plek. Concreet:
+| Metric | Waarde | Opmerking |
+| --- | --- | --- |
+| Sessies (30d, top-bronnen) | ~149 | desktop 72 / mobile 59 / tablet 18 |
+| Conversies (30d) | 35 totaal | google/cpc 22 + direct 13 |
+| Gem. sessieduur home | 47,6 sec | matig — overtuigt traag |
+| Bounce home | 67% | net onder de zorggrens van 70% |
+| Bounce prijsindicatie | 32% | sterk — de werkpaardpagina |
 
-### Bijna-pagina-1 kansen (laaghangend fruit — kleine zet, groot effect)
+Conversie-aandeel: **google/cpc + direct samen ~100% van de leads**. Organic search en social: **0 conversies**.
 
-| Zoekterm                     | Impressies | Positie | Kans                                            |
-| ---------------------------- | ---------- | ------- | ----------------------------------------------- |
-| installatiebedrijf zuidlaren | 20         | 6,5     | Al op pagina 1, net niet in de kliks-zone. Push naar top 3. |
-| vloerverwarming zuidlaren    | 33         | 9,3     | Thuisbasis, randje pagina 1. Hoogste prioriteit — meeste impressies binnen bereik. |
-| vloerverwarming hoogeveen    | 8          | 10,6    | Eigen pagina bestaat al, staat net op pagina 2. Klein duwtje = pagina 1. |
-| installateur zuidlaren       | 9          | 3,7     | Bijna top 3, maar 0 clicks — title/meta CTR-probleem. |
-| elektricien zuidlaren        | 5          | 2,2     | Top 3, 0 clicks. CTR-lek (title/meta).          |
-| warmtepomp zuidlaren         | 4          | 1,8     | Positie 1-2, levert wél 1 click (25% CTR) — bewijs dat top-posities hier wél klikken opleveren. |
+## Top pagina's (sessies, 30d)
 
-**Patroon:** zodra een term in de top 3 staat, blijven klikken alsnog uit op alle termen behalve warmtepomp zuidlaren. Dat wijst op een **CTR-/snippet-probleem** (title + meta description) bovenop het positieprobleem. Markeer als **CTA-/snippet-kans**: title en meta van home + zuidlaren-pagina herschrijven zodat ze in de SERP uitnodigen tot klikken.
+| Pagina | Sessies | Gem. duur | Bounce |
+| --- | --- | --- | --- |
+| / (home) | 121 | 48 sec | 67% |
+| /prijsindicatie.html | 22 | 100 sec | 32% |
+| /contact.html | 11 | 30 sec | 27% |
+| /projecten.html | 10 | 20 sec | 60% |
+| /diensten.html | 5 | 32 sec | 0% |
+| /werkwijze.html | 5 | 266 sec | 0% |
 
-### Grote zwakte (kerngebied-term presteert ondermaats)
+## Zwakste pagina's (laag verkeer / hoge bounce / korte duur)
 
-- **"vloerverwarming drenthe": 82 impressies @ positie 65,7 — 0 clicks.** Dit is een **kernterm voor het hele werkgebied** met de meeste impressies van alle queries, maar de positie is dramatisch (pagina 6-7). Dieper in de data blijkt waarom: de term landt **versnipperd** over meerdere pagina's — home (57 impr @ 63,4), prijsindicatie (49 @ 71,1), diensten (13 @ 77,2), faq (4 @ 68,8). Er is **geen sterke kanonieke "vloerverwarming Drenthe"-pagina**; Google weet niet welke pagina te tonen. Markeer als **grootste SEO-kans van deze sprint**: één duidelijke Drenthe-landingspagina (of home stevig optimaliseren op deze term) en interne links erheen bundelen.
-- **"vloerverwarming friesland": 10 impr @ 87,7** — zeer slecht, ondanks bestaande Leeuwarden-pagina. Friesland-dekking is zwak.
-- **www vs non-www versnippering:** GSC toont losse rijen voor `vlwarmte.nl/` (positie 5,6) én `www.vlwarmte.nl/` (positie 52,8) voor dezelfde homepage. De www-variant rankt veel slechter. Mogelijk canonical-/redirect-probleem dat ranking-signalen verdunt — waard om te laten controleren.
+| Pagina | Signaal |
+| --- | --- |
+| /projecten.html | 20 sec sessieduur, 60% bounce — bezoekers haken snel af; weinig overtuigingskracht |
+| Stadspagina's (assen, groningen, leeuwarden) | 1-2 sessies elk, deels <10 sec duur — nauwelijks instroom, dunne funnel |
+| /faq.html | 13 sec duur — bezoekers vinden hun antwoord niet of scrollen niet |
 
----
+## Traffic bronnen (30d)
 
-## Mogelijke Ads-geo-verspilling (hypothese)
-
-**North Holland: 25 sessies — de op-één-na-grootste regio, buiten het kerngebied.** Het bedrijf werkt vanuit Zuidlaren met focus op Drenthe, Groningen, Friesland (en deel Overijssel). North Holland (25), South Holland (11) en North Brabant (8) zijn samen **44 sessies buiten de doelregio** — bijna evenveel als Drenthe (33) zelf.
-
-**Hypothese:** Google Ads serveert (deels) buiten het kerngebied, of de geo-targeting staat op heel NL. Dat zou betekenen dat budget wegloopt naar bezoekers die nooit klant worden (te ver weg voor uitvoering). Te verifiëren door de Marketing Research Agent: staat de campagne-geo strak op Noord-NL? Zo niet, dan is hier waarschijnlijk cost-per-lead te winnen. **Signaal, geen bewijs** — het kan ook organisch of via gedeelde links binnenkomen.
-
----
-
-## Verkeersdaling (signaal)
-
-Wekelijkse sessies lopen sterk terug:
-
-| Week (start) | Sessies |
-| ------------ | ------- |
-| 27 apr       | 172     |
-| 4 mei        | 75      |
-| 11 mei       | 49      |
-| 18 mei       | 56      |
-| 25 mei       | 15      |
-| 1 jun        | 16      |
-
-Van 172 naar ~15-16 per week — een daling van ruim 90% sinds de piek. De piek van 27 apr was waarschijnlijk een campagne-uitschieter.
-
-**Plausibele oorzaken (niet bevestigd):**
-
-1. **Ads-budget verlaagd of campagne gepauzeerd** — meest waarschijnlijk, want google/cpc is de hoofdmotor en de daling is abrupt. Eerst checken.
-2. **Seizoen** — vloerverwarming is een winterproduct; richting de zomer (juni) zakt de zoekvraag natuurlijk. Verklaart een geleidelijke daling, niet de scherpe knik.
-3. **Combinatie:** lager Ads-budget bovenop dalende zomervraag.
-
-Actie: laat de Marketing Research Agent het Ads-budget/-status van eind mei controleren. Als budget bewust verlaagd is, is de daling verklaard; zo niet, dan loopt er mogelijk iets mis.
+| Kanaal | Sessies | Conversies | Ratio |
+| --- | --- | --- | --- |
+| google / cpc (Cross-network) | 85 | 22 | ~26% |
+| direct / (none) | 42 | 13 | ~31% |
+| google / organic | 9 | 0 | 0% |
+| facebook (social, alle varianten) | 7 | 0 | 0% |
+| overig (not set / unassigned) | ~6 | 0 | 0% |
 
 ---
 
-## Aanbevelingen voor deze sprint (max 5)
+## Observaties
 
-**1. Kanonieke "vloerverwarming Drenthe"-pagina opzetten + interne links bundelen** — SEO-kans
-- Data: 82 impressies @ positie 65,7, versnipperd over 4 pagina's, 0 clicks. Grootste kernterm zonder sterke pagina.
-- Verwacht effect: van pagina 6-7 naar pagina 2-3 haalbaar bij gebundelde signalen; bij doorzetten richting pagina 1 een structurele organische leadbron in het hele werkgebied. Geschat: enkele extra organische leads/maand op termijn.
-
-**2. Title + meta van home en zuidlaren-pagina's herschrijven voor CTR** — CTA-/snippet-kans
-- Data: installateur zuidlaren (3,7), elektricien zuidlaren (2,2) staan in top 3 maar leveren 0 clicks; warmtepomp zuidlaren (1,8) levert mét goede snippet 25% CTR. Bewijs dat snippet het verschil maakt.
-- Verwacht effect: bestaande top-3-posities omzetten in klikken. Bij ~50 impressies op deze termen en zelfs 10% CTR = enkele extra bezoekers/week uit gratis verkeer.
-
-**3. Meer Ads-verkeer naar prijsindicatie sturen i.p.v. alleen home** — CTA-/conversiekans
-- Data: prijsindicatie entry-conversie ~44% vs home ~23%; prijsindicatie krijgt maar 9 entry-sessies. Bounce 32% vs 67%.
-- Verwacht effect: bij gelijk Ads-budget meer leads, want hogere conversieratio. Te coördineren met Marketing Research Agent (landingsafstemming).
-
-**4. Home-bounce van 67% terugdringen** — CTA-kans
-- Data: home is grootste entry page (115 sessies) met 67% bounce; ~78 bezoekers vertrekken zonder actie. Sessieduur slechts 47 sec.
-- Verwacht effect: elk procentpunt bounce minder = ~1 extra bezoeker die doorklikt. Sterkere boven-de-vouw CTA / prijsindicatie-knop direct in beeld kan enkele extra leads/maand opleveren.
-
-**5. Ads-geo strak op Noord-NL laten zetten** — efficiëntiekans
-- Data: 44 sessies (North Holland 25 + South Holland 11 + Brabant 8) buiten kerngebied, vrijwel evenveel als Drenthe (33).
-- Verwacht effect: geen directe leadgroei, maar lagere cost-per-lead — budget verschuift naar bezoekers die wél klant kunnen worden. Eerst verifiëren of dit Ads of organisch is (Marketing Research Agent).
+1. **Google Ads + direct dragen vrijwel alle leads** (22 + 13 van 35). Zakt het Ads-kanaal, dan zakt de leadstroom mee. Direct converteert zelfs nog iets beter (~31%) — deels merkbekendheid, deels Ads-bezoekers die terugkomen.
+2. **Organisch levert nog steeds 0 leads** (9 sessies, 0 conv). De cyclus-17-SEO-ingrepen (zuidlaren/hoogeveen, title/meta-CTR) moeten dit op termijn verbeteren, maar of dat lukt is **niet meetbaar zonder verse GSC/GA4-data**.
+3. **Prijsindicatie is de sterkste conversiepagina** (entry-conversie ~44%, bounce 32%, 100-132 sec duur) maar krijgt te weinig instroom (9 entry-sessies). De cyclus-17-CTA naar prijsindicatie staat nu boven de vouw — effect hierop is de belangrijkste te meten KPI zodra data vers is.
+4. **Home is het grootste lek én de grootste hefboom:** 115 entry-sessies, 67% bounce → ~78 bezoekers vertrekken zonder actie. Eén procentpunt bounce minder weegt hier zwaarder dan elke andere optimalisatie.
+5. **Verkeer daalde ruim 90% sinds de piek van 27 apr** (172 → ~15-16/week). Plausibel: lager Ads-budget en/of zomerseizoen. Nog steeds onverklaard/onbevestigd — moet door Marketing Research Agent geverifieerd worden in het Ads-account.
+6. **Mogelijke geo-verspilling in Ads:** North Holland (25) + South Holland (11) + Brabant (8) = 44 sessies buiten kerngebied, bijna evenveel als Drenthe (33). De geo-defaults staan al op Drenthe/Groningen/Friesland, maar de live campagne (id 23834672782) draait mogelijk nog NL-breed — escalatie uit cyclus 17, nog niet bevestigd doorgevoerd.
 
 ---
 
-## Samenvatting voor Product Manager (max 5 regels)
+## Voorstellen voor Product Manager
 
-1. **Datawaarschuwing:** GA4 van 8 jun, GSC van 23 mei — niet ververst (Python 3.9 vs vereist 3.10+); behandel als richting, fix de fetch volgende cyclus.
-2. **Leadmotor = Google Ads (22 conv) + direct (13 conv); organisch levert 0 leads** ondanks veel SEO-impressies op te lage posities.
-3. **Grootste SEO-kans:** "vloerverwarming drenthe" (82 impr @ 65,7, versnipperd over 4 pagina's) → één kanonieke pagina; plus title/meta-CTR-fix voor zuidlaren-termen die wél top-3 staan.
-4. **Verkeer daalt ruim 90% sinds piek 27 apr** — waarschijnlijk lager Ads-budget en/of zomerseizoen; laat Marketing Research Agent Ads-status checken.
-5. **Mogelijke Ads-geo-verspilling** (44 sessies buiten Noord-NL) — signaal, te verifiëren; en stuur Ads liever naar prijsindicatie (44% conv) dan alleen home (23%).
+> Max 10, gesorteerd op prioriteit. Door de databevriezing is voorstel 1 (fetch repareren) de randvoorwaarde voor alle metingen; de overige bouwen voort op de bevroren 8-juni-data en de openstaande cyclus-17-kansen.
+
+**1. GA4-fetch repareren — randvoorwaarde voor de hele cyclus**
+- Prioriteit: **Hoog**
+- Onderbouwing: data is nu 2 weken oud en al twee cycli niet ververst; geen enkel sprinteffect (cyclus 17) is meetbaar zonder verse cijfers.
+- Actie: venv-Python (`.venv/bin/python`) toestaan in de autonome-modus-permissies, óf de eigenaar laat `scripts/ga4_fetch.py` handmatig draaien vóór de PM-cyclus. Idem voor GSC (`scripts/gsc_fetch.py`).
+- Verwacht effect: vanaf volgende cyclus stuurt het team op actuele data; cyclus-17-effect wordt eindelijk meetbaar.
+
+**2. Dedicated `vloerverwarming-drenthe.html` aanmaken** — grootste latente SEO-kans
+- Prioriteit: **Hoog**
+- Onderbouwing: "vloerverwarming drenthe" = meeste impressies van alle queries (82 @ pos ~66), versnipperd over 4 pagina's (home, prijsindicatie, diensten, faq), 0 clicks. Geen kanonieke pagina. Stond als `[WACHT]` in cyclus 17, expliciet ingepland voor cyclus 18.
+- Actie: één gefocuste landingspagina naar model van de bestaande stadspagina's: `Service` + `areaServed` = Drenthe, canonical, wederzijdse interne links naar alle stadspagina's, en de home-Drenthe-hub omzetten naar een teaser om nieuwe cannibalisatie te voorkomen.
+- Verwacht effect: van pagina 6-7 richting pagina 2-3 haalbaar bij gebundelde signalen; structurele organische leadbron voor het hele werkgebied.
+
+**3. www vs non-www canonical/redirect controleren** — SEO-signaalverlies
+- Prioriteit: **Midden**
+- Onderbouwing: GSC toont losse rijen voor `vlwarmte.nl/` (pos ~5,6) én `www.vlwarmte.nl/` (pos ~52,8) voor dezelfde homepage; de www-variant rankt veel slechter. De canonical wijst naar `https://www.vlwarmte.nl/` — als de feitelijke serving/redirect daarmee niet strookt, verdunnen de signalen. Stond als `[WACHT]` in cyclus 17.
+- Actie: eerst diagnose (canonical-tags + redirect-gedrag GitHub Pages/DNS), dan pas ingrijpen.
+- Verwacht effect: gebundelde ranking-signalen op één host = hogere positie homepage, betere CTR.
+
+**4. Ads-status/budget + geo verifiëren** — leadmotor + budgetlek
+- Prioriteit: **Hoog** (voor Marketing Research Agent / eigenaar)
+- Onderbouwing: verkeer −90% sinds piek 27 apr; 44 sessies (28%) buiten kerngebied. Live campagne "VLW-API-Leads NL auto" (id 23834672782, €2/dag).
+- Actie: Marketing Research Agent / eigenaar checkt in het Ads-account of de daling bewust is (budget/pauze/seizoen) en of de geo strak op Noord-NL staat:
+  `python scripts/google_ads_update_campaign_geo.py --campaign-id 23834672782 --dry-run` (daarna `--apply`).
+- Verwacht effect: daling verklaard; lagere cost-per-lead doordat budget naar bereikbare klanten gaat.
+
+**5. Ads-landingsafstemming richting prijsindicatie** — conversiekans
+- Prioriteit: **Midden**
+- Onderbouwing: prijsindicatie converteert ~44% (entry) vs home ~23%, maar krijgt maar 9 entry-sessies. De home-CTA naar prijsindicatie staat sinds cyclus 17 boven de vouw; gerichte Ads-landing erbovenop versterkt dat.
+- Actie: Marketing Research Agent toetst of een deel van de Ads-klikken direct op `prijsindicatie.html` kan landen i.p.v. alleen home.
+- Verwacht effect: meer leads bij gelijk budget door hogere conversieratio.
+
+**6. Projecten-pagina overtuigender maken** — engagementkans
+- Prioriteit: **Midden**
+- Onderbouwing: `/projecten.html` 20 sec sessieduur, 60% bounce, 10 sessies — bezoekers met intentie (ze klikken door naar "uitgevoerd werk") haken alsnog af. Zwakke schakel in de vertrouwensopbouw.
+- Actie: meer/betere projectfoto's + korte concrete cases (regio, type vloer, doorlooptijd) en een duidelijke CTA naar prijsindicatie/offerte onderaan. NB: beeldmateriaal raakt op (sinds mei geen nieuwe foto's) — aanlevering door team is randvoorwaarde.
+- Verwacht effect: langere sessieduur, lagere bounce, meer doorklik naar de funnel.
+
+**7. Home-bounce structureel verlagen (vervolg op cyclus 17)** — grootste hefboom
+- Prioriteit: **Midden** (afhankelijk van meting)
+- Onderbouwing: home 115 entry-sessies @ 67% bounce, 48 sec duur. Cyclus 17 voegde de boven-de-vouw-CTA toe; of dat de bounce verlaagt is nog niet meetbaar.
+- Actie: eerst meten (na fetch-fix). Als bounce nog hoog blijft: sociale bewijskracht/garantie hoger in de pagina, of een lichtere micro-conversie (bv. "richtbedrag in 2 min") direct in de hero benadrukken. Geen pop-ups.
+- Verwacht effect: elk procentpunt bounce minder ≈ 1 extra doorklikker; cumulatief enkele extra leads/maand.
+
+**8. Friesland-dekking versterken** — onderbenutte regio
+- Prioriteit: **Laag**
+- Onderbouwing: "vloerverwarming friesland" ~88e positie ondanks bestaande Leeuwarden-pagina; Friesland 11 sessies. Zwakste van de drie kernregio's.
+- Actie: pas oppakken ná de Drenthe-pagina (voorstel 2) — zelfde aanpak, lagere prioriteit. Eerst de grootste regioterm structureel fixen.
+- Verwacht effect: betere regiodekking op termijn; nu niet rendabel genoeg t.o.v. Drenthe.
+
+---
+
+## Samenvatting voor Product Manager (kort)
+
+1. **Databevriezing — top blocker:** GA4 staat al twee cycli stil op 8 juni; fetch is geblokkeerd in autonome modus (Python-uitvoering niet toegestaan). Hierdoor is **geen enkel cyclus-17-effect meetbaar**. Eerst dit fixen (voorstel 1), anders blijft het team op verouderde data sturen.
+2. **Cyclus-17-werk staat correct live** (home title/meta + CTA, Zuidlaren-blok + ankers, Hoogeveen FAQ-schema) — geverifieerd in de HTML. Klaar om te meten zodra data vers is.
+3. **Leadmotor = Google Ads (22 conv) + direct (13 conv); organisch nog 0 leads.** Grootste structurele kans blijft de **dedicated Drenthe-pagina** (voorstel 2) — was [WACHT], nu ingepland voor cyclus 18.
+4. **Verkeer −90% sinds piek 27 apr** en 44 sessies buiten Noord-NL: laat Marketing Research Agent het Ads-budget/-status en de geo (campagne 23834672782) verifiëren (voorstel 4).
+5. **Beste conversiepagina = prijsindicatie (~44%) maar te weinig instroom;** stuur Ads gerichter daarheen (voorstel 5). Beeldmateriaal raakt op — nieuwe foto's aanleveren is randvoorwaarde voor de projecten-pagina (voorstel 6).

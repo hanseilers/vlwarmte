@@ -14,6 +14,8 @@ Python: gebruik een venv in de repo (PEP 668 blokkeert pip op systeem-Python):
   .venv/bin/python scripts/ga4_fetch.py
 """
 
+from __future__ import annotations
+
 import json
 import os
 import sys
