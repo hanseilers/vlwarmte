@@ -139,7 +139,10 @@ Controleer: is de campagne gepauzeerd, is het dagbudget (€2) op, of is er een 
 - Geen. Alle `[WACHT]`- en `[AFGEWEZEN]`-voorstellen conform sprint niet aangeraakt.
 
 ### Deployment
-- **Nog niet live** — PM voert commit + `git push origin main` uit; daarna draait GitHub Actions (Pages). [PM vult run-id / succes in]
+- **Live** ✅ — PM-commit `ef6de99` gepusht naar `main` op 22-06-2026 06:22.
+- GitHub Pages-build (run 27929371901, `pages-build-deployment`): **completed / success**.
+- Live geverifieerd: `vloerverwarming-drenthe.html` → HTTP 200, title + canonical correct; GA-tag `G-0BB9M7HYSF` aanwezig in `ga-deferred.js`. Non-www → www 301 + canonical-naar-www al correct (geen fix nodig).
+- Release notes gepusht in commit `6604e00`.
 - Live URL: https://www.vlwarmte.nl
 
 ### Aandachtspunten voor volgende sprint
