@@ -137,7 +137,9 @@ Deze acties kon de cyclus niet zelf draaien (Ads-scripts, GSC-OAuth en outbound 
 - `[ESCALATIE]`: Google Ads volume/geo, GSC-fetch, release-mail — liggen bij de eigenaar.
 
 ### Deployment
-- **Nog niet live** — PM voert commit + `git push origin main` uit; daarna: [PM vult run-id / succes in].
+- **Live** — PM heeft gecommit (`6a5949a`) + gepusht naar `main` op 29-06-2026 06:18.
+- GitHub Pages-run `28348261368` (pages build and deployment): **success** in 37s.
+- Live geverifieerd: home-`<title>` toont nu de geconsolideerde variant ("Vloerverwarming in Drenthe, Groningen en Friesland — VLWarmte"); GA4-tag `G-0BB9M7HYSF` aanwezig in `assets/js/ga-deferred.js`.
 - Live URL: https://www.vlwarmte.nl
 
 ### Aandachtspunten voor volgende sprint

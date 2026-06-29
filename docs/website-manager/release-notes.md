@@ -4,6 +4,35 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 29 juni 2026 (cyclus 19)
+**Deployment:** 29-06-2026, 06:18 — PM push naar `main` (GitHub Pages). Commit `6a5949a`.
+
+### Wat is er veranderd
+- **De prijscalculator duwt nu duidelijker door naar contact.** De prijsindicatie-pagina is veruit de plek waar bezoekers het langst blijven (ruim vijf minuten), maar tot nu toe vroeg vrijwel niemand daarna een offerte aan. Het aanvraagblok dat al ná het richtbedrag stond is nu visueel niet meer te missen (accentrand, duidelijke kop), met een geruststellende regel ("antwoord binnen één werkdag, geen verkoper aan de deur"). En wie geen formulier wil invullen, ziet er nu naast een **belknop** ("Liever even bellen?") — een kortere route voor wie liever meteen de telefoon pakt.
+- **Eén duidelijke titel voor de homepage.** Google zag de afgelopen maand zes verschillende titels voor de voorpagina, waaronder eentje waar iedereen meteen weer wegklikte. Dat verwart zowel Google als de bezoeker. Er is nu één vaste, uitnodigende titel: "Vloerverwarming in Drenthe, Groningen en Friesland — VLWarmte", met een omschrijving die de kern (eigen ploeg, 10 jaar garantie, snelle reactie) meteen laat zien.
+- **De plaatspagina's beter aan elkaar geknoopt.** De acht plaatspagina's (Drenthe, Assen, Emmen, Hoogeveen, Zuidlaren, Groningen, Leeuwarden, Drachten) bestonden al, maar kregen amper bezoek omdat ze onderling nauwelijks gelinkt waren. De Drenthe-pagina is nu het knooppunt: hij verwijst naar elke stad en elke stad verwijst terug. Vanaf de homepage en de dienstenpagina staan nu directe links met de exacte plaatsnaam. Zo snapt Google sneller welke pagina bij welke plaats hoort.
+- **Aantrekkelijker zoekresultaat voor Zuidlaren.** Voor "installateur Zuidlaren" stonden we al bovenaan, maar niemand klikte. De titel en omschrijving van de Zuidlaren-pagina zijn herschreven met een concrete reden om te klikken (installateur uit het dorp, vast adres aan de Verlengde Stationsweg). Ook zijn Schoonebeek, Friesland en Heerenveen aan de juiste pagina's gekoppeld.
+- **De homepage-knop lost zijn belofte direct in.** De eerste knop op de voorpagina heet nu "Richtbedrag in 2 minuten →" en leidt rechtstreeks naar de calculator; ook de mobiele zwevende knop wijst nu naar de calculator in plaats van naar het contactformulier.
+
+### Waarom
+- De verse bezoekerscijfers (29 juni) laten zien dat het probleem nu vooral **te weinig bezoek** is, niet de kwaliteit van de site: ~42 bezoeken in 30 dagen, een flinke terugval sinds begin mei. Alle aanvragen kwamen uit de betaalde Google-advertentie; via Google's gewone zoekresultaten kwam geen enkele aanvraag binnen.
+- Daarom deze week vol inzetten op twee dingen die **los van het bezoekersaantal** winst opleveren: de calculator écht laten doorzetten naar een aanvraag, en het zoekfundament (titels + interne links) zo afmaken dat de plaatspagina's gaan meetellen in Google.
+
+### Verwacht effect
+- Eerste aanvragen vanaf de prijsindicatie-pagina (nu nog nul over de afgelopen drie maanden).
+- In Google's data nog maar één titel voor de homepage in plaats van zes, en op termijn meer kliks op de plaats- en Zuidlaren-zoekresultaten.
+- Meer doorklik van de homepage naar de calculator.
+- Let op: dit is pas goed te meten zodra (a) het bezoek herstelt en (b) de Google Search Console-cijfers weer ververst kunnen worden — die staan nu vast op data van 23 mei.
+
+### Openstaand bij de eigenaar (kon deze cyclus niet automatisch)
+- **Google Ads:** de advertentie draait weer maar op een klein dagbudget (~€2) en bereikt ook mensen buiten het werkgebied (Noord-/Zuid-Holland, zelfs buitenland). Status + budget + regio-instelling controleren — dit is de snelste knop voor meer aanvragen, maar vereist een akkoord op de uitgaven.
+- **Search Console-cijfers** weer aanzetten zodat het organische werk meetbaar wordt.
+
+### Social media deze week
+Zeven posts gepland (week van 29 juni): 3 op LinkedIn (di/wo/do, vakinhoudelijk richting aannemers) en 4 op Instagram/Facebook (wo–zo, particulieren). Rode draad: **de zomer is hét rustige moment om vloerverwarming te laten aanleggen — droog binnen, klaar vóór het stookseizoen.** Elke post stuurt met een duidelijke link naar de prijsindicatie of contact, en plaatsnamen (Zuidlaren, Hoogeveen, Drenthe, Friesland) staan bewust in de tekst. Publicatie blijft handmatig. Aandachtspunt: het beeldmateriaal is twee weken op rij dezelfde twee werkfoto's — nieuw materiaal aanleveren in `social/input/` zou de variatie sterk helpen.
+
+---
+
 ## Release — week van 22 juni 2026 (cyclus 18)
 **Deployment:** 22-06-2026, 06:22 — PM push naar `main` (GitHub Pages). Commit `ef6de99`.
 
