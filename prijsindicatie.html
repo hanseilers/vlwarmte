@@ -318,20 +318,70 @@
 
     .lead-after {
       background: rgba(255, 255, 255, .03);
-      border: 1px solid var(--line);
+      border: 1px solid rgba(224, 85, 47, .4);
+      border-top: 3px solid var(--brand);
       border-radius: var(--radius);
       padding: 2rem;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .18);
+    }
+
+    .lead-after .lead-after-eyebrow {
+      display: inline-block;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--brand);
+      margin: 0 0 .55rem;
     }
 
     .lead-after h3 {
       margin: 0 0 .4rem;
-      font-size: 1.2rem;
+      font-size: 1.35rem;
     }
 
     .lead-after .lead-sub {
       color: var(--muted);
       font-size: .9rem;
       margin: 0 0 1.5rem;
+    }
+
+    .lead-reassure {
+      font-size: .9rem;
+      color: var(--ink);
+      margin: 0 0 1rem;
+      line-height: 1.45;
+    }
+
+    .lead-reassure strong {
+      color: var(--brand);
+    }
+
+    .lead-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .75rem 1rem;
+      margin-top: .4rem;
+    }
+
+    .lead-call-alt {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: .35rem .6rem;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    .lead-call-alt a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .lead-call-alt a:hover {
+      color: var(--brand);
     }
 
     .form-row {
@@ -758,9 +808,12 @@
           </div>
 
           <div class="lead-after">
+            <span class="lead-after-eyebrow">Volgende stap</span>
             <h3 id="lead-after-heading">Wil je dat we meedenken?</h3>
             <p class="lead-sub" id="lead-after-sub">Laat je gegevens achter, dan nemen we contact op. Gratis,
               vrijblijvend en zonder gedoe.</p>
+            <p class="lead-reassure">Je krijgt binnen <strong>één werkdag</strong> antwoord — vrijblijvend, geen
+              verkoper aan de deur.</p>
 
             <form id="calc-form" action="https://formspree.io/f/xzdojzdk" method="POST" novalidate>
               <input type="hidden" name="productkeuze" id="f-product" />
@@ -800,7 +853,11 @@
               </div>
 
               <p class="lead-privacy">Je gegevens worden alleen gebruikt voor contact over jouw project. Geen spam.</p>
-              <button class="btn btn-primary" type="submit">Offerte aanvragen</button>
+              <div class="lead-actions">
+                <button class="btn btn-primary" type="submit">Offerte aanvragen</button>
+                <span class="lead-call-alt">Liever even bellen? <a href="tel:+31618817459">Bel 06 188 17 459</a>
+                  of <a href="contact.html?modus=bel#aanvraag">vraag een belmoment aan</a>.</span>
+              </div>
               <div id="calc-status" aria-live="polite"></div>
             </form>
           </div>
