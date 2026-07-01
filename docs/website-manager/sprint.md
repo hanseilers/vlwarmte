@@ -111,8 +111,8 @@ Conclusie: deze sprint focust op **Heerenveen-pagina** (enige toegestane nieuwe 
   4. `contact.html` — compact wizard-teaser (`contact-process`) boven `#aanvraag`, zichtbaar in alle modi, secundaire knop.
   5. `werkwijze.html` — mid-page `cta-band` na stappen-overzicht, vóór slot-offerte-CTA.
 - **Overgeslagen taken:** geen — alle `[GOEDGEKEURD]`-taken uitgevoerd; `[WACHT]`/`[AFGEWEZEN]` niet aangeraakt.
-- **Deployment:** **Nog niet live** — PM voert commit + `git push origin main` uit; daarna: [PM vult run-id / succes in]
-- **Live URL:** https://www.vlwarmte.nl
+- **Deployment:** **Live** — PM commit `d31b738` + push naar `main` op 01-07-2026 21:29. GitHub Pages-run `28542479046` (pages build and deployment): **success** in 37s. Heerenveen-pagina geverifieerd (HTTP 200). GA4-tag `G-0BB9M7HYSF` in `assets/js/ga-deferred.js`.
+- **Live URL:** https://www.vlwarmte.nl/vloerverwarming-heerenveen.html
 - **Aandachtspunten voor volgende sprint:** `vloerverwarming-drachten.html` combineert nog steeds Drachten+Heerenveen in title/H1/meta — overweeg Drachten-only refactor als Heerenveen-pagina geïndexeerd is; Ads-landing-URL voor keyword `vloerverwarming heerenveen` handmatig naar nieuwe pagina wijzen indien nog op homepage/drachten; GSC OAuth nog steeds `invalid_grant`.
 
 ---

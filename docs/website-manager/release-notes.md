@@ -4,6 +4,32 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 1 juli 2026 (cyclus 20)
+**Deployment:** 01-07-2026, 21:29 — PM push naar `main` (GitHub Pages). Commit `d31b738`.
+
+### Wat is er veranderd
+- **Nieuwe pagina voor Heerenveen.** Er liep al een Google Ads-zoekterm op "vloerverwarming Heerenveen", maar er was geen eigen landingspagina — bezoekers kwamen op de Drachten-pagina of de homepage terecht. Er staat nu `vloerverwarming-heerenveen.html` met een duidelijke wizard-knop boven de vouw, gelinkt vanaf Leeuwarden, Drachten, de Drenthe-hub, diensten en de homepage.
+- **Diensten en systemen sturen nu eerst naar de calculator.** Op `diensten.html` wees de onderste actiebalk nog naar het contactformulier terwijl de hero al naar de prijsindicatie ging — dat is nu consistent: primair "Richtbedrag in 2 minuten", secundair contact. Op `systemen-producten.html` (67% bounce als landingspagina) is de hero aangescherpt met regio-belofte, vertrouwensregel en wizard-CTA.
+- **Contact en werkwijze: uitweg naar richtbedrag.** Boven het contactformulier staat nu een korte teaser voor wie eerst een richtbedrag wil zonder gegevens in te vullen. Halverwege `werkwijze.html` staat een vergelijkbaar blok — voor bezoekers die eerst willen begrijpen hoe het werkt en dan willen weten wat het kost.
+
+### Waarom
+- De verse cijfers (38 sessies/30d, 2 conversies — allebei uit Google Ads) bevestigen: het knelpunt is **instroom**, niet sitekwaliteit op betaald verkeer (~10,5% conversieratio). Cyclus-19-wijzigingen aan de wizard zijn te vers om te meten (live 29 jun) — deze sprint richt zich op **traffic-onafhankelijke winst**: de Heerenveen-gap dichten en zwakke landingspagina's wizard-first maken.
+
+### Verwacht effect
+- Eerste sessies op `vloerverwarming-heerenveen.html` en betere Ads Quality Score op het Heerenveen-keyword.
+- Meer `wizard_start`-events vanaf diensten, systemen, contact en werkwijze.
+- Wizard-conversie (cyclus 19) pas beoordelen in week ~27 jul — bij nog 0 leads: funnel-events uitlezen.
+
+### Openstaand bij de eigenaar
+- **Google Ads budget** — campagne draait ENABLED @ ~€2/dag; verhoging is de snelste schaalhefboom bij gezonde ratio. Alleen na spend-goedkeuring.
+- **GSC OAuth** — refresh token verlopen (`invalid_grant`); organische effecten van cyclus 17–20 zijn nog niet meetbaar.
+- **Ads-landing Heerenveen** — controleer of keyword `vloerverwarming heerenveen` naar de nieuwe pagina wijst (niet homepage/Drachten).
+
+### Social media deze week
+Zeven posts (week van 1 juli): 3 LinkedIn, 4 Instagram + Facebook-varianten. Rode draad: wizard (2× prijsindicatie) + stadspagina's (Zuidlaren, Drachten, Drenthe-hub). Vijf unieke beelden i.p.v. twee vorige cycli — eindresultaat-, verdeler- en teamfoto ontbreken nog. Handmatige publicatie door het team.
+
+---
+
 ## Release — week van 29 juni 2026 (cyclus 19)
 **Deployment:** 29-06-2026, 06:18 — PM push naar `main` (GitHub Pages). Commit `6a5949a`.
 
