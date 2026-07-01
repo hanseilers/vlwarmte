@@ -47,7 +47,7 @@ description: >-
 | 1 | **GA4 Admin → Product links → Google Ads links** — link the Ads account to the GA4 property used for vlwarmte.nl. | Shared audiences, imported GA conversions (optional), cross-reporting. |
 | 2 | **Google Ads → Tools & settings → Linked accounts → Google Analytics (GA4)** — confirm the property link. | Bidirectional trust; consistent identity where Google supports it. |
 | 3 | **Google Ads → Admin → Account settings → Auto-tagging** — enable **auto-tagging** (`gclid`). | Attribution of sessions from Ads into GA4. |
-| 4 | **GA4 — mark key events** as conversions: e.g. `contact_submit`, `lead_form_submit`, `wizard_lead_submit`, `wizard_calculate`, meaningful calculator steps (see `AGENTS.md` / site code). | Optimization signals; optional import into Ads as **primary/secondary** conversions per strategy. |
+| 4 | **GA4 key events** — alleen `contact_submit` en `wizard_lead_submit` (beheer: `scripts/ga4_configure_conversions.py --apply`). Funnel-events (`wizard_start`, `calculator_result`, `wizard_calculate`) meten engagement, geen leads. | Optimization signals; optional import into Ads as **primary/secondary** conversions per strategy. |
 | 5 | **Google Ads → Goals → Conversions** — use **website** conversions that match the same fired tags / Google tag configuration as the site; align names with GA4 where helpful. | Bidding and “Maximize conversions” style goals need trustworthy conversion volume. |
 | 6 | **Consent / EEA** — if applicable, keep consent mode and Ads remarketing policies aligned with site implementation. | Legal + data quality. |
 
