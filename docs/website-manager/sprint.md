@@ -116,4 +116,8 @@ Conclusie: een **bewust lichte cyclus**. Cyclus 20 heeft vijf dagen geleden vijf
 
 **Gewijzigde bestanden (17):** `prijsindicatie.html`, `vloerverwarming-drachten.html`, `diensten.html`, `over-ons.html`, `systemen-producten.html`, `faq.html`, `vloerverwarming-emmen.html`, `vloerverwarming-drenthe.html`, `vloerverwarming-leeuwarden.html`, `vloerverwarming-hoogeveen.html`, `vloerverwarming-groningen.html`, `vloerverwarming-assen.html`, `vloerverwarming-heerenveen.html`, `werkwijze.html`, `vloerverwarming-zuidlaren.html`, plus dit `sprint.md`-rapport.
 
-**Deployment:** Nog niet live — PM voert commit+push uit.
+**Deployment:** **Live** — PM commit `450917f` (site) + `409bd39` (release notes) + push naar `main` op 06-07-2026 06:30. Eerste GitHub-Pages-run `28767499003` faalde op de deploy-stap met een transiënte fout ("Deployment failed, try again later" — build zelf ✓ in 20s, geen codeprobleem); de release-notes-push triggerde run `28767542535`: **success** (deploy ✓ in 11s). Live geverifieerd: Drachten-title nu Drachten-only, `prijsindicatie.html` mail-hint ("bellen hoeft niet") live, CTA-tekst "Richtbedrag in 2 minuten" live op diensten, GA4-tag `G-0BB9M7HYSF` in `assets/js/ga-deferred.js`.
+
+**Live URL's:** https://www.vlwarmte.nl/prijsindicatie.html · https://www.vlwarmte.nl/vloerverwarming-drachten.html
+
+**Aandachtspunt CTA-swap:** 2 van de 24 voorkomens van "Naar de prijsindicatie" bleken `btn-secondary` (`contact.html`, `werkwijze.html`) en zijn conform de btn-primary-only-regel bewust ongemoeid gelaten — netto 22 primaire knoppen gewijzigd. Volgende cyclus: besluiten of die twee secundaire knoppen ook meegaan.
