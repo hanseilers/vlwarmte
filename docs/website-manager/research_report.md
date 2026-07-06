@@ -1,270 +1,333 @@
-# Marketing Research Rapport — 1 juli 2026 (cyclus 20)
+# Marketing Research Rapport — 6 juli 2026 (cyclus 21)
 
-Bron: verse GA4 (`docs/website-manager/analytics_report.md`, fetch 2026-07-01),
-vorige sprint (`archive/sprint-2026-07-01.md`), live Google Ads-verificatie
-(smoke test + `list_campaigns` + geo `--dry-run`), WebSearch (concurrentie,
-prijscalculator, seizoen), sitemap-scan en `scripts/data/google_ads_lead_campaign_defaults.json`.
+Bron: verse analytics-context (30d per 6 jul 2026), vorig rapport
+(`archive`/cyclus 20), sitemap-scan van de root-HTML (incl. `prijsindicatie.html`,
+`vloerverwarming-drachten.html`, `vloerverwarming-heerenveen.html`, `index.html`,
+`diensten.html`) en vakkennis van de Noord-Nederlandse vloerverwarmingsmarkt.
 
-> **GSC:** `secrets/gsc.env` aanwezig, maar fetch faalt met `invalid_grant` —
-> refresh token verlopen. Posities in dit rapport komen uit GSC-export van
-> **23 mei 2026** (`gsc_report.json`).
+> **Beperkingen deze cyclus (autonome run zonder live tools):**
+> geen WebSearch, geen Bash/netwerk, geen Google Ads-scripts. **Alle zoekvolumes
+> hieronder zijn indicatief/geschat** — gebaseerd op prior research en marktkennis,
+> niet op een live keyword-tool. Ads-adviezen zijn **escalatie voor de eigenaar**,
+> geen autonome actie. GSC is nog steeds ~5+ weken oud (`invalid_grant`) — escalatie.
 
 ## Samenvatting
 
-Het knelpunt blijft **instroom**, niet conversiekwaliteit op betaald verkeer:
-38 sessies / 30d, 2 conversies, beide uit `google/cpc` (~10,5% ratio bij
-€2/dag). Cyclus-19-ingrepen (wizard-leadstap, home-titel, interne stadlinks)
-zijn **te vers om te meten** (live 29 jun). De grootste kansen deze cyclus:
-**(1) Ads-budget en spend-goedkeuring** — campagne draait ENABLED maar volume is
-structureel laag; **(2) wizard-funnel afwachten en daarna meten** — 68 sessies /
-90d op `prijsindicatie.html`, nog steeds 0 `wizard_lead_submit`; **(3) GSC
-deblokkeren** — zonder verse Search Console-data blijft organisch blind;
-**(4) Heerenveen-gap** — Ads-keyword actief zonder dedicated landingspagina.
+Twee knelpunten tegelijk deze cyclus. **(1) Instroom is structureel weggezakt:**
+van ~49–56 sessies/week in mei naar ~9/week nu (~34 sessies/30d), met veel
+buiten-regio ruis (12 van 34 sessies uit Noord/Zuid-Holland, Duitsland, Canada).
+**(2) De 0-conversie is nieuw en hard:** `google/cpc` viel terug van ~10,5% naar
+**0 conversies over álle kanalen**. `prijsindicatie.html` bindt wél sterk (312s,
+25% bounce) maar zet niks om — de wizard boeit maar converteert niet.
+
+De grootste traffic-onafhankelijke kansen: **(a) de Drachten-pagina opschonen naar
+Drachten-only** nu de Heerenveen-pagina bestaat — de twee pagina's kannibaliseren
+elkaar nu op "vloerverwarming Heerenveen" (SEO-winst, geen nieuwe pagina, raakt de
+cyclus-20-pagina's niet inhoudelijk); **(b) de wizard een vroegere/lichtere
+lead-uitstap geven** — de conversiedrempel zit nu volledig ná de volledige flow;
+**(c) GSC deblokkeren** zodat organische effecten weer meetbaar worden. De
+Ads-escalatie draait om landing + budget: stuur betaald verkeer naar de wizard
+i.p.v. de homepage, en beoordeel of €2/dag nog zin heeft bij 0 conversie.
 
 ## Top zoekwoorden
 
 | Zoekwoord | Volume (indicatie) | Concurrentie | Pagina / actie |
 |-----------|-------------------|--------------|----------------|
-| vloerverwarming drenthe | midden | midden–hoog (ECOtherm, portals) | **bestaand** `vloerverwarming-drenthe.html` — laten ranken via links + GSC |
+| vloerverwarming heerenveen | laag–midden | **hoog** (5+ dedicated concurrentpagina's) | **bestaand** `vloerverwarming-heerenveen.html` (live cyclus 20) — nu ondermijnd door dubbeling in Drachten-title/H1 |
+| vloerverwarming drachten | laag–midden | midden | **bestaand** `vloerverwarming-drachten.html` — title/H1/meta nog "Drachten en Heerenveen"; **verwateren** |
+| vloerverwarming drenthe | midden | midden–hoog (ECOtherm, portals) | **bestaand** `vloerverwarming-drenthe.html` — ranken via links + GSC |
 | vloerverwarming groningen installateur | midden | midden (ReWo, Kentech, Nadergas) | **bestaand** `vloerverwarming-groningen.html` |
-| vloerverwarming friesland / leeuwarden | laag–midden | midden | **bestaand** `vloerverwarming-leeuwarden.html` |
-| vloerverwarming heerenveen | laag–midden | **hoog** (5+ dedicated concurrentpagina's) | **gap** — geen eigen pagina; keyword in Ads actief |
-| installateur zuidlaren | laag (GSC: 9 impr, pos 3,7) | laag | **bestaand** — CTR-fix cyclus 19 live; GSC nodig |
-| schuimbeton vloerverwarming drenthe/groningen | laag | laag–midden | **bestaand** diensten + `#schuimbeton`; Ads-keyword actief |
-| laagopbouw / droge vloerverwarming | laag–midden | midden | **bestaand** `systemen-producten.html#laagopbouw` — zwakke landing (67% bounce) |
-| vloerverwarming kosten / per m2 | hoog (generiek) | hoog | **bestaand** `prijsindicatie.html` — sterke engagement, 0 conv |
-| vloerverwarming infrezen renovatie | midden | midden | **bestaand** FAQ + diensten; geen aparte pagina nodig |
-| warmtepomp zuidlaren | laag (GSC: 4 impr) | laag | **bestaand** — enige term met clicks (25% CTR) |
+| vloerverwarming friesland / leeuwarden | laag–midden | midden | **bestaand** `vloerverwarming-leeuwarden.html` + Heerenveen/Drachten als Friese cluster |
+| vloerverwarming kosten / per m² | hoog (generiek) | hoog | **bestaand** `prijsindicatie.html#kosten-uitleg` — sterk engagement, 0 conv |
+| prijs vloerverwarming schuimbeton | laag–midden | laag–midden | **bestaand** wizard schuimbeton-tak — differentiator |
+| vloerverwarming infrezen renovatie | midden | midden | **bestaand** FAQ + diensten + stadspagina's; geen aparte pagina nodig |
+| installateur / warmtepomp zuidlaren | laag (GSC mei: enkele impr, hoge CTR warmtepomp) | laag | **bestaand** — hyperlokaal; GSC nodig om te meten |
+| laagopbouw / droge vloerverwarming | laag–midden | midden | **bestaand** `systemen-producten.html#laagopbouw` — zwakke landing (hoge bounce) |
 
-\* Volume = indicatief (WebSearch + GSC mei 2026); geen betaalde keyword-tool deze cyclus.
+\* Volume = **indicatief/geschat** (marktkennis + prior GSC mei 2026). Geen live keyword-tool deze cyclus.
 
 ## Content gaps (ten opzichte van huidige sitemap)
 
-De acht stadspagina's + Drenthe-hub bestaan; prioriteit is **ranken en converteren**,
-niet nieuwbouw — behalve één duidelijke gap:
+De acht stadspagina's + Drenthe-hub + Heerenveen-pagina bestaan. Er is **geen nieuwe
+pagina nodig**; de winst zit in **opschonen en ontdubbelen** van wat er al staat:
 
-- **`vloerverwarming-heerenveen.html` (nieuw)**: Ads-keyword `vloerverwarming
-  heerenveen` staat in `google_ads_lead_campaign_defaults.json`; site heeft alleen
-  een interne link vanaf Zuidlaren naar Drachten. Concurrenten (van der Veen, Giet
-  Mooi, KIBS, ET-F) hebben dedicated Heerenveen-URL's. **Alternatief:** keyword
-  pauzeren tot pagina er is.
-- **Geen nieuwe dienst-splitsingspagina's** ("alleen schuimbeton", aannemers):
-  nog steeds nul vraagsignaal in GA4/GSC bij klein volume.
-- **`systemen-producten.html#laagopbouw`**: content bestaat; landingervaring
-  onderbenut (3 landings, 67% bounce, 18 s) — hero/CTA, geen nieuwe pagina.
-- **`diensten.html` cta-band**: hero wijst naar wizard, onderste band primair
-  naar `contact.html?modus=offerte` — inconsistent met wizard-first strategie.
+- **`vloerverwarming-drachten.html` — Drachten-only refactor (de duidelijkste gap):**
+  Sinds cyclus 20 bestaat `vloerverwarming-heerenveen.html` met een eigen canonical.
+  Toch draagt de Drachten-pagina nog steeds:
+  - title/meta/OG/twitter: *"Vloerverwarming Drachten **en Heerenveen**…"*
+  - `<h1>Vloerverwarming Drachten en Heerenveen</h1>` (regel 89)
+  - een volledige `<h2>Vloerverwarming Heerenveen en Zuidwest-Friesland</h2>`-sectie
+    (regel 131) plus ~8 verdere Heerenveen-vermeldingen in de body.
+
+  Twee eigen pagina's die op dezelfde term ("vloerverwarming Heerenveen") mikken =
+  **keyword-kannibalisatie**: Google moet kiezen welke pagina rankt, en de sterkere
+  (nieuwe, dedicated) pagina verliest autoriteit aan de bredere Drachten-pagina.
+  **Actie:** Drachten-pagina terugbrengen naar Drachten-only (title/H1/meta), de
+  Heerenveen-H2 vervangen door één korte doorverwijs-alinea + interne link naar de
+  Heerenveen-pagina (die link staat er al, regel 135 — de rest van de Heerenveen-copy
+  kan weg). Geen nieuwe pagina, raakt de Heerenveen-pagina zelf niet.
+
+- **Geen nieuwe dienst-splitsingspagina's** ("alleen schuimbeton", aannemers,
+  projectontwikkelaars): nog steeds nul vraagsignaal bij klein volume. Niet doen.
+
+- **`systemen-producten.html#laagopbouw`**: content bestaat; landingervaring blijft
+  onderbenut (hoge bounce). Hero/CTA aanscherpen, geen nieuwe pagina — lagere
+  prioriteit nu instroom+conversie voorgaan.
+
+- **Reeds gedaan (cyclus 20, niet opnieuw aanpakken):** `diensten.html` cta-band
+  wijst nu al primair naar `prijsindicatie.html` ("Richtbedrag in 2 minuten →",
+  regel 175) — de oude cyclus-20-aanbeveling is doorgevoerd. Homepage hero + sticky
+  mobiele CTA wijzen ook al wizard-first. **Niet terugdraaien.**
 
 ## Concurrentie-observaties
 
+Geen live scan deze cyclus; observaties uit prior research blijven staan:
+
 **Regionale installateurs** ranken met **stad × dienst**-pagina's en brede
 werkgebied-claims (ECOtherm Drenthe, ReWo Groningen/Drenthe/Friesland, Kentech
-Groningen-Assen, Nadergas per Groningse subregio). Sterke patronen bij hen:
+Groningen–Assen, plus meerdere dedicated Heerenveen-pagina's — van der Veen, Giet
+Mooi, KIBS, ET-F). Sterke patronen bij hen: plaatsnaam in H1/title, vrijblijvende
+offerte + snelle reactie, warmtepomp als upsell, "vaste prijs / geen verrassingen".
 
-- Plaatsnaam in H1/title ("Vloerverwarming Heerenveen")
-- Vrijblijvende offerte + snelle reactie
-- Warmtepomp-combinatie als upsell
-- Vaste prijs / geen verrassingen (ECOtherm)
+De concurrentie op Heerenveen is juist **hoog en dedicated** — dat maakt de eigen
+Drachten+Heerenveen-dubbeling extra schadelijk: VLWarmte verdunt zijn enige Friese
+schot voor open doel over twee pagina's terwijl concurrenten er één sterke
+pagina tegenover zetten.
 
 **VLWarmte-onderscheid** dat in copy en Ads moet blijven: **compleet traject**
 (ondervloer, schuimbeton, leidingwerk, dekvloer), eigen ploeg uit Zuidlaren,
-10 jaar garantie buis, online richtbedrag. Niet concurreren op "goedkoopste" —
-concurrenten en portals (Slimster, Bobex) spelen wél op prijsvergelijking.
+10 jaar garantie buis, online richtbedrag. Niet concurreren op "goedkoopste".
 
-**Hyperlokaal Zuidlaren:** VLWarmte staat GSC-mei top-3 op installateur/elektricien
-(0 clicks) — snippet-fix cyclus 19 moet dat doorbreken zodra GSC ververst is.
-
-## Prijscalculator — haalbaarheidsonderzoek
+## Prijscalculator — conversie-optimalisatie (bestaande wizard, niet herbouwen)
 
 ### Conclusie
 
-**Niet opnieuw bouwen.** `prijsindicatie.html` ís al de prijscalculator: meerstaps-
-wizard met schuimbeton-bandbreedte, Formspree-lead (`xzdojzdk`) en GA4-events.
-Prioriteit = **meer instroom + funnel-lek dichten**, geen tweede tool.
+**Niet opnieuw bouwen.** `prijsindicatie.html` ís de calculator: meerstaps-wizard
+(twee trajecten: alleen vloerverwarming vs. + schuimbeton), Formspree-lead
+(`xzdojzdk`) en volledige GA4-funnel (`wizard_start` → `wizard_product` →
+`calculator_result`/`calculator_complete` → `wizard_lead_submit`). Het probleem is
+**geen ontbrekende tool maar een funnel-lek**: 312s engagement, 0 conversie.
 
-### Onderbouwing
+### Waarom de wizard niet converteert (analyse van de bestaande code)
 
-- Eigen data: 307 s gem. duur, 25% bounce op `prijsindicatie.html` — sterkste
-  pagina van de site; 0 conversies over 90d/68 sessies wijst op funnel-frictie,
-  niet op afwezigheid van een calculator.
-- Branche: interactieve checks/calculators verhogen leadkwaliteit (HomeZero claimt
-  ~30% hogere website→lead-conversie; Leadmodule positioneert calculators vs.
-  gedeelde Werkspot-leads). VLWarmte heeft dit al ingebouwd.
-- Concurrenten: generieke calculators (Vastlegg: NEN 12831, €45–85/m²) zijn
-  technisch/te algemeen; lokale installateurs gebruiken vooral offerteformulieren.
-  VLWarmte's schuimbeton-specifieke bandbreedte is **differentiator**.
+De frictie zit structureel in de flow, niet in de rekensom:
 
-### Voorgestelde opbouw wizard (bestaand — geen wijziging deze cyclus)
+1. **De lead-uitstap staat volledig ácht­er het eindresultaat.** Het formulier
+   (`#calc-form`) zit in het `result-block` dat pas verschijnt ná de laatste stap
+   (`calculate()` / `finishSchuim()`). Wie afhaakt bij stap 2–4 — of alleen het
+   richtbedrag wil zien en dan weggaat — heeft **geen enkele** kans gehad om een
+   spoor achter te laten. 312s gemiddelde duur betekent dat mensen de wizard echt
+   doorlopen en het bedrag lezen; het gat zit in de **stap van "bedrag gezien" naar
+   "gegevens invullen"**.
 
-1. Productkeuze (alleen VL vs. VL + schuimbeton)
-2. m², kruipruimte-diepte, ondergrond
-3. Resultaat + `.lead-after` (offerte + bellen)
+2. **De gevraagde velden zijn relatief zwaar voor een eerste contact.** `naam` +
+   `telefoon` zijn beide `required`; daarnaast e-mail, woonplaats en startdatum.
+   Telefoon-verplicht is een bekende conversiedrempel — bezoekers die "even willen
+   kijken" geven niet meteen hun 06.
 
-Cyclus 19 versterkte stap 3 visueel; **4 weken wachten** vóór nieuwe ingreep.
+3. **De belofte onder het bedrag is defensief geformuleerd.** "geen verkoper aan de
+   deur", "geen automatische terugbelpoging" is eerlijk en past bij de toon, maar
+   het herhaalt vooral wat er **niet** gebeurt. De waarde van hét gesprek ("we
+   checken pompafstand, bodem en detailplan gratis") staat er wel, maar mag
+   sterker als reden-om-nu-te-handelen.
 
-### Leadgeneratie koppeling
+4. **De uitstap is enkelvoudig zwaar.** De primaire actie is "Offerte aanvragen"
+   (formulier). De lichtere alternatieven (bellen / belmoment) staan als bijzin
+   naast de knop. Er is geen laagdrempelige "stuur het richtbedrag naar mijn mail"-
+   micro-conversie die een e-mailadres vangt zonder telefoon-commitment.
 
-Formulier na richtbedrag → Formspree → `wizard_lead_submit` (key event).
-Secundair: `tel:` + `contact.html?modus=bel#aanvraag`. Ads-sitelink en home-CTA
-moeten hier naartoe sturen.
+### Voorgestelde optimalisaties (voor de Developer-sprint, geen herbouw)
+
+Prioriteer op basis van meetbaarheid; elk is een kleine ingreep:
+
+- **A. Lichtere lead-variant naast de offerte-knop.** Bied in `.lead-after` een
+  tweede, lichtere actie: "Mail mij dit richtbedrag" met alléén e-mail verplicht
+  (telefoon optioneel). Dit vangt de "wil kijken, nog niet bellen"-groep. Succes-
+  meting: nieuw event `wizard_lead_email` naast `wizard_lead_submit`.
+- **B. Telefoon optioneel maken (of e-mail óf telefoon verplicht i.p.v. beide).**
+  Verlaagt de invuldrempel op het bestaande formulier zonder de flow te wijzigen.
+- **C. Sterkere waarde-zin onder het bedrag.** Vervang de nadruk-op-wat-niet-gebeurt
+  door één concrete reden nu te reageren (bv. "binnen één werkdag een opname-afspraak
+  in jouw regio; deze maand nog inpasbaar vóór het stookseizoen").
+- **D. Meet éérst de funnel-drop.** Draai in de analytics-cyclus de query
+  `wizard_start` → `calculator_result` → `wizard_lead_submit`. Als de grote drop
+  tussen `calculator_result` en `wizard_lead_submit` zit (verwacht), bevestigt dat
+  A–C; zit de drop eerder, dan is het een flow-lengte-probleem.
+
+### Leadgeneratie-koppeling (bestaand)
+
+Formulier na richtbedrag → Formspree → `wizard_lead_submit` (key event) +
+`lead_form_submit`. Secundair: `tel:` + `contact.html?modus=bel#aanvraag`.
 
 ### Risico's en aandachtspunten
 
-- Bindende prijsclaim vermijden ("indicatie", "richtbedrag", excl. btw).
-- Hout-ondergrond-route naar contact (geen prijs) — behouden.
-- Bij aanhoudend 0 conv: funnel-events uitlezen (`wizard_start` →
-  `calculator_result` → `wizard_lead_submit`).
+- Bindende prijsclaim blijven vermijden ("indicatie", "richtbedrag", excl. btw) — is nu goed geregeld.
+- Hout-ondergrond-route naar contact (geen prijs) behouden — is nu goed geregeld.
+- Bij een lichtere e-mail-only variant: privacytekst en verwerking ongewijzigd houden.
 
 ### Aanbeveling aan Product Manager
 
-- **Prioriteit:** Midden (onderhoud/meting, geen nieuwbouw)
-- **Geschatte ontwikkeltijd:** 0 uur nieuwbouw; eventueel 2–4u funnel-fix na meting
-- **Verwacht effect:** Eerste wizard-lead binnen 4–8 weken na cyclus 19
+- **Prioriteit:** Hoog (0 conv is nieuw en de wizard is de sterkste pagina)
+- **Geschatte ontwikkeltijd:** 3–6 uur (A–C zijn kleine front-end-ingrepen; D is meting)
+- **Verwacht effect:** Eerste wizard-leads binnen 2–4 weken; A (e-mail-only) is de meest kansrijke hefboom
 
 ## Seizoenspatroon
 
-- **Aanleg:** zomer is het klassieke aanlegseizoen (dekvloer droogt ~6 weken vóór
-  stookseizoen) — nu (juli) is oriëntatie/offerte-tijd nog relevant.
-- **Zoekintentie kosten:** piekt richting winter/verbouwing (indicatief; geen harde
-  volume-data zonder keyword-tool).
-- **Conjunctuur:** EIB H1 2026 — installatiebedrijven positiever over omzet dan
-  bouwbedrijven; vraag naar verbouwing/verwarming blijft gunstig.
-- **Implicatie:** lage sessies nu zijn vooral **marketingvolume** (Ads €2/dag +
-  organisch nog niet ingebakken), niet per se marktafwezigheid.
+- **Aanleg:** zomer is klassiek aanlegseizoen (dekvloer droogt ~6 weken vóór
+  stookseizoen); juli is nog oriëntatie/offerte-tijd. Wie nu een opname vraagt kan
+  vaak nog vóór de winter geregeld worden — bruikbaar als urgentie-argument in de
+  wizard-uitstap (optimalisatie C).
+- **Zoekintentie kosten:** piekt richting winter/verbouwing (indicatief).
+- **Implicatie:** de lage sessies nu zijn vooral **marketingvolume** (Ads €2/dag +
+  organisch nog niet ingebakken), niet marktafwezigheid.
 
-## Google Ads — verificatie (cyclus 20)
+## Google Ads — escalatie voor de eigenaar (geen autonome actie deze run)
 
-| Check | Resultaat |
-|-------|-----------|
-| `google_ads_smoke_test.py` | OK — 3 toegankelijke accounts |
-| `google_ads_list_campaigns.py` | **23834672782** — `SEARCH`, **ENABLED**, `VLW-API-Leads NL auto` |
-| Dagbudget (defaults JSON) | **€2/dag** |
-| `update_campaign_geo.py --dry-run` | Geo staat al op **Drenthe + Groningen + Friesland** (20759/20761/20763); dry-run is replace met dezelfde set — **geen `--apply` nodig** |
-| GA4 geo-lek (NH/ZH/DE/BD/CA) | Waarschijnlijk historisch / "interesse"-locatie / restant 30d-venster; geo-targeting lijkt correct |
+> Ads-scripts zijn geblokkeerd in deze modus; onderstaande is **advies/escalatie**,
+> geen uitgevoerde wijziging.
 
-**Conversie-alignment:** beide conv. landen op `/`, niet op `prijsindicatie.html`.
-RSA `final_urls` zijn al beperkt tot offerte-deeplink + prijsindicatie; sitelink
-"Prijsindicatie" staat in defaults. Overweeg in Ads UI te controleren of Google
-de homepage als canonical landing kiest — headline "Richtbedrag in 2 minuten" +
-sitelink prominent houden.
+De harde nieuwe data: **`google/cpc` = 12 sessies, 0 conversies** (30d), terwijl de
+ratio vorige cyclus nog ~10,5% was. Twee dingen om te doen, in deze volgorde:
 
-**Niet uitgevoerd (bewust):** `--apply` geo (geen wijziging), budgetverhoging,
-`--go-live` (campagne al ENABLED), negatives-script (bestaande set in JSON;
-geen nieuwe negatieven uit research deze cyclus).
+1. **Landing verleggen naar de wizard (eerst — kost geen extra spend).** Beide eerdere
+   conversies landden op `/` (homepage), niet op de wizard. Bij 0 conversie nu is de
+   homepage-landing verdacht: bezoekers met koop-/prijsintentie horen direct op
+   `prijsindicatie.html` te landen, niet op de merk-homepage. **Advies:** zet de
+   final URL van de RSA('s) op `prijsindicatie.html` (of `contact.html?modus=offerte#aanvraag`
+   voor de puur offerte-gerichte adgroep), houd de sitelink "Prijsindicatie" en de
+   headline "Richtbedrag in 2 minuten" prominent. Combineer dit met wizard-optimalisatie
+   A–C hierboven zodat de landing ook echt converteert.
+2. **Budget pas beoordelen ná de landing-fix.** €2/dag verhogen terwijl de landing
+   0% converteert = meer geld naar een lekkende funnel. **Advies aan eigenaar:**
+   houd budget op €2/dag tot (a) de wizard-landing live is en (b) 2 weken data
+   binnen is; overweeg dán een test naar €5–10/dag. Budgetverhoging **alleen na
+   expliciete spend-goedkeuring in chat**.
+3. **Negatieven / geo-ruis:** 12 van 34 sessies komen buiten de regio (NH/ZH/DE/CA).
+   Geo-targeting stond in cyclus 20 correct op DR+GR+FR; de ruis is waarschijnlijk
+   organisch/direct, niet betaald. **Advies:** bij de landing-fix ook in de Ads UI
+   controleren of er geen "presence or interest"-targeting aanstaat die buiten-regio
+   vertoningen toelaat.
 
 ## GSC-status
 
 | Item | Status |
 |------|--------|
 | `secrets/gsc.env` | Aanwezig |
-| `gsc_fetch.py` | **Mislukt** — `RefreshError: invalid_grant` |
-| Laatste export | 2026-05-23 (28d t/m 22 mei) |
-| Actie | Eigenaar: `python scripts/gsc_get_refresh_token.py` met verified owner-account; daarna `gsc_fetch.py` in elke cyclus |
+| `gsc_fetch.py` | **Mislukt** — `invalid_grant` (refresh token verlopen) |
+| Laatste export | ~5+ weken oud |
+| Actie | Eigenaar: `python scripts/gsc_get_refresh_token.py` met verified owner-account; daarna `gsc_fetch.py` per cyclus |
 
-Zonder verse GSC zijn cyclus 17–19-ingrepen (stadlinks, CTR-fix Zuidlaren,
-home-titel) **niet toetsbaar**.
+Zonder verse GSC blijven de Heerenveen-pagina (cyclus 20), de stadlinks en de
+Drachten-refactor (deze cyclus) **niet toetsbaar** op organisch effect.
 
-## Aanbevelingen voor Product Manager (max 8)
+## Aanbevelingen voor Product Manager (max 8, op prioriteit)
 
-### 1. Google Ads — budget beoordelen (escalatie eigenaar)
-
-- **Prioriteit:** Hoog
-- **Type:** Ads / spend
-- **Onderbouwing:** 19 cpc-sessies / 2 conv (~10,5%); campagne ENABLED @ €2/dag.
-  Enige schaalbare leadhefboom op korte termijn.
-- **Actie:** Eigenaar bevestigt gewenst dagbudget (bijv. €5–10/dag test). Agent
-  kan daarna `google_ads_update_campaign_budget.py` of recreate-flow met
-  `--daily-budget-eur` — **alleen na expliciete spend-goedkeuring in chat**.
-- **Verwacht effect:** Lineair meer leads bij gelijke ratio (indicatief +1 lead /
-  ~10 extra betaalde sessies).
-
-### 2. Wizard-conversie — 4 weken meten, geen nieuwe ingreep
+### 1. Drachten-pagina → Drachten-only (ontdubbelen met Heerenveen)
 
 - **Prioriteit:** Hoog
-- **Type:** CRO / meting
-- **Onderbouwing:** Cyclus 19 live 29 jun; 90d nog 0 `wizard_lead_submit` op
-  68 sessies. Te vroeg om te falen.
-- **Actie:** Sprint week ~27 jul: GA4-check `wizard_lead_submit`. Bij nog 0:
-  funnel-query `wizard_start` → `calculator_result` → `wizard_lead_submit`.
+- **Type:** SEO / content update (traffic-onafhankelijk, raakt cyclus-20-pagina niet)
+- **Onderbouwing:** `vloerverwarming-drachten.html` draagt nog title/H1/meta
+  "Drachten **en Heerenveen**" + een volledige Heerenveen-H2, terwijl de dedicated
+  `vloerverwarming-heerenveen.html` sinds cyclus 20 live is. Twee eigen pagina's op
+  dezelfde term = keyword-kannibalisatie; de sterkere pagina verliest.
+- **Actie:** Developer: title/H1/meta/OG naar Drachten-only; Heerenveen-H2 (regel 131)
+  vervangen door één korte alinea + de bestaande interne link naar de Heerenveen-pagina;
+  overige Heerenveen-body-vermeldingen terugbrengen tot hooguit een terloopse noemer.
+- **Verwacht effect:** Heerenveen-pagina wint rankingsautoriteit; Drachten scherper.
+
+### 2. Wizard-conversie — lichtere lead-uitstap (e-mail-only)
+
+- **Prioriteit:** Hoog
+- **Type:** CRO / content update
+- **Onderbouwing:** 312s engagement, 0 conversie. Lead-formulier staat volledig ná
+  het eindresultaat; naam+telefoon beide verplicht. Grote drempel voor "wil kijken".
+- **Actie:** Developer: tweede, lichtere actie in `.lead-after` ("Mail mij dit
+  richtbedrag", alléén e-mail verplicht) + telefoon optioneel op het hoofdformulier +
+  sterkere waarde-zin onder het bedrag. Nieuw event `wizard_lead_email`.
+- **Verwacht effect:** Eerste wizard-leads binnen 2–4 weken; meest kansrijke hefboom op de 0-conversie.
+
+### 3. Ads-landing verleggen naar de wizard (escalatie eigenaar)
+
+- **Prioriteit:** Hoog
+- **Type:** Ads / CRO (escalatie — geen autonome actie deze run)
+- **Onderbouwing:** 12 cpc-sessies, 0 conv; eerdere conversies landden op `/`. Merk-
+  homepage is de verkeerde landing voor prijs-/koopintentie.
+- **Actie:** Eigenaar/Marketing: RSA final URL → `prijsindicatie.html` (koop-adgroep)
+  resp. `contact.html?modus=offerte#aanvraag` (offerte-adgroep); sitelink "Prijsindicatie"
+  + headline "Richtbedrag in 2 minuten" prominent. Koppelen aan aanbeveling 2.
+- **Verwacht effect:** Betaald verkeer landt op de converterende pagina i.p.v. de homepage.
+
+### 4. GSC OAuth vernieuwen
+
+- **Prioriteit:** Hoog
+- **Type:** Infra / SEO (escalatie)
+- **Onderbouwing:** Token verlopen; data 5+ weken oud. Zonder GSC zijn cyclus 20 +
+  deze cyclus (Heerenveen, Drachten-refactor) niet toetsbaar.
+- **Actie:** Eigenaar: `scripts/gsc_get_refresh_token.py` → `gsc_fetch.py` per cyclus.
+- **Verwacht effect:** Organische effecten stadspagina's + Zuidlaren-termen weer meetbaar.
+
+### 5. Wizard-funnel meten vóór verdere ingrepen
+
+- **Prioriteit:** Midden
+- **Type:** Meting / CRO
+- **Onderbouwing:** Bevestig waar de drop zit vóór je meer bouwt.
+- **Actie:** Analytics: query `wizard_start` → `calculator_result` → `wizard_lead_submit`.
+  Drop tussen result en submit bevestigt aanbeveling 2; eerdere drop = flow-lengte.
 - **Verwacht effect:** Gerichte fix i.p.v. gissen.
 
-### 3. GSC OAuth vernieuwen
-
-- **Prioriteit:** Hoog
-- **Type:** Infra / SEO
-- **Onderbouwing:** Token expired; data 5+ weken oud.
-- **Actie:** `scripts/gsc_get_refresh_token.py` → `gsc_fetch.py` in analytics-cyclus.
-- **Verwacht effect:** Indexatie/CTR stadspagina's en Zuidlaren-termen meetbaar.
-
-### 4. Heerenveen — pagina bouwen of Ads-keyword pauzeren
-
-- **Prioriteit:** Hoog
-- **Type:** SEO + Ads-alignment
-- **Onderbouwing:** Keyword actief in campagne; geen `vloerverwarming-heerenveen.html`;
-  concurrenten hebben dedicated pagina's. Intent-mismatch kost Quality Score en
-  bounce.
-- **Actie:** Developer: pagina op patroon Drachten/Leeuwarden (werkgebied, wizard-CTA,
-  canonical) **of** Marketing: keyword uit campagne tot pagina live is.
-- **Verwacht effect:** Betere Ads-kwaliteit + organische dekking Friese subregio.
-
-### 5. `diensten.html` — cta-band primair naar wizard
+### 6. Ads-budget beoordelen — pas ná landing-fix (escalatie eigenaar)
 
 - **Prioriteit:** Midden
-- **Type:** CTA
-- **Onderbouwing:** Analytics cyclus 20: hero → wizard, cta-band → contact offerte;
-  3 sessies, 17 s, 50% bounce als landing.
-- **Actie:** `cta-band`: primaire knop `prijsindicatie.html` ("Richtbedrag in 2
-  minuten"), secundair contact.
-- **Verwacht effect:** Consistente wizard-routing; meer `wizard_start`.
+- **Type:** Ads / spend (escalatie)
+- **Onderbouwing:** €2/dag verhogen terwijl de landing 0% converteert is zonde.
+  Eerst landing (aanbeveling 3) + wizard (2), dan 2 weken meten.
+- **Actie:** Eigenaar: budget op €2/dag houden tot landing live + data binnen;
+  daarna eventueel test €5–10/dag — **alleen na expliciete spend-goedkeuring in chat**.
+- **Verwacht effect:** Geen geld naar een lekkende funnel; schaalbeslissing op data.
 
-### 6. `systemen-producten.html` — landing hero aanscherpen
-
-- **Prioriteit:** Midden
-- **Type:** Content / CTA
-- **Onderbouwing:** 3 landings, 67% bounce, 18 s; laagopbouw-keywords in Ads.
-- **Actie:** Hero: concrete belofte + plaats/regio + primaire CTA wizard; trust-regel
-  (10 jaar garantie buis, reactie één werkdag). Geen tweede formulier.
-- **Verwacht effect:** Lagere bounce op laagopbouw-intent.
-
-### 7. Stadspagina's — social traffic (handmatig)
+### 7. Stadspagina's — social traffic naar de juiste pagina
 
 - **Prioriteit:** Midden
 - **Type:** Social / SEO
-- **Onderbouwing:** Drachten + Zuidlaren elk 2 sessies, 0% bounce na interne links;
-  overige steden 0 sessies in 30d.
-- **Actie:** `weekly_calendar.md`: 1–2 posts met directe link naar stadspagina
-  (niet alleen home/wizard). Hashtags: max 1–2 regionale (#Drachten, #ZuidLaren).
-- **Verwacht effect:** Eerste sessies op hub + zusterpagina's.
+- **Onderbouwing:** Instroom is het hoofdknelpunt; stadspagina's krijgen buiten
+  Drachten/Zuidlaren nauwelijks sessies. Social is een traffic-onafhankelijke hefboom.
+- **Actie:** `weekly_calendar.md`: 1–2 posts met directe link naar een stadspagina
+  (incl. de nieuwe Heerenveen-pagina), niet alleen home/wizard. Hashtags: max 1–2
+  regionaal (#Heerenveen, #Drachten, #ZuidLaren).
+- **Verwacht effect:** Eerste sessies op Friese cluster + hub.
 
-### 8. Ads-landing — homepage vs. wizard monitoren
+### 8. `systemen-producten.html` — landing-hero aanscherpen
 
-- **Prioriteit:** Midden
-- **Type:** Ads / CRO
-- **Onderbouwing:** 100% conv via `/`; prijsindicatie 307 s engagement maar 67%
-  bounce als directe landing en 0 conv.
-- **Actie:** In Ads UI: ad strength + landing-rapport; sitelink "Prijsindicatie"
-  en headline "Richtbedrag in 2 minuten" prominent. Geen budgetwijziging zonder
-  goedkeuring. Over 4 weken: vergelijk conv per landing in GA4.
-- **Verwacht effect:** Meer wizard-instroom zonder homepage-bounce te verergeren.
+- **Prioriteit:** Laag
+- **Type:** Content / CTA
+- **Onderbouwing:** Hoge bounce op laagopbouw-intent; lager dan 1–3 nu instroom
+  + conversie voorgaan.
+- **Actie:** Developer (later): hero met concrete belofte + regio + primaire CTA
+  wizard; trust-regel (10 jaar garantie buis, reactie binnen één werkdag). Geen
+  tweede formulier, geen nieuwe pagina.
+- **Verwacht effect:** Lagere bounce op laagopbouw-intent.
 
 ---
 
 ## Escalaties (menselijke actie vereist)
 
-1. **Spend-goedkeuring** — budget verhogen boven €2/dag (enige hefboom voor meer
-   leads bij gezonde cpc-ratio).
-2. **GSC OAuth** — `invalid_grant`; refresh token opnieuw genereren.
-3. **Beeldmateriaal** — `projecten.html` en social blijven geblokkeerd zonder nieuwe
+1. **Ads-landing + budget** — RSA final URL naar de wizard (kost geen spend);
+   budgetverhoging pas ná landing-fix en alleen met expliciete spend-goedkeuring.
+2. **GSC OAuth** — `invalid_grant`; refresh token opnieuw genereren, anders blijft
+   organisch (incl. deze cyclus) blind.
+3. **Beeldmateriaal** — `projecten.html` en social blijven beperkt zonder nieuwe
    foto's in `beeldmateriaal/projecten/`.
 
 ---
 
 ### Samenvatting voor de Product Manager
 
-- **Ads:** campagne `23834672782` draait **SEARCH / ENABLED** @ **€2/dag**; geo al
-  DR+GR+FR — geen geo-mutatie nodig. Volume is de bottleneck; budget alleen met
-  eigenaar-akkoord.
-- **Site:** cyclus-19 live; meet wizard + titel over 4 weken. Grootste dev-kansen:
-  Heerenveen-gap, diensten-cta-band, systemen-hero.
-- **GSC:** fetch geblokkeerd (verlopen token) — eerst OAuth, dan SEO-effect meten.
-- **Calculator:** niet opnieuw bouwen; optimaliseer instroom en funnel.
+- **SEO-quick-win (dev, traffic-onafhankelijk):** Drachten-pagina ontdubbelen naar
+  Drachten-only — de nieuwe Heerenveen-pagina wordt nu gekannibaliseerd door
+  "Drachten en Heerenveen" in title/H1 + een hele Heerenveen-sectie.
+- **Conversie (dev):** de wizard bindt (312s) maar heeft geen lichte uitstap —
+  voeg een e-mail-only "mail mij het richtbedrag" toe en maak telefoon optioneel.
+- **Ads (escalatie):** stuur betaald verkeer naar de wizard i.p.v. de homepage;
+  beoordeel budget pas ná die landing-fix. 0 conversie op alle kanalen is nieuw.
+- **GSC:** nog steeds geblokkeerd — eerst OAuth, dan effect meten.
+- **Volume-context:** zoekvolumes dit rapport zijn indicatief/geschat (geen live tools deze run).
