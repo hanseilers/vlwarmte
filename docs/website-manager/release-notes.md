@@ -4,6 +4,32 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 6 juli 2026 (cyclus 21)
+
+**Deployment:** 06-07-2026, 06:30 — PM push naar `main` (GitHub Pages). Commit `450917f`.
+
+### Wat is er veranderd
+
+- **De prijscalculator vraagt minder.** Wie in de wizard een richtbedrag uitrekent, hoefde daarna naam én telefoonnummer in te vullen om iets achter te laten. Telefoon is nu optioneel; een e-mailadres volstaat. Onder de knop staat expliciet: "Liever alleen je richtbedrag per mail? Vul je e-mail in — bellen hoeft niet." Zo kan ook iemand die (nog) niet gebeld wil worden zich melden.
+- **De Drachten-pagina gaat weer over Drachten.** Sinds vorige week bestaat er een aparte pagina voor Heerenveen. De Drachten-pagina mikte in titel, kop en tekst nog steeds óók op Heerenveen — waardoor beide pagina's bij Google om dezelfde zoekterm concurreerden. De Drachten-pagina is nu volledig op Drachten gericht, met één nette verwijzing naar de Heerenveen-pagina.
+- **Eén heldere knoptekst voor de calculator.** Verspreid over de site stonden nog knoppen met het brave "Naar de prijsindicatie", terwijl elders al de sterkere "Richtbedrag in 2 minuten →" stond. Alle 22 primaire calculatorknoppen dragen nu diezelfde, duidelijke tekst.
+
+### Waarom
+
+- **Nul aanvragen deze maand, over alle kanalen.** De calculator boeit sterk (bezoekers blijven er ruim vijf minuten), maar leverde geen enkele aanvraag op. De verplichte telefoon is de meest waarschijnlijke drempel — die halen we weg. (Kanttekening: mogelijk telt de meting niet goed; dat wordt apart nagekeken, zie hieronder.)
+- **Concurreren met jezelf helpt niemand.** Twee eigen pagina's op "vloerverwarming Heerenveen" verdeelt de kracht; de nieuwe pagina moet die term voor zichzelf krijgen.
+- **Herkenbaarheid.** Dezelfde knoptekst overal maakt de volgende stap voorspelbaar — dat verhoogt doorgaans het aantal klikken.
+
+### Verwacht effect
+
+Over ~4 weken in de cijfers: de eerste aanvraag via de calculator (of aantoonbaar in de aanvraag-inbox), een Drachten- én Heerenveen-pagina die elk hun eigen zoekterm oppakken, en geen terugval in wizard-bezoek door de nieuwe knoptekst. Losstaand: de eigenaar checkt of "nul aanvragen" echt klopt of een meetfout is.
+
+### Social media deze week
+
+Zeven posts (3 LinkedIn, 4 Instagram), week van 6 juli. Rode draad: verkeer naar de calculator en het lanceren van de nieuwe Heerenveen-pagina, naast Drachten, Zuidlaren en de Drenthe-hub. Beeld: dezelfde beperkte set echte bouwfoto's (Zeegse/Zuidlaren) — eindresultaat-vloer, verdeler-detail en teamfoto ontbreken nog. Publicatie handmatig door het team.
+
+---
+
 ## Release — week van 1 juli 2026 (cyclus 20)
 
 **Deployment:** 01-07-2026, 21:29 — PM push naar `main` (GitHub Pages). Commit `d31b738`.
