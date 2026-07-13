@@ -180,6 +180,11 @@ Toegevoegd als los `<script type="application/ld+json">`-blok in de head, absolu
 **GEEN** rijpende/verboden bestanden aangeraakt: `prijsindicatie.html`, `vloerverwarming-heerenveen.html` en `vloerverwarming-drachten.html` (paginabestanden) zijn **niet** bewerkt — er wordt alleen vanaf andere pagina's naartoe gelinkt, en Drachten's `lastmod` is in de sitemap gezet (raakt het paginabestand niet). `contact.html`/`werkwijze.html` uitsluitend de toegestane CTA-label-swap; `systemen-producten.html` niet aangeraakt.
 
 ### Overdracht
-- **Nog niet live** — PM voert grep-verificatie + `git commit` + `git push origin main` uit; daarna GitHub Actions (Pages). [PM vult run-id / succes in]
 - Live URL: https://www.vlwarmte.nl
 - Aandachtspunt volgende sprint: FAQ-sjabloon uitrollen naar Emmen/Assen/Leeuwarden/Zuidlaren; breadcrumb op Heerenveen/Drachten inhalen na maturatie (~27 jul).
+
+### PM-verificatie + deployment (13 juli 2026)
+- **Grep-verificatie PM (allemaal ✓):** sitemap-`lastmod` — Drachten `2026-07-06`, 9 deze-sprint-URL's `2026-07-13`, overige ongemoeid; geen "Naar de prijsindicatie" meer op de site; Groningen `FAQPage` met 3 `Question`-objecten + zichtbare `<h2>Veelgestelde vragen — Groningen</h2>`; `BreadcrumbList` op exact 7 pagina's (assen/emmen/groningen/hoogeveen/leeuwarden/zuidlaren + drenthe-hub), **niet** op heerenveen/drachten; contextuele kruislinks toegevoegd op assen/groningen/drenthe; geen verboden paginabestanden in de changeset (geen `prijsindicatie.html`/`heerenveen.html`/`drachten.html`/`systemen-producten.html`).
+- **Deployment:** PM commit `06ca9a8` (site) + `eef05b7` (release notes) + push naar `main` op 13-07-2026 ~06:15. GitHub-Pages-runs **`29223661697` (success, 38s)** en **`29223721364` (success, 45s)** — geen transiënte deploy-fout deze cyclus.
+- **Live geverifieerd:** `Veelgestelde vragen — Groningen` staat live op de Groningen-pagina; GA-tag `G-0BB9M7HYSF` aanwezig in `assets/js/ga-deferred.js`.
+- **Nog handmatig (escalatie eigenaar):** release-mail stap 8b (SMTP geblokkeerd in autonome modus), GSC-OAuth vernieuwen, conversie-meting verifiëren, Ads-serveerstatus + landing.
