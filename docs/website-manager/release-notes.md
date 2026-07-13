@@ -4,6 +4,36 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 13 juli 2026 (cyclus 22)
+
+**Deployment:** 13-07-2026, ~06:15 — PM push naar `main` (GitHub Pages). Commit `06ca9a8`.
+
+### Wat is er veranderd
+
+Deze week geen zichtbare woord- of knopwijzigingen op de grote pagina's, maar werk onder de motorkap dat de gevonden-worden-bij-Google moet verbeteren. Het bezoek loopt hard terug (vorige week maar vier bezoekers — het laagste ooit), dus we hebben de vindbaarheid van de bestaande, oudere plaatspagina's aangepakt:
+
+- **Google weet nu dat de Drachten-pagina vernieuwd is.** In de "kaart" die we aan Google geven (de sitemap) stond bij Drachten nog de oude datum van mei. De grondige herschrijving van vorige week was daardoor voor Google onzichtbaar. Alle datums zijn nu gelijkgezet met wat er echt is aangepast.
+- **De Groningen-pagina heeft nu een lokale vraag-en-antwoord-sectie.** Drie veelgestelde vragen (wat het kost, of infrezen kan, in welke dorpen we werken — Haren, Ten Boer, Zuidhorn, Bedum), met de technische opmaak eronder waarmee Google zulke vragen soms direct in de zoekresultaten toont. Dezelfde aanpak die op de Hoogeveen-pagina al staat.
+- **Zes plaatspagina's + de Drenthe-pagina hebben nu een "kruimelpad" voor Google.** Onzichtbaar voor de bezoeker, maar het maakt voor de zoekmachine duidelijk hoe de pagina's onder elkaar hangen (Home → Drenthe → stad).
+- **Betere onderlinge verwijzingen.** Vanaf de Assen-, Groningen- en Drenthe-pagina wijzen we nu ook in de lopende tekst naar de diepere plaatspagina's (o.a. Heerenveen, Drachten), niet alleen onderaan in de voettekst.
+- **De laatste twee knoppen gelijkgetrokken.** De twee overgebleven knoppen met "Naar de prijsindicatie" (op de contact- en werkwijze-pagina) dragen nu ook "Richtbedrag in 2 minuten →". De hele site is nu consistent.
+
+### Waarom
+
+- **Het bezoek stort in en de betaalde advertenties leveren vrijwel niets meer op** (één bezoeker via Google Ads in dertig dagen). De knoppen op advertenties en de zoekmachine-toegang zelf kunnen we in deze automatische ronde niet aanraken — dat ligt bij de eigenaar (zie hieronder). Wat we wél veilig konden doen: de gratis, organische vindbaarheid van de bestaande pagina's op orde brengen.
+- **Alleen de Hoogeveen-pagina had zo'n lokale vragensectie.** De andere plaatspagina's misten dat, terwijl het een bewezen manier is om op specifieke zoekvragen ("wat kost vloerverwarming in Groningen") gevonden te worden. Groningen is de grootste markt, dus die eerst.
+- **Bewust niets veranderd aan de pagina's van de afgelopen twee weken.** Die (o.a. de vernieuwde calculator en de Heerenveen-pagina) moeten eerst een paar weken rijpen voordat we het effect kunnen meten — daar blijven we vanaf.
+
+### Verwacht effect
+
+Zodra Google opnieuw langskomt: snellere herindexering van de vernieuwde Drachten-pagina, en een kans dat de Groningen-vragen in de zoekresultaten verschijnen (hogere doorklik = meer bezoek). De wijzigingen zijn onzichtbaar voor de bezoeker, dus er is geen risico op minder betrokkenheid. Belangrijke kanttekening: dit alles is pas écht meetbaar zodra de Google-Search-Console-koppeling weer werkt — die ligt al zes weken plat en is nu de belangrijkste openstaande actie voor de eigenaar.
+
+### Social media deze week
+
+Zeven posts (3 LinkedIn, 4 Instagram), week van 13 juli. Rode draad: bezoek aanjagen — drie posts linken direct naar de calculator, met de zomer-verbouwing-haak ("plan de vloer nu, warm de winter in") en plaatsnamen uit het werkgebied. Beeld: dezelfde beperkte set echte bouwfoto's; vier posts wachten nog op nieuw beeldmateriaal (eindresultaat-vloer, infrees-actiefoto). Publicatie handmatig door het team.
+
+---
+
 ## Release — week van 6 juli 2026 (cyclus 21)
 
 **Deployment:** 06-07-2026, 06:30 — PM push naar `main` (GitHub Pages). Commit `450917f`.
