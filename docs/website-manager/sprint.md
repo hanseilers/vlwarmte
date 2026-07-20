@@ -140,7 +140,7 @@ De vaste prioriteringsregel vraagt om minimaal 1 CTA/conversie-verbetering. Bewu
 - `index.html` (T3)
 
 ### Deployment
-**Nog niet live** — PM voert commit + `git push origin main` uit; daarna: [PM vult run-id / succes in]. Live URL: https://www.vlwarmte.nl
+**Live** — PM heeft commit `2ddaf26` gepusht naar `main` op 20-07-2026 ~06:30. GitHub Pages-run `29716628914` (`pages-build-deployment`): **success** (45s). Live URL: https://www.vlwarmte.nl. Release-notes + dit deployment-resultaat volgen in een tweede commit.
 
 ### Aandachtspunten voor volgende sprint
 - FAQPage-schema staat nu op 4 van 9 stadspagina's (Hoogeveen, Groningen, Assen, Emmen). Volgende FAQ-kandidaten per `[WACHT]`: Leeuwarden, Zuidlaren, Drenthe-hub — één per sprint, lokaal ingekleurd.

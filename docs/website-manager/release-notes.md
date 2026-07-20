@@ -4,6 +4,44 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 20 juli 2026 (cyclus 23)
+
+**Deployment:** 20-07-2026, ~06:30 — PM push naar `main` (GitHub Pages). Commit `2ddaf26`.
+
+### Wat is er veranderd
+
+Weer een week onder de motorkap: geen nieuwe pagina's, wel gerichte verbeteringen om beter gevonden te worden en om het juiste publiek te trekken. Het bezoek zit al weken op de bodem (vorige week drie bezoekers) en een groot deel daarvan komt van buiten het werkgebied — daar zit deze week de nadruk op.
+
+- **Assen en Emmen hebben nu een eigen "veelgestelde vragen".** Op beide plaatspagina's staat voortaan een lokaal blok met drie vragen en antwoorden — over de dorpen eromheen, over wat het ongeveer kost, en over infrezen in een bestaande vloer. Voor Google is dit meteen extra, herkenbare inhoud (met de juiste opmaak eronder zodat het als "veelgestelde vragen" in de zoekresultaten kan verschijnen). De kostenvraag stuurt de bezoeker meteen door naar de prijsindicatie — de plek waar mensen het langst blijven hangen.
+- **De omschrijving van de homepage in Google is aangescherpt.** In het regeltje dat Google onder de link toont, staat nu Drenthe, Groningen en Friesland vooraan, plus de belofte "richtbedrag in 2 minuten". Bedoeling: mensen van buiten de regio (Noord-Holland, Zuid-Holland, Duitsland — samen het grootste deel van het huidige bezoek) klikken minder snel, en de mensen uit het eigen gebied juist wel. Aan de pagina zelf verandert niets zichtbaars.
+- **De oudere plaatspagina's verwijzen nu beter naar elkaar.** Emmen, Hoogeveen en Zuidlaren linken nu ook middenin de tekst door naar Heerenveen en Drachten, in plaats van alleen onderaan. Dat helpt Google die pagina's beter te vinden en te waarderen.
+- **De Google-titel van de Hoogeveen-pagina is ingekort.** Die was te lang en werd afgekapt in de zoekresultaten; nu past hij netjes en eindigt hij weer op "| VLWarmte", net als alle andere plaatspagina's.
+
+### Waarom
+
+- De **bezoekcijfers staan al vier weken op de bodem** (~21 per maand, ~7% van het meiniveau) en er komen voor de vierde keer op rij **nul geregistreerde aanvragen** binnen. De enige knop die we in de automatische modus veilig kunnen bedienen, is de vindbaarheid van de bestaande pagina's — dus daar gaan we mee door.
+- De "veelgestelde vragen" op Assen en Emmen volgen hetzelfde recept dat al op Hoogeveen en Groningen staat; dat is het bewezen patroon dat concurrenten óók gebruikt om lokaal te ranken.
+- De scherpere homepage-omschrijving is een reactie op een duidelijke bevinding: **meer dan de helft van het bezoek komt van buiten Drenthe/Groningen/Friesland**. Dat drukt de cijfers en levert geen klanten op.
+- De rijpende pagina's van de afgelopen twee cycli (Heerenveen, Drachten, de prijs-wizard) zijn **bewust met rust gelaten** tot eind juli, zodat we straks zuiver kunnen meten of dat werk effect heeft.
+
+### Verwacht effect
+
+- Assen en Emmen worden zichtbaar voor lokale zoekopdrachten ("wat kost vloerverwarming in Assen", "infrezen Emmen") en kunnen als "veelgestelde vragen" in Google verschijnen — meer kans op een klik.
+- De homepage trekt iets gerichter bezoek uit de eigen regio; te zien aan een lagere bounce en een hoger aandeel Drenthe/Groningen/Friesland in de bezoekcijfers.
+- **Belangrijke voorwaarde:** al deze effecten zijn pas meetbaar zodra Search Console weer gekoppeld is (nu al 7+ weken geblokkeerd) en zodra bevestigd is dat aanvragen wél geteld worden. Beide staan als harde actie bij de eigenaar (zie hieronder).
+
+### Openstaande acties voor de eigenaar (blokkeren verdere vooruitgang)
+
+1. **Controleer of aanvragen wél geteld worden** (4e keer gevraagd): kijk of er aanvragen in de Formspree-inboxen binnenkomen, en zet in Google Analytics de lead-events als "key event". ~10 minuten; bepaalt of "nul aanvragen" echt is of een meetfout.
+2. **Search Console weer koppelen**: de verlopen koppeling vernieuwen én het echte verificatie-token leveren (nu staat er nog een tijdelijke placeholder op alle pagina's). Zonder dit blijft al het SEO-werk onmeetbaar.
+3. **Google Ads staat volledig stil** (nul betaald bezoek): controleer of de campagne nog draait/niet is afgekeurd, en zet de landingspagina op de prijs-wizard.
+
+### Social media deze week
+
+Vier posts (planning in `weekly_calendar.md`, handmatig te plaatsen). Deze week met **directe links naar de stadspagina's** om de trage Google-ranking te omzeilen: LinkedIn dinsdag over Assen (buiswerk onder de vloer), donderdag over Emmen (infrezen zonder sloop); Facebook/Instagram woensdag over de prijsindicatie en vrijdag een regionale post over het hele werkgebied. Seizoenshaak: nu plannen = op tijd klaar vóór de winter.
+
+---
+
 ## Release — week van 13 juli 2026 (cyclus 22)
 
 **Deployment:** 13-07-2026, ~06:15 — PM push naar `main` (GitHub Pages). Commit `06ca9a8`.
