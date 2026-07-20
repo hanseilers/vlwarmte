@@ -1,190 +1,148 @@
-# Sprint — week van 13 juli 2026 (cyclus 22)
+# Sprint — week van 20 juli 2026 (cyclus 23)
 
-**PM beslissing genomen op:** 13 juli 2026, 06:10
-**Doel deze sprint:** De instroom-instorting serieus nemen op de enige hefboom die in autonome modus veilig te bedienen is: **organische vindbaarheid van de bestaande, oudere stadspagina's**. Vier schone, meetklok-veilige SEO-ingrepen (sitemap-signaal, lokale FAQ-schema, breadcrumbs, contextuele interne links) die geen van de rijpende cyclus-20/21-pagina's aanraken, plus de afgesproken laatste CTA-consistentie. De grote betaalde/GSC-hefbomen blijven geblokkeerd → harde escalatie.
-**Meetdoel (over ~4 weken, mits GSC weer draait):** Google herindexeert de Drachten-refactor (verse `lastmod`); eerste long-tail-impressies op de verrijkte Groningen-pagina; breadcrumb-/FAQ-rich-result-eligibility zichtbaar in GSC; geen daling in instroom door de wijzigingen (schema/links zijn onzichtbaar voor de bezoeker → geen engagement-risico).
+**PM beslissing genomen op:** 20 juli 2026, 06:20
+**Doel deze sprint:** Doorzetten op de enige hefboom die in autonome modus veilig te bedienen is — organische vindbaarheid en juiste-publiek-kwalificatie van de bestaande, oudere pagina's. Vier schone, meetklok-veilige ingrepen (FAQ-schema Assen + Emmen, kruislinks gelijktrekken, Hoogeveen-title) plus één targeting-ingreep op de homepage-meta die het aantoonbare verkeerd-publiek-probleem aanpakt. Geen van de rijpende cyclus-20/21-pagina's (prijsindicatie-wizard, Heerenveen, Drachten) wordt aangeraakt. De grote betaalde/GSC/meet-hefbomen blijven geblokkeerd → harde escalatie, nu voor de 4e keer op de conversie-meting.
+**Meetdoel (over ~4 weken, mits GSC weer draait):** Assen + Emmen krijgen long-tail-impressies en FAQ-rich-result-eligibility; de homepage-meta filtert een deel van het niet-regionale verkeer weg (lagere bounce, hoger aandeel Drenthe/Groningen/Friesland in geo); geen daling in instroom door de wijzigingen (schema/links/meta zijn onzichtbaar voor de bezoeker → geen engagement-risico).
 
 ---
 
-## Belangrijkste databevinding deze cyclus (verse GA4, per 13 jul)
+## Belangrijkste databevindingen deze cyclus (verse GA4, per 20 jul)
 
-1. **Instroom stort verder in — dit is nu hét knelpunt.** ~22 sessies/30d (↓ ~35% van 34). Week 6–12 jul = **4 sessies — de laagste ooit gemeten**. Mei zat op 15–56/week; we draaien op ~7% daarvan.
-2. **0 conversies over álle kanalen, derde cyclus op rij.** Bij ~22 sessies kán het te weinig verkeer zijn (lege trechter), maar 3× nul terwijl lead-events afvuren houdt de kans op een **meetfout** (events niet als key event gemarkeerd) open. Nog steeds niet door eigenaar geverifieerd → escalatie, opnieuw.
-3. **Betaald kanaal staat feitelijk stil.** `google/cpc` — historisch 100% van alle conversies — is van 12 sessies naar **1 sessie/30d** gevallen. Dat is geen normale werking; wijst op gepauzeerde/afgekeurde campagne. Ads-scripts geblokkeerd in autonome modus → escalatie.
-4. **De homepage vangt bijna al het verkeer op (20/22 sessies, ~70% bounce, ~5 s).** Maar: de geo-data laat zien dat een groot deel **buiten de doelregio** valt (North Holland 5, Duitsland 3 > Drenthe 4 + Groningen 1). De hoge bounce is dus deels een **verkeerd-publiek-probleem**, niet puur een pagina-probleem. De hero draagt al de bewezen CTA ("Richtbedrag in 2 minuten →") én de regio (trust-strip). Daarom deze cyclus **géén** homepage-herbouw — dat risico weegt niet op tegen de marginale winst (zie `[WACHT]`).
-5. **Structured-data-audit legt vier schone SEO-gaten bloot** (Research Agent), allemaal op **oudere** pagina's / sitemap-metadata — niet op de rijpende cyclus-20/21-pagina's:
-   - **Sitemap-signaalgat:** `vloerverwarming-drachten.html` is 6 jul herschreven maar `sitemap.xml` draagt nog `<lastmod>2026-05-22`. Google ziet de refactor niet.
-   - **FAQPage-schema alleen op Hoogeveen** — de andere 8 stadspagina's missen de bewezen lokale-FAQ-sjabloon.
-   - **Geen enkele `BreadcrumbList`-schema** op de site.
-   - **Ongelijke in-body "Ook actief in"-kruislinks** (Assen linkt niet contextueel naar het Friese cluster; Emmen/Leeuwarden wél).
-6. **Cyclus-20/21-pagina's rijpen nog** (Heerenveen 1 jul; Drachten-refactor + lead-drempel + CTA 6 jul). Live 7–12 dagen — niet te beoordelen, meetklok niet resetten tot ~27 jul.
-7. **GSC blijft blind** (`invalid_grant`, 6+ weken). SEO-effect van cyclus 17–22 niet toetsbaar → langst openstaande blokkade.
-
-Conclusie: een bewuste **SEO-hygiëne- en vindbaarheidscyclus**. Geen nieuwe pagina, geen conversie-tweak op een lege trechter, geen aanraking van rijpende pagina's. In plaats daarvan: de instroom-fundamenten van de bestaande oudere pagina's op orde brengen, zodat organisch verkeer een kans krijgt zodra Google herindexeert. Plus de laatste twee CTA-knoppen gelijktrekken. De echte instroom-hefbomen (Ads, GSC) zijn geblokkeerd → als harde escalatie belegd bij de eigenaar.
+1. **Instroom blijft op bodemniveau.** ~21 sessies/30d (14 Direct + 7 Organic). Weekly trend: 15 → 16 → 15 → **1** (15–21 jun) → 5 → 9 → 4 → **3** (13–19 jul). ~7% van het mei-niveau. De scherpe cliff in de week van 15 jun (15→1) blijft te abrupt voor pure seizoensinvloed — verdacht, maar zonder GSC niet te bevestigen.
+2. **Betaald kanaal is nu volledig dood.** `google/cpc` viel 12 → 1 → **0 sessies/30d**. Dat is historisch 100% van álle conversies. Geen normale werking → gepauzeerde/afgekeurde campagne. Ads-scripts geblokkeerd → escalatie.
+3. **0 conversies — 4e cyclus op rij.** Het bewijs kantelt richting **meetfout**: de lead-events (`wizard_lead_submit`, `lead_form_submit`, `contact_submit`) vuren aantoonbaar in de code, maar custom events tellen in GA4 pas als conversie ná key-event-markering in Admin. 90d intens engagement op `prijsindicatie` (133 s gemiddeld, één sessie 233 s) zónder één lead-event past niet bij een echt lege trechter. Nog steeds niet door de eigenaar geverifieerd → hardste escalatie deze cyclus.
+4. **Verkeerd publiek op de homepage.** 16 van 21 landingssessies op `/` (75% bounce, ~5 s). Geo: North Holland 5, Duitsland 3, South Holland 3, USA 2 — dat is 13 van 21 sessies **buiten** het werkgebied; doelregio (Drenthe 3 + Groningen 1 + Friesland 0 = 4) is minderheid. De hoge bounce is dus deels een verkeerd-publiek-probleem, niet puur een pagina-probleem → daarom een meta-targeting-ingreep i.p.v. een hero-herbouw.
+5. **GSC feitelijk niet gekoppeld.** OAuth `invalid_grant` (7+ weken) én een placeholder `<meta name="google-site-verification" content="REPLACE_WITH_TOKEN">` op alle 11 hoofdpagina's. Zolang dit staat is de instroomdiagnose (punt 1) en het SEO-effect van cyclus 17–22 onmeetbaar. Langst openstaande blokkade.
+6. **Structured-data-audit (grep, alle stadspagina's):** cyclus 22 landde goed (sitemap-lastmod Drachten nu 2026-07-06, Groningen-FAQ+schema live, breadcrumbs op alle 7 oudere pagina's, Assen/Groningen kruislinken contextueel). Resterende schone gaten: **FAQPage-schema staat pas op 2 van 9 stadspagina's** (Hoogeveen, Groningen); **kruislinks ongelijk** (Emmen/Hoogeveen alleen footer, Zuidlaren mist Drachten in-body); **Hoogeveen-`<title>`** ≈81 tekens (afgekapt, mist `| VLWarmte`). Breadcrumb-gat alleen nog op Heerenveen/Drachten — bewust uitgesteld wegens maturatie.
 
 ---
 
 ## Goedgekeurde taken voor Developer Agent
 
-> **Rijp-regel (streng deze cyclus):** raak **niet** aan: `prijsindicatie.html` (wizard/lead-flow), `vloerverwarming-heerenveen.html`, `vloerverwarming-drachten.html` (paginabestand), `contact.html`/`systemen-producten.html`/`werkwijze.html` **behalve** de expliciet benoemde CTA-label-swap in taak 5. Alle schema is **onzichtbaar** voor de bezoeker → geen engagement-effect, dus veilig naast rijpende pagina's.
-
-### Taak 1: `sitemap.xml` — `lastmod` gelijkzetten met de echte deploys `[GOEDGEKEURD]`
-
-**Bron:** Marketing Research Agent (voorstel 1, Hoog).
-**Prioriteit:** Hoog (SEO / signaalhygiëne — traffic-onafhankelijk, geen pagina-inhoud)
-**Context:** De cyclus-21-refactor van Drachten (6 jul) is crawl-technisch onzichtbaar omdat de sitemap nog `2026-05-22` draagt.
+### Taak 1: Lokale FAQ + `FAQPage`-schema op `vloerverwarming-assen.html` `[GOEDGEKEURD]`
+**Bron:** Marketing Research Agent (taak 1, Hoog) + Analytics Agent (voorstel 4)
+**Prioriteit:** Hoog
+**Type:** SEO / content-verrijking (bestaande dunne pagina) + conversie-routing naar de wizard
 **Actie:**
-1. Zet `<lastmod>` van `vloerverwarming-drachten.html` op **`2026-07-06`** (de cyclus-21-deploydatum; het paginabestand zelf niet aanraken).
-2. Zet `<lastmod>` op **`2026-07-13`** (vandaag) voor élke URL die **deze sprint** wordt gewijzigd: `vloerverwarming-groningen.html`, `vloerverwarming-assen.html`, `vloerverwarming-drenthe.html`, `vloerverwarming-emmen.html`, `vloerverwarming-hoogeveen.html`, `vloerverwarming-leeuwarden.html`, `vloerverwarming-zuidlaren.html`, `contact.html`, `werkwijze.html`.
-3. Laat de overige `lastmod`-waarden ongemoeid (geen bulk-herdatering; alleen echte wijzigingen krijgen een verse datum).
-**Succescriterium:** Drachten draagt `2026-07-06`; alle in stap 2 genoemde, deze sprint gewijzigde URL's dragen `2026-07-13`; geen enkele andere `lastmod` gewijzigd; sitemap blijft valide XML.
+- Voeg **na** het "Ook actief in"-blok (sluit op regel 217 met `</section>`) en **vóór** de CTA-`<section class="section">` op regel 219 een nieuwe FAQ-sectie toe, exact volgens het Hoogeveen-sjabloon (`vloerverwarming-hoogeveen.html` regels 230–264): `<section class="section"><div class="container"><div class="section-head"><h2>Veelgestelde vragen — Assen</h2></div>` + drie `<div class="faq-item">`-blokken met `<button class="faq-question" data-faq-toggle>…</button>` en `<div class="faq-answer"><p>…</p></div>`.
+- Gebruik **lokaal ingekleurde**, inhoudelijk unieke vragen (geen Hoogeveen-tekst kopiëren):
+  1. "Werken jullie ook in Assen-Oost, Kloosterveen en de dorpen rond Assen?" (noem echte randkernen: Loon, Ubbena, Rhee)
+  2. "Wat kost vloerverwarming in Assen?" — **antwoord verwijst met een link naar `prijsindicatie.html`** (dit is de conversie-routing van deze taak)
+  3. "Kunnen jullie infrezen in een bestaande dekvloer in Assen?"
+- Voeg **in de `<head>`, direct na de bestaande `BreadcrumbList`-`<script>` (regel 50)**, een nieuw `<script type="application/ld+json">` toe met `{"@type":"FAQPage","mainEntity":[…]}`, waarin `name`/`acceptedAnswer.text` **woordelijk** overeenkomen met de zichtbare Q&A's. Accordeon-JS zit al in `assets/js/main.js` (`[data-faq-toggle]`) — geen JS-wijziging.
+**Succescriterium:** `grep '"FAQPage"' vloerverwarming-assen.html` → één treffer; zichtbare vraagteksten matchen de JSON-LD 1-op-1; het "kosten"-antwoord bevat een `<a href="prijsindicatie.html">`; accordeon opent/sluit. Verzin geen feiten.
 
-### Taak 2: `vloerverwarming-groningen.html` — lokale FAQ-sectie + `FAQPage`-schema `[GOEDGEKEURD]`
+### Taak 2: Lokale FAQ + `FAQPage`-schema op `vloerverwarming-emmen.html` `[GOEDGEKEURD]`
+**Bron:** Marketing Research Agent (taak 2, Hoog) + Analytics Agent (voorstel 4)
+**Prioriteit:** Hoog
+**Type:** SEO / content-verrijking + conversie-routing
+**Actie:** Idem taak 1, maar in Emmen. Het "Ook actief in"-blok sluit op regel 226 (`</section>`); voeg de FAQ-sectie in **tussen regel 226 en de CTA-sectie op regel 228**. Voeg het `FAQPage`-`<script>` toe in de `<head>` na het bestaande tweede `ld+json`-blok (regel 48–50). **Inhoudelijk andere** vragen dan Assen (voorkom duplicate-content), lokaal op Zuidoost-Drenthe: "Werken jullie ook in Klazienaveen en Nieuw-Amsterdam?", "Wat kost vloerverwarming in Emmen?" (**link naar `prijsindicatie.html`**), "Kunnen jullie vloerverwarming infrezen in een bestaande woning in Emmen?".
+**Succescriterium:** identiek aan taak 1, voor Emmen; kosten-antwoord linkt naar de wizard.
 
-**Bron:** Marketing Research Agent (voorstel 2, Hoog) — de kern-instroomtaak.
-**Prioriteit:** Hoog (SEO / content-verrijking op een bestaande dunne pagina; **geen** nieuwe pagina)
-**Context:** Alléén `vloerverwarming-hoogeveen.html` heeft een zichtbare lokale FAQ + `FAQPage`-JSON-LD. Groningen = grootste markt + "installateur"-intentie, maar mist de sjabloon. Sjabloon-referenties in Hoogeveen: JSON-LD op r.49, zichtbare sectie `<h2>Veelgestelde vragen — Hoogeveen</h2>` op r.230.
-**Actie:**
-1. Kopieer het Hoogeveen-patroon naar Groningen: een zichtbare sectie `<h2>Veelgestelde vragen — Groningen</h2>` met **3** lokaal ingekleurde Q&A's, plus bijbehorend `FAQPage`-JSON-LD in de `<head>` (zelfde structuur als Hoogeveen r.49).
-2. Kleur de vragen **lokaal**: (a) kosten ("Wat kost vloerverwarming in Groningen?"), (b) infrezen bestaande dekvloer, (c) werkgebied/randgemeenten met echte plaatsnamen rond Groningen (bijv. Haren, Ten Boer, Zuidhorn, Bedum — nuchter, niet volproppen). Toon = Noord-Nederlands, nuchter; verwijs bij de kosten-vraag naar de prijsindicatie zoals Hoogeveen dat doet.
-3. Plaats de zichtbare sectie op een logische plek in de bodyflow (zoals Hoogeveen: vóór het slot/CTA-blok). Verzin geen feiten; blijf binnen wat elders op de site staat.
-**Succescriterium:** Groningen toont een zichtbare lokale FAQ met 3 Q&A's; geldig `FAQPage`-JSON-LD in de head (verifieerbaar: `mainEntity` met 3 `Question`-objecten); lokale plaatsnamen kloppen met het werkgebied; pagina blijft valide HTML, geen JS-fouten.
+### Taak 3: Homepage-meta aanscherpen op doelregio (verkeerd-publiek filteren) `[GOEDGEKEURD]`
+**Bron:** Analytics Agent (voorstel 5)
+**Prioriteit:** Midden
+**Type:** Targeting / conversie-kwalificatie (SERP-CTR, onzichtbaar voor bezoeker)
+**Actie:** Scherp **alleen** de `<meta name="description">` (en indien aanwezig `og:description`) van `index.html` aan: zet Drenthe/Groningen/Friesland expliciet vooraan, gecombineerd met de bewezen "richtbedrag in 2 minuten"-belofte, zodat niet-regionale klikken (North Holland, Duitsland, South Holland) minder worden aangetrokken. **Hero, structuur, H1 en alle CTA's ongemoeid** — dit is nadrukkelijk géén hero-herbouw. Houd de description ≤ ~155 tekens.
+**Succescriterium:** `index.html` `<meta name="description">` noemt Drenthe + Groningen + Friesland in de eerste helft en behoudt de richtbedrag-belofte; geen wijziging aan hero/CTA/H1; lengte ≤ ~155 tekens. Effect meetbaar in geo-verdeling + bounce zodra GSC/GA4 volgende cyclus.
 
-### Taak 3: `BreadcrumbList`-schema op oudere stadspagina's + Drenthe-hub `[GOEDGEKEURD]`
+### Taak 4: Contextuele "Ook actief in"-kruislinks completeren `[GOEDGEKEURD]`
+**Bron:** Marketing Research Agent (taak 3, Midden)
+**Prioriteit:** Midden
+**Type:** SEO / internal linking (alleen oudere pagina's bewerkt)
+**Bestandspaden:** `vloerverwarming-emmen.html`, `vloerverwarming-hoogeveen.html`, `vloerverwarming-zuidlaren.html`
+**Actie:** Voeg in de "Ook actief in"-alinea van elke pagina een **in-body** zin toe met beschrijvend anker, in de stijl van Assen (regels 211–214), bijv.: *"Aan de Friese kant, over de A28/A32, rijden we net zo makkelijk door voor `<a href="vloerverwarming-heerenveen.html">vloerverwarming in Heerenveen</a>` en `<a href="vloerverwarming-drachten.html">vloerverwarming in Drachten</a>."* Voor Zuidlaren alleen de ontbrekende in-body Drachten-link aanvullen. **Er wijzigt niets ín Heerenveen of Drachten.**
+**Succescriterium:** `grep -c 'vloerverwarming-heerenveen.html'` en `…-drachten.html` geven op Emmen en Hoogeveen elk ≥ 2 (in-body + footer); Zuidlaren ≥ 2 op Drachten.
 
-**Bron:** Marketing Research Agent (voorstel 3, Midden).
-**Prioriteit:** Midden (SEO / structured data — onzichtbaar voor de bezoeker, versterkt taak 2)
-**Context:** Geen enkele pagina draagt breadcrumb-markup. Stadspagina's zijn diepe pagina's (home → regio → stad).
-**Actie:** Voeg een `BreadcrumbList`-JSON-LD-blok toe in de `<head>` van de **zes oudere stadspagina's + de hub**: `vloerverwarming-assen.html`, `vloerverwarming-emmen.html`, `vloerverwarming-groningen.html`, `vloerverwarming-hoogeveen.html`, `vloerverwarming-leeuwarden.html`, `vloerverwarming-zuidlaren.html`, `vloerverwarming-drenthe.html`. Hiërarchie per stadspagina: **Home (`/`) → Drenthe-regio (`vloerverwarming-drenthe.html`) → [Stad]** (Friese steden: Home → [Stad], zonder Drenthe-tussenstap waar dat geografisch niet klopt — gebruik je oordeel per pagina). Voor de Drenthe-hub zelf: Home → Drenthe. Gebruik absolute URL's (`https://www.vlwarmte.nl/…`) en de bestaande paginanaam als laatste `name`.
-**Bewuste uitsluiting:** `vloerverwarming-heerenveen.html` en `vloerverwarming-drachten.html` **deze cyclus overslaan** (cyclus 20/21, rijpen) — ze krijgen breadcrumb in een volgende sprint. Netto tijdelijke inconsistentie is acceptabel; schema is onzichtbaar.
-**Succescriterium:** de 7 genoemde pagina's dragen geldig `BreadcrumbList`-JSON-LD met kloppende hiërarchie en absolute URL's; Heerenveen/Drachten ongemoeid; geen zichtbare wijziging op de pagina's; valide HTML.
-
-### Taak 4: Contextuele "Ook actief in"-interne links op oudere pagina's gelijktrekken `[GOEDGEKEURD]`
-
-**Bron:** Marketing Research Agent (voorstel 4, Midden).
-**Prioriteit:** Midden (SEO / internal linking — alleen oudere pagina's, versterkt taak 2 & 3)
-**Context:** In-body "Ook actief in"-alinea's kruislinken ongelijk. In `vloerverwarming-assen.html` (`<h2>Ook actief in</h2>` r.195) linkt de contextuele alinea naar Groningen en Emmen, maar **niet** contextueel naar het Friese cluster (Heerenveen/Drachten) — die staan alleen in de footer-lijst. Emmen/Leeuwarden doen dit al wél.
-**Actie:** Werk de **in-body** "Ook actief in"-alinea's op de **oudere** pagina's `vloerverwarming-assen.html`, `vloerverwarming-groningen.html` en `vloerverwarming-drenthe.html` bij, zodat ze contextueel (met beschrijvend anker, bijv. "vloerverwarming Heerenveen") kruislinken naar de diepe/competitieve stadspagina's die nu ~0 organisch verkeer krijgen. Houd het natuurlijk: 1–2 extra contextuele links per pagina, geen linklijst-opsomming in de lopende tekst. Footer-regio-lijst ongemoeid. **Je bewerkt uitsluitend de oudere pagina's** — niet de Heerenveen-/Drachten-bestanden (alleen érnaar linken mag).
-**Succescriterium:** Assen, Groningen en Drenthe-hub hebben in hun in-body "Ook actief in"-blok elk 1–2 contextuele links méér naar diepe stadspagina's, met beschrijvend anker; geen kunstmatige linkdump; Heerenveen-/Drachten-bestanden ongewijzigd; valide HTML.
-
-### Taak 5: Laatste twee CTA-knoppen gelijktrekken naar "Richtbedrag in 2 minuten →" `[GOEDGEKEURD]`
-
-**Bron:** Analytics Agent (voorstel 4) + Developer Rapport cyclus 21 (openstaande follow-up).
-**Prioriteit:** Midden (CTA/conversie — sluit de site-brede CTA-consistentie af)
-**Context:** Cyclus 21 zette de bewezen CTA op 22 primaire knoppen, maar liet bewust **2 secundaire** knoppen op "Naar de prijsindicatie" staan (btn-primary-only-regel): `contact.html:95` en `werkwijze.html:152` (beide `class="btn btn-secondary"`). Dit is de afgesproken open follow-up.
-**Actie:** Vervang op die twee `btn-secondary`-knoppen de zichtbare tekst "Naar de prijsindicatie" door **"Richtbedrag in 2 minuten →"**. Href (`prijsindicatie.html`), classes en structuur ongewijzigd. Alleen deze twee knoplabels; verder niets op die pagina's aanraken (contact/werkwijze zijn cyclus-20 wizard-first — géén andere wijziging).
-**Succescriterium:** geen enkele knop op de site draagt nog "Naar de prijsindicatie"; de twee knoppen tonen "Richtbedrag in 2 minuten →"; href/classes ongewijzigd; geen andere wijziging op contact.html/werkwijze.html.
+### Taak 5: `<title>` van `vloerverwarming-hoogeveen.html` inkorten `[GOEDGEKEURD]`
+**Bron:** Marketing Research Agent (taak 4, Laag)
+**Prioriteit:** Laag
+**Type:** SEO / on-page metadata
+**Actie:** Vervang `<title>Vloerverwarming Hoogeveen, Hollandscheveld & omgeving — installateur uit Zuidlaren</title>` door bijv. `<title>Vloerverwarming Hoogeveen — installateur uit Zuidlaren | VLWarmte</title>` (≈63 tekens; dorpsnamen leven al in H1/FAQ/tekst). **Alleen `<title>`; H1 en content ongemoeid.**
+**Succescriterium:** `<title>` ≤ ~63 tekens en eindigt op `| VLWarmte`; H1 onveranderd.
 
 ---
 
 ## Uitgestelde voorstellen `[WACHT]`
-
-- **Homepage-entree scherper** (Analytics voorstel 1): de hero draagt al de bewezen CTA én de regio (trust-strip); de hoge bounce is deels een **verkeerd-publiek-probleem** (geo buiten doelregio), dat een hero-tweak niet oplost. Niet de werkende hero riskeren zonder GSC-zicht op de instroombron. Heroverwegen zodra GSC verse zoekterm-/geo-data levert.
-- **`prijsindicatie.html` als instroom-asset** (Research voorstel 5, additief kosten-schemablok): waardevol, maar de wizard-/lead-flow rijpt tot ~27 jul — ook een additief blok op díé pagina raakt beter na maturatie. Volgende cyclus.
-- **FAQ-schema op de overige stadspagina's** (Emmen, Assen, Leeuwarden, Zuidlaren): één pagina per sprint (Groningen nu); de rest gefaseerd, kwaliteit boven bulk.
-- **Wizard-conversie A–D** (Research): lichtere lead-variant/funnel-meting — pas ná ~27 jul (funnel rijpt); taak 1 van cyclus 21 verlaagde de drempel al.
-- **Breadcrumb op Heerenveen/Drachten**: inhalen zodra die pagina's uit de rijp-periode zijn (~27 jul).
-- **`projecten.html` opwaarderen**: geblokkeerd op eindresultaat-beeldmateriaal (escalatie).
+- **FAQ op Leeuwarden, Zuidlaren en Drenthe-hub** — volgende sprint(s), om over-optimalisatie/duplicate-signaal in één keer te vermijden en de FAQ's per stad echt lokaal te houden.
+- **`BreadcrumbList` op Heerenveen (c20) en Drachten (c21)** — die twee missen breadcrumb nog, maar worden deze cyclus niet aangeraakt (maturatie tot ~27 jul).
+- **`prijsindicatie.html` als instroom-asset** (additief kosten-schemablok + kosten-verankerde interne links) — wizard-flow rijpt tot ~27 jul; goede Midden-prioriteit voor cyclus 24.
 
 ## Afgewezen voorstellen `[AFGEWEZEN]`
+- **Breadcrumb-schema uitrollen op "resterende oudere pagina's" (Analytics voorstel 3)** — afgewezen: de grep-audit van de Research Agent bevestigt dat breadcrumbs al op alle 7 oudere stadspagina's staan. Er is geen gat behalve Heerenveen/Drachten, en die zijn bewust uitgesteld. Niets te doen.
+- **Homepage-hero herbouwen** — afgewezen: hoog risico op de enige (relatief) werkende pagina; de hoge bounce is grotendeels een verkeerd-publiek-/seizoensprobleem dat een hero-tweak niet oplost. De meta-targeting-ingreep (taak 3) pakt de oorzaak veiliger aan.
 
-- **Nieuwe stadspagina**: instroom fixen op bestaande pagina's, geen dunne pagina's stapelen (max 1/sprint al op Heerenveen ingezet).
-- **Homepage-hero herbouwen**: hoog risico op de enige pagina die (relatief) werkt; marginale winst; instroomprobleem is grotendeels verkeer-kwaliteit, niet de pagina.
-- **Google Ads-mutaties autonoom**: scripts geblokkeerd in autonome PM-modus → escalatie, geen sprint-taak.
+---
+
+## Waarom geen aparte "harde" CTA-taak deze cyclus
+De vaste prioriteringsregel vraagt om minimaal 1 CTA/conversie-verbetering. Bewuste PM-afweging: de primaire conversie-CTA's staan op de **rijpende** cyclus-20/21-pagina's (prijsindicatie-wizard met verlaagde lead-drempel, gelijkgetrokken laatste CTA) — die aanraken reset de meetklok én we sturen blind zolang de conversie-meting onbevestigd is. De conversie-hefboom deze cyclus is daarom (a) **taak 3**, die verkeerd publiek wegfiltert en zo het aandeel gekwalificeerde bezoekers verhoogt, en (b) de **kosten-vraag in de Assen/Emmen-FAQ's die naar de converterende wizard (`prijsindicatie.html`) routeert**. Een losse CTA-tekstwijziging op een werkende pagina zou blind en klok-resettend zijn — niet doen.
 
 ---
 
 ## Social Media
-
-**Status:** Weekplanning in `docs/website-manager/social/weekly_calendar.md` (7 posts, week van 13 jul), door PM opgesteld (social-subagent draait onbetrouwbaar in autonome modus — geen dubbel werk).
-**Actie vereist:** Handmatige publicatie door VLWarmte-team.
-**Focus:** instroom aanjagen — 3 van 7 posts linken direct naar `prijsindicatie.html`; zomer/verbouwing-haak; stadsplaatsen (Groningen, Assen, Emmen, Hoogeveen, Zuidlaren) in captions/hashtags ter ondersteuning van de SEO-instroomfocus.
-**Materiaal:** dezelfde beperkte set echte bouwfoto's; eindresultaat-vloer, verdeler-detail en teamfoto ontbreken nog (4 van 7 posts hebben `[FOTO NODIG]`) → escalatie beeldmateriaal.
+**Status:** Weekplanning staat in `docs/website-manager/social/weekly_calendar.md`
+**Actie vereist:** Handmatige publicatie door VLWarmte team (geen API, geen tokens)
 
 ---
 
-## ESCALATIE — vereist eigenaar (NIET autonoom)
+## Escalaties voor de eigenaar (geen autonome actie mogelijk — hard beleggen)
 
-1. **GSC-toegang vernieuwen (langst openstaande blokkade, hoogste prioriteit).** `invalid_grant`, 6+ weken oud. Zonder verse GSC is álle SEO-werk van cyclus 17–22 (incl. deze cyclus se schema/links) blind. Actie: `python scripts/gsc_get_refresh_token.py` met verified owner-account → daarna `gsc_fetch.py` per cyclus.
-2. **Conversie-meting verifiëren (opnieuw, harder).** 3 cycli 0 conversies over álle kanalen terwijl lead-events afvuren. Controleer: (a) Formspree-inboxen `xzdojzdk` (calculator) + `xgodnvoq` (contact) — komen daar aanvragen binnen? (b) GA4 → Admin → Events: zijn `wizard_lead_submit` / `lead_form_submit` / `contact_submit` als **key event** gemarkeerd? Zo niet: markeren. 10-minuten-taak, bepaalt of we op conversie of instroom sturen.
-3. **Google Ads — serveerstatus + landing (cpc effectief dood).** 1 sessie/30d wijst op gepauzeerde/afgekeurde campagne. Check campagnestatus/afkeuringen; RSA final URL naar `prijsindicatie.html` resp. `contact.html?modus=offerte#aanvraag`; budget pas ná fixes + expliciete spend-goedkeuring. Ads-scripts geblokkeerd in autonome modus → eigenaar/interactieve sessie.
-4. **Beeldmateriaal** — eindresultaat-vloer, verdeler-detail, teamfoto in `beeldmateriaal/projecten/` of `docs/website-manager/social/input/`.
-5. **Release-mail (stap 8b)** — `python3 scripts/send_pm_release_notes_email.py` met `secrets/hostnet-mail.env` (outbound SMTP geblokkeerd in autonome modus).
+1. **Conversie-meting (4e cyclus, hardste).** (a) Formspree-inboxen `xzdojzdk` (calculator) + `xgodnvoq` (contact) controleren — komen er aanvragen binnen? (b) GA4 → Admin → Events: staan `wizard_lead_submit` / `lead_form_submit` / `contact_submit` als **key event** gemarkeerd? Zo niet: markeren. ~10 min; bepaalt of we op conversie of op instroom sturen. **Dit is belangrijker dan welke on-page tweak dan ook.**
+2. **GSC deblokkeren (langst openstaand, 7+ weken).** (a) `python scripts/gsc_get_refresh_token.py` met verified owner-account → daarna `gsc_fetch.py` volgende cyclus. (b) Het **echte** site-verificatietoken uit Search Console leveren, zodat de placeholder `REPLACE_WITH_TOKEN` op alle 11 pagina's site-breed vervangen kan worden (autonoom uit te voeren zodra het token er is).
+3. **Ads serveer-check + landing (cpc = 0 sessies).** Campagnestatus/afkeuringen checken in een interactieve sessie (`google_ads_list_campaigns.py`); RSA final URL's naar de converterende pagina (koop → `prijsindicatie.html`, offerte → `contact.html?modus=offerte#aanvraag`), niet de merk-homepage; budget pas ná fixes + expliciete spend-goedkeuring.
 
 ---
 
-## Context voor volgende sprint
-
-- **Week ~27 jul:** meetklok van cyclus 19/20/21 uitlezen — eerste lead in Formspree/GA4? Heerenveen-impressies in GSC (mits OAuth vernieuwd)? Effect van de lead-drempel-verlaging?
-- **Deze cyclus (SEO-schema/links) is pas toetsbaar zodra GSC draait** — daarom is escalatie 1 kritiek.
-- **Instroom-diagnose:** de daling van 56→4 sessies/week is zonder GSC niet te duiden (indexatie/ranking vs. seizoen/volume). Prioriteit voor de eigenaar.
-- **Betaald kanaal:** cpc is van 100%-van-conversies naar ~dood — eerst serveerstatus + landing fixen, dan pas budget.
-- **Vervolg SEO:** na Groningen de FAQ-sjabloon uitrollen naar Emmen/Assen/Leeuwarden/Zuidlaren; breadcrumb op Heerenveen/Drachten inhalen; homepage-entree heroverwegen met verse geo/zoekterm-data.
+## Context voor volgende sprint (cyclus 24)
+- **Meetklok cyclus 19/20/21** loopt af rond ~27 jul: dan pas Heerenveen/Drachten/prijsindicatie-wizard beoordelen én breadcrumb inhalen op Heerenveen/Drachten.
+- **Volgende FAQ-kandidaten:** Leeuwarden, Zuidlaren, Drenthe-hub (één per sprint, lokaal ingekleurd).
+- **Als GSC weer draait:** eerst controleren of de mid-juni-cliff (15→1) een ranking-/indexatie-event was; dan pas verdere SEO-richting bepalen.
+- **Als conversie-meting bevestigd/gerepareerd:** volgende cyclus kunnen we eindelijk op conversie i.p.v. instroom sturen — dat verandert de hele prioritering.
 
 ---
 
-## Developer Rapport — 13 juli 2026
+## Developer Rapport — 20 juli 2026
 
-**Alle 5 goedgekeurde taken uitgevoerd.** Geen enkel rijpend/verboden bestand bewerkt (zie bevestiging onderaan).
+**Geïmplementeerde taken:** alle 5 goedgekeurde taken (T1 t/m T5). Geen taken overgeslagen. Geen commit/push uitgevoerd — dat doet de PM.
 
-### Taak 1 — `sitemap.xml` `lastmod` gelijkgezet
-- `vloerverwarming-drachten.html`: `2026-05-22` → **`2026-07-06`** (cyclus-21-deploydatum; paginabestand zelf niet aangeraakt).
-- `2026-07-13` gezet op de 9 deze-sprint-gewijzigde URL's: `werkwijze.html`, `vloerverwarming-drenthe.html`, `vloerverwarming-groningen.html`, `vloerverwarming-assen.html`, `vloerverwarming-emmen.html`, `vloerverwarming-hoogeveen.html`, `vloerverwarming-leeuwarden.html`, `vloerverwarming-zuidlaren.html`, `contact.html`.
-- Alle overige `lastmod` (home, diensten, systemen-producten, over-ons, faq, projecten, heerenveen, prijsindicatie, disclaimer, privacy) ongemoeid. XML-structuur ongewijzigd → blijft valide.
+### Taak 1 — Lokale FAQ + `FAQPage`-schema op `vloerverwarming-assen.html` `[Hoog]` ✅
+- **JSON-LD:** nieuw `<script type="application/ld+json">` met `{"@type":"FAQPage",…}` in de `<head>`, direct ná de bestaande `BreadcrumbList`-`<script>` (was regel 50).
+- **Zichtbare FAQ:** nieuwe `<section class="section">` "Veelgestelde vragen — Assen" ingevoegd ná het "Ook actief in"-blok en vóór de CTA-sectie, sjabloon Hoogeveen. Drie lokaal-unieke vragen: (1) Assen-Oost/Kloosterveen + dorpen Loon, Ubbena, Rhee; (2) "Wat kost vloerverwarming in Assen?" met `<a href="prijsindicatie.html">`-link (conversie-routing); (3) infrezen bestaande dekvloer. Teksten inhoudelijk anders dan Hoogeveen.
+- **Grep-verificatie:** `grep -c '"FAQPage"'` → **1**; `grep -c 'data-faq-toggle'` → **3** (drie zichtbare vragen); kosten-antwoord bevat `<a href="prijsindicatie.html">`. JSON-LD `name`/`acceptedAnswer.text` matchen woordelijk met de zichtbare Q&A (whitespace genormaliseerd). **Succescriterium behaald: JA.**
 
-### Taak 2 — `vloerverwarming-groningen.html`: lokale FAQ + `FAQPage`-schema
-- **Head:** `FAQPage`-JSON-LD toegevoegd direct na het bestaande `Service`-blok (nieuw `<script type="application/ld+json">`), met `mainEntity` = 3 `Question`-objecten. Structuur/plaatsing exact gespiegeld op Hoogeveen (r.49).
-- **Body:** zichtbare sectie `<h2>Veelgestelde vragen — Groningen</h2>` toegevoegd vóór het slot-CTA-blok, met dezelfde `faq-item`/`faq-question`/`faq-answer`-opmaak als Hoogeveen. 3 Q&A's, lokaal ingekleurd:
-  1. "Wat kost vloerverwarming in Groningen?" — verwijst naar de `prijsindicatie` (zoals Hoogeveen).
-  2. "Kunnen jullie infrezen in een bestaande dekvloer?" — Groningse jaren 70/80-woningvoorraad.
-  3. "In welke plaatsen rond Groningen werken jullie?" — Haren, Ten Boer, Zuidhorn, Bedum (plaatsnamen die al elders op de pagina/site staan; geen nieuwe feiten).
-- Zichtbare tekst en JSON-LD-tekst komen 1-op-1 overeen.
+### Taak 2 — Lokale FAQ + `FAQPage`-schema op `vloerverwarming-emmen.html` `[Hoog]` ✅
+- **JSON-LD:** `FAQPage`-`<script>` in de `<head>` ná het bestaande tweede `ld+json`-blok (BreadcrumbList, was regel 50).
+- **Zichtbare FAQ:** "Veelgestelde vragen — Emmen" ingevoegd tussen het "Ook actief in"-blok en de CTA-sectie. Inhoudelijk ándere vragen dan Assen (duplicate-content vermeden): (1) Klazienaveen/Nieuw-Amsterdam + Emmer-Compascuum/Erica; (2) "Wat kost vloerverwarming in Emmen?" met `<a href="prijsindicatie.html">`-link; (3) infrezen in een bestaande woning in Emmen.
+- **Grep-verificatie:** `grep -c '"FAQPage"'` → **1**; `grep -c 'data-faq-toggle'` → **3**; kosten-antwoord linkt naar de wizard. JSON-LD matcht woordelijk met zichtbare Q&A. **Succescriterium behaald: JA.**
 
-### Taak 3 — `BreadcrumbList`-JSON-LD op 7 pagina's (head)
-Toegevoegd als los `<script type="application/ld+json">`-blok in de head, absolute URL's:
-- **Drentse steden** (Home → Drenthe → Stad): `vloerverwarming-assen.html`, `vloerverwarming-emmen.html`, `vloerverwarming-hoogeveen.html`, `vloerverwarming-zuidlaren.html`.
-- **Groningen** (Home → Groningen, **zonder** Drenthe-tussenstap): Groningen ligt geografisch niet in Drenthe → 2-niveau breadcrumb, analoog aan de Friese-uitzonderingsregel.
-- **Leeuwarden** (Home → Leeuwarden, zonder Drenthe): Fries.
-- **Drenthe-hub** (Home → Drenthe): 2-niveau.
-- Heerenveen en Drachten **overgeslagen** (rijpen, cyclus 20/21) — conform bewuste uitsluiting.
+### Taak 3 — Homepage-meta aangescherpt op doelregio `[Midden]` ✅
+- Alleen `<meta name="description">` én `og:description` van `index.html` aangepast (beide waren identiek). Nieuwe tekst: *"Vloerverwarming in Drenthe, Groningen en Friesland — eigen ploeg uit Zuidlaren, van ondervloer tot oplevering. Richtbedrag in 2 minuten."* Drenthe/Groningen/Friesland staan vooraan; "richtbedrag in 2 minuten"-belofte behouden. Lengte ≈ 135 tekens (≤ ~155). Hero, H1, structuur en CTA's ongemoeid. `twitter:description` bewust niet aangeraakt (buiten scope van de taak).
+- **Verificatie:** description noemt alle drie regio's in de eerste helft + richtbedrag-belofte; ≤155 tekens; geen wijziging aan hero/H1/CTA. **Succescriterium behaald: JA.**
 
-### Taak 4 — In-body "Ook actief in"-kruislinks (alleen oudere pagina's)
-- `vloerverwarming-assen.html`: extra alinea in het "Ook actief in"-blok met beschrijvende ankers "vloerverwarming in Heerenveen" en "vloerverwarming in Drachten" (Friese cluster; stond eerder alleen in de footer).
-- `vloerverwarming-groningen.html`: extra alinea met "vloerverwarming in Drachten" en "vloerverwarming in Heerenveen" (Westerkwartier/Friese kant).
-- `vloerverwarming-drenthe.html`: bestaande contextuele zin uitgebreid met "vloerverwarming Drachten" naast de al aanwezige Leeuwarden/Heerenveen-links.
-- Natuurlijke lopende tekst (1 extra alinea / 1 extra anker per pagina), geen linkdump. Footer-regio-lijsten ongemoeid. Heerenveen-/Drachten-**bestanden** niet bewerkt — er wordt alleen naartoe gelinkt.
+### Taak 4 — Contextuele "Ook actief in"-kruislinks gecompleteerd `[Midden]` ✅
+- **Emmen** + **Hoogeveen:** in-body zin toegevoegd in Assen-stijl ("Aan de Friese kant, over de A28 en A32…") met beschrijvende ankers naar `vloerverwarming-heerenveen.html` en `vloerverwarming-drachten.html`.
+- **Zuidlaren:** ontbrekende in-body `vloerverwarming-drachten.html`-link toegevoegd aan de bestaande "Net buiten Drenthe…"-alinea (naast Friesland/Heerenveen).
+- Niets gewijzigd ín Heerenveen of Drachten.
+- **Grep-verificatie:** Emmen `heerenveen.html` → **2**, `drachten.html` → **2** (in-body + footer); Hoogeveen `heerenveen.html` → **2**, `drachten.html` → **2**; Zuidlaren `drachten.html` → **2** (in-body + footer). Alle ≥ 2. **Succescriterium behaald: JA.**
 
-### Taak 5 — CTA-label-swap
-- `contact.html` (de `btn btn-secondary` in het wizard-teaser-blok): "Naar de prijsindicatie" → **"Richtbedrag in 2 minuten →"**.
-- `werkwijze.html` (de `btn btn-secondary` in de cta-band-stack): idem.
-- Href (`prijsindicatie.html`), classes en structuur ongewijzigd; verder niets op die twee pagina's aangeraakt.
+### Taak 5 — `<title>` van `vloerverwarming-hoogeveen.html` ingekort `[Laag]` ✅
+- Vervangen door `Vloerverwarming Hoogeveen — installateur uit Zuidlaren | VLWarmte` (≈64 tekens, eindigt op `| VLWarmte`). Alleen `<title>` — H1 en content ongemoeid. (`og:title`/`twitter:title` bewust niet aangeraakt, buiten scope.)
+- **Verificatie:** title ≤ ~64 tekens en eindigt op `| VLWarmte`; H1 onveranderd. **Succescriterium behaald: JA.**
 
-### Gewijzigde bestanden (volledige lijst)
-1. `sitemap.xml`
-2. `vloerverwarming-groningen.html` (taken 2, 3, 4)
-3. `vloerverwarming-assen.html` (taken 3, 4)
-4. `vloerverwarming-drenthe.html` (taken 3, 4)
-5. `vloerverwarming-emmen.html` (taak 3)
-6. `vloerverwarming-hoogeveen.html` (taak 3)
-7. `vloerverwarming-leeuwarden.html` (taak 3)
-8. `vloerverwarming-zuidlaren.html` (taak 3)
-9. `contact.html` (taak 5)
-10. `werkwijze.html` (taak 5)
-11. `docs/website-manager/sprint.md` (dit rapport)
+### Niet aangeraakt (maturatie tot ~27 jul)
+`vloerverwarming-heerenveen.html`, `vloerverwarming-drachten.html` (inhoud), `prijsindicatie.html`, wizard-flow. Geen secrets/JSON/credentials aangeraakt.
 
-### Afwijkingen / oordeelsbeslissingen
-- **Groningen-breadcrumb zonder Drenthe-tussenstap:** de sprint gaf mandaat om per pagina te oordelen ("gebruik je oordeel waar dat geografisch niet klopt"). Groningen valt bestuurlijk/geografisch niet onder Drenthe → 2-niveau breadcrumb, net als de Friese steden.
-- Verder geen afwijkingen.
+### Gewijzigde bestanden
+- `vloerverwarming-assen.html` (T1)
+- `vloerverwarming-emmen.html` (T2 + T4)
+- `vloerverwarming-hoogeveen.html` (T4 + T5)
+- `vloerverwarming-zuidlaren.html` (T4)
+- `index.html` (T3)
 
-### Bevestiging rijp-regel
-**GEEN** rijpende/verboden bestanden aangeraakt: `prijsindicatie.html`, `vloerverwarming-heerenveen.html` en `vloerverwarming-drachten.html` (paginabestanden) zijn **niet** bewerkt — er wordt alleen vanaf andere pagina's naartoe gelinkt, en Drachten's `lastmod` is in de sitemap gezet (raakt het paginabestand niet). `contact.html`/`werkwijze.html` uitsluitend de toegestane CTA-label-swap; `systemen-producten.html` niet aangeraakt.
+### Deployment
+**Nog niet live** — PM voert commit + `git push origin main` uit; daarna: [PM vult run-id / succes in]. Live URL: https://www.vlwarmte.nl
 
-### Overdracht
-- Live URL: https://www.vlwarmte.nl
-- Aandachtspunt volgende sprint: FAQ-sjabloon uitrollen naar Emmen/Assen/Leeuwarden/Zuidlaren; breadcrumb op Heerenveen/Drachten inhalen na maturatie (~27 jul).
-
-### PM-verificatie + deployment (13 juli 2026)
-- **Grep-verificatie PM (allemaal ✓):** sitemap-`lastmod` — Drachten `2026-07-06`, 9 deze-sprint-URL's `2026-07-13`, overige ongemoeid; geen "Naar de prijsindicatie" meer op de site; Groningen `FAQPage` met 3 `Question`-objecten + zichtbare `<h2>Veelgestelde vragen — Groningen</h2>`; `BreadcrumbList` op exact 7 pagina's (assen/emmen/groningen/hoogeveen/leeuwarden/zuidlaren + drenthe-hub), **niet** op heerenveen/drachten; contextuele kruislinks toegevoegd op assen/groningen/drenthe; geen verboden paginabestanden in de changeset (geen `prijsindicatie.html`/`heerenveen.html`/`drachten.html`/`systemen-producten.html`).
-- **Deployment:** PM commit `06ca9a8` (site) + `eef05b7` (release notes) + push naar `main` op 13-07-2026 ~06:15. GitHub-Pages-runs **`29223661697` (success, 38s)** en **`29223721364` (success, 45s)** — geen transiënte deploy-fout deze cyclus.
-- **Live geverifieerd:** `Veelgestelde vragen — Groningen` staat live op de Groningen-pagina; GA-tag `G-0BB9M7HYSF` aanwezig in `assets/js/ga-deferred.js`.
-- **Nog handmatig (escalatie eigenaar):** release-mail stap 8b (SMTP geblokkeerd in autonome modus), GSC-OAuth vernieuwen, conversie-meting verifiëren, Ads-serveerstatus + landing.
+### Aandachtspunten voor volgende sprint
+- FAQPage-schema staat nu op 4 van 9 stadspagina's (Hoogeveen, Groningen, Assen, Emmen). Volgende FAQ-kandidaten per `[WACHT]`: Leeuwarden, Zuidlaren, Drenthe-hub — één per sprint, lokaal ingekleurd.
+- De accordeon-JS (`[data-faq-toggle]` in `assets/js/main.js`) is niet gewijzigd; kon in deze modus niet in de browser worden getest (geen JS-run/netwerk). Aanname: bestaande FAQ's op Hoogeveen/Groningen werken al met dezelfde markup, dus consistent.
+- `twitter:description` op index.html en `og:title`/`twitter:title` op Hoogeveen wijken nu licht af van resp. de nieuwe `description`/`<title>`; bewust binnen scope gehouden. Overweeg gelijktrekken in een volgende cyclus als de PM dat wil.
