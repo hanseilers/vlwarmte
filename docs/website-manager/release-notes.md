@@ -4,6 +4,39 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 5 augustus 2026 (cyclus 24)
+
+**Deployment:** 5-08-2026, ~11:40 — PM push naar `main` (GitHub Pages).
+
+### Wat is er veranderd
+
+De meetklok op de prijs-wizard en de Friese stadspagina's is verstreken — deze week mogen die pagina's weer aangepakt worden. Vijf gerichte ingrepen, geen nieuwe pagina's:
+
+- **Leeuwarden en Heerenveen hebben nu een eigen "veelgestelde vragen".** Op beide plaatspagina's staat een lokaal blok met drie vragen over de dorpen eromheen, kosten en infrezen. De kostenvraag stuurt door naar de prijsindicatie. Voor Google is dit extra herkenbare inhoud met de juiste opmaak voor "veelgestelde vragen" in de zoekresultaten.
+- **Heerenveen en Drachten hebben nu broodkruimel-navigatie voor Google.** Een technische verbetering die helpt bij het indexeren — onzichtbaar voor bezoekers.
+- **De prijsindicatie heeft een korte uitleg boven de wizard.** Bezoekers die direct op die pagina landen, zien nu meteen wat de wizard doet (richtbedrag in 2 minuten, indicatief) en kunnen doorklikken naar laagopbouw-informatie. De wizard zelf is niet veranderd.
+- **De homepage heeft een compacte kosten-band onder de hero.** Een secundaire link "Richtbedrag in 2 minuten" stuurt bezoekers die niet meteen op de hoofdknop klikken alsnog door naar de prijsindicatie — de pagina waar mensen het langst blijven hangen.
+
+### Waarom
+
+- **De prijsindicatie is de enige pagina met instroomstijging** (2→4 sessies/30d) en het sterkste engagement (112 seconden gemiddeld). Maar als landingspagina heeft die 100% bounce op klein volume — een korte uitleg boven de wizard helpt nieuwe bezoekers sneller begrijpen wat ze kunnen verwachten.
+- **71% van alle bezoekers landt op de homepage**, met 85% bounce. De kosten-band is een lichte doorstroom-hefboom zonder de hero aan te passen.
+- **Friesland had 0 sessies/30d** in de geo-data. Leeuwarden en Heerenveen zijn de logische volgende stappen in de FAQ-cadans; Heerenveen sluit ook aan op het Ads-keyword dat nu in de campagne staat.
+- De drie harde blokkades (conversie-meting, GSC, gesloten Ads-account) zijn opnieuw geëscaleerd — die vereisen eigenaar-actie.
+
+### Verwacht effect
+
+- Meer `wizard_start`-events op de prijsindicatie; lagere landing-bounce op die pagina.
+- Homepage-doorstroom naar de prijsindicatie meetbaar in GA4.
+- Leeuwarden en Heerenveen worden zichtbaar voor lokale zoekopdrachten zodra GSC weer draait.
+- Geen zichtbare wijziging voor bestaande bezoekers op andere pagina's.
+
+### Social media deze week
+
+7 posts gepland (3 LinkedIn, 4 Instagram): Assen-vakmanschap + FAQ, Zeegse 100 m² B2B, Emmen-infrezen, kosten-U-lussen, werkgebied Drenthe/Groningen/Friesland, Zuidlaren-verbouwing, en najaarsplanning. Zie `docs/website-manager/social/weekly_calendar.md` — handmatige publicatie door het team.
+
+---
+
 ## Release — week van 20 juli 2026 (cyclus 23)
 
 **Deployment:** 20-07-2026, ~06:30 — PM push naar `main` (GitHub Pages). Commit `2ddaf26`.
