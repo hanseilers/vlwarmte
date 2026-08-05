@@ -117,7 +117,7 @@ Accountstatus `CLOSED`, geen billing, auto-tagging uit. Heropenen + betaalmethod
   4. FAQ + `FAQPage`-schema op `vloerverwarming-heerenveen.html` (3 unieke lokale vragen, kosten-antwoord linkt naar wizard)
   5. Compacte kosten-band onder hero op `index.html` (secundaire tekstlink naar `prijsindicatie.html`, hero/H1 ongewijzigd)
 - Overgeslagen taken: geen — alle 5 goedgekeurde taken uitgevoerd
-- Deployment: **Nog niet live** — PM voert commit + `git push origin main` uit; daarna: [PM vult run-id / succes in]
+- Deployment: **Live** — commit `69e4e01`, GitHub Pages run `30993116057` (success, 5 aug 09:24 UTC)
 - Live URL: https://www.vlwarmte.nl
 - Smoke tests: `tests/smoke/navigation-links.sh` PASS · `tests/smoke/form-behavior.sh` PASS
 - Aandachtspunten voor volgende sprint: BreadcrumbList op Friese stadspagina's is 2-niveau (geen Friesland-hub zoals Drenthe); optioneel `FAQPage` op Drachten blijft backlog. Prijsindicatie ATF op mobiel kan iets lager vallen door het nieuwe introblok — monitoren in GA4 `wizard_start`.

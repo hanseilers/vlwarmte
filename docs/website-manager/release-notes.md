@@ -6,7 +6,7 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ## Release — week van 5 augustus 2026 (cyclus 24)
 
-**Deployment:** 5-08-2026, ~11:40 — PM push naar `main` (GitHub Pages).
+**Deployment:** 5-08-2026, ~11:40 — PM push naar `main` (GitHub Pages). Commit `69e4e01`.
 
 ### Wat is er veranderd
 
