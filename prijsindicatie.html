@@ -6,20 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="REPLACE_WITH_TOKEN" />
   <!-- TODO Hans: vervang door echte token uit Search Console -->
-  <title>Prijsindicatie vloerverwarming Drenthe & Noord-NL — richtbedrag in 2 minuten</title>
+  <title>Wat kost vloerverwarming per m²? Prijsindicatie Drenthe</title>
   <meta name="description"
     content="Bereken vrijblijvend een richtbedrag voor vloerverwarming in Drenthe, Groningen of Friesland. Werkgebied rondom Zuidlaren. Antwoord binnen één werkdag." />
   <link rel="canonical" href="https://www.vlwarmte.nl/prijsindicatie.html" />
   <meta property="og:locale" content="nl_NL" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Prijsindicatie vloerverwarming Drenthe & Noord-NL — richtbedrag in 2 minuten" />
+  <meta property="og:title" content="Wat kost vloerverwarming per m²? Prijsindicatie Drenthe" />
   <meta property="og:description"
     content="Bereken vrijblijvend een richtbedrag voor vloerverwarming in Drenthe, Groningen of Friesland. Werkgebied rondom Zuidlaren. Antwoord binnen één werkdag." />
   <meta property="og:url" content="https://www.vlwarmte.nl/prijsindicatie.html" />
   <meta property="og:site_name" content="VLWarmte" />
   <meta property="og:image" content="https://www.vlwarmte.nl/assets/img/og-default.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Prijsindicatie vloerverwarming Drenthe & Noord-NL — richtbedrag in 2 minuten" />
+  <meta name="twitter:title" content="Wat kost vloerverwarming per m²? Prijsindicatie Drenthe" />
   <meta name="twitter:description"
     content="Bereken vrijblijvend een richtbedrag voor vloerverwarming in Drenthe, Groningen of Friesland. Werkgebied rondom Zuidlaren. Antwoord binnen één werkdag." />
   <link rel="stylesheet" href="assets/css/critical-index.css" />
@@ -28,6 +28,12 @@
   <noscript>
     <link rel="stylesheet" href="assets/css/styles.css" />
   </noscript>
+  <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.vlwarmte.nl/"},{"@type":"ListItem","position":2,"name":"Prijsindicatie vloerverwarming","item":"https://www.vlwarmte.nl/prijsindicatie.html"}]}
+    </script>
+  <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat kost vloerverwarming per m²?","acceptedAnswer":{"@type":"Answer","text":"Voor alleen vloerverwarming op een bestaande betonvloer zit je meestal tussen €45 en €95 per m², inclusief arbeid en materiaal, exclusief btw. Nieuwbouw met een schone ondergrond zit aan de onderkant van die band; renovatie waar we moeten infrezen zit aan de bovenkant. De wizard op deze pagina geeft je in twee minuten een bandbreedte voor jouw situatie."}},{"@type":"Question","name":"Waarom is de prijs per m² lager bij een grotere vloer?","acceptedAnswer":{"@type":"Answer","text":"Opstartkosten zijn er altijd: verdeler, aanvoer, opname en inregelen. Bij meer dan ongeveer 40 m² verdelen die zich over meer vierkante meters, dus daalt het tarief per m². Zit je eronder, dan zie je ze duidelijk terug in de prijs."}},{"@type":"Question","name":"Betaal ik voorrijkosten in Drenthe, Groningen of Friesland?","acceptedAnswer":{"@type":"Answer","text":"Voor een opname binnen 50 km van Zuidlaren — Assen, Groningen, Hoogeveen, Roden, Veendam, Meppel en Drachten — rekenen we geen voorrijkosten apart; die zitten in de offerte. Voor Leeuwarden en Heerenveen kijken we per project; bij grotere oppervlakken valt dat in de praktijk weg in het tarief per m²."}}]}
+    </script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="favicon.ico" sizes="32x32" type="image/x-icon" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
@@ -419,6 +425,20 @@
         padding-bottom: 2.5rem;
       }
 
+      .page-hero--wizard-entry+.section .kosten-intro {
+        margin-bottom: 0.6rem;
+      }
+
+      .kosten-intro .kosten-intro__lead {
+        font-size: 0.85rem;
+        line-height: 1.35;
+        margin: 0;
+      }
+
+      .kosten-intro .kosten-intro__detail {
+        display: none;
+      }
+
       .page-hero--wizard-entry+.section .wizard-progress {
         margin-bottom: 0.85rem;
       }
@@ -584,13 +604,17 @@
 
     <section class="section">
       <div class="container">
-        <div class="section-head">
-          <p>
+        <div class="section-head kosten-intro">
+          <p class="kosten-intro__lead">
             Met de wizard hieronder krijg je in ongeveer twee minuten een richtbedrag voor jouw situatie — excl. btw,
-            indicatief en vrijblijvend. De bandbreedte hangt af van oppervlak, ondergrond en of je kiest voor alleen
+            indicatief en vrijblijvend. Wil je eerst weten waar die bandbreedte vandaan komt? Lees
+            <a href="#kosten-uitleg">wat vloerverwarming per m² kost</a>.
+          </p>
+          <p class="kosten-intro__detail">
+            De bandbreedte hangt af van oppervlak, ondergrond en of je kiest voor alleen
             vloerverwarming of ook schuimbeton. Meer over opbouw en systemen lees je bij
             <a href="systemen-producten.html#laagopbouw">laagopbouw en droge vloerverwarming</a>; voorbeelden uit de
-            regio staan op <a href="vloerverwarming-heerenveen.html">vloerverwarming Heerenveen</a>.
+            regio staan op <a href="vloerverwarming-assen.html">vloerverwarming Assen</a>.
           </p>
         </div>
         <div class="wizard" id="wizard">
@@ -925,6 +949,40 @@
           Woon je in onze thuisbasis? Lees hoe we werken bij
           <a href="vloerverwarming-zuidlaren.html">vloerverwarming Zuidlaren</a>.
         </p>
+
+        <h3>Veelgestelde vragen over de kosten</h3>
+        <div class="faq-item">
+          <button class="faq-question" data-faq-toggle>Wat kost vloerverwarming per m²?</button>
+          <div class="faq-answer">
+            <p>
+              Voor alleen vloerverwarming op een bestaande betonvloer zit je meestal tussen €45 en €95 per m²,
+              inclusief arbeid en materiaal, exclusief btw. Nieuwbouw met een schone ondergrond zit aan de
+              onderkant van die band; renovatie waar we moeten infrezen zit aan de bovenkant. De wizard op deze
+              pagina geeft je in twee minuten een bandbreedte voor jouw situatie.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" data-faq-toggle>Waarom is de prijs per m² lager bij een grotere vloer?</button>
+          <div class="faq-answer">
+            <p>
+              Opstartkosten zijn er altijd: verdeler, aanvoer, opname en inregelen. Bij meer dan ongeveer
+              40 m² verdelen die zich over meer vierkante meters, dus daalt het tarief per m². Zit je eronder,
+              dan zie je ze duidelijk terug in de prijs.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" data-faq-toggle>Betaal ik voorrijkosten in Drenthe, Groningen of Friesland?</button>
+          <div class="faq-answer">
+            <p>
+              Voor een opname binnen 50 km van Zuidlaren — Assen, Groningen, Hoogeveen, Roden, Veendam, Meppel
+              en Drachten — rekenen we geen voorrijkosten apart; die zitten in de offerte. Voor Leeuwarden en
+              Heerenveen kijken we per project; bij grotere oppervlakken valt dat in de praktijk weg in het
+              tarief per m².
+            </p>
+          </div>
+        </div>
 
         <p class="small" style="margin-top: 1.5rem; color: var(--muted);">
           <strong>Let op:</strong> de bandbreedte in deze uitleg en de uitkomst van de wizard zijn een
