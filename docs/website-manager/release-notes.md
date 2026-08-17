@@ -4,6 +4,53 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — week van 17 augustus 2026 (cyclus 25)
+
+**Deployment:** ⚠️ **NOG NIET LIVE.** Alles is gebouwd, gecontroleerd en gecommit op `main`, maar `git push` faalt op authenticatie (`could not read Username for 'https://github.com'`). Eén commando in een gewone terminal zet het live: `cd /Users/hanseilers/vlwarmte && git push origin main`. Lukt dat niet, dan eerst `gh auth login`.
+**Versie:** lokale commit op `main`, 17-08-2026 ~06:50.
+
+### Wat is er veranderd
+
+Deze week is er niets nieuws bijgebouwd. We hebben gerepareerd wat kapot of ongebruikt was — dat leverde meer op dan een nieuwe pagina zou doen.
+
+- **De zwevende knop op mobiel staat nu op vijftien pagina's in plaats van één.** Op de telefoon zweeft er onderaan een knop "Prijsindicatie" mee terwijl je leest, die vanzelf verdwijnt zodra je bij de gewone knoppen onderaan de pagina komt. Die knop was al helemaal gebouwd en werkte al op de homepage — hij was op alle andere pagina's alleen nooit aangezet. Uit de cijfers blijkt dat maar 8 tot 11 procent van de bezoekers naar beneden scrolt; wie dat niet doet, kwam dus nooit een knop tegen.
+- **De prijsindicatie is op vier punten aangepakt.** Nieuwe paginatitel die begint met de vraag die mensen echt intypen ("Wat kost vloerverwarming per m²?"), een uitklapbaar blok met drie eerlijke antwoorden over prijs per m², waarom grotere vloeren goedkoper uitvallen en hoe het zit met voorrijkosten, en de bijbehorende opmaak waarmee Google die antwoorden direct in de zoekresultaten kan tonen. Ook is het uitlegblok van vorige week op de telefoon compacter gemaakt, want het duwde de eerste stap van de rekenhulp onder de rand van het scherm.
+- **Tien paginatitels zijn ingekort.** Ze waren allemaal net te lang, waardoor Google er precies het stuk "| VLWarmte" afkapte. Nu passen ze.
+- **Twee fouten hersteld die in de zoekresultaten konden opduiken.** Op de veelgestelde-vragenpagina ontbrak één vraag in de code die Google uitleest — juist de vraag over droge vloerverwarming en laagopbouw. En op de homepage stond "Welke garantie horen bij jullie systemen" in plaats van "hoort". Allebei stonden ze in de gestructureerde data, dus ze konden letterlijk in een zoekresultaat verschijnen.
+- **De Zuidlaren-pagina heeft eindelijk eigen vragen en de juiste buurdorpen.** Haren, Glimmen, Eelde-Paterswolde, Vries, Yde en De Punt stonden nergens op de site, terwijl dat de dorpen op een kwartier rijden zijn. Ook twee typefouten weg ("kopwoningen", "stomen of egaliseren").
+- **De sitemap klopt weer** — de wijzigingsdatums liepen tot zes weken achter.
+
+### Waarom
+
+- **De zwevende knop:** dit was een component die al gebouwd en betaald was, maar op vijftien pagina's simpelweg niet aanstond. Een kwart van de bezoekers zit op de telefoon en scrolt nauwelijks. Dit is de goedkoopste conversieverbetering die er in de site zat.
+- **De prijsindicatie:** dit is de enige pagina met stijgende bezoekersaantallen (van 2 naar 4 per maand) en verreweg de langste leestijd (bijna twee minuten). Tegelijk had die pagina als enige belangrijke pagina helemaal geen gestructureerde data, en het woord "kosten" stond niet in de titel — terwijl er wel concrete bedragen op staan.
+- **De titels:** meetbaar te lang, gratis te repareren.
+- **De fouten in de gestructureerde data:** een bedrijf dat het van vakwerk moet hebben, moet geen taalfout in een zoekresultaat hebben staan.
+- **Zuidlaren:** dat is de thuisbasis en tegelijk de dunste pagina van de negen plaatspagina's.
+
+### Verwacht effect
+
+- Meer mensen die op de telefoon doorklikken naar de prijsindicatie, in plaats van de pagina uit te scrollen.
+- De prijsindicatie wordt vindbaar op "wat kost vloerverwarming per m2"-achtige zoekopdrachten, met kans op een uitgelicht antwoord.
+- Zoekresultaten tonen weer de volledige, zelfgeschreven titel.
+- Zichtbaarheid op Haren, Eelde en Glimmen — de meest koopkrachtige strook van het werkgebied.
+
+**Eerlijke kanttekening:** bij vier organische bezoekers per maand levert geen van deze ingrepen op zichzelf leads op. Ze zorgen dat de site klopt op het moment dat er wél verkeer komt. De echte blokkades staan hieronder.
+
+### Wat de eigenaar zelf moet doen
+
+1. **Push de site live** (zie Deployment hierboven) — dit is nieuw deze week.
+2. **Zet in GA4 de conversies aan.** We hebben deze week in de code hard vastgesteld dat alle meetpunten (contactformulier, wizard-aanvraag) correct afgaan op alle pagina's. Zes cycli op nul conversies is dus een instelling die ontbreekt, geen kapotte website: GA4 → Beheer → Gebeurtenissen → markeren als belangrijkste gebeurtenis. Kijk tegelijk in de Formspree-inboxen of daar echte aanvragen binnenkomen.
+3. **Repareer de GA4-data-ophaal.** De cijfers waarop deze sprint is gebaseerd waren twaalf dagen oud, omdat het ophaalscript stukging na een Python-update. Herstel: `.venv/bin/pip install -r scripts/requirements-ga4.txt`. Zonder dit draait de volgende cyclus opnieuw blind.
+4. **Google Search Console-koppeling vernieuwen** (10+ weken kapot) en **het Google Ads-account heropenen** (staat op gesloten, geen betaalmethode — dat verklaart de nul vertoningen volledig).
+5. **Foto's.** Sinds mei is er geen nieuw beeldmateriaal aangeleverd. Eén middag fotograferen op een afgerond project levert maanden social media en betere plaatspagina's op.
+
+### Social media deze week
+
+7 posts gepland (3 LinkedIn, 4 Instagram): najaarsplanning met de droogtijd van de dekvloer als haak, de Friese pagina's Leeuwarden en Heerenveen, de kostenvraag met doorverwijzing naar de rekenhulp, Zeegse 100 m², de Zuidlaren-verbouwing met infrezen, en het werkgebied. Zie `docs/website-manager/social/weekly_calendar.md` — handmatige publicatie door het team.
+
+---
+
 ## Release — week van 5 augustus 2026 (cyclus 24)
 
 **Deployment:** 5-08-2026, ~11:40 — PM push naar `main` (GitHub Pages). Commit `69e4e01`.

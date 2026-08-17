@@ -319,7 +319,18 @@ Gecontroleerd: **geen** `secrets/`, **geen** `*.env`, **geen** service-account-J
 
 ### Deployment
 
-**Nog niet live — PM voert commit + push uit** (`git push origin main`, daarna GitHub Actions / GitHub Pages). Live URL: https://www.vlwarmte.nl
+**Gecommit, NIET gepusht — `git push` faalt op authenticatie.** (PM-aanvulling, 17 aug)
+
+- Commit staat lokaal op `main`: *"Sprint cyclus 25 (17 aug): sticky mobiele CTA op 15 pagina's, prijsindicatie kosten-schema, titels onder 60 tekens, FAQ Zuidlaren, schemagat faq.html"* — alle 18 sitebestanden plus de documentatie zitten erin.
+- `git push origin main` geeft: `fatal: Authorization/Authentication failed` / `could not read Username for 'https://github.com': Device not configured`. De remote is HTTPS (`https://github.com/hanseilers/vlwarmte.git`) en de credential helper kan in deze onbewaakte run geen keychain-prompt tonen. Vorige cycli lukte dit wel — er is dus iets veranderd aan de git-authenticatie op deze machine (keychain-toegang of `gh`-token verlopen).
+- **Dit is de enige escalatie die de playbook expliciet bij de eigenaar legt.** Eén commando in een gewone terminal zet alles live:
+
+```bash
+cd /Users/hanseilers/vlwarmte && git push origin main
+```
+
+- Werkt dat niet, dan eerst `gh auth login` (of `gh auth setup-git`) draaien. Controleer daarna de deploy met `gh run list --repo hanseilers/vlwarmte --limit 1`.
+- **De code is af en geverifieerd** — er hoeft niets opnieuw geïmplementeerd te worden. Live URL na push: https://www.vlwarmte.nl
 
 ### Aandachtspunten voor de volgende sprint
 
