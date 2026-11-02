@@ -705,35 +705,6 @@
             </div>
           </div>
 
-          <!-- Alleen vloerverwarming + beton: zones -->
-          <div class="wizard-step" id="step-zones">
-            <h2>Hoeveel verwarmingszones?</h2>
-            <p class="step-sub">Elke zone heeft een eigen thermostaat. Denk aan: woonkamer, slaapkamers, badkamer.</p>
-            <div class="option-grid">
-              <button type="button" class="option-card" data-field="zones" data-value="1" onclick="selectOption(this)">
-                <span class="option-icon">1️⃣</span>
-                <span class="option-label">1 zone</span>
-                <span class="option-hint">Één ruimte of kleine woning</span>
-              </button>
-              <button type="button" class="option-card" data-field="zones" data-value="2" onclick="selectOption(this)">
-                <span class="option-icon">2️⃣</span>
-                <span class="option-label">2 zones</span>
-                <span class="option-hint">Beneden / boven</span>
-              </button>
-              <button type="button" class="option-card" data-field="zones" data-value="3" onclick="selectOption(this)">
-                <span class="option-icon">3️⃣</span>
-                <span class="option-label">3 zones</span>
-              </button>
-              <button type="button" class="option-card" data-field="zones" data-value="4" onclick="selectOption(this)">
-                <span class="option-icon">4️⃣</span>
-                <span class="option-label">4 of meer</span>
-              </button>
-            </div>
-            <div class="wizard-nav">
-              <button type="button" class="btn-back" onclick="wizardBack()">← Terug</button>
-            </div>
-          </div>
-
           <!-- Schuimbeton: diepte kruipruimte -->
           <div class="wizard-step" id="step-schuim-diepte">
             <h2>Hoe diep is je kruipruimte?</h2>
@@ -1078,12 +1049,11 @@
         nieuwbouw_beton: { laag: 45, hoog: 55 },
         nieuwbouw_hout: { laag: 56, hoog: 68 },
         nieuwbouw_onbekend: { laag: 48, hoog: 62 },
-        renovatie_beton: { laag: 68, hoog: 82 },
+        renovatie_beton: { laag: 50, hoog: 62.5 },
         renovatie_hout: { laag: 80, hoog: 96 },
         renovatie_onbekend: { laag: 70, hoog: 88 },
       },
-      extra_zone: 175,
-      minimum: 2500,
+      minimum: 2000,
     };
 
     /**
@@ -1101,7 +1071,7 @@
       minimum: 3500,
     };
 
-    const STEPS_VL = ['step-product', 'step-vl-grond', 'step-m2', 'step-projecttype', 'step-zones'];
+    const STEPS_VL = ['step-product', 'step-vl-grond', 'step-m2', 'step-projecttype'];
     const STEPS_SCHUIM = ['step-product', 'step-schuim-diepte', 'step-schuim-m2', 'step-schuim-kruip'];
 
     const state = {
@@ -1209,7 +1179,6 @@
       const sid = currentStepId();
       if (field === 'vlOndergrond' && sid === 'step-vl-grond') advanceFromVlGrond();
       else if (field === 'projecttype' && sid === 'step-projecttype') wizardForward();
-      else if (field === 'zones' && sid === 'step-zones') calculate();
       else if (field === 'kruipOndergrond' && sid === 'step-schuim-kruip') finishSchuim();
     }
 
@@ -1249,8 +1218,7 @@
         vlGtag('event', 'wizard_schuim_m2', { m2: state.schuimM2 });
       } else if (sid === 'step-projecttype') {
         if (!state.projecttype) return;
-        state.idx++;
-        renderWizardStep();
+        calculate();
       }
     }
 
@@ -1424,7 +1392,7 @@
         ' mm ruimte onder de vloer na het werk (toegang, leidingen).',
         'Vloerverwarming: onderdeel voor het verwarmde oppervlak (' +
         state.schuimM2 +
-        ' m²) zodra de opbouw geschikt is — zonder zones-detail zoals bij het traject “alleen vloerverwarming”.',
+        ' m²) zodra de opbouw geschikt is.',
         bodemExtra,
       ];
       items.forEach(text => {
@@ -1525,12 +1493,6 @@
       return [low, high];
     }
 
-    function zonesDisplay(stateZones) {
-      const z = parseInt(stateZones, 10) || 1;
-      if (stateZones === '4') return { n: z, phrase: 'minimaal 4 zones', groupsLabel: 'minimaal 4' };
-      return { n: z, phrase: z + (z === 1 ? ' zone' : ' zones'), groupsLabel: String(z) };
-    }
-
     function elStrong(text) {
       const s = document.createElement('strong');
       s.textContent = text;
@@ -1538,12 +1500,7 @@
     }
 
     function renderPriceAssumptions() {
-      const zonesMeta = zonesDisplay(state.zones);
-      const zonesN = zonesMeta.n;
       const [pipeLo, pipeHi] = estimatePipeRangeM(state.m2);
-      const midPipe = (pipeLo + pipeHi) / 2;
-      const mPipePerZone = midPipe / zonesN;
-      const longLoopHint = mPipePerZone > 100;
 
       const typeLabel = state.projecttype === 'nieuwbouw' ? 'Nieuwbouw' : 'Renovatie';
       const ogLabel =
@@ -1589,18 +1546,7 @@
       ul.appendChild(li3);
 
       const li4 = document.createElement('li');
-      li4.append(
-        document.createTextNode('Aan de verdeler: meestal '),
-        elStrong(zonesMeta.groupsLabel + ' regelgroep' + (zonesN > 1 ? 'en' : '')),
-        document.createTextNode(', passend bij ' + zonesMeta.phrase + '.')
-      );
-      if (longLoopHint) {
-        const sub = document.createElement('span');
-        sub.className = 'price-assumption-sub';
-        sub.textContent =
-          'Bij een groot oppervlak met weinig zones kan het soms handiger zijn om extra kringen te splitsen — dat bekijken we rustig op locatie.';
-        li4.appendChild(sub);
-      }
+      li4.textContent = 'De indicatie gaat uit van één thermostaatzone. De verdeling in groepen bepalen we per woning.';
       ul.appendChild(li4);
 
       const li5 = document.createElement('li');
@@ -1628,20 +1574,20 @@
 
       const lines = [
         'Uitgangspunten (6):',
-        state.m2 + ' m²; ' + typeLabel + '; ' + ogLabel + '; buis ca. ' + pipeLo + '-' + pipeHi + ' m; ' + zonesMeta.groupsLabel + ' groep(en); ' + zonesMeta.phrase,
+        state.m2 + ' m²; ' + typeLabel + '; ' + ogLabel + '; buis ca. ' + pipeLo + '-' + pipeHi + ' m; indicatie op basis van één zone',
       ];
       document.getElementById('f-uitgangspunten').value = lines.join('\n');
     }
 
     function calculate() {
-      if (!state.zones || !state.projecttype || state.ondergrond !== 'beton') return;
+      if (!state.projecttype || state.ondergrond !== 'beton') return;
+      state.zones = '1';
       const key = state.projecttype + '_' + state.ondergrond;
       const tarief = PRIJZEN.m2[key] || PRIJZEN.m2[state.projecttype + '_onbekend'];
       const zones = parseInt(state.zones, 10) || 1;
-      const extra = Math.max(0, zones - 1) * PRIJZEN.extra_zone;
 
-      const laag = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.laag + extra) / 250) * 250;
-      const hoog = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.hoog + extra) / 250) * 250;
+      const laag = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.laag) / 250) * 250;
+      const hoog = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.hoog) / 250) * 250;
 
       state.resultMode = 'vl_beton';
       resetContactResultLayout();
