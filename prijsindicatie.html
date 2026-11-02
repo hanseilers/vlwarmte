@@ -32,7 +32,7 @@
       {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.vlwarmte.nl/"},{"@type":"ListItem","position":2,"name":"Prijsindicatie vloerverwarming","item":"https://www.vlwarmte.nl/prijsindicatie.html"}]}
     </script>
   <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat kost vloerverwarming per m²?","acceptedAnswer":{"@type":"Answer","text":"Voor alleen vloerverwarming op een bestaande betonvloer zit je meestal tussen €45 en €95 per m², inclusief arbeid en materiaal, exclusief btw. Nieuwbouw met een schone ondergrond zit aan de onderkant van die band; renovatie waar we moeten infrezen zit aan de bovenkant. De wizard op deze pagina geeft je in twee minuten een bandbreedte voor jouw situatie."}},{"@type":"Question","name":"Waarom is de prijs per m² lager bij een grotere vloer?","acceptedAnswer":{"@type":"Answer","text":"Opstartkosten zijn er altijd: verdeler, aanvoer, opname en inregelen. Bij meer dan ongeveer 40 m² verdelen die zich over meer vierkante meters, dus daalt het tarief per m². Zit je eronder, dan zie je ze duidelijk terug in de prijs."}},{"@type":"Question","name":"Betaal ik voorrijkosten in Drenthe, Groningen of Friesland?","acceptedAnswer":{"@type":"Answer","text":"Voor een opname binnen 50 km van Zuidlaren — Assen, Groningen, Hoogeveen, Roden, Veendam, Meppel en Drachten — rekenen we geen voorrijkosten apart; die zitten in de offerte. Voor Leeuwarden en Heerenveen kijken we per project; bij grotere oppervlakken valt dat in de praktijk weg in het tarief per m²."}}]}
+      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat kost vloerverwarming per m²?","acceptedAnswer":{"@type":"Answer","text":"Voor alleen vloerverwarming op een bestaande betonvloer ligt de prijs meestal tussen €45 en €95 per m², inclusief materiaal en arbeid, exclusief btw. De calculator geeft een indicatie voor jouw situatie."}},{"@type":"Question","name":"Waarom is de prijs per m² hoger bij een kleine vloer?","acceptedAnswer":{"@type":"Answer","text":"Vaste kosten, zoals de verdeler, aanvoer en het inregelen, wegen bij een kleine vloer zwaarder per m². Daarom geldt in de calculator een minimumbedrag."}},{"@type":"Question","name":"Betaal ik voorrijkosten in Drenthe, Groningen of Friesland?","acceptedAnswer":{"@type":"Answer","text":"Binnen 50 km van Zuidlaren rekenen we bij een opname geen aparte voorrijkosten. Voor bijvoorbeeld Leeuwarden en Heerenveen bekijken we dit per project."}}]}
     </script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="favicon.ico" sizes="32x32" type="image/x-icon" />
@@ -611,15 +611,12 @@
       <div class="container">
         <div class="section-head kosten-intro">
           <p class="kosten-intro__lead">
-            Met de wizard hieronder krijg je in ongeveer twee minuten een richtbedrag voor jouw situatie — excl. btw,
-            indicatief en vrijblijvend. Wil je eerst weten waar die bandbreedte vandaan komt? Lees
-            <a href="#kosten-uitleg">wat vloerverwarming per m² kost</a>.
+            Beantwoord een paar vragen voor een indicatie inclusief materiaal en arbeid, exclusief btw.
+            Lees ook <a href="#kosten-uitleg">wat de prijs bepaalt</a>.
           </p>
           <p class="kosten-intro__detail">
-            De bandbreedte hangt af van oppervlak, ondergrond en of je kiest voor alleen
-            vloerverwarming of ook schuimbeton. Meer over opbouw en systemen lees je bij
-            <a href="systemen-producten.html#laagopbouw">laagopbouw en droge vloerverwarming</a>; voorbeelden uit de
-            regio staan op <a href="vloerverwarming-assen.html">vloerverwarming Assen</a>.
+            Meer over <a href="systemen-producten.html#laagopbouw">vloersystemen</a> en
+            <a href="vloerverwarming-assen.html">vloerverwarming in Assen</a>.
           </p>
         </div>
         <div class="wizard" id="wizard">
@@ -636,7 +633,7 @@
                 onclick="selectOption(this)">
                 <span class="option-icon">〰️</span>
                 <span class="option-label">Alleen vloerverwarming</span>
-                <span class="option-hint">Infrarood / infrezen op bestaande vloer</span>
+                <span class="option-hint">Op een bestaande of nieuwe vloer</span>
               </button>
               <button type="button" class="option-card" data-field="product" data-value="schuim"
                 onclick="selectOption(this)">
@@ -650,8 +647,7 @@
           <!-- Traject alleen vloerverwarming: ondergrond vloer (hout → contact, beton → door) -->
           <div class="wizard-step" id="step-vl-grond">
             <h2>Wat is de huidige ondergrond van de vloer?</h2>
-            <p class="step-sub">Vloerverwarming op hout vraagt maatwerk: daar maken we geen vaste rekensom voor in dit
-              stappenplan.</p>
+            <p class="step-sub">Een houten vloer vraagt maatwerk. Daarvoor nemen we contact met je op.</p>
             <div class="option-grid">
               <button type="button" class="option-card" data-field="vlOndergrond" data-value="beton"
                 onclick="selectOption(this)">
@@ -713,8 +709,7 @@
           <!-- Schuimbeton: diepte kruipruimte -->
           <div class="wizard-step" id="step-schuim-diepte">
             <h2>Hoe diep is je kruipruimte?</h2>
-            <p class="step-sub">Meet de vrije hoogte onder de bodem (in millimeters). Twijfel je? Schat zo goed mogelijk
-              — we controleren het bij de opname.</p>
+            <p class="step-sub">Meet de vrije hoogte in millimeters. Een schatting is ook goed; we controleren dit bij de opname.</p>
             <div class="slider-wrap">
               <div class="slider-display"><span id="diepte-val">500</span> <span>mm</span></div>
               <input type="range" id="diepte-slider" min="250" max="2000" value="500" step="10"
@@ -730,8 +725,7 @@
           <!-- Schuimbeton: oppervlakte woning -->
           <div class="wizard-step" id="step-schuim-m2">
             <h2>Hoeveel vierkante meter is de woning?</h2>
-            <p class="step-sub">Bruto vloeroppervlak of bewoonbaar oppervlak — waar je zelf het meest mee uit de voeten
-              kunt.</p>
+            <p class="step-sub">Gebruik het bruto of bewoonbare vloeroppervlak.</p>
             <div class="slider-wrap">
               <div class="slider-display"><span id="schuim-m2-val">120</span> <span>m²</span></div>
               <input type="range" id="schuim-m2-slider" min="40" max="350" value="120" step="5"
@@ -801,7 +795,7 @@
               <section class="price-assumptions" id="price-assumptions" aria-label="Uitgangspunten bij deze indicatie"
                 hidden></section>
               <p class="price-disclaimer" id="price-disclaimer">
-                Dit is een indicatie op basis van gemiddelde projectkosten in Noord-Nederland.<br />
+                Dit is een indicatie, geen offerte.<br />
                 De werkelijke prijs hangt af van de specifieke situatie ter plaatse — twijfel je ergens over, bel gerust
                 even.
               </p>
@@ -877,97 +871,31 @@
 
     <section class="section section-muted" id="kosten-uitleg" aria-labelledby="kosten-uitleg-h2">
       <div class="container" style="max-width: 680px;">
-        <h2 id="kosten-uitleg-h2">Kosten vloerverwarming — wat is realistisch?</h2>
-        <p>
-          Een eerlijke prijs voor vloerverwarming hangt af van je situatie. De wizard hierboven geeft een
-          bandbreedte op basis van je antwoorden.
-        </p>
-        <p>
-          Hier lees je waar die bandbreedte vandaan komt. We werken in Drenthe, Groningen en Friesland — Assen,
-          Hoogeveen, Meppel, Groningen, Roden, Leek, Veendam, Drachten, Heerenveen en Leeuwarden — vanuit onze
-          werkplaats in Zuidlaren.
-        </p>
-
-        <h3>Prijs per m² — globale bandbreedte</h3>
-        <p>
-          Voor <strong>alleen vloerverwarming</strong> op een bestaande betonvloer rekenen we meestal
-          tussen <strong>€45 en €95 per m²</strong>, inclusief arbeid en materiaal, exclusief btw. Nieuwbouw
-          met een schone ondergrond zit aan de onderkant van die range; renovatie waar we moeten infrezen
-          of inpassen tussen bestaand werk zit aan de bovenkant.
-        </p>
-        <h3>Drie zaken die de prijs vooral bepalen</h3>
-        <p>
-          <strong>Eén — het aantal m²:</strong> meer vloer betekent een lager tarief per m². Bij minder dan
-          ongeveer 40 m² wordt het aandeel opstartkosten (verdeler, aanvoer, opname, inregelen) zichtbaar.
-        </p>
-        <p>
-          <strong>Twee — de ondergrond:</strong> een vlakke betonvloer of een nieuwe ondervloer is sneller
-          te beleggen dan een houten verdiepingsvloer of een onregelmatige kruipruimte. Houten ondergrond is
-          maatwerk; daar maken we geen automatische indicatie maar bellen we even.
-        </p>
-        <p>
-          <strong>Drie — schuimbeton ja of nee:</strong> kies je voor schuimbeton als ondervloer, dan
-          krijg je een betere isolatiewaarde en een vlakke werkbasis, maar dat is een aparte post bovenop
-          de vloerverwarming zelf. Het loont vooral bij een diepe kruipruimte (boven de 400 mm vrije
-          hoogte).
-        </p>
-
-        <h3>Regio Drenthe, Groningen en Friesland</h3>
-        <p>
-          De reistijd vanuit Zuidlaren naar de meeste plaatsen in ons werkgebied blijft binnen het uur,
-          dus daar zit zelden een merkbare opslag op. Voor een opname binnen 50 km — Assen, Groningen,
-          Hoogeveen, Roden, Veendam, Meppel, Drachten — rekenen we geen voorrijkosten apart; die zitten
-          in de uiteindelijke offerte. Voor verder gelegen plaatsen (Leeuwarden, Heerenveen) bekijken
-          we het project per geval; bij grotere oppervlaktes valt dat in de praktijk weg in het tarief
-          per m².
-        </p>
-        <p>
-          Woon je in onze thuisbasis? Lees hoe we werken bij
-          <a href="vloerverwarming-zuidlaren.html">vloerverwarming Zuidlaren</a>.
-        </p>
+        <h2 id="kosten-uitleg-h2">Wat bepaalt de prijs?</h2>
+        <p>De indicatie hangt af van het oppervlak, de ondergrond en de gekozen vloeropbouw.</p>
+        <h3>Oppervlak en ondergrond</h3>
+        <p>Bij een kleine vloer tellen vaste kosten, zoals de verdeler en het inregelen, relatief zwaar mee. Een houten vloer vraagt maatwerk.</p>
+        <h3>Schuimbeton</h3>
+        <p>Schuimbeton is een aparte post voor isolatie en een vlakke vloeropbouw. De diepte en ondergrond van de kruipruimte tellen mee in de indicatie.</p>
+        <h3>Onze regio</h3>
+        <p>Vanuit Zuidlaren werken we in Drenthe, Groningen en Friesland. Lees ook over <a href="vloerverwarming-zuidlaren.html">vloerverwarming in Zuidlaren</a>.</p>
 
         <h3>Veelgestelde vragen over de kosten</h3>
         <div class="faq-item">
           <button class="faq-question" data-faq-toggle>Wat kost vloerverwarming per m²?</button>
-          <div class="faq-answer">
-            <p>
-              Voor alleen vloerverwarming op een bestaande betonvloer zit je meestal tussen €45 en €95 per m²,
-              inclusief arbeid en materiaal, exclusief btw. Nieuwbouw met een schone ondergrond zit aan de
-              onderkant van die band; renovatie waar we moeten infrezen zit aan de bovenkant. De wizard op deze
-              pagina geeft je in twee minuten een bandbreedte voor jouw situatie.
-            </p>
-          </div>
+          <div class="faq-answer"><p>Voor alleen vloerverwarming op een bestaande betonvloer ligt de prijs meestal tussen €45 en €95 per m², inclusief materiaal en arbeid, exclusief btw. De calculator geeft een indicatie voor jouw situatie.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Waarom is de prijs per m² lager bij een grotere vloer?</button>
-          <div class="faq-answer">
-            <p>
-              Opstartkosten zijn er altijd: verdeler, aanvoer, opname en inregelen. Bij meer dan ongeveer
-              40 m² verdelen die zich over meer vierkante meters, dus daalt het tarief per m². Zit je eronder,
-              dan zie je ze duidelijk terug in de prijs.
-            </p>
-          </div>
+          <button class="faq-question" data-faq-toggle>Waarom is de prijs per m² hoger bij een kleine vloer?</button>
+          <div class="faq-answer"><p>Vaste kosten, zoals de verdeler, aanvoer en het inregelen, wegen bij een kleine vloer zwaarder per m². Daarom geldt in de calculator een minimumbedrag.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" data-faq-toggle>Betaal ik voorrijkosten in Drenthe, Groningen of Friesland?</button>
-          <div class="faq-answer">
-            <p>
-              Voor een opname binnen 50 km van Zuidlaren — Assen, Groningen, Hoogeveen, Roden, Veendam, Meppel
-              en Drachten — rekenen we geen voorrijkosten apart; die zitten in de offerte. Voor Leeuwarden en
-              Heerenveen kijken we per project; bij grotere oppervlakken valt dat in de praktijk weg in het
-              tarief per m².
-            </p>
-          </div>
+          <div class="faq-answer"><p>Binnen 50 km van Zuidlaren rekenen we bij een opname geen aparte voorrijkosten. Voor bijvoorbeeld Leeuwarden en Heerenveen bekijken we dit per project.</p></div>
         </div>
-
         <p class="small" style="margin-top: 1.5rem; color: var(--muted);">
-          <strong>Let op:</strong> de bandbreedte in deze uitleg en de uitkomst van de wizard zijn een
-          <em>indicatie</em>, geen offerte. Er komt geen verkoper langs en je krijgt geen automatische
-          terugbelpoging — alleen als je daar zelf om vraagt via de
-          <a href="contact.html?modus=offerte#aanvraag">offerte-aanvraag</a> of
-          <a href="contact.html?modus=bel#aanvraag">een belmoment</a>. Twijfel je over je situatie?
-          <a href="contact.html?modus=informatie#aanvraag">Stel je vraag</a> — een korte mail of telefoontje
-          is meestal genoeg.
+          Dit is een indicatie, geen offerte. <a href="contact.html?modus=informatie#aanvraag">Stel je vraag</a>
+          of <a href="contact.html?modus=bel#aanvraag">vraag een belmoment aan</a>.
         </p>
       </div>
     </section>
@@ -1246,11 +1174,11 @@
     function setPriceDisclaimerDefault() {
       const d = document.getElementById('price-disclaimer');
       d.replaceChildren();
-      d.appendChild(document.createTextNode('Dit is een indicatie op basis van gemiddelde projectkosten in Noord-Nederland.'));
+      d.appendChild(document.createTextNode('Dit is een indicatie, geen offerte.'));
       d.appendChild(document.createElement('br'));
       d.appendChild(
         document.createTextNode(
-          'De werkelijke prijs hangt af van de specifieke situatie ter plaatse — twijfel je ergens over, bel gerust even.'
+          'De uiteindelijke prijs hangt af van jouw situatie.'
         )
       );
     }
@@ -1525,9 +1453,9 @@
       countSpan.className = 'assumption-count';
       countSpan.textContent = 'zes';
       intro.append(
-        document.createTextNode('Deze bandbreedte sluit aan op '),
+        document.createTextNode('Deze indicatie gaat uit van '),
         countSpan,
-        document.createTextNode(' korte uitgangspunten — ruwe schattingen die bij veel vergelijkbare woningen kloppen. Ze geven houvast; details finetunen we tijdens de opname.')
+        document.createTextNode(' uitgangspunten. We controleren de details bij de opname.')
       );
       wrap.appendChild(intro);
 
@@ -1565,7 +1493,7 @@
       const li6 = document.createElement('li');
       li6.appendChild(
         document.createTextNode(
-          'Komt er ongebruikelijk zwaar doorwerk bij (lang traject of heel dik beton), dan zetten we dat vooraf en helder in de offerte — geen verrassing achteraf. Twijfel je? Bel gerust even: dan denken we meteen met je mee.'
+          'Bij extra werk, zoals een lang leidingtraject of dik beton, vermelden we de kosten vooraf in de offerte.'
         )
       );
       ul.appendChild(li6);
@@ -1574,7 +1502,7 @@
 
       const foot = document.createElement('p');
       foot.className = 'price-assumptions-foot';
-      foot.textContent = 'Dit blijft een online indicatie — geen offerte. Voor een prijs op maat volstaat vaak al een kort gesprek.';
+      foot.textContent = 'Dit is een indicatie. Je ontvangt een offerte op maat na overleg.';
       wrap.appendChild(foot);
 
       const lines = [
