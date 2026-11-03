@@ -32,7 +32,7 @@
       {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.vlwarmte.nl/"},{"@type":"ListItem","position":2,"name":"Prijsindicatie vloerverwarming","item":"https://www.vlwarmte.nl/prijsindicatie.html"}]}
     </script>
   <script type="application/ld+json">
-      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat kost vloerverwarming per m²?","acceptedAnswer":{"@type":"Answer","text":"Voor alleen vloerverwarming op een bestaande betonvloer ligt de prijs meestal tussen €45 en €95 per m², inclusief materiaal en arbeid, exclusief btw. De calculator geeft een indicatie voor jouw situatie."}},{"@type":"Question","name":"Waarom is de prijs per m² hoger bij een kleine vloer?","acceptedAnswer":{"@type":"Answer","text":"Vaste kosten, zoals de verdeler, aanvoer en het inregelen, wegen bij een kleine vloer zwaarder per m². Daarom geldt in de calculator een minimumbedrag."}},{"@type":"Question","name":"Betaal ik voorrijkosten in Drenthe, Groningen of Friesland?","acceptedAnswer":{"@type":"Answer","text":"Binnen 50 km van Zuidlaren rekenen we bij een opname geen aparte voorrijkosten. Voor bijvoorbeeld Leeuwarden en Heerenveen bekijken we dit per project."}}]}
+      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat kost vloerverwarming per m²?","acceptedAnswer":{"@type":"Answer","text":"Voor alleen vloerverwarming op een bestaande betonvloer ligt de prijs meestal tussen €35 en €55 per m², inclusief materiaal en arbeid, exclusief btw. De calculator geeft een indicatie voor jouw situatie."}},{"@type":"Question","name":"Waarom is de prijs per m² hoger bij een kleine vloer?","acceptedAnswer":{"@type":"Answer","text":"Vaste kosten, zoals de verdeler, aanvoer en het inregelen, wegen bij een kleine vloer zwaarder per m². Daarom rekent de calculator met prijsstaffels per 8 m²."}},{"@type":"Question","name":"Betaal ik voorrijkosten in Drenthe, Groningen of Friesland?","acceptedAnswer":{"@type":"Answer","text":"Binnen 50 km van Zuidlaren rekenen we bij een opname geen aparte voorrijkosten. Voor bijvoorbeeld Leeuwarden en Heerenveen bekijken we dit per project."}}]}
     </script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="favicon.ico" sizes="32x32" type="image/x-icon" />
@@ -883,11 +883,11 @@
         <h3>Veelgestelde vragen over de kosten</h3>
         <div class="faq-item">
           <button class="faq-question" data-faq-toggle>Wat kost vloerverwarming per m²?</button>
-          <div class="faq-answer"><p>Voor alleen vloerverwarming op een bestaande betonvloer ligt de prijs meestal tussen €45 en €95 per m², inclusief materiaal en arbeid, exclusief btw. De calculator geeft een indicatie voor jouw situatie.</p></div>
+          <div class="faq-answer"><p>Voor alleen vloerverwarming op een bestaande betonvloer ligt de prijs meestal tussen €35 en €55 per m², inclusief materiaal en arbeid, exclusief btw. De calculator geeft een indicatie voor jouw situatie.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" data-faq-toggle>Waarom is de prijs per m² hoger bij een kleine vloer?</button>
-          <div class="faq-answer"><p>Vaste kosten, zoals de verdeler, aanvoer en het inregelen, wegen bij een kleine vloer zwaarder per m². Daarom geldt in de calculator een minimumbedrag.</p></div>
+          <div class="faq-answer"><p>Vaste kosten, zoals de verdeler, aanvoer en het inregelen, wegen bij een kleine vloer zwaarder per m². Daarom rekent de calculator met prijsstaffels per 8 m².</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" data-faq-toggle>Betaal ik voorrijkosten in Drenthe, Groningen of Friesland?</button>
@@ -977,17 +977,24 @@
   </footer>
 
   <script>
+    /**
+     * Prijslijst vloerverwarming (excl. btw) per staffel van 8 m²: laag = standaard verdeler,
+     * hoog = Optimal Flow-verdeler. Boven 120 m² lopen we door met de gemiddelde stap van de laatste staffels.
+     */
     const PRIJZEN = {
-      m2: {
-        nieuwbouw_beton: { laag: 45, hoog: 55 },
-        nieuwbouw_hout: { laag: 56, hoog: 68 },
-        nieuwbouw_onbekend: { laag: 48, hoog: 62 },
-        renovatie_beton: { laag: 50, hoog: 62.5 },
-        renovatie_hout: { laag: 80, hoog: 96 },
-        renovatie_onbekend: { laag: 70, hoog: 88 },
-      },
-      minimum: 2000,
+      staffelM2: 8,
+      standaard: [942, 1102, 1255, 1449, 1665, 1974, 2190, 2446, 2756, 3005, 3246, 3488, 3730, 3972, 4212],
+      optimalFlow: [1003, 1128, 1338, 1544, 1786, 2121, 2370, 2642, 2982, 3254, 3511, 3768, 4025, 4282, 4540],
+      extraStaffels: 5,
     };
+
+    function staffelPrijs(reeks, m2) {
+      const n = Math.max(1, Math.ceil(m2 / PRIJZEN.staffelM2));
+      const last = reeks.length - 1;
+      if (n <= reeks.length) return reeks[n - 1];
+      const stap = (reeks[last] - reeks[last - PRIJZEN.extraStaffels]) / PRIJZEN.extraStaffels;
+      return reeks[last] + (n - reeks.length) * stap;
+    }
 
     /**
      * Schuimbeton-indicatie: ruwe bandbreedte. Meer dan ~thermMax mm schuimbeton stopt we in de rekensom
@@ -1485,7 +1492,7 @@
       const li5 = document.createElement('li');
       li5.appendChild(
         document.createTextNode(
-          'Ligging van de verdeler en het leidingwerk naar de zones verschilt per woning. In het merendeel van de projecten past dit gewoon binnen deze bandbreidte.'
+          'De lage kant van de bandbreedte is met een standaard verdeler, de hoge kant met een Optimal Flow-verdeler. Waar de verdeler komt, verschilt per woning.'
         )
       );
       ul.appendChild(li5);
@@ -1515,12 +1522,10 @@
     function calculate() {
       if (!state.projecttype || state.ondergrond !== 'beton') return;
       state.zones = '1';
-      const key = state.projecttype + '_' + state.ondergrond;
-      const tarief = PRIJZEN.m2[key] || PRIJZEN.m2[state.projecttype + '_onbekend'];
       const zones = parseInt(state.zones, 10) || 1;
 
-      const laag = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.laag) / 250) * 250;
-      const hoog = Math.round(Math.max(PRIJZEN.minimum, state.m2 * tarief.hoog) / 250) * 250;
+      const laag = Math.floor(staffelPrijs(PRIJZEN.standaard, state.m2) / 50) * 50;
+      const hoog = Math.ceil(staffelPrijs(PRIJZEN.optimalFlow, state.m2) / 50) * 50;
 
       state.resultMode = 'vl_beton';
       resetContactResultLayout();
