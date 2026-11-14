@@ -1,3 +1,81 @@
+# Marketing Research Rapport — 14 november 2026 (cyclus 26)
+
+## Samenvatting
+
+De kleinste bruikbare verbetering is een eerlijker route van systeemadvies naar een passende aanvraag. `systemen-producten.html` trekt in de verse GA4-export 6 sessies en 5 actieve gebruikers; de gerapporteerde gemiddelde sessieduur is 320 seconden en bounce 0%. Dat is een kleine steekproef, geen bewijs van een conversieprobleem of effect. De pagina belooft bij droge opbouw nu een richtbedrag via een algemene calculator. Die calculator heeft geen aparte droge-opbouwberekening en geeft bij hout bewust géén online prijs. Een directe aanvraag met uitleg sluit beter aan op die situatie.
+
+Er komt geen nieuwe pagina of campagne bij. De bestaande inhoud dekt de belangrijkste diensten en steden al. Brede uitbreiding zonder actuele Search Console-data is minder verantwoord dan één bestaande route verduidelijken.
+
+## Actuele bronnen en beperkingen
+
+- **GA4:** definitieve export van 14 november 2026, `ga4_report.json`, productiehosts, 15 oktober t/m 13 november. Vergelijking met 15 september t/m 14 oktober. Lokale tests en de lopende dag zijn uitgesloten; pagina's gegroepeerd op pad.
+- **Search Console:** `scripts/gsc_fetch.py` opnieuw uitgevoerd. OAuth-refresh faalt met `invalid_grant`. Er bestaat dus wel OAuth-configuratie; de oude claim dat deze ontbreekt is achterhaald. De aanwezige export is van 8 september 2026 en dekt 11 augustus t/m 7 september; die gebruiken we niet als huidige positie- of zoekvolumemeting.
+- **Google Ads:** `scripts/google_ads_list_campaigns.py` opnieuw uitgevoerd. De API weigert de read met `ACTION_NOT_PERMITTED`: het Google Cloud-project is alleen goedgekeurd voor testaccounts; Explorer-, Basic- of Standard-toegang nodig. De huidige campagnestatus, kosten, zoektermen, auto-tagging en GA4-koppeling zijn hierdoor niet bevestigd. De oude aanduiding `CLOSED` is geen actueel bewijs. Geen mutaties, campagneaanmaak of extra uitgaven uitgevoerd.
+- **Markt:** actuele zoekresultaten geraadpleegd op combinaties van vloerverwarming, Assen/Groningen, schuimbeton, prijsberekening en laagopbouw. Dit is een inhoudelijke steekproef, geen vaste Google-rankingmeting of volumeonderzoek.
+
+## Zoekintenties en bestaande dekking
+
+| Zoekintentie | Bestaande bestemming | Beoordeling |
+|---|---|---|
+| Vloerverwarming Assen / Groningen | Bestaande stadspagina's | Beschikbaar; geen nieuwe stadspagina zonder vraagbewijs |
+| Wat kost vloerverwarming per m² | `prijsindicatie.html` | Bestaande calculator en kosten-uitleg behouden |
+| Schuimbeton prijs berekenen | `prijsindicatie.html` + `diensten.html#schuimbeton` | Bestaande indicatieve bandbreedte; geen contactmuur invoeren |
+| Droge vloerverwarming / laagopbouw | `systemen-producten.html#laagopbouw` | Inhoud aanwezig; H1 en vervolgstap kunnen preciezer |
+| Vloerverwarming op houten vloer | Systeemadvies + maatwerkaanvraag | Geen prijs beloven die calculator bewust niet berekent |
+
+Zoekvolumes en concurrentieniveaus zijn **niet gemeten**. We schrijven geen verzonnen aantallen, rangposities of seizoensgroei op.
+
+## Concurrentieobservaties
+
+1. [Infloor — vloerverwarming Assen](https://infloor.nl/vloerverwarming-assen/) toont in de geraadpleegde zoekresultaatinhoud plaatsgerichte uitleg over infrezen/krimpnetten en een offerteactie. Het rechtstreeks openen van de pagina mislukte in de webtool; dit is daarom een zoekresultaatobservatie, geen volledige browseraudit. Nuttige les: leg eerst uit welke route bij de vloer past. Geen responstijden, tarieven of uitvoeringsclaims overnemen.
+2. [SNH — schuimbetonprijs berekenen](https://www.snh.nl/schuimbeton-prijs-berekenen) heeft een calculator met oppervlak, laagdikte, vloerverwarming en dekvloer, een indicatieve prijs en daarna een offerteformulier. Dit bevestigt dat een calculator een gangbaar inhoudelijk patroon is; het bewijst geen conversiestijging voor VLWarmte. Technische claims op die site zijn niet gevalideerd of overgenomen.
+3. De marktsteekproef geeft geen reden om de bestaande calculator opnieuw te bouwen of prijsinformatie pas na contact te tonen. Het relevante verschil is een duidelijke scheiding tussen globale rekensom en maatwerk.
+
+## Prijscalculator — herbeoordeling bestaande tool
+
+**Conclusie:** behouden, gericht verduidelijken. De calculator bestaat al; een nieuw haalbaarheidstraject is niet nodig. Productkeuze blijft eerste stap, de schuimbetonroute blijft zonder contactgegevens een globale bandbreedte tonen en hout blijft maatwerk zonder prijs.
+
+Voor droge opbouw moet de systemenpagina geen aparte prijs suggereren. Geschikte uitleg: **“Droge opbouw of een houten vloer? Daarvoor maken we een voorstel op maat. De calculator berekent geen aparte prijs voor droge vloerverwarming.”** Gebruik daarnaast een bestaande contactdieplink, bijvoorbeeld `contact.html?modus=offerte#aanvraag` met **“Vraag advies en een offerte aan”**. Voeg geen extra primaire knoppen toe; vervang de minder passende actie waar nodig.
+
+Geen betrouwbare eigen conversieliftcase gevonden of vastgesteld. Verwacht effect blijft een hypothese; meet geslaagde `contact_submit` en `wizard_lead_submit` en controleer aanvragen afzonderlijk in de inbox. Een GA4-event is nog geen gekwalificeerde klantaanvraag.
+
+## Correcties op eerdere SEO-aannames
+
+- [Google Search Central — updates](https://developers.google.com/search/updates), geraadpleegd 14 november: de changelog meldt dat FAQ-rich-results sinds 7 mei 2026 niet meer verschijnen; op 15 juni is de documentatie verwijderd. Een FAQ-schema toevoegen is dus geen onderbouwde rich-resulthefboom voor deze sprint. Bestaand schema moet wel met de zichtbare tekst blijven kloppen.
+- [Google — title links](https://developers.google.com/search/docs/appearance/title-link): er is geen harde limiet van 60 tekens. Duidelijke, specifieke titels zijn het doel; de weergave kan naar schermbreedte worden afgekapt.
+- [Google — snippets](https://developers.google.com/search/docs/appearance/snippet): ook 160 tekens is geen harde limiet voor meta descriptions. De beschrijving moet de werkelijke pagina en vervolgstap goed samenvatten.
+- De oude analyse hieronder is een historische registratie. Claims over ontbrekende FAQ's, lange titels, geen OAuth, nul conversies en een gesloten Ads-account mogen niet als actuele situatie worden herhaald.
+
+## Aanbevelingen voor Product Manager
+
+### 1. Bestaande systemenpagina preciezer positioneren — hoog, SEO + CTA
+
+**Actie:** maak de H1 inhoudelijk: **“Droge vloerverwarming en laagopbouw”**. Laat de introductie de andere systemen en regio's blijven noemen. Vervang de drie gelijke beschrijvingsmeta's door een eerlijke samenvatting, bijvoorbeeld: **“Droge vloerverwarming of laagopbouw bij renovatie? VLWarmte adviseert over je vloer in Drenthe, Groningen en Friesland. Vraag een voorstel op maat.”**
+
+**CTA:** verduidelijk in `#laagopbouw` en het antwoord op “Wat kost droge vloerverwarming?” de beperking van de calculator. Gebruik voor het maatwerk de bestaande offerte-/informatie-dieplink. Verander de calculator niet en voeg geen prijsclaim toe.
+
+**Acceptatie:** de H1 benoemt de pagina-inhoud; metadata komt overeen met het advies; hout/droge opbouw krijgt een passende aanvraagroute; op mobiel en desktop opent die route het juiste contacttabblad en aanvraagblok. Houd het aantal primaire acties gelijk of lager. Synchroniseer bij gewijzigde FAQ-tekst het bestaande schema.
+
+**Meetdoel:** over vier volledige weken sessies naar de systemenpagina, geslaagde aanvragen en de bron-/landingscontext daarvan bekijken; geen percentageverbetering claimen bij deze kleine aantallen.
+
+### 2. GSC-herauthenticatie herstellen — hoog, gegevenskwaliteit
+
+Nieuwe OAuth-toestemming met de eigenaarsaccount is nodig; `invalid_grant` is geen front-end- of verificatie-metatagfout. Geen nieuwe sitemap-/stadspaginacampagne baseren op de oude export. De agent kan herstel voorbereiden, maar een nieuwe Google-toestemmingshandeling vereist de accountgebruiker.
+
+### 3. Ads pas opschalen na werkende inzage — uitgesteld
+
+Eerst passende API-toegang verkrijgen en actuele status/kosten/koppeling controleren. Geen tweede campagne of budgetverhoging als reactie op nul Paid Search in GA4. Bestaande €2/dag-commentaren in defaults zijn configuratiehistorie, geen bewezen huidige besteding.
+
+### 4. Geen nieuw FAQ-schemarondje — uitgesteld
+
+Zichtbare nuttige vragen blijven waardevol. Nieuwe FAQ-schema-uitbreidingen naar Drachten/Drenthe krijgen geen voorrang boven de concrete aanvraagroute en de meetblokkades. Bestaand schema consistent houden is onderhoud.
+
+---
+
+## Historisch rapport — 17 augustus 2026 (ongewijzigd)
+
+Onderstaande bevindingen beschrijven toenmalige code en oude data. De actuele beoordeling en correcties staan hierboven.
+
 # Marketing Research Rapport — 17 augustus 2026 (cyclus 25)
 
 **Type run:** on-site SEO- en content-audit van de repo + zoekwoordadvies op domeinkennis.

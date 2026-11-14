@@ -4,6 +4,40 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ---
 
+## Release — 14 november 2026 (cyclus 26)
+
+**Deployment:** 14-11-2026 16:40 CET; GitHub Pages succesvol, run 43611254081.
+**Versie:** 83c0d1ab6bf9da7199f63ff0c9b2f3da7006dd5a. De online contact- en systemenpagina zijn exact met deze bron vergeleken.
+
+### Wat is er veranderd
+
+- De systemenpagina maakt duidelijk wat droge vloerverwarming en laagopbouw betekenen. De belangrijkste knop opent nu systeemadvies; een offerte aanvragen blijft mogelijk.
+- Wie via een contactlink komt, ziet direct de formulierkeuze en invulvelden. Het anker stond eerst boven lange uitleg.
+- Bij droge opbouw en houten vloeren beloven we geen calculatorprijs. Daarvoor is een voorstel op maat nodig.
+- Analytics gebruikt voortaan 30 afgeronde dagen naast de vorige 30 dagen, met alleen publieke sitebezoeken. Lokale tests worden uitgesloten en dezelfde pagina wordt niet meer per paginatitel versnipperd.
+
+### Waarom
+
+De productiesite telt 62 sessies tegenover 54 in de voorafgaande periode. Organisch verkeer daalt van 24 naar 15 sessies. De mailbox bevat vier inhoudelijke inzendingen van drie aanvragers, waaronder een concrete vraag over systeemkeuze. GA4 registreert maar één calculatoraanvraag en is dus geen volledige leadadministratie. De oorzaak van ontbrekende contactevents is apart geregistreerd voor onderzoek.
+
+### Verwacht effect
+
+Bezoekers kunnen beter kiezen tussen systeemadvies en een offerte. Over vier weken kijken we opnieuw naar verkeer én daadwerkelijk ontvangen aanvragen. Meer leads door deze aanpassing is een hypothese, geen gemeten resultaat.
+
+### Controle
+
+De live advies- en offerteroutes, formulierpositie, FAQ en mobiele adviesknop zijn met een echte browser op mobiel en desktop gecontroleerd. Screenshots en video's bewaard. Lighthouse homepage: 100 voor performance, toegankelijkheid, best practices en SEO. Geen formulier verstuurd in deze browsercontrole; de automatische inbox-workflow slaat de bezorgingstest over wegens ontbrekende GitHub-secrets. Dat is geen bezorgingsbewijs.
+
+### Social media deze week
+
+Zeven conceptposts voor 16–22 november, met echte foto's van eerder werk in Zeegse en Zuidlaren. Kalender klaar voor handmatige publicatie; niets op sociale media geplaatst.
+
+### Open punten
+
+Search Console heeft nieuwe eigenaarstoestemming nodig (invalid_grant). Google Ads-API staat alleen testaccounts toe; kosten en campagnestatus zijn niet bevestigd. Er is geen extra advertentiebudget geactiveerd. De oude releaseberichten hieronder beschrijven de toenmalige situatie.
+
+---
+
 ## Release — week van 17 augustus 2026 (cyclus 25)
 
 **Deployment:** ⚠️ **NOG NIET LIVE.** Alles is gebouwd, gecontroleerd en gecommit op `main`, maar `git push` faalt op authenticatie (`could not read Username for 'https://github.com'`). Eén commando in een gewone terminal zet het live: `cd /Users/hanseilers/vlwarmte && git push origin main`. Lukt dat niet, dan eerst `gh auth login`.

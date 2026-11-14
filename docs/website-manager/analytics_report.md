@@ -1,3 +1,81 @@
+# Analytics Rapport — 14 november 2026 (cyclus 26)
+
+De productiesite heeft **62 sessies en 52 actieve gebruikers** in 30 afgeronde dagen. Verkeer groeit ten opzichte van de vorige 30 dagen, terwijl organisch zoekverkeer daalt. GA4 registreert één calculatoraanvraag; de mailbox bevat vier inhoudelijke inzendingen van drie verschillende aanvragers. Analytics is dus geen volledige leadadministratie.
+
+**Periode:** 15 oktober t/m 13 november 2026. **Vergelijking:** 15 september t/m 14 oktober. Europe/Amsterdam; alleen www.vlwarmte.nl en vlwarmte.nl. Lopende dag en lokale testhosts uitgesloten.
+
+## Kerncijfers
+
+| Metric | Nu | Vorige 30 dagen | Verschil |
+| --- | ---: | ---: | ---: |
+| Sessies | 62 | 54 | +8 (+14,8%) |
+| Actieve gebruikers | 52 | 43 | +9 (+20,9%) |
+| Gemiddelde sessieduur | 117,4 sec | 63,6 sec | +53,9 sec |
+| Bounce | 59,7% | 55,6% | +4,1 procentpunt |
+| Gemeten key events | 1 | 1 | gelijk |
+| Organische sessies | 15 | 24 | −9 (−37,5%) |
+
+Klein volume; geen bewijs dat een eerdere sprint een verandering veroorzaakte. Gemiddelde sessieduur is geen gemiddelde actieve leestijd. Meer verkeer betekent niet automatisch meer gekwalificeerde aanvragen.
+
+## Pagina's
+
+| Pad | Sessies met bezoek | Actieve gebruikers | Gem. sessieduur | Bounce |
+| --- | ---: | ---: | ---: | ---: |
+| / | 42 | 35 | 23,1 sec | 57,1% |
+| /prijsindicatie.html | 15 | 14 | 180,5 sec | 40,0% |
+| /diensten.html | 9 | 9 | 38,5 sec | 0% |
+| /systemen-producten.html | 6 | 5 | 319,9 sec | 0% |
+| /contact.html | 6 | 6 | 18,3 sec | 0% |
+| /over-ons.html | 5 | 4 | 9,9 sec | 20,0% |
+
+Sessies en gebruikers over pagina's overlappen; deze kolommen niet optellen. Een bounce van 0% bij zes sessies is geen bewijs van goede conversie. De homepage is de grootste instroompagina (40 landingssessies); geen brede herbouw op basis van dit kleine volume.
+
+## Herkomst en apparaten
+
+| Kanaal | Sessies | Key events |
+| --- | ---: | ---: |
+| Direct | 39 | 0 |
+| Google organisch | 15 | 0 |
+| crm.slimster.nl referral | 5 | 0 |
+| ChatGPT / AI Assistant | 3 | 1 |
+
+Som sessies = 62, gelijk aan de afzonderlijke totaalquery. Eén ChatGPT-conversie maakt het kanaal nog geen bewezen acquisitiestrategie. Desktop 37 sessies, mobiel 24 (38,7%), tablet 1. De property bevatte daarnaast vier lokale testsessies; de verbeterde export sluit die uit.
+
+Drenthe 8 sessies en Groningen 6. IP-regio is geen postcode of klantkwalificatie. De VS en andere regio's blijven in de productietotalen; zonder aanvullend bewijs geen bots of ongewenst verkeer wegfilteren.
+
+## Aanvragen: Analytics naast mailbox
+
+- GA4: wizard_start 17 events bij 8 gebruikers; calculator_result 14 events bij 8 gebruikers; wizard_lead_submit 1 event bij 1 gebruiker. Dit is geen sequentieel gebruikersfunnelrapport en de eventaantallen mogen niet als stapconversie worden gedeeld.
+- De enige geregistreerde lead-key-event is wizard_lead_submit op **26 oktober**. GA4 schrijft de sessie toe aan ChatGPT. De mailbox bevat die dag een calculatoraanvraag, buiten het kernwerkgebied.
+- Mailbox: vier inhoudelijke Formspree-inzendingen, op 26 oktober, 30 oktober, 3 november en 8 november. De twee middelste betreffen dezelfde aanvraag. Dus **drie verschillende aanvragers, twee uit het werkgebied**, op basis van inhoud en vermelde plaats; geen uitspraak over commerciële kwalificatie of gewonnen opdrachten. Persoonsgegevens blijven uit Git.
+- Voor de drie contactformulierinzendingen staan geen contact_submit-events in deze periode. Beide bedoelde key events zijn correct ingesteld. Adblock, script-/netwerkuitval of een andere submitroute zijn mogelijke verklaringen; de oorzaak is nog niet bewezen. De code vuurt alleen na een succesvolle Formspree-response.
+- De mailbox is uitsluitend gelezen met readonly SELECT/BODY.PEEK. Geen klantantwoord, verplaatsing of leesstatuswijziging uitgevoerd. Geen volledige audit van Formspree-dashboard of alle andere leadkanalen gedaan.
+
+## Actuele blokkades
+
+GA4 werkt; de oude fetchblokkade en de oude claim nul aanvragen zijn achterhaald. GA4 Admin dry-run bevestigt contact_submit en wizard_lead_submit; purchase is een bestaande Google-default en wordt ongemoeid gelaten. GSC-refresh geeft invalid_grant: nieuwe eigenaarstoestemming nodig. Ads-read geeft ACTION_NOT_PERMITTED wegens testaccounttoegang; actuele kosten/status niet bevestigd. Het verificatie-placeholder in HTML verklaart geen OAuth-refreshfout.
+
+## Voorstellen en beslissing
+
+1. **Hoog — betrouwbare export:** afgeronde 30+30 dagen, productiehosts, echte totalen, pagina's zonder titelversnippering en benoemde events. Uitgevoerd en echte API-responses gecontroleerd.
+2. **Hoog — bestaande systemenpagina:** de maatwerkvraag is ook terug te zien in een echte aanvraag met houten vloer. Leg droge vloerverwarming/laagopbouw duidelijk uit en stuur naar systeemadvies in het passende contacttabblad. Geen nieuwe prijsberekening of ononderbouwde conversiestijging beloven.
+3. **Hoog — contactmeting nader onderzoeken:** vergelijk toekomstige succesvolle aanvragen met inbox; onderscheid browser-/trackinguitval van formulieraankomst. GA4 nooit als enige bron voor leads gebruiken.
+4. **Uitgesteld — meer pagina's/Ads:** eerst GSC-toegang en Ads-inzage herstellen. Geen extra besteding.
+
+## Meetdoel
+
+Over vier afgeronde weken productie- en organische sessies naast ontvangen aanvragen leggen. Eén inhoudelijke aanvraag over systeemkeuze is een streefdoel, geen voorspelling. De systemenpagina blijft een kleine hypothese; Hans beoordeelt bruikbaarheid afzonderlijk.
+
+## Bronnen en controle
+
+GA4 Data API property 534641753; Admin API dry-run; Hostnet IMAP (INBOX, Leads, Overig, Systeem) vanaf 15 oktober; broncode. Export: gitignored ga4_report.json. Uitgevoerde aanvullende query's en ruwe aggregaties: /tmp/vlwarmte-pm-20261114/analytics_audit.py, analytics_audit.json, analytics_production.py en analytics_production.json. Echte GA4-fetch, periodegrenzen, kanaalsom, één key-event en padgroepering gecontroleerd. De oude export inclusief vandaag telde 67 sessies; het definitieve getal 62 heeft een andere afbakening en is geen verkeersdaling.
+
+---
+
+## Historisch rapport — augustus 2026
+
+Onderstaande analyse is historie; actuele cijfers, toegang en conclusies staan hierboven.
+
 # Analytics Rapport — 17 augustus 2026
 
 **Periode:** 30d-venster 6 juli – 5 augustus 2026 · 90d-venster t/m 5 augustus 2026
