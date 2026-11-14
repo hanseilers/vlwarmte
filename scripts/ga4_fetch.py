@@ -2,6 +2,9 @@
 """
 Fetches GA4 data for vlwarmte.nl and writes a structured JSON report
 to docs/website-manager/ga4_report.json for use by the website-manager skill.
+Uses production hostnames and 30 completed days plus the previous 30 days
+in the GA4 property timezone (Europe/Amsterdam). Pages are grouped by path;
+key events are observed sends, not a complete customer/lead register.
 
 Credentials (eerste match wint):
   1. Bestaande omgevingsvariabele GOOGLE_APPLICATION_CREDENTIALS (als leesbaar)
@@ -21,6 +24,7 @@ import os
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = REPO_ROOT / "docs" / "website-manager" / "ga4_report.json"
@@ -115,6 +119,8 @@ def main() -> None:
     from google.analytics.data_v1beta.types import (
         DateRange,
         Dimension,
+        Filter,
+        FilterExpression,
         Metric,
         OrderBy,
         RunReportRequest,
@@ -122,17 +128,31 @@ def main() -> None:
 
     client = BetaAnalyticsDataClient()
 
-    def run(dimensions, metrics, start="30daysAgo", end="today", limit=20, order_metric=None):
+    # GA4 ranges include both boundaries. Exclude the partial current day.
+    today = datetime.now(ZoneInfo("Europe/Amsterdam")).date()
+    end = today - timedelta(days=1)
+    start = end - timedelta(days=29)
+    previous_end = start - timedelta(days=1)
+    previous_start = previous_end - timedelta(days=29)
+    hosts = ["www.vlwarmte.nl", "vlwarmte.nl"]
+
+    def run(dimensions, metrics, start=start.isoformat(), end=end.isoformat(), limit=1000, order_metric=None):
         req = RunReportRequest(
             property=PROPERTY,
             dimensions=[Dimension(name=d) for d in dimensions],
             metrics=[Metric(name=m) for m in metrics],
             date_ranges=[DateRange(start_date=start, end_date=end)],
             limit=limit,
+            dimension_filter=FilterExpression(filter=Filter(
+                field_name="hostName",
+                in_list_filter=Filter.InListFilter(values=hosts),
+            )),
         )
         if order_metric:
             req.order_bys = [OrderBy(metric=OrderBy.MetricOrderBy(metric_name=order_metric), desc=True)]
-        resp = client.run_report(req)
+        resp = client.run_report(req, timeout=30)
+        if resp.metadata.time_zone != "Europe/Amsterdam":
+            raise RuntimeError(f"Unexpected GA4 property timezone: {resp.metadata.time_zone}")
         rows = []
         for row in resp.rows:
             entry = {}
@@ -144,14 +164,32 @@ def main() -> None:
         return rows
 
     report = {
-        "generated_at": datetime.now().isoformat(),
-        "period": "30daysAgo to today",
-        "credentials_source": str(cred_path),
+        "generated_at": datetime.now(ZoneInfo("Europe/Amsterdam")).isoformat(),
+        "property": PROPERTY,
+        "timezone": "Europe/Amsterdam",
+        "period": {"start": start.isoformat(), "end": end.isoformat(), "days": 30},
+        "previous_period": {"start": previous_start.isoformat(), "end": previous_end.isoformat(), "days": 30},
+        "production_hosts": hosts,
+        "notes": [
+            "Sessions per page and active users per channel overlap; do not sum them.",
+            "Key events measure observed successful sends, not unique or qualified customers.",
+            "Funnel event counts are not a user-level sequential funnel.",
+            "Top breakdowns are limited; totals come from a separate undimensioned query.",
+        ],
     }
+
+    summary_metrics = ["sessions", "activeUsers", "averageSessionDuration", "bounceRate", "keyEvents"]
+    report["totals"] = run([], summary_metrics)
+    report["previous_totals"] = run([], summary_metrics, start=previous_start.isoformat(), end=previous_end.isoformat())
+    report["events"] = run(["eventName"], ["eventCount", "totalUsers", "keyEvents"], order_metric="eventCount")
+    report["previous_traffic_sources"] = run(
+        ["sessionDefaultChannelGrouping", "sessionSourceMedium"], ["sessions", "activeUsers", "keyEvents"],
+        start=previous_start.isoformat(), end=previous_end.isoformat(), order_metric="sessions",
+    )
 
     print("Fetching top pages...")
     report["top_pages"] = run(
-        dimensions=["pagePath", "pageTitle"],
+        dimensions=["pagePath"],
         metrics=["sessions", "activeUsers", "averageSessionDuration", "bounceRate"],
         order_metric="sessions",
     )
@@ -159,14 +197,14 @@ def main() -> None:
     print("Fetching traffic sources...")
     report["traffic_sources"] = run(
         dimensions=["sessionDefaultChannelGrouping", "sessionSourceMedium"],
-        metrics=["sessions", "activeUsers", "conversions"],
+        metrics=["sessions", "activeUsers", "keyEvents"],
         order_metric="sessions",
     )
 
     print("Fetching entry pages...")
     report["entry_pages"] = run(
         dimensions=["landingPagePlusQueryString"],
-        metrics=["sessions", "bounceRate", "conversions"],
+        metrics=["sessions", "bounceRate", "keyEvents"],
         order_metric="sessions",
         limit=15,
     )
@@ -191,7 +229,7 @@ def main() -> None:
     report["page_engagement_90d"] = run(
         dimensions=["pagePath"],
         metrics=["sessions", "averageSessionDuration", "scrolledUsers"],
-        start="90daysAgo",
+        start=(end - timedelta(days=89)).isoformat(),
         order_metric="sessions",
         limit=15,
     )
@@ -201,7 +239,6 @@ def main() -> None:
     # we vooraf op met stappen van precies 7 dagen. Iedere week beslaat 7 dagen
     # (Y-MM-DD t/m Y-MM-DD+6) en heeft een uniek week_start.
     weekly = []
-    today = datetime.today().date()
     for i in range(8):
         end_date = today - timedelta(days=7 * i + 1)
         start_date = end_date - timedelta(days=6)
