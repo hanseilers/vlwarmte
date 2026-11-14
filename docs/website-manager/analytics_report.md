@@ -1,3 +1,20 @@
+## Update 14 november — Google Ads-toegang en kosten gecontroleerd
+
+Explorer-toegang voor Cloud-project vlwarmte is met expliciete toestemming aangevraagd en door Google goedgekeurd. De bestaande service-accountkoppeling kan nu echte Ads-accounts uitlezen. Een nieuw proces met de lokale configuratie slaagt. De standaardklant in gitignored secrets/google-ads.env is gecorrigeerd van de gesloten account 2781731612 naar VL Warmte 8864602674; geen credentials in Git.
+
+| Account | Campagne | Status | Budgetinstelling | Levering |
+| --- | --- | --- | ---: | --- |
+|886-460-2674 VL Warmte|Campaign #1 (23824302411), Performance Max|REMOVED|€2/dag, historisch|Niet actief; interface meldt bovendien accountpauze door verlopen adverteerdersverificatie|
+|278-173-1612, oude account|VLW-API-Leads NL auto (23834672782), Search|ENABLED; primary status PENDING|€2/dag, gedeeld|Accountstatus CLOSED; niet live|
+
+**Gemaakte advertentiekosten (EUR, Europe/Amsterdam):** beide accounts €0 over 15 oktober–13 november 2026 en €0 over 1–14 november 2026 tot de controle rond 17:45. Lopende dag is onvolledig en Ads rapporteert met vertraging. Beide perioden ook 0 klikken en 0 vertoningen.
+
+**Beschikbare historie:** VL Warmte 8864602674 heeft €66,608092 kosten (afgerond €66,61), 8.683 vertoningen en 111 klikken. Alle kosten vallen tussen 10 mei en 11 juni 2026. Oude account 2781731612 heeft in de beschikbare historie 0 kosten, 0 klikken en 0 vertoningen. Dit zijn advertentiekosten, geen factuur- of betalingssaldo. De 5 historische Ads-conversies zijn niet als gekwalificeerde klantaanvragen geteld.
+
+Accounttotalen, campagnetotalen en dagelijkse kosten sluiten exact aan op 66.608.092 micros. Geen campagnes, budgetten, betalingen of verificatiestatus gewijzigd; geen advertenties gestart. De API-blokkade is opgelost. Hervatten van adverteren en adverteerdersverificatie zijn aparte product-/eigenaarsbesluiten.
+
+Bronnen en reproduceerbare queries: /tmp/vlwarmte-ads-1808/verification.json,accounts.json,costs-8864602674.json,costs-2781731612.json,daily-spend.json en de scripts read_ads.py/cost_report.py. Screenshot access-result.jpg bevestigt Explorer; campaign-status.jpg toont de verwijderde campagne en accountmelding. De eerdere Ads-blokkademeldingen hieronder zijn historische bevindingen.
+
 ## Update 14 november — contactmeting en GSC hersteld
 
 Het vervolgonderzoek vond en repareerde een reproduceerbaar laadlek: een geslaagde contactverzending vóór het laden van Google Analytics verloor contact_submit. De wachtrij wordt nu vooraf aangemaakt. Echte productieproeven bevestigen Formspree-success, ontvangst in de mailbox en Google collection HTTP 204. Daarna bevestigt de GA4 Realtime API contact_submit in property 534641753 (eventCount 1; vooraf geen events). Vijf browserregressies slagen, inclusief vertraagd laden, de drie contactmodi en twee foutpaden. Niet bewezen dat elke historische ontbrekende meting dezelfde oorzaak had; geen historische events bijgemaakt.
