@@ -300,7 +300,6 @@ def _submit_offerte_playwright(base: str, marker: str, *, headed: bool) -> None:
             context = browser.new_context(
                 locale="nl-NL",
                 viewport={"width": 1280, "height": 900},
-                user_agent="VLWarmte-E2E/1.0 (+https://www.vlwarmte.nl)",
                 **({"record_video_dir": str(evidence)} if evidence else {}),
             )
             page = context.new_page()
@@ -411,7 +410,6 @@ def _submit_calc_playwright(base: str, marker: str, *, headed: bool) -> None:
             context = browser.new_context(
                 locale="nl-NL",
                 viewport={"width": 1280, "height": 900},
-                user_agent="VLWarmte-E2E/1.0 (+https://www.vlwarmte.nl)",
             )
             page = context.new_page()
             page.goto(url, wait_until="domcontentloaded", timeout=90000)
