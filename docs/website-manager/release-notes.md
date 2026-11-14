@@ -11,6 +11,9 @@ Wekelijks bijgewerkt door de Product Manager Agent. Nieuwste release bovenaan.
 
 ### Wat is er veranderd
 
+- Aanvulling 14 november: contactaanvragen gaan nu direct in de Analytics-wachtrij, zodat een trage Google-download het event niet laat verdwijnen. Live formulier,mailontvangst en Analytics Realtime gecontroleerd.
+- GSC-login structureel hersteld: OAuth-app met toestemming naar Production en nieuwe login verkregen. Het vaste zevendaagse testverloop is daarmee verwijderd.
+
 - De systemenpagina maakt duidelijk wat droge vloerverwarming en laagopbouw betekenen. De belangrijkste knop opent nu systeemadvies; een offerte aanvragen blijft mogelijk.
 - Wie via een contactlink komt, ziet direct de formulierkeuze en invulvelden. Het anker stond eerst boven lange uitleg.
 - Bij droge opbouw en houten vloeren beloven we geen calculatorprijs. Daarvoor is een voorstel op maat nodig.

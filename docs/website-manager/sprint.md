@@ -65,3 +65,33 @@ Taken 1–3 uitgevoerd. Systeemadvies primair; offerte beschikbaar; geen fictiev
 ## Open voor volgende cyclus
 
 Prioriteit: oorzaak van ontbrekende contact_submit-events vaststellen; klantaanvragen uit mail blijven leidend. Geen automatische klantmail. GSC herauth en Ads API-access apart oplossen. Productacceptatie door Hans blijft open.
+
+
+## Vervolg 14 november — contactmeting en GSC (Werkbank 1806)
+
+**Gebruikersopdracht:** onderzoek ontbrekende contactmetingen, herstel deze en los ook de GSC-login op.
+
+### Aantoonbare oorzaak en reparatie
+
+De loader maakte window.gtag pas in onload van de externe Google-download aan. Het contactformulier verzendt contact_submit alleen als die functie bestaat. Regressieproef: Formspree-success terwijl de Google-download wacht → geen event in de wachtrij. Dit bewijst een reëel laadlek; zonder browserlogs is niet vast te stellen of alle drie historische ontbrekende inzendingen dezelfde oorzaak hadden. Blokkering door de bezoeker kan nog steeds metingen voorkomen; er is geen blokkeeromzeiling of historische backfill toegevoegd.
+
+De bestaande Google-wachtrij en gtag worden nu direct geïnitialiseerd; alleen de externe download blijft uitgesteld tot window load. Beide bestaande conversienamen en de voorwaarde dat Formspree eerst succes meldt blijven gelijk. Geen formuliergegevens naar Analytics toegevoegd.
+
+### Verificatie
+
+- scripts/test_contact_analytics.py: vijf browsercases groen (informatie, offerte, terugbelverzoek bij vertraagde download; backendfout; validatiefout). Het eerste succesgeval faalde aantoonbaar op de oorspronkelijke loader. Google-tag zelf echt geladen; Formspree-responses als expliciete fixtures, collection onderschept om testvervuiling te vermijden. Alleen dit regressiebewijs is geen productiebezorgingsbewijs.
+- node --check, Python compile, git diff --check groen. GSC-secretopslag met tijdelijke testconfig getest: andere velden behouden, één tokenregel, mode 0600, geen tokenoutput, geen restbestand.
+- Bewijs inclusief screenshots/video's in /tmp/vlwarmte-contact-evidence-1806/. Broncommit 10ad56f1d4bb68bd231316f34e1449b6f5bb41bd; geïsoleerde branch vanaf 083835d, geïntegreerd in lokale main en gepusht. Pages deployment 43612982704 groen; live loader exact gelijk aan bron.
+- Echte productieproef formulier → Formspree → Google collection → IMAP geslaagd. Twee herkenbare tests verzonden; beide success-UI, correcte measurementId G-0BB9M7HYSF, contact_submit + offerte en HTTP 204 van /g/collect. Beide mails teruggevonden en opgeruimd (alleen test-UIDs 75/76). Geen bedankmail naar klanten. Eerste test gebruikte de oude bot-user-agent van het testsysteem; die is verwijderd om de gewone browserroute te volgen. Tweede test draaide met echte Chrome-identiteit. Geen historische oorzaak hieruit afgeleid.
+- GA4 Realtime API vóór test: geen contact_submit. Na normale browserproef: contact_submit eventCount 1. Daarmee is ontvangst in property 534641753 bevestigd, naast het transportbewijs. De Google Admin API bevestigt dat de measurementId bij deze property hoort. Standaard dagrapportage kan later volgen.
+- Exacte productiecheck draait tegen 10ad56f; de tweede test had alleen een dirty wijziging in de testrunner (verwijderen eigen bot-UA). Dat is afzonderlijk gecommit; sitecode identiek. Screenshots, video's en bronstatus: production/ en production-browser/browser-report.json. Realtime-uitkomsten:realtime-before.json en realtime-after.json.
+- Lighthouse na de reparatie:performance 100,accessibility 100,best-practices 100,SEO 100. Geen visuele aanpassing.
+- De dagelijkse klantleadrapportage moet de twee tests van 14 november uitsluiten. De rapportperiode 15 oktober–13 november blijft ongewijzigd. De oude CI-inboxjob mist nog secrets; deze acceptatie steunt op de daadwerkelijk uitgevoerde lokale productieproef, niet op een groene skip.
+
+### GSC structureel hersteld
+
+Bestaande alleen-lezen OAuth-koppeling opnieuw geautoriseerd via eigenaarsaccount. Cloud UI bevestigde Testing. Google documenteert zeven dagen tokenverloop in die stand: https://developers.google.com/identity/protocols/oauth2#expiration. Dit verklaart het terugkerende invalid_grant-risico; andere mogelijke oorzaken van oude tokenintrekking zijn niet achteraf uitgesloten.
+
+Ontbrekende publieke homepage/privacy-URL en authorised domain vlwarmte.nl ingevuld. Hans gaf expliciet toestemming voor Production; daarna UI In production bevestigd en opnieuw geautoriseerd voor een productietoken. Geen extra datascope. Token alleen in gitignored secrets/gsc.env, 0600. De herauth-scriptuitvoer is verbeterd zodat een nieuwe token voortaan direct veilig wordt opgeslagen in plaats van naar terminal te worden geprint.
+
+GSC-fetch en een tweede onafhankelijk gestart proces verversen de opgeslagen login zonder nieuwe browserprompt en lezen sc-domain:vlwarmte.nl. Actuele export:17 oktober t/m 13 november, 48 zoektermen. Geen token of klantgegevens in Git/bewijs. Screenshot:gsc-production.jpg.

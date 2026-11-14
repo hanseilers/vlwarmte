@@ -1,3 +1,7 @@
+## Update 14 november — GSC-toegang hersteld
+
+De eerdere GSC-loginblokkade is verholpen: met expliciete toestemming van Hans staat de bestaande OAuth-app nu op Production, de alleen-lezen login is opnieuw verkregen en twee verse API-processen slagen. gsc_report.json bevat actuele data voor 17 oktober t/m 13 november en 48 gerapporteerde zoektermen. Dit is een toegangsherstel; de oudere marketingbeoordeling hieronder wordt niet als nieuwe zoektermanalyse gepresenteerd.
+
 # Marketing Research Rapport — 14 november 2026 (cyclus 26)
 
 ## Samenvatting

@@ -1,3 +1,9 @@
+## Update 14 november — contactmeting en GSC hersteld
+
+Het vervolgonderzoek vond en repareerde een reproduceerbaar laadlek: een geslaagde contactverzending vóór het laden van Google Analytics verloor contact_submit. De wachtrij wordt nu vooraf aangemaakt. Echte productieproeven bevestigen Formspree-success, ontvangst in de mailbox en Google collection HTTP 204. Daarna bevestigt de GA4 Realtime API contact_submit in property 534641753 (eventCount 1; vooraf geen events). Vijf browserregressies slagen, inclusief vertraagd laden, de drie contactmodi en twee foutpaden. Niet bewezen dat elke historische ontbrekende meting dezelfde oorzaak had; geen historische events bijgemaakt.
+
+GSC-login opnieuw geautoriseerd. De OAuth-app stond op Testing; met expliciete toestemming van Hans naar Production gezet, daarna een productietoken verkregen. Twee verse API-processen werken. De eerder genoemde GSC-blokkade is daarmee opgelost. Oude cijfers hieronder blijven de afgebakende periode 15 oktober–13 november; de twee herkenbare testaanvragen van 14 november zijn geen klantleads en hun testmails zijn opgeruimd.
+
 # Analytics Rapport — 14 november 2026 (cyclus 26)
 
 De productiesite heeft **62 sessies en 52 actieve gebruikers** in 30 afgeronde dagen. Verkeer groeit ten opzichte van de vorige 30 dagen, terwijl organisch zoekverkeer daalt. GA4 registreert één calculatoraanvraag; de mailbox bevat vier inhoudelijke inzendingen van drie verschillende aanvragers. Analytics is dus geen volledige leadadministratie.
