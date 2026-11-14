@@ -11,6 +11,9 @@ Secrets: zie secrets/hostnet-mail.env.example (IMAP_*). CI: GitHub Actions secre
 Marker-matching decodeert multipart mail (Formspree-HTML/base64), niet alleen ruwe RFC822.
 Klant-e-mail in testsubmissions: E2E_CUSTOMER_EMAIL of default jceilers@icloud.com.
 `--no-inbox` / `E2E_NO_INBOX=1`: Playwright op productie (default `E2E_BASE_URL`) zonder IMAP-wacht.
+Contact-only options: E2E_CHECK_ANALYTICS=1 also requires a real successful GA4
+contact_submit collection response; E2E_EVIDENCE_DIR retains screenshots/video/report.
+E2E_BROWSER_CHANNEL=chrome uses installed Chrome instead of bundled Chromium.
 
 Optioneel **volledige keten**: ``--with-thankyou`` of ``E2E_WITH_THANKYOU=1`` — na het
 vinden van de Formspree-mail met marker wordt ``inbox_auto_thankyou.py --include-e2e``
@@ -21,6 +24,7 @@ from __future__ import annotations
 
 import argparse
 import imaplib
+import json
 import os
 import re
 import ssl
@@ -288,14 +292,38 @@ def _submit_offerte_playwright(base: str, marker: str, *, headed: bool) -> None:
     url = f"{base.rstrip('/')}/contact.html?modus=offerte#aanvraag"
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=not headed)
+        browser = p.chromium.launch(headless=not headed, channel=os.environ.get("E2E_BROWSER_CHANNEL") or None)
         try:
+            evidence = Path(os.environ["E2E_EVIDENCE_DIR"]) if os.environ.get("E2E_EVIDENCE_DIR") else None
+            if evidence:
+                evidence.mkdir(parents=True, exist_ok=True)
             context = browser.new_context(
                 locale="nl-NL",
                 viewport={"width": 1280, "height": 900},
                 user_agent="VLWarmte-E2E/1.0 (+https://www.vlwarmte.nl)",
+                **({"record_video_dir": str(evidence)} if evidence else {}),
             )
             page = context.new_page()
+            analytics = []
+
+            def record_analytics(response):
+                parsed = urllib.parse.urlsplit(response.url)
+                if parsed.path != "/g/collect" or not (
+                    parsed.hostname and (parsed.hostname.endswith(".google-analytics.com")
+                                         or parsed.hostname.endswith(".analytics.google.com"))
+                ):
+                    return
+                common = urllib.parse.parse_qs(parsed.query)
+                for line in (response.request.post_data or "").splitlines() or [""]:
+                    params = {**common, **urllib.parse.parse_qs(line)}
+                    if params.get("en") == ["contact_submit"]:
+                        analytics.append({
+                            "event": "contact_submit", "status": response.status,
+                            "measurement": params.get("tid", [""])[0],
+                            "mode": params.get("ep.soort_aanvraag", [""])[0],
+                        })
+
+            page.on("response", record_analytics)
             page.goto(url, wait_until="domcontentloaded", timeout=90000)
             page.wait_for_selector("#lead-form", state="visible", timeout=30000)
 
@@ -337,7 +365,28 @@ def _submit_offerte_playwright(base: str, marker: str, *, headed: bool) -> None:
                 )
 
             status_text = page.locator("#lead-status").inner_text(timeout=2000)
+            if _truthy(os.environ.get("E2E_CHECK_ANALYTICS")):
+                for _ in range(200):
+                    if any(200 <= row["status"] < 300 for row in analytics):
+                        break
+                    page.wait_for_timeout(100)
+                expected = [row for row in analytics if row["measurement"] == "G-0BB9M7HYSF"
+                            and row["mode"] == "offerte" and 200 <= row["status"] < 300]
+                if not expected:
+                    raise SystemExit(f"Formspree success but no accepted contact_submit: {analytics!r}")
+                print("GA4 accepted contact_submit (offerte)", file=sys.stderr)
+            if evidence:
+                page.locator("#lead-status").scroll_into_view_if_needed()
+                page.screenshot(path=str(evidence / "contact-success.png"))
+                report = {
+                    "url": page.url, "role": "public test visitor", "marker": marker,
+                    "formspree_success": True, "analytics_responses": analytics,
+                    "source": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO_ROOT, text=True).strip(),
+                    "dirty": subprocess.check_output(["git", "status", "--short"], cwd=REPO_ROOT, text=True),
+                }
+                (evidence / "browser-report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
             print(f"Inline success on {page.url[:120]}: {status_text!r}", file=sys.stderr)
+            context.close()
         finally:
             browser.close()
 
@@ -357,7 +406,7 @@ def _submit_calc_playwright(base: str, marker: str, *, headed: bool) -> None:
     uit = f"E2E prijscalculator (automatische test).\nReferentie: {marker}\n"
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=not headed)
+        browser = p.chromium.launch(headless=not headed, channel=os.environ.get("E2E_BROWSER_CHANNEL") or None)
         try:
             context = browser.new_context(
                 locale="nl-NL",

@@ -16,7 +16,9 @@ Prerequisites:
   .venv/bin/python scripts/gsc_get_refresh_token.py
 
 Log in as the Google account that owns GSC for www.vlwarmte.nl.
-Paste the printed refresh token into secrets/gsc.env as GSC_REFRESH_TOKEN=
+The refresh token is saved directly to gitignored secrets/gsc.env (mode 0600),
+without printing credentials. A Testing OAuth app still expires after 7 days;
+use the approved Production app for the recurring report.
 """
 
 from __future__ import annotations
@@ -66,14 +68,32 @@ def main() -> int:
         },
         SCOPES,
     )
-    creds = flow.run_local_server(port=0, prompt="consent", open_browser=True)
+    creds = flow.run_local_server(
+        port=0, prompt="consent", open_browser=True,
+        authorization_prompt_message="Complete GSC sign-in in the opened browser.",
+    )
     token = getattr(creds, "refresh_token", None)
     if not token:
         print("No refresh_token — revoke app access and retry.", file=sys.stderr)
         return 1
 
-    print("\nAdd to secrets/gsc.env:\n")
-    print(f"GSC_REFRESH_TOKEN={token}\n")
+    lines = GSC_ENV.read_text(encoding="utf-8").splitlines() if GSC_ENV.exists() else []
+    lines = [line for line in lines if not line.strip().startswith("GSC_REFRESH_TOKEN=")]
+    lines.append("GSC_REFRESH_TOKEN=" + token)
+    GSC_ENV.parent.mkdir(parents=True, exist_ok=True)
+    import tempfile
+    import os
+
+    # mkstemp creates the secret file with 0600 before any credentials are written.
+    fd, temporary = tempfile.mkstemp(dir=GSC_ENV.parent, prefix=".gsc-", suffix=".env")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write("\n".join(lines) + "\n")
+        os.replace(temporary, GSC_ENV)
+    finally:
+        if os.path.exists(temporary):
+            os.unlink(temporary)
+    print("Search Console login saved securely to secrets/gsc.env.")
     return 0
 
 
