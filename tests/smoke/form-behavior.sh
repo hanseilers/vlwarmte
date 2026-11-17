@@ -27,8 +27,9 @@ contains contact.html 'name="soort_aanvraag"'
 contains contact.html 'name="name"'
 contains contact.html 'name="contact"'
 contains contact.html 'name="message"'
-contains contact.html 'name="foto"'
-contains contact.html 'type="file"'
+# Foto's gaan niet via Formspree maar via WhatsApp.
+lacks contact.html 'type="file"'
+lacks contact.html 'name="foto"'
 contains contact.html 'id="lead-status"'
 
 # De lange offertevelden en de drie tabbladen zijn vervallen.

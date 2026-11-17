@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const FORM_ERROR_MESSAGE = "Er ging iets mis. App of bel ons op 06 188 17 459, of mail info@vlwarmte.nl.";
-const MAX_PHOTO_BYTES = 10 * 1024 * 1024;
 
 /* De zwevende WhatsApp-knop verdwijnt zolang een grote WhatsApp-knop, het contactblok,
    het formulier of de wizard in beeld is (alles met data-wa-primary). */
@@ -189,19 +188,6 @@ function validateLeadForm(form) {
     };
   }
 
-  const photos = form.elements.foto;
-  if (photos && photos.files) {
-    let total = 0;
-    for (const file of photos.files) total += file.size;
-    if (total > MAX_PHOTO_BYTES) {
-      return {
-        ok: false,
-        field: photos,
-        message: "De foto's zijn samen groter dan 10 MB. Stuur ze gerust via WhatsApp."
-      };
-    }
-  }
-
   return { ok: true };
 }
 
@@ -241,26 +227,13 @@ function initLeadForm() {
     // Formspree gebruikt het veld "email" als antwoordadres; zet het alleen als het er een is.
     if (looksLikeEmail(contact)) data.set("email", contact);
     else data.set("phone", contact);
-    const photos = form.elements.foto;
-    const hasPhotos = Boolean(photos && photos.files && photos.files.length);
-    if (!hasPhotos) data.delete("foto");
 
     try {
-      let res = await postForm(form.action, data);
-      let photoDropped = false;
-      if (!res.ok && hasPhotos) {
-        // Komt de bijlage niet door, dan gaat het bericht alsnog zonder foto weg.
-        data.delete("foto");
-        data.set("foto_niet_meegekomen", "ja");
-        res = await postForm(form.action, data);
-        photoDropped = res.ok;
-      }
+      const res = await postForm(form.action, data);
       if (!res.ok) throw new Error("form submit failed");
 
       status.className = "status success";
-      status.textContent = photoDropped
-        ? "Bedankt, je bericht is verstuurd. De foto kwam niet mee: stuur die gerust via WhatsApp."
-        : "Bedankt! We nemen binnen één werkdag contact met je op.";
+      status.textContent = "Bedankt! We nemen binnen één werkdag contact met je op.";
       form.reset();
       applyLeadMode(form, mode);
       if (btn) { btn.disabled = false; btn.textContent = origLabel; }
