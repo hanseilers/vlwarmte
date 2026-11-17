@@ -39,186 +39,195 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Naar de inhoud</a>
   <header class="site-header">
-    <div class="container site-header-inner">
+    <div class="wrap site-header-inner">
       <a class="brand" href="/" aria-label="VLWarmte — home"><img class="brand-mark" src="assets/img/logo-mark-krul.svg"
-          alt="" decoding="async" /><span class="brand-text-stack"><span class="brand-wordmark-row"><span
-              class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span><span class="brand-tagline"
-            aria-hidden="true">Slim gelegd. Gelijkmatig warm.</span></span></a>
-      <nav class="site-nav" data-nav>
-        <a href="/">Home</a>
+          alt="" width="101" height="46" decoding="async" /><span class="brand-text-stack"><span
+            class="brand-wordmark-row"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span><span
+            class="brand-tagline" aria-hidden="true">Slim gelegd. Gelijkmatig warm.</span></span></a>
+      <nav class="site-nav" id="site-nav" aria-label="Hoofdmenu" data-nav>
         <a href="diensten.html">Diensten</a>
         <a href="systemen-producten.html">Systemen</a>
         <a href="werkwijze.html">Werkwijze</a>
-        <a href="over-ons.html">Over ons</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Contact</a>
+        <a href="projecten.html" aria-current="page">Uitgevoerd werk</a>
         <a href="prijsindicatie.html">Prijsindicatie</a>
-        <a class="drawer-cta" href="contact.html?modus=offerte#aanvraag">Informatie / Offerte aanvragen</a>
+        <a href="faq.html">Vragen</a>
+        <a class="nav-extra" href="over-ons.html">Over ons</a>
+        <a class="nav-extra" href="contact.html">Contact</a>
+        <a class="nav-extra" href="tel:+31618817459">Bel 06 188 17 459</a>
       </nav>
       <div class="header-actions">
-        <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open navigatie"><span
-            aria-hidden="true">☰</span></button>
+        <a class="header-phone" href="tel:+31618817459"><span class="ico ico-phone" aria-hidden="true"></span>06 188 17 459</a>
+        <a class="btn btn-wa btn-sm" href="https://wa.me/31618817459?text=Hoi%2C%20ik%20heb%20een%20vraag%20over%20vloerverwarming." target="_blank" rel="noopener noreferrer">App ons</a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav"
+          aria-label="Open navigatie"></button>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="page-hero">
-      <div class="container project-hero project-hero--proof">
-        <div class="project-hero__copy">
-          <p class="hero-eyebrow"><span class="hero-eyebrow-rule" aria-hidden="true"></span>Uitgevoerd werk · Drenthe
-            (voorbeelden)</p>
-          <h1>Uitgevoerd werk: twee recente projecten in Drenthe</h1>
-          <p class="lead">Bekijk twee projecten in Drenthe: de situatie, onze aanpak en foto’s van het werk.</p>
-          <p class="hero-cta-row">
-            <a class="btn btn-primary" href="contact.html?modus=offerte#aanvraag">Vraag offerte aan</a>
-            <a class="btn btn-secondary" href="prijsindicatie.html#kosten-uitleg">Bekijk prijsindicatie</a>
-          </p>
-          <ul class="trust-strip" aria-label="Wat je van ons mag verwachten">
-            <li><span class="trust-mark" aria-hidden="true">✓</span>10 jaar garantie op de buis</li>
-            <li><span class="trust-mark" aria-hidden="true">✓</span>Werkgebied Noord-Nederland</li>
-            <li><span class="trust-mark" aria-hidden="true">✓</span>Reactie binnen één werkdag</li>
-          </ul>
-        </div>
-        <figure class="project-hero__media project-hero__media--atf">
-          <img src="assets/img/projecten/zeegse-1.jpeg" alt="Vloerverwarming in Zeegse, leidingwerk op begane grond"
-            width="1536" height="2048" loading="eager" decoding="async" fetchpriority="high" />
-        </figure>
-      </div>
-    </section>
-
-    <section class="section section-muted">
-      <div class="container">
-        <div class="section-head">
-          <h2>Zeegse en Zuidlaren</h2>
-          <p class="lead">Bekijk hoe we deze vloeren in Zeegse en Zuidlaren hebben aangepakt.</p>
-          <p class="small">
-            Ons werkgebied is Groningen, Friesland en Drenthe. Woon je in Friesland rond
-            <a href="vloerverwarming-drachten.html">Drachten of Heerenveen</a>? Daar leggen we ook complete trajecten.
-            Voor de aanpak per project: zie onze <a href="werkwijze.html">werkwijze</a>. We voegen ongeveer wekelijks
-            een nieuw project toe zodra het klaar is voor publicatie.
-          </p>
-        </div>
-        <!-- Nieuwe case: kopieer <article class="card project-case-card"> … en voeg foto toe onder assets/img/projecten/ -->
-        <div class="project-cases">
-          <article class="card project-case-card">
-            <figure class="project-case-card__media">
-              <img src="assets/img/projecten/zeegse-2.jpeg"
-                alt="Vloerverwarming Zeegse, tweede verdieping of verdiepingslaag" width="1536" height="2048"
-                loading="lazy" decoding="async" />
-            </figure>
-            <h3>Zeegse — 100 m² vloerverwarming</h3>
-            <p class="project-case-card__meta">100 m² · souterrain + begane grond · renovatie</p>
-            <p><strong>Situatie:</strong> Souterrain en begane grond — twee verdiepingen, één warmtecomfort voor de
-              hele woning.</p>
-            <p><strong>Oplossing:</strong> Vloerverwarming over circa 100 m², afgestemd op de opbouw per laag.</p>
-            <p><strong>Resultaat:</strong> Gelijkmatige warmte zonder radiatoren; beide lagen in één planning.</p>
-            <p class="project-case-card__actions hero-cta-row">
-              <a class="btn btn-primary" href="contact.html?modus=offerte#aanvraag">Vraag offerte aan</a>
-              <a class="btn btn-secondary" href="prijsindicatie.html#kosten-uitleg">Bekijk prijsindicatie</a>
-            </p>
-          </article>
-          <article class="card project-case-card">
-            <figure class="project-case-card__media">
-              <img src="assets/img/projecten/zuidlaren-1.jpeg"
-                alt="Vloerverwarming op draadstaalnetten, Zuidlaren benedenverdieping" width="1152" height="2048"
-                loading="lazy" decoding="async" />
-            </figure>
-            <h3>Zuidlaren — 50 m² op draadstaalnetten</h3>
-            <p class="project-case-card__meta">50 m² · draadstaalnet · benedenverdieping · renovatie</p>
-            <p><strong>Situatie:</strong> Benedenverdieping; bestaande opbouw met draadstaalnet als basis.</p>
-            <p><strong>Oplossing:</strong> Circa 50 m² vloerverwarming netjes op draadstaalnetten gelegd.</p>
-            <p><strong>Resultaat:</strong> Klaar voor dekvloer en afwerking — strak leidingwerk, passend bij renovatie.
-            </p>
-            <p class="project-case-card__actions hero-cta-row">
-              <a class="btn btn-primary" href="contact.html?modus=offerte#aanvraag">Vraag offerte aan</a>
-              <a class="btn btn-secondary" href="vloerverwarming-zuidlaren.html">Meer over Zuidlaren</a>
-            </p>
-          </article>
-        </div>
-
-        <div class="cta-band">
-          <div>
-            <h2>Zelf zo'n vloer?</h2>
-            <p>
-              Vraag een vrijblijvende offerte aan — we reageren normaal binnen één werkdag. Wil je eerst een
-              bandbreedte, dan kan dat ook via de prijsindicatie.
-            </p>
-          </div>
-          <div class="cta-band-stack">
-            <a class="btn btn-primary" href="contact.html?modus=offerte#aanvraag">Vraag offerte aan</a>
-            <a class="btn btn-secondary" href="prijsindicatie.html#kosten-uitleg">Bekijk prijsindicatie</a>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Uitgevoerd werk</p>
+          <h1>Zo ziet het eruit als wij klaar zijn met leggen.</h1>
+          <p class="hero-lead">Een paar vloeren uit de regio. Wil je weten wat er bij jou kan? App een foto van je vloer.</p>
+          <div class="hero-actions">
+            <a class="btn btn-wa btn-xl" href="https://wa.me/31618817459?text=Hoi%2C%20ik%20zag%20jullie%20uitgevoerde%20werk.%20Hierbij%20een%20foto%20van%20mijn%20vloer." data-wa-primary target="_blank" rel="noopener noreferrer">App ons een foto</a>
+            <a class="hero-link" href="werkwijze.html">Bekijk onze werkwijze</a>
           </div>
         </div>
       </div>
     </section>
+    <section class="section">
+      <div class="wrap stack">
+        <article class="project">
+          <img src="assets/img/projecten/zeegse-2.jpeg" alt="Vloerverwarming in slakkenhuispatroon in een serre in Zeegse" width="1536" height="2048" loading="lazy" decoding="async" />
+          <div class="project-body">
+            <p class="kicker">Vloerverwarming · renovatie</p>
+            <h2>Zeegse · 100 m²</h2>
+            <dl class="facts">
+              <div>
+                <dt>Situatie</dt>
+                <dd>Souterrain en begane grond. Twee lagen die samen één woning vormen.</dd>
+              </div>
+              <div>
+                <dt>Aanpak</dt>
+                <dd>Vloerverwarming over ongeveer 100 m², afgestemd op de opbouw van elke laag.</dd>
+              </div>
+              <div>
+                <dt>Resultaat</dt>
+                <dd>Gelijkmatige warmte zonder radiatoren. Beide lagen in één planning gelegd.</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+        <hr class="rule" />
+        <article class="project">
+          <img src="assets/img/projecten/zuidlaren-1.jpeg" alt="Vloerverwarming op draadstaalnetten in Zuidlaren" width="1152" height="2048" loading="lazy" decoding="async" />
+          <div class="project-body">
+            <p class="kicker">Vloerverwarming op draadstaalnetten · renovatie</p>
+            <h2>Zuidlaren · 50 m²</h2>
+            <dl class="facts">
+              <div>
+                <dt>Situatie</dt>
+                <dd>Een benedenverdieping met draadstaalnet als basis.</dd>
+              </div>
+              <div>
+                <dt>Aanpak</dt>
+                <dd>Ongeveer 50 m² vloerverwarming op de draadstaalnetten gelegd.</dd>
+              </div>
+              <div>
+                <dt>Resultaat</dt>
+                <dd>Strak leidingwerk dat past bij de renovatie. Klaar voor dekvloer en afwerking.</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section class="panel-band">
+      <div class="wrap">
+        <div class="cta-panel">
+          <div class="cta-panel-copy">
+            <h2>Jouw vloer als volgende?</h2>
+            <p>Stuur een foto en ongeveer hoeveel m² het is. Je hoort binnen één werkdag van ons.</p>
+          </div>
+          <div class="cta-panel-actions">
+            <a class="btn btn-wa btn-xl" href="https://wa.me/31618817459?text=Hoi%2C%20ik%20zag%20jullie%20uitgevoerde%20werk.%20Hierbij%20een%20foto%20van%20mijn%20vloer." target="_blank" rel="noopener noreferrer">App ons een foto</a>
+            <a class="on-blue-link" href="#contact">Liever bellen?</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- contact-block -->
+    <section class="contact-block" id="contact">
+      <div class="wrap stack">
+        <h2 class="h2">Neem direct contact op</h2>
+        <div class="contact-grid" data-wa-primary>
+          <div class="wa-hero">
+            <div class="wa-hero-copy">
+              <span class="badge"><span class="ico ico-wa" aria-hidden="true"></span>Direct contact</span>
+              <h3>App ons een foto van je vloer</h3>
+              <p>Een foto en een paar regels is genoeg. Je hoort binnen één werkdag van ons. Handig als je overdag weinig tijd hebt.</p>
+            </div>
+            <a class="btn btn-wa btn-xxl" href="https://wa.me/31618817459?text=Hoi%2C%20ik%20zag%20jullie%20uitgevoerde%20werk.%20Hierbij%20een%20foto%20van%20mijn%20vloer." target="_blank" rel="noopener noreferrer">Open WhatsApp</a>
+          </div>
+          <div class="card contact-card">
+            <span class="card-icon card-icon--phone" aria-hidden="true"></span>
+            <h3>Bellen</h3>
+            <p class="grow">Even overleggen gaat vaak het snelst. Bel gerust met je vraag.</p>
+            <a class="btn btn-blue btn-block" href="tel:+31618817459">06 188 17 459</a>
+          </div>
+          <form class="card contact-card js-callback-form" action="https://formspree.io/f/xgodnvoq" method="POST"
+            novalidate aria-labelledby="cb-title">
+            <span class="card-icon card-icon--clock" aria-hidden="true"></span>
+            <h3 id="cb-title">Laat je terugbellen</h3>
+            <input type="hidden" name="soort_aanvraag" value="Terugbelverzoek" />
+            <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="fld">
+              <label for="cb-phone">Telefoonnummer</label>
+              <input id="cb-phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+            <div class="fld">
+              <label for="cb-moment">Wanneer komt het uit?</label>
+              <select id="cb-moment" name="terugbel_moment">
+                <option>In de ochtend</option>
+                <option>In de middag</option>
+                <option>Aan het begin van de avond</option>
+              </select>
+            </div>
+            <button class="btn btn-blue btn-block" type="submit">Bel mij terug</button>
+            <div class="status" data-status aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- /contact-block -->
   </main>
 
-  <a class="sticky-cta-mobile" href="prijsindicatie.html" data-sticky-cta
-    aria-label="Vrijblijvend richtbedrag berekenen in 2 minuten">
-    <span class="sticky-cta-mobile-text">Richtbedrag in 2 minuten</span>
-    <span class="sticky-cta-mobile-meta" aria-hidden="true">~2 min</span>
-  </a>
+  <a class="wa-float" href="https://wa.me/31618817459?text=Hoi%2C%20ik%20zag%20jullie%20uitgevoerde%20werk.%20Hierbij%20een%20foto%20van%20mijn%20vloer." target="_blank" rel="noopener noreferrer" aria-label="App ons via WhatsApp"><span class="ico ico-wa"
+      aria-hidden="true"></span><span>App ons een foto</span></a>
 
   <footer class="site-footer">
-    <div class="container site-footer-grid">
-      <section>
-        <h3><span class="wordmark"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span></h3>
-        <p class="small footer-tagline">Slim gelegd. Gelijkmatig warm.</p>
-        <p class="small">Projectmatig en oplossingsgericht.</p>
-        <address class="small footer-address">
-          Verlengde Stationsweg 58<br />
-          9471 PM Zuidlaren
-        </address>
-        <p class="small footer-contact">
-          <span class="footer-phone-row"><a href="tel:+31618817459">06 188 17 459</a><a class="btn-social-whatsapp" href="https://wa.me/31618817459" rel="noopener noreferrer" target="_blank"><span class="visually-hidden">WhatsApp: stuur een bericht naar 06 188 17 459 (opent in een nieuw tabblad)</span><svg class="btn-social-whatsapp__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></span><br />
-          <a href="mailto:info@vlwarmte.nl">info@<span class="email-domain-vl">vl</span>Warmte.nl</a>
-        </p>
-        <p class="small">
-          <a href="https://www.kvk.nl/bestellen/#/01174546000002428172?origin=search" rel="noopener noreferrer"
-            target="_blank">KVK 01174546</a>
-        </p>
-      </section>
-      <section>
-        <h3>Regio</h3>
-        <ul class="small">
-          <li>Groningen</li>
-          <li>Friesland</li>
-          <li>Drenthe</li>
-        </ul>
-        <ul class="small">
-          <li><a href="vloerverwarming-groningen.html">Vloerverwarming Groningen</a></li>
-          <li><a href="vloerverwarming-assen.html">Vloerverwarming Assen</a></li>
-          <li><a href="vloerverwarming-zuidlaren.html">Vloerverwarming Zuidlaren</a></li>
-          <li><a href="vloerverwarming-emmen.html">Vloerverwarming Emmen</a></li>
-          <li><a href="vloerverwarming-hoogeveen.html">Vloerverwarming Hoogeveen</a></li>
-          <li><a href="vloerverwarming-leeuwarden.html">Vloerverwarming Leeuwarden</a></li>
-          <li><a href="vloerverwarming-drachten.html">Vloerverwarming Drachten</a></li>
-          <li><a href="vloerverwarming-heerenveen.html">Vloerverwarming Heerenveen</a></li>
-        </ul>
-      </section>
-      <section>
-        <h3>Links</h3>
-        <ul class="small">
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="projecten.html" aria-current="page">Uitgevoerd werk</a></li>
-          <li><a href="faq.html">Veelgestelde vragen</a></li>
-          <li class="footer-social-item"><a class="btn-social-facebook" href="https://www.facebook.com/1068733929659423"
-              rel="noopener noreferrer" target="_blank"
-             ><svg class="btn-social-facebook__icon"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path fill="currentColor"
-                  d="M24 12.073C24 5.446 18.627 0 12 0S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078V9.072h3.047V6.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V9.07h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.063 24 12.073z" />
-              </svg><span>Volg ons</span></a></li>
-          <li><a href="disclaimer.html">Disclaimer</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-        </ul>
-      </section>
+    <div class="wrap site-footer-inner">
+      <div class="footer-col">
+        <span class="footer-brand">VLWarmte</span>
+        <span>Verlengde Stationsweg 58, 9471 PM Zuidlaren</span>
+        <a href="https://www.kvk.nl/bestellen/#/01174546000002428172?origin=search" rel="noopener noreferrer"
+          target="_blank">KVK 01174546</a>
+      </div>
+      <div class="footer-col">
+        <a class="footer-strong" href="tel:+31618817459">06 188 17 459</a>
+        <a class="footer-strong" href="mailto:info@vlwarmte.nl">info@vlwarmte.nl</a>
+        <a href="https://www.facebook.com/1068733929659423" rel="noopener noreferrer" target="_blank">Volg ons op
+          Facebook</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-title">Regio</span>
+        <div class="footer-regio">
+          <a href="vloerverwarming-groningen.html">Groningen</a>
+          <a href="vloerverwarming-assen.html">Assen</a>
+          <a href="vloerverwarming-zuidlaren.html">Zuidlaren</a>
+          <a href="vloerverwarming-emmen.html">Emmen</a>
+          <a href="vloerverwarming-hoogeveen.html">Hoogeveen</a>
+          <a href="vloerverwarming-leeuwarden.html">Leeuwarden</a>
+          <a href="vloerverwarming-drachten.html">Drachten</a>
+          <a href="vloerverwarming-heerenveen.html">Heerenveen</a>
+          <a href="vloerverwarming-drenthe.html">Drenthe</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <a href="over-ons.html">Over ons</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
     </div>
-    <div class="container small">© <span id="year"></span> <span class="wordmark"><span class="brand-vl">VL</span><span
-          class="brand-warmte">Warmte</span></span></div>
+    <div class="wrap footer-legal">© <span id="year">2026</span> VLWarmte. Slim gelegd. Gelijkmatig warm.</div>
   </footer>
+
 
   <script src="assets/js/main.js"></script>
 </body>

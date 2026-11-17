@@ -241,14 +241,8 @@ def _post_offerte(marker: str, formspree_url: str, base_url: str) -> None:
     fields = {
         "soort_aanvraag": "Offerte",
         "name": "VLWarmte E2E Bot",
-        "phone": "+31618817459",
+        "contact": _e2e_customer_email(),
         "email": _e2e_customer_email(),
-        "region": "Zuidlaren (test)",
-        "m2": "95",
-        "vloerdiepte": "520",
-        "ondergrond": "Beton",
-        "projecttype": "Nieuwbouw",
-        "planning": "Test — geen echte planning",
         "message": message,
     }
     body = urllib.parse.urlencode(fields).encode("utf-8")
@@ -326,18 +320,11 @@ def _submit_offerte_playwright(base: str, marker: str, *, headed: bool) -> None:
             page.goto(url, wait_until="domcontentloaded", timeout=90000)
             page.wait_for_selector("#lead-form", state="visible", timeout=30000)
 
-            page.get_by_role("button", name="Ik wil een offerte").click()
-            page.locator("#m2").wait_for(state="visible", timeout=20000)
+            # Kort formulier: naam, telefoon of e-mail, vraag. ?modus=offerte zet soort_aanvraag.
+            page.locator("#contact").wait_for(state="visible", timeout=20000)
 
             page.locator("#name").fill("VLWarmte E2E Bot")
-            page.locator("#phone").fill("+31618817459")
-            page.locator("#email").fill(_e2e_customer_email())
-            page.locator("#region").fill("Zuidlaren (test)")
-            page.locator("#m2").fill("95")
-            page.locator("#vloerdiepte").fill("520")
-            page.locator("#ondergrond").select_option(label="Beton")
-            page.locator("#projecttype").select_option(label="Nieuwbouw")
-            page.locator("#planning").fill("Test — geen echte planning")
+            page.locator("#contact").fill(_e2e_customer_email())
             page.locator("#message").fill(message)
 
             # Contact gebruikt fetch() naar Formspree: blijf op contact.html, succes in #lead-status

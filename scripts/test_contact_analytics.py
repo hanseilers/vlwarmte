@@ -56,15 +56,10 @@ async def main():
                     page = await ctx.new_page()
                     await page.goto(f'http://127.0.0.1:{server.server_port}/contact.html?modus={mode}#aanvraag', wait_until='domcontentloaded')
                     if valid:
-                        for field, value in [('name', 'VLWarmte synthetic test'), ('phone', '0618817459'), ('email', 'synthetic@example.invalid'), ('region', 'Test')]:
+                        # Kort formulier: naam, telefoon of e-mail, vraag. De modus komt uit de deeplink.
+                        contact = '0618817459' if mode == 'bel' else 'synthetic@example.invalid'
+                        for field, value in [('name', 'VLWarmte synthetic test'), ('contact', contact), ('message', 'Synthetische test: 50 m², betonvloer.')]:
                             await page.locator('#' + field).fill(value)
-                        if mode == 'offerte':
-                            await page.locator('#m2').fill('50')
-                            await page.locator('#vloerdiepte').fill('400')
-                            await page.locator('#ondergrond').select_option(label='Beton')
-                            await page.locator('#projecttype').select_option(label='Renovatie')
-                        if mode == 'bel':
-                            await page.locator('#terugbel_moment').select_option(label='Morgenochtend')
                     await page.locator('#lead-form button[type=submit]').click()
                     success = status == 200 and valid
                     await page.locator('#lead-status.success' if success else '#lead-status.error').wait_for()

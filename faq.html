@@ -37,300 +37,236 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Naar de inhoud</a>
   <header class="site-header">
-    <div class="container site-header-inner">
+    <div class="wrap site-header-inner">
       <a class="brand" href="/" aria-label="VLWarmte — home"><img class="brand-mark" src="assets/img/logo-mark-krul.svg"
-          alt="" decoding="async" /><span class="brand-text-stack"><span class="brand-wordmark-row"><span
-              class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span><span class="brand-tagline"
-            aria-hidden="true">Slim gelegd. Gelijkmatig warm.</span></span></a>
-      <nav class="site-nav" data-nav>
-        <a href="/">Home</a>
+          alt="" width="101" height="46" decoding="async" /><span class="brand-text-stack"><span
+            class="brand-wordmark-row"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span><span
+            class="brand-tagline" aria-hidden="true">Slim gelegd. Gelijkmatig warm.</span></span></a>
+      <nav class="site-nav" id="site-nav" aria-label="Hoofdmenu" data-nav>
         <a href="diensten.html">Diensten</a>
         <a href="systemen-producten.html">Systemen</a>
         <a href="werkwijze.html">Werkwijze</a>
-        <a href="over-ons.html">Over ons</a>
-        <a class="is-current" href="faq.html">FAQ</a>
-        <a href="contact.html">Contact</a>
+        <a href="projecten.html">Uitgevoerd werk</a>
         <a href="prijsindicatie.html">Prijsindicatie</a>
-        <a class="drawer-cta" href="contact.html?modus=offerte#aanvraag">Informatie / Offerte aanvragen</a>
+        <a href="faq.html" aria-current="page">Vragen</a>
+        <a class="nav-extra" href="over-ons.html">Over ons</a>
+        <a class="nav-extra" href="contact.html">Contact</a>
+        <a class="nav-extra" href="tel:+31618817459">Bel 06 188 17 459</a>
       </nav>
       <div class="header-actions">
-        <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open navigatie"><span
-            aria-hidden="true">☰</span></button>
+        <a class="header-phone" href="tel:+31618817459"><span class="ico ico-phone" aria-hidden="true"></span>06 188 17 459</a>
+        <a class="btn btn-wa btn-sm" href="https://wa.me/31618817459?text=Hoi%2C%20ik%20heb%20een%20vraag%20over%20vloerverwarming." target="_blank" rel="noopener noreferrer">App ons</a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav"
+          aria-label="Open navigatie"></button>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="page-hero">
-      <div class="container">
-        <h1>Veelgestelde vragen over vloerverwarming</h1>
-        <p class="lead">
-          Korte antwoorden op veelgestelde vragen. Staat je vraag er niet tussen? Neem
-          <a href="contact.html">contact</a> op of vraag een
-          <a href="prijsindicatie.html">prijsindicatie</a> aan.
-        </p>
-        <p class="hero-cta-row">
-          <a class="btn btn-primary" href="prijsindicatie.html">Richtbedrag in 2 minuten →</a>
-          <a class="btn btn-secondary" href="contact.html?modus=informatie#aanvraag">Informatie aanvragen</a>
-          <a class="btn btn-secondary" href="contact.html?modus=bel#aanvraag">Terugbelverzoek</a>
-        </p>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Veelgestelde vragen</p>
+          <h1>Veelgestelde vragen</h1>
+          <p class="hero-lead">Staat je vraag er niet bij? App of bel ons. Je hoort binnen één werkdag van ons.</p>
+          <div class="hero-actions">
+            <a class="btn btn-wa btn-xl" href="https://wa.me/31618817459?text=Hoi%2C%20ik%20heb%20een%20vraag%20over%20vloerverwarming.%20Hierbij%20een%20foto%20van%20de%20vloer." data-wa-primary target="_blank" rel="noopener noreferrer">App ons een foto</a>
+            <a class="hero-link" href="tel:+31618817459">Of bel 06 188 17 459</a>
+          </div>
+        </div>
       </div>
     </section>
-
+    <section class="section--soft chips-band">
+      <div class="wrap">
+        <nav class="chips" aria-label="Onderwerpen">
+          <a class="chip" href="#renovatie">Renovatie en opbouw</a>
+          <a class="chip" href="#systemen">Systemen en warmtebron</a>
+          <a class="chip" href="#kosten">Kosten en garantie</a>
+          <a class="chip" href="#service">Service, regio en omvang</a>
+        </nav>
+      </div>
+    </section>
     <section class="section">
-      <div class="container cta-band">
-        <div>
-          <h2>Wil je door naar een richtbedrag of persoonlijk advies?</h2>
-          <p>Bekijk de prijsindicatie of stel je vraag. Meestal reageren we binnen één werkdag.</p>
-        </div>
-        <div class="cta-band-stack">
-          <a class="btn btn-primary" href="prijsindicatie.html">Richtbedrag in 2 minuten →</a>
-          <a class="btn btn-secondary" href="contact.html?modus=informatie#aanvraag">Informatie aanvragen</a>
-          <a class="btn btn-secondary" href="contact.html?modus=bel#aanvraag">Terugbelverzoek</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Wat is vloerverwarming infrezen bij een renovatie?</button>
-          <div class="faq-answer">
-            <p>
-              Infrezen (of in frezen) betekent dat er in een bestaande dekvloer sleuven komen voor de leidingen, zonder
-              de hele vloer eruit te halen. Of dat kan, hangt af van dikte, draagkracht en wat er al ligt. Bij twijfel
-              meten we vlakheid en constructie voor we een voorstel doen — zie ook onze pagina’s
-              <a href="vloerverwarming-groningen.html">Groningen</a> en
-              <a href="vloerverwarming-assen.html">Assen</a> voor renovatie-uitleg in de regio.
-            </p>
+      <div class="wrap faq-groups">
+        <div class="faq-group" id="renovatie">
+          <h2>Renovatie en opbouw</h2>
+          <div class="faq">
+            <details>
+              <summary>Wat is vloerverwarming infrezen bij een renovatie?</summary>
+              <p>Infrezen (of in frezen) betekent dat er in een bestaande dekvloer sleuven komen voor de leidingen, zonder de hele vloer eruit te halen. Of dat kan, hangt af van dikte, draagkracht en wat er al ligt. Bij twijfel meten we vlakheid en constructie voor we een voorstel doen — zie ook onze pagina’s <a href="vloerverwarming-groningen.html">Groningen</a> en <a href="vloerverwarming-assen.html">Assen</a> voor renovatie-uitleg in de regio.</p>
+            </details>
+            <details>
+              <summary>Wanneer is schuimbeton in de kruipruimte een logische keuze?</summary>
+              <p>Schuimbeton vult de kruipruimte en combineert isolatie met een stabiele basis voor leidingwerk en dekvloer — vooral waar de bestaande situatie dun of onrustig is. Niet elke woning heeft het nodig; we kijken per project naar opbouw en budget. Meer uitleg staat bij <a href="diensten.html#schuimbeton">schuimbeton in onze diensten</a> en <a href="systemen-producten.html#laagopbouw">droge vloerverwarming en laagopbouw</a>.</p>
+            </details>
+            <details>
+              <summary>Wat is droge vloerverwarming of laagopbouw?</summary>
+              <p>Droge vloerverwarming legt buizen in isolatieplaten — zonder vol chape eromheen. Dat scheelt hoogte ten opzichte van traditionele opbouw. Het past niet in elke woning; bij opname wegen we het af naast infrezen en schuimbeton. Uitgebreide uitleg staat bij <a href="systemen-producten.html#laagopbouw">systemen en laagopbouw</a>.</p>
+            </details>
+            <details>
+              <summary>Kan vloerverwarming op een houten vloer of houten ondergrond?</summary>
+              <p>Soms wel, soms niet — hout reageert anders op vocht en temperatuur dan beton. We beoordelen de constructie en het gewenste eindresultaat. Als een standaardopbouw niet verantwoord is, zeggen we dat vooraf en denken we mee over alternatieven. Via de <a href="prijsindicatie.html">prijsindicatie</a> kun je aangeven welke ondergrond je hebt; bij hout leidt dat vaak naar maatwerkadvies of contact.</p>
+            </details>
+            <details>
+              <summary>Is vloerverwarming in elke ruimte mogelijk?</summary>
+              <p>Bijna altijd is er een technische route, maar sommige ruimtes vragen om maatwerk (bijvoorbeeld te weinig opbouwhoogte of een lastige vorm). Dat beoordelen we per ruimte in het plan.</p>
+            </details>
+            <details>
+              <summary>Wat is het verschil tussen nieuwbouw en renovatie in jullie traject?</summary>
+              <p>Bij nieuwbouw stemmen we af op ruwbouw, planning van andere partijen en opbouw vanaf de bodem. Bij renovatie staat inspectie en wat er blijft liggen centraal — soms infrezen, soms een andere route. In beide gevallen één aanspreekpunt van plan tot oplevering.</p>
+            </details>
           </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Wanneer is schuimbeton in de kruipruimte een logische
-            keuze?</button>
-          <div class="faq-answer">
-            <p>
-              Schuimbeton vult de kruipruimte en combineert isolatie met een stabiele basis voor leidingwerk en dekvloer
-              — vooral waar de bestaande situatie dun of onrustig is. Niet elke woning heeft het nodig; we kijken per
-              project naar opbouw en budget. Meer uitleg staat bij
-              <a href="diensten.html#schuimbeton">schuimbeton in onze diensten</a> en
-              <a href="systemen-producten.html#laagopbouw">droge vloerverwarming en laagopbouw</a>.
-            </p>
+        <div class="faq-group" id="systemen">
+          <h2>Systemen en warmtebron</h2>
+          <div class="faq">
+            <details>
+              <summary>Passen vloerverwarming en een warmtepomp goed bij elkaar?</summary>
+              <p>Ja, dat is een veelvoorkomende combinatie: lage aanvoer past bij een warmtepomp. Wel moeten vermogen, verdeling en regeling kloppen — dat stellen we vast in het plan en bij opname. Zie ook <a href="systemen-producten.html">systemen en producten</a> voor context rond afgifte en regeling.</p>
+            </details>
+            <details>
+              <summary>Kan vloerverwarming op een bestaande cv-ketel?</summary>
+              <p>Vaak wel, mits de ketel en het hydraulische schema geschikt zijn voor de gevraagde aanvoertemperatuur en vermogen. Bij vervanging van de warmtebron plannen we het vloerwerk daarop mee. Twijfel je? Bel of vraag een <a href="contact.html?modus=informatie#aanvraag">informatiegesprek</a> aan.</p>
+            </details>
+            <details>
+              <summary>Hoe loopt de opbouw: ondervloer, leidingen en dekvloer?</summary>
+              <p>Kort gezegd: eerst een stabiele, vlakke basis (ondervloer en eventueel <a href="diensten.html#schuimbeton">schuimbeton</a> of andere isolatie-opbouw), dan het leidingwerk met de juiste verdeling, daarna dekvloer en afwerking. Het precieze stappenplan hangt af van nieuwbouw of renovatie — zie <a href="werkwijze.html">werkwijze</a>.</p>
+            </details>
           </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Wat is droge vloerverwarming of laagopbouw?</button>
-          <div class="faq-answer">
-            <p>
-              Droge vloerverwarming legt buizen in isolatieplaten — zonder vol chape eromheen. Dat scheelt hoogte ten
-              opzichte van traditionele opbouw. Het past niet in elke woning; bij opname wegen we het af naast infrezen
-              en schuimbeton. Uitgebreide uitleg staat bij
-              <a href="systemen-producten.html#laagopbouw">systemen en laagopbouw</a>.
-            </p>
+        <section class="wa-band wa-band--flush">
+          <div class="wrap">
+            <div class="wa-strip">
+              <p>Staat je vraag er niet bij? App ons gerust.</p>
+              <a class="btn btn-wa no-icon" href="https://wa.me/31618817459?text=Hoi%2C%20ik%20heb%20een%20vraag%20over%20vloerverwarming.%20Hierbij%20een%20foto%20van%20de%20vloer." target="_blank" rel="noopener noreferrer">Stuur een appje</a>
+            </div>
+          </div>
+        </section>
+        <div class="faq-group" id="kosten">
+          <h2>Kosten en garantie</h2>
+          <div class="faq">
+            <details>
+              <summary>Hoe krijg ik zicht op de kosten?</summary>
+              <p>Voor een eerste bandbreedte kun je de <a href="prijsindicatie.html">online prijsindicatie</a> doorlopen — dat is een indicatie, geen offerte. Voor maatwerk en planning leveren we na opname een heldere offerte.</p>
+            </details>
+            <details>
+              <summary>Welke garantie hoort bij jullie systemen?</summary>
+              <p>Op het geïnstalleerde systeem en de verdeler: 2 jaar garantie. Op de buis: 10 jaar garantie. Uitgebreide toelichting staat bij <a href="systemen-producten.html#garantie">systemen en producten — Garantie</a>.</p>
+            </details>
           </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Kan vloerverwarming op een houten vloer of houten
-            ondergrond?</button>
-          <div class="faq-answer">
-            <p>
-              Soms wel, soms niet — hout reageert anders op vocht en temperatuur dan beton. We beoordelen de constructie
-              en het gewenste eindresultaat. Als een standaardopbouw niet verantwoord is, zeggen we dat vooraf en denken
-              we mee over alternatieven. Via de
-              <a href="prijsindicatie.html">prijsindicatie</a> kun je aangeven welke ondergrond je hebt; bij hout leidt
-              dat vaak naar maatwerkadvies of contact.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Passen vloerverwarming en een warmtepomp goed bij
-            elkaar?</button>
-          <div class="faq-answer">
-            <p>
-              Ja, dat is een veelvoorkomende combinatie: lage aanvoer past bij een warmtepomp. Wel moeten vermogen,
-              verdeling en regeling kloppen — dat stellen we vast in het plan en bij opname. Zie ook
-              <a href="systemen-producten.html">systemen en producten</a> voor context rond afgifte en regeling.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Kan vloerverwarming op een bestaande cv-ketel?</button>
-          <div class="faq-answer">
-            <p>
-              Vaak wel, mits de ketel en het hydraulische schema geschikt zijn voor de gevraagde aanvoertemperatuur en
-              vermogen. Bij vervanging van de warmtebron plannen we het vloerwerk daarop mee. Twijfel je? Bel of vraag
-              een
-              <a href="contact.html?modus=informatie#aanvraag">informatiegesprek</a> aan.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Hoe loopt de opbouw: ondervloer, leidingen en dekvloer?</button>
-          <div class="faq-answer">
-            <p>
-              Kort gezegd: eerst een stabiele, vlakke basis (ondervloer en eventueel
-              <a href="diensten.html#schuimbeton">schuimbeton</a> of andere isolatie-opbouw), dan het leidingwerk met de
-              juiste verdeling, daarna dekvloer en afwerking. Het precieze stappenplan hangt af van nieuwbouw of
-              renovatie — zie
-              <a href="werkwijze.html">werkwijze</a>.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Hoe krijg ik zicht op de kosten?</button>
-          <div class="faq-answer">
-            <p>
-              Voor een eerste bandbreedte kun je de
-              <a href="prijsindicatie.html">online prijsindicatie</a> doorlopen — dat is een indicatie, geen offerte.
-              Voor maatwerk en planning leveren we na opname een heldere offerte.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Wat is het verschil tussen nieuwbouw en renovatie in jullie
-            traject?</button>
-          <div class="faq-answer">
-            <p>
-              Bij nieuwbouw stemmen we af op ruwbouw, planning van andere partijen en opbouw vanaf de bodem. Bij
-              renovatie staat inspectie en wat er blijft liggen centraal — soms infrezen, soms een andere route. In
-              beide gevallen één aanspreekpunt van plan tot oplevering.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Welke garantie hoort bij jullie systemen?</button>
-          <div class="faq-answer">
-            <p>
-              Op het geïnstalleerde systeem en de verdeler: 2 jaar garantie. Op de buis: 10 jaar garantie. Uitgebreide
-              toelichting staat bij
-              <a href="systemen-producten.html#garantie">systemen en producten — Garantie</a>.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Hoe snel reageren jullie op een aanvraag?</button>
-          <div class="faq-answer">
-            <p>Normaal binnen één werkdag. Bij complexere vragen plannen we een belmoment in.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>In welke regio werken jullie?</button>
-          <div class="faq-answer">
-            <p>
-              Vanuit Zuidlaren werken we in Groningen, Friesland en Drenthe — met nadruk op het noorden en omliggende
-              plaatsen. Voorbeelden van landingspagina’s:
-              <a href="vloerverwarming-zuidlaren.html">Zuidlaren</a>,
-              <a href="vloerverwarming-groningen.html">Groningen</a>,
-              <a href="vloerverwarming-assen.html">Assen</a>.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Doen jullie alleen het leggen van de buizen of het hele
-            traject?</button>
-          <div class="faq-answer">
-            <p>
-              Ons werk is het complete traject: voorbereiding, aanleg, dekvloer en oplevering — afgestemd op jouw
-              situatie. Geen losse “alleen leggen”-klussen zonder context over opbouw en kwaliteit.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Hoe lang duurt een gemiddeld project?</button>
-          <div class="faq-answer">
-            <p>
-              Dat verschilt sterk met omvang, droogtijden en planning van andere vakmensen. Na opname geven we een
-              realistische inschatting; we plannen liever ruim dan strak achter de feiten aanlopen.
-            </p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" data-faq-toggle>Is vloerverwarming in elke ruimte mogelijk?</button>
-          <div class="faq-answer">
-            <p>
-              Bijna altijd is er een technische route, maar sommige ruimtes vragen om maatwerk (bijvoorbeeld te weinig
-              opbouwhoogte of een lastige vorm). Dat beoordelen we per ruimte in het plan.
-            </p>
+        <div class="faq-group" id="service">
+          <h2>Service, regio en omvang</h2>
+          <div class="faq">
+            <details>
+              <summary>Hoe snel reageren jullie op een aanvraag?</summary>
+              <p>Normaal binnen één werkdag. Bij complexere vragen plannen we een belmoment in.</p>
+            </details>
+            <details>
+              <summary>In welke regio werken jullie?</summary>
+              <p>Vanuit Zuidlaren werken we in Groningen, Friesland en Drenthe — met nadruk op het noorden en omliggende plaatsen. Voorbeelden van landingspagina’s: <a href="vloerverwarming-zuidlaren.html">Zuidlaren</a>, <a href="vloerverwarming-groningen.html">Groningen</a>, <a href="vloerverwarming-assen.html">Assen</a>.</p>
+            </details>
+            <details>
+              <summary>Doen jullie alleen het leggen van de buizen of het hele traject?</summary>
+              <p>Ons werk is het complete traject: voorbereiding, aanleg, dekvloer en oplevering — afgestemd op jouw situatie. Geen losse “alleen leggen”-klussen zonder context over opbouw en kwaliteit.</p>
+            </details>
+            <details>
+              <summary>Hoe lang duurt een gemiddeld project?</summary>
+              <p>Dat verschilt sterk met omvang, droogtijden en planning van andere vakmensen. Na opname geven we een realistische inschatting; we plannen liever ruim dan strak achter de feiten aanlopen.</p>
+            </details>
           </div>
         </div>
       </div>
     </section>
-
-    <section class="section section-muted">
-      <div class="container cta-band">
-        <div>
-          <h2>Volgende stap</h2>
-          <p>
-            Vraag een <a href="prijsindicatie.html">prijsindicatie</a> aan of
-            <a href="contact.html">neem contact op</a> voor maatwerkadvies.
-          </p>
+    <!-- contact-block -->
+    <section class="contact-block" id="contact">
+      <div class="wrap stack">
+        <h2 class="h2">Neem direct contact op</h2>
+        <div class="contact-grid" data-wa-primary>
+          <div class="wa-hero">
+            <div class="wa-hero-copy">
+              <span class="badge"><span class="ico ico-wa" aria-hidden="true"></span>Direct contact</span>
+              <h3>App ons een foto van je vloer</h3>
+              <p>Een foto en een paar regels is genoeg. Je hoort binnen één werkdag van ons. Handig als je overdag weinig tijd hebt.</p>
+            </div>
+            <a class="btn btn-wa btn-xxl" href="https://wa.me/31618817459?text=Hoi%2C%20ik%20heb%20een%20vraag%20over%20vloerverwarming.%20Hierbij%20een%20foto%20van%20de%20vloer." target="_blank" rel="noopener noreferrer">Open WhatsApp</a>
+          </div>
+          <div class="card contact-card">
+            <span class="card-icon card-icon--phone" aria-hidden="true"></span>
+            <h3>Bellen</h3>
+            <p class="grow">Even overleggen gaat vaak het snelst. Bel gerust met je vraag.</p>
+            <a class="btn btn-blue btn-block" href="tel:+31618817459">06 188 17 459</a>
+          </div>
+          <form class="card contact-card js-callback-form" action="https://formspree.io/f/xgodnvoq" method="POST"
+            novalidate aria-labelledby="cb-title">
+            <span class="card-icon card-icon--clock" aria-hidden="true"></span>
+            <h3 id="cb-title">Laat je terugbellen</h3>
+            <input type="hidden" name="soort_aanvraag" value="Terugbelverzoek" />
+            <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="fld">
+              <label for="cb-phone">Telefoonnummer</label>
+              <input id="cb-phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+            <div class="fld">
+              <label for="cb-moment">Wanneer komt het uit?</label>
+              <select id="cb-moment" name="terugbel_moment">
+                <option>In de ochtend</option>
+                <option>In de middag</option>
+                <option>Aan het begin van de avond</option>
+              </select>
+            </div>
+            <button class="btn btn-blue btn-block" type="submit">Bel mij terug</button>
+            <div class="status" data-status aria-live="polite"></div>
+          </form>
         </div>
-        <a class="btn btn-primary" href="prijsindicatie.html">Prijsindicatie</a>
       </div>
     </section>
+    <!-- /contact-block -->
   </main>
 
-  <a class="sticky-cta-mobile" href="prijsindicatie.html" data-sticky-cta
-    aria-label="Vrijblijvend richtbedrag berekenen in 2 minuten">
-    <span class="sticky-cta-mobile-text">Richtbedrag in 2 minuten</span>
-    <span class="sticky-cta-mobile-meta" aria-hidden="true">~2 min</span>
-  </a>
+  <a class="wa-float" href="https://wa.me/31618817459?text=Hoi%2C%20ik%20heb%20een%20vraag%20over%20vloerverwarming.%20Hierbij%20een%20foto%20van%20de%20vloer." target="_blank" rel="noopener noreferrer" aria-label="App ons via WhatsApp"><span class="ico ico-wa"
+      aria-hidden="true"></span><span>App ons een foto</span></a>
 
   <footer class="site-footer">
-    <div class="container site-footer-grid">
-      <section>
-        <h3><span class="wordmark"><span class="brand-vl">VL</span><span class="brand-warmte">Warmte</span></span></h3>
-        <p class="small footer-tagline">Slim gelegd. Gelijkmatig warm.</p>
-        <p class="small">Specialist in vloerverwarming van ondervloer tot oplevering.</p>
-        <address class="small footer-address">
-          Verlengde Stationsweg 58<br />
-          9471 PM Zuidlaren
-        </address>
-        <p class="small footer-contact">
-          <span class="footer-phone-row"><a href="tel:+31618817459">06 188 17 459</a><a class="btn-social-whatsapp" href="https://wa.me/31618817459" rel="noopener noreferrer" target="_blank"><span class="visually-hidden">WhatsApp: stuur een bericht naar 06 188 17 459 (opent in een nieuw tabblad)</span><svg class="btn-social-whatsapp__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></span><br />
-          <a href="mailto:info@vlwarmte.nl">info@<span class="email-domain-vl">vl</span>Warmte.nl</a>
-        </p>
-        <p class="small">
-          <a href="https://www.kvk.nl/bestellen/#/01174546000002428172?origin=search" rel="noopener noreferrer"
-            target="_blank">KVK 01174546</a>
-        </p>
-      </section>
-      <section>
-        <h3>Regio</h3>
-        <ul class="small">
-          <li>Groningen</li>
-          <li>Friesland</li>
-          <li>Drenthe</li>
-        </ul>
-        <ul class="small">
-          <li><a href="vloerverwarming-groningen.html">Vloerverwarming Groningen</a></li>
-          <li><a href="vloerverwarming-assen.html">Vloerverwarming Assen</a></li>
-          <li><a href="vloerverwarming-zuidlaren.html">Vloerverwarming Zuidlaren</a></li>
-          <li><a href="vloerverwarming-emmen.html">Vloerverwarming Emmen</a></li>
-          <li><a href="vloerverwarming-hoogeveen.html">Vloerverwarming Hoogeveen</a></li>
-          <li><a href="vloerverwarming-leeuwarden.html">Vloerverwarming Leeuwarden</a></li>
-          <li><a href="vloerverwarming-drachten.html">Vloerverwarming Drachten</a></li>
-          <li><a href="vloerverwarming-heerenveen.html">Vloerverwarming Heerenveen</a></li>
-        </ul>
-      </section>
-      <section>
-        <h3>Links</h3>
-        <ul class="small">
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="projecten.html">Uitgevoerd werk</a></li>
-          <li><a href="faq.html">Veelgestelde vragen</a></li>
-          <li>
-            <a href="https://www.facebook.com/1068733929659423" rel="noopener noreferrer" target="_blank">Facebook</a>
-          </li>
-          <li><a href="disclaimer.html">Disclaimer</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-        </ul>
-      </section>
+    <div class="wrap site-footer-inner">
+      <div class="footer-col">
+        <span class="footer-brand">VLWarmte</span>
+        <span>Verlengde Stationsweg 58, 9471 PM Zuidlaren</span>
+        <a href="https://www.kvk.nl/bestellen/#/01174546000002428172?origin=search" rel="noopener noreferrer"
+          target="_blank">KVK 01174546</a>
+      </div>
+      <div class="footer-col">
+        <a class="footer-strong" href="tel:+31618817459">06 188 17 459</a>
+        <a class="footer-strong" href="mailto:info@vlwarmte.nl">info@vlwarmte.nl</a>
+        <a href="https://www.facebook.com/1068733929659423" rel="noopener noreferrer" target="_blank">Volg ons op
+          Facebook</a>
+      </div>
+      <div class="footer-col">
+        <span class="footer-title">Regio</span>
+        <div class="footer-regio">
+          <a href="vloerverwarming-groningen.html">Groningen</a>
+          <a href="vloerverwarming-assen.html">Assen</a>
+          <a href="vloerverwarming-zuidlaren.html">Zuidlaren</a>
+          <a href="vloerverwarming-emmen.html">Emmen</a>
+          <a href="vloerverwarming-hoogeveen.html">Hoogeveen</a>
+          <a href="vloerverwarming-leeuwarden.html">Leeuwarden</a>
+          <a href="vloerverwarming-drachten.html">Drachten</a>
+          <a href="vloerverwarming-heerenveen.html">Heerenveen</a>
+          <a href="vloerverwarming-drenthe.html">Drenthe</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <a href="over-ons.html">Over ons</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
     </div>
-    <div class="container small">© <span id="year"></span> <span class="wordmark"><span class="brand-vl">VL</span><span
-          class="brand-warmte">Warmte</span></span></div>
+    <div class="wrap footer-legal">© <span id="year">2026</span> VLWarmte. Slim gelegd. Gelijkmatig warm.</div>
   </footer>
+
 
   <script type="application/ld+json">
       {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat is vloerverwarming infrezen bij een renovatie?","acceptedAnswer":{"@type":"Answer","text":"Infrezen betekent sleuven in een bestaande dekvloer voor leidingen, zonder de hele vloer te verwijderen. Of dat kan hangt af van dikte, draagkracht en wat er al ligt; we meten en beoordelen voor we een voorstel doen."}},{"@type":"Question","name":"Wanneer is schuimbeton in de kruipruimte een logische keuze?","acceptedAnswer":{"@type":"Answer","text":"Schuimbeton vult de kruipruimte en combineert isolatie met een stabiele basis voor leidingwerk en dekvloer, vooral waar de bestaande situatie dun of onrustig is. Niet elke woning heeft het nodig; we kijken per project."}},{"@type":"Question","name":"Wat is droge vloerverwarming of laagopbouw?","acceptedAnswer":{"@type":"Answer","text":"Droge vloerverwarming legt buizen in isolatieplaten — zonder vol chape eromheen. Dat scheelt hoogte ten opzichte van traditionele opbouw. Het past niet in elke woning; bij opname wegen we het af naast infrezen en schuimbeton. Uitgebreide uitleg staat bij systemen en laagopbouw."}},{"@type":"Question","name":"Kan vloerverwarming op een houten vloer of houten ondergrond?","acceptedAnswer":{"@type":"Answer","text":"Soms wel, soms niet — hout reageert anders op vocht en temperatuur dan beton. We beoordelen de constructie en het gewenste eindresultaat en geven vooraf eerlijk advies."}},{"@type":"Question","name":"Passen vloerverwarming en een warmtepomp goed bij elkaar?","acceptedAnswer":{"@type":"Answer","text":"Ja, dat is een veelvoorkomende combinatie: lage aanvoer past bij een warmtepomp. Vermogen, verdeling en regeling moeten wel kloppen — dat stellen we vast in het plan en bij opname."}},{"@type":"Question","name":"Kan vloerverwarming op een bestaande cv-ketel?","acceptedAnswer":{"@type":"Answer","text":"Vaak wel, mits de ketel en het hydraulische schema geschikt zijn voor de gevraagde aanvoertemperatuur en vermogen. Bij vervanging van de warmtebron plannen we het vloerwerk daarop mee."}},{"@type":"Question","name":"Hoe loopt de opbouw: ondervloer, leidingen en dekvloer?","acceptedAnswer":{"@type":"Answer","text":"Eerst een stabiele, vlakke basis (ondervloer en eventueel schuimbeton of andere isolatie-opbouw), dan het leidingwerk met de juiste verdeling, daarna dekvloer en afwerking. Het precieze stappenplan hangt af van nieuwbouw of renovatie."}},{"@type":"Question","name":"Hoe krijg ik zicht op de kosten?","acceptedAnswer":{"@type":"Answer","text":"Voor een eerste bandbreedte kun je de online prijsindicatie doorlopen — dat is een indicatie, geen offerte. Voor maatwerk en planning leveren we na opname een heldere offerte."}},{"@type":"Question","name":"Wat is het verschil tussen nieuwbouw en renovatie in jullie traject?","acceptedAnswer":{"@type":"Answer","text":"Bij nieuwbouw stemmen we af op ruwbouw en planning van andere partijen. Bij renovatie staat inspectie en wat er blijft liggen centraal. In beide gevallen één aanspreekpunt van plan tot oplevering."}},{"@type":"Question","name":"Welke garantie hoort bij jullie systemen?","acceptedAnswer":{"@type":"Answer","text":"Op het geïnstalleerde systeem en de verdeler: 2 jaar garantie. Op de buis: 10 jaar garantie."}},{"@type":"Question","name":"Hoe snel reageren jullie op een aanvraag?","acceptedAnswer":{"@type":"Answer","text":"Normaal binnen één werkdag. Bij complexere vragen plannen we een belmoment in."}},{"@type":"Question","name":"In welke regio werken jullie?","acceptedAnswer":{"@type":"Answer","text":"Vanuit Zuidlaren werken we in Groningen, Friesland en Drenthe, met nadruk op het noorden en omliggende plaatsen."}},{"@type":"Question","name":"Doen jullie alleen het leggen van de buizen of het hele traject?","acceptedAnswer":{"@type":"Answer","text":"Het complete traject: voorbereiding, aanleg, dekvloer en oplevering — afgestemd op jouw situatie."}},{"@type":"Question","name":"Hoe lang duurt een gemiddeld project?","acceptedAnswer":{"@type":"Answer","text":"Dat verschilt sterk met omvang, droogtijden en planning van andere vakmensen. Na opname geven we een realistische inschatting."}},{"@type":"Question","name":"Is vloerverwarming in elke ruimte mogelijk?","acceptedAnswer":{"@type":"Answer","text":"Bijna altijd is er een technische route, maar sommige ruimtes vragen om maatwerk. Dat beoordelen we per ruimte in het plan."}}]}

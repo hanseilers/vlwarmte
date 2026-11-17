@@ -1,25 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
   initMobileNav();
-  initFaq();
   initLeadForm();
-  initFacebookOutboundGa();
-  initStickyCta();
+  initCallbackForms();
+  initOutboundGa();
+  initWaFloat();
   setYear();
 });
 
-function initStickyCta() {
-  const cta = document.querySelector("[data-sticky-cta]");
-  const band = document.querySelector(".cta-band");
-  if (!cta || !band || typeof IntersectionObserver === "undefined") return;
-  const observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        cta.setAttribute("data-hide", entry.isIntersecting ? "true" : "false");
-      }
-    },
-    { rootMargin: "0px 0px -10% 0px", threshold: 0 }
-  );
-  observer.observe(band);
+const FORM_ERROR_MESSAGE = "Er ging iets mis. App of bel ons op 06 188 17 459, of mail info@vlwarmte.nl.";
+const MAX_PHOTO_BYTES = 10 * 1024 * 1024;
+
+/* De zwevende WhatsApp-knop verdwijnt zolang een grote WhatsApp-knop, het contactblok,
+   het formulier of de wizard in beeld is (alles met data-wa-primary). */
+function initWaFloat() {
+  const float = document.querySelector(".wa-float");
+  const primaries = document.querySelectorAll("[data-wa-primary]");
+  if (!float || !primaries.length || typeof IntersectionObserver === "undefined") return;
+  const visible = new Set();
+  const apply = () => float.setAttribute("data-hide", visible.size ? "true" : "false");
+
+  // Beginstand direct bepalen; de observer houdt het daarna bij tijdens het scrollen.
+  primaries.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.width > 0 && rect.bottom > 0 && rect.top < window.innerHeight) visible.add(el);
+  });
+  apply();
+
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) visible.add(entry.target);
+      else visible.delete(entry.target);
+    }
+    apply();
+  });
+  primaries.forEach((el) => observer.observe(el));
 }
 
 function initMobileNav() {
@@ -28,68 +42,64 @@ function initMobileNav() {
   const nav = document.querySelector(".site-nav");
   if (!header || !toggle || !nav) return;
 
-  function closeNav() {
-    header.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
+  function setOpen(open) {
+    header.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Sluit navigatie" : "Open navigatie");
   }
 
-  function openNav() {
-    header.classList.add("is-open");
-    toggle.setAttribute("aria-expanded", "true");
-  }
-
-  toggle.addEventListener("click", () => {
-    if (header.classList.contains("is-open")) {
-      closeNav();
-    } else {
-      openNav();
-    }
-  });
+  toggle.addEventListener("click", () => setOpen(!header.classList.contains("is-open")));
 
   nav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => closeNav());
+    link.addEventListener("click", () => setOpen(false));
   });
 
   document.addEventListener("click", (event) => {
     if (!header.classList.contains("is-open")) return;
     const target = event.target;
-    if (target instanceof Node && !nav.contains(target) && !toggle.contains(target)) {
-      closeNav();
-    }
+    if (target instanceof Node && !nav.contains(target) && !toggle.contains(target)) setOpen(false);
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeNav();
+    if (event.key === "Escape" && header.classList.contains("is-open")) {
+      setOpen(false);
+      toggle.focus();
+    }
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 1080) closeNav();
+    if (window.innerWidth >= 1130) setOpen(false);
   });
 }
 
-function initFaq() {
-  const faqButtons = document.querySelectorAll("[data-faq-toggle]");
-  faqButtons.forEach((button, index) => {
-    const item = button.closest(".faq-item");
-    const answer = item?.querySelector(".faq-answer");
-    if (!item || !answer) return;
+/* ---------- Contactformulier: deeplinks ---------- */
 
-    const btnId = button.id || `faq-question-${index + 1}`;
-    const answerId = answer.id || `faq-answer-${index + 1}`;
-    button.id = btnId;
-    answer.id = answerId;
-
-    button.setAttribute("aria-controls", answerId);
-    button.setAttribute("aria-expanded", item.classList.contains("is-open") ? "true" : "false");
-    answer.setAttribute("role", "region");
-    answer.setAttribute("aria-labelledby", btnId);
-
-    button.addEventListener("click", () => {
-      item.classList.toggle("is-open");
-      button.setAttribute("aria-expanded", item.classList.contains("is-open") ? "true" : "false");
-    });
-  });
-}
+const LEAD_MODES = {
+  info: {
+    soort: "Informatie",
+    event: "informatie",
+    title: "Liever een formulier?",
+    intro: "Drie velden is genoeg. De rest vragen we als we contact met je opnemen.",
+    messageLabel: "Je vraag",
+    messageHint: "Bijvoorbeeld: welke ruimte, ongeveer hoeveel m² en wanneer je wilt beginnen."
+  },
+  offerte: {
+    soort: "Offerte",
+    event: "offerte",
+    title: "Offerte aanvragen",
+    intro: "Vertel kort wat je plan is. De maten en de rest vragen we als we contact met je opnemen.",
+    messageLabel: "Je plan",
+    messageHint: "Bijvoorbeeld: welke ruimte, ongeveer hoeveel m², wat er nu ligt en wanneer je wilt beginnen."
+  },
+  bel: {
+    soort: "Terugbelverzoek",
+    event: "terugbelverzoek",
+    title: "Laat je terugbellen",
+    intro: "Laat je nummer achter. We bellen je op een moment dat jou uitkomt.",
+    messageLabel: "Wanneer komt het uit?",
+    messageHint: "Bijvoorbeeld: morgenochtend, of na 17.00 uur. Je mag je vraag er ook bij zetten."
+  }
+};
 
 function normalizeLeadModeQueryValue(raw) {
   if (raw == null) return null;
@@ -116,7 +126,7 @@ function readLeadModeFromUrl() {
 function leadFormDeepLinkNeedsJsScroll() {
   if (readLeadModeFromUrl()) return true;
   const h = window.location.hash.replace(/^#/, "").toLowerCase();
-  return h === "lead-form";
+  return h === "lead-form" || h === "formulier";
 }
 
 function scrollLeadFormAnchorIntoView() {
@@ -128,124 +138,191 @@ function scrollLeadFormAnchorIntoView() {
   });
 }
 
+/* Oude deeplinks (?modus=info|offerte|bel) vallen terug op hetzelfde korte formulier:
+   alleen de kop, de toelichting en het verborgen veld soort_aanvraag passen zich aan. */
+function applyLeadMode(form, mode) {
+  const config = LEAD_MODES[mode] || LEAD_MODES.info;
+  const soortField = form.querySelector("#soort_aanvraag");
+  if (soortField) soortField.value = config.soort;
+  const targets = {
+    "[data-lead-title]": config.title,
+    "[data-lead-intro]": config.intro,
+    "[data-lead-message-label]": config.messageLabel,
+    "[data-lead-message-hint]": config.messageHint
+  };
+  for (const [selector, text] of Object.entries(targets)) {
+    const node = document.querySelector(selector);
+    if (node) node.textContent = text;
+  }
+  document.body.classList.toggle("lead-mode-info", mode === "info");
+  document.body.classList.toggle("lead-mode-offerte", mode === "offerte");
+  document.body.classList.toggle("lead-mode-bel", mode === "bel");
+}
+
+function looksLikeEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function looksLikePhone(value) {
+  return value.replace(/\D/g, "").length >= 8;
+}
+
+function validateLeadForm(form) {
+  for (const fieldName of ["name", "contact", "message"]) {
+    const input = form.elements[fieldName];
+    if (!input || !String(input.value).trim()) {
+      return {
+        ok: false,
+        field: input,
+        message: "Vul je naam, je telefoonnummer of e-mailadres en je vraag in."
+      };
+    }
+  }
+
+  const contactInput = form.elements.contact;
+  const contact = String(contactInput.value).trim();
+  if (!looksLikeEmail(contact) && !looksLikePhone(contact)) {
+    return {
+      ok: false,
+      field: contactInput,
+      message: "Vul een geldig telefoonnummer of e-mailadres in, zodat we je kunnen bereiken."
+    };
+  }
+
+  const photos = form.elements.foto;
+  if (photos && photos.files) {
+    let total = 0;
+    for (const file of photos.files) total += file.size;
+    if (total > MAX_PHOTO_BYTES) {
+      return {
+        ok: false,
+        field: photos,
+        message: "De foto's zijn samen groter dan 10 MB. Stuur ze gerust via WhatsApp."
+      };
+    }
+  }
+
+  return { ok: true };
+}
+
+function postForm(action, data) {
+  return fetch(action, { method: "POST", body: data, headers: { Accept: "application/json" } });
+}
+
 function initLeadForm() {
   const form = document.querySelector("#lead-form");
   if (!form) return;
-
-  let mode = "info";
-  const modeButtons = document.querySelectorAll("[data-lead-mode]");
   const status = document.querySelector("#lead-status");
 
-  const soortField = form.querySelector("#soort_aanvraag");
-
-  function setSoortAanvraag() {
-    if (!soortField) return;
-    if (mode === "info") soortField.value = "Informatie";
-    else if (mode === "offerte") soortField.value = "Offerte";
-    else if (mode === "bel") soortField.value = "Terugbelverzoek";
-  }
-
-  function applyMode(nextMode) {
-    mode = nextMode;
-    modeButtons.forEach((button) => {
-      button.classList.toggle("is-active", button.dataset.leadMode === mode);
-    });
-    setSoortAanvraag();
-    document.body.classList.toggle("lead-mode-offerte", mode === "offerte");
-    document.body.classList.toggle("lead-mode-info", mode === "info");
-    document.body.classList.toggle("lead-mode-bel", mode === "bel");
-
-    form.querySelectorAll("[data-only='offerte']").forEach((fieldWrap) => {
-      const hidden = mode !== "offerte";
-      fieldWrap.classList.toggle("hidden", hidden);
-      const input = fieldWrap.querySelector("input, select, textarea");
-      if (input) input.required = !hidden;
-    });
-
-    form.querySelectorAll("[data-only='bel']").forEach((fieldWrap) => {
-      const hidden = mode !== "bel";
-      fieldWrap.classList.toggle("hidden", hidden);
-      const input = fieldWrap.querySelector("input, select, textarea");
-      if (input) input.required = !hidden;
-    });
-  }
-
-  modeButtons.forEach((button) => {
-    button.addEventListener("click", () => applyMode(button.dataset.leadMode));
-  });
+  const mode = readLeadModeFromUrl() || "info";
+  applyLeadMode(form, mode);
+  if (leadFormDeepLinkNeedsJsScroll()) scrollLeadFormAnchorIntoView();
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!status) return;
 
-    const result = validateLeadForm(form, mode);
+    const result = validateLeadForm(form);
     if (!result.ok) {
       status.className = "status error";
       status.textContent = result.message;
+      if (result.field && typeof result.field.focus === "function") result.field.focus();
       return;
     }
 
     const btn = form.querySelector('button[type="submit"]');
     const origLabel = btn ? btn.textContent : null;
     if (btn) { btn.disabled = true; btn.textContent = "Versturen…"; }
-    status.className = "";
+    status.className = "status";
     status.textContent = "";
 
-    const soort = mode === "info" ? "informatie" : mode === "offerte" ? "offerte" : "terugbelverzoek";
+    const data = new FormData(form);
+    const contact = String(data.get("contact") || "").trim();
+    // Formspree gebruikt het veld "email" als antwoordadres; zet het alleen als het er een is.
+    if (looksLikeEmail(contact)) data.set("email", contact);
+    else data.set("phone", contact);
+    const photos = form.elements.foto;
+    const hasPhotos = Boolean(photos && photos.files && photos.files.length);
+    if (!hasPhotos) data.delete("foto");
 
     try {
-      const res = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
-      });
-      if (res.ok) {
-        status.className = "status success";
-        status.textContent = "Bedankt! We nemen binnen één werkdag contact met je op.";
-        form.reset();
-        applyMode("info");
-        if (typeof gtag === "function") {
-          gtag("event", "contact_submit", { soort_aanvraag: soort });
-        }
-      } else {
-        throw new Error();
+      let res = await postForm(form.action, data);
+      let photoDropped = false;
+      if (!res.ok && hasPhotos) {
+        // Komt de bijlage niet door, dan gaat het bericht alsnog zonder foto weg.
+        data.delete("foto");
+        data.set("foto_niet_meegekomen", "ja");
+        res = await postForm(form.action, data);
+        photoDropped = res.ok;
+      }
+      if (!res.ok) throw new Error("form submit failed");
+
+      status.className = "status success";
+      status.textContent = photoDropped
+        ? "Bedankt, je bericht is verstuurd. De foto kwam niet mee: stuur die gerust via WhatsApp."
+        : "Bedankt! We nemen binnen één werkdag contact met je op.";
+      form.reset();
+      applyLeadMode(form, mode);
+      if (btn) { btn.disabled = false; btn.textContent = origLabel; }
+      if (typeof gtag === "function") {
+        gtag("event", "contact_submit", { soort_aanvraag: (LEAD_MODES[mode] || LEAD_MODES.info).event });
       }
     } catch {
       status.className = "status error";
-      status.textContent = "Er ging iets mis. Bel ons op 06 188 17 459 of mail info@vlwarmte.nl.";
+      status.textContent = FORM_ERROR_MESSAGE;
       if (btn) { btn.disabled = false; btn.textContent = origLabel; }
     }
   });
-
-  const fromUrl = readLeadModeFromUrl();
-  applyMode(fromUrl || "info");
-  if (leadFormDeepLinkNeedsJsScroll()) scrollLeadFormAnchorIntoView();
 }
 
-function validateLeadForm(form, mode) {
-  const requiredFields = ["name", "phone", "email"];
-  if (mode === "offerte") requiredFields.push("m2", "vloerdiepte", "ondergrond", "projecttype");
-  if (mode === "bel") requiredFields.push("terugbel_moment");
+/* ---------- Terugbelformulier in het contactblok ---------- */
 
-  for (const fieldName of requiredFields) {
-    const input = form.elements[fieldName];
-    if (!input || !String(input.value).trim()) {
-      return {
-        ok: false,
-        message: "Vul alle verplichte velden in voordat je verzendt."
-      };
-    }
-  }
+function initCallbackForms() {
+  document.querySelectorAll(".js-callback-form").forEach((form) => {
+    const status = form.querySelector("[data-status]");
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!status) return;
 
-  const emailInput = form.elements.email;
-  if (emailInput && !String(emailInput.value).includes("@")) {
-    return { ok: false, message: "Vul een geldig e-mailadres in." };
-  }
+      const phoneInput = form.elements.phone;
+      if (!phoneInput || !looksLikePhone(String(phoneInput.value))) {
+        status.className = "status error";
+        status.textContent = "Vul je telefoonnummer in, dan bellen we je terug.";
+        if (phoneInput) phoneInput.focus();
+        return;
+      }
 
-  return { ok: true };
+      const btn = form.querySelector('button[type="submit"]');
+      const origLabel = btn ? btn.textContent : null;
+      if (btn) { btn.disabled = true; btn.textContent = "Versturen…"; }
+      status.className = "status";
+      status.textContent = "";
+
+      const data = new FormData(form);
+      data.set("pagina", window.location.pathname);
+
+      try {
+        const res = await postForm(form.action, data);
+        if (!res.ok) throw new Error("callback submit failed");
+        status.className = "status success";
+        status.textContent = "Bedankt! We bellen je terug op het moment dat je koos.";
+        form.reset();
+        if (typeof gtag === "function") {
+          gtag("event", "contact_submit", { soort_aanvraag: "terugbelverzoek" });
+        }
+      } catch {
+        status.className = "status error";
+        status.textContent = FORM_ERROR_MESSAGE;
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = origLabel; }
+      }
+    });
+  });
 }
 
-function initFacebookOutboundGa() {
+/* ---------- GA4: uitgaande klikken naar Facebook en WhatsApp ---------- */
+
+function initOutboundGa() {
   document.addEventListener("click", (event) => {
     const a = event.target && event.target.closest && event.target.closest("a[href]");
     if (!a || !(a instanceof HTMLAnchorElement)) return;
