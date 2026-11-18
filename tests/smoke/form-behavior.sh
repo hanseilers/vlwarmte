@@ -56,6 +56,6 @@ contains assets/js/main.js "function initCallbackForms"
 contains index.html 'class="btn btn-wa btn-sm"'
 contains index.html 'class="wa-float"'
 contains index.html 'class="wa-hero"'
-contains contact.html 'https://wa.me/31618817459'
+contains contact.html 'https://wa.me/message/SOVOXF6IXF3FM1'
 
 echo "form-behavior.sh: PASS"
